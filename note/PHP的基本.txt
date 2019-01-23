@@ -1,0 +1,361 @@
+JavaScript新建变量是: var xxx;
+PHP新建变量是:        $xxx;
+
+关于PHP中换行:
+单引号----> echo '-----------'.'\n';   输出不换行 \n 当成一个字符串输出
+双引号====> echo '-----------'."\n";   输出换行   \n 被识别成一个换行符
+
+用 . 来连接(链接)字符串 <== PHP
+用 + 来连接(链接)字符串 <== JavaScript
+
+PHP中获取时间:
+//需要设置时区,不然获取的时间是不准的
+date_default_timezone_set('PRC');
+echo date("Y-m-d H:i:s")."\n";
+echo "当前时间是 " . date("h:i:sa")."\n";
+
+JavaScript查看数据类型:
+typeof(xxx)
+PHP 查看数据类型:
+var_dump(xxx)
+
+
+PHP(时间:年月日时分秒):
+echo date("y-m-d-H-i-s");  
+
+PHP分割字符串 ==> Array数组:
+源码是这样:        $分隔符     $字符串     可有可无
+function explode ($delimiter, $string, $limit = null) {}
+         explode('/', 'image/png')[1];  ==> png
+
+PHP: Array数组 ==> 字符串:
+$array = array('lastname', 'email', 'phone');
+$comma_separated = implode(",", $array);
+
+PHP:获取当前文件夹目录 => echo __DIR__;
+输出上一级目录 => exit(dirname(dirname(__FILE__)));
+
+echo dirname(__FILE__);  ==> 打印当前路径
+
+php
+自定义常量:
+define('aaa', 'fgfgfgfgf');
+echo aaa;
+
+php:
+exit执行并且退出,下一句代码不会执行
+exit('123'); ==>必须加上双引号"" 才会执行
+echo 123;    ==> 这一句不会执行
+
+php:
+json_encode(['id' => 1, 'src' => 'fgfgfgfg']);  ==> 返回string类型
+
+
+
+php有一个特定函数可以获取文件名：basename()
+
+
+var formData = new FormData();
+formData.append('my-image-file', file); ==> PHP后台用 $file = $_FILES['my-image-file']; 来获取!
+            
+// 添加自定义数据  (要注意!!!)
+// 在后台 PHP 中,只能用 $name = $_POST['name']; 来获取这个数据
+formData.append('name', "qwe");  
+
+
+// 传输数据到前端
+// echo <你要传输的内容>
+
+获取input输入框的内容:
+document.getElementById('title_input').value;
+
+PHP ajax JavaScript:
+xhr.open('POST', '../PHP/title_and_code.php'); ==> 代表从根目录里面找
+
+
+PHP文件读写 IO:
+$myfile = fopen("../TXT/aaa.txt", "a") or die("Unable to open file!");
+$txt = "Bill Gates\n";
+fwrite($myfile, $txt);
+fclose($myfile);
+
+r : 表示只读
+$myfile = fopen("../TXT/aaa.txt", "r") or die("Unable to open file!");
+// 输出单行直到 end-of-file
+while(!feof($myfile)) {
+    echo fgets($myfile);
+}
+fclose($myfile);
+
+PHP:
+文件写入
+$file_name = '../HTML/' .  "222.html";
+//打开文件$file时，使用追加模式，此时文件指针会在文件开始出
+if (!$fp = fopen($file_name, 'a')) {
+    echo "打开文件---$file_name---失败！";
+    exit;
+}
+if (fwrite($fp, '0') === false) {
+    echo "FASLE";
+    exit;
+}
+echo "success";
+fclose($fp);
+
+PHP:
+//1、使用str_replace 来替换换行,从而去掉换行符  
+$str = str_replace(array("\r\n", "\r", "\n"), "", $str);   
+
+
+
+写网页时候,有时候明明源码改了,但网页就是刷新不出更改的内容,
+这时候需要清理一下Chrome的缓存(chrome设置里搜索'缓存就出来了'),
+Chrome会缓存一部分数据(图片,文字),方便网页打开更加迅速,
+但是缓存文件会导致页面刷新不及时,对开发有严重的干扰
+清理缓存即可~~
+
+
+jquery : 
+让这个div出现一秒钟,然后消失,起到提示语的效果(这个方法只在jquery上实现)
+$('.tips').fadeIn().delay(1000).fadeOut();
+
+
+PHP:
+调用其他PHP文件的xxx:
+require_once 'tool.php';  ==> 包含其中
+
+php json_encode 中文乱码怎么办???
+加上:JSON_UNESCAPED_UNICODE
+echo json_encode($title_ID_Array , JSON_UNESCAPED_UNICODE);
+
+
+PHP
+特殊的传值方式(传值小偏方):
+echo '<h1> ' . $TXT_data . '</h1>';
+这样会在页面中以DOM节点方式显示出来 ==> <h1> xxx </h1>
+
+jquery 获取节点的值:
+$('#mysql_data').html();
+
+
+PHP json:
+// 生成一个PHP数组
+$data = array();
+$data['a'] = 'test';
+$data['b'] = 'bbb';
+
+// 把PHP数组转成JSON字符串
+$json_string = json_encode($data);
+
+
+PHP  JSON:
+// 从文件中读取数据到PHP变量
+$json_string = file_get_contents('../JSON/JSON.json');
+// 把JSON字符串转成PHP数组
+$data = json_decode($json_string, true);
+// 显示出来看看
+var_dump($data);
+
+
+// json写入文件
+file_put_contents('../JSON/test.json', $json_string);
+
+PHP中,
+var_dump($data); ==> 可以直接显示数据,不需要在前面加个echo
+
+
+JSON在javascript和php之间的传递:
+1、Javascript :
+    eavl()
+    JSON对象   
+    JSON.parse()   json->对象
+    JSON.stringify()； 对象->json
+
+2、PHP:
+    json_encode()   php关联数组（对象） ->json
+    json_decode();  json->php 对象
+
+PHP ==> MySQL:
+$servername = "localhost";
+$username = "root";
+$password = "root";
+// 创建连接
+$conn = new mysqli($servername, $username, $password);
+// 检测连接
+if ($conn->connect_error) {
+    die("连接失败: " . $conn->connect_error);
+}
+echo "连接成功";
+//关闭链接
+$conn->close();
+
+
+PHP拼接SQL语句:
+要注意把变量用单引号('')加上双引号("")隔离开来:
+$sql = 'INSERT INTO title_and_id (file_title, file_name) VALUES ("' . $title_input . '","' . $file_name_date . '");';
+
+
+
+问: 怎么在PHP的 array 数组中添加键值对呢??
+$arr = array('呵呵呵呵呵' => 111, '哈哈哈哈哈' => 222);
+百度了半天,答案是.....
+PHP没有向array直接添加键值对的方法~~
+嗯......
+但是我就是想添加键值对到array里去啊
+方法是:
+直接 ==> $arr['哦哦哦哦哦哦'] = 333;
+对!!! 直接赋值！！然后就把键值对加入array中去了~~~[键不能一样,值可以一样,键值对嘛]
+真是简单粗暴不啰嗦啊~~~
+嘤嘤嘤~~~
+
+
+
+
+
+
+坑:
+PHP:
+var formData = new FormData();
+formData.append('box_id' , box_id);
+xhr.send(formData); ==> ajax中一定要把参数传进去,不然send(发送)的数据就是null了,后端自然获取不到数据
+
+
+mysql:
+进入账户:
+mysql -u root -p
+
+
+坑:
+PHP的字符串拼接,不需要用 . 号来链接 , 直接在后面加上你需要拼接的字符串
+$file = "tes555t.txt";
+echo "AAAAAAAAAAAAAAAA $file";
+
+PHP删除文件:
+$file = "../TXT/tes555t.jjj";  => ../ 表示根目录
+if (!unlink($file)) {
+    echo("delete_error");
+} else {
+    echo("delete_success");
+}
+
+
+
+问题: 当消息框加载完成之后再去...刷新页面==> 但是暂停没有用
+xhr.responseText == 'all_success') {
+//insert 数据成功之后,js脚本点击 '关闭' 按钮
+console.log('all success....')
+document.getElementsByClassName('close_window_button')[0].click();
+message_alert('操作成功', '#00EE00', 'white', '30px', 1000);
+sleep(5000);
+window.location.reload();
+
+
+
+jqure:
+$('#aaa li').hover(function(){
+	$(this).addclass('ll-hhh'); //remove同理
+})
+
+
+
+
+apache tomcat的一些坑:
+
+卸载tomcat:
+删除tomcat文件夹即可,
+
+坑:
+删除文件夹之后还是无法启动tomcat服务器,
+是因为 win7 中的服务没有删除,
+要进入注册表删除tomcat的服务,
+
+怎么进入注册表删除服务(win7删除服务-百度经验)?
+https://jingyan.baidu.com/article/93f9803f443252e0e56f5563.html
+
+删除之后还是有apache tomcat7/9 的服务常驻在win系统服务下,
+这时候需要重启(果然重启是万能的~~QAQ.........)
+
+重启之后进入apache tomcat7文件夹下 
+找到bin目录,
+点击进入,
+找到 start.bat文件(批处理)
+
+双击打开,
+
+apache tomcat7 顺利启动啦
+
+万恶的apache tomcat 
+
+写个代码这么麻烦~~~~
+
+每次最讨厌配置
+
+
+
+
+
+
+POST提交数据太大
+其实后来最终的解决方案是修改服务器的配置文件。
+POST数据按道理说是没有大小限制的，只是取决于浏览器或服务器的配置，tomcat的解决方式参考方案2.
+－－－－－－－－－－－－－－－－－－分割线－－－－－－－－－－－－－－－－－
+场景：之前帮客户做接口，等真正上线的时候，才发现客户提交过来的数据超出测试范围。因为客户发过来的数据有几张base64编码格式的照片。整体2.2M。
+解决方案：
+方案1:最初网上查发现也有人出现过类似情况。说是request.getParameter底层是一个map，map集合装不了那么大的字符串，所以map集合崩溃了。用request.getInputStream流读出来就好了。该兄正是通过此种方法解决，于是我就信了。map装不了过大数据。
+用request.getInputStream来接收数据。但是这时候又出现个问题。用request.getInputStream的方式，之前的小数据又接收不到了，传过来的为“”。
+方案2:针对方案1出现的问题，考虑到还是不能放弃request.getParameter。于是我又去查map是不是真的有限制大小。查API好像没有说Map有最大限制什么的。不过通过map.size() 方法时，有这样的注解：返回此映射中的键-值映射关系数。如果该映射包含的元素大于 Integer.MAX_VALUE，则返回 Integer.MAX_VALUE。于是又觉得map有希望了。后来想是不是跟服务器设置有关系？于是通过网上查找，设置server.xml中Connector中的属性，maxPostSize的值。
+https://blog.csdn.net/yapingge2014/article/details/52052574
+https://blog.csdn.net/gy__my/article/details/68944009
+
+
+PHP中的函数
+把一个字符串打乱   str_shuffle("ABCDEFGHIJKRMN");
+截取字符串   substr("ABCDEFGHIJKRMN", 2,6);
+读取这个系统路径  dirname(__FILE__);
+
+php三种输出方式:
+echo "string"."\n"; 普通输出
+exit("qweqweqwe");  输出后退出
+die("123123123");   输出后退出
+
+定义常量               define("DB_HOST","user"); 
+设置MySQL编码格式       mysql_set_charset("utf8"); 
+检测这个变量是否赋值,是?返回1(true)    isset($aa) 
+取整[返回4]             ceil(10/3);  
+判断是否是数字,是的话返回1  is_numeric('string');
+字符串的串联     $a='abc';   $a.='def';  输出:abcdef
+
+
+*****************************************************************************
+$test = 111;
+if (isset($test) == true) {   
+    echo "已经设置了...";   ==> 输出这一句
+}else{
+    echo "还没有设置.....";
+}
+*****************************************************************************
+
+*****************************************************************************
+
+*****************************************************************************
+
+*****************************************************************************
+
+*****************************************************************************
+
+*****************************************************************************
+
+*****************************************************************************
+
+*****************************************************************************
+
+*****************************************************************************
+
+*****************************************************************************
+
+*****************************************************************************
+
+*****************************************************************************
+
+*****************************************************************************
+

@@ -1,0 +1,146 @@
+﻿------------------------如何用命令行新建一个完整的数据库并且包含数据
+create database 数据库名; 
+	
+use `aaa`;	
+
+
+// 创建表
+CREATE TABLE IF NOT EXISTS `table1`(      --->(注释:)
+   `tableID` INT UNSIGNED AUTO_INCREMENT, --->(int类型,无符号,自增)
+   `username` VARCHAR(100) NOT NULL,      --->(varchar不解释 带not null,不能为空值)
+   `password` VARCHAR(40) ,               --->(没有设置not null说明可以为空)
+   PRIMARY KEY ( `tableID` )            --->(PRIMARY KEY关键字用于定义列为主键)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;      --->(ENGINE 设置存储引擎，CHARSET 设置编码)
+
+---------------------- 例如  -------------------------------
+CREATE TABLE IF NOT EXISTS `user`( 
+`email` VARCHAR(100),
+`username` VARCHAR(100),
+`password` VARCHAR(40)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+---插入insert数据:
+insert into table1(username,password) values('HUAWEI','mate20');
+insert into table1(username,password) values('APPLE','IPHONE_5S');
+insert into table1(username,password) values('OPPO','R11');
+
+------------------------------------------------------------------------------
+		  
+展示所有的数据库
+show databases;
+
+use 某个数据库(aaa)
+use aaa;
+
+展示所有的数据表
+show tables;
+
+展示表中所有数据
+select * from user;
+
+insert 插入数据
+insert into user(username,password) values('HUAWEI','mate20');
+
+查看当前库所有表:
+show tables;
+
+查看指定数据库的表:
+show tables from 数据库名
+
+查看表的数据结构:
+desc 表名
+
+查看服务器的版本:
+select version();
+
+-------------------------------删除操作-----------------------------------
+删除表中某项数据
+delete from user where password = '123123123';
+
+清空表中全部数据，不写日志，不可恢复，速度极快
+truncate table 表名;
+ 
+清空全部数据，写日志，数据可恢复，速度慢
+delete from 表名
+
+删除数据库:
+drop database <数据库名>;
+
+删除数据表;
+drop TABLE student;
+
+#删除倒数第几行数据                                            
+delete from text001 order by id desc limit 66
+
+
+-------------------------------删除操作-----------------------------------
+
+          UPDATE 更新表中某项数据
+UPDATE runoob_tbl SET runoob_title='学习 C++' WHERE runoob_id=3;
+
+
+             多种排序测试用
+insert into user(username,password) VALUES('aaa','999');
+insert into user(username,password) VALUES('bbb','555');
+insert into user(username,password) VALUES('ccc','333');                                                             
+                                                               
+
+
+
+mysql 坑:
+values ("11111" , "22222"); 后面的不能用`111`(反引号) , 必须用双引号""
+use `example`;
+INSERT into example (`username`,`password`) values ("11111" , "22222");
+
+
+坑:
+最后的 end 一定要加上 ; (分号,这样表示结束)
+create PROCEDURE insert_5()
+BEGIN
+	DECLARE i int;
+	set i = 1;
+	WHILE i < 5 DO
+		insert into `example`(username,password) values(concat("UU",i),concat("PWD",i));
+		set i = i+1;
+END WHILE;
+END;
+
+call insert_5();
+
+
+
+mysql 去掉重复的:
+SELECT DISTINCT username FROM same;
+
+
+mysql CONCAT 表示链接字符串
+SELECT CONCAT("aaa",100,"---") as result ; => 输出: aaa100---
+
+模糊匹配 模糊查询: (包含66的数据, )
+%是占位符 任意多个字符,包含0个字符
+_ 任意单个字符
+\ 是转义符   \_ => _
+SELECT  * FROM same WHERE username LIKE '__e_a'; => 第三个字符为e,最后一个是a
+SELECT  * FROM same WHERE username LIKE '%66%';
+选择满足其中一项:
+select * from same where username in ('a' , 'b' , 'c');
+筛选出值为null的一项(id=null这种写法是错误的,同理:is NOT NULL 不为空)
+select * from same where username id is null ;
+
+安全等于 : <=> 既可以用于判断 null 也可以用于<=>1200(数字)
+
+NOT BETWEEN 100 AND 200 不在100到200之间
+
+IFNULL(CONNECTION,0) 如果是NULL值,改为0
+
+mysql 去掉空格 去掉制定字符串
+mysql 指定字符填充字符长度
+替换字符串
+
+mysql的函数:
+四舍五入:
+向上取整 
+
+求和:
+SELECT SUM(`username`) FROM same;

@@ -128,6 +128,9 @@ php json_encode 中文乱码怎么办???
 加上:JSON_UNESCAPED_UNICODE
 echo json_encode($title_ID_Array , JSON_UNESCAPED_UNICODE);
 
+PHP中文乱码怎么办? utf
+header("content-type:text/html;charset=utf-8");
+
 
 PHP
 特殊的传值方式(传值小偏方):
@@ -207,10 +210,6 @@ PHP没有向array直接添加键值对的方法~~
 对!!! 直接赋值！！然后就把键值对加入array中去了~~~[键不能一样,值可以一样,键值对嘛]
 真是简单粗暴不啰嗦啊~~~
 嘤嘤嘤~~~
-
-
-
-
 
 
 坑:
@@ -334,22 +333,92 @@ if (isset($test) == true) {
     echo "还没有设置.....";
 }
 *****************************************************************************
+namespace的上面(前面)不能有任何的文字,方法
+
+访问Animal类的静态方法: Animal::$name
+访问Animal类的public方法:$anmal=new Anmal(); $anmal->obj(不能有$)
+*****************************************************************************
+include("./2.php");
+*****************************************************************************
+const mmmmm="hdfkias";   (定义常量的方式之一)
+*****************************************************************************
+thinkphp:
+      第一步               第二步           第三步              第四步        第五步
+application(文件夹) -> index(文件夹) -> controller(文件夹) -> Index.php -> index(方法 : public function index())
+app\index\controller\Index->index000
+      <a href="{:url('index/index000')}"  rel='dropmenu209'>首页</a>      
+                      文件夹(控制器)/方法
+
+<a href="{:url('index              /Clickit    /index')}">click it ......</a>
+                index(控制器or文件夹)/Clickit.php/index方法
+
+
+thinkphp5 怎么访问页面:
+http://localhost/PHPstorm/blog/tp5/public/index/Clickit/index.html
+http://localhost/PHPstorm/blog/tp5/public/index/clickit/index.html                
+                               隐藏含义是: view/clickit/index.html       
+
+                               我估计...thinkphp的访问路径是这么走的..... 
+
+
+class Clickit extends Base{
+    public function index(){
+        return $this->fetch();
+    }
+}
+application/index\view\clickit\index.html   
+
+
+thinkphp 条件判断:
+{if condition="($name == 1) OR ($name > 100) "} value1  符合条件 => value1
+{elseif condition="$name eq 2"/}value2                  或者符合条件 => value2
+{else /} value3                                         再者 => value3
+{/if}                                                   结束 if 判断
+
+                             
+*****************************************************************************
+PHP array合并:
+$aaa = array(1,2,3);
+$bbb = array(11,22,33);
+$ccc = array_merge($aaa,$bbb);
 
 *****************************************************************************
 
+PHP array_unique() 函数 => 移除数组中重复的值：
+
+$a=array(
+  "a"=>"red",
+  "b"=>"green",
+  "c"=>"red"
+);
+print_r(array_unique($a));
 *****************************************************************************
+PHP join() 函数 => 把数组元素组合为一个字符串：
+
+$arr = array('Hello','World!','Beautiful','Day!');
+echo join("=>",$arr);   输出:   Hello=>World!=>Beautiful=>Day!
+
+*****************************************************************************
+PHP explode() 函数 => 把字符串打散为数组：
+$str = "www.runoob.com";
+print_r (explode(".",$str));
 
 *****************************************************************************
 
-*****************************************************************************
+thinkphp(验证码);
+<img src="{:captcha_src()}"  onclick="this.src='{:captcha_src()}?'+Math.random();"/>
 
-*****************************************************************************
+thinkPHP:
+目录结构:
+application->index : 模块目录
+application->common.php : 应用公共函数文件,可以自定义函数
+application->config.php : 配置文件
 
-*****************************************************************************
-
-*****************************************************************************
-
-*****************************************************************************
+extend : 扩展类库目录
+public->static : 静态资源(css , js之类的)
+public->index.php入口文件
+vendor : 第三方类库目录
+thinkphp: 框架核心目录
 
 *****************************************************************************
 

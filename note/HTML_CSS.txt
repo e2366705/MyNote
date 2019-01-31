@@ -11,8 +11,7 @@ https://www.cnblogs.com/jasmine-95/p/7235186.html
 	list-style-type: none;
 }
 
-li 标签是行内元素,可以用text-align: center;来居中;
-而margin:0 auto;没有效果
+
 
 CSS去掉小圆点 : list-style-type:none;
 CSS去掉下划线 : text-decoration:none;
@@ -24,7 +23,10 @@ margin : 外边距
 
 上下居中 : line-height: 40px;
 左右居中 : text-align: center;
-居中 : margin: 0 auto;
+居中 : margin: 0 auto;  (margin: 0 auto 只能用于块级元素)
+
+li 标签是行内元素,可以用text-align: center;来居中;
+而margin:0 auto;没有效果  (margin: 0 auto 只能用于块级元素)
 
 margin : 上 右 下 左
 margin : 上下 左右
@@ -71,8 +73,9 @@ P标签和span标签的区别:
 P 换行
 span 不换行
 
-/*清除文本框获取焦点时,默认的边框阴影*/
+/* input 输入框 清除文本框获取焦点时,默认的边框阴影*/
 outline: none;
+border: none;  //清除样式,方便自己定义
 
 移动端 必须加上
 meta:vp    Tap键
@@ -150,7 +153,7 @@ opacity: 1;/*      opacity:不透明度   0:透明   1:不透明*/
 蓝色 #1E90FF  提交
 橙红色 #FC9D99 温馨
 
-一般 按钮的 基本样式设置 (div型 点击按钮)
+一般 按钮的 基本样式设置 (div型 点击按钮)  常用 样式 三连
 background-color: #D24D57;
 color: #FFF;
 width: 200px;
@@ -165,8 +168,14 @@ cursor: pointer;  /* 鼠标放上去有个小手 */
 	<button type="submit">TEST</button>
 </form>
 ***************************************************************************
+msrgin: 0 100px;   轻轻松松搞定搜索输入框居中自适应问题
 
 ***************************************************************************
+坑:
+CSS设置行内元素的水平居中: div{text-align:center}             /*DIV内的行内元素均会水平居中*/ 
+CSS设置行内元素的垂直居中: div{height:30px; line-height:30px} /*DIV内的行内元素均会垂直居中*/ 
+注意:不是在子元素设置text-align:center,是在父元素里设置!!!
+
 
 ***************************************************************************
 

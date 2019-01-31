@@ -22,8 +22,6 @@ git status
 $ git config --global user.name "username"
 $ git config --global user.email "email"
 
-//清空Git缓存:
-git rm -r --cached .
 
 
 //Git 提交流程 Start ---------------------------------------------
@@ -46,18 +44,44 @@ git commit -m 'first_commit_AAAAAA'
 git push -u origin master
 
 
-Github官方教程:
+------------------------------  Github官方教程 Start :  -----------------------------
 git init
 git add *
-git commit -m "first commit"
+git commit -m "git commit -m...YOU know that..."
 git remote add origin https://github.com/xxx/xxx.git
+
+{*****  注意!!  如果是新建仓库,要加上这一句(反之则不用加上):   *****
+git pull origin master
+}
+
 git push -u origin master
-//Git 提交流程 End ---------------------------------------------
+
+PS 如果是新建仓库,还是不能push成功,那就 : 
+git branch nnnname__			新建一个名字是nnnname__的新分支
+git push -u origin nnnname__	提交到 nnnname__ 这个仓库
+
+------------------------------  Github官方教程 End :  -----------------------------
+
+在github上只能删除仓库,却无法删除文件夹或文件, 所以只能通过命令来解决:
+首先进入你的master文件夹下, Git Bash Here ,打开命令窗口
+git pull origin master			  # 将远程仓库里面的项目拉下来
+dir                               # 查看有哪些文件夹
+git rm -r --cached target         # 删除target文件夹
+git commit -m '删除了target'      # 提交,添加操作说明
 
 
+使用如下git命令查看所有远程分支：
+git branch -r
 
+//清空 Git 缓存:
+git rm -r --cached .
 
+clone 克隆/下载/拉取 操作:
+1:git clone 不指定分支:
+git clone https://github.com/e2366705/ShiYanLou.git
 
+2.git clone 指定分支 [nnnname__ 是仓库的指定分区(比如master之类的) ]:
+git clone -b nnnname__ https://github.com/e2366705/ShiYanLou.git
 
 
 

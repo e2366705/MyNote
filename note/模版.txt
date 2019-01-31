@@ -17,7 +17,9 @@
 
 <body>
 
-<form><input type="email" placeholder="你的电子邮箱" /><button type="submit">TEST</button></form>
+<h1>这就是我的模版WEB.....</h1>
+
+
 </body>
 <script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="../js/bootstrap.min.js"></script>

@@ -1,32 +1,6 @@
-﻿MySQL 坑: 
----------- 1 ------------
-values ("11111" , "22222"); 后面的不能用`111`(反引号) , 必须用双引号""
-use `example`;
-INSERT into example (`username`,`password`) values ("11111" , "22222");
+﻿
 
----------- 2 ------------
-最后的 end 一定要加上 ; (分号,这样表示结束)
-create PROCEDURE insert_5()
-BEGIN
-	DECLARE i int;
-	set i = 1;
-	WHILE i < 5 DO
-		insert into `example`(username,password) values(concat("UU",i),concat("PWD",i));
-		set i = i+1;
-END WHILE;
-END;
-
-call insert_5();
-
----------- 3 ------------
-创建表之前,必须加上 use aaa; 来指定在哪个数据库创建表
-
-------------------------------------  坑  -------------------------------------
-
-
-
-
-
+DROP TABLE IF EXISTS `jd_demo_login`;
 
 
 
@@ -52,6 +26,9 @@ CREATE TABLE IF NOT EXISTS `user`(
 `password` VARCHAR(40)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+
+无符号		unsigned
+有符号		signed
 
 ---插入insert数据:
 insert into table1(username,password) values('HUAWEI','mate20');

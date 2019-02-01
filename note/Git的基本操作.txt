@@ -23,11 +23,6 @@ $ git config --global user.name "username"
 $ git config --global user.email "email"
 
 
-
-//Git 提交流程 Start ---------------------------------------------
-//初始化...
-git init
-
 // 连接到你新建的仓库
 git remote add origin https://github.com/e2366705/Git_Test.git
 
@@ -37,20 +32,20 @@ git add *
 用下面这句代码来解决:
 git config --global core.autocrlf false
 
-//  添加注释:
-git commit -m 'first_commit_AAAAAA'
 
 // 开始推送:
 git push -u origin master
 
 
 ------------------------------  Github官方教程 Start :  -----------------------------
+清空 删除 缓存:
+git rm -r --cached .
 git init
 git add *
 git commit -m "git commit -m...YOU know that..."
-git remote add origin https://github.com/xxx/xxx.git
+git remote add origin https://github.com/xxx/xxx.git        [更新仓库内容可以不加这句话]
 
-{*****  注意!!  如果是新建仓库,要加上这一句(反之则不用加上):   *****
+{*****  注意!!  如果是新建仓库,要加上这一句  (反之则不用加上):   *****
 git pull origin master
 }
 
@@ -58,7 +53,7 @@ git push -u origin master
 
 PS 如果是新建仓库,还是不能push成功,那就 : 
 git branch nnnname__			新建一个名字是nnnname__的新分支
-git push -u origin nnnname__	提交到 nnnname__ 这个仓库
+git push -u origin nnnname__	提交到 nnnname__ 这个分支
 
 ------------------------------  Github官方教程 End :  -----------------------------
 
@@ -70,11 +65,20 @@ git rm -r --cached target         # 删除target文件夹
 git commit -m '删除了target'      # 提交,添加操作说明
 
 
-使用如下git命令查看所有远程分支：
-git branch -r
+1.查看本地分支 git branch
+2.查看远程分支 git branch -r
 
-//清空 Git 缓存:
+删除本地分支(这里的 BranchName 是指的是你的分支名称)
+git branch -d BranchName
+   + 
+删除远程分支(这里的 BranchName 是指的是你的分支名称)
+git push origin --delete BranchName
+
+//清空 Git 缓存: [删除]
 git rm -r --cached .
+
+删除 本地git目录:
+rm .git -rf
 
 clone 克隆/下载/拉取 操作:
 1:git clone 不指定分支:
@@ -86,10 +90,33 @@ git clone -b nnnname__ https://github.com/e2366705/ShiYanLou.git
 
 
 
-PHP@PHP-PC MINGW64 /d/gittest (master)
-$ ?git push -u origin master
-bash: $'\302\203git': command not found
+如何在git中删除指定的文件和目录
+部分场景中，我们会希望删除远程仓库（比如GitHub）的目录或文件。
 
-PHP@PHP-PC MINGW64 /d/gittest (master)
-$ ??git push -u origin master
-fatal: unable to access 'https:
+拉取远程的Repo到本地（如果已经在本地，可以略过）
+git clone https://github.com/e2366705/ShiYanLou.git
+
+在本地仓库删除文件
+git rm 我的文件
+
+在本地仓库删除文件夹
+git rm -r 我的文件夹/
+此处-r表示递归所有子目录，如果你要删除的，是空的文件夹，此处可以不用带上-r 提交代码
+
+git commit -m"我的修改"
+
+推送到远程仓库（比如GitHub）
+git push origin 分支名称
+
+
+这篇文章非常好
+https://blog.csdn.net/maguanghui_2012/article/details/79457281
+
+
+
+强制push:
+git push -u origin master -f
+
+
+             
+![Image text](https://raw.githubusercontent.com/e2366705/aaa/master/image/readme.png)

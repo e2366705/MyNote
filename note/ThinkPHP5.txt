@@ -1,0 +1,56 @@
+Thinkphp5:
+
+thinkphp(验证码);
+<img src="{:captcha_src()}"  onclick="this.src='{:captcha_src()}?'+Math.random();"/>
+
+thinkPHP:
+目录结构:
+application->index : 模块目录
+application->common.php : 应用公共函数文件,可以自定义函数
+application->config.php : 配置文件
+
+extend : 扩展类库目录
+public->static : 静态资源(css , js之类的)
+public->index.php入口文件
+vendor : 第三方类库目录
+thinkphp: 框架核心目录
+
+namespace app\index\model;     /*  写上文件夹就可以了......*/
+别的php文件引用的时候: use app\index\model\MySQLdb; (加上类名即可)
+
+
+      第一步               第二步           第三步              第四步        第五步
+application(文件夹) -> index(文件夹) -> controller(文件夹) -> Index.php -> index(方法 : public function index())
+app\index\controller\Index->index000
+      <a href="{:url('index/index000')}"  rel='dropmenu209'>首页</a>      
+                      文件夹(控制器)/方法
+
+<a href="{:url('index              /Clickit    /index')}">click it ......</a>
+                index(控制器or文件夹)/Clickit.php/index方法
+
+
+thinkphp5 怎么访问页面:
+http://localhost/PHPstorm/blog/tp5/public/index/Clickit/index.html
+http://localhost/PHPstorm/blog/tp5/public/index/clickit/index.html                
+                               隐藏含义是: view/clickit/index.html       
+
+                               我估计...thinkphp的访问路径是这么走的..... 
+
+http://localhost/PHPstorm/THINKPHP5/public/index/login/index.html                               
+
+
+class Clickit extends Base{
+    public function index(){
+        return $this->fetch();
+    }
+}
+application/index\view\clickit\index.html   
+
+
+thinkphp 条件判断:
+{if condition="($name == 1) OR ($name > 100) "} value1  符合条件 => value1
+{elseif condition="$name eq 2"/}value2                  或者符合条件 => value2
+{else /} value3                                         再者 => value3
+{/if}                                                   结束 if 判断
+
+

@@ -84,6 +84,9 @@ drop TABLE student;
 #删除倒数第几行数据                                            
 delete from text001 order by id desc limit 66
 
+删除 表的字段:
+alter table 表名 drop column 字段名
+
 
 -------------------------------删除操作-----------------------------------
 
@@ -154,7 +157,11 @@ PASSWORD VARCHAR(66)
 
 ALTER TABLE user3 add PRIMARY KEY(id);         添加 MySQL 主键 约束:(注意:执行这句代码时候,会报错,原因是原来的字段都是null值,所以设置不成功,添加不一样的数据,再执行这句代码即可)
 ALTER TABLE user3 DROP PRIMARY KEY;            删除 MySQL 主键 约束
-ALTER TABLE user3 MODIFY id int PRIMARY KEY;   修改字段属性
+alter table 表名 modify column 字段名 类型;		修改 字段 类型
+!!!		注意: 如果修改字段数据失败,可能是MySQL为了数据安全,加了保险
+(比如text类型的字段转化为int类型->大数据类型转小数据类型,
+这样子就可能会丢失数据!!)
+
 
 修改字段名称和属性：
 -- 将test字段改为test1
@@ -162,13 +169,16 @@ ALTER TABLE user3 MODIFY id int PRIMARY KEY;   修改字段属性
    ALTER TABLE user10 CHANGE test      test1    CHAR(32)   NOT NULL DEFAULT '123';
 
 --  给age添加默认值
-	ALTER TABLE user11 ALTER age SET DEFAUTL 18;
+	ALTER TABLE `数据表` ALTER COLUMN `字段` SET DEFAULT '默认值';
 
---  添加一个字段
+--  添加 增加 一个字段
 	ALTER TABLE user11 ADD email VARCHAR(50);
 
---  给email添加默认值
-	ALTER TABLE user11 ALTER email SET DEFAULT 'a@a.com';
+
+
+INSERT INTO 数据表(`字段`) VALUES('你要插入的值');
+注意:字段一定要用反引号 `` 包括起来 !!!
+
 
 
 唯一约束:
@@ -231,4 +241,9 @@ MySQL查询最高分----> 语句太长,懒得写了,用时再百度吧...
 group by : 排除重复的,筛选出不同的
 SELECT PASSWORD FROM user3 GROUP BY `PASSWORD`;		 	
 -----------------------------------   MySQL 约束 End -------------------------------------
+
+
+
+MYSQL5.x是不允许BLOB/TEXT类型的字段拥有默认值的
+
 

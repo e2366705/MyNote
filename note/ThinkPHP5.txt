@@ -54,3 +54,18 @@ thinkphp 条件判断:
 {/if}                                                   结束 if 判断
 
 
+
+thinkphp 携带 参数 传值:
+href="{:url('Searchbotton/test' , array('key' => '23333333333'))}"
+
+thinkphp input 传值 加个这个:
+<input name="keywords">
+延后外面套个: <form method="post" action="{:url('Xxx/xxx')}" >
+然后在后台 $keywords = input('keywords');  => php
+这样子就可以获取 input 的值了
+
+
+$goods_data = db::name('数据表')->where('字段','=','3' )->find();    /*  返回 单维数组   不可以用volist来遍历  */
+$goods_data = Db::table('数据表')->where('字段','3')->select();      /*  返回 二维数组   可以用volist来遍历  */
+
+

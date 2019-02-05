@@ -41,15 +41,22 @@ git push -u origin master
 清空 删除 缓存:
 git rm -r --cached .
 git init
-git add *
-git commit -m "git commit -m...YOU know that..."
-git remote add origin https://github.com/xxx/xxx.git        [更新仓库内容可以不加这句话]
+git add *           (   git add -f *  有些文件会被遗漏掉,加上-f全选  )
+git commit -m "git commit -m..Emmmm...YOU know that..."
+git remote add origin https://github.com/xxx/xxx.git    (!! 必填项 !!)      [   这里填写你要投放的github仓库地址  (更新仓库内容可以不加这句话)   ]
 
 {*****  注意!!  如果是新建仓库,要加上这一句  (反之则不用加上):   *****
-git pull origin master
-}
+git pull origin master     [  这句代码好像没什么用???  ]   }
 
 git push -u origin master
+
+更新仓库文件 怎么操作???
+git rm -r --cached .
+git add -f *
+git commit -m "git commit -m..Emmmm...YOU know that..."
+git push -u origin master
+更新仓库文件4连发,一步都少不了!!!
+
 
 PS 如果是新建仓库,还是不能push成功,那就 : 
 git branch nnnname__			新建一个名字是nnnname__的新分支
@@ -79,6 +86,7 @@ git rm -r --cached .
 
 删除 本地git目录:
 rm .git -rf
+
 
 clone 克隆/下载/拉取 操作:
 1:git clone 不指定分支:
@@ -118,5 +126,7 @@ https://blog.csdn.net/maguanghui_2012/article/details/79457281
 git push -u origin master -f
 
 
-             
+
+Github README 添加 图片
 ![Image text](https://raw.githubusercontent.com/e2366705/aaa/master/image/readme.png)
+![Image text]()

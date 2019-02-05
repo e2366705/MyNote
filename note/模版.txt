@@ -26,6 +26,7 @@
 <link rel="stylesheet" href="../css/bootstrap.min.css">
 
 <script type="text/javascript">                                </script>
+<link rel="stylesheet" href="http://localhost/PHPstorm/JD_Demo/public/static/css/base.css" />
 </html>
 
 

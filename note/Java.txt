@@ -5,7 +5,6 @@ commons-logging-1.2.jar  这个包是必备的!!!!
 控制反转就是对对象控制权的转移,以前由我们创建对象,现在有了spring,就让spring帮我们创建对象
 
 
-
 pring 默认是无参构造方法创建对象
 
 pring 对象的生命周期 (init初始化方法 , 销毁方法): https://www.bilibili.com/video/av40807069/?p=20  (可有可无)

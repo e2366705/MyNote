@@ -5,20 +5,21 @@ DROP TABLE IF EXISTS `jd_demo_login`;
 
 
 ------------------------如何用命令行新建一个完整的数据库并且包含数据
-create database 数据库名; 
-	
-use `aaa`;	
-
-
-// 创建表
+-- 创建表
 CREATE TABLE IF NOT EXISTS `table1`(      --->(注释:)
    `tableID` INT UNSIGNED AUTO_INCREMENT, --->(int类型,无符号,自增)
    `username` VARCHAR(100) NOT NULL,      --->(varchar不解释 带not null,不能为空值)
    `password` VARCHAR(40) ,               --->(没有设置not null说明可以为空)
-   PRIMARY KEY ( `tableID` )            --->(PRIMARY KEY关键字用于定义列为主键)
+   PRIMARY KEY ( `tableID` )			  --->(PRIMARY KEY关键字用于定义列为主键)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;      --->(ENGINE 设置存储引擎，CHARSET 设置编码)
 
 ---------------------- 例如  -------------------------------
+-- 完整的流程:
+-- MySQL 创建 数据库:
+CREATE DATABASE IF NOT EXISTS `MySQL_Test` DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
+	
+use `MySQL_Test`;
+
 CREATE TABLE IF NOT EXISTS `user`( 
 `id` int(20) unsigned not null DEFAULT 0,
 `money` DECIMAL(20,2) NOT NULL DEFAULT '0.00',
@@ -241,9 +242,13 @@ MySQL查询最高分----> 语句太长,懒得写了,用时再百度吧...
 group by : 排除重复的,筛选出不同的
 SELECT PASSWORD FROM user3 GROUP BY `PASSWORD`;		 	
 -----------------------------------   MySQL 约束 End -------------------------------------
-
-
-
 MYSQL5.x是不允许BLOB/TEXT类型的字段拥有默认值的
 
 
+       -- public是数据库
+       -- admin是数据表
+create table public.admin(
+  id varchar(60) not null unique,    -- 用户id
+  username varchar(40) not null unique, -- 用户名
+  state boolean      -- 表示用户的状态，在未进行邮箱验证之前状态为false
+);

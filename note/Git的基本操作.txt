@@ -15,7 +15,7 @@ git config user.name
 // 查看用户的邮箱
 $git config user.email
 
-//    查看 详细情况:
+//    查看 哪些文件改变了:
 git status
 
 修改用户名和邮箱地址：

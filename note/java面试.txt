@@ -1,0 +1,23 @@
+
+java 面试:
+HashMap是非线程安全的，HashTable是线程安全的
+
+执行效率: HashMap > HashTable (因为 HashMap 非线程安全)
+
+
+private：修饰的成员只能在同类中被访问,而同包,子类和其他包中都不能被访问
+public：在同类、同包、子类（继承自本类）、其他包都可以访问
+protected：在同类、同包、子类中可以访问，其他包中不能被访问
+
+queals()：用于确认两个对象是否相等；补充，哈希值相同的对象不一定equals()，但equals()的两个对象，hash值一定相等
+
+java中是没有指针的，只存在值传递
+
+
+java中的sleep和wait:
+sleep : 线程睡眠,让出系统cpu资源,不影响其他线程的执行
+wait :  线程等待,但是继续占用系统资源,直到线程等待结束
+
+
+因为spring boot版本问题导致的！！现在用的比较新的版本在2.0以上！
+server.servlet.context-path=/helloboot  应该这么写

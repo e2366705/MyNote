@@ -17,16 +17,14 @@ CREATE TABLE IF NOT EXISTS `table1`(      --->(注释:)
 -- 完整的流程:
 -- MySQL 创建 数据库:
 CREATE DATABASE IF NOT EXISTS `MySQL_Test` DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
-	
 use `MySQL_Test`;
-
 CREATE TABLE IF NOT EXISTS `user`( 
 `id` int(20) unsigned not null DEFAULT 0,
 `money` DECIMAL(20,2) NOT NULL DEFAULT '0.00',
 `username` VARCHAR(100) not null DEFAULT '', =>默认为''(不要为NULL,会影响性能)
 `password` VARCHAR(40)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
+********************************************************************************
 
 无符号		unsigned
 有符号		signed
@@ -77,7 +75,7 @@ truncate table 表名;
 delete from 表名
 
 删除数据库:
-drop database <数据库名>;
+drop database `数据库名`;
 
 删除数据表;
 drop TABLE student;

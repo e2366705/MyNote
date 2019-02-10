@@ -15,8 +15,7 @@ git config user.name
 // 查看用户的邮箱
 $git config user.email
 
-//    查看 哪些文件改变了:
-git status
+
 
 修改用户名和邮箱地址：
 $ git config --global user.name "username"
@@ -55,7 +54,9 @@ git rm -r --cached .
 git add -f *
 git commit -m "git commit -m..Emmmm...YOU know that..."
 git push -u origin master
-更新仓库文件4连发,一步都少不了!!!
+以上内容:更新仓库文件4连发,一步都少不了!!!
+查看 哪些文件改变了:
+git status
 
 
 PS 如果是新建仓库,还是不能push成功,那就 : 

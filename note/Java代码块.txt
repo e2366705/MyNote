@@ -148,15 +148,27 @@ public class JavaSEEE {
 
 
 
-Java MySQL 数据库 链接 连接:
+Java MySQL 数据库 链接 连接:  请用main方法运行
 package TestJava;
+
 import java.sql.*;
 public class MySQLTest {
 
 	// JDBC 驱动名及数据库 URL
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
     static final String DB_URL = "jdbc:mysql://localhost:3306/public";
- 
+    
+/*
+    MySQL连接数据库报时区错误：java.sql.SQLException: The server time zone value
+    jdbc:mysql://localhost:3306/dbname 后面加上:  ?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    jdbc.url=jdbc:mysql://localhost:3306/o2o    ?useUnicode=true&characterEncoding=utf8&useSSL=false
+    jdbc:mysql://localhost:3306/dbname         ?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+
+    报警信息 : Loading class `com.mysql.jdbc.Driver'. This is deprecated. The new driver class is `com.mysql.cj.jdbc.Driver'.
+    意思是 : 这是弃用。新的驱动程序类是  com.mysql.jdbc.Driver已经落后淘汰了,新的是...
+*/
+
+
     // 数据库的用户名与密码，需要根据自己的设置
     static final String USER = "root";
     static final String PASS = "root";
@@ -179,17 +191,24 @@ public class MySQLTest {
             String sql;
             sql = "SELECT * FROM public.admin";    //  数据库.数据表
             ResultSet rs = stmt.executeQuery(sql);
+
+            System.out.println(rs);
+            System.out.println("出现类似于:com.mysql.jdbc.JDBC42ResultSet@7f416310 的字符串 就表示,数据库连接成功!!! ");
+            
         
-            // 展开结果集数据库
-            while(rs.next()){
-                // 通过字段检索
-                String id  = rs.getString("id");
-    
-                // 输出数据
-                System.out.println("==========   MySQL Connection Success   ==========");
-                System.out.print("ID: " + id);
-                System.out.print("\n");
-            }
+//                // 展开结果集数据库
+//                while(rs.next()){
+//                    // 通过字段检索
+//                    String id  = rs.getString("id");
+//
+//                    // 输出数据
+//                    System.out.println("==========   MySQL Connection Success   ==========");
+//                    System.out.print("ID: " + id);
+//                    System.out.print("\n");
+//                }
+
+
+
             // 完成后关闭
             rs.close();
             stmt.close();
@@ -292,7 +311,8 @@ Integer b2 = new Integer(1);
 System.out.println(b1 == b2);		//  返回 false 比较的是内存地址
 System.out.println(b1.equals(b2));	//  返回 true  比较的是数值的大小
 总结:
-"=="除了比较基本数据之外都是比较的内存地址
+"=="除了比较基本数据之外都是比较的内存地址  
+"=="比较的是引用,不是内容
 "equals"除了没有没有重写equals方法的类之外都是比较的内容
 
 
@@ -425,6 +445,19 @@ public class RegTest
 ***********************************************************************************
 ***********************************************************************************
 ***********************************************************************************
+
+
+ <dependencies>
+
+        <!-- https://mvnrepository.com/artifact/junit/junit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
 
 
 ***********************************************************************************

@@ -167,15 +167,13 @@ addEventListener 支持多次绑定,全部触发点击事件
  document.getElementsByClassName('btnn2')[0].onclick = ccc();//不点击直接调用(类似于初始化)
  		
  ----------------------------------------------------------------------------------
- 
+
  JavaScript:网页加载完,再去运行js代码:
- (注意:这段代码有可能需要重新另外写在js文件中才生效)
- <script type=”text/javascript”>
- window.onload=function (){
-     var userName=”xiaoming”;
-     alert(userName);
- }
- </script>
+ <script type="text/javascript">
+    window.onload = function(){
+            alert(2233333);
+    }
+</script>
  ----------------------------------------------------------------------------------
  一个html页面包含另外一个html页面:
  window.onload = function() {

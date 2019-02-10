@@ -1,0 +1,10 @@
+
+
+需要问老师的:
+
+    区别?
+    public Integer id;
+    public int id;
+
+
+    java bean 到底什么概念????

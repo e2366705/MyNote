@@ -229,8 +229,17 @@ PS:
 <a href="链接的页面" target="_blank">新窗口打开</a><br />
 <a href="链接的页面" target="_parent">原窗口打开</a>
 ********************************************************************************
- 
+ JavaScript 获取 点击的节点 的属性
+ <div id="kkk" onclick="clickthis(this)" >idddddddddddd</div>
+    function clickthis(data){
+            console.log(data.id);
+    }
+
 ********************************************************************************
+
+JavaScript 给 CSS设置样式表:
+document.getElementById("kkk").style.cssText = " background-color:pink; width: 100px; height: 100px; ";
+
  
 ********************************************************************************
  

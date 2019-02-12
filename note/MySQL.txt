@@ -250,3 +250,7 @@ create table public.admin(
   username varchar(40) not null unique, -- 用户名
   state boolean      -- 表示用户的状态，在未进行邮箱验证之前状态为false
 );
+
+
+
+ 在 MySQL 中只有使用了 Innodb 数据库引擎的数据库或表才支持事务

@@ -464,6 +464,33 @@ public class RegTest
 ***********************************************************************************
 ***********************************************************************************
 
+Java运行Dos命令
+package com.Java;
+
+import java.io.IOException;
+public class teacherDemo {
+	public static void main(String[] args) throws IOException {
+  
+    // Java运行Dos命令
+		Runtime R = Runtime.getRuntime();
+		R.exec("C:\\Program Files (x86)\\Tencent\\WeChat\\WeChat.exe");
+		
+		System.out.println("--------------------------------------------");
+		
+		//关闭 自动关机
+		R.exec("shutdown -a");
+		
+		Thread.sleep(1000);
+		
+		//66666 毫秒之后电脑自动关机
+		R.exec("shutdown -s -t 66666");
+		
+		Thread.sleep(2000);
+		
+		//关闭自动关机
+		R.exec("shutdown -a");
+	}
+}
 
 ***********************************************************************************
 ***********************************************************************************

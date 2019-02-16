@@ -26,10 +26,20 @@ ArrayList源码,就是用的泛型
 	泛型是什么类型,只能存储什么类型的数据		 
 *****************************************************************************
 Set : 无序不可重复 (无索引)  ==> 继承于 Collection
+	hashset:无序存放
+	TreeSet:有序存放
 List: 有序可重复            ==> 继承于 Collection
+	ArrayList => 数组实现
+	Linked list => 链表实现
+map: 存放一堆值,键值对	
+	HashMap: 新的类,异步处理,非线程安全,允许有null
+	HashTable:旧的类,同步处理,不允许有null
+	TreeMap:有序排列,按key排序,
 
-ArrayList => 数组实现
-Linked list => 链表实现
+
+
+
+
 
 java.util.ArrayList
 数组结构(array):

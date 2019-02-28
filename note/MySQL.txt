@@ -98,8 +98,6 @@ insert into user(username,password) VALUES('aaa','999');
 insert into user(username,password) VALUES('bbb','555');
 insert into user(username,password) VALUES('ccc','333');      
 
-                                                           
-
 
 
 mysql 去掉重复的:
@@ -125,14 +123,6 @@ select * from same where username id is null ;
 NOT BETWEEN 100 AND 200 不在100到200之间
 
 IFNULL(CONNECTION,0) 如果是NULL值,改为0
-
-mysql 去掉空格 去掉制定字符串
-mysql 指定字符填充字符长度
-替换字符串
-
-mysql的函数:
-四舍五入:
-向上取整 
 
 求和:
 SELECT SUM(`username`) FROM same;

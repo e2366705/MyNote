@@ -8,3 +8,10 @@
 
 
     java bean 到底什么概念????
+
+    int类型是继承Object类吗?        
+    （1）在Java中是使用泛型来约束HashMap中的key和value的类型的，
+    即HashMap<K, V>；而泛型在Java的规定中必须是对象Object类型的，
+    也就是说HashMap<K, V>可以理解为HashMap<Object,Object>，很显然基本数据类型不是Object类型的，
+    因此不能作为键值，只能是引用类型。虽然我们在HashMap中可以这样添加数据：“map.put(1, “Java”)；”，
+    但实际上是将其中的key值1进行了自动装箱操作，变为了Integer类型。

@@ -496,10 +496,90 @@ public class teacherDemo {
 ***********************************************************************************
 ***********************************************************************************
 
+java 正则表达式:
+
+例子1:
+    Pattern p = Pattern.compile("Java \\d");
+        String candidate = "Java 233";
+        Matcher m = p.matcher(candidate);
+
+        System.out.println(m);
+        if (m != null){
+            System.out.println(m.find());
+        }
+
+例子2:
+      String filePath = "C:\\Users\\PHP\\IdeaProjects\\AritifaID\\src\\test\\java\\aaa.txt";
+        String regex = "(\\+\\+\\+\\+\\+)\n.*\n(\\+\\+\\+\\+\\+)\n";
+        String string = "+++++\nQQ\n+++++\n";
+        System.out.println(regex);
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(string);
+        if (matcher.find() == true) {
+            System.out.println(matcher.group(0));
+        }else {
+            System.out.println("noooooot Find !!!!! -_-!!!");
+        }
+
 
 ***********************************************************************************
 ***********************************************************************************
 ***********************************************************************************
+
+import java.math.BigDecimal;
+public class AAA {
+    public static void main(String args[]) throws Exception {
+
+
+        // 如下所示: 浮点数运算会损失精度
+        float f0 = 1.00f;
+        float f1 = 0.99f;
+        System.out.println(f0 - f1);
+
+
+        String doubleValA = "1";
+        String doubleValB = "0.999";
+
+        System.out.println("add= " + add(doubleValA, doubleValB));                 // 加法
+        System.out.println("sub= " + Subtracting(doubleValA, doubleValB));         // 减法
+        System.out.println("mul= " + Multiplied(doubleValA, doubleValB));          // 乘法
+        System.out.println("div= " + Divided(doubleValA, doubleValB, 8));     // 除法
+    }
+
+    // add 加法
+    public static double add(String doubleValA, String doubleValB) {
+        System.out.println("你执行了 add 加法运算...");
+        BigDecimal a2 = new BigDecimal(doubleValA);
+        BigDecimal b2 = new BigDecimal(doubleValB);
+        return a2.add(b2).doubleValue();
+    }
+
+    // Subtracting 减法
+    public static double Subtracting(String doubleValA, String doubleValB) {
+        System.out.println("你执行了 Subtracting 减法运算...");
+        BigDecimal a2 = new BigDecimal(doubleValA);
+        BigDecimal b2 = new BigDecimal(doubleValB);
+        return a2.subtract(b2).doubleValue();
+    }
+
+    // Multiplied 乘以
+    public static double Multiplied(String doubleValA, String doubleValB) {
+        System.out.println("你执行了 Multiplied 乘法运算...");
+        BigDecimal a2 = new BigDecimal(doubleValA);
+        BigDecimal b2 = new BigDecimal(doubleValB);
+        return a2.multiply(b2).doubleValue();
+    }
+
+    // Divided 除以
+    public static double Divided(String doubleValA, String doubleValB, int scale) {
+        System.out.println("你执行了 Divided 除法运算...");
+        BigDecimal a2 = new BigDecimal(doubleValA);
+        BigDecimal b2 = new BigDecimal(doubleValB);
+        return a2.divide(b2, scale, BigDecimal.ROUND_HALF_UP).doubleValue();
+    }
+
+}
+
 
 
 ***********************************************************************************

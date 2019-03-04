@@ -51,3 +51,15 @@ git commit -m $Update_Date_String;
 # 最后一步:推送      (Git命令)
 echo '----------------------- push -u origin master -----------------------'
 git push -u origin master
+
+
+
+# 注意:
+# shell 编程中, 字符串类型,不允许出现空格, 比如字符串 A B C 是错误的,要改写成: A_B_C 才不会编译错误
+# 
+# 
+# 
+# 
+# 
+# 
+# 

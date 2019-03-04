@@ -1,3 +1,6 @@
+echo '(=^_^=)  Auto Updata Code...  (=^_^=) '
+echo 'input => ./update.sh toStart Updata Code...'
+
 echo '------- step 1 ---------'
 git rm -f --cached .
 echo '------- step 2 ---------'

@@ -16,10 +16,7 @@
 </head>
 
 <body>
-
-<h1>这就是我的模版WEB.....</h1>
-
-
+<h1>妯＄増 Web....</h1>
 </body>
 <script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="../js/bootstrap.min.js"></script>
@@ -27,7 +24,28 @@
 
 <script type="text/javascript">                                </script>
 <link rel="stylesheet" href="http://localhost/PHPstorm/JD_Demo/public/static/css/base.css" />
+
+<!--
+甯哥敤鐨勫浘鐗囧紩鐢ㄧ綉鍧�:
+http://attach.zhiyoo.com/forum/201902/27/1225427jegpzezfxjjf1f1.jpg
+http://attach.zhiyoo.com/forum/201902/27/122615iwfif939wain6tiw.jpg
+http://attach.zhiyoo.com/forum/201902/27/122551t33z0mmo7g090o27.jpg
+http://attach.zhiyoo.com/forum/201902/27/122611cojivyrfivovumun.jpg
+http://attach.zhiyoo.com/forum/201902/27/122631v3tp3yadv6vp3jjr.jpg
+http://attach.zhiyoo.com/forum/201902/28/1151445bdkuvxrdctevcsm.jpg
+http://attach.zhiyoo.com/forum/201902/28/115144thw1tklkqrlzqtcl.jpg
+http://attach.zhiyoo.com/forum/201902/28/115143amamlcxx403nbeex.jpg
+http://attach.zhiyoo.com/forum/201902/28/115219qakztjlrxrqjj8s1.jpg
+http://attach.zhiyoo.com/forum/201903/03/15450558m81fgsg86zs51f.png
+http://attach.zhiyoo.com/forum/201903/03/154513rrd8d9dir52l1r25.png
+http://attach.zhiyoo.com/forum/201903/03/154520tqk3xxqkkysttqsk.png
+-->
 </html>
+
+
+
+
+
 
 
 
@@ -66,6 +84,6 @@
     </style>
 </head>
 <body>
-<h1>这是我的自定义网站</h1>
+<h1>锟斤拷锟斤拷锟揭碉拷锟皆讹拷锟斤拷锟斤拷站</h1>
 </body>
 </html>

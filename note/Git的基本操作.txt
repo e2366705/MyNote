@@ -16,54 +16,45 @@ git config user.name
 $git config user.email
 
 
-
 修改用户名和邮箱地址：
 $ git config --global user.name "username"
 $ git config --global user.email "email"
 
+教程1 (共计2):
+新建Github,推送流程 ( 更新仓库教程在下面 ):
+-------------------------------------------------------------------------------------------
+文件夹右键, 点击 git bash 
+清空 删除 缓存:                git rm -r --cached .
+初始化git暂存区                git init
+添加所有文件                   git add -f *
+添加备注信息                   git commit -m "xxxxxxxxx"
+连接到你Github新建的仓库        git remote add origin https://github.com/e2366705/xxxxxx.git
+推送                          git push -u origin master
+最后: 推送完成
+PS:
+      这一步可能会出现这个错误提示: warning: LF will be replaced by CRLF in xxx 
+      用下面这句代码来解决:
+      git config --global core.autocrlf false
 
-// 连接到你新建的仓库
-git remote add origin https://github.com/e2366705/Git_Test.git
 
-// 添加所有
-git add * 
-这一步可能会出现这个错误提示: warning: LF will be replaced by CRLF in xxx 
-用下面这句代码来解决:
-git config --global core.autocrlf false
-
-
-// 开始推送:
-git push -u origin master
-
-
-------------------------------  Github官方教程 Start :  -----------------------------
-清空 删除 缓存:
-git rm -r --cached .
-git init
-git add *           (   git add -f *  有些文件会被遗漏掉,加上-f全选  )
-git commit -m "git commit -m..Emmmm...YOU know that..."
-git remote add origin https://github.com/xxx/xxx.git    (!! 必填项 !!)      [   这里填写你要投放的github仓库地址  (更新仓库内容可以不加这句话)   ]
-
-{*****  注意!!  如果是新建仓库,要加上这一句  (反之则不用加上):   *****
-git pull origin master     [  这句代码好像没什么用???  ]   }
-
-git push -u origin master
-
+教程2 (共计2):
 更新仓库文件 怎么操作???
+-------------------------------------------------------------------------------------------
 git rm -r --cached .
 git add -f *
 git commit -m "git commit -m..Emmmm...YOU know that..."
 git push -u origin master
 以上内容:更新仓库文件4连发,一步都少不了!!!
-查看 哪些文件改变了:
-git status
-
+PS:
+   查看 哪些文件改变了:
+   git status
+-------------------------------------------------------------------------------------------
 
 PS 如果是新建仓库,还是不能push成功,那就 : 
 git branch nnnname__			新建一个名字是nnnname__的新分支
 git push -u origin nnnname__	提交到 nnnname__ 这个分支
 
-------------------------------  Github官方教程 End :  -----------------------------
+
 
 在github上只能删除仓库,却无法删除文件夹或文件, 所以只能通过命令来解决:
 首先进入你的master文件夹下, Git Bash Here ,打开命令窗口
@@ -97,8 +88,6 @@ git clone https://github.com/e2366705/ShiYanLou.git
 git clone -b nnnname__ https://github.com/e2366705/ShiYanLou.git
 
 
-
-
 如何在git中删除指定的文件和目录
 部分场景中，我们会希望删除远程仓库（比如GitHub）的目录或文件。
 
@@ -122,10 +111,8 @@ git push origin 分支名称
 https://blog.csdn.net/maguanghui_2012/article/details/79457281
 
 
-
 强制push:
 git push -u origin master -f
-
 
 
 Github README 添加 图片

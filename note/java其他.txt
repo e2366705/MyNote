@@ -45,3 +45,11 @@ netstat -ano  (假设8080端口被占用, 找到哪个程序用了8080端口,并
 tasklist|findstr "4792"  (根据程序的PID号码,获取这个程序进程的名字)
 ->
 (打开windows的任务管理器, 根据这个程序进程的名字 , 找到并且结束进程)
+
+
+
+中国的谷歌
+https://search.snapdo.com/?category=Web&st=dr&ic=1&q=aop%E6%98%AF%E4%BB%80%E4%B9%88h
+
+
+

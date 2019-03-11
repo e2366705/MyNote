@@ -6,19 +6,20 @@ DROP TABLE IF EXISTS `jd_demo_login`;
 
 ------------------------如何用命令行新建一个完整的数据库并且包含数据
 -- 创建表
-CREATE TABLE IF NOT EXISTS `table1`(      --->(注释:)
-   `tableID` INT UNSIGNED AUTO_INCREMENT, --->(int类型,无符号,自增)
-   `username` VARCHAR(100) NOT NULL,      --->(varchar不解释 带not null,不能为空值)
-   `password` VARCHAR(40) ,               --->(没有设置not null说明可以为空)
-   PRIMARY KEY ( `tableID` )			  --->(PRIMARY KEY关键字用于定义列为主键)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8;      --->(ENGINE 设置存储引擎，CHARSET 设置编码)
+CREATE TABLE IF NOT EXISTS `table1`(      -- (注释:)
+   `tableID` INT UNSIGNED AUTO_INCREMENT, -- (int类型,无符号,自增)
+   `username` VARCHAR(100) NOT NULL,      -- (varchar不解释 带not null,不能为空值)
+   `password` VARCHAR(40) ,               -- (没有设置not null说明可以为空)
+   PRIMARY KEY ( `tableID` )			        -- (PRIMARY KEY关键字用于定义列为主键)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;      -- (ENGINE 设置存储引擎，CHARSET 设置编码)
 
 ---------------------- 例如  -------------------------------
 -- 完整的流程:
 -- MySQL 创建 数据库:
+
 CREATE DATABASE IF NOT EXISTS `MySQL_Test` DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
 use `MySQL_Test`;
-CREATE TABLE IF NOT EXISTS `user`( 
+CREATE TABLE IF NOT EXISTS `user`(
 `id` int(20) unsigned not null DEFAULT 0,
 `money` DECIMAL(20,2) NOT NULL DEFAULT '0.00',
 `username` VARCHAR(100) not null DEFAULT '', =>默认为''(不要为NULL,会影响性能)
@@ -181,6 +182,11 @@ null 和 '' 是不一样的!!
 null 不等于 ''
 
 
+给数据库添加注释   comment    :
+CREATE TABLE IF NOT EXISTS `test`(
+	 `id` INT(25) primary key comment '字段的注释',
+	  `name` VARCHAR(20) not NULL
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 

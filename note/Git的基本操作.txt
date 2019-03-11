@@ -28,7 +28,11 @@ $ git config --global user.email "email"
 初始化git暂存区                git init
 添加所有文件                   git add -f *
 添加备注信息                   git commit -m "xxxxxxxxx"
+<<<<<<< HEAD
 连接到你Github新建的仓库       git remote add origin https://github.com/e2366705/xxxxxx.git
+=======
+连接到你Github新建的仓库        git remote add origin https://github.com/e2366705/xxxxxx.git
+>>>>>>> 05dc7ea54c3ad258630766d4c4528d70767be609
 推送                          git push -u origin master
 最后: 推送完成
 PS:

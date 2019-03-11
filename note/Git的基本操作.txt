@@ -28,17 +28,18 @@ $ git config --global user.email "email"
 初始化git暂存区                git init
 添加所有文件                   git add -f *
 添加备注信息                   git commit -m "xxxxxxxxx"
-<<<<<<< HEAD
-连接到你Github新建的仓库       git remote add origin https://github.com/e2366705/xxxxxx.git
-=======
 连接到你Github新建的仓库        git remote add origin https://github.com/e2366705/xxxxxx.git
->>>>>>> 05dc7ea54c3ad258630766d4c4528d70767be609
 推送                          git push -u origin master
 最后: 推送完成
 PS:
       这一步可能会出现这个错误提示: warning: LF will be replaced by CRLF in xxx 
       用下面这句代码来解决:
       git config --global core.autocrlf false
+
+      这一步可可能会报错: This is usually caused by another repository pushing to the same ref.
+      解决方法:
+               git pull origin master --allow-unrelated-histories  (意思是: 允许不相关的历史)
+
 
 
 教程2 (共计2):

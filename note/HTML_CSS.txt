@@ -1,0 +1,221 @@
+﻿HTML中最常用的语法:
+
+移动端页面开发的两种方式
+https://www.cnblogs.com/jasmine-95/p/7235186.html
+
+去掉所有浏览器的兼容性影响:
+* {
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+	list-style-type: none;
+}
+
+
+
+CSS去掉小圆点 : list-style-type:none;
+CSS去掉下划线 : text-decoration:none;
+CSS圆角 : border-radius:50px ;
+CSS左上圆角:border-top-left-radius: 15px;
+
+padding : 内边距
+margin : 外边距
+
+上下居中 : line-height: 40px;
+左右居中 : text-align: center;
+居中 : margin: 0 auto;  (margin: 0 auto 只能用于块级元素)
+
+li 标签是行内元素,可以用text-align: center;来居中;
+而margin:0 auto;没有效果  (margin: 0 auto 只能用于块级元素)
+
+margin : 上 右 下 左
+margin : 上下 左右
+
+注意!!! : 
+font-size:50px;  这个设置方法,在*{}中不适用
+
+当子元素相当于父元素position定位时,用left,right,top,bottom进行调整布局,
+margin-left/right/top/bottom失效
+
+web中常用颜色 : 
+#F5F5F5 浅灰色
+skyblue 天蓝色
+pink    粉红色
+#FFF	白色
+#e0e0e0 边框的颜色
+
+红色 #D24D57  危险
+绿色 #26A65B  安全
+橙色 #EB7347  警告
+黑色 #2C3E50  默认
+橙红色 #FC9D99 温馨
+
+web网页中必备的的一句代码 : <meta charset="UTF-8">
+
+<link   type="text/css" rel="stylesheet" href="">
+<script type="text/javascript" src=""></script>
+
+行级元素(比如a标签),是不能设置宽度和高度的
+但是!!!
+一个行级元素,设置了浮动(float:left|right),就可以有块级元素的特点
+
+行内元素后边有一个回车,所以在网页中经常会看到,
+一个行内元素下面有一个一快区域
+
+在CSS中,如果css属性设置冲突的话,就在css样式后面加入 !important 即可,
+这样该设置就会拥有最高优先级
+比如 : color: black !important;
+
+阻止缓存,链接后面加一个时间戳,这样每次请求的都是新链接,可以有效的阻止缓存
+如下: +new Date().getTime()
+
+P标签和span标签的区别:
+P 换行
+span 不换行
+
+/* input 输入框 清除文本框获取焦点时,默认的边框阴影*/
+outline: none;
+border: none;  //清除样式,方便自己定义
+
+移动端 必须加上
+meta:vp    Tap键
+		  
+
+
+
+
+需要下载的资源:
+G_040.Html5项目实战：豆瓣音乐[S]
+https://pan.baidu.com/s/12O89s#list/path=%2F&parentPath=%2F%E7%BC%96%E7%A8%8B%E8%A7%86%E9%A2%91%2F%5B%E9%A3%9E%E5%84%BF%E7%B2%BE%E5%93%81%E6%95%99%E7%A8%8B%5D%E5%8C%97%E9%A3%8E%E7%BD%91%E7%A7%BB%E5%8A%A8%E3%80%81HTML5%E6%9C%80%E6%96%B0%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B%E7%BD%91%E7%9B%98%E5%88%86%E4%BA%AB
+https://pan.baidu.com/s/17cikc?fid=472372959078734
+http://www.panduoduo.net/r/30683570
+http://www.panduoduo.net/r/42304128
+		  
+		  
+----------------------------2019-01-06 新增------------------------------------------
+
+/*如果是实现四周阴影,主要是第三个参数设置大一点,我这里设置成了60px*/
+box-shadow: black 0px 0px 60px;
+
+文字的阴影:
+text-shadow: 1px 1px 8px
+
+
+
+问:
+---给li设置样式display:inline-block 后，ul 下的 li 元素之间有间距，怎么清除间距？ 
+答案是:
+在ul标签中设置font-size=0,在li中设置标签文字的大小；
+因为空格也属于字符，把字符大小设为0，就没有空格了
+给父级元素设置 font-size:0  在给li单独设置字体大小
+
+把行内元素不可以设置宽高,加上 inline-block 即可;
+
+网站的图标:
+<link rel="shortcut icon" href="" type="image/x-icon"/>
+
+输入框里的提示字符:
+<input type="text" placeholder="请输入关键词!!!"/>
+
+字体加粗:
+font-weight: 800;
+
+鼠标放上去有一个小手:
+cursor: pointer;
+
+SEO搜索引擎优化三要素: title description  Keywords
+<title>京东(JD.COM)-正品低价、品质保障、配送及时、轻松购物！</title>
+<meta name="description" content="京东JD.COM-专业的综合网上购物商城，为您提供正品低价的购物选择、优质便捷的服务体验。商品来自全球数十万品牌商家，囊括家电、手机、电脑、服装、居家、母婴、美妆、个护、食品、生鲜等丰富品类，满足各种购物需求。" />
+<meta name="Keywords" content="网上购物,网上商城,家电,手机,电脑,服装,居家,母婴,美妆,个护,食品,生鲜,京东" />
+
+
+浏览器兼容(Chrome,Firefox,oprea):
+background: -webkit-linear-gradient(top,red,green);
+background: -moz-linear-gradient(top,skyblue,pink);
+background: -o-linear-gradient(top,black,white);
+
+在CSS中,---> .fixxx.active 和 .fixxx .active是不同的(注意!后者中间有个空格)
+
+CSS中:
+border: solid #000;  ==> border可以不加1px
+.show_pages > a{}  ==> 代表.show_pages盒子下面(下一级)的a标签,不包括下面其他盒子的
+.show_pages a{}    ==> 代表.show_pages盒子下面所有的a标签,包括其他盒子的
+
+CSS: 
+div属于块级元素 独占一行 
+
+css缩写 : w100  == width: 100px;
+		  h100  == height: 100px;	
+
+CSS3:
+.overlay:target {     /*  target:目标    css3中,类似于点击产生的事件 */
+visible;   /* 是否显示?? visible:显示 hidden:隐藏  */
+opacity: 1;/*      opacity:不透明度   0:透明   1:不透明*/
+
+红色 #D24D57  危险
+绿色 #26A65B  安全
+橙色 #EB7347  警告
+黑色 #2C3E50  默认
+蓝色 #1E90FF  提交
+橙红色 #FC9D99 温馨
+
+一般 按钮的 基本样式设置 (div型 点击按钮)  常用 样式 三连
+background-color: #D24D57;
+color: #FFF;
+width: 200px;
+height: 50px;
+font-size: 30px;
+line-height: 50px;
+text-align: center;
+cursor: pointer;  /* 鼠标放上去有个小手 */
+***************************************************************************
+<form>
+	<input type="email" placeholder="你的电子邮箱" />
+	<button type="submit">TEST</button>
+</form>
+***************************************************************************
+msrgin: 0 100px;   轻轻松松搞定搜索输入框居中自适应问题
+
+***************************************************************************
+text-decoration:underline;  下划线
+
+***************************************************************************
+<a href="链接的页面" target="_blank">新窗口打开</a><br />
+<a href="链接的页面" target="_parent">原窗口打开</a>
+
+***************************************************************************
+
+对于行内元素(img,span,a等等,padding和margin,没有区别)
+
+***************************************************************************
+
+JavaScript 给 CSS设置样式表:
+document.getElementById("kkk").style.cssText = " background-color:pink; width: 100px; height: 100px; ";
+
+
+***************************************************************************
+
+***************************************************************************
+
+***************************************************************************
+
+***************************************************************************
+
+***************************************************************************
+
+***************************************************************************
+
+***************************************************************************
+
+***************************************************************************
+
+***************************************************************************
+
+***************************************************************************
+
+***************************************************************************
+
+***************************************************************************
+
+***************************************************************************
+

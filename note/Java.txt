@@ -218,7 +218,124 @@ https://www.bilibili.com/video/av43194302/?p=255
 
 *****************************************************************************
 
+关于: JavaBean
+
+JavaBean是特殊的Java类，使用J ava语言书写，并且遵守JavaBean API规范
+
+1.JavaBean本身就是一个类
+
+2.在JSP中如果要应用JSP提供的Javabean的标签来操作简单类的话，则此类必须满足如下的开发要求：
+
+(1)所有的类必须放在一个包中，在WEB中没有包的是不存在的；
+
+(2)所有的 JavaBean 类必须声明为public class，这样才能够被外部所访问；
+
+(3)JavaBean 类中所有的属性都必须封装，即：使用private声明；
+
+(4)封装的属性如果需要被外部所操作，则必须编写对应的setter、getter方法；
+
+(5)一个JavaBean中至少存在一个无参构造方法，此为JSP中的标签所使用
+
+第一个简单JavaBean:
+    package blog.csdn.joywy;
+    public class SimpleBean{
+        private String name;
+        private int age;  
+        public void setName(String name){  
+            this.name = name;  
+        }  
+        public void setAge(int age){  
+            this.age = age;  
+        }  
+        public String getName(){  
+            return this.name;  
+        }  
+        public int getAge(){  
+            return this.age;  
+        }  
+    }
+简单来说: 
+		如果在一个类中只包含属性、setter、getter方法，那么这种类就成为简单JavaBean
+
+WEB开发的标准目录结构:
+WEB ROOT   Web的根目录，一般虚拟目录直接指向此文件夹，此文件夹下必然直接包含WEB-INF
+WEB-INF    Web目录中最安全的文件夹，保存各种类、第三方jar包、配置文件
+lib		   保存所有的第三方jar文件
+js 		   不解释
+css 	   不解释
+images 	   不解释
+
+来个小例子:
+
+					index.jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="maven_Test.SimpleBean"%>    <!-- 导入blog.csdn.joywy包 -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>java-bean</title>
+</head>
+
+<body>
+
+<%
+	SimpleBean simple = new SimpleBean();    //声明并实例化SimpleBean对象
+	simple.setName("Jack");                 //设置name属性
+	simple.setAge(23);                       //设置age属性
+%>
+
+
+<h3>姓名：<%=simple.getName()%></h3>            <!-- 输出name属性的内容 -->
+<h3>年龄：<%=simple.getAge()%></h3>             <!-- 输出age属性的内容 -->
+</body>
+</html>
+
+JavaBean  :    
+package maven_Test;
+public class SimpleBean{
+	
+    private String name;  
+    private int age;
+    
+    public void setName(String name){  
+        this.name = name;  
+    }  
+    public void setAge(int age){  
+        this.age = age;  
+    }  
+    public String getName(){  
+        return this.name;  
+    }
+    
+    public int getAge(){  
+        return this.age;  
+    }  
+}  
+
+浏览器输入:  http://localhost:8080/maven_Test/index.jsp
+
 *****************************************************************************
+
+
+eclipse配置 javaJDK + Tomcat + 改变字体 + 自动提示补全 小结:
+
+1:eclipse配置 javaJDK:
+			点击Window -> Preferences -> 输入:jres -> 一些项目会自动弹出,过程略...
+			
+2:eclipse配置 Tomcat:
+			点击Window -> Preferences -> 输入:server -> 一些项目会自动弹出,过程略...
+
+3:eclipse配置 改变字体:
+			点击Window -> Preferences -> 输入:font -> 一些项目会自动弹出,过程略...
+
+4:eclipse配置 自动提示补全:
+			点击Window -> Preferences -> 输入:assist -> 一些项目会自动弹出,过程略...
+
+5:eclipse配置 修改快捷键:
+			点击Window -> Preferences -> 输入:key -> 一些项目会自动弹出,过程略...
+
+
 
 *****************************************************************************
 

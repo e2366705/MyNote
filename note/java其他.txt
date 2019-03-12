@@ -19,7 +19,7 @@ Lambda表达式:
 
 
 
-    关于spring:
+关于spring:
 
 什么时候用注解
 
@@ -50,6 +50,37 @@ tasklist|findstr "4792"  (根据程序的PID号码,获取这个程序进程的�
 
 中国的谷歌
 https://search.snapdo.com/?category=Web&st=dr&ic=1&q=aop%E6%98%AF%E4%BB%80%E4%B9%88h
+
+spring中为什么要使用IOC, 有什么好处???
+    https://www.zhihu.com/question/23277575   [ 知乎Q: Spring IoC有什么好处呢 ]
+
+内部类,匿名内部类
+
+baidu : java比较难懂的概念
+https://www.zhihu.com/question/20794107
+
+
+学习java应该如何理解反射?
+    https://www.zhihu.com/question/24304289
+
+有关于Spring的:
+    https://www.cnblogs.com/szlbm/p/5512931.html
+
+        char c = 89;
+        System.out.println(c);
+        输出 : Y
+
+
+
+
+别一说项目就spring，你真的懂spring么？
+    https://zhuanlan.zhihu.com/p/53019001
+
+zhihu 搜索 spring    
+
+
+servlet的本质是什么，它是如何工作的?
+    https://www.zhihu.com/question/21416727
 
 
 

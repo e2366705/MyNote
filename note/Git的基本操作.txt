@@ -32,7 +32,7 @@ $ git config --global user.email "email"
 推送                          git push -u origin master
 最后: 推送完成
 PS:
-      这一步可能会出现这个错误提示: warning: LF will be replaced by CRLF in xxx 
+      这一步可可能会报错: warning: LF will be replaced by CRLF in xxx 
       用下面这句代码来解决:
       git config --global core.autocrlf false
 

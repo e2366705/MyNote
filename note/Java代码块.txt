@@ -240,24 +240,32 @@ public class MySQLTest {
 ***********************************************************************************
 Java 测试 MySQL 数据库 是否链接(连接)成功 (没报错就是链接成功)
 
-package com.jyk.mybatis;
-import org.junit.Test;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-public class mysqltest {
-	public static void main(String[] args) {
-		// 加载驱动类
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mybatistest", "root", "root");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
+/*
+            测试 MySQL数据库是否连接成功
+ */
+public class A {
+    public static void main(String[] args) {
+        //加载驱动类
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            String database_name = "jdbc:mysql://127.0.0.1:3306/aaa";       // 这里填写你的数据库名字
+            String username = "root";                // 数据库用户名
+            String password = "root";               //  数据库密码
+            Connection conn=DriverManager.getConnection(database_name + "?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT",username,password);
+            System.out.println(conn);
+            System.out.println("出现:  com.mysql.cj.jdbc.ConnectionImpl@3ee0fea4  就表示:数据库连接成功");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
+
+
 
 ***********************************************************************************
 ***********************************************************************************

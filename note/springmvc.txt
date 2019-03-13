@@ -1,14 +1,55 @@
 
 
 
+B站:
 https://www.bilibili.com/video/av10586645?from=search&seid=10184088754505325089
 https://search.bilibili.com/all?keyword=%E4%B8%80%E5%A4%A9%E5%AD%A6%E4%BC%9A
+https://search.bilibili.com/all?keyword=Intellij%20IDEA
 https://www.bilibili.com/video/av43194302/?p=256
+https://www.bilibili.com/video/av30023103/?p=199
+
 http://how2j.cn/k/spring/spring-ioc-di/87.html
 http://www.52studyit.com/forum.php?mod=viewthread&tid=439&highlight=%E5%B0%8F%E7%8C%B4%E5%AD%90
-https://search.bilibili.com/all?keyword=Intellij%20IDEA
 
+
+比较好的 面试教程:
+https://www.sxt.cn/2019_Interview_questions/013-13.html
+http://how2j.cn/k/j2se-interview/j2se-interview-java/624.html
+
+在这个网站,把集合等内容好好补习一下
+http://how2j.cn/k/collection/collection-hashcode/371.html#nowhere
+
+
+idea教程:
 https://pan.baidu.com/share/init?surl=VjwRF2Y38rf1QPVxUOxuZw#list/path=%2Fsharelink3361064378-508437712754389%2F小猴子monkey1024的Java教程&parentPath=%2Fsharelink3361064378-508437712754389
 
 提取密码
 muj8
+
+
+Spring 对象的生命周期 (init初始化方法 , 销毁方法): https://www.bilibili.com/video/av40807069/?p=20  (可有可无)
+https://www.bilibili.com/video/av40807069/?p=23   spring 设值注入   
+
+拜托讲解课程的老师直接讲最重要,最优的解决方案,
+https://www.bilibili.com/video/av40807069/?p=31   spring自动注入 : 
+https://www.bilibili.com/video/av40807069/?p=34   spring包含多个xml配置文件 
+https://www.bilibili.com/video/av40807069/?p=35   spring使用注解的方式
+
+
+java 反射 与 xml 文件的关系
+https://www.bilibili.com/video/av43194302/?p=255
+这个视频讲的很清楚
+
+
+静态代理:
+https://www.bilibili.com/video/av30023103/?p=201
+
+
+单例设计模式:
+这个视频讲解的非常好
+https://www.bilibili.com/video/av43222645/?p=33
+1,私有的构造方法
+2,私有的静态的当前类对象作为属性
+3,公有的静态的方法返回当前类对象
+
+

@@ -20,6 +20,7 @@ Debug:
     F7 进入函数
     alt + shift + F7   ->  focre step into 强行进入系统级别函数,比如System.out.println();
     F8 跳过
+shift + F10     运行/重新部署/更新静态资源/重启服务器
 
 
 
@@ -102,5 +103,12 @@ idea修改注释的颜色:
 
 idea 设置编码为: UTF-8:
     搜索: file encoding 设置
+
+idea必须重新设置的快捷键 (因为实在是太常用了):
+    1 运行项目: shift + F10
+    2 关闭窗口: ctrl + F4
+
+
+
 
 

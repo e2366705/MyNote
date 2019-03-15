@@ -16,9 +16,12 @@ CREATE TABLE IF NOT EXISTS `table1`(      -- (注释:)
 ---------------------- 例如  -------------------------------
 -- 完整的流程:
 -- MySQL 创建 数据库:
-
 CREATE DATABASE IF NOT EXISTS `MySQL_Test` DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
+
+-- 切换回
 use `MySQL_Test`;
+
+-- 创建表
 CREATE TABLE IF NOT EXISTS `user`(
 `id` int(20) unsigned not null DEFAULT 0,
 `money` DECIMAL(20,2) NOT NULL DEFAULT '0.00',
@@ -250,3 +253,30 @@ create table public.admin(
 
 
  在 MySQL 中只有使用了 Innodb 数据库引擎的数据库或表才支持事务
+
+
+
+
+ 
+***************    一个完整的MySQL新建数据库流程      ***************
+drop database IF EXISTS `68cac5af68450368`;
+
+-- 新建数据库
+CREATE DATABASE IF NOT EXISTS `68cac5af68450368` DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
+
+use 68cac5af68450368;
+
+create table user(
+   id  int(5) primary key,
+   name varchar(10),
+   sal double(8,2)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;      -- (ENGINE 设置存储引擎，CHARSET 设置编码)
+
+create table students(
+   students_id  int(5) primary key,
+   students_name varchar(10),
+   students_sal double(8,2)
+);
+
+insert into user(id,name,sal) values (123,'jack','5600');
+insert into students(students_id, students_name, students_sal) values (666,'bill',23.36);

@@ -148,7 +148,13 @@ java 字符串 坑:
 结果是不一样的
 
 
+MySQL:
+时区设置:
+mysql.url=jdbc:mysql://localhost:3306/68cac5af68450368?serverTimezone=UTC
 
+
+现在MySQL都是这样子的
+mysql.driver=com.mysql.cj.jdbc.Driver
 
 
 

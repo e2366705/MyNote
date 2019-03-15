@@ -19,7 +19,7 @@ alt + F7  查看这个类在哪里用到过
 Debug: 
     F7 进入函数
     alt + shift + F7   ->  focre step into 强行进入系统级别函数,比如System.out.println();
-    F8 跳过
+    step over   F8 跳过(比如遇到一个函数,你不想进入函数内部,就直接跳过吧,这就是step over) [ 也可以理解成: 逐行执行 ]
 shift + F10     运行/重新部署/更新静态资源/重启服务器
 
 

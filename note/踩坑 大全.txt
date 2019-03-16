@@ -154,7 +154,18 @@ mysql.url=jdbc:mysql://localhost:3306/68cac5af68450368?serverTimezone=UTC
 
 
 现在MySQL都是这样子的
-mysql.driver=com.mysql.cj.jdbc.Driver
+mysql.driver=
+com.mysql.cj.jdbc.Driver
+
+MySQL:
+jdbc.url=jdbc:mysql://localhost:3306/student?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+ 加上的useSSL=false原因是： https://blog.csdn.net/u010429286/article/details/77750177
+
+
+
+idea 搭建 springMVC环境要注意的:
+	1 把lib 文件夹整个复制到 web/WEB-INF 文件夹下面 (需要jar包的环境)
+	2 配置 Tomcat
 
 
 

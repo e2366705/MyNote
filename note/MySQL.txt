@@ -13,6 +13,9 @@ CREATE TABLE IF NOT EXISTS `table1`(      -- (注释:)
    PRIMARY KEY ( `tableID` )			        -- (PRIMARY KEY关键字用于定义列为主键)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;      -- (ENGINE 设置存储引擎，CHARSET 设置编码)
 
+这里有两个小小的坑:
+	1 CREATE TABLE IF NOT EXISTS `table1` 后面接的是() 不是{},注意了!!!
+	2 是utf8  不是utf-8
 ---------------------- 例如  -------------------------------
 -- 完整的流程:
 -- MySQL 创建 数据库:

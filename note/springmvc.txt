@@ -1,12 +1,13 @@
 
 
 
+
 B站:
 https://www.bilibili.com/video/av10586645?from=search&seid=10184088754505325089
 https://search.bilibili.com/all?keyword=%E4%B8%80%E5%A4%A9%E5%AD%A6%E4%BC%9A
 https://search.bilibili.com/all?keyword=Intellij%20IDEA
-https://www.bilibili.com/video/av43194302/?p=256
-https://www.bilibili.com/video/av30023103/?p=199
+https://www.bilibili.com/video/av43194302/?p=256     JAVA 2019版 376集 -- 手写webserver
+https://www.bilibili.com/video/av30023103/?p=199     高淇老师应各位网友要求又更新了JAVA300集--线程
 
 http://how2j.cn/k/spring/spring-ioc-di/87.html
 http://www.52studyit.com/forum.php?mod=viewthread&tid=439&highlight=%E5%B0%8F%E7%8C%B4%E5%AD%90
@@ -52,6 +53,10 @@ https://www.bilibili.com/video/av43222645/?p=33
 2,私有的静态的当前类对象作为属性
 3,公有的静态的方法返回当前类对象
 
+工厂设计模式:
+https://www.bilibili.com/video/av34162848?from=search&seid=14340369215982849958
+讲的不错!!!!
+
 
 
 idea 搭建 springmvc
@@ -60,4 +65,8 @@ https://www.cnblogs.com/wormday/p/8435617.html
 
 
 https://blog.csdn.net/huangshulang1234/article/details/78628927
+
+
+https://www.zhihu.com/question/20149818     抽象 接口 区别
+https://www.zhihu.com/question/30082151     java的多态
 

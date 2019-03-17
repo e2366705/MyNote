@@ -116,6 +116,8 @@ idea必须重新设置的快捷键 (因为实在是太常用了):
     2 关闭窗口: ctrl + F4
 
 
-
-
+当你导入一个项目,发现pom.xml不能使用时候,
+原因是因为 intellij idea 并没有把这个项目识别成为 maven 项目,
+那怎么让 intellij idea 识别为maven项目呢??
+鼠标右击pom.xml -> Add as Maven Project
 

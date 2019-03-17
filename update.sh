@@ -38,15 +38,6 @@ git rm -f --cached .
 
 # 所有文件加入暂存区      (Git命令)
 echo -e "\033[44m ----------------------- add -f * ----------------------- \033[0m"
-echo '(=^_^=)  Auto Updata Code...  (=^_^=) '
-echo 'input => ./update.sh toStart Updata Code...'
-
-# 清空缓存      (Git命令)
-echo '----------------------- rm -f --cached -----------------------'
-git rm -f --cached .
-
-# 所有文件加入暂存区      (Git命令)
-echo '----------------------- add -f * -----------------------'
 git add -f *
 
 # 动态获取时间
@@ -55,18 +46,11 @@ Update_Date_String='Last_Updata:'$today;
 echo $Update_Date_String;   # 加上 $ 引用变量
 
 # 提交Git更新说明[ 附件最后更新日期 ]      (Git命令)
-
 echo -e "\033[44m ----------------------- commit -m ----------------------- \033[0m"
 git commit -m $Update_Date_String;
 
 # 最后一步:推送      (Git命令)
 echo -e "\033[44m ----------------------- push -u origin master ----------------------- \033[0m"
-
-echo '----------------------- commit -m -----------------------'
-git commit -m $Update_Date_String;
-
-# 最后一步:推送      (Git命令)
-echo '----------------------- push -u origin master -----------------------'
 git push -u origin master
 
 

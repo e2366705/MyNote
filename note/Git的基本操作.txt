@@ -61,14 +61,15 @@ git branch nnnname__			新建一个名字是nnnname__的新分支
 git push -u origin nnnname__	提交到 nnnname__ 这个分支
 
 
-
+~~~~~~~~~~~~ 删除操作 ~~~~~~~~~~~~~~~~~
 在github上只能删除仓库,却无法删除文件夹或文件, 所以只能通过命令来解决:
 首先进入你的master文件夹下, Git Bash Here ,打开命令窗口
-git pull origin master			  # 将远程仓库里面的项目拉下来
-dir                               # 查看有哪些文件夹
-git rm -r --cached target         # 删除target文件夹
+git remote add origin https://github.com/e2366705/xxxxx.git
+git rm -f --cached [按下 Tab键]   # 查看还有哪些文件夹
+git rm -r --cached target            # 删除target文件夹
 git commit -m '删除了target'      # 提交,添加操作说明
-
+git push -u origin master 	  # 修改完了,记得提交!!!不然不生效~~
+~~~~~~~~~~~~ 删除操作 ~~~~~~~~~~~~~~~~~
 
 1.查看本地分支 git branch
 2.查看远程分支 git branch -r

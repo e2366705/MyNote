@@ -23,7 +23,7 @@ $ git config --global user.email "email"
 教程1 (共计2):
 新建Github,推送流程 ( 更新仓库教程在下面 ):
 -------------------------------------------------------------------------------------------
-文件夹右键, 点击 git bash 
+文件夹右键, 点击 git bash here
 清空 删除 缓存:                git rm -r --cached .
 初始化git暂存区                git init
 添加所有文件                   git add -f *
@@ -39,6 +39,7 @@ PS:
       这一步可可能会报错: This is usually caused by another repository pushing to the same ref.
       解决方法:
                git pull origin master --allow-unrelated-histories  (意思是: 允许不相关的历史)
+               然后再去执行: git push -u origin master	
 
 
 

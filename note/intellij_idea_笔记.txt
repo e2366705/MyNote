@@ -97,7 +97,7 @@ idea 怎么配置:
     配置Spring
 
 
-相减maven工程:
+新建maven工程:
     注意: maven -> webapp 有个 coco , 不要选它
 
 
@@ -106,14 +106,12 @@ idea 比较全面的设置:
     https://www.bilibili.com/video/av28528399?p=8
 
 idea修改注释的颜色:
-    搜索 language defaults    
+    搜索 language defaults
 
 idea 设置编码为: UTF-8:
     搜索: file encoding 设置
 
-idea必须重新设置的快捷键 (因为实在是太常用了):
-    1 运行项目: shift + F10
-    2 关闭窗口: ctrl + F4
+
 
 
 当你导入一个项目,发现pom.xml不能使用时候,

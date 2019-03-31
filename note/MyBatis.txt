@@ -1,6 +1,0 @@
-mybatis 笔记:
-
-看好了: resource="userMapper.xml
-    <mappers>
-        <mapper resource="userMapper.xml"/>
-    </mappers>

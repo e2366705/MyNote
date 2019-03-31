@@ -1,0 +1,740 @@
+Java 代码块:  from: 偷代码的贼 
+座右铭:能复制粘贴的绝不手写!!!
+
+这世界有比复制更加令人感到快乐的吗?
+如果有,
+那一定是粘贴......
+
+java IO 文件 读写
+package com.nickwong.code;
+import java.io.*;
+public class ReadTxt {
+
+    public static void main(String args[]) {
+        readFile();
+        writeFile();
+    }
+
+    /**
+     * 读入TXT文件
+     */
+    public static void readFile() {
+        String pathname = "C:\\Users\\PHP\\Desktop\\aaaaaaaa.html"; // 绝对路径或相对路径都可以，写入文件时演示相对路径,读取以上路径的input.txt文件
+        //防止文件建立或读取失败，用catch捕捉错误并打印，也可以throw;
+        //不关闭文件会导致资源的泄露，读写文件都同理
+        //Java7的try-with-resources可以优雅关闭文件，异常时自动关闭文件；详细解读https://stackoverflow.com/a/12665271
+        try (FileReader reader = new FileReader(pathname);
+             BufferedReader br = new BufferedReader(reader) // 建立一个对象，它把文件内容转成计算机能读懂的语言
+        ) {
+            String line;
+            //网友推荐更加简洁的写法
+            while ((line = br.readLine()) != null) {
+                // 一次读入一行数据
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 写入TXT文件
+     */
+    public static void writeFile() {
+        try {
+            File writeName = new File("C:\\Users\\PHP\\Desktop\\aaaaaaaa.html"); // 相对路径，如果没有则要建立一个新的output.txt文件
+            writeName.createNewFile(); // 创建新文件,有同名的文件的话直接覆盖
+            try (FileWriter writer = new FileWriter(writeName);
+                 BufferedWriter out = new BufferedWriter(writer)
+            ) {
+                out.write("我会写入文件啦1\r\n"); // \r\n即为换行
+                out.write("我会写入文件啦2\r\n"); // \r\n即为换行
+                out.flush(); // 把缓存区内容压入文件
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+import java.io.*;
+public class JavaSEEE {
+	/**
+     * 创建文件
+     */
+    public static boolean createFile(File fileName)throws Exception{
+        try{
+            if(!fileName.exists()){
+                fileName.createNewFile();
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return true;
+    }
+
+
+    /**
+     *读取TXT内容
+     */
+    public static String readTxtFile(File file){
+        String result = "";
+        try {
+            InputStreamReader reader = new InputStreamReader(new FileInputStream(file),"UTF-8");
+            BufferedReader br = new BufferedReader(reader);
+            String s = null;
+            while((s=br.readLine())!=null){
+                result = result  + s;
+                System.out.println(s);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+
+    /**
+     * 写入TXT，覆盖原内容
+     */
+    public static boolean writeTxtFile(String content,File fileName)throws Exception{
+        RandomAccessFile mm=null;
+        boolean flag=false;
+        FileOutputStream fileOutputStream=null;
+        try {
+            fileOutputStream = new FileOutputStream(fileName);
+            fileOutputStream.write(content.getBytes("gbk"));
+            fileOutputStream.close();
+            flag=true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return flag;
+    }
+
+
+    /**
+     * 写入TXT，追加写入
+     */
+    public static void fileChaseFW(String filePath, String content) {
+        try {
+            //构造函数中的第二个参数true表示以追加形式写文件
+            FileWriter fw = new FileWriter(filePath,true);
+            fw.write(content);
+            fw.close();
+        } catch (IOException e) {
+            System.out.println("文件写入失败！" + e);
+        }
+    }
+
+    public static void main(String[] args) throws Exception{
+        File file = new File("D:\\123wu.txt");
+//        createFile(file);         //如果没有这个文件的话,创建一个
+        readTxtFile(file);
+//        writeTxtFile("我是写入的内容11",file);
+//        fileChaseFW("D:\\123wu吴.txt","66666666");
+    } 
+}
+
+
+
+
+
+
+***********************************************************************************
+***********************************************************************************
+***********************************************************************************
+
+
+
+Java MySQL 数据库 链接 连接:  请用main方法运行
+package TestJava;
+
+import java.sql.*;
+public class MySQLTest {
+
+	// JDBC 驱动名及数据库 URL
+    static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+    static final String DB_URL = "jdbc:mysql://localhost:3306/public";
+    
+/*
+    MySQL连接数据库报时区错误：java.sql.SQLException: The server time zone value
+    jdbc:mysql://localhost:3306/dbname 后面加上:  ?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    jdbc.url=jdbc:mysql://localhost:3306/o2o    ?useUnicode=true&characterEncoding=utf8&useSSL=false
+    jdbc:mysql://localhost:3306/dbname         ?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+
+    报警信息 : Loading class `com.mysql.jdbc.Driver'. This is deprecated. The new driver class is `com.mysql.cj.jdbc.Driver'.
+    意思是 : 这是弃用。新的驱动程序类是  com.mysql.jdbc.Driver已经落后淘汰了,新的是...
+*/
+
+
+    // 数据库的用户名与密码，需要根据自己的设置
+    static final String USER = "root";
+    static final String PASS = "root";
+ 
+    public static void main(String[] args) {
+        Connection conn = null;
+        Statement stmt = null;
+//        vvvvvvvvvvvvvvar_dump.vvvvvvvvvvvar_dump();
+        try{
+            // 注册 JDBC 驱动
+            Class.forName("com.mysql.jdbc.Driver");
+        
+            // 打开链接
+            System.out.println("连接数据库...");
+            conn = DriverManager.getConnection(DB_URL,USER,PASS);
+        
+            // 执行查询
+            System.out.println(" 实例化Statement对象...");
+            stmt = conn.createStatement();
+            String sql;
+            sql = "SELECT * FROM public.admin";    //  数据库.数据表
+            ResultSet rs = stmt.executeQuery(sql);
+
+            System.out.println(rs);
+            System.out.println("出现类似于:com.mysql.jdbc.JDBC42ResultSet@7f416310 的字符串 就表示,数据库连接成功!!! ");
+            
+        
+//                // 展开结果集数据库
+//                while(rs.next()){
+//                    // 通过字段检索
+//                    String id  = rs.getString("id");
+//
+//                    // 输出数据
+//                    System.out.println("==========   MySQL Connection Success   ==========");
+//                    System.out.print("ID: " + id);
+//                    System.out.print("\n");
+//                }
+
+
+
+            // 完成后关闭
+            rs.close();
+            stmt.close();
+            conn.close();
+        }catch(SQLException se){
+            // 处理 JDBC 错误
+            se.printStackTrace();
+        }catch(Exception e){
+            // 处理 Class.forName 错误
+            e.printStackTrace();
+        }finally{
+            // 关闭资源
+            try{
+                if(stmt!=null) stmt.close();
+            }catch(SQLException se2){
+            }// 什么都不做
+            try{
+                if(conn!=null) conn.close();
+            }catch(SQLException se){
+                se.printStackTrace();
+            }
+        }
+    }
+}
+
+
+***********************************************************************************
+***********************************************************************************
+***********************************************************************************
+Java 测试 MySQL 数据库 是否链接(连接)成功 (没报错就是链接成功)
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+/*
+            测试 MySQL数据库是否连接成功
+ */
+public class A {
+    public static void main(String[] args) {
+        //加载驱动类
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            String database_name = "jdbc:mysql://127.0.0.1:3306/aaa";       // 这里填写你的数据库名字
+            String username = "root";                // 数据库用户名
+            String password = "root";               //  数据库密码
+            Connection conn=DriverManager.getConnection(database_name + "?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT",username,password);
+            System.out.println(conn);
+            System.out.println("出现:  com.mysql.cj.jdbc.ConnectionImpl@3ee0fea4  就表示:数据库连接成功");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+
+***********************************************************************************
+***********************************************************************************
+***********************************************************************************
+java indexOf 的用法 包含 查找 某个字符串
+特点: aaaaaaa 可以匹配 aa 类似于模糊匹配
+String test = "This is test for string";
+System.out.println(test.indexOf("test"));               // 找到了,就返回索引位置
+System.out.println(test.indexOf("for string       "));  // 没找到,就返回-1
+System.out.println(string.indexOf("a",3));              // 从指定位置(第四个)开始查询
+
+// ASCII值 a-97,b-98,c-99  根据 ASCII值 查询存在位置
+System.out.println(string.indexOf(99));		//ASCII值   c-99  
+System.out.println(string.indexOf('c'));	//ASCII值   
+System.out.println(string.indexOf(97,3));   //返回结果：6
+System.out.println(string.indexOf('a',3));  //返回结果:6
+PS: 
+    如果要忽略大小写的话,可以把字符串全部转换为小写,然后再匹配
+
+
+这种方式是: 精确匹配,误差一个字母都不行
+        String sourceStr = "this is string txt aaa bbb ";
+        String[] sourceStrArray = sourceStr.split(" ");
+        for (int i = 0; i < sourceStrArray.length; i++) {
+            if ( sourceStrArray[i].equals("aaa")) {
+				System.out.println("找到你想要的单词了");
+			}
+        }
+
+
+
+## 查找 符合条件的 字符串 的 个数
+    /*
+	 	调用方法:matchStringByIndexOf("this is test aaa bbb" , "bbb");
+	 */
+    public static void matchStringByIndexOf( String parent,String child ){
+        int count = 0;
+        int index = 0;
+        while( ( index = parent.indexOf(child, index) ) != -1 ){
+            index = index+child.length();
+            count++;
+        }
+        System.out.println( "匹配个数为"+count );		//结果输出
+    }
+***********************************************************************************
+***********************************************************************************
+***********************************************************************************
+== 和 equals 的区别:
+Integer b1 = new Integer(1);
+Integer b2 = new Integer(1);
+System.out.println(b1 == b2);		//  返回 false 比较的是内存地址
+System.out.println(b1.equals(b2));	//  返回 true  比较的是数值的大小
+总结:
+"=="除了比较基本数据之外都是比较的内存地址  
+"=="比较的是引用,不是内容
+"equals"除了没有没有重写equals方法的类之外都是比较的内容
+
+
+***********************************************************************************
+***********************************************************************************
+***********************************************************************************
+判断字符串中是否 包含 有汉字:
+1.方式一:
+    	// 比较字符串长度的方式来区分有没有汉字(汉字的长度更加长!)
+    	String sss = "QQ爱";
+    	
+    	System.out.println(sss.length());  // 返回 3
+    	System.out.println(sss.getBytes().length);  // 返回 4
+
+    	if (sss.length() == sss.getBytes().length) {
+			System.out.println("NO Chinese characters");
+		}else {
+			System.out.println("have Chinese characters");
+		}
+网上看到的写法，真的是机智。当然可能有一些细节问题：UTF-8编码中不是ascii码的都会长度不一致
+
+2.方式二: 能检测出中文汉字和中文标点
+    import java.util.regex.Matcher;
+    import java.util.regex.Pattern;
+    public static boolean isContainChinese(String str){
+        Pattern p = Pattern.compile("[\u4E00-\u9FA5|\\！|\\，|\\。|\\（|\\）|\\《|\\》|\\“|\\”|\\？|\\：|\\；|\\【|\\】]");
+        Matcher m = p.matcher(str);
+        if (m.find()) {
+            return true;
+        }
+        return false;
+    }
+
+***********************************************************************************
+***********************************************************************************
+***********************************************************************************
+java获取当前时间
+import java.util.Date;
+import java.text.SimpleDateFormat;
+SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+System.out.println(df.format(new Date()));// new Date()为获取当前系统时间
+
+
+***********************************************************************************
+***********************************************************************************
+***********************************************************************************
+转义 符
+System.out.println("访问\"菜鸟教程!\"");  输出:访问"菜鸟教程!"
+
+***********************************************************************************
+***********************************************************************************
+***********************************************************************************
+
+获取变量 数据的 数据 类型
+		float[] fff = {1.23f,2.23f};
+		System.out.println(getType(fff));  // => 输出: class [F   
+
+	public static String getType(Object o) { // 获取变量类型方法
+		return o.getClass().toString(); // 使用int类型的getClass()方法
+	}
+
+
+
+***********************************************************************************
+***********************************************************************************
+***********************************************************************************
+分割 字符串:
+        String sourceStr = "1,2,3,4,5";
+        String[] sourceStrArray = sourceStr.split(",");
+        for (int i = 0; i < sourceStrArray.length; i++) {
+            System.out.println(sourceStrArray[i]);
+        }
+
+***********************************************************************************
+***********************************************************************************
+***********************************************************************************
+替换 字符串
+//		"."是正则表达式的元字符，匹配除换行符以外的任意字符，所以replaceAll、replaceFirst才出现了这样的结果
+		String s = "my.test.txt";
+		System.out.println(s.replace(".", "#"));				// my#test#txt
+		System.out.println(s.replaceAll(".", "#"));				// ###########
+		System.out.println(s.replaceFirst(".", "#"));			// #y.test.txt
+		System.out.println(s.replaceFirst("\\.", "#"));			// my#test.txt
+
+
+***********************************************************************************
+***********************************************************************************
+***********************************************************************************
+
+Java 正则 匹配链接地址
+/*
+   功能说明：分析字符串s，提取s里面的超链接和链接文字
+*/
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+public class RegTest
+{
+  public static void main(String[] args)
+  {
+    //String s="<p id=km> <a href=http://down.yourweb.com>空间</a> | <a ";
+    String s="</p><p style=height:14px><a href=http://mb.yourweb.com>企业推广</a> | <a href=http://code.yourweb.com>搜索风云榜</a> | <a href=/home.html>关于百度</a> | <a href=http://www.yourweb.com>About Baidu</a></p><p id=b>©2008 Baidu <a href=http://www.yourweb.com>使用百度前必读</a> <a href=http://www.miibeian.gov.cn target=_blank>京ICP证03xxxx号</a> <a href=//www.jb51.net><img src=/get_pic/2013/11/22/20131122031447947.gif></a></p></center></body></html><!--543ff95f18f36b11-->";
+     String regex="<a.*?/a>";
+    //String regex = "<a.*>(.*)</a>";
+    Pattern pt=Pattern.compile(regex);
+    Matcher mt=pt.matcher(s);
+    while(mt.find())
+    {
+       System.out.println(mt.group());
+       System.out.println();
+       String s2=">.*?</a>";//标题部分
+       String s3="href=.*?>";
+       Pattern pt2=Pattern.compile(s2);
+       Matcher mt2=pt2.matcher(mt.group());
+       while(mt2.find())
+       {
+        System.out.println("标题："+mt2.group().replaceAll(">|</a>",""));
+       }
+       Pattern pt3=Pattern.compile(s3);
+       Matcher mt3=pt3.matcher(mt.group());
+       while(mt3.find())
+       {
+        System.out.println("网址："+mt3.group().replaceAll("href=|>",""));
+       }
+    }
+  }
+}
+
+
+
+***********************************************************************************
+***********************************************************************************
+***********************************************************************************
+
+
+ <dependencies>
+
+        <!-- https://mvnrepository.com/artifact/junit/junit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+
+***********************************************************************************
+***********************************************************************************
+***********************************************************************************
+
+Java运行Dos命令
+package com.Java;
+
+import java.io.IOException;
+public class teacherDemo {
+	public static void main(String[] args) throws IOException {
+  
+    // Java运行Dos命令
+		Runtime R = Runtime.getRuntime();
+		R.exec("C:\\Program Files (x86)\\Tencent\\WeChat\\WeChat.exe");
+		
+		System.out.println("--------------------------------------------");
+		
+		//关闭 自动关机
+		R.exec("shutdown -a");
+		
+		Thread.sleep(1000);
+		
+		//66666 毫秒之后电脑自动关机
+		R.exec("shutdown -s -t 66666");
+		
+		Thread.sleep(2000);
+		
+		//关闭自动关机
+		R.exec("shutdown -a");
+	}
+}
+
+***********************************************************************************
+***********************************************************************************
+***********************************************************************************
+
+java 正则表达式:
+
+例子1:
+    Pattern p = Pattern.compile("Java \\d");
+        String candidate = "Java 233";
+        Matcher m = p.matcher(candidate);
+
+        System.out.println(m);
+        if (m != null){
+            System.out.println(m.find());
+        }
+
+例子2:
+      String filePath = "C:\\Users\\PHP\\IdeaProjects\\AritifaID\\src\\test\\java\\aaa.txt";
+        String regex = "(\\+\\+\\+\\+\\+)\n.*\n(\\+\\+\\+\\+\\+)\n";
+        String string = "+++++\nQQ\n+++++\n";
+        System.out.println(regex);
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(string);
+        if (matcher.find() == true) {
+            System.out.println(matcher.group(0));
+        }else {
+            System.out.println("noooooot Find !!!!! -_-!!!");
+        }
+
+
+***********************************************************************************
+***********************************************************************************
+***********************************************************************************
+
+import java.math.BigDecimal;
+public class AAA {
+    public static void main(String args[]) throws Exception {
+
+
+        // 如下所示: 浮点数运算会损失精度
+        float f0 = 1.00f;
+        float f1 = 0.99f;
+        System.out.println(f0 - f1);
+
+
+        String doubleValA = "1";
+        String doubleValB = "0.999";
+
+        System.out.println("add= " + add(doubleValA, doubleValB));                 // 加法
+        System.out.println("sub= " + Subtracting(doubleValA, doubleValB));         // 减法
+        System.out.println("mul= " + Multiplied(doubleValA, doubleValB));          // 乘法
+        System.out.println("div= " + Divided(doubleValA, doubleValB, 8));     // 除法
+    }
+
+    // add 加法
+    public static double add(String doubleValA, String doubleValB) {
+        System.out.println("你执行了 add 加法运算...");
+        BigDecimal a2 = new BigDecimal(doubleValA);
+        BigDecimal b2 = new BigDecimal(doubleValB);
+        return a2.add(b2).doubleValue();
+    }
+
+    // Subtracting 减法
+    public static double Subtracting(String doubleValA, String doubleValB) {
+        System.out.println("你执行了 Subtracting 减法运算...");
+        BigDecimal a2 = new BigDecimal(doubleValA);
+        BigDecimal b2 = new BigDecimal(doubleValB);
+        return a2.subtract(b2).doubleValue();
+    }
+
+    // Multiplied 乘以
+    public static double Multiplied(String doubleValA, String doubleValB) {
+        System.out.println("你执行了 Multiplied 乘法运算...");
+        BigDecimal a2 = new BigDecimal(doubleValA);
+        BigDecimal b2 = new BigDecimal(doubleValB);
+        return a2.multiply(b2).doubleValue();
+    }
+
+    // Divided 除以
+    public static double Divided(String doubleValA, String doubleValB, int scale) {
+        System.out.println("你执行了 Divided 除法运算...");
+        BigDecimal a2 = new BigDecimal(doubleValA);
+        BigDecimal b2 = new BigDecimal(doubleValB);
+        return a2.divide(b2, scale, BigDecimal.ROUND_HALF_UP).doubleValue();
+    }
+
+}
+
+
+
+***********************************************************************************
+***********************************************************************************
+***********************************************************************************
+
+遍历一个文件夹里面所有的文件夹以及文件:
+
+import java.io.File;
+
+public class A {
+    public static void main(String[] args) {
+        String path = "C:\\Users\\PHP\\.m2\\repository";		//要遍历的路径
+        File file = new File(path);		//获取其file对象
+        func(file);
+    }
+
+    private static void func(File file){
+        File[] fs = file.listFiles();
+        for(File f:fs){
+            if(f.isDirectory())	//若是目录，则递归打印该目录下的文件
+                func(f);
+            if(f.isFile())		//若是文件，直接打印
+                System.out.println(f);
+        }
+    }
+}
+
+
+
+***********************************************************************************
+***********************************************************************************
+***********************************************************************************
+
+
+
+***********************************************************************************
+***********************************************************************************
+***********************************************************************************
+
+
+
+***********************************************************************************
+***********************************************************************************
+***********************************************************************************
+
+
+
+***********************************************************************************
+***********************************************************************************
+***********************************************************************************
+
+
+
+***********************************************************************************
+***********************************************************************************
+***********************************************************************************
+
+
+
+***********************************************************************************
+***********************************************************************************
+***********************************************************************************
+
+
+
+***********************************************************************************
+***********************************************************************************
+***********************************************************************************
+
+
+
+***********************************************************************************
+***********************************************************************************
+***********************************************************************************
+
+
+
+***********************************************************************************
+***********************************************************************************
+***********************************************************************************
+
+
+
+***********************************************************************************
+***********************************************************************************
+***********************************************************************************
+
+
+
+***********************************************************************************
+***********************************************************************************
+***********************************************************************************
+
+
+
+***********************************************************************************
+***********************************************************************************
+***********************************************************************************
+
+
+
+***********************************************************************************
+***********************************************************************************
+***********************************************************************************
+
+
+
+***********************************************************************************
+***********************************************************************************
+***********************************************************************************
+
+
+
+***********************************************************************************
+***********************************************************************************
+***********************************************************************************
+
+
+
+***********************************************************************************
+***********************************************************************************
+***********************************************************************************
+
+
+
+***********************************************************************************
+***********************************************************************************
+***********************************************************************************
+
+
+
+***********************************************************************************
+***********************************************************************************
+***********************************************************************************
+
+
+
+***********************************************************************************
+***********************************************************************************
+***********************************************************************************
+
+
+
+***********************************************************************************
+***********************************************************************************
+***********************************************************************************
+
+
+

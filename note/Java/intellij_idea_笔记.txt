@@ -1,0 +1,121 @@
+idea几个比较常用的快捷键:
+--------------------------------------------------
+ctrl + alt + T 
+psvm + Tab
+alt + insert 
+    1 生成 get + set + 构造方法...
+    2 新建class/servlet/interface等等
+
+ctrl + O  重写父类doget + dopost方法!!!
+ctrl + alt + S 打开idea的设置大全 settings
+ctrl + alt + shift + S 打开当前项目的结构目录
+重命名项目/文件  shift + F6
+alt + 回车 导入包+自动修正
+ctrl + alt + L   格式化代码
+双击shift 查找任何地方
+ctrl+D 复制行并且粘贴
+ctrl + F4  关闭当前窗口
+alt + F7  查看这个类在哪里用到过
+Debug: 
+    F7 进入函数
+    alt + shift + F7   ->  focre step into 强行进入系统级别函数,比如System.out.println();
+    step over   F8 跳过(比如遇到一个函数,你不想进入函数内部,就直接跳过吧,这就是step over) [ 也可以理解成: 逐行执行 ]
+shift + F10     运行/重新部署/更新静态资源/重启服务器
+
+
+如果导入一个项目,控制台输出报错:找不到资源文件:
+是因为没有将文件夹设置成为资源文件夹,
+怎么做呢??
+鼠标移动到文件夹上面,右键,Make Directory as Source Root
+再去运行,就可以了
+(如果一个文件夹不能new java class文件,同样的把这个文件夹设置成为资源文件夹(Source Root))
+
+
+
+
+
+path  是访问应用的路径，例如我上面写的是/SSM，则访问路径是     http://localhost/SSM
+port 是 Tomcat 的端口号　　
+uriEncoding  URL按UTF-8进行编码，这样就解决了中文参数乱码
+Server 指定tomcat名称
+
+  <build>
+    <!-- 配置了很多插件 -->
+    <plugins>
+
+      <!-- 编译插件 -->
+      <plugin>
+        <groupId>org.apache.tomcat.maven</groupId>
+        <artifactId>tomcat7-maven-plugin</artifactId>
+        <version>2.2</version>
+        <configuration>
+          <port>8080</port>
+          <path>/SSM</path>
+          <uriEncoding>UTF-8</uriEncoding>
+          <server>tomcat7</server>
+        </configuration>
+      </plugin>
+
+    </plugins>
+  </build>
+
+
+  tomcat 常用命令:
+        命令               描述
+    tomcat7:deploy    部署一个web war包
+    tomcat7:reload    重新加载web war包
+    tomcat7:start
+
+    启动tomcat
+    tomcat7:stop
+
+    停止tomcat
+    tomcat7:undeploy
+
+    停止一个war包
+    tomcat7:run    启动嵌入式tomcat ，并运行当前项目
+
+
+
+idea 下载安装设置:
+    1 设置字体: 
+        两种字体: 1 代码区编辑器字体: 在 settings 搜索: font
+                 2 软件的界面字体 打开settings -> 搜索: appearance -> 右边设置软件界面字体
+    2 设置快捷键:
+        打开 settings -> 搜索: keymap 设置快捷键
+
+idea 怎么配置: 
+    配置 JDK 
+        新建项目时候,会提示配置JDK才会继续
+        [ 打开cmd终端输入: where java 获取JDK目录 ]
+
+    配置 Tomcat
+        新建一个web项目,并且尝试运行jsp文件,自然而然会让你配置Tomcat服务器
+
+    配置 maven
+
+    配置Spring
+
+
+新建maven工程:
+    注意: maven -> webapp 有个 coco , 不要选它
+
+
+
+idea 比较全面的设置:
+    https://www.bilibili.com/video/av28528399?p=8
+
+idea修改注释的颜色:
+    搜索 language defaults
+
+idea 设置编码为: UTF-8:
+    搜索: file encoding 设置
+
+
+
+
+当你导入一个项目,发现pom.xml不能使用时候,
+原因是因为 intellij idea 并没有把这个项目识别成为 maven 项目,
+那怎么让 intellij idea 识别为maven项目呢??
+鼠标右击pom.xml -> Add as Maven Project
+

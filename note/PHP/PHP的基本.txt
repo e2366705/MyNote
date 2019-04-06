@@ -1,6 +1,9 @@
 JavaScript新建变量是: var xxx;
 PHP新建变量是:        $xxx;
 
+
+
+
 关于PHP中换行:
 单引号----> echo '-----------'.'\n';   输出不换行 \n 当成一个字符串输出
 双引号====> echo '-----------'."\n";   输出换行   \n 被识别成一个换行符
@@ -302,10 +305,12 @@ PHP中的函数
 截取字符串   substr("ABCDEFGHIJKRMN", 2,6);
 读取这个系统路径  dirname(__FILE__);
 
-php三种输出方式:
-echo "string"."\n"; 普通输出
-exit("qweqweqwe");  输出后退出
-die("123123123");   输出后退出
+php几种输出方式:
+echo "string"."\n"; 		普通输出
+exit("qweqweqwe");  		输出后退出, 不再执行下面的代码
+die("123123123");   		输出后退出
+var_dump($qweqweqwe); 		数据和类型一起输出
+print_r($aaa);				输出(数组也是可以的...) [推荐]
 
 定义常量               define("DB_HOST","user"); 
 设置MySQL编码格式       mysql_set_charset("utf8"); 

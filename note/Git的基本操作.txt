@@ -69,6 +69,12 @@ git rm -f --cached [按下 Tab键]   # 查看还有哪些文件夹
 git rm -r --cached target            # 删除target文件夹
 git commit -m '删除了target'      # 提交,添加操作说明
 git push -u origin master 	  # 修改完了,记得提交!!!不然不生效~~
+
+
+但你要删除某个文件时候:
+	rm xxxxx.txt
+	git add xxxxx.txt
+	./update.sh
 ~~~~~~~~~~~~ 删除操作 ~~~~~~~~~~~~~~~~~
 
 1.查看本地分支 git branch
@@ -116,6 +122,7 @@ git push origin 分支名称
 
 这篇文章非常好
 https://blog.csdn.net/maguanghui_2012/article/details/79457281
+
 
 
 强制push:

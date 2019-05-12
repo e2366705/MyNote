@@ -28,6 +28,8 @@ sizeof			查看数据类型占用多大数据空间
 	cout << len << endl;   			// 输出: 40 	因为int占用4个字节, 数组有10个int数据, 所以sizeof为: 40
 	
 const			修饰常量
+int a = 10;   // 局部变量保存在栈区, 函数结束, 就会被回收
+static int a = 10;	// 静态变量, 存放在全局区, 在程序结束后, 系统释放
 
 ```
 
@@ -559,28 +561,37 @@ const即修饰指针, 又修饰常量: const int* const p = &a;
 
 
 
-# 值传递 / 地址传递
+# 值传递 / 地址传递 / 引用传递
 ```  
 无论你定义一个函数(void swap(int a , int b))来交换a,b的值, 
 最终输出的a,b的值, 不会发生改变
 这就是值传递 , 因为函数 swap 里面传入的是值, 如果传入的是指针, 那就不一样了
 
+值传递: 拷贝数据
 
-小案例:
 #include <iostream>
-
 using namespace std;
 
-void swap(int a , int b) {
+// 值传递 不起作用 , 形参不会改变实参
+void swap(int a, int b) {
 	int temp = a;
 	a = b;
 	b = temp;
 }
 
+// 地址传递  形参会改变实参   传入的是指针 
 void swap_by_pointer(int* a, int* b) {
 	int temp = *a;
 	*a = *b;
 	*b = temp;
+}
+
+// 引用传递  形参会改变实参 引用的本质就是起别名  传入的是引用
+void swap_03(int& a, int& b)
+{
+	int temp = a;
+	a = b;
+	b = temp;
 }
 
 void main()
@@ -589,17 +600,185 @@ void main()
 	int a = 10;
 	int b = 20;
 
-	// 值传递 不起作用
-	//swap(a, b);
-
-	// 指针改变, 称之为 地址传递   a b 发生改变
-	swap_by_pointer(&a, &b);
+	swap(a, b);
+	//swap_by_pointer(&a, &b); 
+	//swap_03(a, b);
 
 	cout << a << endl;
 	cout << b << endl;
+}
+
+```
+
+
+
+
+
+
+
+
+# 引用
+### 本质就是, 给变量起别名
+```  
+语法:
+	int& = a; 这就是引用
+	------------------------
+	int a = 10;
+	int& b = a;  		// 引用了a
+	b = 20;
+	cout << a << endl;   	// 输出:20 为什么给b赋值, a会会发生改变?  因为引用, 就是操作同一块内存
+	
+	int& b = 10; 			// 不合法
+	const int& a = 10;		// 合法
+	
+	int a = 10;
+	int& b = a;		// 正确 , 因为引用是要接收一块地址
+	
+	
+	
+注意:
+	1, 引用必须要初始化
+		int& b;		// 错误的
+	2, 引用一旦初始化, 就不可以更改
+		int& b = a;			// 初始化, 引用a
+		int& b = c;			// 错误, 已经引用a, 就不能引用其他
+		
+
+#include <iostream>
+using namespace std;
+
+// 规矩1 : 不要返回局部变量的引用
+int& test_01()
+{
+	int a = 10;   // 局部变量保存在栈区, 函数结束, 就会被回收
+	return a;
+}
+
+// 如果函数的返回值是引用, 那么函数可以作为左值
+int& test_02()
+{
+	static int a = 10;	// 静态变量, 存放在全局区, 在程序结束后, 系统释放
+	return a;			// 返回的是一个引用
+}
+
+void main()
+{
+	int& ref = test_01();
+	cout << ref << endl;    // 第一次输出正确, 是因为编译器做了保留
+	cout << ref << endl;	// 运行失败
+
+	int& ref2 = test_02();
+	cout << ref2 << endl;
+	cout << ref2 << endl;
+
+	test_02() = 30000;			// 函数作为左值
+	cout << ref2 << endl;
+	cout << ref2 << endl;
 
 }
 
+C++推荐使用引用技术, 因为语法方便, 引用的本质是指针常量, 但是所有的指针操作编译器都帮我们做了
+
+
+int a = 10;
+// 加上const之后, 编译器将代码修改为: 
+//		int temp = 10; 
+//		int& ref = temp;
+const int& ref = 10;
+// ref = 30; // 加上const之后, 变为只读, 不可以修改
+
+	
+// 为了防止 形参修改实参
+void test(const int& val)
+{
+	// val = 1000;	// 修改失败, 因为形参加上了const , 防止误操作
+	cout << val << endl;
+
+}
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 函数
+```  
+//  默认参数
+void function(int a=10,int b=90)
+{
+	int c = a + b;
+	cout << c << endl;
+}
+
+void main()
+{
+	function();
+}
+
+注意: 
+	有默认值的参数, 必须在列表的最后一个
+	
+	
+	
+// 如果某个函数在main函数的后面, 那么应该在main函数前面声明	
+void function2(int a);				// 声明函数, 才可以调用...
+void main()
+{
+	//function();
+	function2(123);
+}
+
+void function2 (int a)		// 实现函数
+{
+	cout << a << endl;
+}	
+
+关于默认参数, 声明函数和实现函数, 只能有一个默认参数
+
+
+函数中的占位参数 , 占位参数也可以有默认值
+void function(int a, int = 10)
+{
+	cout << a << endl;
+}
+
+函数重载:
+	1, 函数名称相同
+	2, 参数类型不同 或者 个数不同 或者 顺序不同
+注意: 函数的返回值不可以作为函数重载的条件
+注意:
+	1, 引用作为重载的条件
+void function(int& a)		// int& a = 10;  不合法
+{
+	cout << "  -->   " << a <<endl;
+}
+
+void function(const int& a)		// const int& a = 10; 合法
+{
+	cout << "const   " << a << endl;
+}
+
+void main()
+{
+	int a = 10;
+	function(a);
+	function(10);
+}	
+	
+	2, 函数重载碰到默认参数
+		因为有默认参数的时候, 有默认参数的参数, 就算不赋值, 也没关系, 这时候, 程序就不知道走哪个方法了
 ```
 
 
@@ -624,6 +803,269 @@ void main()
 
 
 
+# 面向对象 / 类 / 对象 / 继承 / 封装 / 多态 
+```  
+基础
+class Animal
+{
+public:
+	int age;
+	int tall;
+	int get_test()
+	{
+		return 2333333;
+	}
+};
+
+void main()
+{
+	Animal animal;
+	animal.age = 80;
+	cout << animal.get_test() << endl;
+	cout << animal.age << endl;
+
+}
+
+访问权限:
+	1, private 		类里可以访问, 类外不可以访问 子类不可以访问父类
+	2, public		类里/类外都可以访问
+	3, protected	类里可以访问, 类外不可以访问 子类也可以访问父类
+
+	
+在c++中, 
+		struct 和 class 相似度非常高,唯一的区别在于, 默认的访问权限不同
+			struct 默认权限为 公共
+			class  默认权限为私有
+			如下:
+			class myClass
+			{
+				int age;		// 默认权限是 私有
+			};
+
+			struct MyStruct
+			{
+				int age;		// 默认权限是 公共
+			};
+			
+
+构造函数: 类名(){}
+	1, 没有返回值, 也不写void
+	2, 函数名称和类名相同
+	3, 可以有参数, 因此可以发生重载
+	4, 在调用对象的时候自动调用构造函数, 不用手动调用, 而且只会调用一次
+	
+析构函数: ~类名(){}
+	1, 没有返回值, 也不写void
+	2, 在名称前面加上 ~ 
+	3, 不可以有参数, 因此不可以发生重载
+	4, 在对象销毁前自动调用析构函数, 不用手动调用, 而且只会调用一次
+	
+			
+
+拷贝构造函数:
+	Person(const Person &p)
+	{
+		age = p.age;
+	}
+	
+	
+构造函数调用规则:
+	创建一个类, C++编译器会给每个类都添加至少3个函数
+		默认构造函数 (空实现)
+		析构函数	 (空实现)
+		拷贝构造	 (值拷贝)
+		
+
+		
+		
+初始化列表:		
+class Animal
+{
+public:
+	Animal(int a, int b) :age(a), tall(b)
+	{
+		cout << a << endl;
+	}
+	int age;
+	int tall;
+};
+
+void  main()
+{
+	Animal animal(30,20);
+}
+
+
+
+
+C++类中的成员, 可以是另一个类的对象, 称之为: 对象成员
+class A{}
+class B
+{
+	A a;
+}
+问题: 是先有A , 还是先有 B (构造函数) ???
+答案: 构造函数, 先实例化A , 再实例化 B  (析构函数的调用顺序相反)
+
+
+
+
+
+静态成员函数 / 静态变量
+	静态成员函数 只能访问    静态成员变量
+				 不可以访问  非静态成员变量
+class Animal
+{
+public:
+	static void func()
+	{
+		cout << 123 << endl;
+	}
+};
+
+void  main()
+{
+	Animal animal;
+	animal.func();
+
+	// 通过类名直接访问静态函数
+	Animal::func();
+}
+
+
+
+
+空对象:
+	空对象占用内存空间为: 1
+	C++编译器会给每一个空对象分配一个字节空间, 是为了区分对象占内存的位置
+	每个空对象应该有独一无二的内存地址
+	class Person
+	{
+	}
+	
+	
+
+只有非静态成员变量, 才属于类对象, 并且占用空间
+class Animal
+{
+	int a;					// 占用空间 , 属于对象上
+	int s;					// 占用空间
+	int c;					// 占用空间
+
+	static int b;			// 静态成员变量,		不属于某个对象, 是共享的 , 不占用内存空间
+
+	void func() {};			// 非静态成员函数 ,  不属于某个对象, 是共享的 , 不占用内存空间
+	static void func2() {}; // 静态成员函数 ,    不属于某个对象, 是共享的 , 不占用内存空间
+};
+
+void  main()
+{
+	Animal animal;
+	cout << sizeof(animal) << endl;
+}	
+
+
+
+
+
+this指针:  (相当于java中的小数点(.) )
+class Animal
+{
+public:
+	Animal(int age)
+	{
+		this->age = age;
+	}
+
+	int age;
+};
+
+void  main()
+{
+	Animal animal(66);
+	cout << animal.age<< endl;
+}
+
+
+
+返回值是 值对象:    创建一个新的对象
+返回值是 引用对象   不会创建一个新的对象
+Person& add(Person p)
+{
+	this->age ++;
+	return *this;
+}
+
+
+
+常函数:
+const 修饰成员函数:
+	成员函数后加const后我们称这个函数是 常函数
+	常函数不可以修改成员属性
+	成员属性声明加上mutable后, 常函数依然可以修改
+class Animal
+{
+public:
+	void Person() const
+	{
+		age_m = 100;
+	}
+	mutable int age_m;
+};
+	
+常对象:
+	声明对象前加const, 称之为 常对象
+	常对象只能调用常函数
+	const Person P; // 在对象前面加上const , 变成常对象
+	
+
+友元:
+	作用: 让一个函数, 或者类, 访问另一个类中私有成员
+	友元关键字是 friend
+	
+#include <iostream>
+using namespace std;
+#include<string>
+
+class Bullding
+{
+	friend void good_friend(Bullding* buliding);
+
+public:
+	Bullding()
+	{
+		m_sittingRoom = "客厅";
+		m_bedRoom = "卧室";
+	};
+
+public:
+	string m_sittingRoom; // 客厅
+
+private:
+    string m_bedRoom;   // 卧室
+};
+
+
+void good_friend(Bullding *buliding)
+{
+	cout << buliding->m_sittingRoom << endl;
+	cout << buliding->m_bedRoom << endl;
+};
+
+void  main()
+{
+	Bullding building;
+	good_friend(&building);
+}	
+
+类外面写构造函数:
+Bullding::Bullding()
+{
+	a=10;
+	b=20;
+}
+	
+```
 
 
 
@@ -644,6 +1086,11 @@ void main()
 
 
 
+# 运算符重载:
+```  
+
+
+```
 
 
 
@@ -656,6 +1103,189 @@ void main()
 
 
 
+
+
+
+
+# 继承
+### 最基础的继承:
+```  
+#include <iostream>
+#include<string>
+using namespace std;
+
+class Base
+{
+public:
+	void head()
+	{
+		cout << "head..." << endl;
+	}
+	void foot()
+	{
+		cout << "foot..." << endl;
+	}
+
+};
+
+class Java :public Base
+{
+public:
+	void content()
+	{
+		cout << "content....." << endl;
+	}
+};
+
+void  main()
+{
+	Java java;
+	java.head();
+	java.content();
+	java.foot();
+}
+
+```
+
+### 三种继承方式:
+```  
+	
+class Father
+{
+public:
+	int a;
+protected:
+	int b;
+private:
+	int c;
+};
+
+
+三种继承方式:
+	public 继承: 
+		class son3 :public Father{}
+		父类中 public 权限成员 , 到子类中依然是 public 成员
+		父类中 protected 权限成员 , 到子类中依然是 protected 成员
+		父类中 private 权限成员 , 子类访问不到		
+		
+	protected 继承
+		class son3 :protected Father{}
+		父类 public 成员, 		到子类中变成 protected 权限 , 类外无权访问
+		父类 protected 成员, 	到子类中变成 protected 权限 , 类外无权访问
+		父类中 private 权限成员 , 子类访问不到
+		
+    private 继承
+	class son3 :private Father{}
+		父类 public 成员, 			到子类中变成 private 权限 , 类外无权访问
+		父类 protected 成员, 		到子类中变成 private 权限 , 类外无权访问
+		父类中 private 权限成员 ,	子类访问不到
+
+		
+	私有继承, 原来public / protected 属性, 统统变成 private(私有的) 
+	
+	
+注意: 父类private属性, 无论怎么继承, 都不允许访问
+但是: 父类中所有非静态成员属性, 都会被子类继承下去 , 至于访问不到, 是因为被编译器给隐藏了,但确实是被继承下去了, 包括 public / protected / private
+
+```
+
+
+### 继承 - 父类和子类的执行顺序
+```  
+假如一个父类, 有构造函数, 析构函数, 子类继承了父类, 子类也有构造和析构函数, 
+那么执行顺序是:
+	父类构造函数
+	子类构造函数
+	子类析构函数
+	父类析构函数
+```
+
+
+### 继承 - 同名的处理方式
+```  
+当子类和父类出现同名的成员, 如何通过子类的对象, 访问子类/父类的同名的数据???
+	 访问子类同名成员, 直接访问即可
+	 访问父类同名成员, 需要加上作用域
+	 
+#include <iostream>
+#include<string>
+using namespace std;
+
+class father
+{
+public:
+	int a = 10;
+
+	void func()
+	{
+		cout << "father....." << endl;
+	}
+};
+
+class son : public father
+{
+public:
+	int a = 1000;
+
+	void func()
+	{
+		cout << "son....." << endl;
+	}
+};
+
+void  main()
+{
+	son sss;
+	cout << sss.a << endl;
+	cout << sss.father::a << endl;    // 通过子类对象, 访问父类同名成员, 需要加上作用域
+
+	sss.func();
+	sss.father::func();
+}
+	 
+
+```
+
+### 多继承 - 一个子类继承多个父类(很多个爹?)  在实际C++开发中 , 不建议多继承
+### 菱形继承 - 2个子类继承一个父类, 又有一个孙类同时继承这两个子类, 感觉像是菱形一样 这个也比较少用
+
+
+
+
+
+
+
+
+
+
+
+# `::`的作用
+### 作用一
+```  
+初始化数据:
+class father
+{
+public:
+	static int a;
+};
+
+int father::a = 100;
+
+void  main()
+{
+	father fa;
+	cout << fa.a << endl;
+}
+
+```
+
+### 作用二
+```  
+cout<< son::father::name << endl;
+	解读:
+		第一个:: 意思是通过类名访问
+		第二个:: 意思是访问父类作用域下
+```
 
 
 

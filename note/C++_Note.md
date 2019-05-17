@@ -497,15 +497,19 @@ int main()
 
 # 指针
 ```  
-int  var = 20;   // 实际变量的声明
-int * ip;       	 // 指针变量的声明
-ip = &var;       // 加个 & 转换成指针地址 , 赋值给指针变量
-*ip				 // 指针前面加 * 代表解引用, 找到指针指向的内存的数据
+
+int a = 100;
+cout << &a << endl;		// 加上 & -> 输出 地址
+
+int* p = &a;
+cout << p << endl;		// 输出地址
+cout << *p << endl;		// 加上 * -> 把地址转化为具体的数值
+
 
 简写: 
 	int a = 10;
 	int* p = &a;
-	cout << "sizeof p = " << sizeof(p);		// 查看指针占用多少个字节 => 4个字节
+	cout << "sizeof p = " << sizeof(p);				// 查看指针占用多少个字节 -> 4个字节
 	cout << "sizeof p = " << sizeof(float *); 		// 也是 4 个字节
 	
 
@@ -555,6 +559,35 @@ const即修饰指针, 又修饰常量: const int* const p = &a;
 		cout << *p << endl;
 		p++;
 	}		
+	
+	
+
+
+class Person
+{
+public:
+	Person(string name , int age)
+	{
+		this->name = name;
+		this->age = age;
+	}
+
+	string name;
+	int age;
+};
+
+
+void  main()
+{
+
+	Person p1("aaa" , 23);
+	cout << p1.name << endl;
+
+	Person * p2 = new Person("bbb", 66);
+	cout << p2->name << endl;
+
+}
+	
 		
 ```
 
@@ -1260,6 +1293,7 @@ void  main()
 
 
 # `::`的作用
+## 表示xxxxx作用域下面的 : Person::age;   Person类作用域下面的age;
 ### 作用一
 ```  
 初始化数据:
@@ -1307,7 +1341,71 @@ cout<< son::father::name << endl;
 
 
 
+# 多态
+### 静态多态, 函数重载/运算符重载都属于静态多态, 复用函数名
+### 动态多态
 
+
+
+
+
+## 成员函数 不属于类的对象
+## 指针 占用4个字节
+
+
+## 析构函数 / 纯析构函数 / 继承
+```  
+#include <iostream>
+#include<string>
+using namespace std;
+
+class Animal
+{
+public:
+	virtual void speak() = 0;
+};
+
+class Cat:public Animal
+{
+public:
+	virtual void speak()
+	{
+		cout << "cat is miao miao miao ....." << endl;
+	}
+};
+
+void main()
+{
+	Animal* animal = new Cat;
+	animal->speak();
+	delete animal;   // 创建在 堆区, 所以需要释放干净
+
+	Cat animal2;
+	animal2.speak();
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+# 引用 
+```  
+
+void swap(int &a, int &b)
+{
+	int temp = a;
+	a = b;
+	b = temp;
+};
+
+```
 
 
 

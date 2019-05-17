@@ -254,6 +254,369 @@ aaa instanceof Array
  
 ********************************************************************************
 
+Javascript中绑定click事件的四种方式介绍:
+
+一：HTML中添加onclick	
+    <button id="vv" onclick="myfunction()" >哈哈</button>
+
+二：JS中定义函数绑定事件	
+    var funcc = function () {
+      alert('我爱编程')
+      }
+    var aa = document.getElementById('vv')
+    aa.onclick = funcc
+
+三：直接定义函数与内容	
+    document.getElementById('vv').onclick = function () {
+      alert('hasssshhaa ')
+      }
+
+四：利用addEventListener	
+    document.getElementById('vv').addEventListener('click',funcc);
+    //或者：
+    document.getElementById('vv').addEventListener('click',function () {
+      alert('hahah')
+      })
+
+---------------------------------------------------------------------------
+
+JavaScript 函数
+ function myFunction(a, b) {
+    return a * b;
+}
+
+JavaScript 函数可以通过一个表达式定义。
+函数表达式可以存储在变量中
+ var x = function (a, b) {return a * b};
+var z = x(4, 3);
+
+
+---------------------------------------------------------------------------
+
+<h1 onclick="changetext(this)">点击文本!</h1>
+function changetext(id){
+	id.innerHTML="Ooops!";
+}
+
+
+---------------------------------------------------------------------------
+
+
+addEventListener() 方法允许向同一个元素添加多个事件，且不会覆盖已存在的事件：
+element.addEventListener("click", myFunction);
+element.addEventListener("click", mySecondFunction);
+甚至你可以向同个元素添加不同类型的事件
+
+---------------------------------------------------------------------------
+
+tagName nodeName 区别:
+
+总结： tagName 只能用在元素节点上，而nodeName可以用在任何节点上，
+可以说nodeName涵盖了tagName，并且具有更多的功能，因此建议总是使用nodeName。
+小例子:
+  <div id="box1">box1
+      <div class="son">son1</div>
+  </div>  
+
+      for (var i = 0; i < father.length ; i++) {
+            console.log(father[i].tagName)
+      }
+      返回: 
+          undefined
+          DIV
+          undefined
+  但是:
+        for (var i = 0; i < father.length ; i++) {
+            console.log(father[i].nodeName)
+        }      
+        返回:
+            #text
+            DIV
+            #text
+  建议使用nodeName
+      ps:多余一个text是因为有一个回车换行符
+
+---------------------------------------------------------------------------
+
+
+JavaScript 实战小项目
+https://github.com/visugar/FrontEnd-examples
+
+
+---------------------------------------------------------------------------
+
+页面加载的时候自动加载这个函数
+(function asdasd() {
+    console.log(123123);
+})();
+
+
+---------------------------------------------------------------------------
+
+按钮设置成为不可以点击的!!!
+btn.disabled = true;
+
+---------------------------------------------------------------------------
+
+区别:
+innerHTML  输出当前标签的文本内容，如果标签内有子标签，会连子标签本身和子标签内的文本内容一起输出
+outerHTML  输出当前标签的本身和标签内的文本内容，如果有子标签，那么子标签本身和标签内的文本内容也将一起输出
+
+innerText     只输出当前标签内的文本内容，如果标签内有子标签，那么也只输出子标签内的文本内容
+outerText     只输出当前标签内的文本内容，如果标签内有子标签，那么也只输出子标签内的文本内容
+
+ps:
+    innerHTML是符合W3C标准的属性，
+    而innerText只适用于IE浏览器，因此，尽可能地去使用innerHTML，而少用innerText，
+---------------------------------------------------------------------------
+
+
+ event对象中 target和currentTarget 属性的区别
+首先本质区别是：
+
+    event.target返回触发事件的元素
+    event.currentTarget返回绑定事件的元素
+
+    event.currentTarget的作用是什么呢，我觉得他和this 的作用是差不多的，始终返回的是绑定事件的元素
+
+
+
+---------------------------------------------------------------------------
+
+
+input输入框选中状态:
+document.getElementById("search_box_input").focus();
+
+
+---------------------------------------------------------------------------
+
+
+获取被点击对象的文本数据
+<ul id="list">
+    <li>YXB___QAQ---1</li>
+    <li>YXB___QAQ---2</li>
+    <li>YXB___QAQ---3</li>
+    <li>YXB___QAQ---4</li>
+    <li>YXB___QAQ---5</li>
+</ul>
+
+    document.getElementById("list").addEventListener('click',function(e){
+        console.log(e.target.innerHTML);
+    });
+
+效果一样的:	
+	document.querySelector("#Comprehensive span").onclick = function (e) {
+    console.log(e.target.innerHTML);
+	document.querySelector("#Comprehensive ul").style.display = "none";
+}
+
+
+---------------------------------------------------------------------------
+
+
+获取当前第几个元素:
+<ul id="list">
+    <li>YXB_____QAQ---1</li>
+    <li>YXB_____QAQ---2</li>
+    <li>YXB_____QAQ---3</li>
+    <li>YXB_____QAQ---4</li>
+    <li>YXB_____QAQ---5</li>
+</ul>
+
+    var ul =  document.getElementById("list");
+
+    ul.addEventListener('click',function(e){
+        var item = e.target;
+        var lists = Array.from(ul.querySelectorAll('li'));
+        console.log(lists.indexOf(item));
+    })
+
+
+---------------------------------------------------------------------------
+
+获得一个元素的高度值:
+	注意:   querySelector只会选中第一个元素
+	document.querySelector(".slideshow").offsetHeight  
+
+---------------------------------------------------------------------------
+
+获取整个网页向上滚动了多少距离??
+	console.log("向上滚动了   "+document.documentElement.scrollTop);
+
+
+---------------------------------------------------------------------------
+
+JavaScript:
+
+网页尺寸为: 2472*6708
+chrome浏览器模拟移动端: 
+	宽:320		高: 568
+
+测试代码:
+<html lang="zh"><head><style>        * {            margin: 0;            padding: 0;            text-decoration: none;            list-style-type: none;        }        #box1{            width: 115px;            height: 115px;            margin-left: 36px;            background-color: pink;        }</style><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="X-UA-Compatible" content="ie=edge"><title>YXB</title></head><body><h1>YXB</h1><div id="box1"></div><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><span>qwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqw</span><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p></body><script>    console.log(document.getElementById("box1").offsetWidth);    console.log(document.getElementById("box1").offsetHeight);    console.log(document.getElementById("box1").offsetLeft);    console.log(document.getElementById("box1").offsetTop);</script></html>
+	
+document.body.clientWidth;        //网页可见区域宽(body)   						返回 320
+document.body.clientHeight;       //网页可见区域高(body)						返回 569
+
+document.body.offsetHeight;      //网页可见区域宽(body)，包括border、margin等	返回 2472
+document.body.scrollWidth;        //网页正文全文宽，包括有滚动条时的未见区域	返回 6708
+document.body.scrollHeight;       //网页正文全文高，包括有滚动条时的未见区域	返回 2472
+
+document.body.offsetWidth;       //网页可见区域宽(body)，包括border、margin等  无论怎么滑动, 返回 320
+
+document.body.scrollTop;           //网页被卷去的Top(滚动条)					返回 88.5
+document.body.scrollLeft;           //网页被卷去的Left(滚动条)					返回 3762
+
+window.screenTop;                     //浏览器距离Top							返回 
+window.screenLeft;                     //浏览器距离Left							返回 
+
+window.screen.height;                //屏幕分辨率的高							返回 568
+window.screen.width;                 //屏幕分辨率的宽							返回 320
+
+window.screen.availHeight;          //屏幕可用工作区的高						返回 568
+window.screen.availWidth;           //屏幕可用工作区的宽						返回 320
+
+
+    console.log(document.getElementById("box1").offsetWidth);
+    console.log(document.getElementById("box1").offsetHeight);
+    console.log(document.getElementById("box1").offsetLeft);
+    console.log(document.getElementById("box1").offsetTop);
+	
+	注意:
+		document.documentElement.scrollTop 在chrome浏览器中, 不起作用
+		document.body.scrollTop			   在chrome浏览器中可以用
+
+		parseInt 小数转化成整数
+---------------------------------------------------------------------------
+
+
+移动端页面禁止网页滑动:
+        var mo = function(e){
+            e.preventDefault();
+        };
+        //直接默认不让滑动
+        stop();
+		
+	//不允许页面滑动
+    function not_allow_slide(){
+        document.body.style.overflow='hidden';
+        document.addEventListener("touchmove",mo,false);
+    }
+
+    // 允许滑动
+    function allow_slide(){
+        document.body.style.overflow='';//出现滚动条
+        document.removeEventListener("touchmove",mo,false);
+    }
+
+
+
+---------------------------------------------------------------------------
+
+JavaScript 返回上一页:
+ document.getElementById("span1").onclick = function (ev) {
+        window.history.go(-1);
+    }
+
+
+---------------------------------------------------------------------------
+
+
+JavaScript 动态给input输入框输入数值:
+	  document.getElementById("search_box_input").value = "123";
+
+
+---------------------------------------------------------------------------
+
+JavaScript发送action请求到java web后端:
+
+    
+
+
+   /*      按照销量排序  高 -> 低     */
+    document.getElementById("sort_by_sales").onclick = function (ev) {
+        window.location="<%=request.getContextPath()%>/JD_index/search_result.do?data=DESC";
+    };	
+	
+		java后端接收参数
+	    String data = request.getParameter("data");//取出值
+        System.err.println(data);
+		
+		PS:
+			记得导包( import javax.servlet.http.HttpServletRequest; ) 
+			HttpServletRequest request
+
+---------------------------------------------------------------------------
+JavaScript 匿名函数	
+	  (function(x, y) {
+        alert(x + y);
+    })(2,3);
+
+---------------------------------------------------------------------------
+
+
+        if (e.keyCode === 13){
+            login();
+        }
+		
+等同于:
+		
+		e.keyCode === 13 && login();
+
+
+
+---------------------------------------------------------------------------
+
+						cookie 操作:
+
+JavaScript 遍历所有cookie:
+    function get_all_cookies() {
+
+        var aCookie = document.cookie.split(";");
+        var re = '';
+        for (var i = 0; i < aCookie.length; i++) {
+            var aCrumb = aCookie[i].split("=");
+            if (aCrumb[0].toString().trim() === 'order_list') {
+                continue;
+            }
+            re += (aCrumb[0] + " = " + unescape(aCrumb[1]) + '\n');    /*   unescape  处理中文乱码问题             */
+        }
+        console.log(re);
+    }
+	
+	
+拿到cookie
+    function getCookie(cookie_name) {
+        if (document.cookie.length > 0) {
+            c_start = document.cookie.indexOf(cookie_name + "=");
+            if (c_start != -1) {
+                c_start = c_start + cookie_name.length + 1;
+                c_end = document.cookie.indexOf(";", c_start);
+                if (c_end == -1) c_end = document.cookie.length;
+                return unescape(document.cookie.substring(c_start, c_end))
+            }
+        }
+        return ""
+    }
+	
+	
+	
+	function save_into_cookies(cookie_name, value, expiredays) {
+        var exdate = new Date();
+        exdate.setDate(exdate.getDate() + expiredays);
+        document.cookie = cookie_name + "=" + escape(value) + ((expiredays == null) ? "" : ";expires=" + exdate.toGMTString())
+    }
+
+
+
+---------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------
+
 ********************************************************************************
 
 ********************************************************************************

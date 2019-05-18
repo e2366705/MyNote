@@ -83,10 +83,602 @@ cnpm install bootstrap@3.3.7 --save
 
 图片在线生成
 <img class="slide-image" src="http://placehold.it/800x300" >
+```
 
+
+
+
+
+
+
+
+
+
+# 基础:
+```  
+日期
+public today:auy=new Date();
+
+  构造函数:
+  constructor() { 
+    console.log(this.today);
+  }
+  
+  
+  
+男 / 女   按钮切换
+<input type="radio" value="1" name='sex' id="1" /> <span for='1'>man</span>
+<input type="radio" value="2" name='sex' id="2"  /> <span for='2'>woman</span>
+
+```
+
+
+
+
+# 绑定数据:
+### xxxxx.cpmponent.ts
+```  
+
+export class Test001Component implements OnInit {
+
+  public userinfo:object={
+    username:"jack tom",
+    age:23
+  }
+  
+取值:
+<h2>{{userinfo.username}}</h2>
+  
+
+```
+
+
+
+
+
+
+
+
+
+# 绑定属性:
+```  
+
+xxxx.cpmponent.ts:
+export class Test001Component implements OnInit {
+public xxxxx:string='12312312312';
+
+<div [title]='xxxxx'>
+  div
+</div>
+
+```
+
+
+
+
+
+
+# 解析html:
+```  
+
+public content:string="<h1>big words....<h1/>";
+
+<span [innerHTML]='content'></span>
+
+```
+
+
+
+
+# 遍历数组
+```  
+
+public arr:any[]=['111','222','333'];
+
+
+
+<ul>
+  <li *ngFor="let item of arr">
+    {{item}}
+  </li>
+</ul>
+
+```
+
+
+# 引入图片:
+### 方式1:
+```  
+
+<img src="assets/img/1.JPG" alt="">
 
 
 ```
+### 方式2:
+```  
+
+public img_src="http://attach.zhiyoo.com/forum/201902/27/1225427jegpzezfxjjf1f1.jpg";
+<img [src]="img_src" alt="">
+
+
+```
+
+
+
+# 显示索引:
+```  
+  public list:any[]=[
+    {
+      "name":"tom"
+    },
+    {
+      "name":"tom2"
+    },
+    {
+      "name":"tom3"
+    }
+  ]
+  
+  
+<ul>
+  <li *ngFor="let item of list ; let key=index">
+    {{key}}--------{{item.name}}
+  </li>
+</ul>
+
+```
+
+
+
+
+# 判断语句
+```  
+public flag:boolean=true;
+
+<div *ngIf="flag">
+  display.....
+</div>
+
+<div *ngIf="!flag">
+  display = none;
+</div>
+
+
+<span *ngIf="key == 1" class="one">1111111111</span>
+<span *ngIf="key == 2" class="two">1111111111</span>
+
+```
+
+
+
+# ngSwitch:
+```  
+public xxxxxx:number=1;     /* 1表示已经支付,   2表示已经发货   */ 
+
+  <span [ngSwitch]="xxxxxx">
+  <p *ngSwitchCase="1">
+      表示已经支付
+  </p>
+  <p *ngSwitchCase="2">
+      表示已经发货
+  </p>
+  <p *ngSwitchDefault>
+    未知数.........
+  </p>
+  </span>
+
+```
+
+
+# ngClass
+```  
+public flag:boolean=false;
+
+
+<div [ngClass]="{'red': flag , 'yellow':!flag}">
+  font....color
+</div>
+
+
+<ul>
+    <li *ngFor="let item of list ; let key=index" [ngClass]="{'red': key==0 , 'yellow': key==1}" >
+      {{key}}--------{{item.name}}
+    </li>
+</ul>
+
+```
+
+
+
+
+
+
+# 操作CSS样式
+```  
+这里 red 也可以是一个变量 , 
+	public colorrrr:string=blue;
+	
+<p [ngStyle]="{'color': 'red'}">color.....css....</p>
+
+```
+
+
+
+
+
+
+
+
+
+# 管道:
+```  
+
+public today:auy=new Date();
+
+<h1>{{today | date:'yyyy-mm-dd hh:mm:ss'}}</h1>
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+# 事件 click:
+```  
+<button (click)="click_me()">点击我....</button>
+
+  click_me(){
+    alert('...................');
+  }
+
+```
+
+
+
+
+
+
+
+# 表单事件
+```  
+<input type="text" (keydown)="keyDown_yxb($event)">
+
+
+  keyDown_yxb(ev){
+   console.log(ev.key);
+   console.log(ev.keyCode);
+   console.log(ev.target.value);
+  }
+
+```
+
+
+
+
+
+
+
+
+
+
+# 双向数据绑定:
+```  
+第一步:
+	在 app.module.tx 引入:  import { FormsModule } from '@angular/forms'
+
+第二部: 
+	在 @NgModule -> imports 里面声明这个模块, 不然没法使用:  
+		 imports: [
+			BrowserModule,
+			FormsModule
+		],
+		
+		
+
+然后就可以使用了:
+public keywords:string="这是默认值";
+<input type="text" name="" id=""  [(ngModel)]="keywords" />
+<h2>{{keywords}}</h2>
+
+
+
+
+  public peopleinfo:any={
+    username:'jack'
+  }
+<input type="text" [(ngModel)]="peopleinfo.username" />
+
+{{peopleinfo | json}}   -> 使用管道
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

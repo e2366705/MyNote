@@ -110,6 +110,24 @@ public today:auy=new Date();
 <input type="radio" value="1" name='sex' id="1" /> <span for='1'>man</span>
 <input type="radio" value="2" name='sex' id="2"  /> <span for='2'>woman</span>
 
+
+必须指定默认值:
+public history_List:any[] = [];
+
+
+
+```
+
+
+
+
+
+# 快捷键:
+```  
+
+ngcli:
+(click)="delete_history()"
+
 ```
 
 

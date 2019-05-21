@@ -1,0 +1,21 @@
+<p>
+  news works!
+</p>
+
+<button (click)="getDate()">click_it</button>
+
+精选热菜
+特色菜
+城心小炒
+田园时蔬
+粗粮主食
+最长点的菜
+
+
+<br>
+
+<ul>
+  <li *ngFor="let item of list">
+    {{item.title}}
+  </li>
+</ul>

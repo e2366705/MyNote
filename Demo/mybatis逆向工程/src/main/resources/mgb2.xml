@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+
+<generatorConfiguration>
+
+    <properties resource="jdbc.properties"></properties>
+
+
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+
+        <!-- 配置在逆向生成时不需要有他们默认的注释 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="false"/>
+        </commentGenerator>
+
+
+        <!--    就是 userId 不要乱改了     -->
+        <jdbcConnection
+                driverClass="com.mysql.jdbc.Driver"
+                connectionURL="${jdbc.connectionURL}"
+                userId="${jdbc.userId}"
+                password="${jdbc.password}">
+        </jdbcConnection>
+
+
+
+        <javaTypeResolver >
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+
+        <!--               pojo / javabean                -->
+        <javaModelGenerator targetPackage="${pojo}" targetProject=".\src\main\java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+
+        <!-- 指定sql映射文件生成的位置 ( XML文件 ) -->
+        <sqlMapGenerator targetPackage="${mapper}" targetProject=".\src\main\java">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+        <!-- 指定到接口生成的位置 ，mapper接口 ( java文件 ) -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="${mapper}" targetProject=".\src\main\java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+        <!--
+        指定每个表的生成策略
+        <table tableName="user_t"
+               domainObjectName="user_t"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+         -->
+
+
+        <!-- 指定每个表的生成策略 -->
+        <table tableName="${table}">
+        </table>
+
+
+    </context>
+</generatorConfiguration>

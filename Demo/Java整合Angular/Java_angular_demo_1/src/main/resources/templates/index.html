@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>玩转spring boot——结合JDBC</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+
+        .modal-dialog{
+            width: 90%;
+        }
+    </style>
+</head>
+<body ng-app="app" ng-controller="MainController">
+
+<h1>玩转spring boot——结合JDBC</h1>
+<h2><a target="_blank" href="https://www.jianshu.com/p/58d42fd3058f">原帖:</a></h2>
+<h4><a href="http://www.cnblogs.com/GoodHelper/">from 刘冬的博客</a></h4>
+
+
+<div class="container">
+
+    <!--                       添加数据         start                                    -->
+    <!-- 按钮触发模态框 -->
+    <button class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#myModal_add">添加数据</button>
+
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="myModal_add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog"  >
+            <div class="modal-content" >
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title">
+                        添加数据
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+                    <h3>清单信息：</h3>
+                    <input id="id" type="hidden" ng-model="data.id" />
+                    <table cellspacing="1" style="background-color: #a0c6e5">
+                        <tr>
+                            <td>编号：</td>
+                            <td><input id="no" ng-model="data.no" /></td>
+                            <td>日期：</td>
+                            <td><input id="date" ng-model="data.date" /></td>
+                            <td>数量：</td>
+                            <td><input id="quantity" ng-model="data.quantity" /></td>
+                        </tr>
+                    </table>
+                    <input class="btn btn-primary" type="button" value="添加" ng-click="add()" />
+                    <button class="btn btn-danger"  ng-click="clear_All()"  >清除所有</button>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        关闭
+                    </button>
+                    <button type="button" class="btn btn-primary" ng-click="save()" >
+                        添加
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+    <!--                       添加数据         end                                    -->
+
+
+
+
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr style="text-align: center; COLOR: #0076C8; BACKGROUND-COLOR: #F4FAFF; font-weight: bold">
+            <th>#</th>
+            <th>编号</th>
+            <th>日期</th>
+            <th>数量</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr ng-repeat="row in rows">
+            <th scope="row" class="col-md-2">
+                <input  class="btn btn-primary" ng-click="edit(row.id)" value="编辑" type="button" />
+                <input  class="btn btn-danger"  ng-click="del(row.id)" value="删除" type="button" />
+            </th>
+            <td>{{row.no}}</td>
+            <td>{{row.date}}</td>
+            <td>{{row.quantity}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+
+<a href="http://www.cnblogs.com/GoodHelper/">点击访问原版博客</a>
+
+
+<br>
+
+
+
+
+
+<!--                       编辑数据         start                                    -->
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal_edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog"  >
+        <div class="modal-content" >
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    编辑数据
+                </h4>
+            </div>
+
+            <div class="modal-body">
+                <h3>清单信息：</h3>
+                <input id="id" type="hidden" ng-model="data.id" />
+                <table cellspacing="1" style="background-color: #a0c6e5">
+                    <tr>
+                        <td>编号：</td>
+                        <td><input id="no" ng-model="data.no" /></td>
+                        <td>日期：</td>
+                        <td><input id="date" ng-model="data.date" /></td>
+                        <td>数量：</td>
+                        <td><input id="quantity" ng-model="data.quantity" /></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                    关闭
+                </button>
+                <button type="button" class="btn btn-primary" ng-click="update()" >
+                    update
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<!--                       编辑数据         end                                    -->
+
+
+</body>
+
+<script src="//cdn.bootcss.com/angular.js/1.5.6/angular.min.js"></script>
+<script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<script type="text/javascript">
+
+
+    /*<![CDATA[*/
+    var app = angular.module('app', []);
+    app.controller('MainController', function($rootScope, $scope, $http) {
+
+        $scope.data = {};
+        $scope.rows = [];
+
+        //添加
+        $scope.add = function() {
+            $scope.data = {
+                no : 'No.1234567890',
+                quantity : 100,
+                'date' : '2016-12-30'
+            };
+        };
+
+
+
+        //清除
+        $scope.clear_All = function() {
+            $scope.data = {
+                no : null,
+                quantity : null,
+                'date' : null
+            };
+        };
+
+        //编辑
+        $scope.edit = function(id) {
+            for ( var i in $scope.rows) {
+                var row = $scope.rows[i];
+                if (id == row.id) {
+                    $scope.data = row;
+                    $('#myModal_edit').modal('show');
+                    return;
+                }
+            }
+        };
+
+        // 移除 ( dom数据 )
+        $scope.remove = function(id) {
+            for ( var i in $scope.rows) {
+                var row = $scope.rows[i];
+                if (id == row.id) {
+                    $scope.rows.splice(i, 1);
+                    return;
+                }
+            }
+        };
+
+        // 保存
+        $scope.save = function() {
+            $http({
+                url : '/save',
+                method : 'POST',
+                data : $scope.data
+            }).success(function(r) {
+                //保存成功后更新数据
+                $scope.get(r.id);
+                $('#myModal_add').modal('hide');
+            });
+        };
+
+        // 更新
+        $scope.update = function() {
+            $http({
+                url : '/update',
+                method : 'POST',
+                data : $scope.data
+            }).success(function(r) {
+                //保存成功后更新数据
+                $scope.get(r.id);
+                $('#myModal_edit').modal('hide');
+            });
+        };
+
+        //删除 (服务器数据)
+        $scope.del = function(id) {
+            $http({
+                url : '/delete?id=' + id,
+                method : 'POST',
+            }).success(function(r) {
+                //删除成功后移除数据
+                $scope.remove(r.id);
+            });
+        };
+
+        //获取数据
+        $scope.get = function(id) {
+            $http({
+                url : '/get?id=' + id,
+                method : 'POST',
+            }).success(function(data) {
+                for ( var i in $scope.rows) {
+                    var row = $scope.rows[i];
+                    if (data.id == row.id) {
+                        row.no = data.no;
+                        row.date = data.date;
+                        row.quantity = data.quantity;
+                        return;
+                    }
+                }
+                $scope.rows.push(data);
+            });
+        }
+
+        //初始化载入数据
+        $http({
+            url : '/findAll',
+            method : 'POST'
+        }).success(function(rows) {
+            for ( var i in rows) {
+                var row = rows[i];
+                $scope.rows.push(row);
+            }
+        });
+    });
+    /*]]>*/
+</script>
+
+
+</html>

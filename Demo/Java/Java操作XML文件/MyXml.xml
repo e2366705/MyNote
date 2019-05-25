@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><Root>
+    <data id="apple233">
+        <word>apple233</word>
+        <translation>unknown</translation>
+        <status>be_familiar_with</status>
+    </data>
+    <data id="alibaba">
+        <word>alibaba</word>
+        <translation>unknown</translation>
+        <status>unknown</status>
+    </data>
+    <data id="tencent">
+        <word>tencent</word>
+        <translation>unknown</translation>
+        <status>unknown</status>
+    </data>
+    <data id="google">
+        <word>google</word>
+        <translation>unknown</translation>
+        <status>unknown</status>
+    </data>
+    <data id="baidu">
+        <word>baidu</word>
+        <translation>unknown</translation>
+        <status>be_familiar_with</status>
+    </data>
+    
+</Root>

@@ -24,6 +24,7 @@ server.tomcat.uri-encoding=UTF-8
 ```  
 server.port=8080
 server.context-path=/demo
+spring.mvc.static-path-pattern=/static/**
 
 ```
 
@@ -81,6 +82,12 @@ spring.jpa.properties.hibernate.hbm2ddl.auto=none
 
 
 
+
+# springBoot 中 css 文件引入失败?
+```  
+spring.mvc.static-path-pattern=/static/**
+
+```
 
 
 

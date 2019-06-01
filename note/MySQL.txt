@@ -284,3 +284,20 @@ create table students(
 
 insert into user(id,name,sal) values (123,'jack','5600');
 insert into students(students_id, students_name, students_sal) values (666,'bill',23.36);
+
+
+
+
+
+MySQL中删除unique key (删除某个字段的唯一性约束)
+	ALTER TABLE 表名 DROP INDEX 字段名(比如:userID);
+	
+	
+mysql排序:
+	ASC		 数值从低到高
+	DESC	 数值从高到低
+	
+模糊查询:
+		select * from goods where `describe` LIKE '%王力宏%' 
+		and `price` BETWEEN 0 and 2000 
+		ORDER BY sales DESC; 

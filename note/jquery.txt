@@ -1,0 +1,119 @@
+﻿
+jquery选择器:
+
+$(document).ready(function(){
+  $("button").click(function(){         => 按照 tagname
+    $("p").hide();
+    $("#test").hide();                  => 
+    $(".test").hide();                  =>
+    $("*") 	                            => 选取所有元素
+    $(this) 	                             选取当前 HTML 元素
+    $("p.intro") 	                         选取 class 为 intro 的 <p> 元素
+    $("p:first") 	选取第一个 <p> 元素
+    $("ul li:first") 	选取第一个 <ul> 元素的第一个 <li> 元素 
+    $("ul li:first-child") 	选取每个 <ul> 元素的第一个 <li> 元素 
+    $("[href]") 	选取带有 href 属性的元素
+    $("a[target='_blank']") 	选取所有 target 属性值等于 "_blank" 的 <a> 元素
+  });
+});
+
+
+获得内容 - text()、html() 以及 val()
+三个简单实用的用于 DOM 操作的 jQuery 方法：
+
+text() - 设置或返回所选元素的文本内容
+html() - 设置或返回所选元素的内容（包括 HTML 标记）
+val() - 设置或返回表单字段的值
+
+获取当前节点 的 父节点
+ev.target.parentNode.parentNode
+
+取值操作
+$(".submit").parent().parent().parent().parent().attr('id');
+
+
+
+	
+	
+	
+----------------------------------------------------------------------------------
+
+jquery 点击一个图片元素, 选择该产品对应的 ID:
+流程如下:
+	
+	// jquery选择DOM元素:
+    $("#goods_search_list .goods_box .paddingg .borderr .img").click(function(ev) {
+	
+		// 选择你点击那个元素的父元素的父元素 , 返回的是一个 DOM节点
+        var target_DOM =  ev.target.parentNode.parentNode;
+		
+		// 获取这个节点下面的 对应className="bookId" 的节点 返回的是个集合
+         var bookId = target_DOM.getElementsByClassName("bookId");
+		 
+		 // 输出这个节点的 的值
+         console.log(bookId[0].innerText);
+    });
+
+----------------------------------------------------------------------------------
+
+
+文档加载完毕执行事件:
+
+<script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+    window.onload=function(){
+        alert("javascript.....");
+    };
+    $(function(){
+        alert("jquery........");
+    });
+	
+ready:  文档结构（DOM结构）已经加载完成（不包含图片等非文字媒体文件）
+onload: 页面包含图片等文件在内的所有元素都加载完成。(可以说：ready 在onload 前加载)
+
+	// JQuery
+	// 在DOM结构加载完毕之后执行
+    $(document).ready(function () {
+        alert("jquery     ready  " );
+    })
+	
+	// JQuery
+	// 会等到页面所有内容加载完毕后才会触发
+	$(window).load(function () {
+        alert("jquery    window-load    ")
+    })
+	
+	
+	// JavaScript
+	// 在所有的文件加载完毕之后执行
+	window.onload = function (ev) {
+        alert("javascript     onload    ")
+    }
+
+
+
+
+
+
+# jquery 点击事件
+```  
+	$('#qweqwe').click(function () {
+		alert("jquery...click...");
+	});
+
+	$('#qweqwe').click(() => {
+		alert("jquery...click.  => ..");
+	});
+
+	document.getElementById("qweqwe").onclick = function () {
+		alert("javascript...onclick = function....")
+	};
+
+	document.getElementById("qweqwe").onclick = () => {
+		alert("javascript-----onclick =  () => ....")
+	};
+
+```
+
+
+
+

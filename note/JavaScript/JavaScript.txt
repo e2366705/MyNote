@@ -114,7 +114,7 @@ document.getElementById('title_input').innerHTML
 ********************************************************************************
 JavaScript 这两个方法是有区别的:
 document.getElementsByClassName('btn-default')[0].click();
-document.getElementsByClassName('btn-default')[0].onclick() = = function(){ ...... };
+document.getElementsByClassName('btn-default')[0].onclick() = function(){ ...... };
 click()---->单纯的点击,比如某个按钮
 onclick---->绑定点击事件
 ********************************************************************************

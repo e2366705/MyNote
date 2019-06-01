@@ -71,7 +71,7 @@ desc 表名
 查看服务器的版本:
 select version();
 
--------------------------------删除操作-----------------------------------
+-------------------------------删除操作 start -----------------------------------
 删除表中某项数据
 delete from user where password = '123123123';
 
@@ -97,7 +97,7 @@ alter table 表名 drop column 字段名
 ALTER TABLE user3 DROP PRIMARY KEY;            
 
 
--------------------------------删除操作-----------------------------------
+-------------------------------删除操作 end -----------------------------------
 
           UPDATE 更新表中某项数据
 UPDATE runoob_tbl SET runoob_title='学习 C++' WHERE runoob_id=3;
@@ -107,7 +107,6 @@ UPDATE runoob_tbl SET runoob_title='学习 C++' WHERE runoob_id=3;
 insert into user(username,password) VALUES('aaa','999');
 insert into user(username,password) VALUES('bbb','555');
 insert into user(username,password) VALUES('ccc','333');      
-
 
 
 mysql 去掉重复的:

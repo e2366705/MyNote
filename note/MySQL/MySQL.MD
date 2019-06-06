@@ -126,24 +126,32 @@ UPDATE runoob_tbl SET runoob_title='学习 C++' WHERE runoob_id=3;
 # 查询 select
 ```  
 模糊查询:
-		 select * from goods where `describe` LIKE '%王力宏%' 
-		 and `price` BETWEEN 0 and 2000 
-		 ORDER BY sales DESC; 
+	select * from 
+		`goods`
+	where 
+		`describe` LIKE '%王力宏%'
+	and 
+		`price` BETWEEN 0 and 2000 
+	ORDER BY sales DESC; 
 		
-多表查询:select sname,cno,degree from student,score where student.sno = score.sno;
+多表查询:
+	select sname,cno,degree from student,score where student.sno = score.sno;
 		 
-		 select 
-		 	sname,cname,degree from student,course,score 
-		 where
-		 	student.sno = score.sno 
-		 and
-		 	course.cno = score.cno;
+	select 
+		sname,cname,degree from student,course,score 
+	where
+		student.sno = score.sno 
+	and
+		course.cno = score.cno;
 
 group by : 排除重复的,筛选出不同的
-		 SELECT PASSWORD FROM user3 GROUP BY `PASSWORD`;
+	SELECT PASSWORD FROM user3 GROUP BY `PASSWORD`;
 
 排除重复的:
-		select distinct username from user;
+	select distinct username from user;
+
+查询字段`word`长度等于 5 的:
+	select * from `words_warehouse`  where length(`word`) = 5;		
 
 select * from score where username in ('aaa','bbb','ccc');  查询符合条件(aaa或者bbb或者ccc)的项目
 select * from student where class='12306' or sex='女';    MySQL或者查询

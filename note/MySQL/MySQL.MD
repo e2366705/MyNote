@@ -155,6 +155,43 @@ MySQL查询最高分----> 语句太长,懒得写了,用时再百度吧...
 ```
 
 
+# 字段操作:
+```  
+修改字段名称和属性 ( 将test字段改为test1 ) :
+	ALTER TABLE 表名      CHANGE 原字段名  新字段名    字段类型       约束条件 ; 
+	ALTER TABLE user10    CHANGE test      test1     CHAR(32)     NOT NULL DEFAULT '123';
+
+增加 : 
+	给字段添加默认值 : 
+	ALTER TABLE `数据表` ALTER COLUMN `字段` SET DEFAULT '默认值';
+
+增加 : 
+	字段主键约束 : 
+	ALTER TABLE user3 add PRIMARY KEY(id);
+(注意:执行这句代码时候,会报错,原因是原来的字段都是null值,所以设置不成功,添加不一样的数据,再执行这句代码即可)
+
+增加 : 
+	字段唯一约束:
+	ALTER TABLE user3 add unique(username);
+约束该字段的值不可以重复(insert时候,组合在一起不重复就ok)
+	
+增加 : 
+	一个字段 : 
+	ALTER TABLE user11 ADD email VARCHAR(50);
+
+
+修改 : 
+	字段类型
+	alter table 表名 modify column 字段名 类型;
+注意: 如果修改字段数据失败,可能是MySQL为了数据安全,加了保险
+(比如text类型的字段转化为int类型->大数据类型转小数据类型,这样子就可能会丢失数据)
+
+
+删除 : 
+unique key (删除某个字段的唯一性约束)
+	ALTER TABLE 表名 DROP INDEX 字段名(比如:userID);
+
+```
 
 # MySQL 约束
 ``` 
@@ -173,32 +210,8 @@ MySQL查询最高分----> 语句太长,懒得写了,用时再百度吧...
 	PASSWORD VARCHAR(66)
 	);
 
-ALTER TABLE user3 add PRIMARY KEY(id);    	添加主键约束
-(注意:执行这句代码时候,会报错,原因是原来的字段都是null值,所以设置不成功,添加不一样的数据,再执行这句代码即可)
-
-alter table 表名 modify column 字段名 类型;		修改 字段 类型
-注意: 如果修改字段数据失败,可能是MySQL为了数据安全,加了保险
-(比如text类型的字段转化为int类型->大数据类型转小数据类型,这样子就可能会丢失数据)
-
-
-修改字段名称和属性：
--- 将test字段改为test1
--- ALTER TABLE 表名   CHANGE 原字段名 新字段名 字段类型       约束条件
-   ALTER TABLE user10 CHANGE test      test1    CHAR(32)   NOT NULL DEFAULT '123';
-
--- 	给age添加默认值
-	ALTER TABLE `数据表` ALTER COLUMN `字段` SET DEFAULT '默认值';
-
--- 	添加 增加 一个字段
-	ALTER TABLE user11 ADD email VARCHAR(50);
-
-
-
 INSERT INTO 数据表(`字段`) VALUES('你要插入的值');
 注意:字段一定要用反引号 `` 包括起来 , 因为有时候你的自定义字段名会和MySQL关键字冲突, 用``包起来就没事了
-
-唯一约束:
-ALTER TABLE user3 add unique(username);    约束该字段的值不可以重复(insert时候,组合在一起不重复就ok)
 
 非空约束: 就是 not null (没啥好说的.....)
 默认约束: default 2333 就是当我们插入字段值的时候,如果没有传值,就会使用默认值
@@ -207,17 +220,11 @@ PRIMARY KEY不可空不可重复，在一个表里可以定义联合主键；简
 null 和 '' 是不一样的
 null 不等于 ''
 
-
 给数据库添加注释   comment    :
 CREATE TABLE IF NOT EXISTS `test`(
 	 `id` INT(25) primary key comment '字段的注释',
 	  `name` VARCHAR(20) not NULL
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
-MySQL中删除unique key (删除某个字段的唯一性约束)
-ALTER TABLE 表名 DROP INDEX 字段名(比如:userID);
-
 
 外键约束:涉及两个表(主表+副表)
 *1 主表(父表) class 中没有的数据值,在附表(子表)中,是不可以使用的
@@ -244,17 +251,10 @@ FOREIGN KEY(class_id) REFERENCES class(id)
 ```
 
 
-
-
-
-
-
-
 # MySQL 高级:
 ```  
 mysql 去掉重复的:
 SELECT DISTINCT username FROM same;
-
 
 mysql CONCAT 表示链接字符串
 SELECT CONCAT("aaa",100,"---") as result ; => 输出: aaa100---

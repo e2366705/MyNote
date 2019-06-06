@@ -156,11 +156,7 @@ MySQL查询最高分----> 语句太长,懒得写了,用时再百度吧...
 
 
 # 字段操作:
-```  
-修改字段名称和属性 ( 将test字段改为test1 ) :
-	ALTER TABLE 表名      CHANGE 原字段名  新字段名    字段类型       约束条件 ; 
-	ALTER TABLE user10    CHANGE test      test1     CHAR(32)     NOT NULL DEFAULT '123';
-
+```
 增加 : 
 	给字段添加默认值 : 
 	ALTER TABLE `数据表` ALTER COLUMN `字段` SET DEFAULT '默认值';
@@ -185,6 +181,11 @@ MySQL查询最高分----> 语句太长,懒得写了,用时再百度吧...
 	alter table 表名 modify column 字段名 类型;
 注意: 如果修改字段数据失败,可能是MySQL为了数据安全,加了保险
 (比如text类型的字段转化为int类型->大数据类型转小数据类型,这样子就可能会丢失数据)
+
+修改 : 
+	字段名称和属性 ( 将test字段改为test1 ) :
+	ALTER TABLE 表名      CHANGE 原字段名  新字段名    字段类型       约束条件 ; 
+	ALTER TABLE user10    CHANGE test      test1     CHAR(32)     NOT NULL DEFAULT '123';
 
 
 删除 : 

@@ -22,36 +22,28 @@ https://blog.csdn.net/usydapeng/article/details/16943553
 
 
 
+苹果电脑里面如何调整命令行窗口的显示字体大
+两个方法：
+1.打开终端后进入终端的偏好设置，选择设置，更改字体。
+2.进入终端后comman键和+键的组合可以增大显示。
+
+制作替身”就是Windows系统下的“创建快捷方式”
+
+MacBook 怎么进行剪切操作？？
+第一步：command+C 复制
+第二部：option+command+ V 即可实现剪贴
 
 
+mac程序坞有延时？？？
+一行代码可以干掉！！！
+		defaults write com.apple.Dock autohide-delay -float 0 && killall Dock
+也是可以恢复延时的：
+		defaults delete com.apple.Dock autohide-delay && killall Dock
+网页链接： https://www.jianshu.com/p/565adbe0aff1
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+设置教程
+https://www.jianshu.com/p/0f620fc47ebb
 
 
 

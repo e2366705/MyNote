@@ -16,42 +16,12 @@
    }
 
 -----------------  mybatis generiator 逆向工程 教程 -------------------------------------
-https://blog.csdn.net/thedarkclouds/article/details/82384606
 
-UserExample example = new UserExample();
-
-Criteria criteria = example.createCriteria();
-criteria.andUsernameEqualTo("wyw");
-criteria.andUsernameIsNull();
-
-example.setOrderByClause("username asc,email desc");
-List<?>list = XxxMapper.selectByExample(example);
-
-//相当于：select * from user where username = 'wyw' and  username is null order by username asc,email desc
 
 
 
 -------------------------------------------------------------------------------------------
-  // 自定义查询条件 -  WHERE ( price between ? and ? )
-    @Test
-    public void andXxxxxBetween() throws Exception {
-	
-        SqlSession sqlSession = get_SqlSession();
-        BookInfoMapper bookInfoMapper = sqlSession.getMapper(BookInfoMapper.class);
 
-        BookInfoExample example = new BookInfoExample();
-        BookInfoExample.Criteria criteria = example.createCriteria();
-        criteria.andPriceBetween(new BigDecimal(600) , new BigDecimal(800));
-
-        List<BookInfo> list = bookInfoMapper.selectByExample(example);
-
-        for(BookInfo bookInfo : list){
-            System.err.println(bookInfo.getPrice());
-            System.err.println(bookInfo.getName());
-            System.out.println("\n--------------------------------------\n");
-            Thread.sleep(10);
-        }
-    }
 	
 
 -------------------------------------------------------------------------------------------

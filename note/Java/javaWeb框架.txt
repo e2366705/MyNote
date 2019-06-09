@@ -1,0 +1,316 @@
+﻿springBoot 知识点笔记:
+-----------------------------------------------------------------
+
+　首先是@RestController这个注解：
+用过spring的大佬估计知道是什么东西，当我们其他类要通过spring引用该类时，第一步就是要将该类注册到spring中，
+@RestController就是相当于将这个类注册到spring容器的意思当然，还有一种比较常用的就是@Controller，
+具体他们两区别后面再讨论吧。
+
+　　然后就是@RequestMapping，通过设置这个注解里面面的path属性，
+就可以声明相对于项目根路径（localhost:8080）的访问路径。
+
+springBoot 这个教程真的可以
+https://www.bilibili.com/video/av35544323?p=5
+
+
+-----------------------------------------------------------------
+
+
+springBoot 都是jar方式打包的
+springBoot 没有专门存放hhtml文件的地方的, 在main/test/resource文件夹下面新建一个temaleta文件夹, 固定名称
+
+
+-----------------------------------------------------------------
+
+springBoot中的注解含义:
+@RestController = @Controller + @ResponseBody
+
+
+-----------------------------------------------------------------
+
+包含另外一个项目
+<c:import url="title.jsp"></c:import>
+
+
+-----------------------------------------------------------------
+
+
+web title:
+<%@ page isELIgnored="false" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path;
+%>
+<link rel="stylesheet" href="<%=basePath%>/css/less/index.css">
+<div class="img"><img src="<%=basePath%>/image/goods/${search_result.imageUrl}"></div>
+
+
+
+
+-----------------------------------------------------------------
+
+SSM传值:
+		form提交过来的值:
+	    @RequestMapping(value = "/upload",method = {RequestMethod.POST})
+		public String upload(Goods goods , HttpServletRequest request,
+                         @RequestParam("describe") String describe,
+                         @RequestParam(value="file",required = false) MultipartFile multipartFile
+                        ) throws Exception{
+
+注意!!!   springMVC.xml 一定要配置下面的条件:
+	<!-- 上传文件 -->  
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">  
+    <property name="defaultEncoding" value="utf-8"/>  
+    <!-- 最大内存大小 -->  
+    <property name="maxInMemorySize" value="10240"/>  
+    <!-- 最大文件大小，-1为不限制大小 -->  
+    <property name="maxUploadSize" value="-1"/>  
+    </bean>  
+
+-----------------------------------------------------------------
+
+javaweb 传参乱码:
+	  前端页面:
+	  var keywords_encode = encodeURI(encodeURI(keywords));
+      window.location="<%=request.getContextPath()%>/JD_index/search_result.do?data=DESC&keywords=" + keywords_encode;
+	  
+	  后端java代码:
+	   keywords = request.getParameter("keywords");            //取出form-data中a的值
+       keywords = java.net.URLDecoder.decode(keywords , "UTF-8");
+       System.err.println(keywords);  // 输出字符串
+	  
+	  
+
+
+
+-----------------------------------------------------------------
+
+
+javaweb:
+	在xml文件中, 不能用&& , 因为在xml文件中, 会被解析成为非法字符, 要用and
+	 select * from goods
+        where `describe`LIKE CONCAT('%', #{keywords}, '%')
+        <if test="Lowest_price != null and Highest_price != null">
+            WHERE `price` BETWEEN #{Lowest_price} and #{Highest_price}
+        </if>
+
+
+
+-----------------------------------------------------------------
+
+SSM框架的一些坑:
+	resultMap     返回的是集合      -> 所以: 查询结果集用这个
+	resultType    返回的是单个个体
+
+-----------------------------------------------------------------
+
+
+ssm框架:
+	select语句不一定要有 parameterType , 比如这种类型:
+	select `id`,`username`,`city`,`age` from test where 1=1
+	可以不写 parameterType
+	
+	查询多个结果(findAll)返回的是一个集合(List), 所以: 应该是这样子写:
+		 List<User> findAll();
+
+	resultMap : 返回多个结果的时候用
+
+-----------------------------------------------------------------
+
+
+<link rel="stylesheet" href="<%=request.getContextPath()%>/less/index.css">
+
+
+-----------------------------------------------------------------
+
+
+手机访问Tomcat服务器, 调试移动web必备
+	注意: 电脑和手机需要在同一个wifi环境下...
+	开启电脑的CMD，输入 ipconfig  可查看到本机的局域网地址 ( IPv4 就是 ),
+	
+			Wireless LAN adapter 无线网络连接:
+				   Connection-specific DNS Suffix  . :
+				   Link-local IPv6 Address . . . . . : fe80::7c84:33
+				   IPv4 Address. . . . . . . . . . . : 192.168.2.104
+				   Subnet Mask . . . . . . . . . . . : 255.255.255.0
+				   Default Gateway . . . . . . . . . : 192.168.2.1
+	如下:
+	http://192.168.2.104:8080/JD_Demo_war_exploded/JD_Home_Page/indexxxxxxxx.do
+
+
+
+
+
+-----------------------------------------------------------------
+
+<c:forEach items="${requestScope.xxxxx}" var="xxxxx"></c:forEach>
+${xxxxx.price}
+
+<div id="goods_search_list">
+    <c:if test="${requestScope.Goods_search_result == ''}">
+        <h1>no result....</h1>
+    </c:if>
+    <c:forEach items="${requestScope.search_result}" var="search_result">
+        <div class="goods_box">
+            <div class="paddingg">
+                <div class="borderr">
+                    <div class="bookId" style="display: none; ">${search_result.bookId}</div>
+                    <div class="img"><img src="${search_result.imageUrl}"></div>
+                    <div class="name">${search_result.name}</div>
+                    <div class="author">著-${search_result.author}</div>
+                    <div class="price">¥:${search_result.price}</div>
+                    <div class="store">${search_result.press}</div>
+                </div>
+            </div>
+        </div>
+    </c:forEach>
+</div>
+
+
+
+-----------------------------------------------------------------
+
+
+
+
+
+-----------------------------------------------------------------
+
+
+
+
+
+-----------------------------------------------------------------
+
+
+
+
+
+-----------------------------------------------------------------
+
+
+
+
+
+-----------------------------------------------------------------
+
+
+
+
+
+-----------------------------------------------------------------
+
+
+
+
+
+-----------------------------------------------------------------
+
+
+
+
+
+-----------------------------------------------------------------
+
+
+
+
+
+-----------------------------------------------------------------
+
+
+
+
+
+-----------------------------------------------------------------
+
+
+
+
+
+-----------------------------------------------------------------
+
+
+
+
+
+-----------------------------------------------------------------
+
+
+
+
+
+-----------------------------------------------------------------
+
+
+
+
+
+-----------------------------------------------------------------
+
+
+
+
+
+-----------------------------------------------------------------
+
+
+
+
+
+-----------------------------------------------------------------
+
+
+
+
+
+-----------------------------------------------------------------
+
+
+
+
+
+-----------------------------------------------------------------
+
+
+
+
+
+-----------------------------------------------------------------
+
+
+
+
+
+-----------------------------------------------------------------
+
+
+
+
+
+-----------------------------------------------------------------
+
+
+
+
+
+-----------------------------------------------------------------
+
+
+
+
+
+-----------------------------------------------------------------
+
+
+
+
+
+-----------------------------------------------------------------
+
+
+
+
+

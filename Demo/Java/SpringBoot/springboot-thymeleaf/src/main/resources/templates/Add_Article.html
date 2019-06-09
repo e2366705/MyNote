@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            list-style-type: none;
+        }
+        #English_Article_body{
+            color: #9d9087;
+        }
+
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add_Article</title>
+    <link rel="styleSheet" href="" type="text/css">
+
+    <script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/3.4.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/twitter-bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<div id="English_Article_body">
+
+
+    <div th:replace="head_title.html"></div>
+
+
+    <h1>Add_Article (添加新的文章 [标题 + 内容])</h1>
+    <br>
+    <input  class="form-control" id="English_Article_title" value="null" style="font-size:25px; width:90%; margin: 0 auto; " >
+    <br>
+    <textarea id="textarea_box" class="form-control" rows="16" style="font-size:25px; width:90%; margin: 0 auto; "></textarea>
+
+    <button id="start" class="btn btn-info btn-lg" style="position: fixed; top: 0; right: 0; "> 开始处理 </button>
+
+</div>
+</body>
+
+<script type="text/javascript">
+
+    $("#start").click(function () {
+        var English_Article_title =$("#English_Article_title").val();
+        var Article_content = $("#textarea_box").val();
+        // console.log(English_Article_data);
+
+        var Ajax_data = {};
+        Ajax_data.Article_content = Article_content;   //params.XX必须与Spring Mvc controller中的参数名称一致
+        Ajax_data.English_Article_title = English_Article_title;
+
+        $.ajax({
+            async: false,
+            type: "POST",
+            url: "/English_Article_Controller/Start",         // 路径
+            data: Ajax_data,
+            dataType: "json",
+            success: function (data) {
+            },
+            error: function (data) {
+                // alert("erroe something...");
+            }
+        });
+    })
+
+
+</script>
+
+</html>

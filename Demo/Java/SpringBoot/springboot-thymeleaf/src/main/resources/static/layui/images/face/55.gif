@@ -1,0 +1,76 @@
+  if (!Array.isArray(ref)) {
+            return false;
+        }
+
+        if (!options.part && obj.length !== ref.length) {
+            return false;
+        }
+
+        for (var i = 0, il = obj.length; i < il; ++i) {
+            if (options.part) {
+                var found = false;
+                for (var r = 0, rl = ref.length; r < rl; ++r) {
+                    if (exports.deepEqual(obj[i], ref[r], options, seen)) {
+                        found = true;
+                        break;
+                    }
+                }
+
+                return found;
+            }
+
+            if (!exports.deepEqual(obj[i], ref[i], options, seen)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    if (Buffer.isBuffer(obj)) {
+        if (!Buffer.isBuffer(ref)) {
+            return false;
+        }
+
+        if (obj.length !== ref.length) {
+            return false;
+        }
+
+        for (var j = 0, jl = obj.length; j < jl; ++j) {
+            if (obj[j] !== ref[j]) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    if (obj instanceof Date) {
+        return (ref instanceof Date && obj.getTime() === ref.getTime());
+    }
+
+    if (obj instanceof RegExp) {
+        return (ref instanceof RegExp && obj.toString() === ref.toString());
+    }
+
+    if (options.prototype) {
+        if (Object.getPrototypeOf(obj) !== Object.getPrototypeOf(ref)) {
+            return false;
+        }
+    }
+
+    var keys = Object.getOwnPropertyNames(obj);
+
+    if (!options.part && keys.length !== Object.getOwnPropertyNames(ref).length) {
+        return false;
+    }
+
+    for (var k = 0, kl = keys.length; k < kl; ++k) {
+        var key = keys[k];
+        var descriptor = Object.getOwnPropertyDescriptor(obj, key);
+        if (descriptor.get) {
+            if (!exports.deepEqual(descriptor, Object.getOwnPropertyDescriptor(ref, key), options, seen)) {
+                return false;
+            }
+        }
+      

@@ -1,0 +1,380 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>窗口拖拽（改变大小/最小化/最大化/还原/关闭）</title>
+    <style type="text/css">
+        body, div, h2 {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: url(images/bg.jpg);
+            font: 12px/1.5 \5fae\8f6f\96c5\9ed1;
+            color: #333;
+        }
+
+        #drag {
+            position: absolute;
+            top: 100px;
+            left: 100px;
+            width: 300px;
+            height: 160px;
+            background: #e9e9e9;
+            border: 1px solid #444;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px 2px #666;
+        }
+
+        #drag .title {
+            position: relative;
+            height: 27px;
+            margin: 5px;
+        }
+
+        #drag .title h2 {
+            font-size: 14px;
+            height: 27px;
+            line-height: 24px;
+            border-bottom: 1px solid #A1B4B0;
+        }
+
+        #drag .title div {
+            position: absolute;
+            height: 19px;
+            top: 2px;
+            right: 0;
+        }
+
+        #drag .title a, a.open {
+            float: left;
+            width: 21px;
+            height: 19px;
+            display: block;
+            margin-left: 5px;
+            background: url("http://demo.jb51.net/js/2015/js-win-drug-cha-close-demo/images/tool.png") no-repeat;
+        }
+
+        a.open {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            margin-left: -10px;
+            background-position: 0 0;
+        }
+
+        a.open:hover {
+            background-position: 0 -29px;
+        }
+
+        #drag .title a.min {
+            background-position: -29px 0;
+        }
+
+        #drag .title a.min:hover {
+            background-position: -29px -29px;
+        }
+
+        #drag .title a.max {
+            background-position: -60px 0;
+        }
+
+        #drag .title a.max:hover {
+            background-position: -60px -29px;
+        }
+
+        #drag .title a.revert {
+            background-position: -149px 0;
+            display: none;
+        }
+
+        #drag .title a.revert:hover {
+            background-position: -149px -29px;
+        }
+
+        #drag .title a.close {
+            background-position: -89px 0;
+        }
+
+        #drag .title a.close:hover {
+            background-position: -89px -29px;
+        }
+
+        #drag .content {
+            overflow: auto;
+            margin: 0 5px;
+        }
+
+        #drag .resizeBR {
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            cursor: nw-resize;
+            background: url("http://demo.jb51.net/js/2015/js-win-drug-cha-close-demo/images/resize.png") no-repeat;
+        }
+
+        #drag .resizeL, #drag .resizeT, #drag .resizeR, #drag .resizeB, #drag .resizeLT, #drag .resizeTR, #drag .resizeLB {
+            position: absolute;
+            background: #000;
+            overflow: hidden;
+            opacity: 0;
+            filter: alpha(opacity=0);
+        }
+
+        #drag .resizeL, #drag .resizeR {
+            top: 0;
+            width: 5px;
+            height: 100%;
+            cursor: w-resize;
+        }
+
+        #drag .resizeR {
+            right: 0;
+        }
+
+        #drag .resizeT, #drag .resizeB {
+            width: 100%;
+            height: 5px;
+            cursor: n-resize;
+        }
+
+        #drag .resizeT {
+            top: 0;
+        }
+
+        #drag .resizeB {
+            bottom: 0;
+        }
+
+        #drag .resizeLT, #drag .resizeTR, #drag .resizeLB {
+            width: 8px;
+            height: 8px;
+            background: #FF0;
+        }
+
+        #drag .resizeLT {
+            top: 0;
+            left: 0;
+            cursor: nw-resize;
+        }
+
+        #drag .resizeTR {
+            top: 0;
+            right: 0;
+            cursor: ne-resize;
+        }
+
+        #drag .resizeLB {
+            left: 0;
+            bottom: 0;
+            cursor: ne-resize;
+        }
+    </style>
+    <script type="text/javascript">
+        /*-------------------------- +
+         获取id, class, tagName
+         +-------------------------- */
+        var get = {
+            byId: function (id) {
+                return typeof id === "string" ? document.getElementById(id) : id
+            },
+            byClass: function (sClass, oParent) {
+                var aClass = [];
+                var reClass = new RegExp("(^| )" + sClass + "( |$)");
+                var aElem = this.byTagName("*", oParent);
+                for (var i = 0; i < aElem.length; i++) reClass.test(aElem[i].className) && aClass.push(aElem[i]);
+                return aClass
+            },
+            byTagName: function (elem, obj) {
+                return (obj || document).getElementsByTagName(elem)
+            }
+        };
+        var dragMinWidth = 250;
+        var dragMinHeight = 124;
+
+        /*-------------------------- +
+         拖拽函数
+         +-------------------------- */
+        function drag(oDrag, handle) {
+            var disX = dixY = 0;
+            var oMin = get.byClass("min", oDrag)[0];
+            var oMax = get.byClass("max", oDrag)[0];
+            var oRevert = get.byClass("revert", oDrag)[0];
+            var oClose = get.byClass("close", oDrag)[0];
+            handle = handle || oDrag;
+            handle.style.cursor = "move";
+            handle.onmousedown = function (event) {
+                var event = event || window.event;
+                disX = event.clientX - oDrag.offsetLeft;
+                disY = event.clientY - oDrag.offsetTop;
+                document.onmousemove = function (event) {
+                    var event = event || window.event;
+                    var iL = event.clientX - disX;
+                    var iT = event.clientY - disY;
+                    var maxL = document.documentElement.clientWidth - oDrag.offsetWidth;
+                    var maxT = document.documentElement.clientHeight - oDrag.offsetHeight;
+                    iL <= 0 && (iL = 0);
+                    iT <= 0 && (iT = 0);
+                    iL >= maxL && (iL = maxL);
+                    iT >= maxT && (iT = maxT);
+                    oDrag.style.left = iL + "px";
+                    oDrag.style.top = iT + "px";
+                    return false
+                };
+                document.onmouseup = function () {
+                    document.onmousemove = null;
+                    document.onmouseup = null;
+                    this.releaseCapture && this.releaseCapture()
+                };
+                this.setCapture && this.setCapture();
+                return false
+            };
+            //最大化按钮
+            oMax.onclick = function () {
+                oDrag.style.top = oDrag.style.left = 0;
+                oDrag.style.width = document.documentElement.clientWidth - 2 + "px";
+                oDrag.style.height = document.documentElement.clientHeight - 2 + "px";
+                this.style.display = "none";
+                oRevert.style.display = "block";
+            };
+            //还原按钮
+            oRevert.onclick = function () {
+                oDrag.style.width = dragMinWidth + "px";
+                oDrag.style.height = dragMinHeight + "px";
+                oDrag.style.left = (document.documentElement.clientWidth - oDrag.offsetWidth) / 2 + "px";
+                oDrag.style.top = (document.documentElement.clientHeight - oDrag.offsetHeight) / 2 + "px";
+                this.style.display = "none";
+                oMax.style.display = "block";
+            };
+            //最小化按钮
+            oMin.onclick = oClose.onclick = function () {
+                oDrag.style.display = "none";
+                var oA = document.createElement("a");
+                oA.className = "open";
+                oA.href = "javascript:;";
+                oA.title = "还原";
+                document.body.appendChild(oA);
+                oA.onclick = function () {
+                    oDrag.style.display = "block";
+                    document.body.removeChild(this);
+                    this.onclick = null;
+                };
+            };
+            //阻止冒泡
+            oMin.onmousedown = oMax.onmousedown = oClose.onmousedown = function (event) {
+                this.onfocus = function () {
+                    this.blur()
+                };
+                (event || window.event).cancelBubble = true
+            };
+        }
+
+        /*-------------------------- +
+         改变大小函数
+         +-------------------------- */
+        function resize(oParent, handle, isLeft, isTop, lockX, lockY) {
+            handle.onmousedown = function (event) {
+                var event = event || window.event;
+                var disX = event.clientX - handle.offsetLeft;
+                var disY = event.clientY - handle.offsetTop;
+                var iParentTop = oParent.offsetTop;
+                var iParentLeft = oParent.offsetLeft;
+                var iParentWidth = oParent.offsetWidth;
+                var iParentHeight = oParent.offsetHeight;
+                document.onmousemove = function (event) {
+                    var event = event || window.event;
+                    var iL = event.clientX - disX;
+                    var iT = event.clientY - disY;
+                    var maxW = document.documentElement.clientWidth - oParent.offsetLeft - 2;
+                    var maxH = document.documentElement.clientHeight - oParent.offsetTop - 2;
+                    var iW = isLeft ? iParentWidth - iL : handle.offsetWidth + iL;
+                    var iH = isTop ? iParentHeight - iT : handle.offsetHeight + iT;
+                    isLeft && (oParent.style.left = iParentLeft + iL + "px");
+                    isTop && (oParent.style.top = iParentTop + iT + "px");
+                    iW < dragMinWidth && (iW = dragMinWidth);
+                    iW > maxW && (iW = maxW);
+                    lockX || (oParent.style.width = iW + "px");
+                    iH < dragMinHeight && (iH = dragMinHeight);
+                    iH > maxH && (iH = maxH);
+                    lockY || (oParent.style.height = iH + "px");
+                    if ((isLeft && iW == dragMinWidth) || (isTop && iH == dragMinHeight)) document.onmousemove = null;
+                    return false;
+                };
+                document.onmouseup = function () {
+                    document.onmousemove = null;
+                    document.onmouseup = null;
+                };
+                return false;
+            }
+        };
+        window.onload = window.onresize = function () {
+            var oDrag = document.getElementById("drag");
+            var oTitle = get.byClass("title", oDrag)[0];
+            var oL = get.byClass("resizeL", oDrag)[0];
+            var oT = get.byClass("resizeT", oDrag)[0];
+            var oR = get.byClass("resizeR", oDrag)[0];
+            var oB = get.byClass("resizeB", oDrag)[0];
+            var oLT = get.byClass("resizeLT", oDrag)[0];
+            var oTR = get.byClass("resizeTR", oDrag)[0];
+            var oBR = get.byClass("resizeBR", oDrag)[0];
+            var oLB = get.byClass("resizeLB", oDrag)[0];
+            drag(oDrag, oTitle);
+            //四角
+            resize(oDrag, oLT, true, true, false, false);
+            resize(oDrag, oTR, false, true, false, false);
+            resize(oDrag, oBR, false, false, false, false);
+            resize(oDrag, oLB, true, false, false, false);
+            //四边
+            resize(oDrag, oL, true, false, false, true);
+            resize(oDrag, oT, false, true, true, false);
+            resize(oDrag, oR, false, false, false, true);
+            resize(oDrag, oB, false, false, true, false);
+            oDrag.style.left = (document.documentElement.clientWidth - oDrag.offsetWidth) / 2 + "px";
+            oDrag.style.top = (document.documentElement.clientHeight - oDrag.offsetHeight) / 2 + "px";
+        }
+    </script>
+</head>
+<body>
+
+<h1><a target="_blank" href="https://www.jb51.net/article/73157.htm">教程来源  https://www.jb51.net/article/73157.htm</a></h1>
+
+<div id="words">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aspernatur aut dolor doloremque dolorum provident, quibusdam ratione sed veritatis. Aperiam dolor esse facere, nam nisi numquam obcaecati. Alias architecto distinctio dolor illo illum ipsum iure iusto libero sequi temporibus. Beatae blanditiis consectetur dolore eius esse inventore ipsa nisi officiis, praesentium quaerat reprehenderit tenetur vero voluptatibus! Ad architecto aut dolorem eaque exercitationem impedit labore nisi, officiis omnis, quaerat tenetur, vitae. Ab ad adipisci aliquam aliquid animi, beatae consectetur cum debitis est facere facilis iste laboriosam minus, nisi officia officiis perferendis provident quasi, quidem reiciendis sint sunt tempore voluptas? Eius eligendi in nemo officia omnis. Accusantium eius molestias neque vitae! Alias dicta ex laudantium quae quis repellendus temporibus ullam vero? Aliquam animi beatae cumque et, exercitationem harum libero minima mollitia neque nostrum nulla odio, omnis perspiciatis provident, quos sequi tenetur? Alias architecto dolorum eligendi exercitationem facere libero quo! Aliquid, consectetur culpa dignissimos esse facilis hic illo in, inventore iste itaque magnam modi necessitatibus nesciunt nihil, obcaecati odio officiis perferendis possimus praesentium quidem quos ut voluptate? Animi atque aut, consequuntur debitis delectus deserunt dolor eaque, esse ex ipsam laudantium mollitia necessitatibus nisi porro possimus quam quos repellendus! Alias doloremque iusto molestiae quos vitae! Accusantium alias animi aspernatur assumenda atque consequatur distinctio ducimus ea error exercitationem expedita explicabo fugit illo in ipsa, ipsum libero magnam molestias nam necessitatibus neque odit omnis quisquam repellat temporibus unde voluptates. Ad beatae blanditiis dolore eius enim facere fuga harum id ipsum iste, maiores molestiae nesciunt nihil nulla quam quidem repellendus voluptatum. A ab accusamus accusantium at aut delectus dolore doloribus ea eos ex explicabo fugiat, modi necessitatibus nostrum nulla odit omnis placeat provident quas quia quidem quo quod ratione reiciendis rem sint unde ut. Ab alias aliquam aliquid architecto assumenda at autem consectetur cum cupiditate debitis dolorem ea eius enim eum exercitationem explicabo facere hic id illum inventore ipsa laborum magni non numquam obcaecati officiis praesentium, quae quis quo quod recusandae reiciendis repellat repudiandae soluta suscipit vero voluptatum. Alias id laboriosam numquam repudiandae? Aspernatur consequatur cum cumque dolorem dolorum eius exercitationem iusto laborum minima nostrum, officia quae quam, quos repudiandae sunt tempora veritatis! Autem cum ex fuga laboriosam molestias natus neque nostrum, perspiciatis placeat, quidem, quo voluptatibus. Accusamus aliquid animi aperiam beatae blanditiis delectus dicta dolore eius eos error et incidunt iste labore laboriosam minima nesciunt nisi nobis non nostrum nulla obcaecati odit omnis pariatur porro provident quasi rem, repellendus repudiandae sit soluta tempore temporibus tenetur vel velit veniam veritatis vitae! Ab deleniti incidunt minus omnis pariatur repellendus sapiente, ullam! Accusamus cupiditate ex fugiat in ipsam magnam non possimus tenetur veniam, vitae? Cumque enim fugit laborum minus quam sapiente sint voluptate! Accusamus aspernatur, blanditiis consectetur deleniti dicta dolores eaque enim exercitationem expedita fugiat illum incidunt ipsam laborum libero magni nam odit pariatur quaerat quia quisquam ratione reiciendis rerum sapiente similique temporibus unde vero voluptatum. A accusamus assumenda at consequatur debitis distinctio, ducimus eaque explicabo facere illo ipsam ipsum nam necessitatibus non numquam officiis perferendis perspiciatis possimus quaerat repellendus reprehenderit repudiandae sapiente totam unde voluptas. Aliquam aspernatur atque debitis dignissimos et, eum eveniet ex facilis fugit illum ipsam laudantium molestiae nisi possimus quae quibusdam, rerum sint tempore ullam veniam? Ipsam vel, voluptatibus! Ad aliquam animi, architecto assumenda consectetur consequatur consequuntur cum cumque delectus eaque eos error ex excepturi facere fugiat impedit in incidunt laborum, modi nam nemo nesciunt nisi nobis optio placeat quasi quis recusandae rem repellat repudiandae sed sunt tenetur ullam veritatis, vero vitae voluptate? Aut, blanditiis cumque harum ipsa iure laboriosam maxime nesciunt obcaecati quia repellendus repudiandae saepe tempora vitae. Accusamus architecto cum distinctio dolore est fugit magnam, maiores maxime modi obcaecati perferendis quam sapiente soluta voluptas voluptates. Architecto deleniti dolore ducimus eos hic, illo laboriosam obcaecati perspiciatis quisquam tempora! Adipisci aliquam architecto blanditiis commodi, consectetur, ea earum eos error et eum eveniet fuga harum id in ipsum itaque laboriosam molestias necessitatibus nemo neque nisi non obcaecati odit officiis possimus praesentium provident quasi quia reiciendis, repellendus reprehenderit sequi suscipit tempore ullam unde voluptas voluptate? Ab accusamus adipisci consectetur cum debitis dolore ea et excepturi fuga iure laboriosam laudantium nihil provident qui quis quod reiciendis repellendus repudiandae sint totam, vel veritatis voluptas? Doloremque eaque eum harum nobis provident quaerat quam repellat ullam veniam, voluptas? Accusamus aliquam deserunt error esse magni nobis nostrum officia perspiciatis, sapiente sequi soluta ut vel vero? Aut blanditiis consequuntur corporis cupiditate debitis dicta eaque eum eveniet fuga itaque magnam minus modi, molestias, nemo nihil numquam officia possimus provident quasi quisquam quos rem repellendus reprehenderit sunt voluptas voluptate voluptatem voluptatum. Animi architecto debitis deserunt earum eos expedita facilis ipsam obcaecati, quae quibusdam sapiente similique sit vitae. Alias debitis eaque facere iusto molestiae molestias quaerat quis reiciendis tempora tempore. Aspernatur consectetur dolor dolores, error exercitationem explicabo quaerat reiciendis tempora. Ab aut delectus doloremque eum fugiat laudantium, magnam maxime minima modi, nulla placeat quae recusandae ullam velit voluptas? Aut consequatur cumque debitis dolore eius illum ipsum iste laborum modi nesciunt nisi, odio officia perferendis rerum veritatis vero voluptate. Ad culpa dolore eius fugit iusto molestiae molestias neque praesentium quae, sapiente. Ab at corporis debitis delectus doloremque dolorum enim expedita fuga modi, nisi, perferendis rem sint velit. Aliquid architecto atque, autem consequuntur cumque distinctio dolorum excepturi fugit ipsa laboriosam nisi numquam, odio optio pariatur perspiciatis quaerat quis soluta suscipit totam, velit veritatis vero vitae voluptatibus! Ab alias amet asperiores blanditiis cumque ea, eos esse excepturi, expedita facilis illo impedit laudantium maxime mollitia natus omnis provident quaerat qui recusandae reiciendis repellendus rerum saepe sint totam velit? Adipisci deleniti numquam porro saepe? Ad alias animi asperiores consequuntur corporis culpa ducimus eaque enim error esse explicabo fuga, fugit hic ipsam iste iusto labore laudantium maiores nihil nisi nobis omnis perferendis praesentium quaerat qui quibusdam reiciendis saepe soluta sunt tempore. Alias aliquam aspernatur assumenda at consequuntur debitis delectus dignissimos distinctio eaque earum eius et eveniet fugiat harum id in ipsa iste magnam maiores minima minus nemo neque nisi nulla officiis perferendis, provident quod ratione reprehenderit repudiandae, similique sit soluta tempore veritatis.
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aliquam amet aperiam consequatur cum cumque cupiditate delectus deserunt dolorum eius eveniet, facere illo incidunt iusto laudantium porro possimus quibusdam rem sapiente similique sint voluptas voluptatem? A asperiores aut commodi, dicta distinctio, dolor dolore earum eveniet excepturi facilis fuga harum id inventore necessitatibus nemo perferendis sit soluta tempora, temporibus voluptate. Ab accusamus accusantium adipisci architecto assumenda atque cupiditate doloremque eius enim fugiat impedit in minima molestiae neque nesciunt nobis, numquam odit officiis placeat possimus praesentium, provident quidem quos sed sit totam vero voluptas. A excepturi, fugiat nam neque nulla quasi ullam velit veritatis. Asperiores assumenda error in iure laudantium temporibus velit! Consequatur enim harum quasi quod repellendus rerum sequi. Cupiditate distinctio dolorem, earum nemo omnis similique suscipit. Aliquam aliquid aspernatur atque corporis dignissimos doloremque eaque error esse facilis impedit in iste labore maiores nam natus nemo officia officiis perspiciatis placeat quasi quibusdam quo quos reiciendis rem repudiandae rerum temporibus tenetur velit voluptas, voluptatibus? Architecto cumque dolor eius facere iusto maiores officiis soluta totam voluptatibus. A accusantium aperiam at consequuntur corporis culpa debitis delectus deleniti dignissimos earum eius eos expedita inventore ipsam ipsum labore modi non possimus provident quas repellat repudiandae, tenetur vero voluptas, voluptatem. Fugiat pariatur recusandae rem. Aliquid aperiam illo incidunt, neque qui quibusdam quis? Alias blanditiis consectetur eligendi ex repellendus! Accusantium aperiam architecto asperiores corporis itaque iure maiores nisi odit rerum voluptate. Accusamus blanditiis corporis distinctio dolor eum facilis, hic minus nobis officiis pariatur quod vero. A, ab adipisci culpa cumque dignissimos et ex expedita id labore provident quam quasi quibusdam quis rerum saepe similique sit soluta voluptas voluptatem voluptatibus? Aperiam consequatur culpa eos facilis incidunt natus numquam pariatur provident quod voluptatem! Beatae earum nesciunt numquam vel veritatis? Animi aperiam consectetur consequatur cum, dignissimos doloribus ea, et eum excepturi exercitationem fugiat libero magni maxime molestias mollitia neque officiis perferendis perspiciatis quia reiciendis reprehenderit soluta sunt suscipit temporibus ut vel velit voluptates. Doloribus ea esse ipsum nemo quae reprehenderit temporibus ut! Doloribus, id.
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aliquam enim, laboriosam laudantium nam numquam officiis qui quo sapiente veritatis. Ab adipisci blanditiis corporis cupiditate delectus, dolor doloremque dolores esse harum impedit incidunt ipsum libero magnam maiores modi nisi odit omnis perferendis porro quaerat quas quasi quis quod, quos sapiente sit totam ullam velit veritatis vitae? Aliquam, aperiam asperiores aut distinctio dolorem dolorum, excepturi fugit illo impedit officia officiis perferendis quae quibusdam rem, sed? Animi eum nemo nesciunt velit voluptatem. Architecto autem consequuntur culpa deleniti dolorum eligendi esse eum id ipsa ipsam iure mollitia numquam, obcaecati quaerat quasi quia quibusdam quos rerum sequi sit soluta sunt voluptate! Amet architecto aspernatur assumenda aut autem debitis deleniti dolor doloribus, dolorum facilis fuga id illum incidunt inventore, magni nobis non numquam omnis pariatur perferendis quam quasi qui quia quibusdam quidem quo similique sint totam vitae voluptas! Assumenda consequuntur debitis dicta facere hic id illum ipsam, iste laudantium maxime molestiae, perspiciatis placeat quam recusandae soluta tempora tempore ut? Alias, aliquam blanditiis dolore eaque expedita magnam magni nemo optio perspiciatis quis quo ratione sapiente veniam. Accusamus consectetur cupiditate, dignissimos error eveniet harum, incidunt ipsa ipsam laborum, libero maxime minima officiis quibusdam quo sapiente tempora tempore voluptate voluptates! Accusamus ad fugiat magnam placeat. Accusamus aperiam dolorem eius esse facilis illum inventore, nam nemo nesciunt odit qui reiciendis, repellendus sed temporibus vero. Animi eius excepturi hic iure numquam quae quibusdam temporibus? Ducimus eligendi est facilis magnam ratione rerum sapiente? Aliquam atque inventore laudantium minima veritatis. Consequuntur numquam possimus quaerat totam voluptatibus! Aut delectus libero nam, omnis possimus quia sequi suscipit tenetur vero voluptas. Aliquam animi asperiores autem culpa dicta dignissimos, distinctio dolorem dolorum earum eligendi eos esse et expedita illum iste iure iusto, maiores non nostrum nulla, obcaecati omnis perferendis porro quis quo repellendus totam voluptas! A, dicta libero nostrum officiis quam voluptatibus. Ad adipisci aliquid animi aspernatur autem commodi culpa cum cumque debitis dolore earum eligendi eos eum facilis fugiat, in libero maiores minima, modi molestias mollitia nesciunt quam quis tempora tempore veniam vitae voluptas? Accusamus adipisci consequuntur cumque debitis dolore doloremque dolorum et eveniet facilis fugiat, impedit ipsum laborum mollitia nulla, numquam perferendis porro similique, veritatis vero voluptatum! Deserunt doloremque facere molestiae reprehenderit suscipit. Accusantium at cumque dignissimos omnis pariatur tempora! Adipisci aliquid ea fuga labore nihil non pariatur perferendis, reiciendis repellendus repudiandae, sapiente ullam. Alias hic inventore ipsa magnam minus praesentium qui similique soluta voluptas? Accusantium ad architecto, aut blanditiis dolorem doloribus dolorum eum maxime nisi possimus quos reprehenderit sapiente, sint, suscipit temporibus ullam veritatis? Dolore, hic illo inventore quas quia similique voluptatem! Accusamus adipisci cupiditate, delectus explicabo ipsum minus officia, pariatur placeat praesentium qui quis sint tenetur voluptatum? Et ex itaque rerum sit ut. Dolores fugiat illum minus molestias porro praesentium reprehenderit! Architecto asperiores cum dolor dolorum, ea eius error, esse impedit labore laboriosam nam neque nisi non nostrum nulla placeat qui quia ratione repellendus rerum sapiente totam unde veritatis. Accusantium blanditiis corporis culpa cupiditate deleniti dolor dolore et explicabo iste itaque minima minus modi molestiae nam nemo nisi placeat quae quibusdam quisquam quo rem, repellat reprehenderit repudiandae tempore temporibus voluptas voluptatibus voluptatum? Aliquid, animi cumque debitis dignissimos ducimus, enim, esse est et eveniet ex magni minima nisi pariatur possimus quam quia quis repellat reprehenderit sint unde velit vero vitae? Distinctio earum id magnam rem sunt. Beatae, dignissimos facere fugit inventore maiores tempora? Ab accusamus alias aperiam architecto consectetur corporis cupiditate dolorum ducimus ea eligendi est, eum incidunt laudantium minima molestias natus nulla perspiciatis praesentium quae quidem quis, quisquam quod quos, repellendus repudiandae sunt voluptates voluptatum. A ad amet doloremque eligendi, est facilis id ipsam, libero nisi numquam officia, quibusdam quo repellat sapiente tempora ut velit. Assumenda, aut corporis distinctio ea explicabo, iure maxime nisi nobis perferendis provident quidem sint voluptates. Minima minus quam quidem quis unde? Ad adipisci animi assumenda atque beatae dolore eos est ex id illum laborum laudantium maiores molestiae natus neque nihil, nisi obcaecati officiis quasi qui quia recusandae reiciendis sequi velit vitae voluptatem voluptates?
+</div>
+
+
+<div id="drag">
+    <div class="title">
+        <h2>这是一个可以拖动的窗口</h2>
+        <div>
+            <a class="min" href="javascript:;" title="最小化"></a>
+            <a class="max" href="javascript:;" title="最大化"></a>
+            <a class="revert" href="javascript:;" title="还原"></a>
+            <a class="close" href="javascript:;" title="关闭"></a>
+        </div>
+    </div>
+
+    <div class="resizeL"></div>
+    <div class="resizeT"></div>
+    <div class="resizeR"></div>
+    <div class="resizeB"></div>
+    <div class="resizeLT"></div>
+    <div class="resizeTR"></div>
+    <div class="resizeBR"></div>
+    <div class="resizeLB"></div>
+    <div class="content">
+        ① 窗口可以拖动；<br/>
+        ② 窗口可以通过八个方向改变大小；<br/>
+        ③ 窗口可以最小化、最大化、还原、关闭；<br/>
+        ④ 限制窗口最小宽度/高度。
+    </div>
+</div>
+</body>
+</html>

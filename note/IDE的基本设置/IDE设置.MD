@@ -33,7 +33,7 @@ File → Settings → Editor → Inspections → General → Duplicated Code.
 ```  
 打开 settings 
 输入 keymap
-搜索 format (格式化的意思)
+搜索 Reformat (格式化的意思)
 ```
 
 

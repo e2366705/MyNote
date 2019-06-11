@@ -28,6 +28,15 @@ File → Settings → Editor → Inspections → General → Duplicated Code.
 ```
 
 
+
+# 设置格式化的快捷键
+```  
+打开 settings 
+输入 keymap
+搜索 format (格式化的意思)
+```
+
+
 # 配置编辑时候的文字颜色:
 ```  
 CTRL + alt + S 进入 settings 界面 -> 输入 color 

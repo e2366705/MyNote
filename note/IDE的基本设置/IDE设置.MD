@@ -11,7 +11,38 @@
 		* 自定义常用快捷键 (live Template 里面设置) :	
 ```
 
-			
+
+
+# IntelliJ IDEA报Found duplicated code in this file
+```  
+IntelliJ IDEA编程工具报Found duplicated code in this file错误提示是因为你的代码重复了
+IntelliJ IDEA设置步骤如下
+File → Settings → Editor → Inspections → General → Duplicated Code.
+```
+
+
+
+# 设置行号:
+```
+	打开setting -> 搜索 line number 
+```
+
+
+# 配置编辑时候的文字颜色:
+```  
+CTRL + alt + S 进入 settings 界面 -> 输入 color 
+下面一些就是配置颜色的了:\
+常用的需要配置颜色的有:
+	java
+	JavaScript
+	html
+	css
+	xml
+```
+
+
+
+
 # AutoHotkey
 ```  
 ::fk::举个例子: AutoHotkey 真是好用到爆!!!!! 强烈安利..... 嘤嘤嘤 ~ ~ ~
@@ -98,24 +129,5 @@
 	war不支持热更新(就是你修改html源代码, 不自动更新源码)
 	war explored 支持热更新, 修改html内容, 网页也随之改变
 	推荐使用 war explored 
-```
-
-
-
-# 设置行号:
-```  
-	打开setting -> 搜索 line number 
-
-```
-
-
-
-# IntelliJ IDEA报Found duplicated code in this file
-```  
-IntelliJ IDEA编程工具报Found duplicated code in this file错误提示是因为你的代码重复了
-
-IntelliJ IDEA设置步骤如下
-
-File → Settings → Editor → Inspections → General → Duplicated Code.
 ```
 

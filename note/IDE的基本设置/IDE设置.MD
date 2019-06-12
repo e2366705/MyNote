@@ -27,6 +27,14 @@ File → Settings → Editor → Inspections → General → Duplicated Code.
 	打开setting -> 搜索 line number 
 ```
 
+# 忽略大小写 自动提示
+```  
+打开 setting -> 输入 Completion
+有一个 code Completion项目 点击去
+有个match case,  把那个钩去掉
+
+```
+
 
 
 # 设置格式化的快捷键

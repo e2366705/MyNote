@@ -75,16 +75,34 @@ insert into table1(username,password) values('OPPO','R11');
 
 
 
-# 增加 insert
+# 增
 ```  
 多种排序测试用
 insert into user(username,password) VALUES('aaa','999');
 insert into user(username,password) VALUES('bbb','555');
 insert into user(username,password) VALUES('ccc','333');   
 
+增加 : 
+	给字段添加默认值 : 
+	ALTER TABLE `数据表` ALTER COLUMN `字段` SET DEFAULT '默认值';
+
+增加 : 
+	字段主键约束 : 
+	ALTER TABLE user3 add PRIMARY KEY(id);
+(注意:执行这句代码时候,会报错,原因是原来的字段都是null值,所以设置不成功,添加不一样的数据,再执行这句代码即可)
+
+增加 : 
+	字段唯一约束:
+	ALTER TABLE user3 add unique(username);
+约束该字段的值不可以重复(insert时候,组合在一起不重复就ok)
+	
+增加 : 
+	一个字段 : 
+	ALTER TABLE user11 ADD email VARCHAR(50);
+
 ```
 
-# 删除 delete : 
+# 删
 ```  
 DROP TABLE IF EXISTS `jd_demo_login`;
 
@@ -112,18 +130,34 @@ alter table 表名 drop column 字段名
 删除 MySQL 主键 约束
 ALTER TABLE user3 DROP PRIMARY KEY;   
 
+删除 : 
+unique key (删除某个字段的唯一性约束)
+	ALTER TABLE 表名 DROP INDEX 字段名(比如:userID);
+
 ```
 
 
-# 更新 update
+# 改
 ```
 UPDATE 更新表中某项数据
 UPDATE runoob_tbl SET runoob_title='学习 C++' WHERE runoob_id=3;
 
+修改 : 
+	字段类型
+	alter table 表名 modify column 字段名 类型;
+注意: 如果修改字段数据失败,可能是MySQL为了数据安全,加了保险
+(比如text类型的字段转化为int类型->大数据类型转小数据类型,这样子就可能会丢失数据)
+
+
+修改 : 
+	字段名称和属性 ( 将test字段改为test1 ) :
+	ALTER TABLE 表名      CHANGE 原字段名  新字段名    字段类型       约束条件 ; 
+	ALTER TABLE user10    CHANGE test      test1     CHAR(32)     NOT NULL DEFAULT '123';
+
 ```
 
 
-# 查询 select
+# 查
 ```  
 模糊查询:
 	select * from 
@@ -162,45 +196,6 @@ MySQL查询最高分----> 语句太长,懒得写了,用时再百度吧...
 
 ```
 
-
-# 字段操作:
-```
-增加 : 
-	给字段添加默认值 : 
-	ALTER TABLE `数据表` ALTER COLUMN `字段` SET DEFAULT '默认值';
-
-增加 : 
-	字段主键约束 : 
-	ALTER TABLE user3 add PRIMARY KEY(id);
-(注意:执行这句代码时候,会报错,原因是原来的字段都是null值,所以设置不成功,添加不一样的数据,再执行这句代码即可)
-
-增加 : 
-	字段唯一约束:
-	ALTER TABLE user3 add unique(username);
-约束该字段的值不可以重复(insert时候,组合在一起不重复就ok)
-	
-增加 : 
-	一个字段 : 
-	ALTER TABLE user11 ADD email VARCHAR(50);
-
-
-修改 : 
-	字段类型
-	alter table 表名 modify column 字段名 类型;
-注意: 如果修改字段数据失败,可能是MySQL为了数据安全,加了保险
-(比如text类型的字段转化为int类型->大数据类型转小数据类型,这样子就可能会丢失数据)
-
-修改 : 
-	字段名称和属性 ( 将test字段改为test1 ) :
-	ALTER TABLE 表名      CHANGE 原字段名  新字段名    字段类型       约束条件 ; 
-	ALTER TABLE user10    CHANGE test      test1     CHAR(32)     NOT NULL DEFAULT '123';
-
-
-删除 : 
-unique key (删除某个字段的唯一性约束)
-	ALTER TABLE 表名 DROP INDEX 字段名(比如:userID);
-
-```
 
 # MySQL 约束
 ``` 

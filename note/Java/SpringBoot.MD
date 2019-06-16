@@ -1,0 +1,210 @@
+# 新建 spring boot项目:
+### 第一步: 检查idea的maven地址有没有设置成为国内的镜像地址
+```  
+settings -> 搜索`maven` -> 修改为国内的镜像地址
+```
+
+
+### 然后 - 添加xml文件依赖:
+```  	
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.12</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.3.1</version>
+        </dependency>
+```
+
+### 然后 - 配置 application.properties
+```  
+server.port=8082
+
+server.tomcat.uri-encoding=UTF-8
+
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.url=jdbc:mysql://localhost:3306/english_word?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+spring.datasource.username=root
+spring.datasource.password=root
+
+
+spring.mvc.static-path-pattern=/static/**
+
+# 开发时关闭缓存,不然没法看到实时页面
+spring.thymeleaf.cache=false
+```
+
+
+
+### 然后 - 添加 controller
+```  
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+/**
+ *  index
+ */
+@Controller
+public class index_controller {
+    @RequestMapping(value="/", method= RequestMethod.GET)
+    public String index(Model model){
+
+        System.out.println("index");
+
+//        String path = "src/main/java/com/hehe/Article/";
+//
+//        model.addAttribute("result" , path);
+
+        return "index";
+    }
+}
+
+
+```
+
+### 然后 - 添加 html 文件: resources\templates 文件夹下面
+```  
+html文件略过......
+```
+
+
+
+
+
+
+
+# SpringBoot 配置
+### application.yml
+```  
+```
+
+
+
+
+
+
+### application.properties
+```  
+spring.application.name=compute-service
+server.port=8081
+server.tomcat.uri-encoding=UTF-8
+
+#mybatis.type-aliases-package=com.neo.model
+#spring.datasource.url=jdbc:mysql://localhost:3306/test?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
+#spring.datasource.username=root
+#spring.datasource.password=root
+#spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+```
+
+### 或者:
+```  
+
+spring.mvc.static-path-pattern=/static/**
+
+```
+
+### 又或者:
+```  
+server.port=8080
+server.context-path=/demo
+druid.driver=com.mysql.jdbc.Driver
+druid.url=jdbc:mysql://localhost:3306/mysql
+druid.username=root
+druid.password=123456
+druid.init-size=1
+druid.min-idel=1
+druid.max-active=5
+druid.login.timeout.seconds=30
+druid.query.timeout.seconds=30
+
+```
+
+
+### 又或者:
+```  
+server.port=8083
+spring.datasource.url=jdbc:mysql://localhost:3306/mysql?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=false
+spring.datasource.username=root
+spring.datasource.password=root
+
+spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+spring.jpa.properties.hibernate.hbm2ddl.auto=none
+
+```
+
+
+### 又或者:
+```  
+
+
+```
+
+
+### 又或者:
+```  
+
+
+```
+
+
+### 又或者:
+```  
+
+
+```
+
+
+
+
+
+
+# springBoot 中 css 文件引入失败?
+```  
+spring.mvc.static-path-pattern=/static/**
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

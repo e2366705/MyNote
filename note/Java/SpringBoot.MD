@@ -74,14 +74,28 @@ public class index_controller {
 
 ### 然后 - 添加 html 文件: resources\templates 文件夹下面
 ```  
-html文件略过......
+index.html
+```
+
+### 配置自动编译
+```  
+在 idea 的右上角 , 有个 'edit configurations' 点击进去 (就是每次点击 Run/debug 的地方)
+有个 'on update action'  选择 : hot swap classes and update trigger file if failed
+下面就选择: update classess and resouses
+
+```
+
+
+### 在浏览器打开
+```  
+http://localhost:8082/
 ```
 
 
 
 
 
-
+--------------------------------------------------------------------------------------------------------------------
 
 # SpringBoot 配置
 ### application.yml

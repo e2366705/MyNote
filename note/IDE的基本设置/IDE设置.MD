@@ -12,6 +12,15 @@
 ```
 
 
+# idea 配置自动编译
+```  
+在 idea 的右上角 , 有个 'edit configurations' 点击进去 (就是每次点击 Run/debug 的地方)
+有个 'on update action'  选择 : hot swap classes and update trigger file if failed
+下面就选择: update classess and resouses
+
+```
+
+
 # 新项目设置 maven 镜像地址
 ```  
 打开 file -> other settings -> Setting for new project -> 搜索maven

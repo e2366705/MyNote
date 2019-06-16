@@ -12,6 +12,12 @@
 ```
 
 
+# 新项目设置 maven 镜像地址
+```  
+打开 file -> other settings -> Setting for new project -> 搜索maven
+```
+
+
 
 # IntelliJ IDEA报Found duplicated code in this file
 ```  
@@ -19,6 +25,8 @@ IntelliJ IDEA编程工具报Found duplicated code in this file错误提示是因
 IntelliJ IDEA设置步骤如下
 File → Settings → Editor → Inspections → General → Duplicated Code.
 ```
+
+
 
 
 

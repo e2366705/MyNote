@@ -1,10 +1,12 @@
-#  移动端页面开发的两种方式
-### https://www.cnblogs.com/jasmine-95/p/7235186.html
+#  移动端页面开发的两种方式   https://www.cnblogs.com/jasmine-95/p/7235186.html
 
-## <a href="链接的页面" target="_blank">新窗口打开</a><br />
-## <a href="链接的页面" target="_parent">原窗口打开</a>
+# 新窗口打开  /  原窗口打开
+```  
+<a href="链接的页面" target="_blank">新窗口打开</a>
+<a href="链接的页面" target="_parent">原窗口打开</a>
 
-## JavaScript 实战小项目   https://github.com/visugar/FrontEnd-examples
+```
+# JavaScript 实战小项目   https://github.com/visugar/FrontEnd-examples
 
 
 # JavaScript三元运算符:

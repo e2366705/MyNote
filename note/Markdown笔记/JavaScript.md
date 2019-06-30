@@ -1,25 +1,102 @@
-JavaScript三元运算符:
+#  移动端页面开发的两种方式
+### https://www.cnblogs.com/jasmine-95/p/7235186.html
+
+## <a href="链接的页面" target="_blank">新窗口打开</a><br />
+## <a href="链接的页面" target="_parent">原窗口打开</a>
+
+## JavaScript 实战小项目   https://github.com/visugar/FrontEnd-examples
+
+
+# JavaScript三元运算符:
+```  
 var b = 5;
 (b == 5) ? a = "true" : a = "false";
-********************************************************************************
-JavaScript遍历节点元素,并且绑定点击事件
+
+```
+
+
+
+# 睡眠 暂停 :
+```  
+ function sleep(d){
+  for(var t = Date.now();Date.now() - t <= d;);
+}
+sleep(5000); //当前方法暂停5秒
+
+```
+
+
+# JavaScript 返回上一页:
+```  
+document.getElementById("span1").onclick = function (ev) {
+    window.history.go(-1);
+}
+
+或者:
+    history.go(-1);
+
+```
+
+
+ 
+# JavaScript 给 CSS设置样式表( 两种方式):
+```  
+document.getElementById("kkk").style.cssText = " background-color:pink; width: 100px; height: 100px; ";
+document.getElementsByClassName('div2')[0].style.background = 'pink';
+
+```
+
+
+# 页面加载的时候自动加载这个函数
+```  
+(function asdasd() {
+    console.log(123123);
+})();
+
+```
+
+  
+# JavaScript获取body节点
+```  
+比如 : document.body.style.background
+
+```
+
+
+
+# JavaScript 匿名函数	
+```  
+(function(x, y) {
+    alert(x + y);
+})(2,3);
+
+```
+
+
+
+
+# JavaScript遍历节点元素,并且绑定点击事件
+```  
 var list=document.getElementsByClassName('li_new');
 for(var i in list){
 	list[i].onmouseover=grayBack;
 	list[i].onmouseout=noGrayBack;
 }
 
-********************************************************************************
-使用JavaScript动态改变DOM节点属性:
+```
+
+# 使用JavaScript动态改变DOM节点属性 (使用模板会更加好):
+```  
 <a href="#" target="_self" id="test">测试</a>
 document.getElementById("test").attributes["target"].nodeValue="_blank";
 
 JavaScript DOM setAttribute() 方法:
 document.getElementsByTagName("INPUT")[0].setAttribute("type","button");
 
+```
 
-********************************************************************************
-用JavaScript 将后台返回的string数据,解析成JSON数据:
+# 用JavaScript 将后台返回的string数据,解析成JSON数据:
+```  
 var index_page_json_data = JSON.parse(xhr.responseText),
 xhr.responseText ==> 是string类型
 然后呢??
@@ -32,38 +109,41 @@ console.log(index_page_json_data);  ==> 输出: {2019_01_11_19_53_07: "自定义
 for (var key in index_page_json_data) {
 	console.log(key + "==>" + index_page_json_data[key]);
 }
-********************************************************************************
-JavaScript根据节点名字(a,span,li,div,img)获取节点 ==> 返回的是list集合
-document.getElementsByTagName('a'));
-********************************************************************************
-JavaScript 分割字符串:
+
+```
+
+
+
+# JavaScript 分割字符串:
+```  
 var str="How are you doing today?";
 var n=str.split(" ");
-********************************************************************************
-JavaScript:
-记住:
-当你要引入外部 js 文件时候,一定要把<script></script>放在body下面,
-不然bug多  
+
+```
+
+
+
+# 当你要引入外部 js 文件时候,一定要把<script></script>放在body下面,
+```  
 <script  type="text/javascript"  src="../js/upload_title_and_code.js"></script>
 ../css/index.css 表示从根目录开始引入
-********************************************************************************
-JavaScript Format :
+
+```
+
+
+# JavaScript Format :
+```  
 var formData = new FormData();
 var myfile = '123';
 formData.append('username', myfile);  // 添加自定义数据
 document.write(formData.get('username'))
-********************************************************************************
-JavaScript查看是否包含某个数据:
-var str ="abc";
-if(str.search("bc")!=-1){}
-********************************************************************************
-JavaScript不能从外面调用函数里面的变量(因为是私有变量):
-(实在是想调用 , return数据)
-function dfasfasdf() {
-    var AAA = 10;
-}
-console.log(AAA);
-********************************************************************************
+
+```
+
+
+
+# JavaScript 高级
+```  
 JavaScript设置自定义属性:
    // 创建 a 标签 class='add_screenshots'
    var add_screenshots_a = document.createElement('a');  => 创建一个a标签
@@ -77,33 +157,35 @@ JavaScript设置自定义属性:
 		console.log(thisss.previousSibling.innerHTML); =>上一个同类节点的 innerHTML
 		console.log(thisss.getAttribute('class')); => 获取名为'class' 的属性值 (string类型)
 }
-	 
-********************************************************************************
-JavaScript获取元素的绝对位置(相对于父元素)
+
+```
+
+
+
+# JavaScript获取元素的绝对位置(相对于父元素)
+```  
 var self = document.getElementById("eID");
 var left = self.getBoundingClientRect().left + document.documentElement.scrollLeft;
 var top = self.getBoundingClientRect().top + document.documentElement.scrollTop + self.offsetHeight;
 
-********************************************************************************
-JavaScript 定位到某个位置:
+```
+
+
+
+
+# JavaScript 定位到某个位置:
+```  
 document.getElementById("hhh").onclick = function () {
 	//scrollTo() 方法可把内容滚动到指定的坐标
 	window.scrollTo(0, 10000);
 }
 
-********************************************************************************
-JavaScript 刷新:
- window.location.reload();
-********************************************************************************
- //睡眠 暂停 
- function sleep(d){
-  for(var t = Date.now();Date.now() - t <= d;);
-}
-sleep(5000); //当前方法暂停5秒
-********************************************************************************
-document.getElementById("myBtn").onclick=function(){displayDate()};
-********************************************************************************
-JavaScript:
+```
+
+
+
+# other
+```  
 获取 input 值是.value
 赋值是.innerHTML
 document.getElementById('title_input').value
@@ -111,14 +193,21 @@ document.getElementById('title_input').innerHTML
 
 按照索引取值:
  console.log(document.getElementsByTagName('input').valueOf()[0].value);
-********************************************************************************
-JavaScript 这两个方法是有区别的:
+
+```
+
+# JavaScript 这两个方法是有区别的:
+```  
 document.getElementsByClassName('btn-default')[0].click();
 document.getElementsByClassName('btn-default')[0].onclick() = function(){ ...... };
 click()---->单纯的点击,比如某个按钮
 onclick---->绑定点击事件
-********************************************************************************
-onclick 和 addEventListener 的区别:
+
+```
+
+
+# onclick 和 addEventListener 的区别:
+```  
 onclick不支持多次赋值,绑定的是最后一次点击事件
 addEventListener 支持多次绑定,全部触发点击事件
     var  obj = document.getElementById('h1');
@@ -138,64 +227,67 @@ addEventListener 支持多次绑定,全部触发点击事件
     obj.addEventListener("click",function(){
         console.log("22222222222222");
     });
-********************************************************************************
-  给每个class添加(绑定) 事件
-    var  obj_list = document.getElementsByClassName('button');
 
-    for (var i in obj_list){
-        //注册第一个点击事件
-        obj_list[i].addEventListener('click',function () {
-            console.log('1111111111111')
-        });
-        //注册第二个点击事件
-        obj_list[i].addEventListener("click",function(){
-            console.log("-----------------------");
-        });
-    }
+```
 
-********************************************************************************
-<html lang="zh-CN"> ==> 加上就不会自动翻译了
-******************************************************************************** 
-               //给class绑定事件一定要加上[0]		
+
+
+# 给每个class添加(绑定) 事件
+```  
+var  obj_list = document.getElementsByClassName('button');
+
+for (var i in obj_list){
+    //注册第一个点击事件
+    obj_list[i].addEventListener('click',function () {
+        console.log('1111111111111')
+    });
+    //注册第二个点击事件
+    obj_list[i].addEventListener("click",function(){
+        console.log("-----------------------");
+    });
+}
+
+```
+
+
+# 禁止自动翻译
+```  
+<html lang="zh-CN"> ==>
+
+```
+
+
+# 给class绑定事件一定要加上[0]
+```  
  document.getElementsByClassName('btnn')[0].onclick = function() {
  	alert('btnnnnn');
  }
- 
- //同样是调用函数,但是概念却完全不一样:
- document.getElementsByClassName('btnn')[0].onclick = aaa;   //点击才会调用
- document.getElementsByClassName('btnn2')[0].onclick = ccc();//不点击直接调用(类似于初始化)
- 		
- ----------------------------------------------------------------------------------
 
- JavaScript:网页加载完,再去运行js代码:
+```
+
+# JavaScript:网页加载完,再去运行js代码:
+```  
  <script type="text/javascript">
     window.onload = function(){
             alert(2233333);
     }
 </script>
- ----------------------------------------------------------------------------------
- 一个html页面包含另外一个html页面:
+
+```
+
+
+ #  一个html页面包含另外一个html页面:
+ ```  
  window.onload = function() {
  	$('.asasas').load('a.html');
  }
- ----------------------------------------------------------------------------------
- 拿到 <textarea></textarea> 里面的文本数据:
- document.getElementById('tValue').value;
- ----------------------------------------------------------------------------------
- 改变Dom的样式表:
- document.getElementsByClassName('div2')[0].style.background = 'pink';
- ----------------------------------------------------------------------------------
- 
- history.go(-1); 返回上一页面
- 
- ********************************************************************************
 
-document.body    JavaScript获取body节点
-比如 : document.body.style.background
+ ```
+
 
  
- ********************************************************************************
-  //  移动web禁止滑动 + 开启滑动
+# 移动web禁止滑动 + 开启滑动
+```  
     // 首先，建立一个函数
     function bodyScroll(event){
         event.preventDefault();
@@ -214,48 +306,45 @@ document.body    JavaScript获取body节点
         document.body.style.position = 'static';
         document.body.style.width = 'auto';
     }
+
+```
+
  
- ********************************************************************************
 
- 移动端页面开发的两种方式
-https://www.cnblogs.com/jasmine-95/p/7235186.html
 
-********************************************************************************
-JavaScript 在新标签页中打开链接URL
+
+# JavaScript 在新标签页中打开链接URL
+```  
 window.open(url, '_blank').location; 
 
-PS:
-<a href="链接的页面" target="_blank">新窗口打开</a><br />
-<a href="链接的页面" target="_parent">原窗口打开</a>
-********************************************************************************
- JavaScript 获取 点击的节点 的属性
+```
+
+
+
+
+
+# JavaScript 获取 点击的节点 的属性
+```  
  <div id="kkk" onclick="clickthis(this)" >idddddddddddd</div>
     function clickthis(data){
             console.log(data.id);
     }
 
-********************************************************************************
+```
 
-JavaScript 给 CSS设置样式表:
-document.getElementById("kkk").style.cssText = " background-color:pink; width: 100px; height: 100px; ";
 
- 
-********************************************************************************
 
+
+# parse:解析
+```  
 JSON.stringify({a:10,b:30})     返回==> "{"a":10,"b":30}"
 JSON.parse('{"a":10,"b":30}')   返回==> {a: 10, b: 30}
-     parse:解析
- 
-********************************************************************************
 
-判断一个变量是否为数组:
-var aaa = [1,2,3];
-aaa instanceof Array
- 
-********************************************************************************
+```
 
-Javascript中绑定click事件的四种方式介绍:
 
+# Javascript中绑定click事件的四种方式介绍:
+```  
 一：HTML中添加onclick	
     <button id="vv" onclick="myfunction()" >哈哈</button>
 
@@ -278,39 +367,24 @@ Javascript中绑定click事件的四种方式介绍:
       alert('hahah')
       })
 
----------------------------------------------------------------------------
-
-JavaScript 函数
- function myFunction(a, b) {
-    return a * b;
-}
-
-JavaScript 函数可以通过一个表达式定义。
-函数表达式可以存储在变量中
- var x = function (a, b) {return a * b};
-var z = x(4, 3);
+```
 
 
----------------------------------------------------------------------------
 
+
+
+# 改变点击事件的属性
+```  
 <h1 onclick="changetext(this)">点击文本!</h1>
-function changetext(id){
-	id.innerHTML="Ooops!";
+function changetext(ev){
+	ev.innerHTML="Ooops!";
 }
 
+```
 
----------------------------------------------------------------------------
 
-
-addEventListener() 方法允许向同一个元素添加多个事件，且不会覆盖已存在的事件：
-element.addEventListener("click", myFunction);
-element.addEventListener("click", mySecondFunction);
-甚至你可以向同个元素添加不同类型的事件
-
----------------------------------------------------------------------------
-
-tagName nodeName 区别:
-
+# tagName nodeName 区别:
+```  
 总结： tagName 只能用在元素节点上，而nodeName可以用在任何节点上，
 可以说nodeName涵盖了tagName，并且具有更多的功能，因此建议总是使用nodeName。
 小例子:
@@ -336,29 +410,13 @@ tagName nodeName 区别:
   建议使用nodeName
       ps:多余一个text是因为有一个回车换行符
 
----------------------------------------------------------------------------
+```
 
 
-JavaScript 实战小项目
-https://github.com/visugar/FrontEnd-examples
 
 
----------------------------------------------------------------------------
-
-页面加载的时候自动加载这个函数
-(function asdasd() {
-    console.log(123123);
-})();
-
-
----------------------------------------------------------------------------
-
-按钮设置成为不可以点击的!!!
-btn.disabled = true;
-
----------------------------------------------------------------------------
-
-区别:
+# 区别:
+```  
 innerHTML  输出当前标签的文本内容，如果标签内有子标签，会连子标签本身和子标签内的文本内容一起输出
 outerHTML  输出当前标签的本身和标签内的文本内容，如果有子标签，那么子标签本身和标签内的文本内容也将一起输出
 
@@ -368,10 +426,14 @@ outerText     只输出当前标签内的文本内容，如果标签内有子标
 ps:
     innerHTML是符合W3C标准的属性，
     而innerText只适用于IE浏览器，因此，尽可能地去使用innerHTML，而少用innerText，
----------------------------------------------------------------------------
+
+```
 
 
- event对象中 target和currentTarget 属性的区别
+
+
+# event对象中 target和currentTarget 属性的区别
+```  
 首先本质区别是：
 
     event.target返回触发事件的元素
@@ -379,19 +441,13 @@ ps:
 
     event.currentTarget的作用是什么呢，我觉得他和this 的作用是差不多的，始终返回的是绑定事件的元素
 
+```
 
 
----------------------------------------------------------------------------
 
 
-input输入框选中状态:
-document.getElementById("search_box_input").focus();
-
-
----------------------------------------------------------------------------
-
-
-获取被点击对象的文本数据
+# 获取被点击对象的文本数据
+```  
 <ul id="list">
     <li>YXB___QAQ---1</li>
     <li>YXB___QAQ---2</li>
@@ -410,11 +466,11 @@ document.getElementById("search_box_input").focus();
 	document.querySelector("#Comprehensive ul").style.display = "none";
 }
 
+```
 
----------------------------------------------------------------------------
 
-
-获取当前第几个元素:
+# 获取当前第几个元素:
+```  
 <ul id="list">
     <li>YXB_____QAQ---1</li>
     <li>YXB_____QAQ---2</li>
@@ -431,23 +487,27 @@ document.getElementById("search_box_input").focus();
         console.log(lists.indexOf(item));
     })
 
-
----------------------------------------------------------------------------
-
-获得一个元素的高度值:
-	注意:   querySelector只会选中第一个元素
-	document.querySelector(".slideshow").offsetHeight  
-
----------------------------------------------------------------------------
-
-获取整个网页向上滚动了多少距离??
-	console.log("向上滚动了   "+document.documentElement.scrollTop);
+```
 
 
----------------------------------------------------------------------------
 
-JavaScript:
+# 获得一个元素的高度值:
+```  
+注意:   querySelector只会选中第一个元素
+document.querySelector(".slideshow").offsetHeight  
 
+```
+
+
+# 获取整个网页向上滚动了多少距离??
+```  
+console.log("向上滚动了   "+document.documentElement.scrollTop);
+
+```
+
+
+# JavaScript 高级测试:
+```  
 网页尺寸为: 2472*6708
 chrome浏览器模拟移动端: 
 	宽:320		高: 568
@@ -487,88 +547,40 @@ window.screen.availWidth;           //屏幕可用工作区的宽						返回 32
 		document.body.scrollTop			   在chrome浏览器中可以用
 
 		parseInt 小数转化成整数
----------------------------------------------------------------------------
 
-
-移动端页面禁止网页滑动:
-        var mo = function(e){
-            e.preventDefault();
-        };
-        //直接默认不让滑动
-        stop();
-		
-	//不允许页面滑动
-    function not_allow_slide(){
-        document.body.style.overflow='hidden';
-        document.addEventListener("touchmove",mo,false);
-    }
-
-    // 允许滑动
-    function allow_slide(){
-        document.body.style.overflow='';//出现滚动条
-        document.removeEventListener("touchmove",mo,false);
-    }
+```
 
 
 
----------------------------------------------------------------------------
-
-JavaScript 返回上一页:
- document.getElementById("span1").onclick = function (ev) {
-        window.history.go(-1);
-    }
-
-
----------------------------------------------------------------------------
-
-
-JavaScript 动态给input输入框输入数值:
-	  document.getElementById("search_box_input").value = "123";
-
-
----------------------------------------------------------------------------
-
-JavaScript发送action请求到java web后端:
-
+# 移动端页面禁止网页滑动:
+```  
+var mo = function(e){
+    e.preventDefault();
+};
+//直接默认不让滑动
+stop();
     
+//不允许页面滑动
+function not_allow_slide(){
+    document.body.style.overflow='hidden';
+    document.addEventListener("touchmove",mo,false);
+}
 
+// 允许滑动
+function allow_slide(){
+    document.body.style.overflow='';//出现滚动条
+    document.removeEventListener("touchmove",mo,false);
+}
 
-   /*      按照销量排序  高 -> 低     */
-    document.getElementById("sort_by_sales").onclick = function (ev) {
-        window.location="<%=request.getContextPath()%>/JD_index/search_result.do?data=DESC";
-    };	
-	
-		java后端接收参数
-	    String data = request.getParameter("data");//取出值
-        System.err.println(data);
-		
-		PS:
-			记得导包( import javax.servlet.http.HttpServletRequest; ) 
-			HttpServletRequest request
-
----------------------------------------------------------------------------
-JavaScript 匿名函数	
-	  (function(x, y) {
-        alert(x + y);
-    })(2,3);
-
----------------------------------------------------------------------------
-
-
-        if (e.keyCode === 13){
-            login();
-        }
-		
-等同于:
-		
-		e.keyCode === 13 && login();
+```
 
 
 
----------------------------------------------------------------------------
 
-						cookie 操作:
 
+
+# cookie 操作:
+```  
 JavaScript 遍历所有cookie:
     function get_all_cookies() {
 
@@ -608,31 +620,4 @@ JavaScript 遍历所有cookie:
     }
 
 
-
----------------------------------------------------------------------------
-
-
-
-
-
----------------------------------------------------------------------------
-
-********************************************************************************
-
-********************************************************************************
-
-********************************************************************************
-
-********************************************************************************
-
-********************************************************************************
-
-********************************************************************************
-
-********************************************************************************
-
-********************************************************************************
-
-********************************************************************************
-
-********************************************************************************
+```

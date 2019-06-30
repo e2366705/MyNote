@@ -16,11 +16,13 @@
 ```  
 首先:
 	打开 setting 
-	搜索: 'Java compile' 
-	找到: 'build project automatically' 打上勾
+	搜索: "Java compile" :
+		找到: 'build project automatically' 打上勾 ;
+		找到 "compile independent modules in parallel (may require larger heap size)" 打上勾;
 
-在 idea 的右上角 , 有个 'edit configurations' 点击进去 (就是每次点击 Run/debug 的地方)
-有个 'on update action'  选择 : hot swap classes and update trigger file if failed
+在 idea 的右上角 , 有个 'edit configurations' 点击进去 (就是每次点击 Run/debug 的地方) , 
+有个 'on update action'  ,
+选择 : hot swap classes and update trigger file if failed
 下面就选择: update classess and resouses
 
 * 如果上述还是不行的话, 最后一招:

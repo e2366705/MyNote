@@ -23,7 +23,7 @@ echo join("=>",$arr);
 
 ```
 
-### 字符串 => 为数组
+### 字符串 => 数组
 ```  
 $str = "www.runoob.com";
 print_r(explode(".", $str));
@@ -113,14 +113,7 @@ is_numeric('string');
 
 ```
 
-## php中"=>"的作用: 数组键值对:
-```  
-$css=array('style'=>'s0','color' => 'blue');
-$css['style'] = 's1';
-$css['color'] = 'red';
-print_r($css);
 
-```
 
 
 # return后面的语句不再执行
@@ -137,25 +130,6 @@ echo $BBB;
 document.write(xhr.responseText);
 
 ```
-
-
-
-
-
-# PHP后台用 $file = $_FILES['my-image-file']; 来获取
-```  
-var formData = new FormData();
-formData.append('my-image-file', "233333333333"); 
-
-```
-
-
-# 在后台 PHP 中,只能用 $name = $_POST['name']; 来获取这个数据
-```  
-formData.append('name', "qwe");  
-
-```
-
 
 
 
@@ -186,10 +160,9 @@ $ccc = array_merge($aaa,$bbb);
 
 
 
-# -> / :: 是什么意思?
-### ->用来引用对象的成员（属性与方法）
+# => / -> / :: 是什么意思?
+### -> 的作用  用来引用对象的成员（属性与方法）
 ```  
-小例子:
 	class aaaa{
 		public $aa = "AAA";
 		public $bb = "BBB";
@@ -200,8 +173,17 @@ $ccc = array_merge($aaa,$bbb);
 ```
 
 
+### "=>"的作用: 数组键值对:
+```  
+$css=array('style'=>'s0','color' => 'blue');
+$css['style'] = 's1';
+$css['color'] = 'red';
+print_r($css);
+
+```
+
 	
-### PHP中的 :: 
+###  :: 的作用
 ```  
 1: 类正常访问静态成员:
 		class Heima{
@@ -263,7 +245,7 @@ $a = array ('a' => 'apple', 'b' => 123, 'c' => array ('x', 'y', 'z'));
 ```
 
 
-## print_r($a);
+##  第1种输出方式:  print_r($a);
 ```  
 Array
 (
@@ -281,7 +263,7 @@ Array
 ```
 
 
-## var_export($a);
+## 第2种输出方式:   var_export($a);
 ```  
 array (
   'a' => 'apple',
@@ -297,7 +279,7 @@ array (
 ```
 
 
-## var_dump($a);
+## 第3种输出方式:   var_dump($a);
 ```  
 
 // 带上格式 + 并且显示数据类型
@@ -355,7 +337,8 @@ echo greeting;  // 输出 "欢迎访问 Runoob.com"
 ```
 
 
-# 字符串之间的的链接
+# 字符串操作
+## 字符串之间的的链接
 ```  
 在 PHP 中，只有一个字符串运算符。
 并置运算符 (.) 用于把两个字符串值连接起来。
@@ -367,20 +350,31 @@ echo $txt1 . " " . $txt2;
 ```
 
 
-# 获取字符串的长度
+## 字符串内查找一个字符或一段指定的文本。
+```  
+strpos() 函数用于在字符串内查找一个字符或一段指定的文本。
+如果在字符串中找到匹配，该函数会返回第一个匹配的字符位置。如果未找到匹配，则返回 FALSE。
+
+echo strpos("Hello world!","world"); 
+
+```
+
+
+## 获取字符串的长度
 ```  
 echo strlen("Hello world!"); 
 
 ```
 
-# 获取数组的长度
+# 数组操作
+## 获取数组的长度
 ```  
 $cars=array("Volvo","BMW","Toyota");
 echo count($cars);
 
 ```
 
-# 遍历数组
+## 遍历数组
 ```  
 * 第一种
 $cars = array("Volvo", "BMW", "Toyota");
@@ -403,7 +397,7 @@ foreach ($age as $x => $x_value) {
 ```
 
 
-# 数组排序
+## 数组排序
 ```  
 sort() - 对数组进行升序排列
 rsort() - 对数组进行降序排列
@@ -418,7 +412,7 @@ https://www.runoob.com/php/php-arrays-sort.html
 ```
 
 
-# 函数
+# 基础的函数
 ```  
 function add($x, $y)
 {
@@ -463,8 +457,8 @@ var_dump($data);
 
 
 
-
-# Javascript :
+# 解析json
+## Javascript :
 ```  
     JSON.parse()   json->对象
     JSON.stringify()； 对象->json
@@ -472,7 +466,8 @@ var_dump($data);
 ```
 
 
-# PHP:
+
+## PHP:
 ```  
 json_encode()   php关联数组（对象） ->json
 json_decode();  json->php 对象
@@ -480,14 +475,7 @@ json_decode();  json->php 对象
 ```
 
 
-# strpos() 函数
-```  
-strpos() 函数用于在字符串内查找一个字符或一段指定的文本。
-如果在字符串中找到匹配，该函数会返回第一个匹配的字符位置。如果未找到匹配，则返回 FALSE。
 
-echo strpos("Hello world!","world"); 
-
-```
 
 
 

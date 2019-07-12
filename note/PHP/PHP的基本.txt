@@ -6,6 +6,19 @@ PHP新建变量是:        $xxx;
 
 
 
+# PHP后台用 $file = $_FILES['my-image-file']; 来获取
+```  
+var formData = new FormData();
+formData.append('my-image-file', "233333333333"); 
+
+```
+
+
+# 在后台 PHP 中,只能用 $name = $_POST['name']; 来获取这个数据
+```  
+formData.append('name', "qwe");  
+
+```
 
 
 

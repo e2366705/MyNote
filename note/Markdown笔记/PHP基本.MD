@@ -136,30 +136,6 @@ document.write(xhr.responseText);
 
 
 
-# 移除数组中重复的值
-```  
-$a = array(
-    "a" => "red",
-    "b" => "green",
-    "c" => "red"
-);
-print_r(array_unique($a));
-
-```
-
-
-# array合并:
-```  
-$aaa = array(1,2,3);
-$bbb = array(11,22,33);
-$ccc = array_merge($aaa,$bbb);
-
-```
-
-
-
-
-
 # => / -> / :: 是什么意思?
 ### -> 的作用  用来引用对象的成员（属性与方法）
 ```  
@@ -367,6 +343,27 @@ echo strlen("Hello world!");
 ```
 
 # 数组操作
+## 移除数组中重复的值
+```  
+$a = array(
+    "a" => "red",
+    "b" => "green",
+    "c" => "red"
+);
+print_r(array_unique($a));
+
+```
+
+
+## 数组合并:
+```  
+$aaa = array(1,2,3);
+$bbb = array(11,22,33);
+$ccc = array_merge($aaa,$bbb);
+
+```
+
+
 ## 获取数组的长度
 ```  
 $cars=array("Volvo","BMW","Toyota");

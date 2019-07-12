@@ -10,11 +10,28 @@ isset($aa)
 ```
 
 
-# PHP: Array数组 ==> 字符串:
+# 字符串 / 数组(array) 的 转换
+### 数组 => 字符串
 ```  
 $array = array('lastname', 'email', 'phone');
 $comma_separated = implode(",", $array);
 
+
+$arr = array('Hello','World!','Beautiful','Day!');
+echo join("=>",$arr);   
+输出:   Hello=>World!=>Beautiful=>Day!
+
+```
+
+### 字符串 => 为数组
+```  
+$str = "www.runoob.com";
+print_r(explode(".", $str));
+
+语法:
+                   $分隔符     $字符串     可有可无
+function explode ($delimiter, $string, $limit = null) {}
+         explode('/', 'image/png')[1];  ==> png
 ```
 
 
@@ -63,7 +80,7 @@ string(60) "C:\phpStudy\PHPTutorial\WWW\thinkphp5\application\index\Test"
 
 
 
-## PHP中获取时间:
+## 获取时间:
 ```  
 //需要设置时区,不然获取的时间是不准的
 date_default_timezone_set('PRC');
@@ -74,13 +91,14 @@ echo "当前时间是 " . date("h:i:sa")."\n";
 
 
 
-# JavaScript查看数据类型:
+# 查看数据类型
+### JavaScript查看数据类型:
 ```  
 typeof(xxx)
 
 ```
 
-# PHP 查看数据类型:
+### PHP 查看数据类型:
 ```  
 var_dump(xxx)
 
@@ -121,12 +139,7 @@ document.write(xhr.responseText);
 ```
 
 
-# 把字符串打散为数组
-```  
-$str = "www.runoob.com";
-print_r(explode(".", $str));
 
-```
 
 
 # PHP后台用 $file = $_FILES['my-image-file']; 来获取
@@ -145,23 +158,7 @@ formData.append('name', "qwe");
 
 
 
-# 分割字符串 传换成  Array数组:
-```  
-          :        $分隔符     $字符串     可有可无
-function explode ($delimiter, $string, $limit = null) {}
-         explode('/', 'image/png')[1];  ==> png
 
-```
-
-
-# 把数组元素组合为一个字符串：
-```  
-$arr = array('Hello','World!','Beautiful','Day!');
-echo join("=>",$arr);   
-
-输出:   Hello=>World!=>Beautiful=>Day!
-
-```
 
 
 
@@ -189,9 +186,8 @@ $ccc = array_merge($aaa,$bbb);
 
 
 
-
-## php中:->的用法:
-### ->用来引用对象的成员（属性与方法）；
+# -> / :: 是什么意思?
+### ->用来引用对象的成员（属性与方法）
 ```  
 小例子:
 	class aaaa{
@@ -205,8 +201,7 @@ $ccc = array_merge($aaa,$bbb);
 
 
 	
-## PHP中的‘::’是一种内置的语法解析符号:
-### 小例子	
+### PHP中的 :: 
 ```  
 1: 类正常访问静态成员:
 		class Heima{
@@ -252,7 +247,7 @@ echo "<h1>TEST.....</h1>";
 
 ```
 
-# 输出方式 : exit / die
+# 输出方式 : exit / die 会暂停
 ```  
 exit("qweqweqwe");  		输出后退出, 不再执行下面的代码
 die("123123123");   		输出后退出
@@ -362,7 +357,6 @@ echo greeting;  // 输出 "欢迎访问 Runoob.com"
 
 # 字符串之间的的链接
 ```  
-
 在 PHP 中，只有一个字符串运算符。
 并置运算符 (.) 用于把两个字符串值连接起来。
 

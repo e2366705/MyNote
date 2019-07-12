@@ -1,5 +1,100 @@
 ﻿# PHP基本:		
 
+
+# namespace的上面(前面)不能有任何的文字,方法
+
+
+# 检测这个变量是否赋值
+```  
+isset($aa)
+```
+
+
+# PHP: Array数组 ==> 字符串:
+```  
+$array = array('lastname', 'email', 'phone');
+$comma_separated = implode(",", $array);
+
+```
+
+
+# PHP中文乱码怎么办? 
+```  
+header("content-type:text/html;charset=utf-8");
+
+```
+
+
+# 输出上一级目录
+```  
+exit(dirname(dirname(__FILE__)));
+
+```
+
+
+# 把一个字符串打乱   
+```  
+str_shuffle("ABCDEFGHIJKRMN");
+
+```
+
+ 
+# 截取字符串
+```  
+substr("ABCDEFGHIJKRMN", 2,6);
+
+```
+
+
+
+# __FILE__ 和 __DIR__ 和 dirname的区别/关系
+```  
+var_dump(dirname(__FILE__));
+var_dump(__FILE__);
+var_dump(__DIR__);
+
+
+输出:
+string(60) "C:\phpStudy\PHPTutorial\WWW\thinkphp5\application\index\Test"
+string(72) "C:\phpStudy\PHPTutorial\WWW\thinkphp5\application\index\Test\Test001.php"
+string(60) "C:\phpStudy\PHPTutorial\WWW\thinkphp5\application\index\Test"
+
+```
+
+
+
+## PHP中获取时间:
+```  
+//需要设置时区,不然获取的时间是不准的
+date_default_timezone_set('PRC');
+echo date("Y-m-d H:i:s")."\n";
+echo "当前时间是 " . date("h:i:sa")."\n";
+
+```
+
+
+
+# JavaScript查看数据类型:
+```  
+typeof(xxx)
+
+```
+
+# PHP 查看数据类型:
+```  
+var_dump(xxx)
+
+```
+
+
+ 
+
+# 判断是否是数字
+```  
+is_numeric('string');
+
+```
+
 ## php中"=>"的作用: 数组键值对:
 ```  
 $css=array('style'=>'s0','color' => 'blue');
@@ -8,6 +103,90 @@ $css['color'] = 'red';
 print_r($css);
 
 ```
+
+
+# return后面的语句不再执行
+```  
+echo $AAA;
+return $AAA;      
+echo $BBB;
+
+```
+
+
+# JavaScript 打印后台传输过来的数据
+```  
+document.write(xhr.responseText);
+
+```
+
+
+# 把字符串打散为数组
+```  
+$str = "www.runoob.com";
+print_r(explode(".", $str));
+
+```
+
+
+# PHP后台用 $file = $_FILES['my-image-file']; 来获取
+```  
+var formData = new FormData();
+formData.append('my-image-file', "233333333333"); 
+
+```
+
+
+# 在后台 PHP 中,只能用 $name = $_POST['name']; 来获取这个数据
+```  
+formData.append('name', "qwe");  
+
+```
+
+
+
+# 分割字符串 传换成  Array数组:
+```  
+          :        $分隔符     $字符串     可有可无
+function explode ($delimiter, $string, $limit = null) {}
+         explode('/', 'image/png')[1];  ==> png
+
+```
+
+
+# 把数组元素组合为一个字符串：
+```  
+$arr = array('Hello','World!','Beautiful','Day!');
+echo join("=>",$arr);   
+
+输出:   Hello=>World!=>Beautiful=>Day!
+
+```
+
+
+
+# 移除数组中重复的值
+```  
+$a = array(
+    "a" => "red",
+    "b" => "green",
+    "c" => "red"
+);
+print_r(array_unique($a));
+
+```
+
+
+# array合并:
+```  
+$aaa = array(1,2,3);
+$bbb = array(11,22,33);
+$ccc = array_merge($aaa,$bbb);
+
+```
+
+
+
 
 
 
@@ -70,6 +249,13 @@ var_exprot
 # echo 调试的时候会用到
 ```  
 echo "<h1>TEST.....</h1>";
+
+```
+
+# 输出方式 : exit / die
+```  
+exit("qweqweqwe");  		输出后退出, 不再执行下面的代码
+die("123123123");   		输出后退出
 
 ```
 
@@ -253,6 +439,53 @@ echo "1 + 16 = " . add(1, 16);
 
 
 
+# array 转换成 json:
+## json_encode
+```  
+$data = array();
+$data['a'] = 'test';
+$data['b'] = 'bbb';
+
+$json_string = json_encode($data);
+
+```
+
+# php json_encode 中文乱码怎么办???
+```  
+加上:JSON_UNESCAPED_UNICODE
+echo json_encode($title_ID_Array , JSON_UNESCAPED_UNICODE);
+
+```
+
+
+# json 转换成 array
+## json_decode
+```  
+$json_string = file_get_contents('../JSON/JSON.json');
+$data = json_decode($json_string, true);
+var_dump($data);
+
+```
+
+
+
+
+# Javascript :
+```  
+    JSON.parse()   json->对象
+    JSON.stringify()； 对象->json
+
+```
+
+
+# PHP:
+```  
+json_encode()   php关联数组（对象） ->json
+json_decode();  json->php 对象
+
+```
+
+
 # strpos() 函数
 ```  
 strpos() 函数用于在字符串内查找一个字符或一段指定的文本。
@@ -314,6 +547,25 @@ $t->_print();
 
 # PHP常量详解：define和const的区别
 ## https://my.oschina.net/wangyongtao/blog/525507
+
+
+
+# POST提交数据太大
+```  
+其实后来最终的解决方案是修改服务器的配置文件。
+POST数据按道理说是没有大小限制的，只是取决于浏览器或服务器的配置，tomcat的解决方式参考方案2.
+－－－－－－－－－－－－－－－－－－分割线－－－－－－－－－－－－－－－－－
+场景：之前帮客户做接口，等真正上线的时候，才发现客户提交过来的数据超出测试范围。因为客户发过来的数据有几张base64编码格式的照片。整体2.2M。
+解决方案：
+方案1:最初网上查发现也有人出现过类似情况。说是request.getParameter底层是一个map，map集合装不了那么大的字符串，所以map集合崩溃了。用request.getInputStream流读出来就好了。该兄正是通过此种方法解决，于是我就信了。map装不了过大数据。
+用request.getInputStream来接收数据。但是这时候又出现个问题。用request.getInputStream的方式，之前的小数据又接收不到了，传过来的为“”。
+方案2:针对方案1出现的问题，考虑到还是不能放弃request.getParameter。于是我又去查map是不是真的有限制大小。查API好像没有说Map有最大限制什么的。不过通过map.size() 方法时，有这样的注解：返回此映射中的键-值映射关系数。如果该映射包含的元素大于 Integer.MAX_VALUE，则返回 Integer.MAX_VALUE。于是又觉得map有希望了。后来想是不是跟服务器设置有关系？于是通过网上查找，设置server.xml中Connector中的属性，maxPostSize的值。
+https://blog.csdn.net/yapingge2014/article/details/52052574
+https://blog.csdn.net/gy__my/article/details/68944009
+
+```
+
+
 
 
 

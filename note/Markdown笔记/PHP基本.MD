@@ -47,11 +47,7 @@ print_r($css);
 
 
 # 几种输出方式:
-## PHP开发中，经常会查看变量的值，因此经常会将变量的值输出到页面以便于查看。
-## 常用的输出方式有：echo 、print 、print_r 、var_dump 、var_exprot 等；
-## echo和print常用来输出字符串；
-## 查看数组常用print_r、var_dump、var_exprot
-## 若使用echo和print输出数组时则，结果只能显示"Array"，不会显示数组的结构。
+## PHP开发中，经常会查看变量的值，因此经常会将变量的值输出到页面以便于查看。常用的输出方式有：echo 、print 、print_r 、var_dump 、var_exprot 等； echo和print常用来输出字符串；  查看数组常用print_r、var_dump、var_exprot   若使用echo和print输出数组时则，结果只能显示"Array"，不会显示数组的结构。
 
 
 ## 测试代码

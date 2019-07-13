@@ -1,4 +1,6 @@
-﻿::vvvvv::
+﻿# autohotkey 案例示范:
+```  
+::vvvvv::
 clipboard=
 (
 大渣好, 我系渣渣辉, 这系内冲莱没有玩过的船新版本......
@@ -6,3 +8,5 @@ clipboard=
 Send ^v{enter}
 Sleep, 1000
 Return
+
+```

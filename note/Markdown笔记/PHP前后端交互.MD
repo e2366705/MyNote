@@ -1,12 +1,12 @@
 ﻿# Ajax / jQuery / PHP
-## JavaScript 
+## JavaScript - 前端
 ```  
 function edit_this_file(ev) {
 
       $.ajax({
           type: 'post',
           url: 'includes\\PHP_file\\Ajax\\Get_html_content.php',
-          data: {name: 123, address: 589},
+          data: {name: 123, address: 589},        // -> 传入数据
           dataType: 'json',
           success: function (data) {
               if (data.status === 0) {
@@ -24,7 +24,8 @@ function edit_this_file(ev) {
 ```
 
 
-## PHP
+## PHP - 后端
+### 前端 Ajax使用  dataType: 'json',  那么后端硬顶要用 json_encode
 ```  
 
 //   POST请求

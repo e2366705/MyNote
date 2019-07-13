@@ -23,58 +23,6 @@ formData.append('name', "qwe");
 
 
 
-
-
-
-# PHP with IO:
-## 写 
-```  
-$myfile = fopen("../TXT/aaa.txt", "a") or die("Unable to open file!");
-$txt = "Bill Gates\n";
-fwrite($myfile, $txt);
-fclose($myfile);
-
-```
-
-## 写 - 追加模式
-```  
-$file_name = '../HTML/' .  "222.html";
-if (!$fp = fopen($file_name, 'a')) {
-    echo "打开文件---$file_name---失败！";
-    exit;
-}
-if (fwrite($fp, '0') === false) {
-    echo "FASLE";
-    exit;
-}
-echo "success";
-fclose($fp);
-
-```
-
-
-## 读
-```  
-r : 表示只读
-$myfile = fopen("../TXT/aaa.txt", "r") or die("Unable to open file!");
-// 输出单行直到 end-of-file
-while(!feof($myfile)) {
-    echo fgets($myfile);
-}
-fclose($myfile);
-
-```
-
-
-
-
-
-
-
-
-
-
-
 # 写网页时候,有时候明明源码改了,但网页就是刷新不出更改的内容,
 这时候需要清理一下Chrome的缓存(chrome设置里搜索'缓存就出来了'),
 Chrome会缓存一部分数据(图片,文字),方便网页打开更加迅速,
@@ -82,59 +30,6 @@ Chrome会缓存一部分数据(图片,文字),方便网页打开更加迅速,
 清理缓存即可~~
 
 
-
-
-
-
-
-
-
-  
-
-# PHP 链接 MySQL:
-```  
-$servername = "localhost";
-$username = "root";
-$password = "root";
-// 创建连接
-$conn = new mysqli($servername, $username, $password);
-// 检测连接
-if ($conn->connect_error) {
-    die("连接失败: " . $conn->connect_error);
-}
-echo "连接成功";
-//关闭链接
-$conn->close();
-
-```
-
-
-
-
-# PHP拼接SQL语句:
-```  
-要注意把变量用单引号('')加上双引号("")隔离开来:
-$sql = 'INSERT INTO title_and_id (file_title, file_name) VALUES ("' . $title_input . '","' . $file_name_date . '");';
-
-```
-
-
-
-
-# 怎么在PHP的 array 数组中添加键值对呢??
-```  
-$arr = array('呵呵呵呵呵' => 111, '哈哈哈哈哈' => 222);
-百度了半天,答案是.....
-PHP没有向array直接添加键值对的方法~~
-嗯......
-但是我就是想添加键值对到array里去啊
-方法是:
-直接 ==> $arr['哦哦哦哦哦哦'] = 333;
-对!!! 直接赋值！！然后就把键值对加入array中去了~~~[键不能一样,值可以一样,键值对嘛]
-真是简单粗暴不啰嗦啊~~~
-嘤嘤嘤~~~
-
-```
 
 
 include("./2.php");
@@ -149,20 +44,6 @@ mysql -u root -p
 ```
 
 
-# PHP删除文件:
-```  
-$file = "../TXT/tes555t.jjj";  => ../ 表示根目录
-if (!unlink($file)) {
-    echo("delete_error");
-} else {
-    echo("delete_success");
-}
-
-```
-
-
-
-
 
 # jquery:
 ```  
@@ -171,8 +52,6 @@ $('#aaa li').hover(function(){
 })
 
 ```
-
-
 
 
 

@@ -20,10 +20,11 @@ clipboard=
 Send ^v{enter}
 Sleep, 1000
 Return
-::vvvvv::
+::vvvdum::
 clipboard=
 (
-大渣好, 我系渣渣辉, 这系内冲莱没有玩过的船新版本......
+var_dump();
+die();
 )
 Send ^v{enter}
 Sleep, 1000

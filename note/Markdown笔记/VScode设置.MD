@@ -12,3 +12,7 @@
 
 ```
 
+
+
+# window10 右键菜单添加 vscode 快捷打开方式 
+## https://blog.csdn.net/GreekMrzzJ/article/details/82194913

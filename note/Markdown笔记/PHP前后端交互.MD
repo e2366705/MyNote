@@ -27,6 +27,10 @@ function edit_this_file(ev) {
 ## PHP
 ```  
 
+//   POST请求
+$html_file_name = $_POST['html_file_name'];
+
+
 //判断传过来的name是否为空来判断
 if(!empty($_POST['name'])){
     $value = array("status"=>"1","msg"=>"保存成功");

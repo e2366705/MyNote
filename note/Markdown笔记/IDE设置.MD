@@ -1,15 +1,61 @@
 ﻿
 
-
 # java(PHP)开发IDE设置选项 :
+
+## 1 - 字体设置
 ```  
-	idea必须重新设置的快捷键 (因为实在是太常用了): 
-		* 字体设置.
-		* 设置配色方案 打开setting -> color scheme 找到JavaScript/java/html/css, 修改对应的配色方案 (注释: // /**/ /** 修改为白色)
-		* 设置行号颜色 settings搜索 line number
-		* 关闭窗口: (settings -> key)  搜索: ctrl + F4 
-		* 自定义常用快捷键 (live Template 里面设置) :	
+settings -> font
+
 ```
+
+
+## 2 - 设置配色方案
+```  
+打开setting -> color scheme 找到  JavaScript/java/html/PHP/python , 修改对应的配色方案 (
+	
+	注释: // /**/ /**         修改为白色
+
+	字符串修改为               鲜黄色
+
+```
+
+## 3 关闭窗口的快捷键
+```  
+ settings -> keymap  
+ 	搜索: ctrl + F4 
+	再然后搜索 close 设置快捷键
+
+```
+
+## 4 - 格式化代码
+```  
+ settings -> keymap  
+ 	搜索: format
+	设置为: Ctrl + shift + alt + delete
+```
+
+
+
+## 随后: 设置行号颜色
+```  
+settings搜索 line number
+
+```
+
+# Pycharm出现太多空格
+# Pycharm pep 8 indentation contains tabs
+```  
+As a temporary workaround:
+
+Alt+Enter
+
+choose "Ignore errors like this"
+
+```
+
+
+
+
 
 
 # idea 配置自动编译

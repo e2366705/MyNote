@@ -94,6 +94,26 @@ for(var i in list){
 
 ```
 
+# 按下回车的时触发事件
+```  
+function keyDown(e) {
+
+    var keycode = e.which;   //取得对应的键值（数字）
+
+    var realkey = String.fromCharCode(e.which); //取得代表改键的真正字符
+
+    alert("按键码: " + keycode + " 字符: " + realkey);
+
+    if (keycode === 82){
+        alert("你按下了 R ...")
+    }
+}
+
+document.onkeydown = keyDown
+
+```
+
+
 # 使用JavaScript动态改变DOM节点属性 (使用模板会更加好):
 ```  
 <a href="#" target="_self" id="test">测试</a>

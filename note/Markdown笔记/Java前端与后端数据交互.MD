@@ -157,72 +157,16 @@ public class Article_list_Controller {
     </li>
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+### 前端 2
+```  
+说明  thymeleaf ： th:each="obj,stat:${objects}" 分别代表单个实例,状态(可省略),待遍历对象
+<div th:each="user:${userList}">
+    <input type="hidden" name="userId" th:value="${user.userId}"/>
+    用户姓名：<input type="text" name="password" th:value="${user.username}"/>
+    登录密码：<input type="text" name="username" th:value="${user.password}"/>
+</div>
+
+```
 
 
 

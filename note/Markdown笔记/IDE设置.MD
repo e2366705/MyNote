@@ -2,6 +2,12 @@
 
 # 各种开发IDE 或 编辑器的设置选项 :
 
+### 各种版本的Java官方下载:
+```
+https://www.oracle.com/technetwork/java/archive-139210.html
+
+```
+
 # No.1 - JetBrains 家族:
 
 ##  字体设置

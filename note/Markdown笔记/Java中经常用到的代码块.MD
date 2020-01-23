@@ -9,6 +9,16 @@
 ```
 
 
+# System.out.printf 格式化
+```  
+    System.out.printf("单词:%-66s 出现次数:%d\n", "aaa", 123);
+    System.out.printf("单词:%-66s 出现次数:%d\n", "eqweqweqweqweqw", 3123123);
+    System.out.printf("单词:%-66s 出现次数:%d\n", "q", 7);
+
+```
+
+
+
 # 判断一个字符串是否含有英文 / 中文 / 数字 / ...
 ```  
     @Test
@@ -389,6 +399,8 @@ public class JDBC_test {
 
 /*
 
+-- 删除数据库
+drop database IF EXISTS `zzzzzuj7jk8ds36k8f95xw68k`;
 
 -- 创建 数据库:
 CREATE DATABASE IF NOT EXISTS `zzzzzuj7jk8ds36k8f95xw68k` DEFAULT CHARSET utf8 COLLATE utf8_general_ci;

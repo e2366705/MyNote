@@ -46,30 +46,31 @@ CREATE TABLE IF NOT EXISTS `table1`(      -- (注释:)
 
 # 新建一个数据库并且包含数据 ( 完整的流程:)
 ```
+
 -- 删除数据库
-drop database IF EXISTS `68cac5af68450368`;
+drop database IF EXISTS `MySQL_Test_1`;
 
 -- 创建 数据库:
-CREATE DATABASE IF NOT EXISTS `MySQL_Test` DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS `MySQL_Test_1` DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
 
 -- 切换回
-use `MySQL_Test`;
+use `MySQL_Test_1`;
 
 -- 创建表
 CREATE TABLE IF NOT EXISTS `user`(
 `id` int(20) unsigned not null DEFAULT 0,
 `money` DECIMAL(20,2) NOT NULL DEFAULT '0.00',
-`username` VARCHAR(100) not null DEFAULT '', =>默认为''(不要为NULL,会影响性能)
+`username` VARCHAR(100) not null DEFAULT '', 
 `password` VARCHAR(40)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- 无符号		unsigned
 -- 有符号		signed
 
----插入insert数据:
-insert into table1(username,password) values('HUAWEI','mate20');
-insert into table1(username,password) values('APPLE','IPHONE_5S');
-insert into table1(username,password) values('OPPO','R11');
+-- 插入insert数据:
+insert into `user`(username,password) values('HUAWEI','mate20');
+insert into `user`(username,password) values('APPLE','IPHONE_5S');
+insert into `user`(username,password) values('OPPO','R11');
 
 ```
 

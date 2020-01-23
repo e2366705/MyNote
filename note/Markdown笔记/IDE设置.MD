@@ -16,6 +16,10 @@ settings -> font
 
 ```
 
+## idea maven太慢, 一招解决!!
+## https://blog.csdn.net/zhaoyy0513/article/details/80682934
+	
+
 ## Found duplicated code(发现了重复的代码)
 ```  
 Settings —> Editor —> Inspections —> General —> Duplicated Code
@@ -37,8 +41,13 @@ Settings —> Editor —> Inspections —> General —> Duplicated Code
 ## 关闭窗口的快捷键
 ```  
  settings -> keymap  
+
+	关闭当前标签:
  	搜索: ctrl + F4 
 	再然后搜索 close 设置快捷键
+
+	在系统文件夹打开:
+	show in explorer : Alt + E
 
 ```
 

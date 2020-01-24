@@ -47,7 +47,7 @@ Settings —> Editor —> Inspections —> General —> Duplicated Code
 
 
 <details>
-<summary><h1>222222222222</h1></summary>
+<summary><b>222222222222</b></summary>
 
 2222222222222
 </details>

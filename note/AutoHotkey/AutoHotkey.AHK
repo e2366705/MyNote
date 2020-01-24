@@ -49,3 +49,33 @@ void  main()
 Send ^v{enter}
 Sleep, 1000
 Return
+::cpp::
+clipboard=
+(
+#include <iostream>
+#include<string>
+using namespace std;
+
+class example
+{
+
+};
+
+void  main()
+{
+
+}
+)
+Send ^v{enter}
+Sleep, 1000
+Return
+::ooo::
+clipboard=
+(
+aaaaaaaaaaaaaaaaaa
+bbbbbbbbbbbbbb
+cccccccccc
+)
+Send ^v{enter}
+Sleep, 1000
+Return

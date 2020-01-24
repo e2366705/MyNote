@@ -221,5 +221,18 @@ File → Settings → Editor → Inspections → General → Duplicated Code.
 ::111::```````  `n`n`n```````
 ::whbg::width: 150px; height: 150px; background-color: skyblue;
 ::htmllll::<html lang="zh"><head><style>*{margin:0;padding:0;text-decoration:none;list-style-type:none}body{max-width:640px;min-width:320px;border:red solid 1px}</style><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><meta http-equiv="X-UA-Compatible" content="ie=edge"><title>YXB</title><link rel="styleSheet" href="" type="text/css"><script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script></head><body><h1>YXB</h1></body><script type="text/javascript" src=""></script></html>
+
+换行(适用于一大段文字的情况下):
+::hhh::
+clipboard=
+(
+aaaaaaaaaaaaaaaaaa
+bbbbbbbbbbb
+cccccccccc
+)
+Send ^v{enter}
+Sleep, 1000
+Return
+
 ```
 

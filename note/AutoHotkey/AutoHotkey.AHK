@@ -53,7 +53,8 @@ Return
 clipboard=
 (
 <details>
-<summary>my_name_is_jack</summary>
+<summary><b>my_name_is_jack</b></summary>
+
 
 </details>
 )

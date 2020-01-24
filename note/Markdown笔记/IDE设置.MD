@@ -57,6 +57,11 @@ Settings —> Editor —> Inspections —> General —> Duplicated Code
 
 
 
+
+
+
+
+
 <details>
 <summary>必须设置的:</summary>
 
@@ -128,7 +133,11 @@ choose "Ignore errors like this"
 ```
 
 
-## idea 配置自动编译
+
+
+<details>
+<summary><b>idea 配置自动编译</b></summary>
+
 ```  
 首先:
 	打开 setting 
@@ -149,6 +158,11 @@ choose "Ignore errors like this"
 	这两行打上勾
 
 ```
+</details>
+
+
+
+
 
 
 ## IntelliJ IDEA报Found duplicated code in this file
@@ -170,7 +184,11 @@ File → Settings → Editor → Inspections → General → Duplicated Code.
 ```
 
 
-## idea 自带快捷键:	    
+
+
+<details>
+<summary><b>idea 自带快捷键: </b></summary>
+
 ```  
 	1-- itar  
 	生成for循环的快捷键:
@@ -191,6 +209,12 @@ File → Settings → Editor → Inspections → General → Duplicated Code.
 		需要自己去设置!!!  
 		settings -> live Template
 ```
+</details>
+
+
+
+
+
 
 
 

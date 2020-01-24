@@ -8,13 +8,10 @@ https://www.oracle.com/technetwork/java/archive-139210.html
 
 ```
 
+
 # No.1 - JetBrains 家族:
 
-##  字体设置
-```  
-settings -> font
-
-```
+## idea中注释:  /** */ 支持自动格式化  ,  /* */不支持自动格式化...
 
 ## idea maven太慢, 一招解决!!
 ## https://blog.csdn.net/zhaoyy0513/article/details/80682934
@@ -39,20 +36,9 @@ Settings —> Editor —> Inspections —> General —> Duplicated Code
 ## 妈的, 我在2020-01-23这一天折腾了好几个小时, 死活配置不好Tomacat, 突然想起来SpringBoot是不用配置Tomcat的....
 
 
-##  设置配色方案
+## 必须设置的:
 ```  
-打开setting -> color scheme 找到  JavaScript/java/html/PHP/python , 修改对应的配色方案 (
-	
-	注释: // /**/ /**         修改为白色
-
-	字符串修改为               鲜黄色
-
-```
-
-## 关闭窗口的快捷键
-```  
- settings -> keymap  
-
+	快捷键 => settings -> keymap:
 	关闭当前标签:
  	搜索: ctrl + F4 
 	再然后搜索 close 设置快捷键
@@ -60,14 +46,41 @@ Settings —> Editor —> Inspections —> General —> Duplicated Code
 	在系统文件夹打开:
 	show in explorer : Alt + E
 
+	格式化代码:
+	搜索: format
+	设置为: shift + F
+
+
+ 	字体设置
+	font
+
+
+
+	忽略大小写自动提示:
+	打开 setting -> 输入 Completion
+	有一个 code Completion项目 点击去
+	有个match case,  把那个钩去掉
+
+
+
+	代码颜色:
+	CTRL + alt + S 进入 settings 界面 -> 输入 color 
+	常用的需要配置颜色的有:
+	java
+	JavaScript
+	html
+	css
+	xml
+
+	常用的有:
+	//
+	/* */
+	/** */
+	""
+
 ```
 
-##  格式化代码
-```  
- settings -> keymap  
- 	搜索: format
-	设置为: Ctrl + shift + alt + delete
-```
+
 
 
 
@@ -112,13 +125,6 @@ choose "Ignore errors like this"
 ```
 
 
-## 新项目设置 maven 镜像地址
-```  
-打开 file -> other settings -> Setting for new project -> 搜索maven
-```
-
-
-
 ## IntelliJ IDEA报Found duplicated code in this file
 ```  
 IntelliJ IDEA编程工具报Found duplicated code in this file错误提示是因为你的代码重复了
@@ -126,41 +132,6 @@ IntelliJ IDEA设置步骤如下
 File → Settings → Editor → Inspections → General → Duplicated Code.
 ```
 
-
-
-## 设置行号:
-```
-	打开setting -> 搜索 line number 
-```
-
-## 忽略大小写 自动提示
-```  
-打开 setting -> 输入 Completion
-有一个 code Completion项目 点击去
-有个match case,  把那个钩去掉
-
-```
-
-
-## 设置格式化的快捷键
-```  
-打开 settings 
-输入 keymap
-搜索 Reformat (格式化的意思)
-```
-
-
-## 配置编辑时候的文字颜色:
-```  
-CTRL + alt + S 进入 settings 界面 -> 输入 color 
-下面一些就是配置颜色的了:\
-常用的需要配置颜色的有:
-	java
-	JavaScript
-	html
-	css
-	xml
-```
 
 
 ## idea 自动编译:

@@ -98,7 +98,7 @@ insert into `user`(username,password) VALUES('ccc','333');
 约束该字段的值不可以重复(insert时候,组合在一起不重复就ok)
 	
 增加一个字段 : 	
-	ALTER TABLE `user11` ADD email VARCHAR(50);
+	ALTER TABLE `user` ADD `address` VARCHAR(66);
 
 ```
 
@@ -149,10 +149,9 @@ UPDATE runoob_tbl SET runoob_title='学习 C++' WHERE runoob_id=3;
 (比如text类型的字段转化为int类型->大数据类型转小数据类型,这样子就可能会丢失数据)
 
 
-修改 : 
-	字段名称和属性 ( 将test字段改为test1 ) :
-	ALTER TABLE 表名      CHANGE 原字段名  新字段名    字段类型       约束条件 ; 
-	ALTER TABLE user10    CHANGE test      test1     CHAR(32)     NOT NULL DEFAULT '123';
+修改字段名称和属性 ( 将AAA字段改为BBBB ) :
+	ALTER TABLE 表名    CHANGE 原字段名    新字段名    字段类型     约束条件 ; 
+	ALTER TABLE user10  CHANGE `AAA`      `BBBB`     CHAR(32)   NOT NULL DEFAULT '123';
 
 ```
 

@@ -11,7 +11,9 @@ settings -> 搜索`maven` -> 修改为国内的镜像地址
 
 
 
-### 然后 - 添加xml文件依赖:
+<details>
+<summary><b>添加xml文件依赖:</b></summary>
+
 ```  	
 		<dependency>
             <groupId>org.springframework.boot</groupId>
@@ -30,8 +32,15 @@ settings -> 搜索`maven` -> 修改为国内的镜像地址
             <version>5.3.1</version>
         </dependency>
 ```
+</details>
 
-### 然后 - 配置 application.properties
+
+
+
+
+<details>
+<summary><b>配置 application.properties</b></summary>
+
 ```  
 server.port=8082
 
@@ -42,16 +51,19 @@ spring.datasource.url=jdbc:mysql://localhost:3306/english_word?useUnicode=true&c
 spring.datasource.username=root
 spring.datasource.password=root
 
-
 spring.mvc.static-path-pattern=/static/**
 
 # 开发时关闭缓存,不然没法看到实时页面
 spring.thymeleaf.cache=false
 ```
+</details>
 
 
 
-### 然后 - 添加 controller
+
+<details>
+<summary><b>添加 controller</b></summary>
+
 ```  
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -74,11 +86,15 @@ public class index_controller {
         return "index";
     }
 }
-
-
 ```
+</details>
 
-### 然后 - 添加 html 文件: resources\templates 文件夹下面
+
+
+
+
+
+#### 然后 - 添加 html 文件: resources\templates 文件夹下面
 ```  
 index.html
 ```
@@ -174,28 +190,6 @@ spring.datasource.driver-class-name=com.mysql.jdbc.Driver
 spring.jpa.properties.hibernate.hbm2ddl.auto=none
 
 ```
-
-
-### 又或者:
-```  
-
-
-```
-
-
-### 又或者:
-```  
-
-
-```
-
-
-### 又或者:
-```  
-
-
-```
-
 
 
 

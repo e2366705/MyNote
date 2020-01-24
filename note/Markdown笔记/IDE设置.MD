@@ -2,34 +2,14 @@
 
 # 各种开发IDE 或 编辑器的设置选项 :
 
-### 各种版本的Java官方下载:
-```
-https://www.oracle.com/technetwork/java/archive-139210.html
+## No.1 - JetBrains 家族:
 
-```
+### idea中注释:  /** */ 支持自动格式化  ,  /* */不支持自动格式化...
 
 
-# No.1 - JetBrains 家族:
-
-## idea中注释:  /** */ 支持自动格式化  ,  /* */不支持自动格式化...
-
-## idea maven太慢, 一招解决!!
-## https://blog.csdn.net/zhaoyy0513/article/details/80682934
+### idea maven太慢, 一招解决!!
+### https://blog.csdn.net/zhaoyy0513/article/details/80682934
 	
-
-## Found duplicated code(发现了重复的代码)
-```  
-Settings —> Editor —> Inspections —> General —> Duplicated Code
-
-```
-
-## idea 找不到Tomcat服务器?
-```  
-打开 settings -> 搜索:plugins
-把 tomcat 打上勾
-
-```
-
 
 
 # 注意: SpringBoot是不用自己去配置Tomcat的!!!
@@ -56,6 +36,103 @@ Settings —> Editor —> Inspections —> General —> Duplicated Code
 
 
 
+#### 各种版本的Java官方下载:
+```
+https://www.oracle.com/technetwork/java/archive-139210.html
+
+```
+
+
+#### 随后: 设置行号颜色
+```  
+settings搜索 line number
+
+```
+
+
+#### Found duplicated code(发现了重复的代码)
+```  
+Settings —> Editor —> Inspections —> General —> Duplicated Code
+
+```
+
+
+#### idea 找不到Tomcat服务器?
+```  
+打开 settings -> 搜索:plugins
+把 tomcat 打上勾
+
+```
+
+
+#### IntelliJ IDEA报Found duplicated code in this file
+```  
+IntelliJ IDEA编程工具报Found duplicated code in this file错误提示是因为你的代码重复了
+IntelliJ IDEA设置步骤如下
+File → Settings → Editor → Inspections → General → Duplicated Code.
+```
+
+
+
+#### Pycharm出现太多空格 : Pycharm pep 8 indentation contains tabs
+```  
+As a temporary workaround:
+
+Alt+Enter
+
+choose "Ignore errors like this"
+
+```
+
+
+
+#### idea 开发 springBoot如何实时刷新?
+```  
+如果因为旧项目十分臃肿，导致热重启很慢而影响开发效率，
+笔者建议直接在POM移除spring-boot-devtools依赖，然后使用Control+Shift+F9进行免启动快速更新！！
+
+教程链接 https://www.jianshu.com/p/f658fed35786	
+```
+
+	
+
+#### Intellij IDEA ，按Ctrl+左键，不能进入类或方法，
+#### 提示Cannot find declaration to go to
+```  
+解决办法:
+		是因为没有设置资源文件夹(Sources Root) , 
+		java'文件夹右键设置资源文件即可
+```
+
+
+
+#### idea 配置 less:
+```  
+	首先安装 file watchers 插件: settings -> Plugins -> 搜索:file watchers 插件安装
+	重启idea编辑器
+	settings -> 搜索 file watchers
+	配置less解析器
+```
+
+
+#### idea打包javaweb项目,有两种方式 : 一种是war，一种是 war explored
+```  
+	war不支持热更新(就是你修改html源代码, 不自动更新源码)
+	war explored 支持热更新, 修改html内容, 网页也随之改变
+	推荐使用 war explored 
+```
+
+
+
+
+#### idea 自动编译:
+```  
+	1 打开settings, 搜索compiler -> build project automatically
+	2 ide右上角 , Run –>EditConfigguration
+	  找到Tomcat Server
+	  有两个选项卡, on update action + on feame deactivation
+	  两个都选择: update classes and resources
+```
 
 
 
@@ -113,28 +190,6 @@ Settings —> Editor —> Inspections —> General —> Duplicated Code
 
 
 
-
-
-## 随后: 设置行号颜色
-```  
-settings搜索 line number
-
-```
-
-## Pycharm出现太多空格
-## Pycharm pep 8 indentation contains tabs
-```  
-As a temporary workaround:
-
-Alt+Enter
-
-choose "Ignore errors like this"
-
-```
-
-
-
-
 <details>
 <summary><b>idea 配置自动编译</b></summary>
 
@@ -159,29 +214,6 @@ choose "Ignore errors like this"
 
 ```
 </details>
-
-
-
-
-
-
-## IntelliJ IDEA报Found duplicated code in this file
-```  
-IntelliJ IDEA编程工具报Found duplicated code in this file错误提示是因为你的代码重复了
-IntelliJ IDEA设置步骤如下
-File → Settings → Editor → Inspections → General → Duplicated Code.
-```
-
-
-
-## idea 自动编译:
-```  
-	1 打开settings, 搜索compiler -> build project automatically
-	2 ide右上角 , Run –>EditConfigguration
-	  找到Tomcat Server
-	  有两个选项卡, on update action + on feame deactivation
-	  两个都选择: update classes and resources
-```
 
 
 
@@ -211,63 +243,19 @@ File → Settings → Editor → Inspections → General → Duplicated Code.
 ```
 </details>
 
-
-## 阿松大 2
-### 阿松大 3
-#### 阿松大 4 
-##### 阿松大 5
-###### 阿松大 6
-
-
-
-
-
-
-
-## idea 开发 springBoot如何实时刷新?
-```  
-如果因为旧项目十分臃肿，导致热重启很慢而影响开发效率，
-笔者建议直接在POM移除spring-boot-devtools依赖，然后使用Control+Shift+F9进行免启动快速更新！！
-
-教程链接 https://www.jianshu.com/p/f658fed35786	
-```
-
-	
-
-## Intellij IDEA ，按Ctrl+左键，不能进入类或方法，
-## 提示Cannot find declaration to go to
-```  
-解决办法:
-		是因为没有设置资源文件夹(Sources Root) , 
-		java'文件夹右键设置资源文件即可
-```
-
-
-
-## idea 配置 less:
-```  
-	首先安装 file watchers 插件: settings -> Plugins -> 搜索:file watchers 插件安装
-	重启idea编辑器
-	settings -> 搜索 file watchers
-	配置less解析器
-```
-
-
-## idea打包javaweb项目,有两种方式 : 一种是war，一种是 war explored
-```  
-	war不支持热更新(就是你修改html源代码, 不自动更新源码)
-	war explored 支持热更新, 修改html内容, 网页也随之改变
-	推荐使用 war explored 
-```
-
-
+# 这是示范 1
+## 这是示范 2
+### 这是示范 3
+#### 这是示范 4 
+##### 这是示范 5
+###### 这是示范 6
 
 
 
 
 # other:
 
-## AutoHotkey
+#### AutoHotkey
 ```  
 ::fk::举个例子: AutoHotkey 真是好用到爆!!!!! 强烈安利..... 嘤嘤嘤 ~ ~ ~
 

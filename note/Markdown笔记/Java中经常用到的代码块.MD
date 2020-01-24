@@ -19,6 +19,12 @@
     System.out.printf("单词:%-66s 出现次数:%d\n", "eqweqweqweqweqw", 3123123);
     System.out.printf("单词:%-66s 出现次数:%d\n", "q", 7);
 
+    注意:
+    不是 System.err.println 
+    而是 System.err.printf
+
+    在 idea 中使用 souf 可以打出来
+
 ```
 
 
@@ -294,7 +300,7 @@ import org.junit.Test;
 import java.sql.*;
 public class JDBC_test {
     private static Connection getConn() {
-        String driver = "com.mysql.jdbc.Driver";
+        String driver = "com.mysql.cj.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/zzzzzuj7jk8ds36k8f95xw68k?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC";
         String username = "root";
         String password = "root";

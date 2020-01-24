@@ -146,20 +146,21 @@ File → Settings → Editor → Inspections → General → Duplicated Code.
 
 ## idea 自带快捷键:	    
 ```  
-	1-- itar   JavaScript 
-			for (var i = 0; i < ii.length; i++) {
-					const iiElement = ii[i];
-			}
+	1-- itar  
+	生成for循环的快捷键:
+		for (var i = 0; i < ii.length; i++) {
+				const iiElement = ii[i];
+		}
 
-	2-- itin 	 JavaScript 
-			for (var iiKey in ii) {
-					
-			}
+	2-- itin 
+		for (var iiKey in ii) {
+				
+		}
 
-	3-- fori 	  JavaScript 
-			for (var i = 0; i < ; i++) {
-					
-			}
+	3-- fori
+		for (var i = 0; i < ; i++) {
+				
+		}
 	4-- cl -> console.log()  JavaScript
 		需要自己去设置!!!  
 		settings -> live Template

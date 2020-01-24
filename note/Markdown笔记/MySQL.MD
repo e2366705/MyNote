@@ -4,6 +4,13 @@
 ### 展示所有的数据库
 show databases;
 
+### 选择出是 null 的项目 3 条:
+```  
+SELECT * FROM `user` where `name` is null LIMIT 0,3;
+
+```
+
+
 ### use 某个数据库(aaa)
 use aaa;
 

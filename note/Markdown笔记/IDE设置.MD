@@ -36,7 +36,21 @@ Settings —> Editor —> Inspections —> General —> Duplicated Code
 ## 妈的, 我在2020-01-23这一天折腾了好几个小时, 死活配置不好Tomacat, 突然想起来SpringBoot是不用配置Tomcat的....
 
 
-## 必须设置的:
+<details>
+<summary>111111111111111</summary>
+11111111111111
+</details>
+
+<details>
+<summary><h1>2222222222222</h1></summary>
+2222222222222
+</details>
+
+
+
+<details>
+<summary>必须设置的:</summary>
+
 ```  
 	快捷键 => settings -> keymap:
 	关闭当前标签:
@@ -79,6 +93,9 @@ Settings —> Editor —> Inspections —> General —> Duplicated Code
 	""
 
 ```
+</details>
+
+
 
 
 

@@ -26,6 +26,17 @@ Settings —> Editor —> Inspections —> General —> Duplicated Code
 
 ```
 
+## idea 找不到Tomcat服务器?
+```  
+打开 settings -> 搜索:plugins
+把 tomcat 打上勾
+
+```
+
+
+
+# 注意: SpringBoot是不用自己去配置Tomcat的!!!
+## 妈的, 我在2020-01-23这一天折腾了好几个小时, 死活配置不好Tomacat, 突然想起来SpringBoot是不用配置Tomcat的....
 
 
 ##  设置配色方案

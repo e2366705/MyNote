@@ -79,9 +79,9 @@ insert into `user`(username,password) values('OPPO','R11');
 # 增
 ```  
 多种排序测试用
-insert into user(username,password) VALUES('aaa','999');
-insert into user(username,password) VALUES('bbb','555');
-insert into user(username,password) VALUES('ccc','333');   
+insert into `user`(username,password) VALUES('aaa','999');
+insert into `user`(username,password) VALUES('bbb','555');
+insert into `user`(username,password) VALUES('ccc','333');   
 
 增加 : 
 	给字段添加默认值 : 
@@ -89,17 +89,16 @@ insert into user(username,password) VALUES('ccc','333');
 
 增加 : 
 	字段主键约束 : 
-	ALTER TABLE user3 add PRIMARY KEY(id);
+	ALTER TABLE `user3` add PRIMARY KEY(id);
 (注意:执行这句代码时候,会报错,原因是原来的字段都是null值,所以设置不成功,添加不一样的数据,再执行这句代码即可)
 
 增加 : 
 	字段唯一约束:
-	ALTER TABLE user3 add unique(username);
+	ALTER TABLE `user3` add unique(username);
 约束该字段的值不可以重复(insert时候,组合在一起不重复就ok)
 	
-增加 : 
-	一个字段 : 
-	ALTER TABLE user11 ADD email VARCHAR(50);
+增加一个字段 : 	
+	ALTER TABLE `user11` ADD email VARCHAR(50);
 
 ```
 

@@ -5,6 +5,12 @@ settings -> 搜索`maven` -> 修改为国内的镜像地址
 ```
 
 
+
+# 注意: SpringBoot是不用自己去配置Tomcat的!!!
+## 妈的, 我在2020-01-23这一天折腾了好几个小时, 死活配置不好Tomacat, 突然想起来SpringBoot是不用配置Tomcat的....
+
+
+
 ### 然后 - 添加xml文件依赖:
 ```  	
 		<dependency>

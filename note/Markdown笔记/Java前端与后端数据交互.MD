@@ -6,6 +6,10 @@
 
 ```
 
+
+# 注意: SpringBoot是不用自己去配置Tomcat的!!!
+## 妈的, 我在2020-01-23这一天折腾了好几个小时, 死活配置不好Tomacat, 突然想起来SpringBoot是不用配置Tomcat的....
+
 ### js (angular)
 ```  
 //删除 (服务器数据)

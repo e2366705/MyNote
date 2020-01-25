@@ -49,7 +49,7 @@ void  main()
 Send ^v{enter}
 Sleep, 1000
 Return
-::hhhh::
+::6666::
 clipboard=
 (
 <details>

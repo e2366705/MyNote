@@ -16,6 +16,20 @@ $ git config --global user.email "email"
 ```
 
 
+## idea 把项目上传到GitHub:
+### 教程转载自:  https://blog.csdn.net/u011853294/article/details/53228720
+```  
+找到菜单栏的 : VCS -> import into version control -> creat Git repository
+
+这时项目目录中的文件名会变成红色，表示文件为提交到本地git
+
+右击工程文件 ->git->add，这时文件名会变成绿色
+
+右击工程文件 ->git->commit,提交到本地git。至此，本地git已commit完毕
+
+```
+
+
 
 # 教程1 (共计2):
 ```

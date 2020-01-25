@@ -1,6 +1,5 @@
 ﻿
 
-
 ### 展示所有的数据库
 show databases;
 
@@ -318,6 +317,32 @@ mysql排序:
 	DESC	 数值从高到低
 	
 ```
+
+
+<details>
+<summary><b>MySQL 遇到的问题: </b></summary>
+
+```  
+提示: can't connect to mysql server on localhost 10061
+
+第一步: Windows下面, 开打任务管理器 , 找到服务, 把MySQL服务启动
+
+这时候可能会提示: 
+		Windows 无法启动 mysql_YXB 服务(位于 本地计算机 上)
+		错误 2: 系统找不到指定的文件
+
+这时候就要动注册表了, windows+r  在运行对话框输入regedit，点击确定，进入注册表编辑器
+选择HKEY_LOCAL_MACHINE ->SYSTEM -> CurrentControlSet -> services ->MySQL，
+(或者直接搜: 计算机\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\mysql....)
+
+修改ImagePath的路径为Mysql安装路径，例如：D:\mysql-5.7.19-winx64\bin\mysqld MySQL
+
+怎么获取我的 MySQL 安装路径呢? 
+
+
+
+```
+</details>
 
 
 

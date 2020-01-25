@@ -323,7 +323,7 @@ mysql排序:
 <summary><b>MySQL 遇到的问题: </b></summary>
 
 ```  
-提示: can't connect to mysql server on localhost 10061
+提示: Can't connect to MySQL server on 'localhost' (10061)
 
 第一步: Windows下面, 开打任务管理器 , 找到服务, 把MySQL服务启动
 
@@ -333,13 +333,36 @@ mysql排序:
 
 这时候就要动注册表了, windows+r  在运行对话框输入regedit，点击确定，进入注册表编辑器
 选择HKEY_LOCAL_MACHINE ->SYSTEM -> CurrentControlSet -> services ->MySQL，
-(或者直接搜: 计算机\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\mysql....)
+(或者直接搜: 
+计算机\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\mysql....
+)
 
 修改ImagePath的路径为Mysql安装路径，例如：D:\mysql-5.7.19-winx64\bin\mysqld MySQL
 
 怎么获取我的 MySQL 安装路径呢? 
 
+一般来讲 , 都是默认安装在:  C:\ProgramData\MySQL
 
+所以,
+
+找到Mysql安装的目录，在Mysql安装的目录中找到bin目录，把此路径复制
+
+添加在Windows里面的用户变量的path变量中添加变量值，变量值为刚复制的路径
+(win10 搜索 : 高级环境设置 )
+
+算了...   我选择了重装 MySQL (直接解压缩安装 ), 然后再去添加环境变量, 效果一样的
+
+我把MySQL_8.zip解压缩在:  D:\APPS_________APPS_________\ZIP___ISO___7Z___\MySQL_8
+
+
+把这个:
+D:\APPS_________APPS_________\ZIP___ISO___7Z___\MySQL_8\mysql-8.0.16-winx64\bin
+添加在Windows中环境变量 (win10 搜索 : 高级环境设置 )
+
+
+打开 Windows 的 cmd , 
+输入:
+mysql -uroot -p
 
 ```
 </details>

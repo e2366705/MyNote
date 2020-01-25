@@ -1,3 +1,9 @@
+
+
+
+# 以后不要折腾MySQL客户端了, 简直就是浪费时间, 直接下载一个 phpStudy 直接用里面内置的MySQL, 又省心又省力
+
+
 # 安装教程:  https://www.cnblogs.com/laumians-notes/p/9069498.html
 
 ## 下载 zip 安装包

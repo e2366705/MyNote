@@ -1,5 +1,8 @@
 ﻿
 
+# 以后不要折腾MySQL客户端了, 简直就是浪费时间, 直接下载一个 phpStudy 直接用里面内置的MySQL, 又省心又省力
+
+
 ### 展示所有的数据库
 show databases;
 
@@ -319,6 +322,7 @@ mysql排序:
 ```
 
 
+# 以后不要折腾MySQL客户端了, 简直就是浪费时间, 直接下载一个 phpStudy 直接用里面内置的MySQL, 又省心又省力
 <details>
 <summary><b>MySQL 遇到的问题: </b></summary>
 
@@ -363,6 +367,40 @@ D:\APPS_________APPS_________\ZIP___ISO___7Z___\MySQL_8\mysql-8.0.16-winx64\bin
 打开 Windows 的 cmd , 
 输入:
 mysql -uroot -p
+
+
+怎样删除windows服务项?
+打开cmd -> sc delete "服务名" (比如: sc delete "MySQL")
+
+
+emmmmmmmmm......
+
+
+到最后问题解决了吗??
+
+哈哈哈哈...
+
+答案是并没有
+
+搞了半天
+
+还是没有搞好
+
+反而发现了一个更加简单省心的方法
+
+那就是 phpStudy 
+
+搞 php 的都知道
+
+是一个集成开发环境
+
+集合了 php MySQL tomcat服务器
+
+直接用 phpStudy 里面的 MySQL 不就好了???
+
+下个MySQL客户端各种配置+设置, 简直就是反人类...
+
+
 
 ```
 </details>

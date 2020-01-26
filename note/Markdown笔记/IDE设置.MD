@@ -45,8 +45,11 @@ https://www.oracle.com/technetwork/java/archive-139210.html
 
 #### 随后: 设置行号颜色
 ```  
-settings搜索 line number
-
+settings
+Editor
+color scheme
+General
+code -> line number
 ```
 
 
@@ -89,7 +92,12 @@ choose "Ignore errors like this"
 #### idea 开发 springBoot如何实时刷新?
 ```  
 如果因为旧项目十分臃肿，导致热重启很慢而影响开发效率，
-笔者建议直接在POM移除spring-boot-devtools依赖，然后使用Control+Shift+F9进行免启动快速更新！！
+建议直接在POM移除spring-boot-devtools 依赖，然后使用 Ctrl+Shift+F9 进行免启动快速更新！！
+
+2020-01-25 经过测试发现 
+Ctrl+Shift+F9 只针对前端内容(html / css / JavaScript)的改动生效
+对后端(Java springBoot)的改动并不生效
+可以直接在idea里面用 Ctrl+F5 重启 debug  只不过速度比较慢...
 
 教程链接 https://www.jianshu.com/p/f658fed35786	
 ```

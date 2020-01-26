@@ -66,7 +66,7 @@ document.getElementsByClassName('div2')[0].style.background = 'pink';
 
 
 # JavaScript 匿名函数 闭包 
-## 终于可以不用为函数起什么名字烦恼了...
+## 终于可以不用为函数起什么名字烦恼了 (以减少全局变量的使用)
 ```  
 
 带参数:
@@ -81,13 +81,15 @@ document.getElementsByClassName('div2')[0].style.background = 'pink';
 
 例子:
 <button onclick="(function(){
-
-    aaa();
-
+    aaa();   // 调用 aaa 函数
     function aaa() {
       alert(123123);
     }
 })()" > start  </button>
+
+<h1 style="font-size: 150px; font-weight: bolder;" onclick="(function(e){
+    e.innerHTML = 123;
+})(this)">miss</h1>
 
 ```
 

@@ -364,13 +364,19 @@ window.open(url, '_blank').location;
 
 
 
-# JavaScript 获取 点击的节点 的属性
+# JavaScript 获取 点击的节点 的属性 ( this target e)
 ```  
- <div id="kkk" onclick="clickthis(this)" >idddddddddddd</div>
-    function clickthis(data){
-            console.log(data.id);
+    <h1 onclick="changetext(this)">点击文本!------111</h1>
+
+    <h1 id="test001">点击文本!------222</h1>
+
+    function changetext(ev) {
+        ev.innerHTML = "Ooops!";
     }
 
+    document.getElementById("test001").onclick = function(e){
+        e.target.innerHTML = "222222222";
+    }
 ```
 
 
@@ -412,16 +418,6 @@ JSON.parse('{"a":10,"b":30}')   返回==> {a: 10, b: 30}
 
 
 
-
-
-# 改变点击事件的属性
-```  
-<h1 onclick="changetext(this)">点击文本!</h1>
-function changetext(ev){
-	ev.innerHTML="Ooops!";
-}
-
-```
 
 
 # tagName nodeName 区别:
@@ -485,29 +481,6 @@ ps:
 ```
 
 
-
-
-# 获取被点击对象的文本数据
-```  
-<ul id="list">
-    <li>YXB___QAQ---1</li>
-    <li>YXB___QAQ---2</li>
-    <li>YXB___QAQ---3</li>
-    <li>YXB___QAQ---4</li>
-    <li>YXB___QAQ---5</li>
-</ul>
-
-    document.getElementById("list").addEventListener('click',function(e){
-        console.log(e.target.innerHTML);
-    });
-
-效果一样的:	
-	document.querySelector("#Comprehensive span").onclick = function (e) {
-    console.log(e.target.innerHTML);
-	document.querySelector("#Comprehensive ul").style.display = "none";
-}
-
-```
 
 
 # 获取当前第几个元素:

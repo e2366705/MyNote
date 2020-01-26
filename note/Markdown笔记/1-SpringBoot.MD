@@ -17,6 +17,8 @@ spring.mvc.static-path-pattern=/**
 html引用:
 <script src="/Remember_words/Last_Next_Words.js"></script>
 
+src\main\resources\static\Remember_words\Last_Next_Words.js
+
 ```
 </details>
 

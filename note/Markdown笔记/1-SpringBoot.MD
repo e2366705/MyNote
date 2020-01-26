@@ -8,17 +8,15 @@
 <summary><b>springBoot访问静态资源(js, CSS等)</b></summary>
 
 ```  
+静态资源一定要放在 src\main\resources\static 下面, 不要没办法访问
+
 配置文件:
 application.properties:
-spring.mvc.static-path-pattern=/static/**
+spring.mvc.static-path-pattern=/**
 
 html引用:
-<script src="/static/Remember_words/Last_Next_Words.js"></script>
+<script src="/Remember_words/Last_Next_Words.js"></script>
 
-
-所以相对应的:
-spring.mvc.static-path-pattern=/templates/**
-<script src="/templates/Remember_words/Last_Next_Words.js"></script>
 ```
 </details>
 

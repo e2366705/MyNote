@@ -132,7 +132,6 @@ Ctrl+Shift+F9 只针对前端内容(html / css / JavaScript)的改动生效
 
 
 
-
 #### idea 自动编译:
 ```  
 	1 打开settings, 搜索compiler -> build project automatically
@@ -142,6 +141,25 @@ Ctrl+Shift+F9 只针对前端内容(html / css / JavaScript)的改动生效
 	  两个都选择: update classes and resources
 ```
 
+
+<details>
+<summary><b>idea 自定义注释模板:</b></summary>
+
+```  
+settings
+live templates
+点击右边那个加号 弹出 live template
+填写 // 
+下面 template text 填写:  // $date$ $time$
+点击 edit variables 
+date选择 data()
+time选择 time()
+选择应用范围(一般是 Java 和 JavaScript)
+
+最后, 在编辑过程中, 打出 // 然后按一下 Tap 键,
+就会一键生成 // 2020/1/26 15:38
+```
+</details>
 
 
 

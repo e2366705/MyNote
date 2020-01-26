@@ -56,14 +56,6 @@ document.getElementsByClassName('div2')[0].style.background = 'pink';
 ```
 
 
-# 页面加载的时候自动加载这个函数
-```  
-(function asdasd() {
-    console.log(123123);
-})();
-
-```
-
   
 # JavaScript获取body节点
 ```  
@@ -73,11 +65,29 @@ document.getElementsByClassName('div2')[0].style.background = 'pink';
 
 
 
-# JavaScript 匿名函数	
+# JavaScript 匿名函数 闭包 
+## 终于可以不用为函数起什么名字烦恼了...
 ```  
+
+带参数:
 (function(x, y) {
     alert(x + y);
 })(2,3);
+
+不带参数:
+(function() {
+    alert(123);
+})();
+
+例子:
+<button onclick="(function(){
+
+    aaa();
+
+    function aaa() {
+      alert(123123);
+    }
+})()" > start  </button>
 
 ```
 

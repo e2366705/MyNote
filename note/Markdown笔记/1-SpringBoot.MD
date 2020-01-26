@@ -1,14 +1,26 @@
-# 新建 spring boot项目:
-### 第一步: 检查idea的maven地址有没有设置成为国内的镜像地址
-```  
-settings -> 搜索`maven` -> 修改为国内的镜像地址
-```
-
-
-
+# About Springboot
 # 注意: SpringBoot是不用自己去配置Tomcat的!!!
 ## 妈的, 我在2020-01-23这一天折腾了好几个小时, 死活配置不好Tomacat, 突然想起来SpringBoot是不用配置Tomcat的....
 
+
+
+<details>
+<summary><b>springBoot访问静态资源(js, CSS等)</b></summary>
+
+```  
+配置文件:
+application.properties:
+spring.mvc.static-path-pattern=/static/**
+
+html引用:
+<script src="/static/Remember_words/Last_Next_Words.js"></script>
+
+
+所以相对应的:
+spring.mvc.static-path-pattern=/templates/**
+<script src="/templates/Remember_words/Last_Next_Words.js"></script>
+```
+</details>
 
 
 <details>

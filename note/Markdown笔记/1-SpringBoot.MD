@@ -3,10 +3,7 @@
 ## 妈的, 我在2020-01-23这一天折腾了好几个小时, 死活配置不好Tomacat, 突然想起来SpringBoot是不用配置Tomcat的....
 
 
-### 包含另一个 html 文件
-```  
-    <div th:replace="head_title.html"></div>
-```
+
 
 
 <details>
@@ -108,7 +105,10 @@ public class index_controller {
 
 
 
-
+### 一个 html 文件里面包含另一个 html 文件
+```  
+    <div th:replace="head_title.html"></div>
+```
 
 
 #### 然后 - 添加 html 文件: resources\templates 文件夹下面

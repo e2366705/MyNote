@@ -3,6 +3,11 @@
 ## 妈的, 我在2020-01-23这一天折腾了好几个小时, 死活配置不好Tomacat, 突然想起来SpringBoot是不用配置Tomcat的....
 
 
+### 包含另一个 html 文件
+```  
+    <div th:replace="head_title.html"></div>
+```
+
 
 <details>
 <summary><b>springBoot访问静态资源(js, CSS等)</b></summary>

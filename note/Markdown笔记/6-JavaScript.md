@@ -9,13 +9,6 @@
 # JavaScript 实战小项目   https://github.com/visugar/FrontEnd-examples
 
 
-# JavaScript三元运算符:
-```  
-var b = 5;
-(b == 5) ? a = "true" : a = "false";
-
-```
-
 # 刷新这个页面
 ```  
  location.reload();                     //   刷新这个页面
@@ -62,6 +55,38 @@ document.getElementsByClassName('div2')[0].style.background = 'pink';
 比如 : document.body.style.background
 
 ```
+
+
+
+# JavaScript 新增一个节点
+```  
+    window.onload = function() {
+        var childNode = document.createElement('p');
+        childNode.innerHTML = '<h1>这里是提示信息〜〜</h1>';
+
+        //childNode.setAttribute('class', 'alerts');
+        //childNode.setAttribute('onclick', 'this.style.display = "none"');
+        childNode.className = 'alerts';
+        childNode.onclick = function () {
+            this.style.display = 'none';
+        };
+        document.getElementsByTagName('body')[0].appendChild(childNode);
+    };
+```
+
+# JavaScript 播放音频文件 mp3 Audio文件
+```  
+                 // 创建一个 audio 节点
+                var childNode = document.createElement('audio');
+                childNode.setAttribute('controls', '');
+                childNode.setAttribute('id', 'TTS_audios');
+                childNode.innerHTML = '<source src="https://fanyi.so.com/audio?from=en&to=zh&voice=5&cate=uk-speech&key=93f725a07423fe1c889f448b33d21f46&query=java">';
+                document.getElementsByTagName('body')[0].appendChild(childNode);
+
+                var myAuto = document.getElementById("TTS_audios");
+                myAuto.play();
+```
+
 
 
 

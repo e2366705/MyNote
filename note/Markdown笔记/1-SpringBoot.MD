@@ -12,6 +12,8 @@
 ```  
 静态资源一定要放在 src\main\resources\static 下面, 不要没办法访问
 
+而且一定要 重启 springBoot 服务器 , 不然静态资源没办法更新 ( 在idea下快捷键是: Ctrl + F5 )
+
 配置文件:
 application.properties:
 spring.mvc.static-path-pattern=/**

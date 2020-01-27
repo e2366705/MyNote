@@ -1,23 +1,39 @@
-﻿# 返回当前的时间
+﻿
+
+# 注意: SpringBoot是不用自己去配置Tomcat的!!!
+## 妈的, 我在2020-01-23这一天折腾了好几个小时, 死活配置不好Tomacat, 突然想起来SpringBoot是不用配置Tomcat的....
+
+
+
+# 返回当前的时间
 ```  
-        SimpleDateFormat sdf = new SimpleDateFormat();// 格式化时间
-        //sdf.applyPattern("yyyy_MM_dd_HH_mm_ss a");// a为am/pm的标记
-        sdf.applyPattern("yyyy_MM_dd__HH:mm:ss");// a为am/pm的标记
-        Date date = new Date();// 获取当前时间
-        System.out.println("现在时间：" + sdf.format(date)); // 输出已经格式化的现在时间（24小时制）
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        System.out.println( "现在是:  " +  df.format(new Date()));// new Date()为获取当前系统时间
+
+        System.out.printf("现在是:  %66s  \n" , df.format(new Date()));
+        System.out.printf("现在是:  %-66s   " , df.format(new Date()));
+```
+
+
+### 生成随机数
+```  
+int min_number = 5000;
+int max_number = 9999;
+int Random_number = min_number + (int) (Math.random() * (max_number - min_number + 1000));
 
 ```
 
 
-
-# 注意: SpringBoot是不用自己去配置Tomcat的!!!
-## 妈的, 我在2020-01-23这一天折腾了好几个小时, 死活配置不好Tomacat, 突然想起来SpringBoot是不用配置Tomcat的....
 
 # System.out.printf 格式化
 ```  
     System.out.printf("单词:%-66s 出现次数:%d\n", "aaa", 123);
     System.out.printf("单词:%-66s 出现次数:%d\n", "eqweqweqweqweqw", 3123123);
     System.out.printf("单词:%-66s 出现次数:%d\n", "q", 7);
+
+    有两种方式:
+    System.out.printf("现在是:  %66s  \n" , df.format(new Date()));
+    System.out.printf("现在是:  %-66s   " , df.format(new Date()));
 
     注意:
     不是 System.err.println 

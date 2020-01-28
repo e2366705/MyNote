@@ -5,7 +5,7 @@
 
 
 
-# 返回当前的时间
+#### 返回当前的时间
 ```  
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
         System.out.println( "现在是:  " +  df.format(new Date()));// new Date()为获取当前系统时间
@@ -15,7 +15,7 @@
 ```
 
 
-### 生成随机数
+#### 生成随机数
 ```  
 int min_number = 5000;
 int max_number = 9999;
@@ -25,7 +25,13 @@ int Random_number = min_number + (int) (Math.random() * (max_number - min_number
 
 
 
-# System.out.printf 格式化
+#### 4个 # 比较合适...
+
+
+
+<details>
+<summary><b>System.out.printf 格式化</b></summary>
+
 ```  
     System.out.printf("单词:%-66s 出现次数:%d\n", "aaa", 123);
     System.out.printf("单词:%-66s 出现次数:%d\n", "eqweqweqweqweqw", 3123123);
@@ -40,12 +46,32 @@ int Random_number = min_number + (int) (Math.random() * (max_number - min_number
     而是 System.err.printf
 
     在 idea 中使用 souf 可以打出来
+```
+</details>
+
+
+
+
+# 
+```  
+
 
 ```
 
 
 
-# 判断一个字符串是否含有英文 / 中文 / 数字 / ...
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b>判断一个字符串是否含有英文 / 中文 / 数字 / ...</b></summary>
+
 ```  
     @Test
     public void test() {
@@ -76,12 +102,16 @@ int Random_number = min_number + (int) (Math.random() * (max_number - min_number
         System.out.println(Whether_all_english);
 
     }
-
 ```
+</details>
 
 
 
-#  生成指定长度的随机字符串（A-Z，a-z，0-9）
+
+
+<details>
+<summary><b>生成指定长度的随机字符串（A-Z，a-z，0-9）</b></summary>
+
 ```  
     @Test
     public void getRandomString() {
@@ -96,28 +126,16 @@ int Random_number = min_number + (int) (Math.random() * (max_number - min_number
         }
         System.out.println(sb.toString());
     }
-
 ```
+</details>
 
 
-# 生成指定长度的数字
-```  
-while (true){
-
-    Thread.sleep(66);
-
-    int min_number = 5000;
-    int max_number = 9000;
-
-    int Random_number = min_number + (int)(Math.random() * (max_number-min_number + 1000 ));
-    System.out.println(Random_number);
-    
-}
-
-```
 
 
-# 截取字符串(最后2位 / 排除最后2位)
+
+<details>
+<summary><b>截取字符串(最后2位 / 排除最后2位)</b></summary>
+
 ```  
 String strhours = String.valueOf(123456789);
 
@@ -129,12 +147,16 @@ String bbb = strhours.substring(0,strhours.length()-2);   //截掉
 
 System.out.println(aaa);
 System.out.println(bbb);
-
 ```
+</details>
 
 
 
-# Java IO (读 / 写)
+
+
+<details>
+<summary><b>Java IO (读 / 写)</b></summary>
+
 ```  
 package com.swjtu;
 import org.junit.Test;
@@ -304,12 +326,16 @@ public class IO {
         out.close();
     }
 }
-
 ```
+</details>
 
 
 
-# JDBC MySQL 增/删/改/查
+
+
+<details>
+<summary><b>JDBC MySQL 增/删/改/查</b></summary>
+
 ```  
 package com.swjtu;
 import org.junit.Test;
@@ -450,3 +476,117 @@ insert into user(username,password) values('OPPO','R11');
  */
 
 ```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+

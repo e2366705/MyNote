@@ -5,7 +5,12 @@
 
 
 
-#### 返回当前的时间
+#### 4个 # 比较合适...
+
+
+<details>
+<summary><b>返回当前的时间</b></summary>
+
 ```  
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
         System.out.println( "现在是:  " +  df.format(new Date()));// new Date()为获取当前系统时间
@@ -13,19 +18,23 @@
         System.out.printf("现在是:  %66s  \n" , df.format(new Date()));
         System.out.printf("现在是:  %-66s   " , df.format(new Date()));
 ```
+</details>
 
 
-#### 生成随机数
+
+
+
+<details>
+<summary><b>生成随机数</b></summary>
+
 ```  
 int min_number = 5000;
 int max_number = 9999;
 int Random_number = min_number + (int) (Math.random() * (max_number - min_number + 1000));
-
 ```
+</details>
 
 
-
-#### 4个 # 比较合适...
 
 
 
@@ -48,21 +57,6 @@ int Random_number = min_number + (int) (Math.random() * (max_number - min_number
     在 idea 中使用 souf 可以打出来
 ```
 </details>
-
-
-
-
-# 
-```  
-
-
-```
-
-
-
-
-
-
 
 
 
@@ -566,25 +560,7 @@ insert into user(username,password) values('OPPO','R11');
 
 
 
-<details>
-<summary><b>my_name_is_jack</b></summary>
 
-```  
-
-```
-</details>
-
-
-
-
-
-<details>
-<summary><b>my_name_is_jack</b></summary>
-
-```  
-
-```
-</details>
 
 
 

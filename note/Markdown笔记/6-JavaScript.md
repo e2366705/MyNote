@@ -18,6 +18,8 @@
 
 
 
+
+
 # 睡眠 暂停 :
 ```  
  function sleep(d){
@@ -76,15 +78,28 @@ document.getElementsByClassName('div2')[0].style.background = 'pink';
 
 # JavaScript 播放音频文件 mp3 Audio文件
 ```  
-                 // 创建一个 audio 节点
-                var childNode = document.createElement('audio');
-                childNode.setAttribute('controls', '');
-                childNode.setAttribute('id', 'TTS_audios');
-                childNode.innerHTML = '<source src="https://fanyi.so.com/audio?from=en&to=zh&voice=5&cate=uk-speech&key=93f725a07423fe1c889f448b33d21f46&query=java">';
-                document.getElementsByTagName('body')[0].appendChild(childNode);
+            // 创建一个 audio 节点
+        var childNode = document.createElement('audio');
+        childNode.setAttribute('controls', '');
+        childNode.setAttribute('id', 'TTS_audios');
+        childNode.innerHTML = '<source src="https://fanyi.so.com/audio?from=en&to=zh&voice=5&cate=uk-speech&key=93f725a07423fe1c889f448b33d21f46&query=java">';
+        document.getElementsByTagName('body')[0].appendChild(childNode);
+        
+        // Ee.paused;   // 是否暂停
+        audio.remove(); // 移除这个播放框
 
-                var myAuto = document.getElementById("TTS_audios");
-                myAuto.play();
+        var myAuto = document.getElementById("TTS_audios");
+        myAuto.play();     // 播放它
+
+        var audio = document.getElementById("TTS_audios");
+        audio.loop = false;
+
+        // 判断是否播放完毕
+        audio.addEventListener('ended', function () {
+            console.log("=====   播放完毕...   ============");
+            audio.remove();
+        }, console.log("还在播放...")  ,  false );
+
 ```
 
 

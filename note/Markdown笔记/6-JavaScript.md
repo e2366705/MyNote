@@ -100,6 +100,15 @@ document.getElementsByClassName('div2')[0].style.background = 'pink';
             audio.remove();
         }, console.log("还在播放...")  ,  false );
 
+
+        
+
+        方式二:  更加简洁快速
+        var url = "http://www.joereddington.com/testsound/hope.wav?cb=" + new Date().getTime();
+        var audio = new Audio(url);
+        audio.load();
+        audio.play(); 
+        
 ```
 
 

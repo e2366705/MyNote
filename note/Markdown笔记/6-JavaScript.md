@@ -112,6 +112,36 @@ document.getElementsByClassName('div2')[0].style.background = 'pink';
 ```
 
 
+# 每隔一段时间执行某个 function setInterval setTimeout
+```  
+区别:
+setTimeout(function, time)，延时一段时间后执行function，只执行一次；
+setInterval(function, time)，以time为时间间隔，反复执行 function
+
+setInterval(function(){
+    console.log("hello  world   ");
+}, 1000);
+
+setInterval(say_hello , 900);
+
+function say_hello(){
+    console.log("say_hello  YXB ^_^  ");
+}
+
+
+Q: 如何让 setInterval 刚加载就执行？  https://segmentfault.com/q/1010000008206368
+function runThis () {
+    //这个是要执行的内容
+}
+var interval;
+//先执行一次，然后再设置5秒执行一次
+runThis();
+clearInterval(interval);
+interval = setInterval(runThis, 5000);
+
+```
+
+
 
 
 # JavaScript 匿名函数 闭包 

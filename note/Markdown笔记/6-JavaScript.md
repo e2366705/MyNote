@@ -64,9 +64,12 @@ document.getElementsByClassName('div2')[0].style.background = 'pink';
 # localStorage
 ```  
 存   localStorage.setItem('myCat', 'Tom');
-取   localStorage.getItem('myCat');
+取   localStorage.getItem('myCat');        获取key对应的value
 删   localStorage.removeItem('myCat');
 清空 localStorage.clear();
+
+localStorage.length     获取localStorage一共有多少条数据
+localStorage.key(3)     获取指定下标位置的key
 ```
 
 

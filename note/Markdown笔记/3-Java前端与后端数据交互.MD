@@ -153,6 +153,7 @@ public class Article_list_Controller {
     }
 
 }
+
 ```
 
 ### 前端: 
@@ -165,15 +166,41 @@ public class Article_list_Controller {
 
 ### 前端 2
 ```  
-说明  thymeleaf ： th:each="obj,stat:${objects}" 分别代表单个实例,状态(可省略),待遍历对象
-<div th:each="user:${userList}">
-    <input type="hidden" name="userId" th:value="${user.userId}"/>
-    用户姓名：<input type="text" name="password" th:value="${user.username}"/>
-    登录密码：<input type="text" name="username" th:value="${user.password}"/>
-</div>
+ interStat  系统自带
+
+<table>
+    <tr th:each="user, interStat : ${result}">
+        <td th:text="${interStat.index}"></td>
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.phone}"></td>
+    </tr>
+</table>
 
 ```
 
+### JavaScript 取值
+```  
+<script th:inline="javascript">
+    var message = [[${result}]];
+    console.log(result);
+</script>
+
+注：script标签中 th:inline 一定不能少，通常在取值的前后会加上不同的注释
+
+```
+
+### 后端 + 前端
+```  
+@GetMapping("/message")
+public String getMessage(Model model){
+    model.addAttribute("message","This is your message");
+    return "index";
+}
+
+<p th:text="#{message}">default message</p>
+
+```
 
 
 

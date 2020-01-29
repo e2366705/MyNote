@@ -198,7 +198,7 @@ for(var i in list){
 
 ```
 
-# 按下回车的时触发事件
+#  键盘事件: 按下回车的时触发事件
 ```  
 function keyDown(e) {
 
@@ -216,6 +216,36 @@ function keyDown(e) {
 document.onkeydown = keyDown
 
 ```
+
+# 键盘事件: 按下 / 松开
+```  
+资料来源:     https://www.cnblogs.com/youyoui/p/10381457.html
+按下 => 显示
+松开 => 隐藏
+
+        // 键盘按下时触发
+        document.onkeydown = function (event) {
+            // console.log('key down');
+        };
+
+        // 键盘按住时触发
+        document.onkeypress = function (event) {
+            console.log('key press');
+            console.log(event.key);
+            console.log(event.code);
+            console.log(event.keyCode);
+            document.getElementById("test").style.display = "block";
+        };
+
+        // 键盘弹起时触发
+        document.onkeyup = function (event) {
+            console.log('key up');
+            document.getElementById("test").style.display = "none";
+        };
+
+         <h1 id="test" style="display: none;">aAAAAAAAAAAAAA</h1>
+```
+
 
 
 # 使用JavaScript动态改变DOM节点属性 (使用模板会更加好):

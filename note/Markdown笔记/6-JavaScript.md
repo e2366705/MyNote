@@ -5,6 +5,575 @@
 #### 移动端页面开发的两种方式   https://www.cnblogs.com/jasmine-95/p/7235186.html
 #### JavaScript 实战小项目   https://github.com/visugar/FrontEnd-examples
 
+
+
+
+```
+
+
+
+DOM 操作 
+
+
+
+
+```
+<details>
+<summary><b>JavaScript 给 CSS设置样式表( 两种方式):</b></summary>
+
+```  
+document.getElementById("kkk").style.cssText = " background-color:pink; width: 100px; height: 100px; ";
+document.getElementsByClassName('div2')[0].style.background = 'pink';
+```
+</details>
+
+
+
+
+<details>
+<summary><b>使用JavaScript动态改变DOM节点属性 (使用模板会更加好):</b></summary>
+
+```  
+<a href="#" target="_self" id="test">测试</a>
+document.getElementById("test").attributes["target"].nodeValue="_blank";
+
+JavaScript DOM setAttribute() 方法:
+document.getElementsByTagName("INPUT")[0].setAttribute("type","button");
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>JavaScript获取body节点</b></summary>
+
+```  
+document.body.style.background
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>JavaScript 新增一个节点</b></summary>
+
+```  
+    window.onload = function() {
+        var childNode = document.createElement('p');
+        childNode.innerHTML = '<h1>这里是提示信息??</h1>';
+
+        //childNode.setAttribute('class', 'alerts');
+        //childNode.setAttribute('onclick', 'this.style.display = "none"');
+        childNode.className = 'alerts';
+        childNode.onclick = function () {
+            this.style.display = 'none';
+        };
+        document.getElementsByTagName('body')[0].appendChild(childNode);
+    };
+```
+</details>
+
+
+
+
+
+
+
+<details>
+<summary><b>JavaScript遍历节点元素,并且绑定点击事件</b></summary>
+
+```  
+var list=document.getElementsByClassName('li_new');
+for(var i in list){
+	list[i].onmouseover=grayBack;
+	list[i].onmouseout=noGrayBack;
+```
+</details>
+
+
+
+
+
+
+<details>
+<summary><b>JavaScript设置自定义属性:</b></summary>
+
+```  
+   // 创建 a 标签 class='add_screenshots'
+   var add_screenshots_a = document.createElement('a');  => 创建一个a标签
+   add_screenshots_a.className = 'add_screenshots';  => 设置classname名字
+   add_screenshots_a.innerHTML = '添加截图';
+   add_screenshots_a.setAttribute("onclick", "dddd(this)");  => 动态绑定点击事件dddd(this)
+	 
+	 function dddd(thisss){
+    console.log(thisss.innerHTML);  => 这个元素的 innerHTML
+		console.log(thisss.previousSibling); => 这个节点元素的 上一个同类节点(object类型)
+		console.log(thisss.previousSibling.innerHTML); =>上一个同类节点的 innerHTML
+		console.log(thisss.getAttribute('class')); => 获取名为'class' 的属性值 (string类型)
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b>JavaScript获取元素的绝对位置(相对于父元素)</b></summary>
+
+```  
+var self = document.getElementById("eID");
+var left = self.getBoundingClientRect().left + document.documentElement.scrollLeft;
+var top = self.getBoundingClientRect().top + document.documentElement.scrollTop + self.offsetHeight;
+
+```
+</details>
+
+
+
+
+
+
+<details>
+<summary><b>JavaScript 定位到某个位置:</b></summary>
+
+```  
+document.getElementById("hhh").onclick = function () {
+	//scrollTo() 方法可把内容滚动到指定的坐标
+	window.scrollTo(0, 10000);
+}
+```
+</details>
+
+
+
+
+
+
+<details>
+<summary><b>click / onclick</b></summary>
+
+```  
+document.getElementsByClassName('btn-default')[0].click();
+document.getElementsByClassName('btn-default')[0].onclick() = function(){ ...... };
+click()---->单纯的点击,比如某个按钮
+onclick---->绑定点击事件
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>onclick 和 addEventListener 的区别:</b></summary>
+
+```  
+onclick不支持多次赋值,绑定的是最后一次点击事件
+addEventListener 支持多次绑定,全部触发点击事件
+    var  obj = document.getElementById('h1');
+
+    // obj.onclick = function () {
+    //     console.log('11111111111')
+    // }
+    // obj.onclick = function () {
+    //     console.log('2222222222')
+    // }
+
+    //注册第一个点击事件 绑定点击事件
+    obj.addEventListener("click",function(){
+        console.log("11111111111");
+    });
+    //注册第二个点击事件
+    obj.addEventListener("click",function(){
+        console.log("22222222222222");
+    });
+```
+</details>
+
+
+
+
+
+
+
+<details>
+<summary><b>给每个class添加(绑定) 事件</b></summary>
+
+```  
+var  obj_list = document.getElementsByClassName('button');
+
+for (var i in obj_list){
+    //注册第一个点击事件
+    obj_list[i].addEventListener('click',function () {
+        console.log('1111111111111')
+    });
+    //注册第二个点击事件
+    obj_list[i].addEventListener("click",function(){
+        console.log("-----------------------");
+    });
+}
+```
+</details>
+
+
+
+
+
+
+
+<details>
+<summary><b>给class绑定事件一定要加上[0]</b></summary>
+
+```  
+ document.getElementsByClassName('btnn')[0].onclick = function() {
+ 	alert('btnnnnn');
+ }
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>JavaScript 获取 点击的节点 的属性 ( this target e)</b></summary>
+
+```  
+    <h1 onclick="changetext(this)">点击文本!------111</h1>
+
+    <h1 id="test001">点击文本!------222</h1>
+
+    function changetext(ev) {
+        ev.innerHTML = "Ooops!";
+    }
+
+    document.getElementById("test001").onclick = function(e){
+        e.target.innerHTML = "222222222";
+    }
+```
+</details>
+
+
+
+
+
+
+<details>
+<summary><b>Javascript中绑定click事件的四种方式介绍:</b></summary>
+
+```  
+一：HTML中添加onclick	
+    <button id="vv" onclick="myfunction()" >哈哈</button>
+
+二：JS中定义函数绑定事件	
+    var funcc = function () {
+      alert('我爱编程')
+      }
+    var aa = document.getElementById('vv')
+    aa.onclick = funcc
+
+三：直接定义函数与内容	
+    document.getElementById('vv').onclick = function () {
+      alert('hasssshhaa ')
+      }
+
+四：利用addEventListener	
+    document.getElementById('vv').addEventListener('click',funcc);
+    //或者：
+    document.getElementById('vv').addEventListener('click',function () {
+      alert('hahah')
+      })
+```
+</details>
+
+
+
+
+
+
+<details>
+<summary><b>tagName nodeName 区别:</b></summary>
+
+```  
+总结： tagName 只能用在元素节点上，而nodeName可以用在任何节点上，
+可以说nodeName涵盖了tagName，并且具有更多的功能，因此建议总是使用nodeName。
+小例子:
+  <div id="box1">box1
+      <div class="son">son1</div>
+  </div>  
+
+      for (var i = 0; i < father.length ; i++) {
+            console.log(father[i].tagName)
+      }
+      返回: 
+          undefined
+          DIV
+          undefined
+  但是:
+        for (var i = 0; i < father.length ; i++) {
+            console.log(father[i].nodeName)
+        }      
+        返回:
+            #text
+            DIV
+            #text
+  建议使用nodeName
+      ps:多余一个text是因为有一个回车换行符
+```
+</details>
+
+
+
+
+
+
+
+
+<details>
+<summary><b>innerHTML / outerHTML / innerText / outerText </b></summary>
+
+```  
+innerHTML  输出当前标签的文本内容，如果标签内有子标签，会连子标签本身和子标签内的文本内容一起输出
+outerHTML  输出当前标签的本身和标签内的文本内容，如果有子标签，那么子标签本身和标签内的文本内容也将一起输出
+
+innerText     只输出当前标签内的文本内容，如果标签内有子标签，那么也只输出子标签内的文本内容
+outerText     只输出当前标签内的文本内容，如果标签内有子标签，那么也只输出子标签内的文本内容
+
+ps:
+    innerHTML是符合W3C标准的属性，
+    而innerText只适用于IE浏览器，因此，尽可能地去使用innerHTML，而少用innerText，
+```
+</details>
+
+
+
+
+
+
+<details>
+<summary><b>event对象中 target和currentTarget 属性的区别</b></summary>
+
+```  
+首先本质区别是：
+
+    event.target返回触发事件的元素
+    event.currentTarget返回绑定事件的元素
+
+    event.currentTarget的作用是什么呢，我觉得他和this 的作用是差不多的，始终返回的是绑定事件的元素
+
+```
+</details>
+
+
+
+
+
+
+<details>
+<summary><b>获取当前第几个元素:</b></summary>
+
+```  
+<ul id="list">
+    <li>YXB_____QAQ---1</li>
+    <li>YXB_____QAQ---2</li>
+    <li>YXB_____QAQ---3</li>
+    <li>YXB_____QAQ---4</li>
+    <li>YXB_____QAQ---5</li>
+</ul>
+
+    var ul =  document.getElementById("list");
+
+    ul.addEventListener('click',function(e){
+        var item = e.target;
+        var lists = Array.from(ul.querySelectorAll('li'));
+        console.log(lists.indexOf(item));
+    })
+```
+</details>
+
+
+
+
+
+
+
+<details>
+<summary><b>获取整个网页向上滚动了多少距离??:</b></summary>
+
+```  
+console.log("向上滚动了   "+document.documentElement.scrollTop);
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b>JavaScript 高级测试:</b></summary>
+
+```  
+网页尺寸为: 2472*6708
+chrome浏览器模拟移动端: 
+	宽:320		高: 568
+
+测试代码:
+<html lang="zh"><head><style>        * {            margin: 0;            padding: 0;            text-decoration: none;            list-style-type: none;        }        #box1{            width: 115px;            height: 115px;            margin-left: 36px;            background-color: pink;        }</style><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="X-UA-Compatible" content="ie=edge"><title>YXB</title></head><body><h1>YXB</h1><div id="box1"></div><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><span>qwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqw</span><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p></body><script>    console.log(document.getElementById("box1").offsetWidth);    console.log(document.getElementById("box1").offsetHeight);    console.log(document.getElementById("box1").offsetLeft);    console.log(document.getElementById("box1").offsetTop);</script></html>
+	
+document.body.clientWidth;        //网页可见区域宽(body)   						返回 320
+document.body.clientHeight;       //网页可见区域高(body)						返回 569
+
+document.body.offsetHeight;      //网页可见区域宽(body)，包括border、margin等	返回 2472
+document.body.scrollWidth;        //网页正文全文宽，包括有滚动条时的未见区域	返回 6708
+document.body.scrollHeight;       //网页正文全文高，包括有滚动条时的未见区域	返回 2472
+
+document.body.offsetWidth;       //网页可见区域宽(body)，包括border、margin等  无论怎么滑动, 返回 320
+
+document.body.scrollTop;           //网页被卷去的Top(滚动条)					返回 88.5
+document.body.scrollLeft;           //网页被卷去的Left(滚动条)					返回 3762
+
+window.screenTop;                     //浏览器距离Top							返回 
+window.screenLeft;                     //浏览器距离Left							返回 
+
+window.screen.height;                //屏幕分辨率的高							返回 568
+window.screen.width;                 //屏幕分辨率的宽							返回 320
+
+window.screen.availHeight;          //屏幕可用工作区的高						返回 568
+window.screen.availWidth;           //屏幕可用工作区的宽						返回 320
+
+
+    console.log(document.getElementById("box1").offsetWidth);
+    console.log(document.getElementById("box1").offsetHeight);
+    console.log(document.getElementById("box1").offsetLeft);
+    console.log(document.getElementById("box1").offsetTop);
+	
+	注意:
+		document.documentElement.scrollTop 在chrome浏览器中, 不起作用
+		document.body.scrollTop			   在chrome浏览器中可以用
+
+		parseInt 小数转化成整数
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```  
+
+
+
+          字符串操作: 
+          https://www.runoob.com/jsref/jsref-obj-string.html
+
+
+          
+```
+<details>
+<summary><b>字符串 操作:</b></summary>
+
+```  
+    长度:
+    var txt = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    var sln = txt.length;
+    
+    
+    某个指定的字符串值在字符串中首次出现的位置
+    var str="Hello world, welcome to the universe.";
+    var n=str.indexOf("welcome");
+    
+    在字符串第五个位置开始查找字符 "e" 第一次出现的位置:
+    var str="Hello world, welcome to the universe.";
+    var n=str.indexOf("e",5);
+    
+    查找字符串是否包含 "Runoob" (true / false):
+    var str = "Hello world, welcome to the Runoob。";
+    var n = str.includes("world");
+    
+    从第 12 个索引位置开始查找字符串:
+    var str = "Hello world, welcome to the Runoob.";
+    var n = str.includes("world", 12);
+    
+    等等........
+    
+    var str="How are you doing today?";
+    var n=str.split(" ");
+
+    // 分割完可能会出现这种情况...
+    var arr = ['','','',1,2,3,4,5,'','',''];
+    for(var i = 0; i < arr.length; i++){
+        if(arr[i] === ''){
+            arr.splice(i,1);
+            i = i-1;
+        }
+    }
+    console.log(arr);
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <details>
 <summary><b>新窗口打开  /  原窗口打开</b></summary>
 
@@ -62,29 +631,6 @@ document.getElementById("span1").onclick = function (ev) {
 
 
 
-<details>
-<summary><b>JavaScript 给 CSS设置样式表( 两种方式):</b></summary>
-
-```  
-document.getElementById("kkk").style.cssText = " background-color:pink; width: 100px; height: 100px; ";
-document.getElementsByClassName('div2')[0].style.background = 'pink';
-```
-</details>
-
-
-
-
-
-<details>
-<summary><b>JavaScript获取body节点</b></summary>
-
-```  
-document.body.style.background
-```
-</details>
-
-
-
 
 
 <details>
@@ -102,27 +648,6 @@ localStorage.key(3)     获取指定下标位置的key
 </details>
 
 
-
-
-
-<details>
-<summary><b>JavaScript 新增一个节点</b></summary>
-
-```  
-    window.onload = function() {
-        var childNode = document.createElement('p');
-        childNode.innerHTML = '<h1>这里是提示信息??</h1>';
-
-        //childNode.setAttribute('class', 'alerts');
-        //childNode.setAttribute('onclick', 'this.style.display = "none"');
-        childNode.className = 'alerts';
-        childNode.onclick = function () {
-            this.style.display = 'none';
-        };
-        document.getElementsByTagName('body')[0].appendChild(childNode);
-    };
-```
-</details>
 
 
 
@@ -239,17 +764,6 @@ interval = setInterval(runThis, 5000);
 
 
 
-<details>
-<summary><b>JavaScript遍历节点元素,并且绑定点击事件</b></summary>
-
-```  
-var list=document.getElementsByClassName('li_new');
-for(var i in list){
-	list[i].onmouseover=grayBack;
-	list[i].onmouseout=noGrayBack;
-```
-</details>
-
 
 
 
@@ -311,18 +825,7 @@ document.onkeydown = keyDown
 
 
 
-<details>
-<summary><b>使用JavaScript动态改变DOM节点属性 (使用模板会更加好):</b></summary>
 
-```  
-<a href="#" target="_self" id="test">测试</a>
-document.getElementById("test").attributes["target"].nodeValue="_blank";
-
-JavaScript DOM setAttribute() 方法:
-document.getElementsByTagName("INPUT")[0].setAttribute("type","button");
-
-```
-</details>
 
 
 
@@ -351,24 +854,6 @@ for (var key in index_page_json_data) {
 
 
 
-<details>
-<summary><b>JavaScript 分割字符串:</b></summary>
-
-```  
-    var str="How are you doing today?";
-    var n=str.split(" ");
-
-    // 分割完可能会出现这种情况...
-    var arr = ['','','',1,2,3,4,5,'','',''];
-    for(var i = 0; i < arr.length; i++){
-        if(arr[i] === ''){
-            arr.splice(i,1);
-            i = i-1;
-        }
-    }
-    console.log(arr);
-```
-</details>
 
 
 
@@ -402,145 +887,6 @@ document.write(formData.get('username'))
 
 
 
-<details>
-<summary><b>JavaScript设置自定义属性:</b></summary>
-
-```  
-   // 创建 a 标签 class='add_screenshots'
-   var add_screenshots_a = document.createElement('a');  => 创建一个a标签
-   add_screenshots_a.className = 'add_screenshots';  => 设置classname名字
-   add_screenshots_a.innerHTML = '添加截图';
-   add_screenshots_a.setAttribute("onclick", "dddd(this)");  => 动态绑定点击事件dddd(this)
-	 
-	 function dddd(thisss){
-    console.log(thisss.innerHTML);  => 这个元素的 innerHTML
-		console.log(thisss.previousSibling); => 这个节点元素的 上一个同类节点(object类型)
-		console.log(thisss.previousSibling.innerHTML); =>上一个同类节点的 innerHTML
-		console.log(thisss.getAttribute('class')); => 获取名为'class' 的属性值 (string类型)
-}
-```
-</details>
-
-
-
-
-
-<details>
-<summary><b>JavaScript获取元素的绝对位置(相对于父元素)</b></summary>
-
-```  
-var self = document.getElementById("eID");
-var left = self.getBoundingClientRect().left + document.documentElement.scrollLeft;
-var top = self.getBoundingClientRect().top + document.documentElement.scrollTop + self.offsetHeight;
-
-```
-</details>
-
-
-
-
-
-<details>
-<summary><b>JavaScript 定位到某个位置:</b></summary>
-
-```  
-document.getElementById("hhh").onclick = function () {
-	//scrollTo() 方法可把内容滚动到指定的坐标
-	window.scrollTo(0, 10000);
-}
-```
-</details>
-
-
-
-
-
-<details>
-<summary><b>my_name_is_jack</b></summary>
-
-```  
-获取 input 值是.value
-赋值是.innerHTML
-document.getElementById('title_input').value
-document.getElementById('title_input').innerHTML
-
-按照索引取值:
- console.log(document.getElementsByTagName('input').valueOf()[0].value);
-
-```
-</details>
-
-
-
-
-
-<details>
-<summary><b>JavaScript 这两个方法是有区别的:</b></summary>
-
-```  
-document.getElementsByClassName('btn-default')[0].click();
-document.getElementsByClassName('btn-default')[0].onclick() = function(){ ...... };
-click()---->单纯的点击,比如某个按钮
-onclick---->绑定点击事件
-```
-</details>
-
-
-
-
-
-<details>
-<summary><b>onclick 和 addEventListener 的区别:</b></summary>
-
-```  
-onclick不支持多次赋值,绑定的是最后一次点击事件
-addEventListener 支持多次绑定,全部触发点击事件
-    var  obj = document.getElementById('h1');
-
-    // obj.onclick = function () {
-    //     console.log('11111111111')
-    // }
-    // obj.onclick = function () {
-    //     console.log('2222222222')
-    // }
-
-    //注册第一个点击事件 绑定点击事件
-    obj.addEventListener("click",function(){
-        console.log("11111111111");
-    });
-    //注册第二个点击事件
-    obj.addEventListener("click",function(){
-        console.log("22222222222222");
-    });
-```
-</details>
-
-
-
-
-
-<details>
-<summary><b>给每个class添加(绑定) 事件</b></summary>
-
-```  
-var  obj_list = document.getElementsByClassName('button');
-
-for (var i in obj_list){
-    //注册第一个点击事件
-    obj_list[i].addEventListener('click',function () {
-        console.log('1111111111111')
-    });
-    //注册第二个点击事件
-    obj_list[i].addEventListener("click",function(){
-        console.log("-----------------------");
-    });
-}
-```
-</details>
-
-
-
-
 
 <details>
 <summary><b>禁止 chrome 自动翻译</b></summary>
@@ -550,19 +896,6 @@ for (var i in obj_list){
 ```
 </details>
 
-
-
-
-
-<details>
-<summary><b>给class绑定事件一定要加上[0]</b></summary>
-
-```  
- document.getElementsByClassName('btnn')[0].onclick = function() {
- 	alert('btnnnnn');
- }
-```
-</details>
 
 
 
@@ -625,217 +958,6 @@ window.open(url, '_blank').location;
 
 
 
-<details>
-<summary><b>JavaScript 获取 点击的节点 的属性 ( this target e)</b></summary>
-
-```  
-    <h1 onclick="changetext(this)">点击文本!------111</h1>
-
-    <h1 id="test001">点击文本!------222</h1>
-
-    function changetext(ev) {
-        ev.innerHTML = "Ooops!";
-    }
-
-    document.getElementById("test001").onclick = function(e){
-        e.target.innerHTML = "222222222";
-    }
-```
-</details>
-
-
-
-
-
-<details>
-<summary><b>Javascript中绑定click事件的四种方式介绍:</b></summary>
-
-```  
-一：HTML中添加onclick	
-    <button id="vv" onclick="myfunction()" >哈哈</button>
-
-二：JS中定义函数绑定事件	
-    var funcc = function () {
-      alert('我爱编程')
-      }
-    var aa = document.getElementById('vv')
-    aa.onclick = funcc
-
-三：直接定义函数与内容	
-    document.getElementById('vv').onclick = function () {
-      alert('hasssshhaa ')
-      }
-
-四：利用addEventListener	
-    document.getElementById('vv').addEventListener('click',funcc);
-    //或者：
-    document.getElementById('vv').addEventListener('click',function () {
-      alert('hahah')
-      })
-```
-</details>
-
-
-
-
-
-<details>
-<summary><b>tagName nodeName 区别:</b></summary>
-
-```  
-总结： tagName 只能用在元素节点上，而nodeName可以用在任何节点上，
-可以说nodeName涵盖了tagName，并且具有更多的功能，因此建议总是使用nodeName。
-小例子:
-  <div id="box1">box1
-      <div class="son">son1</div>
-  </div>  
-
-      for (var i = 0; i < father.length ; i++) {
-            console.log(father[i].tagName)
-      }
-      返回: 
-          undefined
-          DIV
-          undefined
-  但是:
-        for (var i = 0; i < father.length ; i++) {
-            console.log(father[i].nodeName)
-        }      
-        返回:
-            #text
-            DIV
-            #text
-  建议使用nodeName
-      ps:多余一个text是因为有一个回车换行符
-```
-</details>
-
-
-
-
-
-<details>
-<summary><b>innerHTML / outerHTML / innerText / outerText </b></summary>
-
-```  
-innerHTML  输出当前标签的文本内容，如果标签内有子标签，会连子标签本身和子标签内的文本内容一起输出
-outerHTML  输出当前标签的本身和标签内的文本内容，如果有子标签，那么子标签本身和标签内的文本内容也将一起输出
-
-innerText     只输出当前标签内的文本内容，如果标签内有子标签，那么也只输出子标签内的文本内容
-outerText     只输出当前标签内的文本内容，如果标签内有子标签，那么也只输出子标签内的文本内容
-
-ps:
-    innerHTML是符合W3C标准的属性，
-    而innerText只适用于IE浏览器，因此，尽可能地去使用innerHTML，而少用innerText，
-```
-</details>
-
-
-
-
-
-<details>
-<summary><b>event对象中 target和currentTarget 属性的区别</b></summary>
-
-```  
-首先本质区别是：
-
-    event.target返回触发事件的元素
-    event.currentTarget返回绑定事件的元素
-
-    event.currentTarget的作用是什么呢，我觉得他和this 的作用是差不多的，始终返回的是绑定事件的元素
-
-```
-</details>
-
-
-
-
-
-<details>
-<summary><b>获取当前第几个元素:</b></summary>
-
-```  
-<ul id="list">
-    <li>YXB_____QAQ---1</li>
-    <li>YXB_____QAQ---2</li>
-    <li>YXB_____QAQ---3</li>
-    <li>YXB_____QAQ---4</li>
-    <li>YXB_____QAQ---5</li>
-</ul>
-
-    var ul =  document.getElementById("list");
-
-    ul.addEventListener('click',function(e){
-        var item = e.target;
-        var lists = Array.from(ul.querySelectorAll('li'));
-        console.log(lists.indexOf(item));
-    })
-```
-</details>
-
-
-
-
-
-<details>
-<summary><b>获取整个网页向上滚动了多少距离??:</b></summary>
-
-```  
-console.log("向上滚动了   "+document.documentElement.scrollTop);
-
-```
-</details>
-
-
-
-
-
-<details>
-<summary><b>JavaScript 高级测试:</b></summary>
-
-```  
-网页尺寸为: 2472*6708
-chrome浏览器模拟移动端: 
-	宽:320		高: 568
-
-测试代码:
-<html lang="zh"><head><style>        * {            margin: 0;            padding: 0;            text-decoration: none;            list-style-type: none;        }        #box1{            width: 115px;            height: 115px;            margin-left: 36px;            background-color: pink;        }</style><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="X-UA-Compatible" content="ie=edge"><title>YXB</title></head><body><h1>YXB</h1><div id="box1"></div><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><span>qwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqw</span><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p></body><script>    console.log(document.getElementById("box1").offsetWidth);    console.log(document.getElementById("box1").offsetHeight);    console.log(document.getElementById("box1").offsetLeft);    console.log(document.getElementById("box1").offsetTop);</script></html>
-	
-document.body.clientWidth;        //网页可见区域宽(body)   						返回 320
-document.body.clientHeight;       //网页可见区域高(body)						返回 569
-
-document.body.offsetHeight;      //网页可见区域宽(body)，包括border、margin等	返回 2472
-document.body.scrollWidth;        //网页正文全文宽，包括有滚动条时的未见区域	返回 6708
-document.body.scrollHeight;       //网页正文全文高，包括有滚动条时的未见区域	返回 2472
-
-document.body.offsetWidth;       //网页可见区域宽(body)，包括border、margin等  无论怎么滑动, 返回 320
-
-document.body.scrollTop;           //网页被卷去的Top(滚动条)					返回 88.5
-document.body.scrollLeft;           //网页被卷去的Left(滚动条)					返回 3762
-
-window.screenTop;                     //浏览器距离Top							返回 
-window.screenLeft;                     //浏览器距离Left							返回 
-
-window.screen.height;                //屏幕分辨率的高							返回 568
-window.screen.width;                 //屏幕分辨率的宽							返回 320
-
-window.screen.availHeight;          //屏幕可用工作区的高						返回 568
-window.screen.availWidth;           //屏幕可用工作区的宽						返回 320
-
-
-    console.log(document.getElementById("box1").offsetWidth);
-    console.log(document.getElementById("box1").offsetHeight);
-    console.log(document.getElementById("box1").offsetLeft);
-    console.log(document.getElementById("box1").offsetTop);
-	
-	注意:
-		document.documentElement.scrollTop 在chrome浏览器中, 不起作用
-		document.body.scrollTop			   在chrome浏览器中可以用
-
-		parseInt 小数转化成整数
-```
-</details>
 
 
 

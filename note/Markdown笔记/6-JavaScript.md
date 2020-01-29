@@ -60,6 +60,16 @@ document.getElementsByClassName('div2')[0].style.background = 'pink';
 
 
 
+
+# localStorage
+```  
+存   localStorage.setItem('myCat', 'Tom');
+取   localStorage.getItem('myCat');
+删   localStorage.removeItem('myCat');
+清空 localStorage.clear();
+```
+
+
 # JavaScript 新增一个节点
 ```  
     window.onload = function() {

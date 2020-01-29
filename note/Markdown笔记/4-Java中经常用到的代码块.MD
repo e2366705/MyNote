@@ -23,6 +23,39 @@
 
 
 
+<details>
+<summary><b>Java 播放 MP3 音频文件 </b></summary>
+
+```  
+maven: pom.xml 添加:
+
+    <!-- https://mvnrepository.com/artifact/javazoom/jlayer -->
+    <dependency>
+        <groupId>javazoom</groupId>
+        <artifactId>jlayer</artifactId>
+        <version>1.0.1</version>
+    </dependency>
+
+
+导包:
+import javazoom.jl.decoder.JavaLayerException;
+import javazoom.jl.player.*;
+
+
+ @Test
+    public void PlayMusic() throws MalformedURLException, InterruptedException, JavaLayerException, FileNotFoundException {
+        Player player;
+        File music;
+
+        BufferedInputStream buffer = new BufferedInputStream(new FileInputStream("D:\\Download________\\Browser_Download\\5c892a30468f811812.mp3"));
+        player = new Player(buffer);
+        player.play();
+    }
+
+```
+</details>
+
+
 
 <details>
 <summary><b>生成随机数</b></summary>

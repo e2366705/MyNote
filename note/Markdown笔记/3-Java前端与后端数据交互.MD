@@ -144,12 +144,14 @@ public class Article_list_Controller {
 @Controller
 @RequestMapping(value="/Article_list_Controller")
 public class Article_list_Controller {
+
     @RequestMapping(value="/index", method= RequestMethod.GET)
     public String index(Model model){
         ArrayList<String> all_files =  getFiles.Start(path);
         model.addAttribute("result" , all_files);
         return "English_Article_list";
     }
+
 }
 ```
 

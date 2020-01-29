@@ -1,36 +1,53 @@
-#  移动端页面开发的两种方式   https://www.cnblogs.com/jasmine-95/p/7235186.html
+# JavaScript 
 
-# 新窗口打开  /  原窗口打开
+### chrome F12 可以直接调试小代码片段 很方便
+
+#### 移动端页面开发的两种方式   https://www.cnblogs.com/jasmine-95/p/7235186.html
+#### JavaScript 实战小项目   https://github.com/visugar/FrontEnd-examples
+
+<details>
+<summary><b>新窗口打开  /  原窗口打开</b></summary>
+
 ```  
 <a href="链接的页面" target="_blank">新窗口打开</a>
 <a href="链接的页面" target="_parent">原窗口打开</a>
-
 ```
-# JavaScript 实战小项目   https://github.com/visugar/FrontEnd-examples
+</details>
 
 
-# 刷新这个页面
+
+
+
+<details>
+<summary><b>刷新这个页面</b></summary>
+
 ```  
- location.reload();                     //   刷新这个页面
-
+location.reload(); 
 ```
+</details>
 
 
 
 
 
+<details>
+<summary><b>睡眠 / 暂停</b></summary>
 
-# 睡眠 暂停 :
 ```  
- function sleep(d){
+function sleep(d){
   for(var t = Date.now();Date.now() - t <= d;);
 }
 sleep(5000); //当前方法暂停5秒
-
 ```
+</details>
 
 
-# JavaScript 返回上一页:
+
+
+
+<details>
+<summary><b>JavaScript 返回上一页:</b></summary>
+
 ```  
 document.getElementById("span1").onclick = function (ev) {
     window.history.go(-1);
@@ -38,30 +55,41 @@ document.getElementById("span1").onclick = function (ev) {
 
 或者:
     history.go(-1);
-
 ```
+</details>
 
 
- 
-# JavaScript 给 CSS设置样式表( 两种方式):
+
+
+
+<details>
+<summary><b>JavaScript 给 CSS设置样式表( 两种方式):</b></summary>
+
 ```  
 document.getElementById("kkk").style.cssText = " background-color:pink; width: 100px; height: 100px; ";
 document.getElementsByClassName('div2')[0].style.background = 'pink';
-
 ```
+</details>
 
 
-  
-# JavaScript获取body节点
+
+
+
+<details>
+<summary><b>JavaScript获取body节点</b></summary>
+
 ```  
-比如 : document.body.style.background
-
+document.body.style.background
 ```
+</details>
 
 
 
 
-# localStorage
+
+<details>
+<summary><b>localStorage</b></summary>
+
 ```  
 存   localStorage.setItem('myCat', 'Tom');
 取   localStorage.getItem('myCat');        获取key对应的value
@@ -71,13 +99,19 @@ document.getElementsByClassName('div2')[0].style.background = 'pink';
 localStorage.length     获取localStorage一共有多少条数据
 localStorage.key(3)     获取指定下标位置的key
 ```
+</details>
 
 
-# JavaScript 新增一个节点
+
+
+
+<details>
+<summary><b>JavaScript 新增一个节点</b></summary>
+
 ```  
     window.onload = function() {
         var childNode = document.createElement('p');
-        childNode.innerHTML = '<h1>这里是提示信息〜〜</h1>';
+        childNode.innerHTML = '<h1>这里是提示信息??</h1>';
 
         //childNode.setAttribute('class', 'alerts');
         //childNode.setAttribute('onclick', 'this.style.display = "none"');
@@ -88,8 +122,15 @@ localStorage.key(3)     获取指定下标位置的key
         document.getElementsByTagName('body')[0].appendChild(childNode);
     };
 ```
+</details>
 
-# JavaScript 播放音频文件 mp3 Audio文件
+
+
+
+
+<details>
+<summary><b>JavaScript 播放音频文件 mp3 Audio文件</b></summary>
+
 ```  
             // 创建一个 audio 节点
         var childNode = document.createElement('audio');
@@ -121,11 +162,16 @@ localStorage.key(3)     获取指定下标位置的key
         var audio = new Audio(url);
         audio.load();
         audio.play(); 
-        
 ```
+</details>
 
 
-# 每隔一段时间执行某个 function setInterval setTimeout
+
+
+
+<details>
+<summary><b>每隔一段时间执行某个 function setInterval setTimeout</b></summary>
+
 ```  
 区别:
 setTimeout(function, time)，延时一段时间后执行function，只执行一次；
@@ -151,15 +197,18 @@ var interval;
 runThis();
 clearInterval(interval);
 interval = setInterval(runThis, 5000);
-
 ```
+</details>
 
 
 
 
-# JavaScript 匿名函数 闭包 
-## 终于可以不用为函数起什么名字烦恼了 (以减少全局变量的使用)
+
+<details>
+<summary><b>JavaScript 匿名函数 闭包 </b></summary>
+
 ```  
+终于可以不用为函数起什么名字烦恼了 (以减少全局变量的使用)
 
 带参数:
 (function(x, y) {
@@ -184,40 +233,51 @@ interval = setInterval(runThis, 5000);
 })(this)">miss</h1>
 
 ```
+</details>
 
 
 
 
-# JavaScript遍历节点元素,并且绑定点击事件
+
+<details>
+<summary><b>JavaScript遍历节点元素,并且绑定点击事件</b></summary>
+
 ```  
 var list=document.getElementsByClassName('li_new');
 for(var i in list){
 	list[i].onmouseover=grayBack;
 	list[i].onmouseout=noGrayBack;
-}
-
 ```
+</details>
 
-#  键盘事件: 按下回车的时触发事件
+
+
+
+
+<details>
+<summary><b>键盘事件: 按下回车的时触发事件</b></summary>
+
 ```  
 function keyDown(e) {
-
     var keycode = e.which;   //取得对应的键值（数字）
-
     var realkey = String.fromCharCode(e.which); //取得代表改键的真正字符
-
     alert("按键码: " + keycode + " 字符: " + realkey);
-
     if (keycode === 82){
         alert("你按下了 R ...")
     }
 }
 
 document.onkeydown = keyDown
-
 ```
+</details>
 
-# 键盘事件: 按下 / 松开
+
+
+
+
+<details>
+<summary><b>键盘事件: 按下 / 松开</b></summary>
+
 ```  
 资料来源:     https://www.cnblogs.com/youyoui/p/10381457.html
 按下 => 显示
@@ -245,10 +305,15 @@ document.onkeydown = keyDown
 
          <h1 id="test" style="display: none;">aAAAAAAAAAAAAA</h1>
 ```
+</details>
 
 
 
-# 使用JavaScript动态改变DOM节点属性 (使用模板会更加好):
+
+
+<details>
+<summary><b>使用JavaScript动态改变DOM节点属性 (使用模板会更加好):</b></summary>
+
 ```  
 <a href="#" target="_self" id="test">测试</a>
 document.getElementById("test").attributes["target"].nodeValue="_blank";
@@ -257,8 +322,15 @@ JavaScript DOM setAttribute() 方法:
 document.getElementsByTagName("INPUT")[0].setAttribute("type","button");
 
 ```
+</details>
 
-# 用JavaScript 将后台返回的string数据,解析成JSON数据:
+
+
+
+
+<details>
+<summary><b>用JavaScript 将后台返回的string数据,解析成JSON数据:</b></summary>
+
 ```  
 var index_page_json_data = JSON.parse(xhr.responseText),
 xhr.responseText ==> 是string类型
@@ -272,42 +344,68 @@ console.log(index_page_json_data);  ==> 输出: {2019_01_11_19_53_07: "自定义
 for (var key in index_page_json_data) {
 	console.log(key + "==>" + index_page_json_data[key]);
 }
-
 ```
+</details>
 
 
 
-# JavaScript 分割字符串:
+
+
+<details>
+<summary><b>JavaScript 分割字符串:</b></summary>
+
 ```  
-var str="How are you doing today?";
-var n=str.split(" ");
+    var str="How are you doing today?";
+    var n=str.split(" ");
 
+    // 分割完可能会出现这种情况...
+    var arr = ['','','',1,2,3,4,5,'','',''];
+    for(var i = 0; i < arr.length; i++){
+        if(arr[i] === ''){
+            arr.splice(i,1);
+            i = i-1;
+        }
+    }
+    console.log(arr);
 ```
+</details>
 
 
 
-# 当你要引入外部 js 文件时候,一定要把<script></script>放在body下面,
+
+
+<details>
+<summary><b>当你要引入外部 js 文件时候,一定要把<script></script>放在body下面,</b></summary>
+
 ```  
 <script  type="text/javascript"  src="../js/upload_title_and_code.js"></script>
 ../css/index.css 表示从根目录开始引入
-
 ```
+</details>
 
 
-# JavaScript Format :
+
+
+
+<details>
+<summary><b> JavaScript Format :</b></summary>
+
 ```  
 var formData = new FormData();
 var myfile = '123';
 formData.append('username', myfile);  // 添加自定义数据
 document.write(formData.get('username'))
-
 ```
+</details>
 
 
 
-# JavaScript 高级
+
+
+<details>
+<summary><b>JavaScript设置自定义属性:</b></summary>
+
 ```  
-JavaScript设置自定义属性:
    // 创建 a 标签 class='add_screenshots'
    var add_screenshots_a = document.createElement('a');  => 创建一个a标签
    add_screenshots_a.className = 'add_screenshots';  => 设置classname名字
@@ -320,34 +418,46 @@ JavaScript设置自定义属性:
 		console.log(thisss.previousSibling.innerHTML); =>上一个同类节点的 innerHTML
 		console.log(thisss.getAttribute('class')); => 获取名为'class' 的属性值 (string类型)
 }
-
 ```
+</details>
 
 
 
-# JavaScript获取元素的绝对位置(相对于父元素)
+
+
+<details>
+<summary><b>JavaScript获取元素的绝对位置(相对于父元素)</b></summary>
+
 ```  
 var self = document.getElementById("eID");
 var left = self.getBoundingClientRect().left + document.documentElement.scrollLeft;
 var top = self.getBoundingClientRect().top + document.documentElement.scrollTop + self.offsetHeight;
 
 ```
+</details>
 
 
 
 
-# JavaScript 定位到某个位置:
+
+<details>
+<summary><b>JavaScript 定位到某个位置:</b></summary>
+
 ```  
 document.getElementById("hhh").onclick = function () {
 	//scrollTo() 方法可把内容滚动到指定的坐标
 	window.scrollTo(0, 10000);
 }
-
 ```
+</details>
 
 
 
-# other
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
 ```  
 获取 input 值是.value
 赋值是.innerHTML
@@ -358,18 +468,30 @@ document.getElementById('title_input').innerHTML
  console.log(document.getElementsByTagName('input').valueOf()[0].value);
 
 ```
+</details>
 
-# JavaScript 这两个方法是有区别的:
+
+
+
+
+<details>
+<summary><b>JavaScript 这两个方法是有区别的:</b></summary>
+
 ```  
 document.getElementsByClassName('btn-default')[0].click();
 document.getElementsByClassName('btn-default')[0].onclick() = function(){ ...... };
 click()---->单纯的点击,比如某个按钮
 onclick---->绑定点击事件
-
 ```
+</details>
 
 
-# onclick 和 addEventListener 的区别:
+
+
+
+<details>
+<summary><b>onclick 和 addEventListener 的区别:</b></summary>
+
 ```  
 onclick不支持多次赋值,绑定的是最后一次点击事件
 addEventListener 支持多次绑定,全部触发点击事件
@@ -390,12 +512,16 @@ addEventListener 支持多次绑定,全部触发点击事件
     obj.addEventListener("click",function(){
         console.log("22222222222222");
     });
-
 ```
+</details>
 
 
 
-# 给每个class添加(绑定) 事件
+
+
+<details>
+<summary><b>给每个class添加(绑定) 事件</b></summary>
+
 ```  
 var  obj_list = document.getElementsByClassName('button');
 
@@ -409,47 +535,58 @@ for (var i in obj_list){
         console.log("-----------------------");
     });
 }
-
 ```
+</details>
 
 
-# 禁止自动翻译
+
+
+
+<details>
+<summary><b>禁止 chrome 自动翻译</b></summary>
+
 ```  
-<html lang="zh-CN"> ==>
-
+<html lang="zh-CN">
 ```
+</details>
 
 
-# 给class绑定事件一定要加上[0]
+
+
+
+<details>
+<summary><b>给class绑定事件一定要加上[0]</b></summary>
+
 ```  
  document.getElementsByClassName('btnn')[0].onclick = function() {
  	alert('btnnnnn');
  }
-
 ```
+</details>
 
-# JavaScript:网页加载完,再去运行js代码:
+
+
+
+
+<details>
+<summary><b>JavaScript:网页加载完,再去运行js代码:</b></summary>
+
 ```  
  <script type="text/javascript">
     window.onload = function(){
             alert(2233333);
     }
 </script>
-
 ```
+</details>
 
 
- #  一个html页面包含另外一个html页面:
- ```  
- window.onload = function() {
- 	$('.asasas').load('a.html');
- }
-
- ```
 
 
- 
-# 移动web禁止滑动 + 开启滑动
+
+<details>
+<summary><b>移动web禁止滑动 + 开启滑动</b></summary>
+
 ```  
     // 首先，建立一个函数
     function bodyScroll(event){
@@ -469,24 +606,28 @@ for (var i in obj_list){
         document.body.style.position = 'static';
         document.body.style.width = 'auto';
     }
-
 ```
-
- 
-
+</details>
 
 
-# JavaScript 在新标签页中打开链接URL
+
+
+
+<details>
+<summary><b>JavaScript 在新标签页中打开链接URL</b></summary>
+
 ```  
 window.open(url, '_blank').location; 
-
 ```
+</details>
 
 
 
 
 
-# JavaScript 获取 点击的节点 的属性 ( this target e)
+<details>
+<summary><b>JavaScript 获取 点击的节点 的属性 ( this target e)</b></summary>
+
 ```  
     <h1 onclick="changetext(this)">点击文本!------111</h1>
 
@@ -500,19 +641,15 @@ window.open(url, '_blank').location;
         e.target.innerHTML = "222222222";
     }
 ```
+</details>
 
 
 
 
-# parse:解析
-```  
-JSON.stringify({a:10,b:30})     返回==> "{"a":10,"b":30}"
-JSON.parse('{"a":10,"b":30}')   返回==> {a: 10, b: 30}
 
-```
+<details>
+<summary><b>Javascript中绑定click事件的四种方式介绍:</b></summary>
 
-
-# Javascript中绑定click事件的四种方式介绍:
 ```  
 一：HTML中添加onclick	
     <button id="vv" onclick="myfunction()" >哈哈</button>
@@ -535,14 +672,16 @@ JSON.parse('{"a":10,"b":30}')   返回==> {a: 10, b: 30}
     document.getElementById('vv').addEventListener('click',function () {
       alert('hahah')
       })
-
 ```
+</details>
 
 
 
 
 
-# tagName nodeName 区别:
+<details>
+<summary><b>tagName nodeName 区别:</b></summary>
+
 ```  
 总结： tagName 只能用在元素节点上，而nodeName可以用在任何节点上，
 可以说nodeName涵盖了tagName，并且具有更多的功能，因此建议总是使用nodeName。
@@ -568,13 +707,16 @@ JSON.parse('{"a":10,"b":30}')   返回==> {a: 10, b: 30}
             #text
   建议使用nodeName
       ps:多余一个text是因为有一个回车换行符
-
 ```
+</details>
 
 
 
 
-# 区别:
+
+<details>
+<summary><b>innerHTML / outerHTML / innerText / outerText </b></summary>
+
 ```  
 innerHTML  输出当前标签的文本内容，如果标签内有子标签，会连子标签本身和子标签内的文本内容一起输出
 outerHTML  输出当前标签的本身和标签内的文本内容，如果有子标签，那么子标签本身和标签内的文本内容也将一起输出
@@ -585,13 +727,16 @@ outerText     只输出当前标签内的文本内容，如果标签内有子标
 ps:
     innerHTML是符合W3C标准的属性，
     而innerText只适用于IE浏览器，因此，尽可能地去使用innerHTML，而少用innerText，
-
 ```
+</details>
 
 
 
 
-# event对象中 target和currentTarget 属性的区别
+
+<details>
+<summary><b>event对象中 target和currentTarget 属性的区别</b></summary>
+
 ```  
 首先本质区别是：
 
@@ -601,11 +746,15 @@ ps:
     event.currentTarget的作用是什么呢，我觉得他和this 的作用是差不多的，始终返回的是绑定事件的元素
 
 ```
+</details>
 
 
 
 
-# 获取当前第几个元素:
+
+<details>
+<summary><b>获取当前第几个元素:</b></summary>
+
 ```  
 <ul id="list">
     <li>YXB_____QAQ---1</li>
@@ -622,27 +771,29 @@ ps:
         var lists = Array.from(ul.querySelectorAll('li'));
         console.log(lists.indexOf(item));
     })
-
 ```
+</details>
 
 
 
-# 获得一个元素的高度值:
-```  
-注意:   querySelector只会选中第一个元素
-document.querySelector(".slideshow").offsetHeight  
-
-```
 
 
-# 获取整个网页向上滚动了多少距离??
+<details>
+<summary><b>获取整个网页向上滚动了多少距离??:</b></summary>
+
 ```  
 console.log("向上滚动了   "+document.documentElement.scrollTop);
 
 ```
+</details>
 
 
-# JavaScript 高级测试:
+
+
+
+<details>
+<summary><b>JavaScript 高级测试:</b></summary>
+
 ```  
 网页尺寸为: 2472*6708
 chrome浏览器模拟移动端: 
@@ -683,39 +834,16 @@ window.screen.availWidth;           //屏幕可用工作区的宽						返回 32
 		document.body.scrollTop			   在chrome浏览器中可以用
 
 		parseInt 小数转化成整数
-
 ```
-
-
-
-# 移动端页面禁止网页滑动:
-```  
-var mo = function(e){
-    e.preventDefault();
-};
-//直接默认不让滑动
-stop();
-    
-//不允许页面滑动
-function not_allow_slide(){
-    document.body.style.overflow='hidden';
-    document.addEventListener("touchmove",mo,false);
-}
-
-// 允许滑动
-function allow_slide(){
-    document.body.style.overflow='';//出现滚动条
-    document.removeEventListener("touchmove",mo,false);
-}
-
-```
+</details>
 
 
 
 
 
+<details>
+<summary><b>cookie 操作:</b></summary>
 
-# cookie 操作:
 ```  
 JavaScript 遍历所有cookie:
     function get_all_cookies() {
@@ -755,5 +883,179 @@ JavaScript 遍历所有cookie:
         document.cookie = cookie_name + "=" + escape(value) + ((expiredays == null) ? "" : ";expires=" + exdate.toGMTString())
     }
 
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
 
 ```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+

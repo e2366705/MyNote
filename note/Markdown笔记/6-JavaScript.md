@@ -571,9 +571,14 @@ window.screen.availWidth;           //屏幕可用工作区的宽						返回 32
 
 
 
+```
+
+
+            Others:
 
 
 
+```
 <details>
 <summary><b>新窗口打开  /  原窗口打开</b></summary>
 

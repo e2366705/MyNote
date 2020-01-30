@@ -761,7 +761,7 @@ sleep(5000); //当前方法暂停5秒
 
 
 <details>
-<summary><b>JavaScript 返回上一页:</b></summary>
+<summary><b>返回上一页:</b></summary>
 
 ```  
 document.getElementById("span1").onclick = function (ev) {
@@ -790,6 +790,9 @@ document.getElementById("span1").onclick = function (ev) {
 
 localStorage.length     获取localStorage一共有多少条数据
 localStorage.key(3)     获取指定下标位置的key
+
+第三个是否包含 apple 这个字符串(返回布尔类型):
+localStorage.key(5).includes("apple") === true
 ```
 </details>
 

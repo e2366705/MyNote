@@ -19,7 +19,29 @@ DOM 操作
 
 ```
 <details>
-<summary><b>JavaScript 给 CSS设置样式表( 两种方式):</b></summary>
+<summary><b>下拉框 select 发生改变时 的值 </b></summary>
+
+```  
+<select id="testSelect">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+</select>
+
+    $("#testSelect").change(function(ev){
+        console.log(ev.target.value);
+    });
+```
+</details>
+
+
+
+
+
+
+
+<details>
+<summary><b> 给 CSS设置样式表( 两种方式):</b></summary>
 
 ```  
 document.getElementById("kkk").style.cssText = " background-color:pink; width: 100px; height: 100px; ";
@@ -31,7 +53,7 @@ document.getElementsByClassName('div2')[0].style.background = 'pink';
 
 
 <details>
-<summary><b>使用JavaScript动态改变DOM节点属性 (使用模板会更加好):</b></summary>
+<summary><b>动态改变DOM节点属性 (使用模板会更加好):</b></summary>
 
 ```  
 <a href="#" target="_self" id="test">测试</a>
@@ -48,7 +70,7 @@ document.getElementsByTagName("INPUT")[0].setAttribute("type","button");
 
 
 <details>
-<summary><b>JavaScript获取body节点</b></summary>
+<summary><b>获取body节点</b></summary>
 
 ```  
 document.body.style.background
@@ -60,7 +82,7 @@ document.body.style.background
 
 
 <details>
-<summary><b>JavaScript 新增一个节点</b></summary>
+<summary><b> 新增一个节点</b></summary>
 
 ```  
     window.onload = function() {
@@ -85,7 +107,7 @@ document.body.style.background
 
 
 <details>
-<summary><b>JavaScript遍历节点元素,并且绑定点击事件</b></summary>
+<summary><b>遍历节点元素,并且绑定点击事件</b></summary>
 
 ```  
 var list=document.getElementsByClassName('li_new');
@@ -101,7 +123,7 @@ for(var i in list){
 
 
 <details>
-<summary><b>JavaScript设置自定义属性:</b></summary>
+<summary><b>设置自定义属性:</b></summary>
 
 ```  
    // 创建 a 标签 class='add_screenshots'
@@ -129,7 +151,7 @@ for(var i in list){
 
 
 <details>
-<summary><b>JavaScript获取元素的绝对位置(相对于父元素)</b></summary>
+<summary><b>获取元素的绝对位置(相对于父元素)</b></summary>
 
 ```  
 var self = document.getElementById("eID");
@@ -145,7 +167,7 @@ var top = self.getBoundingClientRect().top + document.documentElement.scrollTop 
 
 
 <details>
-<summary><b>JavaScript 定位到某个位置:</b></summary>
+<summary><b>定位到某个位置:</b></summary>
 
 ```  
 document.getElementById("hhh").onclick = function () {
@@ -247,7 +269,7 @@ for (var i in obj_list){
 
 
 <details>
-<summary><b>JavaScript 获取 点击的节点 的属性 ( this target e)</b></summary>
+<summary><b>获取 点击的节点 的属性 ( this target e)</b></summary>
 
 ```  
     <h1 onclick="changetext(this)">点击文本!------111</h1>
@@ -270,7 +292,7 @@ for (var i in obj_list){
 
 
 <details>
-<summary><b>Javascript中绑定click事件的四种方式介绍:</b></summary>
+<summary><b>中绑定click事件的四种方式介绍:</b></summary>
 
 ```  
 一：HTML中添加onclick	
@@ -429,7 +451,7 @@ console.log("向上滚动了   "+document.documentElement.scrollTop);
 
 
 <details>
-<summary><b>JavaScript 高级测试:</b></summary>
+<summary><b> 高级测试:</b></summary>
 
 ```  
 网页尺寸为: 2472*6708
@@ -473,6 +495,27 @@ window.screen.availWidth;           //屏幕可用工作区的宽						返回 32
 		parseInt 小数转化成整数
 ```
 </details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -551,6 +594,38 @@ window.screen.availWidth;           //屏幕可用工作区的宽						返回 32
     console.log(arr);
 ```
 </details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

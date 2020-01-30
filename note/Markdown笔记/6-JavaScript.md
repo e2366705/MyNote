@@ -640,34 +640,7 @@ window.screen.availWidth;           //屏幕可用工作区的宽						返回 32
 
 
 
-
-
-
-
-
-
-```
-
-
-            Others:
-
-
-
-```
-<details>
-<summary><b>新窗口打开  /  原窗口打开</b></summary>
-
-```  
-<a href="链接的页面" target="_blank">新窗口打开</a>
-<a href="链接的页面" target="_parent">原窗口打开</a>
-```
-</details>
-
-
-
-
-
-
+# 集合对象(Array、Map、Set):
 <details>
 <summary><b>About Array </b></summary>
 
@@ -729,6 +702,346 @@ console.log(arr);
 
 ```
 </details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b>Set</b></summary>
+
+
+```  
+
+资料来源: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Set
+
+Set 不能有重复的数据(所有 Set 集合中的每一元素都必须不同),它具有更快的运行时间
+Set.size: size属性的默认值为0
+
+增:
+var mySet = new Set();
+mySet.add(1);
+mySet.add(5).add("some text"); // 可以链式调用
+
+let o = {a: 1, b: 2};
+mySet.add(o);
+mySet.add({a: 1, b: 2}); // o 指向的是不同的对象，所以没问题
+
+
+mySet.has("Some Text".toLowerCase()); // true
+
+
+清空:
+mySet.clear();
+
+是否有某个值: 返回布尔类型
+mySet.has("foo"); // true
+
+删:
+成功删除返回 true，否则返回 false
+var mySet = new Set();
+mySet.add("foo");
+mySet.delete("bar"); // 返回 false，不包含 "bar" 这个元素
+
+
+循环 / 迭代:
+var mySet = new Set();
+mySet.add("0");
+mySet.add(123);
+
+for (var v of mySet) {
+  console.log(v);
+}
+
+
+容量 size:
+mySet.size;
+
+
+
+Set 与 Array 转换:
+let myArray = ["value1", "value2", "value3"];
+
+// 用Set构造器将Array转换为Set
+let mySet = new Set(myArray);
+
+mySet.has("value1"); // returns true
+
+// 用...(展开操作符)操作符将Set转换为Array
+console.log([...mySet]); // 与myArray完全一致
+
+
+
+
+数组去重:
+// 用于从数组中删除重复的元素
+const numbers = [2,3,4,4,2,3,3,4,4,5,5,6,6,7,5,32,3,4,5]
+console.log([...new Set(numbers)]) 
+// [2, 3, 4, 5, 6, 7, 32]
+
+
+string相关:
+let text = 'India';
+let mySet = new Set(text);  // Set {'I', 'n', 'd', 'i', 'a'}
+mySet.size;  // 5
+
+
+
+
+
+Set 之间的比较:
+function isSuperset(set, subset) {
+    for (let elem of subset) {
+        if (!set.has(elem)) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function union(setA, setB) {
+    let _union = new Set(setA);
+    for (let elem of setB) {
+        _union.add(elem);
+    }
+    return _union;
+}
+
+function intersection(setA, setB) {
+    let _intersection = new Set();
+    for (let elem of setB) {
+        if (setA.has(elem)) {
+            _intersection.add(elem);
+        }
+    }
+    return _intersection;
+}
+
+function symmetricDifference(setA, setB) {
+    let _difference = new Set(setA);
+    for (let elem of setB) {
+        if (_difference.has(elem)) {
+            _difference.delete(elem);
+        } else {
+            _difference.add(elem);
+        }
+    }
+    return _difference;
+}
+
+
+//Examples
+let setA = new Set([1, 2, 3, 4]),
+    setB = new Set([2, 3]),
+    setC = new Set([3, 4, 5, 6]);
+
+超集?
+isSuperset(setA, setB); // => true
+
+合并:
+union(setA, setC); // => Set [1, 2, 3, 4, 5, 6]
+
+交集:
+intersection(setA, setC); // => Set [3, 4]
+
+去掉相同的, 差异化
+symmetricDifference(setA, setC); // => Set [1, 2, 5, 6]
+
+
+```
+</details>
+
+
+
+
+
+
+
+<details>
+<summary><b>Map</b></summary>
+
+```  
+
+资料来源: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Map
+
+Map.length
+默认length 的值为 0 
+
+
+var myMap = new Map();
+
+增:
+set(key, value)
+myMap.set("bar", "baz");
+myMap.set(1, "foo");
+
+容量:
+myMap.size;       // 2
+
+
+清空:
+myMap.clear();
+
+
+删:
+myMap.delete("bar"); // 返回 true。成功地移除元素
+
+查:
+Map.prototype.get(key) 返回键对应的值，如果不存在，则返回undefined
+myMap.get("baz");  // 返回 undefined
+
+是否有这个字符串:
+myMap.has("bar"); // true
+
+
+
+
+
+循环 / 迭代:
+let myMap = new Map();
+myMap.set(0, "zero");
+myMap.set(1, "one");
+
+将会显示两个log。一个是"0 = zero"另一个是"1 = one"
+for (let [key, value] of myMap) {
+  console.log(key + " = " + value);
+}
+
+
+
+将会显示两个log。 一个是 "0" 另一个是 "1"
+for (let key of myMap.keys()) {
+  console.log(key);
+}
+
+
+
+将会显示两个log。 一个是 "zero" 另一个是 "one"
+for (let value of myMap.values()) {
+  console.log(value);
+}
+
+
+Map也可以通过forEach()方法迭代：
+将会显示两个logs。 一个是 "0 = zero" 另一个是 "1 = one"
+myMap.forEach(function(value, key) {
+  console.log(key + " = " + value);
+})
+
+
+
+Map 与 Array:
+let kvArray = [["key1", "value1"], ["key2", "value2"]];
+
+// 使用常规的Map构造函数可以将一个二维键值对数组转换成一个Map对象
+let myMap = new Map(kvArray);
+
+myMap.get("key1"); // 返回值为 "value1"
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```
+
+
+            Others:
+
+
+
+```
+<details>
+<summary><b>新窗口打开  /  原窗口打开</b></summary>
+
+```  
+<a href="链接的页面" target="_blank">新窗口打开</a>
+<a href="链接的页面" target="_parent">原窗口打开</a>
+```
+</details>
+
+
+
+
+
+
 
 
 

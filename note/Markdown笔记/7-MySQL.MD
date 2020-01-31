@@ -31,44 +31,71 @@
 </details>
 
 
-### 展示所有的数据库
-show databases;
 
-### 选择出是 null 的项目 3 条:
+# 批处理自动备份脚本(.bat for Windows10):
+### 注意!! 一定要用 Windows 自带的文本编辑器打开, 用别的编辑器打开会乱码(比如 VS Code)
+<details>
+<summary><b>BackUP_MySQL.bat</b></summary>
+
 ```  
-SELECT * FROM `user` where `name` is null LIMIT 0,3;
+rem =====   MySQL backup start   =====
+@echo off
+forfiles /p "D:\MySQL_BackUp" /m backup_*.sql -d -30 /c "cmd /c del /f @path"
+set "time=%date:~0,4%-%date:~5,2%-%date:~8,2%-%time:~1,1%%time:~3,2%%time:~6,2%"
+"C:\phpStudy\PHPTutorial\MySQL\bin\mysqldump" --opt --single-transaction=TRUE --user=root --password=root --host=127.0.0.1 --protocol=tcp --port=3306 --default-character-set=utf8 --single-transaction=TRUE --routines --events "study_english_database" > "D:\坚果云文件\我的坚果云\MySQL_BackUp\study_english_database_%time%.sql"
+@echo on
+rem =====   MySQL backup end   =====
+rem %time%
+rem auther:YXB
+rem 教程来源 : https://blog.csdn.net/freezingxu/article/details/78884962
+rem ================ 分割线 =====================
+rem Test : 中文(Chinese)会乱码吗???
+rem 因为 Windows下默认的bat的编码格式是UTF-8，这时只需将其转换成ANSI 格式即可
+rem 右击bat文件 -> 编辑 -> 另存为 -> ANSI格式 -> 保存即可
+rem 注意!! 一定要用 Windows 自带的文本编辑器打开, 用别的编辑器打开会乱码(比如 VS Code)
+pause
 
 ```
+</details>
 
 
-### use 某个数据库(aaa)
+
+# 基础:
+<details>
+<summary><b>基础-001</b></summary>
+
+```  
+
+查看所有的数据库 
+show databases;
+
+查看当前库所有表:
+show tables;
+
+查看指定数据库的表:
+show tables from 数据库名
+
+查看表的数据结构:
+desc 表名
+
+查看服务器的版本:
+select version();
+
+切换到某个数据库(aaa)
 use `aaa`;
 
-### 展示表中所有数据
+选择出是 null 的项目 3 条:
+SELECT * FROM `user` where `name` is null LIMIT 0,3;
+
+展示表中所有数据
 select * from `user`;
 
-###　insert 插入数据(两种方式)
+insert 插入数据(两种方式)
 insert into `user`(username,password) values('HUAWEI','mate20');
 INSERT into `users` VALUES ('AAA','BBB','CCC');
 
-### 查看当前库所有表:
-show tables;
 
-### 查看指定数据库的表:
-show tables from 数据库名
-
-### 查看表的数据结构:
-desc 表名
-
-### 查看服务器的版本:
-select version();
-
-
-
-
-
-# 意思解读:
-``` 
+基本解释:
 CREATE TABLE IF NOT EXISTS `table1`(      -- (注释:)
    `tableID` INT UNSIGNED AUTO_INCREMENT, -- (int类型,无符号,自增)
    `username` VARCHAR(100) NOT NULL,      -- (varchar不解释 带not null,不能为空值)
@@ -78,12 +105,19 @@ CREATE TABLE IF NOT EXISTS `table1`(      -- (注释:)
 这里有两个小小的坑:
 	1 CREATE TABLE IF NOT EXISTS `table1` 后面接的是() 不是{},注意了!!!
 	2 是utf8  不是utf-8
+
+
 ```
+</details>
 
 
-# 新建一个数据库并且包含数据 ( 完整的流程:)
-```
 
+
+
+<details>
+<summary><b>新建一个数据库并且包含数据 (完整的流程:)</b></summary>
+
+```  
 -- 删除数据库
 drop database IF EXISTS `MySQL_Test_1`;
 
@@ -110,10 +144,15 @@ insert into `user`(username,password) values('APPLE','IPHONE_5S');
 insert into `user`(username,password) values('OPPO','R11');
 
 ```
+</details>
 
 
 
-# 增
+
+
+<details>
+<summary><b>1 增:</b></summary>
+
 ```  
 多种排序测试用
 insert into `user`(username,password) VALUES('aaa','999');
@@ -138,8 +177,15 @@ insert into `user`(username,password) VALUES('ccc','333');
 	ALTER TABLE `user` ADD `address` VARCHAR(66);
 
 ```
+</details>
 
-# 删
+
+
+
+
+<details>
+<summary><b>2 删:</b></summary>
+
 ```  
 DROP TABLE IF EXISTS `jd_demo_login`;
 
@@ -172,10 +218,16 @@ unique key (删除某个字段的唯一性约束)
 	ALTER TABLE 表名 DROP INDEX 字段名(比如:userID);
 
 ```
+</details>
 
 
-# 改
-```
+
+
+
+<details>
+<summary><b>3 改</b></summary>
+
+```  
 UPDATE 更新表中某项数据
 UPDATE runoob_tbl SET runoob_title='学习 C++' WHERE runoob_id=3;
 
@@ -191,9 +243,15 @@ UPDATE runoob_tbl SET runoob_title='学习 C++' WHERE runoob_id=3;
 	ALTER TABLE user10  CHANGE `AAA`      `BBBB`     CHAR(32)   NOT NULL DEFAULT '123';
 
 ```
+</details>
 
 
-# 查
+
+
+
+<details>
+<summary><b>4 查</b></summary>
+
 ```  
 模糊查询:
 	select * from 
@@ -231,10 +289,16 @@ select count(*) from student where class='2333';       统计符合条件的数�
 MySQL查询最高分----> 语句太长,懒得写了,用时再百度吧...		
 
 ```
+</details>
 
 
-# MySQL 约束
-``` 
+
+
+
+<details>
+<summary><b> MySQL 约束</b></summary>
+
+```  
 主键:
 	CREATE TABLE users2(
 	id int,
@@ -289,9 +353,15 @@ FOREIGN KEY(class_id) REFERENCES class(id)
 外键 class_id(本表) 的值,参考class表中的id的值
 
 ```
+</details>
 
 
-# MySQL 高级:
+
+
+
+<details>
+<summary><b> MySQL 高级:</b></summary>
+
 ```  
 mysql 去掉重复的:
 SELECT DISTINCT username FROM same;
@@ -321,10 +391,15 @@ IFNULL(CONNECTION,0) 如果是NULL值,改为0
 SELECT SUM(`username`) FROM same;
 
 ```
+</details>
 
 
 
-# MySQL 杂谈:
+
+
+<details>
+<summary><b>MySQL 杂谈:</b></summary>
+
 ```  
 MYSQL5.x是不允许BLOB/TEXT类型的字段拥有默认值的
 
@@ -346,8 +421,41 @@ https://www.bilibili.com/video/av39807944/?p=17   ==> 拆表 (第二范式)
 mysql排序:
 	ASC		 数值从低到高
 	DESC	 数值从高到低
-	
+
 ```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # 以后不要折腾MySQL客户端了, 简直就是浪费时间, 直接下载一个 phpStudy 直接用里面内置的MySQL, 又省心又省力
@@ -429,6 +537,372 @@ emmmmmmmmm......
 下个MySQL客户端各种配置+设置, 简直就是反人类...
 
 
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
 
 ```
 </details>

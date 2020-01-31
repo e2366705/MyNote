@@ -159,23 +159,6 @@ insert into `user`(username,password) VALUES('aaa','999');
 insert into `user`(username,password) VALUES('bbb','555');
 insert into `user`(username,password) VALUES('ccc','333');   
 
-增加 : 
-	给字段添加默认值 : 
-	ALTER TABLE `数据表` ALTER COLUMN `字段` SET DEFAULT '默认值';
-
-增加 : 
-	字段主键约束 : 
-	ALTER TABLE `user3` add PRIMARY KEY(id);
-(注意:执行这句代码时候,会报错,原因是原来的字段都是null值,所以设置不成功,添加不一样的数据,再执行这句代码即可)
-
-增加 : 
-	字段唯一约束:
-	ALTER TABLE `user3` add unique(username);
-约束该字段的值不可以重复(insert时候,组合在一起不重复就ok)
-	
-增加一个字段 : 	
-	ALTER TABLE `user` ADD `address` VARCHAR(66);
-
 ```
 </details>
 
@@ -207,16 +190,6 @@ drop TABLE student;
 #删除倒数第几行数据                                            
 delete from text001 order by id desc limit 66
 
-删除 表的字段:
-alter table 表名 drop column 字段名
-
-删除 MySQL 主键 约束
-ALTER TABLE user3 DROP PRIMARY KEY;   
-
-删除 : 
-unique key (删除某个字段的唯一性约束)
-	ALTER TABLE 表名 DROP INDEX 字段名(比如:userID);
-
 ```
 </details>
 
@@ -230,17 +203,6 @@ unique key (删除某个字段的唯一性约束)
 ```  
 UPDATE 更新表中某项数据
 UPDATE runoob_tbl SET runoob_title='学习 C++' WHERE runoob_id=3;
-
-修改 : 
-	字段类型
-	alter table 表名 modify column 字段名 类型;
-注意: 如果修改字段数据失败,可能是MySQL为了数据安全,加了保险
-(比如text类型的字段转化为int类型->大数据类型转小数据类型,这样子就可能会丢失数据)
-
-
-修改字段名称和属性 ( 将AAA字段改为BBBB ) :
-	ALTER TABLE 表名    CHANGE 原字段名    新字段名    字段类型     约束条件 ; 
-	ALTER TABLE user10  CHANGE `AAA`      `BBBB`     CHAR(32)   NOT NULL DEFAULT '123';
 
 ```
 </details>
@@ -290,6 +252,81 @@ MySQL查询最高分----> 语句太长,懒得写了,用时再百度吧...
 
 ```
 </details>
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b>5 alter</b></summary>
+
+```  
+
+删除主键
+alter table `student` drop primary key;
+
+删除表的字段:
+alter table `表名` drop column `字段名`
+
+删除主键
+ALTER TABLE `user` DROP PRIMARY KEY
+
+想删除表中某个字段的unique key:
+ALTER TABLE `good_booked` DROP INDEX `good_id`;
+
+
+设置为主键:
+alter table `student` add primary key(`id`)
+(注意:执行这句代码时候,会报错,原因是原来的字段都是null值,所以设置不成功,
+设置为唯一键 效果是一样的)
+
+设置为唯一键
+alter TABLE `test2` add UNIQUE (`userid`)
+
+给字段添加默认值 : 
+ALTER TABLE `数据表` ALTER COLUMN `字段` SET DEFAULT '默认值';
+
+
+
+
+
+
+
+增加一个唯一字段
+alter table `phrase` add `word` VARCHAR(66) UNIQUE
+
+增加一个主键字段
+alter table `student` add `word` VARCHAR(66) PRIMARY KEY
+
+
+增加一个非空字段
+alter table `table1` add transactor varchar(10) not Null;
+
+增加一个自增 + 主键字段
+alter table `table1` add id int unsigned not Null auto_increment primary key
+
+
+修改字段名称和属性 ( 将AAA字段改为BBBB ) :
+ALTER TABLE 表名    CHANGE 原字段名    新字段名    字段类型     约束条件 ; 
+ALTER TABLE user10  CHANGE `AAA`      `BBBB`     CHAR(32)   NOT NULL DEFAULT '123';
+
+
+修改字段类型
+alter table 表名 modify column 字段名 类型;
+注意: 如果修改字段数据失败,可能是MySQL为了数据安全,加了保险
+(比如text类型的字段转化为int类型->大数据类型转小数据类型,这样子就可能会丢失数据)
+
+```
+</details>
+
+
+
+
+
 
 
 

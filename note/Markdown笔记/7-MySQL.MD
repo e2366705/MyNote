@@ -1,6 +1,34 @@
 ﻿
 
 # 以后不要折腾MySQL客户端了, 简直就是浪费时间, 直接下载一个 phpStudy 直接用里面内置的MySQL, 又省心又省力
+# 安装 phpStudy 之后 , 这时候是不能用 cmd 命令行直接操作 MySQL 数据库的, 需要这么配置
+<details>
+<summary><b>配置 phpStudy 里面的 MySQL 到系统变量</b></summary>
+
+```  
+1 打开 phpStudy
+2 点击 其他选项菜单
+3 点击 打开文件位置
+4 点击 MySQL 
+
+这时候打开了 phpStudy 里面内置的 MySQL 的安装位置,
+复制这个路径,
+
+这时候需要把环境变量配置到 Windows10 的系统变量中去,
+不然系统无法通过 cmd 直接找到 MySQL
+
+在 Windows10 中按下 win 键, 搜索 '高级系统设置'
+点击 '环境变量'
+找到系统变量
+找到 Path
+新建一个,
+把刚刚复制的 phpStudy- MySQL 的安装路径粘贴进去
+点击确定退出
+
+这样子就可以直接用 cmd 直接操作 phpStudy 里面的 MySQL 了
+
+```
+</details>
 
 
 ### 展示所有的数据库
@@ -14,14 +42,14 @@ SELECT * FROM `user` where `name` is null LIMIT 0,3;
 
 
 ### use 某个数据库(aaa)
-use aaa;
+use `aaa`;
 
 ### 展示表中所有数据
-select * from user;
+select * from `user`;
 
 ###　insert 插入数据(两种方式)
-insert into user(username,password) values('HUAWEI','mate20');
-INSERT into users VALUES ('AAA','BBB','CCC');
+insert into `user`(username,password) values('HUAWEI','mate20');
+INSERT into `users` VALUES ('AAA','BBB','CCC');
 
 ### 查看当前库所有表:
 show tables;

@@ -243,6 +243,9 @@ group by : 排除重复的,筛选出不同的
 查询字段`word`长度等于 5 的:
 	select * from `words_warehouse`  where length(`word`) = 5;		
 
+当 xxx 不为空 , 且 yyy 为空时:
+select `word` from `phrase` where `state` IS NULL and `word` is not null
+
 select * from score where username in ('aaa','bbb','ccc');  查询符合条件(aaa或者bbb或者ccc)的项目
 select * from student where class='12306' or sex='女';    MySQL或者查询
 select * from student order by class desc;   MySQL降序查询

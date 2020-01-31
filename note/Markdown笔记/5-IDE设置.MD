@@ -164,7 +164,7 @@ time选择 time()
 
 
 <details>
-<summary>必须设置的:</summary>
+<summary>必须设置 / 快捷键</summary>
 
 ```  
 	快捷键 => settings -> keymap:
@@ -209,6 +209,29 @@ time选择 time()
 	/** */
 	""
 
+
+		1-- itar  
+	生成for循环的快捷键:
+		for (var i = 0; i < ii.length; i++) {
+				const iiElement = ii[i];
+		}
+
+	2-- itin 
+		for (var iiKey in ii) {
+				
+		}
+
+	3-- fori
+		for (var i = 0; i < ; i++) {
+				
+		}
+	4-- cl -> console.log()  JavaScript
+		需要自己去设置!!!  
+		settings -> live Template
+
+	5-- 
+		Ctrl + F2 停止程序		
+
 ```
 </details>
 
@@ -244,30 +267,6 @@ time选择 time()
 
 
 
-<details>
-<summary><b>idea 自带快捷键: </b></summary>
-
-```  
-	1-- itar  
-	生成for循环的快捷键:
-		for (var i = 0; i < ii.length; i++) {
-				const iiElement = ii[i];
-		}
-
-	2-- itin 
-		for (var iiKey in ii) {
-				
-		}
-
-	3-- fori
-		for (var i = 0; i < ; i++) {
-				
-		}
-	4-- cl -> console.log()  JavaScript
-		需要自己去设置!!!  
-		settings -> live Template
-```
-</details>
 
 # 这是示范 1
 ## 这是示范 2

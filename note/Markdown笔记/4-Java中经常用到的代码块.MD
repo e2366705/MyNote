@@ -394,6 +394,7 @@ public class JDBC_test {
         String sql = "insert into `user` values(?, ?)";
 
         PreparedStatement ps = conn.prepareStatement(sql);
+        System.out.println(ps.toString());      // 输出 SQL 语句
 
         ps.setString(1, "aaa");
         ps.setInt(2, 6);
@@ -421,6 +422,7 @@ public class JDBC_test {
         Connection conn = getConn();
         String sql = "delete from user where username = ?;";
         PreparedStatement ps = conn.prepareStatement(sql);
+        System.out.println(ps.toString());      // 输出 SQL 语句
         ps.setString(1,"aaa");
         int i = ps.executeUpdate();
         System.out.printf("成功删除  %-15s 条数据:", i);
@@ -438,6 +440,7 @@ public class JDBC_test {
         System.out.println(" 实例化Statement对象...");
         String sql = "UPDATE `user` SET `username`=? WHERE `username`=?;";
         PreparedStatement ps = conn.prepareStatement(sql);
+        System.out.println(ps.toString());      // 输出 SQL 语句
         ps.setString(1, "aaa");
         ps.setString(2, "bbb");
 
@@ -459,6 +462,7 @@ public class JDBC_test {
 
         String sql = "SELECT * FROM `user`";
         PreparedStatement ps = conn.prepareStatement(sql);
+        System.out.println(ps.toString());      // 输出 SQL 语句
         ResultSet rs = ps.executeQuery();
 
         // 展开结果集数据库
@@ -471,6 +475,17 @@ public class JDBC_test {
         rs.close();
         stmt.close();
         conn.close();
+
+
+        /*
+        模糊查询: 必须这样写
+        String aaa = "rest";
+        String sql = "select `phrase`,`chinese_meaning` from `phrase` where `phrase` LIKE ? ";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1,  "%"+aaa+"%");
+        System.out.println(ps.toString());      // 输出 SQL 语句
+        ResultSet rs = ps.executeQuery();
+        */
     }
 }
 

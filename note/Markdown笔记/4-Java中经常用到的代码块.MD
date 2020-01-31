@@ -105,28 +105,88 @@ int Random_number = min_number + (int) (Math.random() * (max_number - min_number
 
         String str = "asdasdas.";
 
-        //【单词是否全为英文】返回true  否则false
+        //单词是否全为英文
+        // true  false
         boolean Whether_all_english = str.matches("[a-zA-Z]+");
 
-        //【全为数字】返回true
+        // 是否有中文? 允许有符号
+        String str = "my friends gardens and we've become closer '' * & ^ % # @ ! ` ~     ";
+        if (str.getBytes().length == str.length()) {
+            System.err.println("english....");
+        }else {
+            System.err.println("those string has chinese....");
+        }
+
+        // 是否全为数字
+        // true false
         Boolean all_number = str.matches("[0-9]+");
 
-        //【除英文和数字外无其他字符(只有英文数字的字符串)】返回true 否则false
+        // 除英文和数字外无其他字符(只有英文数字的字符串)
+        //  true false
         boolean result2 = str.matches("[a-zA-Z0-9]+");
 
-        //【含有英文】true
+        // 含有英文
+        //  true false
         String regex1 = ".*[a-zA-z].*";
         boolean has_english = str.matches(regex1);
 
-        // 含有数字 => true
+        // 含有数字 
+        //  true false
         String regex2 = ".*[0-9].*";
         boolean has_number = str.matches(regex2);
 
-        //判断是否为纯中文，不是返回false
+
+        // 含有中文
+        //  true false
+        String world_2 = "哈哈哈aaaaaaa";
+        for (char c : world_2.toCharArray()) {
+            if (isChinese(c)) {
+                System.out.println("含有中文");
+            }
+        }
+
+        //判断是否为纯中文
+        //  true false
         String regex3 = "[\\u4e00-\\u9fa5]+";
         boolean all_chinese = str.matches(regex3);
 
-        System.out.println(Whether_all_english);
+        // 是否包含一个空格
+        String str = "acd dd";
+        if(str.contains(" ")){
+            System.out.println("存在空格 , 是一个句子");
+        }else{
+            System.out.println("没有 空格");
+        }
+
+
+        // 多少个单词(不包括汉字)
+        String word = "abc cba CCC 哈哈哈 *** ### 000 111 ";
+        String[] arr = word.split("[^a-zA-Z0-9]+");
+        for (int i = 0; i < arr.length; i++) {
+            System.out.println(arr[i]);
+        }
+        System.out.println("There are " + arr.length + "   english words in the line!");
+
+
+
+    // 判断这个文件夹里面, 哪个是文件, 哪个是文件夹
+    public static ArrayList<String> getFiles(String path) {
+        ArrayList<String> files = new ArrayList<String>();
+        File file = new File(path);
+        File[] tempList = file.listFiles();
+
+        for (int i = 0; i < tempList.length; i++) {
+            if (tempList[i].isFile()) {
+                System.out.println("文 件： " + tempList[i]);
+                files.add(tempList[i].toString());
+            }
+            if (tempList[i].isDirectory()) {
+                System.out.println("文件夹：" + tempList[i]);
+            }
+        }
+        return files;
+    }
+
 
     }
 ```

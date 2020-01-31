@@ -33,62 +33,75 @@
 
 
 
+# 一些基本的
+<details>
+<summary><b>基本...</b></summary>
 
-#### 各种版本的Java官方下载:
-```
+```  
+
+各种版本的Java官方下载:
 https://www.oracle.com/technetwork/java/archive-139210.html
 
-```
-
-
-#### 随后: 设置行号颜色
-```  
+设置行号颜色:
 settings
 Editor
 color scheme
 General
 code -> line number
-```
 
 
-#### Found duplicated code(发现了重复的代码)
-```  
+Found duplicated code(发现了重复的代码)
 Settings —> Editor —> Inspections —> General —> Duplicated Code
 
-```
 
-
-#### idea 找不到Tomcat服务器?
-```  
+idea 找不到Tomcat服务器?
 打开 settings -> 搜索:plugins
 把 tomcat 打上勾
 
-```
 
-
-#### IntelliJ IDEA报Found duplicated code in this file
-```  
+IntelliJ IDEA报Found duplicated code in this file
 IntelliJ IDEA编程工具报Found duplicated code in this file错误提示是因为你的代码重复了
 IntelliJ IDEA设置步骤如下
 File → Settings → Editor → Inspections → General → Duplicated Code.
-```
 
 
 
-#### Pycharm出现太多空格 : Pycharm pep 8 indentation contains tabs
-```  
+Pycharm出现太多空格 : Pycharm pep 8 indentation contains tabs
 As a temporary workaround:
-
 Alt+Enter
-
 choose "Ignore errors like this"
 
+
+
+idea 配置 less:
+	首先安装 file watchers 插件: settings -> Plugins -> 搜索:file watchers 插件安装
+	重启idea编辑器
+	settings -> 搜索 file watchers
+	配置less解析器
+
+
+
+idea打包javaweb项目,有两种方式 : 一种是war，一种是 war explored
+	war不支持热更新(就是你修改html源代码, 不自动更新源码)
+	war explored 支持热更新, 修改html内容, 网页也随之改变
+	推荐使用 war explored 
+
+
 ```
+</details>
 
 
 
-#### idea 开发 springBoot如何实时刷新?
+
+
+
+
+
+<details>
+<summary><b> idea 开发 springBoot如何实时刷新?</b></summary>
+
 ```  
+
 如果因为旧项目十分臃肿，导致热重启很慢而影响开发效率，
 建议直接在POM移除spring-boot-devtools 依赖，然后使用 Ctrl+Shift+F9 进行免启动快速更新！！
 
@@ -98,46 +111,31 @@ Ctrl+Shift+F9 只针对前端内容(html / css / JavaScript)的改动生效
 可以直接在idea里面用 Ctrl+F5 重启 debug  只不过速度比较慢...
 
 教程链接 https://www.jianshu.com/p/f658fed35786	
+
+
 ```
+</details>
 
-	
 
-#### Intellij IDEA ，按Ctrl+左键，不能进入类或方法，
-#### 提示Cannot find declaration to go to
+<details>
+<summary><b>Maven</b></summary>
+
 ```  
-解决办法:
-		是因为没有设置资源文件夹(Sources Root) , 
-		java'文件夹右键设置资源文件即可
+
+针对单个项目
+在项目的maven配置文件pom.xml里，添加repositories配置即可，如下：
+
+  <repositories>
+    <repository>
+      <id>aliyun</id>
+      <name>aliyun</name>
+      <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+    </repository>
+  </repositories>
+
 ```
+</details>
 
-
-
-#### idea 配置 less:
-```  
-	首先安装 file watchers 插件: settings -> Plugins -> 搜索:file watchers 插件安装
-	重启idea编辑器
-	settings -> 搜索 file watchers
-	配置less解析器
-```
-
-
-#### idea打包javaweb项目,有两种方式 : 一种是war，一种是 war explored
-```  
-	war不支持热更新(就是你修改html源代码, 不自动更新源码)
-	war explored 支持热更新, 修改html内容, 网页也随之改变
-	推荐使用 war explored 
-```
-
-
-
-#### idea 自动编译:
-```  
-	1 打开settings, 搜索compiler -> build project automatically
-	2 ide右上角 , Run –>EditConfigguration
-	  找到Tomcat Server
-	  有两个选项卡, on update action + on feame deactivation
-	  两个都选择: update classes and resources
-```
 
 
 <details>
@@ -209,6 +207,14 @@ time选择 time()
 	/** */
 	""
 
+
+	
+	
+	
+	系统自带快捷键:
+
+	Alt + Insert :
+		一键生成 getter / setter / toString / 构造方法
 
 		1-- itar  
 	生成for循环的快捷键:

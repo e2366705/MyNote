@@ -247,45 +247,49 @@ src\main\resources\static\Remember_words\Last_Next_Words.js
 
 ```  	
 
-    首先要加上这个:
-        <parent>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-parent</artifactId>
-            <version>2.0.0.M4</version>
-        </parent>  
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.4.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
 
 
 
-<dependencies> 里面添加:   
+    <groupId>YXB__YXB__YXB</groupId>
+    <artifactId>translate</artifactId>
+    <version>2.2.4.RELEASE</version>
 
+
+
+
+
+
+
+    <dependencies>
 
         <!--               Spring 家族                      -->
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
         <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>2.1.1</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-jdbc</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>1.3.2</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
 
@@ -294,7 +298,7 @@ src\main\resources\static\Remember_words\Last_Next_Words.js
 
 
         <!--                      other                           -->
-     <dependency>
+        <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
             <version>4.5.5</version>
@@ -355,14 +359,34 @@ src\main\resources\static\Remember_words\Last_Next_Words.js
             <version>2.8.1</version>
         </dependency>
 
+    </dependencies>
 
-    <repositories>里面添加:
-            <repository>
-                <id>aliyun</id>
-                <name>aliyun</name>
-                <url>http://maven.aliyun.com/nexus/content/groups/public</url>
-            </repository>
 
+
+
+
+    <repositories>
+
+        <repository>
+            <id>aliyun</id>
+            <name>aliyun</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+        </repository>
+
+    </repositories>
+
+
+
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
 ```
 </details>

@@ -28,12 +28,82 @@ src\main\resources\static\Remember_words\Last_Next_Words.js
 
 
 <details>
-<summary><b>添加xml文件依赖:</b></summary>
+<summary><b>pom.xml添加文件依赖 / 并配置 aliyun 镜像</b></summary>
 
 ```  	
-		<dependency>
+
+<dependencies> 里面添加:
+
+        <!--               Spring 家族                      -->
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>1.3.2</version>
+        </dependency>
+
+
+
+
+
+
+        <!--                      other                           -->
+     <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.5</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/javazoom/jlayer -->
+        <dependency>
+            <groupId>javazoom</groupId>
+            <artifactId>jlayer</artifactId>
+            <version>1.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.9.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.4.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
         </dependency>
 
         <dependency>
@@ -43,10 +113,32 @@ src\main\resources\static\Remember_words\Last_Next_Words.js
         </dependency>
 
         <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>5.3.1</version>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.8.2</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>1.10.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.1</version>
+        </dependency>
+
+
+    <repositories>里面添加:
+            <repository>
+                <id>aliyun</id>
+                <name>aliyun</name>
+                <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+            </repository>
+
+
 ```
 </details>
 

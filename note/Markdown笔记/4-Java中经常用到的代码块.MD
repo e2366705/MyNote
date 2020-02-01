@@ -7,20 +7,10 @@
 
 #### 4个 # 比较合适...
 
-
-<details>
-<summary><b>返回当前的时间</b></summary>
-
 ```  
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
-        System.out.println( "现在是:  " +  df.format(new Date()));// new Date()为获取当前系统时间
 
-        System.out.printf("现在是:  %66s  \n" , df.format(new Date()));
-        System.out.printf("现在是:  %-66s   " , df.format(new Date()));
+
 ```
-</details>
-
-
 
 
 <details>
@@ -57,17 +47,6 @@ import javazoom.jl.player.*;
 
 
 
-<details>
-<summary><b>生成随机数</b></summary>
-
-```  
-int min_number = 5000;
-int max_number = 9999;
-int Random_number = min_number + (int) (Math.random() * (max_number - min_number + 1000));
-```
-</details>
-
-
 
 
 
@@ -96,10 +75,24 @@ int Random_number = min_number + (int) (Math.random() * (max_number - min_number
 
 
 
+
+
+
+
+
 <details>
-<summary><b>判断一个字符串是否含有英文 / 中文 / 数字 / ...</b></summary>
+<summary><b>判断一个字符串是否含有英文 / 中文 / 数字 / ... 时间 / 随机数 / 随机字符串 / 截取字符串</b></summary>
 
 ```  
+
+        返回当前时间:
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        System.out.println( "现在是:  " +  df.format(new Date()));// new Date()为获取当前系统时间
+
+        System.out.printf("现在是:  %66s  \n" , df.format(new Date()));
+        System.out.printf("现在是:  %-66s   " , df.format(new Date()));
+
+
     @Test
     public void test() {
 
@@ -186,24 +179,18 @@ int Random_number = min_number + (int) (Math.random() * (max_number - min_number
         }
         return files;
     }
-
-
     }
-```
-</details>
 
 
 
+        随机数:
+        int min_number = 5000;
+        int max_number = 9999;
+        int Random_number = min_number + (int) (Math.random() * (max_number - min_number + 1000));
 
 
-<details>
-<summary><b>生成指定长度的随机字符串（A-Z，a-z，0-9）</b></summary>
-
-```  
-    @Test
-    public void getRandomString() {
+        随机字符串:
         int length = 10;
-
         String str = "abcdefghijklm1no2pq3rs4tu5vw6xy7zA8BC9DE10FGHIJKLMNOPQRSTUVWXYZ0123456789";
         Random random = new Random();
         StringBuffer sb = new StringBuffer();
@@ -212,7 +199,22 @@ int Random_number = min_number + (int) (Math.random() * (max_number - min_number
             sb.append(str.charAt(number));
         }
         System.out.println(sb.toString());
-    }
+
+
+
+        截取字符串(最后2位 / 排除最后2位)
+        String strhours = String.valueOf(123456789);
+
+        // 截取最后2位 => 89
+        String aaa = strhours.substring(strhours.length() -2, strhours.length());   //截取
+
+        // 排除最后2位 => 1234567
+        String bbb = strhours.substring(0,strhours.length()-2);   //截掉
+
+        System.out.println(aaa);
+        System.out.println(bbb);
+
+
 ```
 </details>
 
@@ -220,22 +222,6 @@ int Random_number = min_number + (int) (Math.random() * (max_number - min_number
 
 
 
-<details>
-<summary><b>截取字符串(最后2位 / 排除最后2位)</b></summary>
-
-```  
-String strhours = String.valueOf(123456789);
-
-// 截取最后2位 => 89
-String aaa = strhours.substring(strhours.length() -2, strhours.length());   //截取
-
-// 排除最后2位 => 1234567
-String bbb = strhours.substring(0,strhours.length()-2);   //截掉
-
-System.out.println(aaa);
-System.out.println(bbb);
-```
-</details>
 
 
 

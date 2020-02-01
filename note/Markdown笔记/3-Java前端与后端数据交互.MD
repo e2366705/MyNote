@@ -62,6 +62,7 @@ public @ResponseBody Map<String, Object> delete(String id) {
         success:function(data){
             if(data.result === 'SUCCESS'){
                 alert(data.result);
+                params = data;                
             }else{
                 alert("修改失败，失败原因【" + data + "】");
             }
@@ -70,6 +71,10 @@ public @ResponseBody Map<String, Object> delete(String id) {
             alert(data.result);
         }
     });
+
+    return params;
+    
+    需要把 data 赋值给 params, 再去返回值, 不然直接 return data 是没有作用的
 	
 ```
 

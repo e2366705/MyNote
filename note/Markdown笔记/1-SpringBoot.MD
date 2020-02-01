@@ -400,6 +400,33 @@ src\main\resources\static\Remember_words\Last_Next_Words.js
 
 
 
+
+
+<details>
+<summary><b>要注意的:</b></summary>
+
+```  
+
+注意:   在 Controller 里面注入 POJO 的时候
+        有几个 POJO , 就在上面写几个 @Autowired
+        不然会注入失败
+
+@Controller
+@RequestMapping(value="/Remember_word_Controller")
+public class Remember_words_Controller {
+
+    @Autowired
+    private Dao dao;
+
+    @Autowired
+    private PhraseDao phraseDao;
+
+```
+</details>
+
+
+
+
 <details>
 <summary><b>配置 application.properties</b></summary>
 

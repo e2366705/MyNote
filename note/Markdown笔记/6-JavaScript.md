@@ -1096,16 +1096,23 @@ document.getElementById("span1").onclick = function (ev) {
 <summary><b>localStorage</b></summary>
 
 ```  
-存   localStorage.setItem('myCat', 'Tom');
-取   localStorage.getItem('myCat');        获取key对应的value
-删   localStorage.removeItem('myCat');
+存   localStorage.setItem('myCat', 'Tom');     两个参数(必填项), key - value 形式存在
+取   localStorage.getItem('myCat');            获取key对应的value
+删   localStorage.removeItem('myCat');         
 清空 localStorage.clear();
 
-localStorage.length     获取localStorage一共有多少条数据
-localStorage.key(3)     获取指定下标位置的key
+localStorage.length          获取localStorage一共有多少条数据
+localStorage.key(3)          索引(index)为3的 key 的值
+localStorage.value(3);       没有这种用法
 
 第三个是否包含 apple 这个字符串(返回布尔类型):
 localStorage.key(5).includes("apple") === true
+
+遍历:
+    for (var i = 0; i < localStorage.length; i++) {
+        
+    }
+    
 ```
 </details>
 
@@ -1230,25 +1237,6 @@ interval = setInterval(runThis, 5000);
 
 
 
-<details>
-<summary><b>键盘事件: 按下回车的时触发事件</b></summary>
-
-```  
-function keyDown(e) {
-    var keycode = e.which;   //取得对应的键值（数字）
-    var realkey = String.fromCharCode(e.which); //取得代表改键的真正字符
-    alert("按键码: " + keycode + " 字符: " + realkey);
-    if (keycode === 82){
-        alert("你按下了 R ...")
-    }
-}
-
-document.onkeydown = keyDown
-```
-</details>
-
-
-
 
 
 <details>
@@ -1280,8 +1268,63 @@ document.onkeydown = keyDown
         };
 
          <h1 id="test" style="display: none;">aAAAAAAAAAAAAA</h1>
+
+
+
+
+
+
+
+
+
+// 键盘事件: 按下回车的时触发事件
+document.onkeydown = function(e) {
+    var keycode = e.which;   //取得对应的键值（数字）
+    var realkey = String.fromCharCode(e.which); //取得代表改键的真正字符
+    alert("按键码: " + keycode + " 字符: " + realkey);
+    if (keycode === 82){
+        alert("你按下了 R ...")
+    }
+}
+
+
+
+
+
+
+
+    按住 -> 显示
+    松开 -> 隐藏
+
+// 键盘空格键 按住时触发 ( 键盘是 32 )
+document.onkeypress = function (event) {
+    var keycode = event.which;   //取得对应的键值（数字）
+    var realkey = String.fromCharCode(event.which); //取得代表改键的真正字符
+    // alert("按键码: " + keycode + " 字符: " + realkey);
+    if (keycode === 32){
+        document.getElementById("phrase").style.display = "block";
+        document.getElementById("chinese_meaning").style.display = "block";
+    }
+};
+
+// 键盘空格键 弹起时触发 ( 键盘是 32 )
+document.onkeyup = function (event) {
+    var keycode = event.which;   //取得对应的键值（数字）
+    var realkey = String.fromCharCode(event.which); //取得代表改键的真正字符
+    // alert("按键码: " + keycode + " 字符: " + realkey);
+    if (keycode === 32){
+        // console.log('key up');
+        document.getElementById("phrase").style.display = "none";
+        document.getElementById("chinese_meaning").style.display = "none";
+    }
+};
+
+
 ```
 </details>
+
+
+
 
 
 

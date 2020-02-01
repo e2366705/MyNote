@@ -131,7 +131,10 @@
 │      │  │  └─com
 │      │  │      └─example
 │      │  │          └─demo
-│      │  │              │  DemoApplication.java
+│      │  │              │  DemoApplication.java   [启动类 run ]
+                                        public static void main(String[] args) {
+                                                SpringApplication.run(DemoApplication.class, args);
+                                        }
 │      │  │              │
 │      │  │              ├─bean   [bean类(也叫Entity)]
 │      │  │              │      User.java
@@ -180,14 +183,24 @@
                                             return studentDao.searchByName(name);
                                         }    
 │      │  │
-│      │  └─resources
-│      │          application.properties   [配置文件]
+│      │  └─resources   [资源文件夹]
+│      │       application.properties   [配置文件]
                             spring.datasource.url=jdbc:mysql://localhost:3306/mysql?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=false
                             spring.datasource.username=root
                             spring.datasource.password=root
 
                             spring.datasource.driver-class-name=com.mysql.jdbc.Driver
                             spring.jpa.properties.hibernate.hbm2ddl.auto=none
+│      │      ├─static   [静态文件 css js pic等]
+│      │      │  ├─css
+│      │      │  │      default.css
+│      │      │  │
+│      │      │  └─images
+│      │      │          favicon.ico
+│      │      │
+│      │      └─templates   [html]
+│      │              bookForm.html
+│      │              bookList.html                            
 │      │
 │      └─test
 │          └─java
@@ -234,7 +247,17 @@ src\main\resources\static\Remember_words\Last_Next_Words.js
 
 ```  	
 
-<dependencies> 里面添加:
+    首先要加上这个:
+        <parent>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-parent</artifactId>
+            <version>2.0.0.M4</version>
+        </parent>  
+
+
+
+<dependencies> 里面添加:   
+
 
         <!--               Spring 家族                      -->
 

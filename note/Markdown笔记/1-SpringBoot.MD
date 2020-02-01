@@ -2,6 +2,208 @@
 # 注意: SpringBoot是不用自己去配置Tomcat的!!!
 ## 妈的, 我在2020-01-23这一天折腾了好几个小时, 死活配置不好Tomacat, 突然想起来SpringBoot是不用配置Tomcat的....
 
+```  
+
+
+```
+
+
+## Springboot 常见目录结构树 ( win10 打开 cmd -> tree D:code  /f ):
+<details>
+<summary><b> Springboot 文件夹树形结构 </b></summary>
+
+```  
+
+├─demo-2
+│  │  pom.xml
+│  │
+│  └─src
+│      ├─main
+│      │  ├─java
+│      │  │  └─com
+│      │  │      └─example
+│      │  │          └─demo
+│      │  │              │  DemoApplication.java
+│      │  │              │
+│      │  │              ├─bean
+│      │  │              │      Major.java
+│      │  │              │      Student.java
+│      │  │              │      User.java
+│      │  │              │
+│      │  │              ├─controller
+│      │  │              │      MajorController.java
+│      │  │              │      StudentController.java
+│      │  │              │      UserLoginController.java
+│      │  │              │
+│      │  │              ├─dao
+│      │  │              │      MajorDao.java
+│      │  │              │      StudentDao.java
+│      │  │              │      UserLoginDao.java
+│      │  │              │
+│      │  │              └─service
+│      │  │                  │  MajorService.java
+│      │  │                  │  StudentService.java
+│      │  │                  │  UserLoginService.java
+│      │  │                  │
+│      │  │                  └─impl
+│      │  │                          MajorImpl.java
+│      │  │                          StudentImpl.java
+│      │  │                          UserLoginImpl.java
+│      │  │
+│      │  └─resources
+│      │          application.properties
+│      │
+│      └─test
+│          └─java
+│              └─com
+│                  └─example
+│                      └─demo
+│                              DemoApplicationTests.java
+
+
+
+
+
+├─spring-boot-web-thymeleaf
+│  │  pom.xml
+│  │
+│  └─src
+│      ├─main
+│      │  ├─java
+│      │  │  └─demo
+│      │  │      └─springboot
+│      │  │          │  WebApplication.java
+│      │  │          │
+│      │  │          ├─domain
+│      │  │          │      Book.java
+│      │  │          │
+│      │  │          ├─service
+│      │  │          │  │  BookService.java
+│      │  │          │  │
+│      │  │          │  └─impl
+│      │  │          │          BookServiceImpl.java
+│      │  │          │
+│      │  │          └─web
+│      │  │                  BookController.java
+│      │  │
+│      │  └─resources
+│      │      │  application.properties
+│      │      │
+│      │      ├─static
+│      │      │  ├─css
+│      │      │  │      default.css
+│      │      │  │
+│      │      │  └─images
+│      │      │          favicon.ico
+│      │      │
+│      │      └─templates
+│      │              bookForm.html
+│      │              bookList.html
+│      │
+│      └─test
+│          └─java
+│              └─demo
+│                  └─springboot
+│                          WebApplicationTests.java
+
+
+```
+</details>
+
+
+
+
+
+
+
+<details>
+<summary><b>树形目录结构详解: </b></summary>
+
+```  
+
+
+├─demo-2
+│  │  pom.xml
+│  │
+│  └─src
+│      ├─main
+│      │  ├─java
+│      │  │  └─com
+│      │  │      └─example
+│      │  │          └─demo
+│      │  │              │  DemoApplication.java
+│      │  │              │
+│      │  │              ├─bean   [bean类(也叫Entity)]
+│      │  │              │      User.java
+                                            private int user_id;
+                                            private String user_name;
+                                            private String password;
+
+                                            public User(){}
+
+                                            public User(String user_name, String password) {
+                                                this.user_name = user_name;
+                                                this.password = password;
+                                            }      
+│      │  │              │
+│      │  │              ├─controller   [ controller 控制类]
+│      │  │              │      StudentController.java
+                                          @GetMapping("/getAll")
+                                          public List<Student> getAll(){
+                                              return studentService.findAll();
+                                          }
+
+                                          @GetMapping("/get/{name}")
+                                          public Student getByName(@PathVariable String name){
+                                              return studentService.searchByName(name);
+                                          }
+│      │  │              │
+│      │  │              ├─dao   [dao类 与数据库互动]
+│      │  │              │      StudentDao.java
+                                    @Query("select s from Student s where s.stu_name=?1")
+                                    Student searchByName(String name);
+│      │  │              │
+│      │  │              └─service   [service类]
+│      │  │                  │  StudentService.java
+                                    public interface StudentService {
+                                            //根据姓名查找
+                                            Student searchByName(String name);  
+                                    }
+│      │  │                  │
+│      │  │                  └─impl   [实现类]
+│      │  │                         StudentImpl.java
+                                        @Autowired
+                                        StudentDao studentDao;
+
+                                        @Override
+                                        public Student searchByName(String name) {
+                                            return studentDao.searchByName(name);
+                                        }    
+│      │  │
+│      │  └─resources
+│      │          application.properties   [配置文件]
+                            spring.datasource.url=jdbc:mysql://localhost:3306/mysql?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=false
+                            spring.datasource.username=root
+                            spring.datasource.password=root
+
+                            spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+                            spring.jpa.properties.hibernate.hbm2ddl.auto=none
+│      │
+│      └─test
+│          └─java
+│              └─com
+│                  └─example
+│                      └─demo
+│                              DemoApplicationTests.java
+
+
+
+```
+</details>
+
+
+
+
 
 
 

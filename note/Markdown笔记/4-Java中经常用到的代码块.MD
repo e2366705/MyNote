@@ -84,6 +84,11 @@ import javazoom.jl.player.*;
 <summary><b>判断一个字符串是否含有英文 / 中文 / 数字 / ... 时间 / 随机数 / 随机字符串 / 截取字符串</b></summary>
 
 ```  
+        大写:
+        str.toUpperCase();
+
+        小写:
+        str.toLowerCase()
 
         返回当前时间:
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
@@ -213,6 +218,20 @@ import javazoom.jl.player.*;
 
         System.out.println(aaa);
         System.out.println(bbb);
+
+
+
+
+        // 分割字符串
+        String str = "www-runoob-com";
+        String[] temp;
+        String delimeter = "-";  // 指定分割字符
+        temp = str.split(delimeter); // 分割字符串
+        // 普通 for 循环
+        for(int i =0; i < temp.length ; i++){
+            System.out.println(temp[i]);
+            System.out.println("");
+        }
 
 
 ```
@@ -685,10 +704,231 @@ insert into user(username,password) values('OPPO','R11');
 
 
 
+---
+# 集合
+```  
+
+Map:
+    是集合的一部分，但与Collection是相互独立的，没有任何关系
+    Map中都是以key-value的形式存在，
+    其中key必须唯一，
+    主要有HashMap、HashTable、TreeMap三个实现类
+    
+    TreeMap:
+        是一个有序的key-value集合，它是通过红黑树实现的
+    
+    Hashtable:
+         Key、Value均不能为null
+
+    HashMap:
+        Key、Value 可以为 null (可以允许存在一个为null的key , 任意个为 null 的 value)
+          
+
+       
+
+
+ ArrayList：底层的数据结构使用的是数组结构（数组长度是可变的百分之五十延长）（特点是查询很快，但增删较慢）线程不同步
+ LinkedList：底层的数据结构是链表结构（特点是查询较慢，增删较快）
+
+
+Collection 主要有三个子接口,分别为:
+    1 List(列表) 
+    2 Set(集)
+    3 Queue(队列)
+
+    List、Queue:
+        元素有序可重复，
+        List中主要有ArrayList、LinkedList两个实现类: 
+
+    Set:
+        元素无序不可重复
+        Set中则是有HashSet实现类；
+
+而Queue是在JDK1.5后才出现的新集合，主要以数组和链表两种形式存在
+
+
+```
 <details>
-<summary><b>my_name_is_jack</b></summary>
+<summary><b>Collection ( List Set )</b></summary>
 
 ```  
+
+void add(String item)  //依次往后添加添加元素
+void add(String item, int index) //在指定位置处添加元素
+void remove(int position) //删除第几个元素（索引从0开始）
+void remove(String item) //删除相同的元素
+void removeAll() //删除所有元素
+
+
+
+ArrayList类
+		List list = new ArrayList();
+
+		// 向列表的尾部追加指定的元素
+		list.add("lwc");
+
+		// 在列表的指定位置插入指定元素
+		list.add(1, "nxj");
+
+		// 追加指定 collection 中的所有元素到此列表的结尾
+		list.addAll(new ArrayList());
+
+		// 从列表中移除所有元素
+		list.clear();
+
+		// 如果列表包含指定的元素,则返回true
+		list.contains("nxj");
+
+		// 如果列表包含指定 collection 的所有元素,则返回 true
+		list.containsAll(new ArrayList());
+
+		// 比较指定的对象与列表是否相等
+		list.equals(new ArrayList());
+
+		// 返回列表中指定位置的元素
+		list.get(0);
+
+		// 返回列表的哈希码值
+		list.hashCode();
+
+		// 返回列表中首次出现指定元素的索引,如果列表不包含此元素,则返回 -1
+		list.indexOf("lwc");
+
+		// 返回列表中最后出现指定元素的索引,如果列表不包含此元素,则返回 -1
+		list.lastIndexOf("lwc");
+
+		// 如果列表不包含元素,则返回 true
+		list.isEmpty();
+
+		// 移除列表中指定位置的元素
+		list.remove(0);
+
+		// 移除列表中出现的首个指定元素
+		list.remove("lwc");
+
+		// 从列表中移除指定 collection 中包含的所有元素
+		list.removeAll(new ArrayList());
+
+		// 用指定元素替换列表中指定位置的元素
+		list.set(0, "lp");
+
+		// 返回列表中的元素数
+		list.size();
+
+		// 返回列表中指定的fromIndex(包括)和toIndex(不包括)之间的部分视图
+		list.subList(1, 2);
+
+		// 返回以正确顺序包含列表中的所有元素的数组
+		list.toArray();
+
+		// 返回以正确顺序包含列表中所有元素的数组
+		list.toArray(new String[] { "a", "b" });
+
+
+
+
+LinkedList类
+1. add(E e): 将指定元素添加到此列表的结尾。
+2. add(int index, E element)：在此列表中指定的位置插入指定的元素。
+3. addAll(Collection<? extends E> c)：添加指定 collection 中的所有元素到此列表的结尾，顺序是指定 collection 的迭代器返回这些元素的顺序。
+4. addAll(int index, Collection<? extends E> c)：将指定 collection 中的所有元素从指定位置开始插入此列表。
+5. AddFirst(E e): 将指定元素插入此列表的开头。
+6. addLast(E e): 将指定元素添加到此列表的结尾。
+7. clear()： 从此列表中移除所有元素。
+8. remove()：获取并移除此列表的头（第一个元素）。
+9. remove(int index)：移除此列表中指定位置处的元素。
+10. remove(Objec o)：从此列表中移除首次出现的指定元素（如果存在）。
+11. removeFirst()：移除并返回此列表的第一个元素。
+12. removeFirstOccurrence(Object o)：从此列表中移除第一次出现的指定元素（从头部到尾部遍历列表时）。
+13. removeLast()：移除并返回此列表的最后一个元素。
+14. removeLastOccurrence(Object o)：从此列表中移除最后一次出现的指定元素（从头部到尾部遍历列表时）。
+15. get(int index)：返回此列表中指定位置处的元素。
+16. getFirst()：返回此列表的第一个元素。
+17. getLast()：返回此列表的最后一个元素。
+18. indexOf(Object o)：返回此列表中首次出现的指定元素的索引，如果此列表中不包含该元素，则返回 -1。
+19. lastIndexOf(Object o)：返回此列表中最后出现的指定元素的索引，如果此列表中不包含该元素，则返回 -1。
+
+
+
+
+
+
+Set类 - 不会存储重复的元素。加入Set的每个元素必须是唯一的，否则，Set是不会把它加进去的
+boolean add(Object o)：该方法用于向集合里添加一个元素。
+boolean addAll(Collection c)：该方法把集合c里的所有元素添加到指定集合里。
+void clear()：清除集合里的所有元素，将集合长度变为0。
+boolean contains(Object o)：返回集合里是否包含指定元素。
+boolean containsAll(Collection c)：返回集合里是否包含集合c里的所有元素。
+boolean isEmpty()：返回集合是否为空。当集合长度为0时返回true，否则返回false。
+Iterator iterator()：返回一个Iterator对象，用于遍历集合里的元素。
+boolean remove(Object o)：删除集合中的指定元素o，当集合中包含了一个或多个元素o时，这些元素将被删除，该方法将返回true。
+boolean removeAll(Collection c)：将集合中删除集合c里包含的所有元素（相当于用调用该方法的集合减集合c），如果删除了一个或一个以上的元素，则该方法返回true
+
+
+
+
+
+
+
+TreeSet类 - 使用元素的自然顺序对元素进行排序
+E ceiling(E e) 
+  返回此 set 中大于等于给定元素的最小元素；如果不存在这样的元素，则返回 null。 
+Comparator<? super E> comparator() 
+  返回对此 set 中的元素进行排序的比较器；如果此 set 使用其元素的自然顺序，则返回 null。 
+Iterator<E> descendingIterator() 
+  返回在此 set 元素上按降序进行迭代的迭代器。 
+NavigableSet<E> descendingSet() 
+  返回此 set 中所包含元素的逆序视图。 
+E first() 
+  返回此 set 中当前第一个（最低）元素。 
+E floor(E e) 
+  返回此 set 中小于等于给定元素的最大元素；如果不存在这样的元素，则返回 null。 
+SortedSet<E> headSet(E toElement) 
+  返回此 set 的部分视图，其元素严格小于 toElement。 
+NavigableSet<E> headSet(E toElement, boolean inclusive) 
+  返回此 set 的部分视图，其元素小于（或等于，如果 inclusive 为 true）toElement。 
+E higher(E e) 
+  返回此 set 中严格大于给定元素的最小元素；如果不存在这样的元素，则返回 null。 
+Iterator<E> iterator() 
+  返回在此 set 中的元素上按升序进行迭代的迭代器。 
+E last() 
+  返回此 set 中当前最后一个（最高）元素。 
+E lower(E e) 
+  返回此 set 中严格小于给定元素的最大元素；如果不存在这样的元素，则返回 null。 
+E pollFirst() 
+  获取并移除第一个（最低）元素；如果此 set 为空，则返回 null。 
+E pollLast() 
+  获取并移除最后一个（最高）元素；如果此 set 为空，则返回 null。 
+NavigableSet<E> subSet(E fromElement, boolean fromInclusive, E toElement, boolean toInclusive) 
+  返回此 set 的部分视图，其元素范围从 fromElement 到 toElement。 
+SortedSet<E> subSet(E fromElement, E toElement) 
+  返回此 set 的部分视图，其元素从 fromElement（包括）到 toElement（不包括）。 
+SortedSet<E> tailSet(E fromElement) 
+  返回此 set 的部分视图，其元素大于等于 fromElement。 
+NavigableSet<E> tailSet(E fromElement, boolean inclusive) 
+  返回此 set 的部分视图，其元素大于（或等于，如果 inclusive 为 true）fromElement。 
+
+
+
+
+
+
+
+HashSet类 
+不能重复存放
+t不能保证元素的排列顺序，顺序可能与添加顺序不同，顺序也有可能发生变化
+
+1.equals()方法 
+用来实现Set中元素的不重复性，如果不覆盖（override）equals()方法，默认使用父类Object的equals方法，则只是比较对象的引用是否相同。
+2.hashCode() 
+hashCode()方法时为了实现HashSet和LinkedHashSet而实现的。只有知道对象的hash值，才能根据这个hash值确定 存放在散列表的槽的index。同样，如果不覆盖（override）hashCode()方法，默认使用父类Object的hashCode()方法。
+3.toString()方法 
+toString()方法在打印对象时会调用。如果不覆盖（override）toString()方法，默认使用父类Object的。
+4.compareTo()方法 
+用户类要实现Comparable接口。这个方法主要用于将对象存放在TreeSet()时保证顺序的。由于是接口，所以用户类必须要实现这个方法。 
+
+
+
 
 ```
 </details>
@@ -697,10 +937,93 @@ insert into user(username,password) values('OPPO','R11');
 
 
 
+
+
+
 <details>
-<summary><b>my_name_is_jack</b></summary>
+<summary><b>Map (TreeMap Hashtable HashMap)</b></summary>
 
 ```  
+
+
+HashMap类
+void	             clear()
+Object	             clone()
+boolean	             containsKey(Object key)
+boolean         	 containsValue(Object value)
+Set<Map.Entry<K,V>>  entrySet()  返回一个包含HashMap的键值对的set
+V	                 get(Object key) 根据键获取值
+boolean	             isEmpty() 
+Set<K>	             keySet()    返回一个HashMap键的Set
+V	                 put(K key, V value)
+void	             putAll(Map<? extends K,? extends V> m)
+V	                 remove(Object key) 根据键移除
+int	                 size()
+Collection<V>	     values() 返回一个HashMap的值的Collection
+
+
+
+
+HashTable类
+synchronized void                clear()
+synchronized Object              clone()
+             boolean             contains(Object value)
+synchronized boolean             containsKey(Object key)
+synchronized boolean             containsValue(Object value)
+synchronized Enumeration<V>      elements()
+synchronized Set<Entry<K, V>>    entrySet()
+synchronized boolean             equals(Object object)
+synchronized V                   get(Object key)
+synchronized int                 hashCode()
+synchronized boolean             isEmpty()
+synchronized Set<K>              keySet()
+synchronized Enumeration<K>      keys()
+synchronized V                   put(K key, V value)
+synchronized void                putAll(Map<? extends K, ? extends V> map)
+synchronized V                   remove(Object key)
+synchronized int                 size()
+synchronized String              toString()
+synchronized Collection<V>       values()
+
+
+
+
+
+TreeMap类
+Entry<K, V>                ceilingEntry(K key)
+K                          ceilingKey(K key)
+void                       clear()
+Object                     clone()
+Comparator<? super K>      comparator()
+boolean                    containsKey(Object key)
+NavigableSet<K>            descendingKeySet()
+NavigableMap<K, V>         descendingMap()
+Set<Entry<K, V>>           entrySet()
+Entry<K, V>                firstEntry()
+K                          firstKey()
+Entry<K, V>                floorEntry(K key)
+K                          floorKey(K key)
+V                          get(Object key)
+NavigableMap<K, V>         headMap(K to, boolean inclusive)
+SortedMap<K, V>            headMap(K toExclusive)
+Entry<K, V>                higherEntry(K key)
+K                          higherKey(K key)
+boolean                    isEmpty()
+Set<K>                     keySet()
+Entry<K, V>                lastEntry()
+K                          lastKey()
+Entry<K, V>                lowerEntry(K key)
+K                          lowerKey(K key)
+NavigableSet<K>            navigableKeySet()
+Entry<K, V>                pollFirstEntry()
+Entry<K, V>                pollLastEntry()
+V                          put(K key, V value)
+V                          remove(Object key)
+int                        size()
+SortedMap<K, V>            subMap(K fromInclusive, K toExclusive)
+NavigableMap<K, V>         subMap(K from, boolean fromInclusive, K to, boolean toInclusive)
+NavigableMap<K, V>         tailMap(K from, boolean inclusive)
+SortedMap<K, V>            tailMap(K fromInclusive)
 
 ```
 </details>

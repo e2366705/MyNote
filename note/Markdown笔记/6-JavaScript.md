@@ -1102,7 +1102,7 @@ document.getElementById("span1").onclick = function (ev) {
 清空 localStorage.clear();
 
 localStorage.length          获取localStorage一共有多少条数据
-localStorage.key(3)          索引(index)为3的 key 的值
+localStorage.key(3)          索引(index)为3的 key 的值  (只能获取 key 的值, 得不到 value 的值)
 localStorage.value(3);       没有这种用法
 
 第三个是否包含 apple 这个字符串(返回布尔类型):
@@ -1240,7 +1240,7 @@ interval = setInterval(runThis, 5000);
 
 
 <details>
-<summary><b>键盘事件: 按下 / 松开</b></summary>
+<summary><b>键盘事件</b></summary>
 
 ```  
 资料来源:     https://www.cnblogs.com/youyoui/p/10381457.html

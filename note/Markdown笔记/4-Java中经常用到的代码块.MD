@@ -941,6 +941,57 @@ toString()方法在打印对象时会调用。如果不覆盖（override）toStr
 
 
 
+
+
+
+
+循环 / 遍历 / 迭代:
+---------------------------------------------------------------------------------------
+List的四种遍历方式:
+        //方法1 集合类的通用遍历方式, 从很早的版本就有, 用迭代器迭代
+        Iterator it1 = list.iterator();
+        while(it1.hasNext()){
+            System.out.println(it1.next());
+        }
+
+        //方法2 集合类的通用遍历方式, 从很早的版本就有, 用迭代器迭代
+        for(Iterator it2 = list.iterator();it2.hasNext();){
+            System.out.println(it2.next());
+        }
+
+        //方法3 增强型for循环遍历
+        for(String value:list){
+            System.out.println(value);
+        }
+
+        //方法4 一般型for循环遍历
+        for(int i = 0;i < list.size(); i ++){
+            System.out.println(list.get(i));
+        }
+
+
+
+
+set的三种遍历方式:        
+---------------------------------------------------------------------------------------
+        //方法1 集合类的通用遍历方式, 从很早的版本就有, 用迭代器迭代
+        Iterator it1 = set.iterator();
+        while(it1.hasNext()){
+            System.out.println(it1.next());
+        }
+
+        //方法2 集合类的通用遍历方式, 从很早的版本就有, 用迭代器迭代
+        for(Iterator it2 = set.iterator();it2.hasNext();){
+            System.out.println(it2.next());
+        }
+
+        //方法3 增强型for循环遍历
+        for(String value: set){
+            System.out.println(value);
+        }
+
+
+
 ```
 </details>
 
@@ -1035,6 +1086,53 @@ SortedMap<K, V>            subMap(K fromInclusive, K toExclusive)
 NavigableMap<K, V>         subMap(K from, boolean fromInclusive, K to, boolean toInclusive)
 NavigableMap<K, V>         tailMap(K from, boolean inclusive)
 SortedMap<K, V>            tailMap(K fromInclusive)
+
+
+
+
+
+
+map的四种遍历方式:
+---------------------------------------------------------------------------------------
+        //方法一: 用entrySet()  
+        //返回的 set 中的每个元素都是一个 Map.Entry 类型。
+        // 推荐，尤其是容量大时
+        System.out.println("\n=====用entrySet()=======");
+        Iterator it1 = map.entrySet().iterator();
+        while(it1.hasNext()){
+            Map.Entry m=(Map.Entry)it1.next();
+            System.out.println("[name = " + m.getKey() 
+                + "] age = " + m.getValue());
+        }
+
+
+        // 方法二：jdk1.5支持，用entrySet()和For-Each循环()
+        System.out.println("\n=用entrySet()和For-Each===");
+        for (Map.Entry<String, Integer> m : map.entrySet()) {
+            System.out.println("[name = " + m.getKey() + "] age = " + m.getValue());
+        }
+
+
+        // 方法三：用keySet() 普遍使用，二次取值
+        System.out.println("\n=====用keySet()=======");
+        Iterator it2 = map.keySet().iterator();
+        while (it2.hasNext()){
+            String key = (String) it2.next();
+            System.out.println("[name = " + key 
+                + "] age = " + map.get(key) );
+        }
+
+
+        // 方法四：jdk1.5支持，用keySEt()和For-Each循环
+        System.out.println("\n=====用keySet()和For-Each=====");
+        for(Object key: map.keySet()){
+            System.out.println("[name = " + key 
+                + "] age = " + map.get(key) );
+        }
+
+
+
+
 
 ```
 </details>

@@ -1142,14 +1142,167 @@ map的四种遍历方式:
 
 
 <details>
-<summary><b>my_name_is_jack</b></summary>
+<summary><b>集合 与 json 之间的转换</b></summary>
 
 ```  
+
+教程来源:  http://www.51gjie.com/java/790.html
+
+
+首先: 先要
+
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.9.5</version>
+    </dependency>
+
+
+然后, 建一个实体类 User:
+class User {
+    private String name;
+    private Integer age;
+    private String address;
+    public User(){
+
+    }
+    public User(String name, Integer age, String address) {
+        super();
+        this.name = name;
+        this.age = age;
+        this.address = address;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public Integer getAge() {
+        return age;
+    }
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+    public String getAddress() {
+        return address;
+    }
+    public void setAddress(String address) {
+        this.address = address;
+    }
+}
+
+
+
+然后就可以转换了...
+
+    @Test
+    public void Map_to_JSON(){
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            JsonGenerator jsonGenerator = objectMapper.getJsonFactory().createJsonGenerator(System.out, JsonEncoding.UTF8);
+            //map转JSON
+            Map < String,Object > map = new HashMap < String,Object > ();
+            map.put("one", new User("张", 12, "深圳"));
+            map.put("two", new User("李", 22, "武汉"));
+            map.put("three", new User("王", 32, "北京"));
+            System.out.println("ObjectMapper方式");
+            objectMapper.writeValue(System.out, map);  System.out.println("JsonGenerator方式");
+            jsonGenerator.writeObject(map);
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+    @Test
+    public void JSON_to_map(){
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            //JSON转map
+            String mapJson = "{\"one\":{\"name\":\"张三\",\"age\":21,\"address\":\"深圳\"}," + "\"two\":{\"name\":\"李四\",\"age\":11,\"address\":\"武汉\"}," + "\"three\":{\"name\":\"王五\",\"age\":31,\"address\":\"北京\"}}";
+            JavaType javaType2 = objectMapper.getTypeFactory().constructParametricType(HashMap.class, String.class, User.class);
+            Map < String,User > userMap = (Map < String, User > ) objectMapper.readValue(mapJson, javaType2);
+            User one = userMap.get("one");
+            User two = userMap.get("two");
+            User three = userMap.get("three");
+            System.out.println(one.getName() + "\t" + one.getAge() + "\t" + one.getAddress());
+            System.out.println(two.getName() + "\t" + two.getAge() + "\t" + two.getAddress());
+            System.out.println(three.getName() + "\t" + three.getAge() + "\t" + three.getAddress());
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+    @Test
+    public void JSON_to_list(){
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            //JSON转list
+            String listJson = "[{\"name\":\"张三\",\"age\":21,\"address\":\"深圳\"}," + "{\"name\":\"李四\",\"age\":11,\"address\":\"武汉\"}," + "{\"name\":\"王五\",\"age\":31,\"address\":\"北京\"}]";
+            JavaType javaType1 = objectMapper.getTypeFactory().constructParametricType(ArrayList.class, User.class);
+            List< User > userList = (List < User > ) objectMapper.readValue(listJson, javaType1);
+            for (User user1: userList) {
+                System.out.println(user1.getName() + "\t" + user1.getAge() + "\t" + user1.getAddress());
+            }
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    @Test
+    public void List_to_JSON(){
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            JsonGenerator jsonGenerator = objectMapper.getJsonFactory().createJsonGenerator(System.out, JsonEncoding.UTF8);
+            //list转JSON
+            List < User > list = new ArrayList < User > ();
+            list.add(new User("张", 12, "深圳"));
+            list.add(new User("李", 22, "武汉"));
+            list.add(new User("王", 32, "北京"));
+            System.out.println("ObjectMapper方式");
+            objectMapper.writeValue(System.out, list);
+            System.out.println("JsonGenerator方式");
+            jsonGenerator.writeObject(list);
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    // json 转成 Java对象
+    @Test
+    public void JSON_to_JavaObject(){
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+
+            String json = "{\"name\":\"张三\",\"age\":23,\"address\":\"深圳市\"}";
+            User zhang = objectMapper.readValue(json, User.class);
+            System.out.println(zhang.getName() + "\n" + zhang.getAge() + "\n" + zhang.getAddress());
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
+
+
+
 
 ```
 </details>
 
 
+
+
+
+---
 
 
 

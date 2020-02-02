@@ -107,6 +107,16 @@ CREATE TABLE IF NOT EXISTS `table1`(      -- (注释:)
 	2 是utf8  不是utf-8
 
 
+注意: 
+	SELECT * FROM `phrase` WHERE `id` != 2
+		这个时候是匹配不到 id 为 null 的数据的, 
+		因为 NULL 不是一个「值」，而是「没有值」,
+		「没有值」不满足「值不等于1」这个条件
+		所以 mysql 尽量不要默认值是 NULL
+	如何解决?
+		select * from `phrase` where `id` != 2 or `id` is null
+
+
 ```
 </details>
 

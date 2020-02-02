@@ -706,6 +706,9 @@ insert into user(username,password) values('OPPO','R11');
 
 ---
 # 集合
+<details>
+<summary><b>集合简介:</b></summary>
+
 ```  
 
 Map:
@@ -724,11 +727,6 @@ Map:
         Key、Value 可以为 null (可以允许存在一个为null的key , 任意个为 null 的 value)
           
 
-       
-
-
- ArrayList：底层的数据结构使用的是数组结构（数组长度是可变的百分之五十延长）（特点是查询很快，但增删较慢）线程不同步
- LinkedList：底层的数据结构是链表结构（特点是查询较慢，增删较快）
 
 
 Collection 主要有三个子接口,分别为:
@@ -747,7 +745,20 @@ Collection 主要有三个子接口,分别为:
 而Queue是在JDK1.5后才出现的新集合，主要以数组和链表两种形式存在
 
 
+ ArrayList：底层的数据结构使用的是数组结构（数组长度是可变的百分之五十延长）（特点是查询很快，但增删较慢）线程不同步
+ LinkedList：底层的数据结构是链表结构（特点是查询较慢，增删较快）
+
 ```
+</details>
+
+
+
+
+
+
+
+
+
 <details>
 <summary><b>Collection ( List Set )</b></summary>
 

@@ -570,10 +570,109 @@ insert into user(username,password) values('OPPO','R11');
 
 
 
+
+
 <details>
-<summary><b>my_name_is_jack</b></summary>
+<summary><b>正则表达式</b></summary>
 
 ```  
+
+        String regex = "[0-9]+";
+        Pattern pattern = Pattern.compile(regex);
+        String string = "asdf        www.52bbbb.com          Java2s com";
+        Matcher matcher = pattern.matcher(string);
+        if (matcher.find() == true) {
+            System.out.println("GROUP 0:" + matcher.group(0));
+        }else {
+            System.out.println("noooooot Find !!!!! -_-!!!");
+        }
+
+
+
+        Pattern p = Pattern.compile("java", Pattern.CASE_INSENSITIVE);  // 不区分大小写
+        String candidateString = "Java. java JAVA javA";
+        Matcher matcher = p.matcher(candidateString);
+
+        matcher.find(11);  // 起始位置,意思是从哪里开始找...
+        System.out.println(matcher.group());
+        System.out.println("------------- 1 -------------------");
+        matcher.find();      // 接着上一个位置开始找
+        System.out.println(matcher.group());
+        System.out.println("--------------- 2 -----------------");
+
+
+
+
+
+        // A group of 3 digits followed by 7 digits.
+        String regex = "\\b(\\d{3})\\d{7}\\b";  // \\d匹配数字,{3}{7}加起来应该有10位数字
+
+        // Compile the regular expression
+        Pattern p = Pattern.compile(regex);
+        String source = "1231234567 12345, and 9876543210";
+        Matcher m = p.matcher(source);
+
+        while (m.find()) {
+            String phone = m.group(0);
+            String areaCode = m.group(1);
+            System.out.println("PhoneNumber is : " + phone + " Area  Code is :  " + areaCode);
+        }
+        输出结果:
+        PhoneNumber is : 1231234567 Area  Code is :  123
+        PhoneNumber is : 9876543210 Area  Code is :  987
+
+
+
+
+
+        String regex = "(\\d{3})(\\d{3})(\\d{4})";
+        Pattern p = Pattern.compile(regex);
+        String source = "1234567890, 12345,  and  9876543210";
+        Matcher m = p.matcher(source);
+
+        while(m.find()){
+            System.out.println("Phone: " + m.group() + ", Formatted Phone:  ("
+                    + m.group(1) + ") " + m.group(2) + "-" + m.group(3));
+        }
+
+
+
+
+
+            @Test
+    public void Test() {
+        String phonrNul = "我的电话号码是123456789 , 地方north of school , 我的另外一个号码是54321";
+        Pattern compile = Pattern.compile("\\d+");
+        Matcher matcher = compile.matcher(phonrNul);
+        System.out.println(matcher);
+        while(matcher.find()){
+            System.out.println("lllllllllll:==>  " + matcher.group(0));
+//            System.out.println("wwwwwwwwwww:{}" + matcher.group(1));
+        }
+    }        
+
+
+
+
+
+        String inputLine = "Adams,John Quincy";
+        Pattern r = Pattern.compile("(.*),(.*)");
+        Matcher m = r.matcher(inputLine);
+        if (!m.matches()) {
+            throw new IllegalArgumentException("Bad Input");
+        }
+        // 分组0得到的是整个原字符串
+        for (int i = 0; i < m.groupCount() + 1; i++) {
+            System.out.println("分组" + i + ":" + m.group(i));
+        }
+
+        输出：
+        分组0:Adams,John Quincy
+        分组1:Adams
+        分组2:John Quincy
+        PS:
+            匹配条件 换成 Pattern r = Pattern.compile(".*,.*"); 有新发现
+            输出: 分组0:Adams,John Quincy        
 
 ```
 </details>
@@ -581,14 +680,6 @@ insert into user(username,password) values('OPPO','R11');
 
 
 
-
-<details>
-<summary><b>my_name_is_jack</b></summary>
-
-```  
-
-```
-</details>
 
 
 

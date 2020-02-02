@@ -1517,10 +1517,32 @@ JavaScript 遍历所有cookie:
 
 
 
+
 <details>
-<summary><b>my_name_is_jack</b></summary>
+<summary><b>正则表达式</b></summary>
 
 ```  
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>菜鸟教程(runoob.com)</title>
+</head>
+<body>
+BCDEF 或者 CDE	
+	<br><br>
+<script>
+var str = "ABCDEFG ABCDEFG ABCDEFG";
+var patt1 = /(A.*?F)/;
+arr = str.match(patt1);
+for (var i = 0; i < arr.length ; i++) {
+	document.write("<br>-------------------<br>");
+    document.write(arr[i]);
+}
+</script>
+</body>
+</html>
+
 
 ```
 </details>

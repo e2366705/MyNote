@@ -1207,9 +1207,16 @@ class User {
             map.put("one", new User("张", 12, "深圳"));
             map.put("two", new User("李", 22, "武汉"));
             map.put("three", new User("王", 32, "北京"));
+
             System.out.println("ObjectMapper方式");
-            objectMapper.writeValue(System.out, map);  System.out.println("JsonGenerator方式");
+            objectMapper.writeValue(System.out, map); 
+
+            // 将转换好的数据, 写入到本地的 txt 文件当中
+            objectMapper.writeValue(new File("D:TEST.txt"), map);
+
+             System.out.println("JsonGenerator方式");
             jsonGenerator.writeObject(map);
+
         } catch(IOException e) {
             e.printStackTrace();
         }

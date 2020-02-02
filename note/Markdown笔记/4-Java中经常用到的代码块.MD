@@ -1147,7 +1147,8 @@ map的四种遍历方式:
 ```  
 
 教程来源:  http://www.51gjie.com/java/790.html
-
+          http://www.gogoomo.com/2017/11/16/4%E7%A7%8D%E6%96%B9%E6%B3%95%E5%B0%86String%E8%BD%AC%E4%B8%BAJSON/
+          https://juejin.im/post/5dbd59a3f265da4d56090fc9
 
 首先: 先要
 
@@ -1286,6 +1287,24 @@ class User {
         } catch(IOException e) {
             e.printStackTrace();
         }
+    }
+
+
+
+
+    //  Map集合转为 字符串(json)
+    @Test
+    public void Map_to_json_String() throws Exception {
+        //创建Map集合对象
+        Map<String,Object> map = new HashMap<String,Object>();
+        map.put("name","张三");
+        map.put("age",20);
+        map.put("gender","男");
+        //2、创建sackson核心对象  ObjectMapper
+        ObjectMapper mapper = new ObjectMapper();
+        //3、将对象转换为json字符串
+        String json = mapper.writeValueAsString(map);
+        System.out.println(json);  //{"name":"李四","age":21,"gender":"女","birthday":1572521699055}
     }
 
 

@@ -1158,6 +1158,14 @@ map的四种遍历方式:
       <version>2.9.5</version>
     </dependency>
 
+    <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>fastjson</artifactId>
+        <version>1.2.51</version>
+    </dependency>
+
+
+    
 
 然后, 建一个实体类 User:
 class User {
@@ -1282,7 +1290,18 @@ class User {
     }
 
 
-    // json 转成 Java对象
+
+        //2.1 将List<Person> 转成 json  ( 使用 fastjson )
+        List<Person> personList = new ArrayList<>();
+        personList.add(new Person(10, "张三"));
+        personList.add(new Person(10, "李四"));
+        personList.add(new Person(10, "王五"));
+        Object obj2 = JSONArray.toJSON(personList);
+        String json2 = obj2.toString();
+        System.out.println("将List<Person>转成json:" + json2);
+
+
+    // json 转成 Java对象 (方法一)
     @Test
     public void JSON_to_JavaObject(){
         try {
@@ -1297,9 +1316,33 @@ class User {
     }
 
 
+    // json 转成 Java对象 (方法二: Gson 实现 )
+    @Test
+    public void JSONstring_to_JavaObject(){
+        String jsonString = " {\"name\":\"YXB\",\"age\":23,\"address\":\"北京\"} ";
+        Gson g = new Gson();
+        User  user = g.fromJson(jsonString, User.class);
+        System.out.println(user.toString());
+    }
 
 
-    //  Map集合转为 字符串(json)
+
+    // Java 对象 转成 JSON ( 使用 Alibaba 的 fastjson )
+    Person p = new Person(10, "张三");
+    Object obj = JSONArray.toJSON(p);
+    String json = obj.toString();
+    System.out.println("将Person对象转成json:" + json);
+
+    <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>fastjson</artifactId>
+        <version>1.2.51</version>
+    </dependency>
+
+
+
+
+    // 将Map 转成 json字符串  方式一
     @Test
     public void Map_to_json_String() throws Exception {
         //创建Map集合对象
@@ -1315,9 +1358,14 @@ class User {
     }
 
 
-
-
-
+    // 将Map 转成 json字符串  方式二 ( 使用 Alibaba 的 fastjson )
+        Map<String, Person> map = new HashMap<>();
+        map.put("1", new Person(10, "张三"));
+        map.put("2", new Person(10, "李四"));
+        map.put("3", new Person(10, "王五"));
+        Object obj3 = JSONArray.toJSON(map);
+        String json3 = obj3.toString();
+        System.out.println("将Map<String,Person>转成json:" + json3);
 
 
 

@@ -1194,7 +1194,7 @@ interval = setInterval(runThis, 5000);
 
 
 <details>
-<summary><b>JavaScript 匿名函数 闭包 </b></summary>
+<summary><b>匿名函数 闭包 </b></summary>
 
 ```  
 终于可以不用为函数起什么名字烦恼了 (以减少全局变量的使用)
@@ -1235,7 +1235,7 @@ interval = setInterval(runThis, 5000);
 
 
 <details>
-<summary><b>键盘事件</b></summary>
+<summary><b>键盘事件 / 鼠标事件</b></summary>
 
 ```  
 资料来源:     https://www.cnblogs.com/youyoui/p/10381457.html
@@ -1288,6 +1288,8 @@ document.onkeydown = function(e) {
 
 
 
+
+
     按住 -> 显示
     松开 -> 隐藏
 
@@ -1313,6 +1315,50 @@ document.onkeyup = function (event) {
         document.getElementById("chinese_meaning").style.display = "none";
     }
 };
+
+
+
+
+
+
+
+
+
+
+
+获取网页上选择的文字, 并点击按钮输出:
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p>哈哈哈呵呵呵呵嘿嘿</p>
+    <button id="btn">click me</button>
+</body>
+<script>
+    function selceText() {
+        var txt;
+        if (document.selection) {
+            txt = document.selection.createRange().text
+        } else {
+            txt = window.getSelection() + '';
+        }
+        if (txt) {
+            console.log(txt);  
+        } else {
+            console.log("nothing.....");  
+        }
+    }
+
+    document.getElementById("btn").onclick = function () {
+        selceText();
+    }
+</script>
+</html>
+
+
 
 
 ```

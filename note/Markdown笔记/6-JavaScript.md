@@ -546,6 +546,11 @@ window.screen.availWidth;           //屏幕可用工作区的宽						返回 32
 <summary><b>字符串 操作:</b></summary>
 
 ```  
+
+大小写转换:
+    phrase_array[i] = phrase_array[i].toUpperCase();     // 正确的
+    phrase_array[i].toUpperCase();                       // 错误的, 别忘了重新赋值, 不然会报错
+
     长度:
     var txt = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     var sln = txt.length;
@@ -631,71 +636,84 @@ window.screen.availWidth;           //屏幕可用工作区的宽						返回 32
 ---
 # 集合对象(Array、Map、Set):
 <details>
-<summary><b>About Array </b></summary>
+<summary><b> Array </b></summary>
 
 ```  
+
+数组去掉重复的:
+    const deDupe = (myArray) => [... new Set(myArray)];
+    phrase_array = deDupe(phrase_array);    // 别忘了重新赋值, 不然无效
+
+
+Array中全部转成大小写:
+    var tempArr=['Hello','World'];
+    for(var i=0;i<tempArr.length;i++){
+    tempArr[i]= tempArr[i].toUpperCase();
+    }
+
+
 添加:
-fruits.push('Mango');
+    user.push('jack');
 
 
 遍历
-var arr = [1,2,4,6]
-for(var i = 0, len = arr.length; i < len; i++){
-    console.log(arr[i])
-}
+    var arr = [1,2,4,6]
+    for(var i = 0, len = arr.length; i < len; i++){
+        console.log(arr[i])
+    }
 
 
 删除:
-JavaScript中并没有直接提供删除某个元素的API, 需要通过索引删除某个元素: 
-var removedItem = fruits.splice(index, 1); 
+    JavaScript中并没有直接提供删除某个元素的API, 需要通过索引删除某个元素: 
+    var removedItem = fruits.splice(index, 1); 
 
 找出某个元素在数组中的索引:
-var pos = fruits.indexOf('iPhone');
+    var pos = fruits.indexOf('iPhone');
 
 直接删除某个元素, 需要自己手动实现:
-delete方式 1:
-var array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+    delete方式 1:
+    var array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 
-function arrayRemove(arr, value) {
-   return arr.filter(function(ele){
-       return ele != value;
-   });
-}
+    function arrayRemove(arr, value) {
+    return arr.filter(function(ele){
+        return ele != value;
+    });
+    }
 
-var result = arrayRemove(array, 6);
-console.log(result)
+    var result = arrayRemove(array, 6);
+    console.log(result)
 
 
 
 delete方式 2:
-Array.prototype.remove = function(val) {
-var index = this.indexOf(val);
-if (index > -1) {
-this.splice(index, 1);
-}
-};
+    Array.prototype.remove = function(val) {
+    var index = this.indexOf(val);
+    if (index > -1) {
+    this.splice(index, 1);
+    }
+    };
 
-var emp = ['abs','dsf','sdf','fd']
+    var emp = ['abs','dsf','sdf','fd']
 
-emp.remove('fd');
-console.log(emp);
+    emp.remove('fd');
+    console.log(emp);
 
 
 
 把一个 array 打乱: (系统不自带, 需要自己实现)
-var aaa = [0,1,2,3,4,5];
-aaa.sort(function() {
-    return .5 - Math.random();
-});
+    var aaa = [0,1,2,3,4,5];
+    aaa.sort(function() {
+        return .5 - Math.random();
+    });
+
 
 经典的 Fisher-Yates 打乱算法(最佳):
-var arr = [0, 1, 2, 3, 4, 5];
-for (let i = 1; i < arr.length; i++) {
-    const random = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[random]] = [arr[random], arr[i]];
-}
-
-console.log(arr);    
+    var arr = [0, 1, 2, 3, 4, 5];
+    for (let i = 1; i < arr.length; i++) {
+        const random = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[random]] = [arr[random], arr[i]];
+    }
+    console.log(arr);    
 
 ```
 </details>
@@ -1271,16 +1289,28 @@ interval = setInterval(runThis, 5000);
 
 
 
+注意:
+    大小写的字母的按键码是不同的
+    按键码: 82 字符: R
+    按键码: 114 字符: r
 
-// 键盘事件: 按下回车的时触发事件
+// 键盘事件
 document.onkeydown = function(e) {
     var keycode = e.which;   //取得对应的键值（数字）
     var realkey = String.fromCharCode(e.which); //取得代表改键的真正字符
-    alert("按键码: " + keycode + " 字符: " + realkey);
+    console.log("按键码: " + keycode + " 字符: " + realkey);
     if (keycode === 82){
         alert("你按下了 R ...")
     }
 }
+
+// 键盘事件 方式二
+document.onkeypress = function (event) {
+    var keycode = event.which;   //取得对应的键值（数字）
+    var realkey = String.fromCharCode(event.which); //取得代表改键的真正字符
+    console.log("按键码: " + keycode + " 字符: " + realkey);
+};
+
 
 
 

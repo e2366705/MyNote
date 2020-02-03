@@ -631,77 +631,57 @@ public class index_controller {
 
 ```  
 
-前端
-    //params.XX必须与Spring Mvc controller中的参数名称一致 , 否则在controller中使用@RequestParam绑定
-    var params = {};                 
-    params.num = 111;
-    params.id = 222;
-    params.amount = 333;
 
-    $.ajax({
-        async:false,
-        type: "GET",
-        url: "/Get_word/get_all_by_word",         // 路径
-        data:params,
-        dataType:"json",
-        success:function(data){
-            if(data.result === 'SUCCESS'){
-                alert(data.result);
-                params = data;                
-            }else{
-                alert("修改失败，失败原因【" + data + "】");
-            }
-        },
-        error:function(data){
+               前端 Ajax
+//params.XX必须与 Spring Mvc controller中的参数名称一致 , 否则在controller中使用@RequestParam绑定
+var params = {};
+params.Familiar = "YXB----YXB---YXB...";
+
+$.ajax({
+    async:false,
+    type: "POST",
+    url: "/Make_word_Familiar/index",         // 路径
+    data:params,
+    dataType:"json",
+    success:function(data){
             alert(data.result);
-        }
-    });
-
-    return params;
-    
-    需要把 data 赋值给 params, 再去返回值, 不然直接 return data 是没有作用的
-
-
-
-
-后端
-    @Controller
-    @RequestMapping(value="/Get_word")
-    public class Get_word {
-
-        // 注入 Dao 层
-        @Autowired
-        private PhraseDao phraseDao;
-
-        @RequestMapping("update")
-        @ResponseBody           //此注解不能省略 否则ajax无法接受返回值
-        public Map<String,Object> update(Long num, Long id, BigDecimal amount){
-
-            System.err.println(num);
-
-            Map<String,Object> resultMap = new HashMap<String, Object>();
-
-            if(num == null || amount == null){
-                resultMap.put("result", "参数不合法！");
-                return resultMap;
-            }
-
-            String result = "SUCCESS";
-            resultMap.put("result", result);
-            return resultMap;
-        }
-
-
-        
-        @RequestMapping(value="/Get_Random_phrase", method= RequestMethod.GET)
-        @ResponseBody           //此注解不能省略 否则ajax无法接受返回值
-        public List<Phrase> Get_Random_phrase(Model model) {
-            List<Phrase> result =  phraseDao.get_Phrase_Random();
-            model.addAttribute("result" , result);
-            return result;
-        }
+            params = data;
+    },
+    error:function(data){
+        // alert(data.result);
     }
+});
+return params;    
+需要把 data 赋值给 params, 再去返回值, 不然直接 return data 是没有作用的
 
+
+
+                后端 Java
+@Controller
+@RequestMapping(value="/Make_word_Familiar")
+public class Make_word_Familiar {
+    
+    // 注入 Dao 层
+    @Autowired
+    private PhraseDao phraseDao;
+
+
+    @RequestMapping(value="/index", method= RequestMethod.POST)
+    @ResponseBody           //此注解不能省略 否则ajax无法接受返回值
+    public void update(String Familiar){
+        System.out.println(Familiar);
+    }
+}
+
+
+
+    @RequestMapping(value="/Get_Random_phrase", method= RequestMethod.GET)
+    @ResponseBody           //此注解不能省略 否则ajax无法接受返回值
+    public List<Phrase> Get_Random_phrase(Model model) {
+        List<Phrase> result =  phraseDao.get_Phrase_Random();
+        model.addAttribute("result" , result);
+        return result;
+    }
 
 
 ```

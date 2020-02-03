@@ -8,16 +8,10 @@
 
 
 
-```
 
 
-
-DOM 操作 
-
-
-
-
-```
+---
+# DOM 操作 
 <details>
 <summary><b>下拉框 select 发生改变时 的值 </b></summary>
 
@@ -543,16 +537,11 @@ window.screen.availWidth;           //屏幕可用工作区的宽						返回 32
 
 
 
-```  
 
 
-
-          字符串操作: 
-          https://www.runoob.com/jsref/jsref-obj-string.html
-
-
-          
-```
+---
+# 字符串操作: 
+> https://www.runoob.com/jsref/jsref-obj-string.html
 <details>
 <summary><b>字符串 操作:</b></summary>
 
@@ -639,7 +628,7 @@ window.screen.availWidth;           //屏幕可用工作区的宽						返回 32
 
 
 
-
+---
 # 集合对象(Array、Map、Set):
 <details>
 <summary><b>About Array </b></summary>
@@ -1020,14 +1009,9 @@ myMap.get("key1"); // 返回值为 "value1"
 
 
 
-```
 
-
-            Others:
-
-
-
-```
+---
+# Others:
 <details>
 <summary><b>新窗口打开  /  原窗口打开</b></summary>
 
@@ -1102,7 +1086,10 @@ document.getElementById("span1").onclick = function (ev) {
 清空 localStorage.clear();
 
 localStorage.length          获取localStorage一共有多少条数据
-localStorage.key(3)          索引(index)为3的 key 的值  (只能获取 key 的值, 得不到 value 的值)
+
+localStorage.key(3)          索引(index)为3的 key 的值  (只能获取 key 的值, 得不到 value 的值) 
+                             初始值为localStorage.key(0)
+
 localStorage.value(3);       没有这种用法
 
 第三个是否包含 apple 这个字符串(返回布尔类型):

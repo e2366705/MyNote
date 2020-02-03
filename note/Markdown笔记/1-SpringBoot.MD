@@ -622,8 +622,9 @@ public class index_controller {
 
 
 ---
-# Java 前后端
-> 注意:  html文件记得加上: <html xmlns:th="http://www.thymeleaf.org">
+# Java + SpringBoot 前后端
+> 注意:  html文件记得加上:   
+> html xmlns:th="http://www.thymeleaf.org"
 
 <details>
 <summary><b>Ajax + springBoot + jquery</b></summary>
@@ -668,13 +669,15 @@ public class index_controller {
     @RequestMapping(value="/Get_word")
     public class Get_word {
 
-            @RequestMapping("update")
+        // 注入 Dao 层
+        @Autowired
+        private PhraseDao phraseDao;
+
+        @RequestMapping("update")
         @ResponseBody           //此注解不能省略 否则ajax无法接受返回值
         public Map<String,Object> update(Long num, Long id, BigDecimal amount){
 
             System.err.println(num);
-            System.err.println(id);
-            System.err.println(amount);
 
             Map<String,Object> resultMap = new HashMap<String, Object>();
 
@@ -686,6 +689,16 @@ public class index_controller {
             String result = "SUCCESS";
             resultMap.put("result", result);
             return resultMap;
+        }
+
+
+        
+        @RequestMapping(value="/Get_Random_phrase", method= RequestMethod.GET)
+        @ResponseBody           //此注解不能省略 否则ajax无法接受返回值
+        public List<Phrase> Get_Random_phrase(Model model) {
+            List<Phrase> result =  phraseDao.get_Phrase_Random();
+            model.addAttribute("result" , result);
+            return result;
         }
     }
 

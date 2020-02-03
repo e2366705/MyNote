@@ -215,7 +215,10 @@ UPDATE 更新表中某项数据
 UPDATE runoob_tbl SET runoob_title='学习 C++' WHERE runoob_id=3;
 
 更新多个字段
-UPDATE `phrase` SET `phrase`="AAA" , `chinese_meaning`="BBB" WHERE `word`='CCC'
+UPDATE `phrase` SET `phrase`="AAA" , `chinese_meaning`="BBB" WHERE `word`='CCC';
+
+设置为 null
+UPDATE `phrase` SET `chinese_meaning` = null WHERE `state` = 'Very_familiar'
 
 ```
 </details>

@@ -238,6 +238,9 @@ time选择 time()
 	5-- 
 		Ctrl + F2 停止程序		
 
+	6--
+		Alt + Enter  一键补全代码( new User;  =>  User user = new User();  )
+
 ```
 </details>
 

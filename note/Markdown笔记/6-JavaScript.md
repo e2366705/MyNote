@@ -637,6 +637,14 @@ window.screen.availWidth;           //屏幕可用工作区的宽						返回 32
 添加:
 fruits.push('Mango');
 
+
+遍历
+var arr = [1,2,4,6]
+for(var i = 0, len = arr.length; i < len; i++){
+    console.log(arr[i])
+}
+
+
 删除:
 JavaScript中并没有直接提供删除某个元素的API, 需要通过索引删除某个元素: 
 var removedItem = fruits.splice(index, 1); 

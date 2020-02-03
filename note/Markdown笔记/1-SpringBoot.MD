@@ -480,118 +480,493 @@ public class index_controller {
 
 
 
-### 一个 html 文件里面包含另一个 html 文件
-```  
-    <div th:replace="head_title.html"></div>
-```
-
-
-#### 然后 - 添加 html 文件: resources\templates 文件夹下面
-```  
-index.html
-```
-
-# idea 配置自动编译
-```  
-首先:
-	打开 setting 
-	搜索: 'Java compile' 
-	找到: 'build project automatically' 打上勾
-
-在 idea 的右上角 , 有个 'edit configurations' 点击进去 (就是每次点击 Run/debug 的地方)
-有个 'on update action'  选择 : hot swap classes and update trigger file if failed
-下面就选择: update classess and resouses
-
-* 如果上述还是不行的话, 最后一招:
-	按住 shift + alt + ctrl + /   会弹出一个对话框 , 选择: Registry 
-	找到:
-		comiler.perform.outputs.refresh.on.start
-		compiler.automake.allow.when.app.running
-	这两行打上勾
-
-```
-
-
-### 在浏览器打开
-```  
-http://localhost:8082/
-```
 
 
 
 
 
---------------------------------------------------------------------------------------------------------------------
+<details>
+<summary><b>my_name_is_jack</b></summary>
 
-# SpringBoot 配置
-### application.yml
-```  
-```
-
-
-
-
-
-
-### application.properties
-```  
-spring.application.name=compute-service
-server.port=8081
-server.tomcat.uri-encoding=UTF-8
-
-#mybatis.type-aliases-package=com.neo.model
-#spring.datasource.url=jdbc:mysql://localhost:3306/test?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
-#spring.datasource.username=root
-#spring.datasource.password=root
-#spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
-
-```
-
-### 或者:
 ```  
 
-spring.mvc.static-path-pattern=/static/**
+    像这种, 返回的是一个集合(list 接收返回的数据)
+    @Select("SELECT * FROM words_warehouse")
+    List<Words_Warehouse> getAll();
+
+
+    像这种, 返回的只是一个 Java 对象
+    @Select("SELECT * FROM words_warehouse WHERE word = #{word}")
+    Words_Warehouse getOne(String word);
+
+    改 返回一个 int 数据, 意思是, 修改成功了 X 条
+    @Update(" UPDATE `words_warehouse` SET `status`='very_familiar_with' WHERE word= #{english_word};")
+    int really_remember(String english_word);
+
+    增
+    @Insert("INSERT INTO words_warehouse(words_warehousename) VALUES(#{words_warehouseName})")
+    void insert(Words_Warehouse words_warehouse);
+
+    删
+    @Delete("DELETE FROM words_warehouse WHERE word =#{word}")
+    void delete(Integer word);
 
 ```
+</details>
 
-### 又或者:
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
 ```  
-server.port=8080
-server.context-path=/demo
-druid.driver=com.mysql.jdbc.Driver
-druid.url=jdbc:mysql://localhost:3306/mysql
-druid.username=root
-druid.password=123456
-druid.init-size=1
-druid.min-idel=1
-druid.max-active=5
-druid.login.timeout.seconds=30
-druid.query.timeout.seconds=30
 
 ```
+</details>
 
 
-### 又或者:
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
 ```  
-server.port=8083
-spring.datasource.url=jdbc:mysql://localhost:3306/mysql?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=false
-spring.datasource.username=root
-spring.datasource.password=root
-
-spring.datasource.driver-class-name=com.mysql.jdbc.Driver
-spring.jpa.properties.hibernate.hbm2ddl.auto=none
 
 ```
+</details>
 
 
 
 
 
-# springBoot 中 css 文件引入失败?
+
+
+---
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
 ```  
-spring.mvc.static-path-pattern=/static/**
 
 ```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+
 
 
 

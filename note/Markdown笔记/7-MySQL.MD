@@ -2,6 +2,29 @@
 
 # 以后不要折腾MySQL客户端了, 简直就是浪费时间, 直接下载一个 phpStudy 直接用里面内置的MySQL, 又省心又省力
 # 安装 phpStudy 之后 , 这时候是不能用 cmd 命令行直接操作 MySQL 数据库的, 需要这么配置
+
+---
+
+# SQL 规范 (必读!!!)
+<details>
+<summary><b>规范</b></summary>
+
+```  
+
+不要把字段的值默认设置为 null, 有 bug , 切记切记~~
+
+```
+</details>
+
+
+
+
+
+
+
+
+---
+
 <details>
 <summary><b>配置 phpStudy 里面的 MySQL 到系统变量</b></summary>
 

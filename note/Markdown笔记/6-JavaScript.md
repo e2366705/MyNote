@@ -1621,11 +1621,63 @@ for (var i = 0; i < arr.length ; i++) {
 
 
 
-
+---
+# 遇到的坑:
+> 花了很长时间才解决的...
 <details>
-<summary><b>my_name_is_jack</b></summary>
+<summary><b>删除 array 的元素</b></summary>
 
 ```  
+需求:
+    删除数组AAA里面所有 bbb 有的元素:
+
+    var AAA = ["irrigation", "project", "modernized", "production", "cancer", "treatment", "short", "break", "metals", "expand", "border", "with", "germany", "passengers", "and", "crew", "was", "a", "deliberate", "federal", "republic", "highly", "praised", "version", "of", "the", "accident", "consulted", "your", "lawyer", "individual", "tastes", "arrogant", "runner", "employment", "problems", "conceded", "defeat", "concern", "about", "changes", "wildlife", "conservation", "he", "consoled", "her", "flowers", "school", "cafeteria", "wide", "use", "reduce", "decay", "tutor", "at", "university", "verify", "theory", "attempt", "to", "embarrass", "research", "luxury", "cruise", "liner", "paperwork", "bureaucracy", "sheer", "number", "tourists", "justification", "for", "sacking", "estimate", "total", "math", "competition", "sport", "recreation", "gauge", "weight", "initial", "reaction", "wedding", "outfit"];
+    
+    var bbb = ["if", "and", "or", "there", "were", "on", "in", "be", "will", "at", "one", "twe", "of", "for", "to", "too", "about", "from", "with", "under", "into", "without", "over", "was", "the", "that", "not", "say", "see", "my", "you", "he", "her", "do", "other", "food", "it", "they", "many", "agree", "people", "get", "post", "hot", "a", "low", "your", "project", "number", "school", "sport", "version", "use"];
+
+
+
+
+网上抄的删除函数:
+    参数: 你要删除的元素
+Array.prototype.remove = function (val) {
+    var index = this.indexOf(val);
+    if (index > -1) {
+        this.splice(index, 1);
+    }
+};
+
+实现需求:
+    嵌套循环遍历:
+    for (var i = 0; i < AAA.length; i++) {
+        for (var ii = 0; ii < bbb.length; ii++) {
+            if (AAA[i] === bbb[ii]) {
+                AAA.remove(AAA[i]);
+            }
+        }
+    }
+    console.log(AAA);    
+
+这时候, 坑的地方来了, 多次测试发现, 总有一个元素删不干净, 其他的都可以删除干净, 刚好就一个删除不干净...
+折腾了好几个小时, 
+后来仔细一想, 
+这个删除数组元素的函数, 原理是通过 索引index 来删除,
+而我的嵌套循环删除了一个元素之后, 索引向后增加了一个, 
+所以应该把索引减去一个,
+所以嵌套循环应该这样写:
+
+    for (var i = 0; i < AAA.length; i++) {
+        for (var ii = 0; ii < bbb.length; ii++) {
+            if (AAA[i] === bbb[ii]) {
+                AAA.remove(AAA[i]);
+                i--;
+            }
+        }
+    }
+    console.log(AAA);
+
+折腾了几个小时, 真是伤脑筋......
+无语...
 
 ```
 </details>

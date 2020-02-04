@@ -188,9 +188,7 @@ insert into `user`(username,password) values('OPPO','R11');
 
 ```  
 多种排序测试用
-insert into `user`(username,password) VALUES('aaa','999');
-insert into `user`(username,password) VALUES('bbb','555');
-insert into `user`(username,password) VALUES('ccc','333');   
+insert into `user`(  `username` , `password`  ) VALUES('aaa','999'); 
 
 ```
 </details>
@@ -206,22 +204,22 @@ insert into `user`(username,password) VALUES('ccc','333');
 DROP TABLE IF EXISTS `jd_demo_login`;
 
 删除表中某项数据
-delete from user where password = '123123123';
+delete from `user` where `password` = '123123123';
 
 清空表中全部数据，不写日志，不可恢复，速度极快
-truncate table 表名;
+truncate table `表名`;
  
 清空全部数据，写日志，数据可恢复，速度慢
-delete from 表名
+delete from `表名`
 
 删除数据库:
 drop database `数据库名`;
 
 删除数据表;
-drop TABLE student;
+drop TABLE `student`;
 
 #删除倒数第几行数据                                            
-delete from text001 order by id desc limit 66
+delete from `text001` order by `id` desc limit 66
 
 ```
 </details>
@@ -235,7 +233,7 @@ delete from text001 order by id desc limit 66
 
 ```  
 UPDATE 更新表中某项数据
-UPDATE runoob_tbl SET runoob_title='学习 C++' WHERE runoob_id=3;
+UPDATE `runoob_tbl` SET `runoob_title` = '学习 C++' WHERE `runoob_id` = 3;
 
 更新多个字段
 UPDATE `phrase` SET `phrase`="AAA" , `chinese_meaning`="BBB" WHERE `word`='CCC';

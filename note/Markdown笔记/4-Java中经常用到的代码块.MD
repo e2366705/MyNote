@@ -864,6 +864,15 @@ LinkedList类
 
 
 
+===============================================================================================
+
+
+注意:
+    Set<String> set = new Set<String>();           // 错误
+    Set<String> hashSet = new HashSet<String>();   // 正确
+
+
+
 Set类 - 不会存储重复的元素。加入Set的每个元素必须是唯一的，否则，Set是不会把它加进去的
 boolean add(Object o)：该方法用于向集合里添加一个元素。
 boolean addAll(Collection c)：该方法把集合c里的所有元素添加到指定集合里。

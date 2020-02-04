@@ -6,6 +6,46 @@
 #### JavaScript 实战小项目   https://github.com/visugar/FrontEnd-examples
 
 
+---
+# 要注意的:
+> 指的是代码过程中需要注意的小细节...
+<details>
+<summary><b>注意!!!!</b></summary>
+
+```  
+
+<script>
+
+    function myFunction() {
+        alert("hello world!!!");
+    }
+
+注意:
+    这两个方式调用函数, 效果是不一样的
+    document.getElementById("click_me").onclick = myFunction();     // 方式一
+    document.getElementById("click_me").onclick = myFunction;       // 方式二
+
+    方式一, 会在网页一开始加载的时候, 就执行 myFunction 方法, 然后点击命令不会执行
+    方式二, 只有在点击的时候, 才会执行 myFunction 方法, 方法二比较常用
+</script>
+
+
+
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1044,6 +1084,35 @@ myMap.get("key1"); // 返回值为 "value1"
 ```  
 <a href="链接的页面" target="_blank">新窗口打开</a>
 <a href="链接的页面" target="_parent">原窗口打开</a>
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b>弹窗 (确认框)</b></summary>
+
+```  
+
+    function myFunction() {
+        var txt;
+        if (confirm("你确定这样子做吗? 这样子对你的计算机有很大的风险, 你是否继续???")) {
+            txt = "您按了确定";
+        } else {
+            txt = "您按了取消";
+        }
+        document.getElementById("demo").innerHTML = txt;
+    }
+
+    document.getElementById("click_me").onclick = myFunction;
+
 ```
 </details>
 

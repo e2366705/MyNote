@@ -43,8 +43,7 @@
 	容易在增加或者删除字段后出现程序BUG		
 
 
-* varchar 是可变长字符串，不预先分配存储空间，长度不要超过5000，
-	如果存储长度大于此值，定义字段类型为 text，独立出来一张表，用主键来对应，避免影响其它字段索引效率
+* 经过测试, MySQL 必须给 varchar设置长度??? 
 
 
 * 使用InnoDB存储引擎
@@ -314,13 +313,43 @@ CREATE TABLE IF NOT EXISTS `user`(
 `password` VARCHAR(40)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 无符号		unsigned
--- 有符号		signed
 
 -- 插入insert数据:
 insert into `user`(username,password) values('HUAWEI','mate20');
 insert into `user`(username,password) values('APPLE','IPHONE_5S');
 insert into `user`(username,password) values('OPPO','R11');
+
+
+
+
+建表的时候注释(字段和表注释):
+	CREATE TABLE IF NOT EXISTS `tb_word`(
+	`word` varchar(12) not null UNIQUE DEFAULT ''COMMENT 'YXB天下第一老牛逼了',
+	`username` VARCHAR(12) not null DEFAULT ''
+	)ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='表注释'
+
+
+
+查看注释(展示表的所有):
+	show full columns from `tb_user`
+
+展示创建表的时候的语句:
+	show create table `tb_user`;
+
+
+修改表/字段的注释
+修改表注释
+	alter table t_user comment  = '修改后的表注释信息(用户信息表)';
+
+修改字段注释
+	alter table t_user modify column id int comment '主键ID';
+
+
+-- other 选项:
+-- 无符号		unsigned
+-- 有符号		signed
+-- 主键		    Primary key
+-- 不可重复		UNIQUE 
 
 ```
 </details>

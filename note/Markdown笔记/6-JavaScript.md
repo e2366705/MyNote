@@ -75,7 +75,7 @@
 
 
 <details>
-<summary><b> 给 CSS设置样式表( 两种方式):</b></summary>
+<summary><b> 操作 CSS </b></summary>
 
 ```  
 document.getElementById("kkk").style.cssText = " background-color:pink; width: 100px; height: 100px; ";

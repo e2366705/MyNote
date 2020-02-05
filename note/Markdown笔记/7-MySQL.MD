@@ -6,12 +6,158 @@
 ---
 
 # SQL 规范 (必读!!!)
+* 参考资料:
+* https://choerodon.io/zh/docs/contributor-guide/development/conventions/sql
+* https://www.jianshu.com/p/359ed85c3243
 <details>
-<summary><b>规范</b></summary>
+<summary><b> SQL 规范</b></summary>
 
 ```  
 
-不要把字段的值默认设置为 null, 有 bug , 切记切记~~
+强制的 / 必须的 / 禁止的:
+-----------------------------------------------------------------------------------------------
+* 任何字段如果为非负数，必须是 unsigned
+
+* 必须把字段定义为NOT NULL并且提供默认值
+解读：
+	a）null的列使索引/索引统计/值比较都更加复杂，对MySQL来说更难优化
+	b）null 这种类型MySQL内部需要进行特殊处理，增加数据库处理记录的复杂性；
+		同等条件下，表中有较多空字段的时候，数据库的处理性能会降低很多
+	c）null值需要更多的存储空，无论是表还是索引中每行中的null的列都需要额外的空间来标识
+	d）对null 的处理时候，只能采用is null或is not null，而不能采用=、in、<、<>、!=、not in这些操作符号。
+		如：where name!=’shenjian’，如果存在name为null值的记录，查询结果就不会包含name为null值的记录
+	不使用is null或is not null，字段设计时建议not null，若麻烦可折中考虑给一默认值
+
+* 不要把字段的值默认设置为 null, 有 bug , 切记切记~~ (2020-02-03 衡阳一次写项目亲测 )
+
+* MySQL 在 Windows 下不区分大小写，但在 Linux 下默认是区分大小写。
+	因此，数据库名、表名、字段名，都不允许出现任何大写字母，避免节外生枝
+
+* 禁止存储大文件或者大照片
+	何要让数据库做它不擅长的事情？大文件和照片存储在文件系统，数据库里存 URL 多好
+
+* 禁止使用TEXT、BLOB类型
+	会浪费更多的磁盘和内存空间，非必要的大量的大字段查询会淘汰掉热数据，导致内存命中率急剧降低，影响数据库性能	
+
+* 禁止使用INSERT INTO t_xxx VALUES(xxx)，必须显示指定插入的列属性
+	容易在增加或者删除字段后出现程序BUG		
+
+
+* varchar 是可变长字符串，不预先分配存储空间，长度不要超过5000，
+	如果存储长度大于此值，定义字段类型为 text，独立出来一张表，用主键来对应，避免影响其它字段索引效率
+
+
+* 使用InnoDB存储引擎
+	支持事务、行级锁、并发性能更好、CPU及内存缓存页优化使得资源利用率更高
+
+* Java / python 应用程序必须捕获SQL异常，并有相应处理
+
+* 表名t_xxx，非唯一索引名idx_xxx，唯一索引名uniq_xxx
+
+* 同财务相关的金额类数据必须使用decimal类型
+	非精准浮点：float,double
+	精准浮点：decimal
+
+
+
+
+
+
+
+
+
+
+
+表达逻辑删除的字段名 is_deleted， 1 表示删除， 0 表示未删除
+
+
+表名不使用复数名词:
+	表名应该仅仅表示表里面的实体内容，不应该表示实体数量，对应于 DO 类名也是单数形式，符合表达习惯
+
+小数类型为 decimal，禁止使用 float 和 double:
+	float 和 double 在存储的时候，存在精度损失的问题，很可能在值的比较时，得到不正确的结果。
+	如果存储的数据范围超过 decimal 的范围，建议将数据拆成整数和小数分开存储
+
+
+
+表必备字段： 
+	id,
+	create_date,
+	last_update_date,
+	create_by,
+	last_update_by,
+	object_version_number
+	其中 id 必为主键，类型为 unsigned bigint、单表时自增、步长为 1
+	create_date, last_update_date 的类型均为 datetime 类型，前者现在时表示主动创建，后者过去分词表示被动更新
+
+
+合适的字符存储长度，不但节约数据库表空间、节约索引存储，更重要的是提升检索速度:
+	正例： 如下表，其中无符号值可以避免误存负数，且扩大了表示范围
+	----------------------------------------------------------------------------------
+	对象		年龄区间			类型		字节			表示范围
+	人			150岁之内	unsigned tinyint	1		无符号值： 0 到 255
+	龟			数百岁		unsigned smallint	2		无符号值： 0 到 65535
+	恐龙化石	 数千万年	 unsigned int	    4		 无符号值： 0 到约 42.9 亿
+	太阳		约 50 亿年	 unsigned bigint	8		无符号值： 0 到约 10 的 19 次方
+
+
+不要使用 count(列名)或 count(常量)来替代 count(\*)， 
+	count(*)是 SQL92 定义的标准统计行数的语法，跟数据库无关，跟 NULL 和非 NULL 无关
+	count(*)会统计值为 NULL 的行，而 count(列名)不会统计此列为 NULL 值的行	
+	count(distinct col1, col2) 如果其中一列全为 NULL，那么即使另一列有不同的值，也返回为 0
+
+
+
+使用 ISNULL()来判断是否为 NULL 值
+	说明： NULL 与任何值的直接比较都为 NULL
+	NULL<>NULL 的返回结果是 NULL， 而不是 false
+	NULL=NULL 的返回结果是 NULL， 而不是 true
+	NULL<>1 的返回结果是 NULL，而不是 true
+
+
+如果需要存储表情，那么选择 utf8mb4 来进行存储，注意它与 utf-8 编码的区别
+
+sql.xml 配置参数使用： #{}， #param# 不要使用${} 此种方式容易出现 SQL 注入
+
+
+Select * from opp WHERE phone=‘12347856' or phone=‘42242233';
+考虑用
+Select * from opp WHERE phone in ('12347856' , '42242233');
+
+
+用Where子句替换HAVING子句
+select id,count(*) from table group by id having age>=30 order by null;
+考虑用
+select id,count(*) from table where age>=30 group by id order by null;
+
+
+
+必须使用varchar(20)存储手机号
+解读：
+	a）涉及到区号或者国家代号，可能出现+-()
+	b）手机号会去做数学运算么？
+	c）varchar可以支持模糊查询，例如：like“138%”
+
+
+禁止使用SELECT *，只获取必要的字段，需要显示说明列属性
+解读：
+	a）读取不需要的列会增加CPU、IO、NET消耗
+	b）不能有效的利用覆盖索引	
+	c）使用SELECT *容易在增加或者删除字段后出现程序BUG
+
+
+
+禁止在WHERE条件的属性上使用函数或者表达式
+	错误的写法:
+		SELECT uid FROM t_user WHERE from_unixtime(day)>='2017-02-15'会导致全表扫描
+	正确的写法是：
+		SELECT uid FROM t_user WHERE day>= unix_timestamp('2017-02-15 00:00:00')
+
+
+
+如果明确知道只有一条结果返回，limit 1能够提高效率
+	你知道只有一条结果，但数据库并不知道，明确告诉它，让它主动停止游标移动
+
 
 ```
 </details>

@@ -1638,7 +1638,7 @@ window.open(url, '_blank').location;
 让我们看一个例子 — 我们设置了日期的最大和最小值, 并且设定为必填:
 
 <form>
-    <div>
+    <div style="font-size: 56px;">
         <label for="party">Choose your preferred party date (required, April 1st to 20th):</label>
         <input type="date" id="party" name="party" min="2017-04-01" max="2017-04-20" required>
         <span class="validity"></span>

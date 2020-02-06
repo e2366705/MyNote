@@ -237,12 +237,30 @@ import javazoom.jl.player.*;
 
 
 
-    
 
-        // 第二个参数是你要替换的字符串
+=====================================   替换字符串   ==============================================
 
+第一种:
+        String str = "“i’m, nana’s, ’ ‘at, ’ ‘as, foo  - ,  twice a, \"sadas\" ce of, ties, 123890 \\ ’";
+        
+        //可以在中括号内加上任何想要替换的字符 (数字也会被去掉)，实际上是一个正则表达式
+        String regEx="[\n`~!@#$%^&*()+=|{}':;,\\[\\].<>/?！￥…（）—【】‘；\\-：”“’。，\\\\ 、？0123456789\"]";
+        
+        String newString = str.replaceAll(regEx," ");    // 替换成 ' '
+        System.out.println(newString);
+
+
+
+第二种: 
+    相对比较简单 (推荐)
+    直接用 replaceAll 删除非英文字母的字母:
+        String temp = "";
+        temp = str.replaceAll("[^a-zA-Z]", " ");
+        System.out.println(temp);        
+
+
+其他:
         String str="123assume345contribute你好&*(){}&^%$#\n@@";
-        System.out.println("原来的句子:   " + str);
 
         //去除字符串中的数字
         System.out.println(" 去除字符串中的数字  " + str.replaceAll("\\d+"," "));
@@ -250,28 +268,13 @@ import javazoom.jl.player.*;
         //去除字符串中的字母和数字
         System.out.println(" 去除字符串中的字母和数字  " + str.replaceAll("[A-Za-z0-9]+"," "));
 
-        //去除字符串中的符号例如@#￥%=+-...
-        System.out.println("  除字符串中的符号例如@#￥%=+-... " + str.replaceAll("\\p{Punct}"," "));
-
         String str1 = null;
 
         //去除字符串中的空格、回车、换行符、制表符
         Pattern p = Pattern.compile("\\s*|\t|\r|\n");
         Matcher m = p.matcher(str);
         str1 = m.replaceAll("");
-
-        System.out.println(" 去除字符串中的空格、回车、换行符、制表符  " + str1);
-
-        输出:
-            原来的句子:   123assume345contribute你好&*(){}&^%$#
-            @@
-            去除字符串中的数字   assume contribute你好&*(){}&^%$#
-            @@
-            去除字符串中的字母和数字   你好&*(){}&^%$#
-            @@
-            除字符串中的符号例如@#￥%=+-.... 123assume345contribute你好           
-            
-            去除字符串中的空格、回车、换行符、制表符  123assume345contribute你好&*(){}&^%$#@@        
+        System.out.println(" 去除字符串中的空格、回车、换行符、制表符  " + str1);  
 
 
 ```

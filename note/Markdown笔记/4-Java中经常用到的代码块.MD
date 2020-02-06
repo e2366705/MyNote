@@ -81,7 +81,7 @@ import javazoom.jl.player.*;
 
 
 <details>
-<summary><b>判断一个字符串是否含有英文 / 中文 / 数字 / ... 时间 / 随机数 / 随机字符串 / 截取字符串</b></summary>
+<summary><b>字符串是否含有英文 / 中文 / 数字 / 替换/ 时间 / 随机数 / 随机字符串 / 截取字符串</b></summary>
 
 ```  
         大写:
@@ -232,6 +232,46 @@ import javazoom.jl.player.*;
             System.out.println(temp[i]);
             System.out.println("");
         }
+
+
+
+
+
+    
+
+        // 第二个参数是你要替换的字符串
+
+        String str="123assume345contribute你好&*(){}&^%$#\n@@";
+        System.out.println("原来的句子:   " + str);
+
+        //去除字符串中的数字
+        System.out.println(" 去除字符串中的数字  " + str.replaceAll("\\d+"," "));
+
+        //去除字符串中的字母和数字
+        System.out.println(" 去除字符串中的字母和数字  " + str.replaceAll("[A-Za-z0-9]+"," "));
+
+        //去除字符串中的符号例如@#￥%=+-...
+        System.out.println("  除字符串中的符号例如@#￥%=+-... " + str.replaceAll("\\p{Punct}"," "));
+
+        String str1 = null;
+
+        //去除字符串中的空格、回车、换行符、制表符
+        Pattern p = Pattern.compile("\\s*|\t|\r|\n");
+        Matcher m = p.matcher(str);
+        str1 = m.replaceAll("");
+
+        System.out.println(" 去除字符串中的空格、回车、换行符、制表符  " + str1);
+
+        输出:
+            原来的句子:   123assume345contribute你好&*(){}&^%$#
+            @@
+            去除字符串中的数字   assume contribute你好&*(){}&^%$#
+            @@
+            去除字符串中的字母和数字   你好&*(){}&^%$#
+            @@
+            除字符串中的符号例如@#￥%=+-.... 123assume345contribute你好           
+            
+            去除字符串中的空格、回车、换行符、制表符  123assume345contribute你好&*(){}&^%$#@@        
 
 
 ```

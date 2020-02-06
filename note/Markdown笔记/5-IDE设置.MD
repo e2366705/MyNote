@@ -1,18 +1,45 @@
 ﻿# 各种开发IDE 或 编辑器的设置选项 :
-
-## No.1 - JetBrains 家族:
-
-### idea中注释:  /** */ 支持自动格式化  ,  /* */不支持自动格式化...
+* idea中注释:  /** */ 支持自动格式化  ,  /* */不支持自动格式化...
 
 
 ### idea maven太慢, 一招解决!!
-### https://blog.csdn.net/zhaoyy0513/article/details/80682934
+* https://blog.csdn.net/zhaoyy0513/article/details/80682934
 	
 
 
 # 注意: SpringBoot是不用自己去配置Tomcat的!!!
-## 妈的, 我在2020-01-23这一天折腾了好几个小时, 死活配置不好Tomacat, 突然想起来SpringBoot是不用配置Tomcat的....
+> 妈的, 我在2020-01-23这一天折腾了好几个小时, 死活配置不好Tomacat, 突然想起来SpringBoot是不用配置Tomcat的....
 
+---
+
+# 哎呀妈呀~~~  IntelliJ IDEA 自带的数据库管理工具也太香了吧, 有一说一, 结合 SQLyog 简直完美!!!
+* 支持智能提醒, 语法报错, 真是太适合我这种小菜鸟了
+* IntelliJ IDEA 万岁!!!
+
+## 另外, 还有一款 命令行 管理MySQL的工具, 叫做: MyCli , 支持自动补全关键字、表名、列和函数 
+```
+
+MyCli 是 MySQL 的专用命令行客户端，可以自动补全和语法高亮显示
+安装方法:  pip install mycli   (首先先要安装 python )
+
+mycli -uroot
+
+直接可以进入 MySQL 
+
+支持语法字段/表名自动补全, 提醒, 完美
+
+另外好用的 MySQL 管理客户端有:  
+	SQLyog(收费, 可试用)   
+	MySQL-Front(免费)   
+	HeidiSQL(免费)
+
+
+```
+
+
+
+
+---
 
 
 

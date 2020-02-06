@@ -234,6 +234,9 @@ pause
 
 ```  
 
+命令行:
+	MySQLi -u用户名 -p密码
+
 查看所有的数据库 
 show databases;
 

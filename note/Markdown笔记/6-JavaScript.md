@@ -1746,6 +1746,29 @@ getTime() 方法返回自 1970 年 1 月 1 日以来的毫秒数：
 
 
 
+
+
+======================================================================================================
+
+显示时钟效果(动态效果)
+首先新建一个 标签:
+    <h1 id="date_now"></h1>
+
+     function getMyDate() {
+        var d = new Date();
+        var mydiv = document.getElementById("date_now");
+        mydiv.innerText = d.getFullYear() + "年" + (d.getMonth() + 1) + "月" + d.getDate() + "日" + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+    }
+
+    function getTime() {
+        getMyDate();
+        setInterval("getMyDate()", 1000);//每隔一秒调用一次
+    }
+    getTime();
+大功告成~~
+
+
+
 ```
 </details>
 * 参考资料:  https://segmentfault.com/a/1190000015381362

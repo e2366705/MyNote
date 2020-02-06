@@ -1609,6 +1609,161 @@ window.open(url, '_blank').location;
 
 
 <details>
+<summary><b>日历 / 日期</b></summary>
+
+```  
+
+你可以通过  min 和 max 属性去限制用户的可选日期范围。
+在随后的例子中，我们将设定日期最小值为 2017-04-01 最大值为 2017-04-30 
+<form>
+  <div>
+    <label for="party">Choose your preferred party date:</label>
+    <input type="date" id="party" name="party" min="2017-04-01" max="2017-04-30">
+  </div>
+</form>
+
+
+<input id="date" type="date" onchange="fn()" value="" placeholder="取款日期填写今日往后三天的时间">
+当日历发生变化时候, 获取当前选择的日期:
+    function fn() {
+        var date = document.getElementById('date').value;
+        console.log(date);
+    }    
+
+
+
+
+可以使用 required 属性强制填写日期, 如果你尝试提交一个未填写日期的域那么将会抛出错误。 
+至少在大多数浏览器是可以工作的
+让我们看一个例子 — 我们设置了日期的最大和最小值, 并且设定为必填:
+
+<form>
+    <div>
+        <label for="party">Choose your preferred party date (required, April 1st to 20th):</label>
+        <input type="date" id="party" name="party" min="2017-04-01" max="2017-04-20" required>
+        <span class="validity"></span>
+    </div>
+    <div>
+        <input type="submit">
+    </div>
+</form>
+点击提交时候, 后台 请求链接是:   SpringBoot/Desktop/TEST.html?party=2017-04-19
+
+
+
+
+
+
+======================================================================================================
+
+
+
+
+
+获取当前日期:
+var d = new Date();
+d.getFullYear();        // 年份: 2020 (当前是 xxx 年)
+
+
+您可以使用名称数组，并使用 getMonth() 将月份作为名称返回：
+    var d = new Date();
+    d.getMonth();           // 月份: 2 () 在 JavaScript 中，第一个月（1 月）是月号 0，因此 12 月返回月号 11)
+    var d = new Date();
+    var months = 
+                [
+                "January", "February", "March", "April", "May", "June", 
+                "July", "August", "September", "October", "November", "December"
+                ];
+    document.getElementById("demo").innerHTML = months[d.getMonth()];
+
+
+
+var d = new Date();
+d.getDate();            // xxx 号
+
+var d = new Date();
+d.getHours();           // 小时数 , 比如 14 就是下午 2 点
+
+var d = new Date();
+d.getMinutes();         // 分钟数 , 35分, 就是35分
+
+var d = new Date();
+d.getSeconds();         // 秒数
+
+var d = new Date();
+d.getMilliseconds();    // 毫秒数 
+
+
+在 JavaScript 中，一周的第一天（0）表示“星期日”，即使世界上的一些国家认为周的第一天是“星期一”。
+您可以使用名称数组，并使用 getDay() 将星期名作为名称返回：
+    var d = new Date();
+    d.getDay();             // 星期几
+
+    var d = new Date();
+    var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    document.getElementById("demo").innerHTML = days[d.getDay()];
+
+
+
+获取时间戳:
+getTime() 方法返回自 1970 年 1 月 1 日以来的毫秒数：
+    var d = new Date();
+    d.getTime();
+
+
+
+
+
+======================================================================================================
+
+格式化日期
+1、yyyy-MM-dd
+
+ Date.prototype.Format = function (fmt) {
+        var o = {
+            "M+": this.getMonth() + 1, // 月份
+            "d+": this.getDate(), // 日
+            "h+": this.getHours(), // 小时
+            "m+": this.getMinutes(), // 分
+            "s+": this.getSeconds(), // 秒
+            "q+": Math.floor((this.getMonth() + 3) / 3), // 季度
+            "S": this.getMilliseconds()
+            // 毫秒
+        };
+        if (/(y+)/.test(fmt))
+            fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "")
+                .substr(4 - RegExp.$1.length));
+        for (var k in o)
+            if (new RegExp("(" + k + ")").test(fmt))
+                fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) :
+                    (("00" + o[k]).substr(("" + o[k]).length)));
+        return fmt;
+    }
+
+    console.log(new Date().Format('yyyy-MM-dd hh:mm'));
+    console.log(new Date().Format('yyyy-MM-dd'));  
+
+
+
+
+```
+</details>
+* 参考资料:  https://segmentfault.com/a/1190000015381362
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
 <summary><b>cookie 操作:</b></summary>
 
 ```  

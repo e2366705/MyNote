@@ -692,6 +692,34 @@ window.screen.availWidth;           //屏幕可用工作区的宽						返回 32
 
 ```  
 
+多维的:
+    var movies = [
+        { Name: "The Red Violin", ReleaseYear: "1998" },
+        { Name: "Eyes Wide Shut", ReleaseYear: "1999" },
+        { Name: "The Inheritance", ReleaseYear: "1976" }
+    ];
+
+    // 添加数据
+    movies.push({"Name" : "AAAAAAA" ,  "password": "1234567890"});
+
+    // 打印出来:
+    console.log(movies);
+            0: {Name: "The Red Violin", ReleaseYear: "1998"}
+            1: {Name: "Eyes Wide Shut", ReleaseYear: "1999"}
+            2: {Name: "The Inheritance", ReleaseYear: "1976"}
+            3: {Name: "AAAAAAA", password: "1234567890"}    
+    
+    console.log(typeof movies);
+            object
+
+
+
+
+=====================================================================================================   
+
+
+
+
 数组去掉重复的:
     const deDupe = (myArray) => [... new Set(myArray)];
     phrase_array = deDupe(phrase_array);    // 别忘了重新赋值, 不然无效

@@ -10,7 +10,10 @@
 
 ```  
 
-    html 头部文件 引入 :  http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js
+    html 头部文件 引入 :
+    <script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+
 
 
 	<div id="movieList"></div>
@@ -49,6 +52,27 @@
         $.template("movieTemplate", markup);
 
         $.tmpl("movieTemplate", movies).appendTo("#movieList");
+
+
+
+
+
+
+        
+    var  phrase= [
+        { Number: "0" ,  phrase: "phrase", chinese_meaning: "中文意思" }
+    ];
+
+    for (var i = 1; i < localStorage.length; i++) {
+        phrase.push({ "Number": i , "phrase" : localStorage.key(i) ,  "chinese_meaning": localStorage.getItem(localStorage.key(i))});
+    }
+
+    var markup =  "<tr><td>${Number}</td><td>${phrase}</td><td> ${chinese_meaning}</td></tr>";
+
+    $.template("movieTemplate", markup);
+
+    $.tmpl("movieTemplate", phrase).appendTo("#table");           // 添加到 id = 'table' 的节点上
+
         
 
 =====================================================================================================        

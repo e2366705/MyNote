@@ -1,4 +1,4 @@
-# Jquery
+# jQuery
 ---
 
 ### jQuery Templates plugin

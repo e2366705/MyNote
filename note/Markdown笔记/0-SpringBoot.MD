@@ -665,15 +665,15 @@ public class Make_word_Familiar {
     @Autowired
     private PhraseDao phraseDao;
 
-
     @RequestMapping(value="/index", method= RequestMethod.POST)
     @ResponseBody           //此注解不能省略 否则ajax无法接受返回值
-    public void update(String Familiar){
+    public void update(String Familiar){            --> 必须和上面的 params.Familiar 保持一致, 不然没办法取值
         System.out.println(Familiar);
     }
 }
 
 
+=====================================================================================================   
 
     @RequestMapping(value="/Get_Random_phrase", method= RequestMethod.GET)
     @ResponseBody           //此注解不能省略 否则ajax无法接受返回值

@@ -16,6 +16,10 @@
 
 强制的 / 必须的 / 禁止的:
 -----------------------------------------------------------------------------------------------
+
+命名要规范, 一眼就可以看出来是什么:
+	表名用: tb_xxx (意思是: table_xxx, 比如: tb_user) ,  非唯一索引名idx_xxx，唯一索引名uniq_xxx
+
 * 任何字段如果为非负数，必须是 unsigned
 
 * 必须把字段定义为NOT NULL并且提供默认值
@@ -51,7 +55,6 @@
 
 * Java / python 应用程序必须捕获SQL异常，并有相应处理
 
-* 表名t_xxx，非唯一索引名idx_xxx，唯一索引名uniq_xxx
 
 * 同财务相关的金额类数据必须使用decimal类型
 	非精准浮点：float,double
@@ -414,13 +417,13 @@ UPDATE 更新表中某项数据
 UPDATE `runoob_tbl` SET `runoob_title` = '学习 C++' WHERE `runoob_id` = 3;
 
 更新多个字段
-UPDATE `phrase` SET `phrase`="AAA" , `chinese_meaning`="BBB" WHERE `word`='CCC';
+UPDATE `table_name` SET `phrase`="AAA" , `chinese_meaning`="BBB" WHERE `word`='CCC';
 
 设置为 null
-UPDATE `phrase` SET `chinese_meaning` = null WHERE `state` = 'Very_familiar'
+UPDATE `table_name` SET `chinese_meaning` = null WHERE `state` = 'Very_familiar'
 
 随机更改表中 date 字段的值为 '------------' (数量为123条)
-UPDATE `phrase` SET `date` = '------------' ORDER BY RAND() LIMIT 123;
+UPDATE `table_name` SET `date` = '------------' ORDER BY RAND() LIMIT 123;
 
 ```
 </details>
@@ -537,6 +540,10 @@ alter table `table1` add transactor varchar(10) not Null;
 
 增加一个自增 + 主键字段
 alter table `table1` add id int unsigned not Null auto_increment primary key
+
+
+重命名 表名:
+ALTER TABLE `word` RENAME TO `tb_word`
 
 
 修改字段名称和属性 ( 将AAA字段改为BBBB ) :

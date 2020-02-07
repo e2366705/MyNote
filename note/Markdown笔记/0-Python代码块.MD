@@ -217,6 +217,287 @@ isinstance(a, int)        # 返回 true or false
 
 
 
+
+
+
+<details>
+<summary><b> 字符串 </b></summary>
+
+```  
+    截取字符串
+使用方括号来截取字符串
+#!/usr/bin/python3
+var1 = 'Hello World!'
+var2 = "Runoob"
+print ("var1[0]: ", var1[0])
+print ("var2[1:5]: ", var2[1:5])
+
+
+字段拼接
+var1 = 'Hello World!'
+print ("已更新字符串 : ", var1[:6] + 'Runoob!')
+输出: Hello Runoob!
+
+
+需要在字符中使用特殊字符时，python用反斜杠(\)转义字符
+    \(在行尾时)	续行符
+    \\	反斜杠符号
+    \'	单引号
+    \"	双引号
+    \a	响铃
+    \b	退格(Backspace)
+    \000	空
+    \n	换行
+    \v	纵向制表符
+    \t	横向制表符
+    \r	回车
+
+
+
+
+
+
+
+
+字符串格式化
+在 Python 中，字符串格式化使用与 C 中 sprintf 函数一样的语法:
+print ("我叫 %s 今年 %d 岁!" % ('小明', 10))
+
+%d	 格式化整数
+%s	 格式化字符串
+
+
+f-string 是新的格式化字符串的语法
+name = 'Runoob'
+f'Hello {name}'  # 替换变量
+
+>>> f'{1+2}'         # 使用表达式
+'3'
+
+>>> w = {'name': 'Runoob', 'url': 'www.runoob.com'}
+>>> f'{w["name"]}: {w["url"]}'
+'Runoob: www.runoob.com'
+
+用了这种方式明显更简单了，不用再去判断使用 %s，还是 %d
+
+
+
+
+
+
+center() 方法返回一个指定的宽度 width 居中的字符串，fillchar 为填充的字符，默认为空格。
+str = "[www.runoob.com]"
+str.center(40, '*')
+输出 : ************[www.runoob.com]************
+
+
+count() 方法用于统计字符串里某个字符出现的次数。可选参数为在字符串搜索的开始与结束位置
+str.count(sub, start= 0,end=len(string))
+    sub -- 搜索的子字符串
+    start -- 字符串开始搜索的位置。默认为第一个字符,第一个字符索引值为0。
+    end -- 字符串中结束搜索的位置。字符中第一个字符的索引为 0。默认为字符串的最后一个位置。
+sub='run'
+str.count(sub,0,10)
+
+
+decode() encode() 方法以指定的编码格式解码 bytes 对象。默认编码为 'utf-8'
+str = "菜鸟教程";
+str.encode("UTF-8")
+str.encode("GBK")
+
+str_utf8.decode('UTF-8','strict')
+str_gbk.decode('GBK','strict')
+
+'H' in a 输出结果 True          是否包含
+'M' not in a 输出结果 True      是否不包含
+
+find(str, beg=0, end=len(string))   检测 str 是否包含在字符串中，如果指定范围 beg 和 end
+
+index(str, beg=0, end=len(string))  跟find()方法一样，只不过如果str不在字符串中会报一个异常
+
+isalnum()       如果字符串至少有一个字符并且所有字符都是字母或数字则返 回 True,否则返回 False
+
+isalpha()        如果字符串至少有一个字符并且所有字符都是字母则返回 True, 否则返回 False
+
+isdigit()       如果字符串只包含数字则返回 True 否则返回 False..
+
+isnumeric()     如果字符串中只包含数字字符，则返回 True，否则返回 False
+
+len(string)     返回字符串长度
+
+lower()         转换字符串中所有大写字符为小写
+upper()         转换字符串中的小写字母为大写
+capitalize()    将字符串的第一个字母变成大写,其他字母变小写 str.capitalize()
+
+lstrip()        截掉字符串左边的空格或指定字符。
+
+max(str)        返回字符串 str 中最大的字母。  min(str) 反之
+
+rstrip()        删除字符串字符串末尾的空格.
+
+startswith(substr, beg=0,end=len(string))   检查字符串是否是以指定子字符串 substr 开头，是则返回 True，否则返回 False。
+                                            如果beg 和 end 指定值，则在指定范围内检查
+
+
+
+
+
+
+
+
+......
+
+还有好多好多, python内置了许多方法函数供人们调用,   https://www.runoob.com/python3/python3-string.html
+
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b>随机数 / 随机选择</b></summary>
+
+```  
+
+import random
+random.choice( seq  )           # seq -- 可以是一个列表，元组或字符串
+
+小案例
+#!/usr/bin/python3
+import random
+
+print ("从 range(100) 返回一个随机数 : ",random.choice(range(100)))
+print ("从列表中 [1, 2, 3, 5, 9]) 返回一个随机元素 : ", random.choice([1, 2, 3, 5, 9]))
+print ("从字符串中 'Runoob' 返回一个随机字符 : ", random.choice('Runoob'))
+
+
+
+
+=====================================================================================================
+
+
+
+
+随机数
+import random
+random.randrange ([start,] stop [,step])
+    start -- 指定范围内的开始值，包含在范围内
+    stop -- 指定范围内的结束值，不包含在范围内
+    step -- 指定递增基数
+
+
+#!/usr/bin/python3
+import random
+ 
+# 从 1-100 中选取一个奇数
+print ("randrange(1,100, 2) : ", random.randrange(1, 100, 2))
+ 
+# 从 0-99 选取一个随机数
+print ("randrange(100) : ", random.randrange(100))
+
+
+
+
+=====================================================================================================   
+
+
+
+随机数 2
+random() 方法返回随机生成的一个实数，它在[0,1)范围内。
+
+#!/usr/bin/python3
+import random
+
+# 第一个随机数
+print ("random() : ", random.random())
+
+# 第二个随机数
+print ("random() : ", random.random())
+
+运行后输出结果为：
+random() :  0.09690599908884856
+random() :  0.8732120512570916
+
+
+
+
+=====================================================================================================
+
+
+
+shuffle() 方法将序列的所有元素随机排序
+#!/usr/bin/python3
+import random
+ 
+list = [20, 16, 10, 5];
+random.shuffle(list)
+print ("随机排序列表 : ",  list)
+ 
+random.shuffle(list)
+print ("随机排序列表 : ",  list)
+
+运行后输出结果为：
+随机排序列表 :  [20, 5, 16, 10]
+随机排序列表 :  [5, 20, 10, 16]
+
+
+=====================================================================================================
+
+
+uniform() 方法将随机生成下一个实数，它在 [x,y] 范围内
+x -- 随机数的最小值。
+y -- 随机数的最大值。
+
+#!/usr/bin/python3
+import random
+ 
+print ("uniform(5, 10) 的随机浮点数 : ",  random.uniform(5, 10))
+print ("uniform(7, 14) 的随机浮点数 : ",  random.uniform(7, 14))
+
+运行后输出结果为：
+uniform(5, 10) 的随机浮点数 :  7.054602800254241
+uniform(7, 14) 的随机浮点数 :  12.552229882744296
+
+
+
+=====================================================================================================   
+
+
+生成两位小数的浮点数：
+import random
+round(random.uniform(5, 10), 2)
+输出: 6.63
+
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
 <details>
 <summary><b> List(列表) / Tuple(元组) / Set(集合) / Dictionary(字典)</b></summary>
 
@@ -265,6 +546,79 @@ a = 10
 b = 20
 list = [1, 2, 3, 4, 5 ];
 a in list           # bool类型
+
+取值
+list = ['Google', 'Runoob', 1997, 2000];
+list[0]
+
+更新列表数据(直接赋值)
+list[2] = 2001
+
+删除第三个元素
+del list[2]
+
+在列表末尾添加新的对象(增加数据)
+list.append(obj)
+
+长度/大小/容量/列表元素个数:
+len([1, 2, 3])	
+
+对原列表进行排序
+list.sort( key=None, reverse=False)
+
+清空列表
+list.clear()
+
+复制列表
+list.copy()
+
+列表相加
+[1, 2, 3] + [4, 5, 6]	
+
+列表元素最大值/最小值
+max(list)
+min(list)
+
+将元组转换为列表
+list(seq)
+
+重复(乘法)
+['Hi!'] * 4	
+
+元素是否存在于列表中
+3 in [1, 2, 3]	True	
+
+统计某个元素在列表中出现的次数
+list.count(obj)
+
+从列表中找出某个值第一个匹配项的索引位置
+list.index(obj)
+
+将对象插入列表(可以指定位置)
+list.insert(index, obj)
+
+移除列表中的一个元素（默认最后一个元素），并且返回该元素的值
+list.pop([index=-1])
+
+移除列表中某个值的第一个匹配项
+list.remove(obj)
+
+
+迭代
+for x in [1, 2, 3]: 
+    print(x, end=" ")
+
+L=['Google', 'Runoob', 'Taobao']
+L[2]	'Taobao'	            读取第三个元素
+L[-2]	'Runoob'	            从右侧开始读取倒数第二个元素: count from the right
+L[1:]	['Runoob', 'Taobao']	输出从第二个元素开始后的所有元素
+
+
+
+
+=====================================================================================================   
+
+
 
 Tuple（元组）:
     元组（tuple）与列表类似，不同之处在于元组的元素不能修改,

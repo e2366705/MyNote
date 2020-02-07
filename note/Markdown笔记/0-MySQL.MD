@@ -419,6 +419,9 @@ UPDATE `phrase` SET `phrase`="AAA" , `chinese_meaning`="BBB" WHERE `word`='CCC';
 设置为 null
 UPDATE `phrase` SET `chinese_meaning` = null WHERE `state` = 'Very_familiar'
 
+随机更改表中 date 字段的值为 '------------' (数量为123条)
+UPDATE `phrase` SET `date` = '------------' ORDER BY RAND() LIMIT 123;
+
 ```
 </details>
 
@@ -456,7 +459,12 @@ group by : 排除重复的,筛选出不同的
 	select distinct username from user;
 
 查询字段`word`长度等于 5 的:
-	select * from `words_warehouse`  where length(`word`) = 5;		
+	select * from `words_warehouse`  where length(`word`) = 5;	
+
+GROUP BY  		去掉重复
+ORDER BY RAND	随机
+LIMIT 36		数量为 36 条
+select *  from phrase GROUP BY `phrase` ORDER BY RAND() LIMIT 36
 
 当 xxx 不为空 , 且 yyy 为空时:
 select `word` from `phrase` where `state` IS NULL and `word` is not null
@@ -515,7 +523,10 @@ ALTER TABLE `数据表` ALTER COLUMN `字段` SET DEFAULT '默认值';
 
 
 增加一个唯一字段
-alter table `phrase` add `word` VARCHAR(66) UNIQUE
+alter table `phrase` add `word` VARCHAR(66) UNIQUE not null
+
+增加一个 date 类型的字段
+alter table tb_yxb ADD `date_3` date not null default 0
 
 增加一个主键字段
 alter table `student` add `word` VARCHAR(66) PRIMARY KEY
@@ -534,7 +545,8 @@ ALTER TABLE user10  CHANGE `AAA`      `BBBB`     CHAR(32)   NOT NULL DEFAULT '12
 
 
 修改字段类型
-alter table 表名 modify column 字段名 类型;
+alter table 表名 modify column 字段名 类型;    (注意: 一定要带上你要修改的数据类型)
+alter table `user` modify column `name` varchar(256) not null default ''
 注意: 如果修改字段数据失败,可能是MySQL为了数据安全,加了保险
 (比如text类型的字段转化为int类型->大数据类型转小数据类型,这样子就可能会丢失数据)
 

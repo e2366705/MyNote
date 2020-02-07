@@ -29,9 +29,12 @@ mycli -uroot
 支持语法字段/表名自动补全, 提醒, 完美
 
 另外好用的 MySQL 管理客户端有:  
+	IntelliJ IDEA 自带的数据库管理工具 (五星级好用, 收费, 可试用)
 	SQLyog(收费, 可试用)   
 	MySQL-Front(免费)   
 	HeidiSQL(免费)
+
+经过使用, 发现 SQLyog 不如 HeidiSQL好用 , 数据有时候已经更新了, 但是在 SQLyog 里面就是刷新不出来
 
 
 ```

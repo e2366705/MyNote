@@ -7,12 +7,23 @@
 
 
 ---
-# 要注意的:
-> 指的是代码过程中需要注意的小细节...
+# 规范:
+> 指的是代码过程中需要注意的小细节...提升代码质量, 便于后期维护
 <details>
 <summary><b>注意!!!!</b></summary>
 
 ```  
+
+个人推荐使用这种方法绑定 点击事件, 
+这样从按钮上就直接一眼看出绑定了哪些函数/方法, 不用一个一个去大量的 js 文件去找
+    <button id="vv" onclick="myfunction()" >哈哈</button>
+
+这种就要一个一个去大量的 js 文件去找, 有时候眼睛都看花了
+    document.getElementById('vv').onclick = function () {
+        alert('hasssshhaa ')
+    }
+
+
 
 <script>
 

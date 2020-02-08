@@ -80,6 +80,50 @@ import javazoom.jl.player.*;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <details>
 <summary><b>字符串是否含有英文 / 中文 / 数字 / 替换/ 时间 / 随机数 / 随机字符串 / 截取字符串</b></summary>
 
@@ -164,6 +208,15 @@ import javazoom.jl.player.*;
             System.out.println(arr[i]);
         }
         System.out.println("There are " + arr.length + "   english words in the line!");
+
+
+        
+    // 判断首字母是否大写?
+    // 大写 => true
+    public boolean First_letter_is_capitalized(String str) {
+        char[] chars = str.toCharArray();
+        return Character.isUpperCase(chars[0]);
+    }
 
 
 
@@ -279,6 +332,50 @@ import javazoom.jl.player.*;
 
 ```
 </details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -468,6 +565,52 @@ public class IO {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <details>
 <summary><b>JDBC MySQL 增/删/改/查</b></summary>
 
@@ -634,6 +777,45 @@ insert into user(username,password) values('OPPO','R11');
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <details>
 <summary><b>正则表达式</b></summary>
 
@@ -747,6 +929,37 @@ insert into user(username,password) values('OPPO','R11');
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ---
 # 集合
 <details>
@@ -793,11 +1006,6 @@ Collection 主要有三个子接口,分别为:
 
 ```
 </details>
-
-
-
-
-
 
 
 
@@ -913,6 +1121,13 @@ LinkedList类
 注意:
     Set<String> set = new Set<String>();           // 错误
     Set<String> hashSet = new HashSet<String>();   // 正确
+
+Set 区分大小写, 也就是 aaa 与 AAA 是两个不同的字符串 , 所以都会存进去
+
+    Set<String> hashSet = new HashSet<String>();   // 正确
+    hashSet.add("aaa");
+    hashSet.add("AAA");
+    输出: [aaa, AAA]
 
 
 

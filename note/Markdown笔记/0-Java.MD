@@ -218,6 +218,15 @@ import javazoom.jl.player.*;
         return Character.isUpperCase(chars[0]);
     }
 
+    // 字符串是否包含大写字母?
+      String word = "asda1231^&%^&*er,..<><>[]]()*/-+sdfsdfAAA";
+        for(int i = 0; i < word.length(); i++){
+            char c = word.charAt(i);
+            if (Character.isUpperCase(c)){
+                System.out.println("包含");
+            }
+        }
+
 
 
     // 判断这个文件夹里面, 哪个是文件, 哪个是文件夹
@@ -1021,6 +1030,20 @@ void remove(int position) //删除第几个元素（索引从0开始）
 void remove(String item) //删除相同的元素
 void removeAll() //删除所有元素
 
+
+
+list 之间不能直接相加, 必须这样借助第三方
+      ArrayList<String> list1 = new ArrayList<>();
+        ArrayList<String> list2 = new ArrayList<>();
+        ArrayList<String> list3 = new ArrayList<>();
+
+        list1.add("aaa");
+        list2.add("aaa");
+
+        list3.addAll(list1);
+        list3.addAll(list2);
+
+        输出:  [aaa, aaa]
 
 
 ArrayList类

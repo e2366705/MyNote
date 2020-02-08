@@ -1246,7 +1246,7 @@ localStorage.key(5).includes("apple") === true
 
 
 <details>
-<summary><b>JavaScript 播放音频文件 mp3 Audio文件</b></summary>
+<summary><b>播放音频文件 mp3 Audio文件</b></summary>
 
 ```  
             // 创建一个 audio 节点
@@ -1403,6 +1403,10 @@ interval = setInterval(runThis, 5000);
     大小写的字母的按键码是不同的
     按键码: 82 字符: R
     按键码: 114 字符: r
+
+    推荐使用 onkeydown , 不要使用 onkeypress
+        因为 onkeydown 可以捕捉到 按下 Ctrl 键的反应
+        onkeypress 就捕捉不到
 
 // 键盘事件
 document.onkeydown = function(e) {

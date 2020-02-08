@@ -220,6 +220,67 @@ isinstance(a, int)        # 返回 true or false
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <details>
 <summary><b> 字符串 </b></summary>
 
@@ -369,6 +430,17 @@ startswith(substr, beg=0,end=len(string))   检查字符串是否是以指定子
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 <details>
 <summary><b>随机数 / 随机选择</b></summary>
 
@@ -498,44 +570,89 @@ round(random.uniform(5, 10), 2)
 
 
 
-<details>
-<summary><b> List(列表) / Tuple(元组) / Set(集合) / Dictionary(字典)</b></summary>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+# List(列表) / Tuple(元组) / Set(集合) / Dictionary(字典)
 ```  
 
+总结:
+    Dictionary(字典):       特点:无序, 键必须是唯一的，但值则不必, 键必须是不可变的，如字符串，数字或元组
+    Set(集合):              无序的 , 不重复的
+    list(列表):             特点: 有序, 元素是可以改变的 (元组使用小括号，列表使用方括号)
+    Tuple(元组):            与列表类似，不同之处在于元组的元素不能修改 (同样的, 元组中的元素值是不允许删除的)
+                            (虽然元素不可改变,但它可以包含可变的对象，比如list列表)
+                            可以使用del语句来删除整个元组 (del tup)
+```
+<details>
+<summary><b> List(列表) </b></summary>
 
-
-==================================================================================================
-
-
-Dictionary(字典):
-    特点:无序, 
-        它是一个无序的 键(key) : 值(value) 的集合, 
-        键(key)必须使用不可变类型, 在同一个字典中，键(key)必须是唯一的
-        创建空字典使用 { }
-
-    内置的函数，
-        clear()
-        keys()
-        values()
-
-dict = {}
-tinydict = {'name': 'runoob','code':1, 'site': 'www.runoob.com'}
-dict['one'] = "菜鸟教程"
-dict[2]     = "菜鸟工具"       
-
-print (dict['one'])       # 输出键为 'one' 的值
-print (dict[2])           # 输出键为 2 的值
-print (tinydict)          # 输出完整的字典
-print (tinydict.keys())   # 输出所有键
-print (tinydict.values()) # 输出所有值
-
-构造函数 dict() 可以直接从键值对序列中构建字典如下：
-dict(Runoob=1, Google=2, Taobao=3)
-
-
-
-==================================================================================================
+```  
 
 列表 List : 
 
@@ -615,14 +732,36 @@ L[1:]	['Runoob', 'Taobao']	输出从第二个元素开始后的所有元素
 
 
 
+```
+</details>
 
-=====================================================================================================   
 
 
+
+
+
+
+
+
+
+
+ 
+
+<details>
+<summary><b> Tuple(元组) </b></summary>
+
+```  
 
 Tuple（元组）:
     元组（tuple）与列表类似，不同之处在于元组的元素不能修改,
     虽然tuple的元素不可改变，但它可以包含可变的对象，比如list列表
+
+    元组中只包含一个元素时，需要在元素后面添加逗号，否则括号会被当作运算符使用
+    tup1 = (50,)
+
+    元组可以使用下标索引来访问元组中的值
+    tup1[0]
+    tup2[1:5]
 
 
   list = ['html', 'js', 'css', 'python']
@@ -642,11 +781,214 @@ Tuple（元组）:
     for i, val in enumerate(list, 2):
         print("序号：%s   值：%s" % (i + 1, val))
 
+    len((1, 2, 3))	            计算元素个数
+    max(tuple)                  返回元组中元素最大值  (min(tuple) 最小值 )
+    (1, 2, 3) + (4, 5, 6)		连接
+    ('Hi!',) * 4	        	复制
+    3 in (1, 2, 3)	        	元素是否存在 (返回 true )
 
-==================================================================================================
+L = ('Google', 'Taobao', 'Runoob')
+L[2]	'Runoob'	            读取第三个元素
+L[-2]	'Taobao'	            反向读取，读取倒数第二个元素
+L[1:]	('Taobao', 'Runoob')	截取元素，从第二个开始后的所有元素    
+
+
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> Dictionary(字典) </b></summary>
+
+```  
+
+Dictionary(字典):
+    特点:无序, 
+        它是一个无序的 键(key) : 值(value) 的集合, 
+        键(key)必须使用不可变类型, 在同一个字典中，键(key)必须是唯一的
+        创建空字典使用 { }
+
+    内置的函数，
+        clear()
+        keys()
+        values()
+
+dict = {}
+tinydict = {'name': 'runoob','code':1, 'site': 'www.runoob.com'}
+dict['one'] = "菜鸟教程"
+dict[2]     = "菜鸟工具"      
+
+len(dict)                               计算字典元素个数，即键的总数
+str(dict)                               输出字典，以可打印的字符串表示
+type(variable)                           返回输入的变量类型，如果变量是字典就返回字典类型
+key in dict                              如果键在字典dict里返回true，否则返回false
+
+radiansdict.get(key, default=None)      返回指定键的值，如果值不在字典中返回default值 
+                                        print ("Age 值为 : %s" %  dict.get('Age'))
+
+
+
+如果 key 在 字典中，返回对应的值。如果不在字典中，则插入 key 及设置的默认值 default
+dict = {'Name': 'Runoob', 'Age': 7}
+print ("Age 键的值为 : %s" %  dict.setdefault('Age', None))
+print ("Sex 键的值为 : %s" %  dict.setdefault('Sex', None))
+>>> {'Age': 7, 'Name': 'Runoob', 'Sex': None}
+
+
+
+
+
+增:
+dict['School'] = "菜鸟教程"              添加信息
+
+update() 函数把字典参数 dict2 的 key/value(键/值) 对更新到字典 dict 里
+dict = {'Name': 'Runoob', 'Age': 7}
+dict2 = {'Sex': 'female' }
+dict.update(dict2)
+>>> {'Name': 'Runoob', 'Age': 7, 'Sex': 'female'}
+
+
+
+
+
+删:
+del dict                                删除字典
+
+pop() 方法删除字典给定键 key 所对应的值，返回值为被删除的值。key值必须给出
+site= {'name': '菜鸟教程', 'alexa': 10000, 'url': 'www.runoob.com'}
+site.pop('name')
+>>> 菜鸟教程
+
+popitem() 方法随机返回并删除字典中的最后一对键和值
+site= {'name': '菜鸟教程', 'alexa': 10000, 'url': 'www.runoob.com'}
+site.popitem()
+>>> ('url', 'www.runoob.com')
+
+del dict['Name']                         删除键 'Name'
+dict.clear()                            清空字典
+radiansdict.clear()                      删除字典内所有元素
+
+
+
+
+
+
+改:
+dict['Age'] = 8                         修改 Age 的值
+
+
+
+
+
+
+查:
+dict['Name']                            取值
+
+
+
+
+
+
+各种转换:
+使用 list() 来转换为列表，列表为字典中的所有值:
+dict = {'Sex': 'female', 'Age': 7, 'Name': 'Zara'}
+list(dict.values())
+>>> ['female', 7, 'Zara']
+
+
+
+dict = {'Name': 'Runoob', 'Age': 7}
+dict.keys()
+>>> dict_keys(['Name', 'Age'])
+
+list(dict.keys())            
+>>> ['Name', 'Age']
+
+
+radiansdict.items()                     以列表返回可遍历的(键, 值) 元组数组
+dict = {'Name': 'Runoob', 'Age': 7}
+dict.items()
+>>> [('Age', 7), ('Name', 'Runoob')]
+
+
+
+print (dict['one'])       # 输出键为 'one' 的值
+print (dict[2])           # 输出键为 2 的值
+print (tinydict)          # 输出完整的字典
+print (tinydict.keys())   # 输出所有键
+print (tinydict.values()) # 输出所有值
+
+构造函数 dict() 可以直接从键值对序列中构建字典如下：
+dict(Runoob=1, Google=2, Taobao=3)
+
+
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> Set(集合)  </b></summary>
+
+```  
 
 Set（集合） :
 不能有重复的元素:
+
+创建一个空集合必须用 set() 而不是 { }，因为 { } 是用来创建一个空字典
+
+
+增:
+s.add( x )          添加元素
+
+s.update( x )       也可以添加元素，且参数可以是列表，元组，字典等
+thisset = set(("Google", "Runoob", "Taobao"))
+thisset.update({1,3})
+>>> {1, 3, 'Google', 'Taobao', 'Runoob'}
+
+
+
+
+删:
+s.remove( x )           移除元素             如果元素不存在，则会发生错误 
+s.discard( x )          也是移除集合中的元素，如果元素不存在，不会发生错误
+s.pop()                 随机删除集合中的一个元素 ,会对集合进行无序的排列，然后将这个无序排列集合的左面第一个元素进行删除
+s.clear()               清空集合
+
+
+
+
+x.symmetric_difference(y)       返回两个集合中不重复的元素集合，即会移除两个集合中都存在的元素
+x.isdisjoint(y)                 判断两个集合是否包含相同的元素，如果没有返回 True，否则返回 False
+x.union(y)                      返回两个集合的并集，即包含了所有集合的元素，重复的元素只会出现一次
+x.union(y, z) 
+
+
+
+
+查:
+len(s)                  计算集合元素个数
+x in s                  判断元素是否在集合中存在  存在返回 True，不存在返回 False
+
+
+
 student = {'Tom', 'Jim', 'Mary', 'Tom', 'Jack', 'Rose'}
 print(student)   # 输出集合，重复的元素被自动去掉
 
@@ -669,10 +1011,66 @@ print(a & b)     # a 和 b 的交集
 print(a ^ b)     # a 和 b 中不同时存在的元素   
 
 
-
-
 ```
 </details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -724,6 +1122,81 @@ db.close()
 
 ```
 </details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -648,6 +648,11 @@ round(random.uniform(5, 10), 2)
     Tuple(元组):            与列表类似，不同之处在于元组的元素不能修改 (同样的, 元组中的元素值是不允许删除的)
                             (虽然元素不可改变,但它可以包含可变的对象，比如list列表)
                             可以使用del语句来删除整个元组 (del tup)
+
+转换:
+list(seq)           将元组转换为列表
+
+
 ```
 <details>
 <summary><b> List(列表) </b></summary>
@@ -664,61 +669,60 @@ b = 20
 list = [1, 2, 3, 4, 5 ];
 a in list           # bool类型
 
-取值
+
+增
+list.append(obj)                在列表末尾添加新的对象(增加数据)
+[1, 2, 3] + [4, 5, 6]	        列表相加
+list.insert(index, obj)         将对象插入列表(可以指定位置)
+list.extend(L)	                通过添加指定列表的所有元素来扩充列表
+
+
+
+
+
+查
 list = ['Google', 'Runoob', 1997, 2000];
 list[0]
 
-更新列表数据(直接赋值)
+3 in [1, 2, 3]	True	    元素是否存在于列表中
+list.index(x)	            返回列表中第一个值为 x 的元素的索引
+list.count(obj)             统计某个元素在列表中出现的次数
+len([1, 2, 3])	            长度/大小/容量/列表元素个数:
+max(list)                   列表元素最大值/最小值
+min(list)
+
+
+
+
+
+
+
+
+更新  列表数据(直接赋值)
 list[2] = 2001
 
-删除第三个元素
-del list[2]
 
-在列表末尾添加新的对象(增加数据)
-list.append(obj)
 
-长度/大小/容量/列表元素个数:
-len([1, 2, 3])	
+
+删
+del list[2]                     删除第三个元素
+list.clear()                    清空列表
+list.pop([index=-1])            移除列表中的一个元素（默认最后一个元素），并且返回该元素的值
+list.remove(obj)                移除列表中某个值的第一个匹配项
+
+
+
 
 对原列表进行排序
 list.sort( key=None, reverse=False)
 
-清空列表
-list.clear()
 
-复制列表
-list.copy()
 
-列表相加
-[1, 2, 3] + [4, 5, 6]	
+list.copy()             复制列表
+['Hi!'] * 4	                重复(乘法)
 
-列表元素最大值/最小值
-max(list)
-min(list)
 
-将元组转换为列表
-list(seq)
 
-重复(乘法)
-['Hi!'] * 4	
-
-元素是否存在于列表中
-3 in [1, 2, 3]	True	
-
-统计某个元素在列表中出现的次数
-list.count(obj)
-
-从列表中找出某个值第一个匹配项的索引位置
-list.index(obj)
-
-将对象插入列表(可以指定位置)
-list.insert(index, obj)
-
-移除列表中的一个元素（默认最后一个元素），并且返回该元素的值
-list.pop([index=-1])
-
-移除列表中某个值的第一个匹配项
-list.remove(obj)
 
 
 迭代
@@ -932,6 +936,24 @@ dict(Runoob=1, Google=2, Taobao=3)
 
 
 
+遍历
+字典遍历
+knights = {'gallahad': 'the pure', 'robin': 'the brave'}
+for k, v in knights.items():
+    print(k, v)
+
+
+在序列中遍历时，索引位置和对应值可以使用 enumerate() 函数同时得到：
+for i, v in enumerate(['tic', 'tac', 'toe']):
+    print(i, v)
+
+0 tic
+1 tac
+2 toe
+
+
+
+
 ```
 </details>
 
@@ -950,7 +972,7 @@ dict(Runoob=1, Google=2, Taobao=3)
 ```  
 
 Set（集合） :
-不能有重复的元素:
+    无序 , 不重复元素
 
 创建一个空集合必须用 set() 而不是 { }，因为 { } 是用来创建一个空字典
 
@@ -1049,6 +1071,46 @@ print(a ^ b)     # a 和 b 中不同时存在的元素
 
 
 
+<details>
+<summary><b> 循环 </b></summary>
+
+```  
+
+languages = ["C", "C++", "Perl", "Python"] 
+for x in languages:
+     print (x)
+
+
+for i in range(5):
+     print(i)
+
+输出:
+0
+1
+2
+3
+4
+
+
+也可以使用range指定区间的值：
+for i in range(5,9) :
+    print(i)
+
+
+也可以使range以指定数字开始并指定不同的增量(甚至可以是负数，有时这也叫做'步长'):
+for i in range(0, 10, 3) 
+
+
+
+
+break 语句可以跳出 for 和 while 的循环体。
+如果你从 for 或 while 循环中终止，任何对应的循环 else 块将不执行。
+
+continue 语句被用来告诉 Python 跳过当前循环块中的剩余语句，然后继续进行下一轮循环
+
+
+```
+</details>
 
 
 
@@ -1059,6 +1121,138 @@ print(a ^ b)     # a 和 b 中不同时存在的元素
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> 迭代器与生成器 </b></summary>
+
+```  
+迭代是Python最强大的功能之一，是访问集合元素的一种方式
+迭代器对象从集合的第一个元素开始访问，直到所有的元素被访问完结束。迭代器只能往前不会后退
+迭代器有两个基本的方法：iter() 和 next()。
+
+
+list=[1,2,3,4]
+it = iter(list)    # 创建迭代器对象
+print (next(it))   # 输出迭代器的下一个元素
+
+迭代器对象可以使用常规for语句进行遍历：
+list=[1,2,3,4]
+it = iter(list)    # 创建迭代器对象
+for x in it:
+    print (x, end=" ")
+
+
+
+import sys         # 引入 sys 模块
+list=[1,2,3,4]
+it = iter(list)    # 创建迭代器对象
+while True:
+    try:
+        print (next(it))
+    except StopIteration:
+        sys.exit()
+
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b>  函数  </b></summary>
+
+```  
+
+
+函数参数的使用不需要使用指定顺序：
+def printinfo( name, age ):
+   "打印任何传入的字符串"
+   print ("名字: ", name)
+   print ("年龄: ", age)
+   return
+ 
+#调用printinfo函数
+printinfo( age=50, name="runoob" )
+
+默认参数
+调用函数时，如果没有传递参数，则会使用默认参数。以下实例中如果没有传入 age 参数，则使用默认值:
+def printinfo( name, age = 35 ):
+   print ("名字: ", name)
+   print ("年龄: ", age)
+   return
+
+
+不定长参数 ( 一个 * 号 ):
+def printinfo( arg1, *vartuple ):
+   "打印任何传入的参数"
+   print ("输出: ")
+   print (arg1)
+   print (vartuple)
+
+printinfo( 70, 60, 50 )
+输出: 
+70
+(60, 50)
+
+
+
+加了两个星号 ** 的参数会以字典的形式导入
+def printinfo( arg1, **vardict ):
+   "打印任何传入的参数"
+   print ("输出: ")
+   print (arg1)
+   print (vardict)
+ 
+# 调用printinfo 函数
+printinfo(1, a=2,b=3)
+输出: 
+1
+{'a': 2, 'b': 3}
+
+
+
+```
+</details>
 
 
 

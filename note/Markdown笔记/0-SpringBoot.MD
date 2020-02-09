@@ -794,11 +794,13 @@ public class Collected_word {
 
 
 
-html循环遍历的方式:
-    <li th:each="result : ${result}">
-        <h3><a target="_blank"  th:href="@{/English_Article_Controller/Read_Article/(file_name=${result})}"  th:text="${result}" style="color: #5FB878; "></a></h3>
-        <!--<button class="btn" th:onlick="'getName(\''+${person.name}+'\');'">获得名字</button>-->
-    </li>
+html循环遍历的方式 iterStat 可以获取序号索引:
+        <tr  th:each="result , iterStat : ${result}">
+            <td th:text="${iterStat.index} ">序号</td>
+            <td th:text="${result.phrase} ">短句</td>
+            <td th:text="${result.chinese_meaning} ">中文意思</td>
+            <td  th:text="${result.word}" >单词</td>
+        </tr>
 
 
 

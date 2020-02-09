@@ -416,19 +416,6 @@ html引用:
 src\main\resources\static\Remember_words\Last_Next_Words.js
 
 
-
-@Controller
-@RequestMapping(value="/Collected_word")
-public class Collected_word {
-    
-    @RequestMapping(value="/index", method= RequestMethod.GET)
-    public String index(){                                --> 单纯的网页跳转, 就不要有任何的参数
-        return "/Collected_word/Collected_word.html";
-    }
-}
-
-
-
 ```
 </details>
 
@@ -743,6 +730,44 @@ public class Make_word_Familiar {
 
 
 
+
+<details>
+<summary><b> 页面跳转 </b></summary>
+
+```  
+
+@Controller
+@RequestMapping(value="/Collected_word")
+public class Collected_word {
+    
+    @RequestMapping(value="/index", method= RequestMethod.GET)
+    public String index(){                                --> 单纯的网页跳转, 就不要有任何的参数
+        return "/Collected_word/Collected_word.html";
+    }
+}
+
+单纯页面跳转, 就不要加: @ResponseBody  , 不然会直接返回数据, 而不是直接跳转页面
+
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <details>
 <summary><b> 前端取后端传来的数据 </b></summary>
 
@@ -825,9 +850,10 @@ jQuery方式 ( thymeleaf ???   )
 
 
 <details>
-<summary><b> 前端 转递form表单数据 到后端 </b></summary>
+<summary><b> 前端 转递数据 到后端 </b></summary>
 
 ```  
+
 
 前端
     <form action="/file/test3" method="GET">
@@ -835,7 +861,6 @@ jQuery方式 ( thymeleaf ???   )
         <input class="btn btn-danger" type="submit" value="提交"/>
         <input type="reset" value="重置"/>
     </form>
-
 
 后端
     @Controller
@@ -846,13 +871,25 @@ jQuery方式 ( thymeleaf ???   )
         @RequestMapping(value="/test3",method=RequestMethod.GET)
         public String add(HttpServletRequest request, HttpServletResponse response){
 
-            System.err.println("asdasdasdasdasdasdasdasdasdasdasdasdasdasda");
-
             System.err.println(request.getParameter("username"));
 
             return null;
         }    
 
+
+
+
+
+或者访问地址:    
+    http://localhost:8081/Get_word/bbb?qq=11111111111111111111111
+
+后端用  request.getParameter("qq") 来接收:
+   @ResponseBody
+    @RequestMapping(value="/bbb",method= RequestMethod.GET)
+    public String add(HttpServletRequest request, HttpServletResponse response){
+        System.err.println(request.getParameter("qq"));
+        return null;
+    }
 ```
 </details>
 

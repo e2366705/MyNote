@@ -1119,13 +1119,22 @@ myMap.get("key1"); // 返回值为 "value1"
 ---
 # Others:
 <details>
-<summary><b>新窗口打开  /  原窗口打开</b></summary>
+<summary><b>新窗口打开 / 原窗口打开 / JavaScript页面跳转</b></summary>
 
 ```  
 <a href="链接的页面" target="_blank">新窗口打开</a>
 <a href="链接的页面" target="_parent">原窗口打开</a>
+
+
+window.location.href = "https://www.taobao.com";            // 本窗口打开
+window.location.href = "/Phrase_Controller/index";          // 跳转到本网页
+window.open("http://www.JD.com");                           // 新窗口打开
+
+
 ```
 </details>
+
+
 
 
 

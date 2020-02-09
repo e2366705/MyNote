@@ -221,38 +221,6 @@
 
 
 
-<details>
-<summary><b>访问路径</b></summary>
-
-```  
-静态资源一定要放在 src\main\resources\static 下面, 不要没办法访问
-
-而且一定要 重启 springBoot 服务器 , 不然静态资源没办法更新 ( 在idea下快捷键是: Ctrl + F5 )
-
-配置文件:
-application.properties:
-spring.mvc.static-path-pattern=/**
-
-html引用:
-<script src="/Remember_words/Last_Next_Words.js"></script>
-
-src\main\resources\static\Remember_words\Last_Next_Words.js
-
-Controller 访问路径 一定要加个 /  
-@RequestMapping(value="/word", method= RequestMethod.GET)
-    public String word(){
-        return "/Remember_words/Remember_word.html";
-    }
-
-
-```
-</details>
-
-
-
-
-
-
 
 
 <details>
@@ -408,6 +376,70 @@ Controller 访问路径 一定要加个 /
 
 ```
 </details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b>访问路径</b></summary>
+
+```  
+静态资源一定要放在 src\main\resources\static 下面, 不要没办法访问
+
+而且一定要 重启 springBoot 服务器 , 不然静态资源没办法更新 ( 在idea下快捷键是: Ctrl + F5 )
+
+配置文件:
+application.properties:
+spring.mvc.static-path-pattern=/**
+
+html引用:
+<script src="/Remember_words/Last_Next_Words.js"></script>
+
+src\main\resources\static\Remember_words\Last_Next_Words.js
+
+
+
+@Controller
+@RequestMapping(value="/Collected_word")
+public class Collected_word {
+    
+    @RequestMapping(value="/index", method= RequestMethod.GET)
+    public String index(){                                --> 单纯的网页跳转, 就不要有任何的参数
+        return "/Collected_word/Collected_word.html";
+    }
+}
+
+
+
+```
+</details>
+
+
+
+
+
+
+
+
+
 
 
 
@@ -621,15 +653,27 @@ public class index_controller {
 
 
 
+
 ---
 # Java + SpringBoot 前后端
 > 注意:  html文件记得加上:   
 > html xmlns:th="http://www.thymeleaf.org"
 
 <details>
-<summary><b>Ajax + springBoot + jquery</b></summary>
+<summary><b> Ajax + SpringBoot + jQuery </b></summary>
 
 ```  
+
+jQuery 中 Ajax 中 dataType 有哪些类型
+
+”xml”: 返回 XML 文档，可用 jQuery 处理
+”html”: 返回纯文本 HTML 信息；包含的 script 标签会在插入 dom 时执行
+”script”:  返回纯文本 JavaScript 代码。不会自动缓存结果。除非设置了 “cache” 参数。
+            注意：在远程请求时(不在同一个域下)，所有 POST 请求都将转为 GET 请求。（因为将使用 DOM 的 script标签来加载）
+”json”: 返回 JSON 数据 
+”jsonp”: JSONP 格式。使用 JSONP 形式调用函数时，如 “myurl?callback=?” jQuery 将自动替换 ? 为正确的函数名，以执行回调函数
+”text”: 返回纯文本字符串
+
 
 
                前端 Ajax
@@ -687,6 +731,41 @@ public class Make_word_Familiar {
 ```
 </details>
 
+
+
+
+
+
+
+
+
+<details>
+<summary><b> 用 JavaScript 取后端传来的值 </b></summary>
+
+```  
+
+后端
+@Controller
+@RequestMapping(value="/Collected_word")
+public class Collected_word {
+
+    @RequestMapping(value="/index", method= RequestMethod.GET)
+    public String index(Model model){
+        List<Tb_word> tb_words = otherDao.Get_Collected_word();
+        model.addAttribute("result" , tb_words);
+        return "/Collected_word/Collected_word.html";
+    }
+}
+
+JavaScript
+<script th:inline="javascript">
+    var results = [[${result}]];
+    console.log(results);
+</script>
+
+
+```
+</details>
 
 
 

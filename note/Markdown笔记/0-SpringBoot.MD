@@ -739,8 +739,12 @@ public class Make_word_Familiar {
 
 
 
+
+
+
+
 <details>
-<summary><b> 用 JavaScript 取后端传来的值 </b></summary>
+<summary><b> 前端取后端传来的数据 </b></summary>
 
 ```  
 
@@ -757,11 +761,53 @@ public class Collected_word {
     }
 }
 
-JavaScript
-<script th:inline="javascript">
-    var results = [[${result}]];
-    console.log(results);
-</script>
+在 thymeleaf 中使用 JavaScript 获取后台传到前台的值
+    <script th:inline="javascript">
+        var results = [[${result}]];
+        console.log(results);
+    </script>
+
+
+
+html循环遍历的方式:
+    <li th:each="result : ${result}">
+        <h3><a target="_blank"  th:href="@{/English_Article_Controller/Read_Article/(file_name=${result})}"  th:text="${result}" style="color: #5FB878; "></a></h3>
+        <!--<button class="btn" th:onlick="'getName(\''+${person.name}+'\');'">获得名字</button>-->
+    </li>
+
+
+
+
+简单取值:
+后端:
+    @GetMapping("/message")
+    public String getMessage(Model model){
+        model.addAttribute("message","This is your message");
+        return "index";
+    }
+
+前端:    
+    <p th:text="#{message}">default message</p>
+
+
+
+
+
+
+
+
+
+jQuery方式 ( thymeleaf ???   )
+    <table>
+        <tr th:each="user, interStat : ${result}">
+            <td th:text="${interStat.index}"></td>
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.phone}"></td>
+        </tr>
+    </table>    
+    ps:
+        interStat  系统自带
 
 
 ```
@@ -773,8 +819,13 @@ JavaScript
 
 
 
+
+
+
+
+
 <details>
-<summary><b>form 表单</b></summary>
+<summary><b> 前端 转递form表单数据 到后端 </b></summary>
 
 ```  
 
@@ -811,61 +862,7 @@ JavaScript
 
 
 
-<details>
-<summary><b>循环 / 遍历</b></summary>
 
-```  
-
-    <li th:each="result : ${result}">
-        <h3><a target="_blank"  th:href="@{/English_Article_Controller/Read_Article/(file_name=${result})}"  th:text="${result}" style="color: #5FB878; "></a></h3>
-        <!--<button class="btn" th:onlick="'getName(\''+${person.name}+'\');'">获得名字</button>-->
-    </li>
-
-
-jQuery方式
-<table>
-    <tr th:each="user, interStat : ${result}">
-        <td th:text="${interStat.index}"></td>
-        <td th:text="${user.id}"></td>
-        <td th:text="${user.name}"></td>
-        <td th:text="${user.phone}"></td>
-    </tr>
-</table>    
-ps:
-    interStat  系统自带
-
-
-```
-</details>
-
-
-
-
-
-<details>
-<summary><b>简单取值</b></summary>
-
-```  
-
-JavaScript 取值 (script标签中 th:inline 一定不能少，通常在取值的前后会加上不同的注释)
-<script th:inline="javascript">
-    var message = [[${result}]];
-    console.log(result);
-</script>    
-
-
-
-
-@GetMapping("/message")
-public String getMessage(Model model){
-    model.addAttribute("message","This is your message");
-    return "index";
-}
-<p th:text="#{message}">default message</p>
-
-
-```
-</details>
 
 
 

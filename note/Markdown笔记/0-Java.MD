@@ -134,13 +134,6 @@ import javazoom.jl.player.*;
         小写:
         str.toLowerCase()
 
-        返回当前时间:
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
-        System.out.println( "现在是:  " +  df.format(new Date()));// new Date()为获取当前系统时间
-
-        System.out.printf("现在是:  %66s  \n" , df.format(new Date()));
-        System.out.printf("现在是:  %-66s   " , df.format(new Date()));
-
 
     @Test
     public void test() {
@@ -250,12 +243,26 @@ import javazoom.jl.player.*;
 
 
 
+
+
         随机数:
         int min_number = 5000;
         int max_number = 9999;
         int Random_number = min_number + (int) (Math.random() * (max_number - min_number + 1000));
 
+        
+        
+        
+        返回当前时间 (小心里面有个 Date 可能会和 sql 里面的 Date 发生冲突):
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        System.out.println( "现在是:  " +  df.format(new java.util.Date()));// new Date()为获取当前系统时间
 
+        System.out.printf("现在是:  %66s  \n" , df.format(new java.util.Date()));
+        System.out.printf("现在是:  %-66s   " , df.format(new java.util.Date()));
+
+
+        
+        
         随机字符串:
         int length = 10;
         String str = "abcdefghijklm1no2pq3rs4tu5vw6xy7zA8BC9DE10FGHIJKLMNOPQRSTUVWXYZ0123456789";

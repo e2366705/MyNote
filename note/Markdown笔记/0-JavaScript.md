@@ -1200,10 +1200,27 @@ location.reload();
 <summary><b>睡眠 / 暂停</b></summary>
 
 ```  
+
+这种方法会阻塞线程, 这是最简单粗暴的实现，确实 sleep 了，也确实卡死了，CPU 会飙升
 function sleep(d){
   for(var t = Date.now();Date.now() - t <= d;);
 }
 sleep(5000); //当前方法暂停5秒
+
+
+
+第二种:  setInterval 方式实现
+var i = 0;
+var test = setInterval(function(){
+    console.log(i);
+    i++;
+    if(i == 5){
+        clearInterval(test);
+    }
+}, 1200)
+
+
+
 ```
 </details>
 

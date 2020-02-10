@@ -116,6 +116,10 @@ print("记得去掉  https://movie.douban.com/explore   中间的冒号 => :  ")
 
 ```  
 
+输出格式化:
+print('{}网址： "{}!"'.format('菜鸟教程', 'www.runoob.com'))
+print('{name}网址： {site}'.format(name='菜鸟教程', site='www.runoob.com'))
+
 
 #!/usr/bin/python3 
 # 第一个注释
@@ -247,6 +251,37 @@ isinstance(a, int)        # 返回 true or false
 
 
 
+
+
+
+
+
+
+
+
+<details>
+<summary><b> 各种转换 (字符串, 集合, 字典, 列表......) </b></summary>
+
+```  
+
+转换成字符串:
+value = ('www.runoob.com', 14)
+s = str(value)
+
+
+转换:
+list(seq)           将元组转换为列表
+
+各种转换:
+使用 list() 来转换为列表，列表为字典中的所有值:
+dict = {'Sex': 'female', 'Age': 7, 'Name': 'Zara'}
+list(dict.values())
+>>> ['female', 7, 'Zara']
+
+
+
+```
+</details>
 
 
 
@@ -398,11 +433,6 @@ rstrip()        删除字符串字符串末尾的空格.
 
 startswith(substr, beg=0,end=len(string))   检查字符串是否是以指定子字符串 substr 开头，是则返回 True，否则返回 False。
                                             如果beg 和 end 指定值，则在指定范围内检查
-
-
-
-
-
 
 
 
@@ -649,9 +679,6 @@ round(random.uniform(5, 10), 2)
                             (虽然元素不可改变,但它可以包含可变的对象，比如list列表)
                             可以使用del语句来删除整个元组 (del tup)
 
-转换:
-list(seq)           将元组转换为列表
-
 
 ```
 <details>
@@ -810,6 +837,8 @@ L[1:]	('Taobao', 'Runoob')	截取元素，从第二个开始后的所有元素
 
 
 
+
+
 <details>
 <summary><b> Dictionary(字典) </b></summary>
 
@@ -902,14 +931,10 @@ dict['Name']                            取值
 
 
 
-各种转换:
-使用 list() 来转换为列表，列表为字典中的所有值:
-dict = {'Sex': 'female', 'Age': 7, 'Name': 'Zara'}
-list(dict.values())
->>> ['female', 7, 'Zara']
 
 
 
+获取 key :
 dict = {'Name': 'Runoob', 'Age': 7}
 dict.keys()
 >>> dict_keys(['Name', 'Age'])
@@ -1275,6 +1300,114 @@ printinfo(1, a=2,b=3)
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> IO </b></summary>
+
+``` 
+
+
+------------------------------    读写:
+r+	打开一个文件用于读写。文件指针将会放在文件的开头
+
+rb+	以二进制格式打开一个文件用于读写。文件指针将会放在文件的开头
+
+w+	打开一个文件用于读写。如果该文件已存在则打开文件，并从开头开始编辑，即原有内容会被删除。如果该文件不存在，创建新文件
+
+wb+	以二进制格式打开一个文件用于读写。
+    如果该文件已存在则打开文件，并从开头开始编辑，即原有内容会被删除。如果该文件不存在，创建新文件
+
+a+	打开一个文件用于读写。如果该文件已存在，文件指针将会放在文件的结尾。
+    文件打开时会是追加模式。如果该文件不存在，创建新文件用于读写
+
+
+
+
+
+------------------------------    只读:
+r	以只读方式打开文件。文件的指针将会放在文件的开头。这是默认模式
+
+rb	以二进制格式打开一个文件用于只读。文件指针将会放在文件的开头
+
+
+
+
+
+------------------------------    只写:
+w	打开一个文件只用于写入。如果该文件已存在则打开文件，并从开头开始编辑，即原有内容会被删除。如果该文件不存在，创建新文件。
+
+wb	以二进制格式打开一个文件只用于写入。
+    如果该文件已存在则打开文件，并从开头开始编辑，即原有内容会被删除。如果该文件不存在，创建新文件
+
+
+
+
+
+------------------------------    追加:
+ab+	以二进制格式打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。如果该文件不存在，创建新文件用于读写。
+
+a	打开一个文件用于追加。
+    如果该文件已存在，文件指针将会放在文件的结尾。
+    也就是说，新的内容将会被写入到已有内容之后。如果该文件不存在，创建新文件进行写入
+
+ab	以二进制格式打开一个文件用于追加。
+    如果该文件已存在，文件指针将会放在文件的结尾。
+    也就是说，新的内容将会被写入到已有内容之后。如果该文件不存在，创建新文件进行写入
+
+
+
+基本示例 - 写:
+f = open("/tmp/foo.txt", "w")
+f.write( "Python 是一个非常好的语言。\n是的，的确非常好!!\n" )
+f.close()
+
+
+
+基本示例 - 读:
+f = open("/tmp/foo.txt", "r")
+str = f.read()
+print(str)
+f.close()
+
+
+
+
+
+
+```
+</details>
+
+
+
+
+
+
+
 <details>
 <summary><b>About SQL (数据库 MySQL)</b></summary>
 
@@ -1345,6 +1478,38 @@ db.close()
 
 
 
+
+
+
+
+
+
+<details>
+<summary><b> try / cache </b></summary>
+
+```  
+
+捕获异常
+python 并不是 try/cache , 而是 try/except
+
+while True:
+    try:
+        x = int(input("请输入一个数字: "))
+        break
+    except ValueError:
+        print("您输入的不是数字，请再次尝试输入！")
+
+
+try-finally 语句无论是否发生异常都将执行最后的代码。        
+
+使用 raise 语句抛出一个指定的异常:
+x = 10
+if x > 5:
+    raise Exception('x 不能大于 5。x 的值为: {}'.format(x))
+
+
+```
+</details>
 
 
 

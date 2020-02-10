@@ -1026,6 +1026,150 @@ Collection 主要有三个子接口,分别为:
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> Java Array、List、Set互相转化 </b></summary>
+
+```  
+
+
+Array / Set
+-----------------------------------------------------------------------------
+Array -> Set
+    String[] arr = {"AA","BB","DD","CC","BB"};
+    Set<String> set = new HashSet<String>(Arrays.asList(arr));  
+
+Set -> Array
+	String[] arr = new String[set.size()]; 
+    set.toArray(arr); 
+
+
+
+
+
+
+
+
+
+
+
+List / Set:
+-----------------------------------------------------------------------------
+
+List -> Set
+    Set<String> set = new HashSet<>(list);
+
+Set -> List
+    List<String> list_1 = new ArrayList<>(set);
+
+被转换的List(Set)的修改不会对被转化后的Set（List）造成影响
+
+
+
+
+
+
+
+
+
+List / Array
+-----------------------------------------------------------------------------
+List -> Array
+    List<String> list = new ArrayList<String>();  
+    list.add("AA");  
+    list.add("BB");  
+    list.add("CC");  
+    Object[] objects = list.toArray();//返回Object数组  
+    
+    String[] arr = new String[list.size()];  
+    list.toArray(arr);  //将转化后的数组放入已经创建好的对象中  
+
+
+Array -> List
+    String[] ss = {"JJ","KK"};  
+    List<String> list1 = Arrays.asList(ss);  
+    List<String> list2 = Arrays.asList("AAA","BBB");  
+
+
+
+
+
+
+
+
+
+
+Map / List / Set
+-----------------------------------------------------------------------------
+将 Map Key 转化为List
+    List<String> mapKeyList = new ArrayList<String>(map.keySet());  
+
+将 Map Key 转化为List
+    List<String> mapValuesList = new ArrayList<String>(map.values());  
+
+    将Map 的键转化为Set
+        Set<String> mapKeySet = map.keySet();  
+        
+    将Map 的值转化为Set
+        Set<String> mapValuesSet = new HashSet<String>(map.values());  
+
+
+
+
+
+
+
+Array -> List
+    String[] s = new String[]{"A", "B", "C", "D","E"};
+    List<String> list = Arrays.asList(s);
+    注意: 这里对s的修改，直接影响list 的数据
+    s[0] ="AA";
+    System.out.println("list: " + list);
+    >>> list: [AA, B, C, D, E]
+
+List -> Array
+    String[] dest = list.toArray(new String[0]);//new String[0]是指定返回数组的类型
+    System.out.println("dest: " + Arrays.toString(dest));
+    >>>  [AA, B, C, D, E]
+    注意这里的dest里面的元素不是list里面的元素，换句话就是说：对list中关于元素的修改，不会影响dest
+
+
+
+
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <details>
 <summary><b>Collection ( List Set )</b></summary>
 

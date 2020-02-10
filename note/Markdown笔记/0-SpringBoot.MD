@@ -786,6 +786,10 @@ public class Collected_word {
     }
 }
 
+
+
+注意:  不要忘了  <script th:inline="javascript">  不然没办法解析
+
 在 thymeleaf 中使用 JavaScript 获取后台传到前台的值
     <script th:inline="javascript">
         var results = [[${result}]];

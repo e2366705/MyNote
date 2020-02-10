@@ -38,21 +38,35 @@
 =====================================================================================================
 
 
+html:
     <div id="movieList"></div>
-    
 
-        var movies = [
-            { Name: "The Red Violin", ReleaseYear: "1998" },
-            { Name: "Eyes Wide Shut", ReleaseYear: "1999" },
-            { Name: "The Inheritance", ReleaseYear: "1976" }
-        ];
+JavaScript:    
+    var movies = [
+        { Name: "The Red Violin", ReleaseYear: "1998" },
+        { Name: "Eyes Wide Shut", ReleaseYear: "1999" },
+        { Name: "The Inheritance", ReleaseYear: "1976" }
+    ];
 
-        var markup = "<li>${Name} --  ${ReleaseYear}</li>";
+    var markup = "<li>${Name} --  ${ReleaseYear}</li>";
+    $.template("movieTemplate", markup);
+    $.tmpl("movieTemplate", movies).appendTo("#movieList");
 
-        $.template("movieTemplate", markup);
+页面 html 输出:
+    The Red Violin -- 1998
+    Eyes Wide Shut -- 1999
+    The Inheritance -- 1976    
 
-        $.tmpl("movieTemplate", movies).appendTo("#movieList");
 
+
+
+这种情况怎么搞???  一维数组...
+怎么依次取值遍历?
+     var movies =  ["2020-02-10", "2020-02-08", "2020-02-09"]
+     var markup = "<li>???</li>";
+
+    $.template("movieTemplate", markup);
+    $.tmpl("movieTemplate", movies).appendTo("#movieList");
 
 
 

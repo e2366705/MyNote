@@ -1221,18 +1221,18 @@ console.log(test2);
 >>> ?Date=2020-02-10
 
 
+获取url中的参数值*
+    console.log(GetQueryString("Date"));
+    >>> 2020-02-10
 
-console.log(GetQueryString("Date"));
->>> 2020-02-10
-
-function GetQueryString(name) {
-    var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
-    var r = window.location.search.substr(1).match(reg);
-    if (r != null) {
-        return unescape(r[2]);
+    function GetQueryString(name) {
+        var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) {
+            return unescape(r[2]);
+        }
+        return null;
     }
-    return null;
-}
 
 
 

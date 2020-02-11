@@ -222,29 +222,6 @@ import javazoom.jl.player.*;
 
 
 
-    // 判断这个文件夹里面, 哪个是文件, 哪个是文件夹
-    public static ArrayList<String> getFiles(String path) {
-        ArrayList<String> files = new ArrayList<String>();
-        File file = new File(path);
-        File[] tempList = file.listFiles();
-
-        for (int i = 0; i < tempList.length; i++) {
-            if (tempList[i].isFile()) {
-                System.out.println("文 件： " + tempList[i]);
-                files.add(tempList[i].toString());
-            }
-            if (tempList[i].isDirectory()) {
-                System.out.println("文件夹：" + tempList[i]);
-            }
-        }
-        return files;
-    }
-    }
-
-
-
-
-
         随机数:
         int min_number = 5000;
         int max_number = 9999;
@@ -276,17 +253,19 @@ import javazoom.jl.player.*;
 
 
 
-        截取字符串(最后2位 / 排除最后2位)
+截取字符串:
+    原字符: 123456789
+    
         String strhours = String.valueOf(123456789);
 
-        // 截取最后2位 => 89
+        // 截取最后2位
         String aaa = strhours.substring(strhours.length() -2, strhours.length());   //截取
+        >>> 89
 
-        // 排除最后2位 => 1234567
+        // 排除最后2位
         String bbb = strhours.substring(0,strhours.length()-2);   //截掉
+        >>> 1234567
 
-        System.out.println(aaa);
-        System.out.println(bbb);
 
 
 
@@ -381,6 +360,58 @@ import javazoom.jl.player.*;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> 文件夹 / 文件 / 文件目录 </b></summary>
+
+```  
+
+    // 判断这个文件夹里面, 哪个是文件, 哪个是文件夹
+    public static ArrayList<String> getFiles(String path) {
+        ArrayList<String> files = new ArrayList<String>();
+        File file = new File(path);
+        File[] tempList = file.listFiles();
+
+        for (int i = 0; i < tempList.length; i++) {
+            if (tempList[i].isFile()) {
+                System.out.println("文 件： " + tempList[i]);
+                files.add(tempList[i].toString());
+            }
+            if (tempList[i].isDirectory()) {
+                System.out.println("文件夹：" + tempList[i]);
+            }
+        }
+        return files;
+    }
+
+
+
+文件路径中获取文件名:
+        String file_Name =" G:\\Java_Source\\navigation_tigra_menu\\demo1\\img\\lev1_arrow.gif ";
+        File tempFile =new File( file_Name.trim());
+        String fileName = tempFile.getName();
+        System.err.println("fileName = " + fileName);
+
+
+```
+</details>
 
 
 

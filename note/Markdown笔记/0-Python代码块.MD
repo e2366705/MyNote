@@ -417,6 +417,20 @@ isalpha()        如果字符串至少有一个字符并且所有字符都是字
 
 isdigit()       如果字符串只包含数字则返回 True 否则返回 False..
 
+str.isdigit())  判断所有字符都是数字
+
+str.isalnum()   判断所有字符都是数字或者字母
+
+str.isalpha()   判断所有字符都是字母
+
+str.isupper()   判断所有字符都是大写
+
+str.islower()   判断所有字符都是小写
+
+str.istitle()   判断所有单词都是首字母大写，像标题
+
+str.isspace()   判断所有字符都是空白字符、\t、\n、\r
+
 isnumeric()     如果字符串中只包含数字字符，则返回 True，否则返回 False
 
 len(string)     返回字符串长度
@@ -1535,6 +1549,56 @@ if x > 5:
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> 面向对象  </b></summary>
+
+```  
+
+__init__ 方法:
+类有一个名为 __init__() 的特殊方法（构造方法），该方法在类实例化时会自动调用，像下面这样：
+def __init__(self):
+    self.data = []
+类定义了 __init__() 方法，类的实例化操作会自动调用 __init__() 方法    
+
+
+类的方法与普通的函数只有一个特别的区别: 
+    它们必须有一个额外的第一个参数名称, 按照惯例它的名称是 self (这个是自己自定义的)
+    self 代表的是类的实例，代表当前对象的地址，而 self.class 则指向类
+class Test:
+    def prt(self):
+        print(self)
+        print(self.__class__)
+ 
+t = Test()
+t.prt()
+
+
+类的私有属性:
+    __private_attrs：
+        两个下划线开头，声明该属性为私有 , 不能在类的外部被使用或直接访问。
+        在类内部的方法中使用时 self.__private_attrs
+
+类的私有方法:
+    __private_method：两个下划线开头，声明该方法为私有方法，只能在类的内部调用 ,
+    不能在类的外部调用。self.__private_methods
+
+
+
+
+```
+</details>
 
 
 

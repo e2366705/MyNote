@@ -125,6 +125,76 @@ import javazoom.jl.player.*;
 
 
 <details>
+<summary><b> 网络 / URI / URL / 链接地址 </b></summary>
+
+```  
+
+
+    // 完整请求连接:     http://localhost:8085/TTS?word=miss
+    // -----------------------------------------------------------------------------------
+    //   getRequestURL :  http://localhost:8085/TTS
+    System.err.println("getRequestURL :  "+request.getRequestURL());
+
+    //  getRequestURI :  /TTS
+    System.err.println("getRequestURI :  "+request.getRequestURI());
+
+    // 当前链接使用的协议 : http
+    System.err.println("getScheme (当前链接使用的协议  )  :  " +  request.getScheme());
+
+    //  服务器地址   :  localhost
+    System.err.println("getServerName:  " + request.getServerName());
+
+    //   端口号:  8085
+    System.err.println("getServerPort (端口号):  " +  request.getServerPort());
+
+    //   请求的相对url :  /TTS
+    System.err.println("getServletPath (请求的相对url)  :  " +  request.getServletPath());
+
+    // 额外参数   word=miss  返回 : miss
+    System.err.println(request.getParameter("word"));
+
+    // 目前未知
+    System.err.println("getContextPath:  " + request.getContextPath());
+
+
+
+
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
 <summary><b>字符串是否含有英文 / 中文 / 数字 / 替换/ 时间 / 随机数 / 随机字符串 / 截取字符串</b></summary>
 
 ```  

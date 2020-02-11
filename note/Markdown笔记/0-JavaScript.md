@@ -327,17 +327,21 @@ for (var i in obj_list){
 <summary><b>获取 点击的节点 的属性 ( this target e)</b></summary>
 
 ```  
+
+第一种方式:
     <h1 onclick="changetext(this)">点击文本!------111</h1>
-
-    <h1 id="test001">点击文本!------222</h1>
-
     function changetext(ev) {
         ev.innerHTML = "Ooops!";
     }
 
+第二种方式:
+    <h1 id="test001">点击文本!------222</h1>
     document.getElementById("test001").onclick = function(e){
         e.target.innerHTML = "222222222";
     }
+
+
+    
 ```
 </details>
 
@@ -1242,6 +1246,9 @@ console.log(test2);
 
 
 
+
+
+
 <details>
 <summary><b>睡眠 / 暂停</b></summary>
 
@@ -1751,10 +1758,10 @@ window.open(url, '_blank').location;
 
 <input id="date" type="date" onchange="fn()" value="" placeholder="取款日期填写今日往后三天的时间">
 当日历发生变化时候, 获取当前选择的日期:
-    function fn() {
-        var date = document.getElementById('date').value;
-        console.log(date);
-    }    
+function fn() {
+    var date = document.getElementById('date').value;
+    console.log(date);
+}    
 
 
 

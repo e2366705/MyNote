@@ -1196,6 +1196,52 @@ location.reload();
 
 
 
+
+
+<details>
+<summary><b>获取页面URL信息 (当前页面链接地址) </b></summary>
+
+```  
+
+
+参考资料:  https://www.jianshu.com/p/073f79c5e438
+
+完整链接:  http://localhost:8081/Word/Remember?Date=2020-02-10
+
+var test = window.location.href;
+console.log(test);
+>>> http://localhost:8081/Word/Remember?Date=2020-02-10
+
+var test1 = window.location.pathname;
+console.log(test1);
+>>> /Word/Remember
+
+var test2 = window.location.search;
+console.log(test2);
+>>> ?Date=2020-02-10
+
+
+
+console.log(GetQueryString("Date"));
+>>> 2020-02-10
+
+function GetQueryString(name) {
+    var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) {
+        return unescape(r[2]);
+    }
+    return null;
+}
+
+
+
+```
+</details>
+
+
+
+
 <details>
 <summary><b>睡眠 / 暂停</b></summary>
 

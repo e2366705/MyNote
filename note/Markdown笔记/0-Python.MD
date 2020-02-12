@@ -1229,6 +1229,13 @@ print(a ^ b)     # a 和 b 中不同时存在的元素
 
 ```
 </details>
+
+
+
+
+
+
+
 ---
 
 
@@ -1297,6 +1304,7 @@ print(a ^ b)     # a 和 b 中不同时存在的元素
 
 
 
+# Other:
 
 <details>
 <summary><b> 迭代器与生成器 </b></summary>

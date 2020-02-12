@@ -1468,10 +1468,6 @@ print(str)
 f.close()
 
 
-
-
-
-
 ```
 </details>
 
@@ -1496,7 +1492,7 @@ f.close()
 
 
 <details>
-<summary><b>About SQL (数据库 MySQL)</b></summary>
+<summary><b> About SQL (数据库 MySQL)</b></summary>
 
 ```  
 
@@ -1568,6 +1564,18 @@ db.close()                  # 关闭数据库连接
 
 
 删
+#!/usr/bin/python3
+import pymysql
+# 打开数据库连接                    账户    密码         数据库名称
+db = pymysql.connect("localhost", "root", "root", "zzza9d2g5k4t1b0k")
+cursor = db.cursor()            # 使用cursor()方法获取操作游标
+sql = "DELETE FROM user WHERE username = '%s'  " % ('OPPO')      # SQL 删除语句
+try:
+   cursor.execute(sql)          # 执行SQL语句
+   db.commit()                  # 提交修改
+except:
+   db.rollback()                # 发生错误时回滚
+db.close()                      # 关闭数据库连接
 
 
 
@@ -1578,7 +1586,18 @@ db.close()                  # 关闭数据库连接
 
 
 改
-
+#!/usr/bin/python3
+import pymysql
+# 打开数据库连接                    账户    密码         数据库名称
+db = pymysql.connect("localhost", "root", "root", "zzza9d2g5k4t1b0k")
+cursor = db.cursor()            # 使用cursor()方法获取操作游标
+sql = "UPDATE user SET password = 'R12'  WHERE username = '%s'  " % ('OPPO')      # SQL 更新语句
+try:
+   cursor.execute(sql)          # 执行SQL语句
+   db.commit()                  # 提交到数据库执行
+except:
+   db.rollback()                # 发生错误时回滚
+db.close()                      # 关闭数据库连接
 
 
 
@@ -1610,14 +1629,52 @@ db.close()                      # 关闭数据库连接
 
 
 
+
+
+用面向对象的思维来写:
+import pymysql
+class DB():
+    def __init__(self, host='localhost', port=3306, db='', user='root', passwd='root', charset='utf8'):
+        self.conn = pymysql.connect(host=host, port=port, db=db, user=user, passwd=passwd, charset=charset)  # 建立连接
+        self.cur = self.conn.cursor(cursor = pymysql.cursors.DictCursor)   # 创建游标，操作设置为字典类型
+
+    def __enter__(self):
+        return self.cur    # 返回游标
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self.conn.commit()    # 提交数据库并执行
+        self.cur.close()      # 关闭游标
+        self.conn.close()     # 关闭数据库连接
+
+if __name__ == '__main__':
+    with DB(host='localhost',user='root',passwd='root',db='zzza9d2g5k4t1b0k') as db:
+        db.execute('select * from user')
+        print(db)
+        for i in db:
+            print(i)
+
+
+
+
+
+
+
+
+
+以下代码使用变量向SQL语句中传递参数:
+好像 %s 要带上单引号?
 user_id = "test123"
 password = "password"
+con.execute('insert into Login values( %s,  %s)' % \(user_id, password))
+sql = "DELETE FROM user WHERE username = '%s'  " % ('OPPO')       要带上单引号?
 
-con.execute('insert into Login values( %s,  %s)' % \
-             (user_id, password))
+
 
 ```
 </details>
+
+
+
 
 
 

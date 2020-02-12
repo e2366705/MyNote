@@ -55,8 +55,10 @@ methods 用于定义的函数，可以通过 return 来返回函数值
 		var vm = new Vue({
 			el: '#vue_det',
 			data: {
-				site: "菜鸟教程",
-				url: "www.runoob.com"
+				site: "菜鸟教程",					// 可以是字符串
+				url: "www.runoob.com",			   
+				checkedNames: [],					// 可以是 array
+				checked : true,						// 可以是 bool 布尔
 			},
 			methods: {
 				details: function() {
@@ -87,22 +89,138 @@ v-html:
 	</script>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 v-bind:
+		资料来源:   https://www.runoob.com/vue2/vue-class-style.html
+v-bind 来设置样式属性 , 比如:
+	class
+	id
+	href		<a v-bind:href="url">菜鸟教程</a>
+
 	HTML 属性中的值应使用 v-bind 指令
 			完整语法:
 				<a v-bind:href="url"></a>
 			缩写:
 				<a :href="url"></a>
-		比如:
-			class
-			id
-			href		<a v-bind:href="url">菜鸟教程</a>
+
+案例:
+isActive 设置为 true 显示了一个绿色的 div 块，如果设置为 false 则不显示：
+	.active {
+		width: 100px;
+		height: 100px;
+		background: green;
+	}
+	div v-bind:class="{ active: isActive }"></div>
+	data: {
+		isActive: true
+	}
+
+											.text-danger {background: GREEN;}
+<div class="static" v-bind:class="{ active: 'text-danger': true }"></div>	
+<div class="static active text-danger"></div>			// 编译后的 div 的 class
+
+ v-bind:style 直接设置样式:
+	<div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }">菜鸟教程</div>
+	编译后:
+	<div style="color: green; font-size: 30px;">菜鸟教程</div>
+
+直接绑定到一个样式对象，让模板更清晰：
+<div v-bind:style="styleObject">菜鸟教程</div>
+data: {
+    styleObject: {
+      color: 'green',
+      fontSize: '30px'
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 v-model:
+	资料来源:   https://www.runoob.com/vue2/vue-forms.html
 	v-model 指令用来在 input、select、textarea、checkbox、radio 等表单控件元素上创建双向数据绑定
-	<p>{{ message }}</p>
-	<input v-model="message">
+
+案例 1
+<p>{{ message }}</p>
+<input v-model="message">
+data: {
+	message: 'Runoob'
+}
+
+
+案例 2
+<input type="checkbox" id="checkbox" v-model="checked">
+<label for="checkbox">{{ checked }}</label>
+data: {
+	checked : true
+}
+
+
+案例 3
+ <select v-model="selected" name="fruit">
+    <option value="">选择一个网站</option>
+    <option value="www.runoob.com">Runoob</option>
+    <option value="www.google.com">Google</option>
+  </select>
+
+   <div id="output">
+      选择的网站是: {{selected}}
+  </div>
+
+   data: {
+	selected: '' 
+  }
+
+
+.number
+如果想自动将用户的输入值转为 Number 类型（如果原值的转换结果为 NaN 则返回原值），
+可以添加一个修饰符 number 给 v-model 来处理输入值：
+
+<input v-model.number="age" type="number">
+这通常很有用，因为在 type="number" 时 HTML 中输入的值也总是会返回字符串类型。
+
+.trim
+如果要自动过滤用户输入的首尾空格，可以添加 trim 修饰符到 v-model 上过滤输入：
+<input v-model.trim="msg">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 v-on:
@@ -112,6 +230,55 @@ v-on:
 		<a v-on:click="doSomething"></a>
 	缩写:
 		<a @click="doSomething"></a>
+
+案例:
+<button v-on:click="counter += 1">增加 1</button>
+<p>这个按钮被点击了 {{ counter }} 次。</p>	
+data: {
+    counter: 0
+}	
+
+
+<!-- greet 是在下面定义的方法名 -->
+<button v-on:click="greet">Greet</button>
+  data: {
+    name: 'Vue.js'
+  },
+  // 在 `methods` 对象中定义方法
+  methods: {
+    greet: function (event) {
+      // `this` 在方法里指当前 Vue 实例
+      alert('Hello ' + this.name + '!')
+      // `event` 是原生 DOM 事件
+	  if (event) {
+		  alert(event.target.tagName)
+	  }
+    }
+  }
+
+
+方法传值: 
+<button v-on:click="say('hi')">Say hi</button>
+<button v-on:click="say('what')">Say what</button>
+
+  methods: {
+    say: function (message) {
+      alert(message)
+    }
+  }
+
+
+<!-- 只有在 keyCode 是 13 时调用 vm.submit() -->
+<input v-on:keyup.13="submit">
+
+<!-- 同上 -->
+<input v-on:keyup.enter="submit">
+
+
+
+
+
+
 
 
 
@@ -215,10 +382,56 @@ Vue.js 监听属性
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 <details>
-<summary><b>my_name_is_jack</b></summary>
+<summary><b>  键盘事件  </b></summary>
 
 ```  
+
+
+<!-- 只有在 keyCode 是 13 时调用 vm.submit() -->
+<input v-on:keyup.13="submit">
+
+
+记住所有的 keyCode 比较困难，所以 Vue 为最常用的按键提供了别名：
+<!-- 同上 -->
+<input v-on:keyup.enter="submit">
+
+
+全部的按键别名：
+.enter
+.tab
+.delete (捕获 "删除" 和 "退格" 键)
+.esc
+.space
+.up
+.down
+.left
+.right
+.ctrl
+.alt
+.shift
+.meta
+实例
+
+<p><!-- Alt + C -->
+<input @keyup.alt.67="clear">
+<!-- Ctrl + Click -->
+<div @click.ctrl="doSomething">Do something</div>
+
+
+
+
 
 ```
 </details>

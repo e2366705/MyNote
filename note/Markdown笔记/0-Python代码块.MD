@@ -1554,6 +1554,157 @@ if x > 5:
 
 
 
+<details>
+<summary><b> 正则表达式 </b></summary>
+
+```  
+
+前言:
+    re.I 忽略大小写
+    re.L 表示特殊字符集 \w, \W, \b, \B, \s, \S 依赖于当前环境
+    re.M 多行模式
+    re.S 即为' . '并且包括换行符在内的任意字符（' . '不包括换行符）
+    re.U 表示特殊字符集 \w, \W, \b, \B, \d, \D, \s, \S 依赖于 Unicode 字符属性数据库
+    re.X 为了增加可读性，忽略空格和' # '后面的注释
+
+
+
+
+
+import re
+print(re.match('www', 'www.runoob.com').span())  # 在起始位置匹配
+print(re.match('com', 'www.runoob.com'))         # 不在起始位置匹配
+>>> 
+(0, 3)
+None
+
+
+line = "Cats are smarter than dogs"
+matchObj = re.match( r'(.*) are (.*?) .*', line, re.M|re.I)      # .* 表示任意匹配除换行符（\n、\r）之外的任何单个或多个字符
+ 
+if matchObj:
+   print ("matchObj.group() : ", matchObj.group())          >>> Cats are smarter than dogs
+   print ("matchObj.group(1) : ", matchObj.group(1))        >>> Cats
+   print ("matchObj.group(2) : ", matchObj.group(2))        >>> smarter
+else:
+   print ("No match!!")
+
+
+
+
+re.search方法
+    扫描整个字符串并返回第一个成功的匹配
+
+
+
+
+
+
+
+
+
+检索和替换
+    re.sub用于替换字符串中的匹配项
+import re
+phone = "2004-959-559 # 这是一个电话号码"
+
+# 删除注释
+num = re.sub(r'#.*$', "", phone)
+>>> 2004-959-559
+
+# 移除非数字的内容
+num = re.sub(r'\D', "", phone)
+>>> 2004959559
+
+
+
+
+
+compile 函数
+    用于编译正则表达式，生成一个正则表达式（ Pattern ）对象，供 match() 和 search() 这两个函数使用
+
+pattern = re.compile(r'\d+')                    # 用于匹配至少一个数字
+pattern.match('one12twothree34four')            # 默认从头部查找，没有匹配
+
+import re
+pattern = re.compile(r'\d+')                                     用于匹配至少一个数字
+m = pattern.match('one123456789twothree34four', 3, 99)           3, 99 意思是:  从哪里开始查找, 到哪里结束
+print(m.group(0))               >>> 123456
+print(m.start(0))               >>> 3
+print(m.end(0))                 >>> 9
+print(m.span(0))                >>> (3, 9)
+
+
+
+
+pattern = re.compile(r'([a-z]+) ([a-z]+)', re.I)   # re.I 表示忽略大小写
+m = pattern.match('Hello World Wide Web')
+m.group(0)                  >>> 'Hello World'
+m.group(2)                  >>> 'World'             返回第二个分组匹配成功的子串
+
+
+
+
+findall
+    在字符串中找到正则表达式所匹配的所有子串，并返回一个列表，如果没有找到匹配的，则返回空列表
+
+re.findall(string[, pos[, endpos]])
+    string 待匹配的字符串
+    pos 可选参数，指定字符串的起始位置，默认为 0
+    endpos 可选参数，指定字符串的结束位置，默认为字符串的长度
+
+import re
+pattern = re.compile(r'\d+')   # 查找数字
+result1 = pattern.findall('runoob 123 google 456')              >>> ['123', '456']
+result2 = pattern.findall('run88oob123google456', 0, 10)        >>> ['88', '12']
+
+
+finditer
+    和 findall 类似，在字符串中找到正则表达式所匹配的所有子串，并把它们作为一个迭代器返回
+import re
+it = re.finditer(r"\d+","12a32bc43jf3") 
+for match in it: 
+    print (match.group() )    
+>>>
+12 
+32 
+43 
+3    
+
+
+
+
+
+
+
+区别:
+    re.match 与 re.search的区别:
+        re.match只匹配字符串的开始，如果字符串开始不符合正则表达式，则匹配失败，函数返回None , 
+        而re.search匹配整个字符串，直到找到一个匹配
+
+    match 和 search 是匹配一次 
+    findall 匹配所有
+
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

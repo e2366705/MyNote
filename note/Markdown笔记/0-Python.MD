@@ -111,10 +111,13 @@ print("记得去掉  https://movie.douban.com/explore   中间的冒号 => :  ")
 
 
 
+---
+# 基础:
 <details>
-<summary><b>基础 / 字符串 / 日期时间</b></summary>
+<summary><b>基础</b></summary>
 
 ```  
+
 
 输出格式化:
 print('{}网址： "{}!"'.format('菜鸟教程', 'www.runoob.com'))
@@ -210,8 +213,6 @@ print(type(a))
 isinstance(a, int)        # 返回 true or false
 
 
-
-
 ```
 </details>
 
@@ -222,33 +223,32 @@ isinstance(a, int)        # 返回 true or false
 
 
 
+<details>
+<summary><b> try / cache </b></summary>
+
+```  
+
+捕获异常
+python 并不是 try/cache , 而是 try/except
+
+while True:
+    try:
+        x = int(input("请输入一个数字: "))
+        break
+    except ValueError:
+        print("您输入的不是数字，请再次尝试输入！")
 
 
+try-finally 语句无论是否发生异常都将执行最后的代码。        
+
+使用 raise 语句抛出一个指定的异常:
+x = 10
+if x > 5:
+    raise Exception('x 不能大于 5。x 的值为: {}'.format(x))
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+```
+</details>
 
 
 
@@ -260,28 +260,137 @@ isinstance(a, int)        # 返回 true or false
 
 
 <details>
-<summary><b> 各种转换 (字符串, 集合, 字典, 列表......) </b></summary>
+<summary><b> 函数: </b></summary>
 
 ```  
 
-转换成字符串:
-value = ('www.runoob.com', 14)
-s = str(value)
+函数参数的使用不需要使用指定顺序：
+def printinfo( name, age ):
+   "打印任何传入的字符串"
+   print ("名字: ", name)
+   print ("年龄: ", age)
+   return
+ 
+#调用printinfo函数
+printinfo( age=50, name="runoob" )
+
+默认参数
+调用函数时，如果没有传递参数，则会使用默认参数。以下实例中如果没有传入 age 参数，则使用默认值:
+def printinfo( name, age = 35 ):
+   print ("名字: ", name)
+   print ("年龄: ", age)
+   return
 
 
-转换:
-list(seq)           将元组转换为列表
+不定长参数 ( 一个 * 号 ):
+def printinfo( arg1, *vartuple ):
+   "打印任何传入的参数"
+   print ("输出: ")
+   print (arg1)
+   print (vartuple)
 
-各种转换:
-使用 list() 来转换为列表，列表为字典中的所有值:
-dict = {'Sex': 'female', 'Age': 7, 'Name': 'Zara'}
-list(dict.values())
->>> ['female', 7, 'Zara']
+printinfo( 70, 60, 50 )
+输出: 
+70
+(60, 50)
 
+
+
+加了两个星号 ** 的参数会以字典的形式导入
+def printinfo( arg1, **vardict ):
+   "打印任何传入的参数"
+   print ("输出: ")
+   print (arg1)
+   print (vardict)
+ 
+# 调用printinfo 函数
+printinfo(1, a=2,b=3)
+输出: 
+1
+{'a': 2, 'b': 3}
 
 
 ```
 </details>
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> 循环: </b></summary>
+
+```  
+
+
+languages = ["C", "C++", "Perl", "Python"] 
+for x in languages:
+     print (x)
+
+
+for i in range(5):
+     print(i)
+
+输出:
+0
+1
+2
+3
+4
+
+
+也可以使用range指定区间的值：
+for i in range(5,9) :
+    print(i)
+
+
+也可以使range以指定数字开始并指定不同的增量(甚至可以是负数，有时这也叫做'步长'):
+for i in range(0, 10, 3) 
+
+break 语句可以跳出 for 和 while 的循环体。
+如果你从 for 或 while 循环中终止，任何对应的循环 else 块将不执行。
+
+continue 语句被用来告诉 Python 跳过当前循环块中的剩余语句，然后继续进行下一轮循环
+
+
+```
+</details>
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -683,6 +792,9 @@ round(random.uniform(5, 10), 2)
 
 ---
 # List(列表) / Tuple(元组) / Set(集合) / Dictionary(字典)
+<details>
+<summary><b> 简介 </b></summary>
+
 ```  
 
 总结:
@@ -693,8 +805,52 @@ round(random.uniform(5, 10), 2)
                             (虽然元素不可改变,但它可以包含可变的对象，比如list列表)
                             可以使用del语句来删除整个元组 (del tup)
 
+```
+</details>
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> 各种转换 (字符串, 集合, 字典, 列表......) </b></summary>
+
+```  
+
+转换成字符串:
+value = ('www.runoob.com', 14)
+s = str(value)
+
+
+转换:
+list(seq)           将元组转换为列表
+
+各种转换:
+使用 list() 来转换为列表，列表为字典中的所有值:
+dict = {'Sex': 'female', 'Age': 7, 'Name': 'Zara'}
+list(dict.values())
+>>> ['female', 7, 'Zara']
+
+
 
 ```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
 <details>
 <summary><b> List(列表) </b></summary>
 
@@ -1074,6 +1230,7 @@ print(a ^ b)     # a 和 b 中不同时存在的元素
 
 ```
 </details>
+---
 
 
 
@@ -1106,50 +1263,6 @@ print(a ^ b)     # a 和 b 中不同时存在的元素
 
 
 
-
-
-
-
-<details>
-<summary><b> 循环 </b></summary>
-
-```  
-
-languages = ["C", "C++", "Perl", "Python"] 
-for x in languages:
-     print (x)
-
-
-for i in range(5):
-     print(i)
-
-输出:
-0
-1
-2
-3
-4
-
-
-也可以使用range指定区间的值：
-for i in range(5,9) :
-    print(i)
-
-
-也可以使range以指定数字开始并指定不同的增量(甚至可以是负数，有时这也叫做'步长'):
-for i in range(0, 10, 3) 
-
-
-
-
-break 语句可以跳出 for 和 while 的循环体。
-如果你从 for 或 while 循环中终止，任何对应的循环 else 块将不执行。
-
-continue 语句被用来告诉 Python 跳过当前循环块中的剩余语句，然后继续进行下一轮循环
-
-
-```
-</details>
 
 
 
@@ -1231,67 +1344,6 @@ while True:
 
 
 
-
-
-
-
-
-
-<details>
-<summary><b>  函数  </b></summary>
-
-```  
-
-
-函数参数的使用不需要使用指定顺序：
-def printinfo( name, age ):
-   "打印任何传入的字符串"
-   print ("名字: ", name)
-   print ("年龄: ", age)
-   return
- 
-#调用printinfo函数
-printinfo( age=50, name="runoob" )
-
-默认参数
-调用函数时，如果没有传递参数，则会使用默认参数。以下实例中如果没有传入 age 参数，则使用默认值:
-def printinfo( name, age = 35 ):
-   print ("名字: ", name)
-   print ("年龄: ", age)
-   return
-
-
-不定长参数 ( 一个 * 号 ):
-def printinfo( arg1, *vartuple ):
-   "打印任何传入的参数"
-   print ("输出: ")
-   print (arg1)
-   print (vartuple)
-
-printinfo( 70, 60, 50 )
-输出: 
-70
-(60, 50)
-
-
-
-加了两个星号 ** 的参数会以字典的形式导入
-def printinfo( arg1, **vardict ):
-   "打印任何传入的参数"
-   print ("输出: ")
-   print (arg1)
-   print (vardict)
- 
-# 调用printinfo 函数
-printinfo(1, a=2,b=3)
-输出: 
-1
-{'a': 2, 'b': 3}
-
-
-
-```
-</details>
 
 
 
@@ -1494,36 +1546,6 @@ db.close()
 
 
 
-
-
-
-
-<details>
-<summary><b> try / cache </b></summary>
-
-```  
-
-捕获异常
-python 并不是 try/cache , 而是 try/except
-
-while True:
-    try:
-        x = int(input("请输入一个数字: "))
-        break
-    except ValueError:
-        print("您输入的不是数字，请再次尝试输入！")
-
-
-try-finally 语句无论是否发生异常都将执行最后的代码。        
-
-使用 raise 语句抛出一个指定的异常:
-x = 10
-if x > 5:
-    raise Exception('x 不能大于 5。x 的值为: {}'.format(x))
-
-
-```
-</details>
 
 
 

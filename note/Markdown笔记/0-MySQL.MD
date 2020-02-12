@@ -302,14 +302,16 @@ CREATE TABLE IF NOT EXISTS `table1`(      -- (注释:)
 <summary><b>新建一个数据库并且包含数据 (完整的流程:)</b></summary>
 
 ```  
+
+
 -- 删除数据库
-drop database IF EXISTS `MySQL_Test_1`;
+drop database IF EXISTS `zzza9d2g5k4t1b0k`;
 
 -- 创建 数据库:
-CREATE DATABASE IF NOT EXISTS `MySQL_Test_1` DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS `zzza9d2g5k4t1b0k` DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
 
 -- 切换回
-use `MySQL_Test_1`;
+use `zzza9d2g5k4t1b0k`;
 
 -- 创建表
 CREATE TABLE IF NOT EXISTS `user`(
@@ -323,7 +325,7 @@ CREATE TABLE IF NOT EXISTS `user`(
 -- 插入insert数据:
 insert into `user`(username,password) values('HUAWEI','mate20');
 insert into `user`(username,password) values('APPLE','IPHONE_5S');
-insert into `user`(username,password) values('OPPO','R11');
+insert into `user`(username,password) values('OPPO','R11');		
 
 
 

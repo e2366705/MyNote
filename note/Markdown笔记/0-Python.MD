@@ -1481,44 +1481,140 @@ f.close()
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <details>
 <summary><b>About SQL (数据库 MySQL)</b></summary>
 
 ```  
 
+Python3 MySQL 数据库连接 - PyMySQL 驱动
+可以使用以下命令安装最新版的 PyMySQL：
+$ pip3 install PyMySQL
+
+
+首先 , 新建一个数据库+数据表, 用来测试:
+
+-- 删除数据库
+drop database IF EXISTS `zzza9d2g5k4t1b0k`;
+
+-- 创建 数据库:
+CREATE DATABASE IF NOT EXISTS `zzza9d2g5k4t1b0k` DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
+
+-- 切换回
+use `zzza9d2g5k4t1b0k`;
+
+-- 创建表
+CREATE TABLE IF NOT EXISTS `user`(
+`id` int(20) unsigned not null DEFAULT 0,
+`money` DECIMAL(20,2) NOT NULL DEFAULT '0.00',
+`username` VARCHAR(100) not null DEFAULT '', 
+`password` VARCHAR(40)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- 插入insert数据:
+insert into `user`(username,password) values('HUAWEI','mate20');
+insert into `user`(username,password) values('APPLE','IPHONE_5S');
+insert into `user`(username,password) values('OPPO','R11');		
+
+
+
+
+
+然后, 测试一下有没有链接成功吧
+#!/usr/bin/python3
+import pymysql
+# 打开数据库连接  主机地址 , 用户名(root) 密码(root) , 数据库名(zzza9d2g5k4t1b0k)
+db = pymysql.connect("localhost", "root", "root", "zzza9d2g5k4t1b0k")  
+cursor = db.cursor()                        # 使用 cursor() 方法创建一个游标对象 cursor
+cursor.execute("SELECT VERSION()")          # 使用 execute()  方法执行 SQL 查询
+data = cursor.fetchone()                    # 使用 fetchone() 方法获取单条数据
+print("Database version : %s " % data)      # 打印输出 数据库的版本
+db.close()      
+成功输出:  Database version : 5.5.53 
+连接成功!
+
+
+接下来测试 CRUD (增删改查): 
+增
+#!/usr/bin/python3
+import pymysql
+# 打开数据库连接  主机地址 , 用户名(root) 密码(root) , 数据库名(zzza9d2g5k4t1b0k)
+db = pymysql.connect("localhost", "root", "root", "zzza9d2g5k4t1b0k")
+cursor = db.cursor()                        # 使用 cursor() 方法创建一个游标对象 cursor
+sql = """INSERT INTO user(username , password) VALUES ('MacOS', 'YXB')"""     # SQL 语句
+try:
+    cursor.execute(sql)     # 执行sql语句
+    db.commit()             # 提交到数据库执行
+except:
+    db.rollback()           # 如果发生错误则回滚
+db.close()                  # 关闭数据库连接
+
+
+
+
+
+
+删
+
+
+
+
+
+
+
+
+
+改
+
+
+
+
+
+
+
+
+查
 #!/usr/bin/python3
 import pymysql
 
 # 打开数据库连接                    账户    密码         数据库名称
-db = pymysql.connect("localhost", "root", "root", "study_english_database")
-
-# 使用cursor()方法获取操作游标
-cursor = db.cursor()
-
-# SQL 查询语句
-sql = "SELECT `word` , `chinese_meaning` FROM `phrase`"
+db = pymysql.connect("localhost", "root", "root", "zzza9d2g5k4t1b0k")
+cursor = db.cursor()            # 使用cursor()方法获取操作游标
+sql = "SELECT * FROM `user`"    # SQL 查询语句
 try:
-    # 执行SQL语句
-    cursor.execute(sql)
-
-    # 获取所有记录列表
-    results = cursor.fetchall()
-    
-    for row in results:
-        word = row[0]
-        chinese_meaning = row[1]
-        print("word=%s,chinese_meaning=%s " % (word, chinese_meaning))
+    cursor.execute(sql)         # 执行SQL语句
+    results = cursor.fetchall() # 获取所有记录列表
+    for row in results:         # 循环遍历
+        username = row[2]
+        password = row[3]
+        print("username   =   %s,  password   =   %s " % (username, password))
 except:
     print("Error: unable to fetch data")
-
-# 关闭数据库连接
-db.close()
+db.close()                      # 关闭数据库连接
 
 
-增
-删
-改
-查
+
+
+
+
+user_id = "test123"
+password = "password"
+
+con.execute('insert into Login values( %s,  %s)' % \
+             (user_id, password))
 
 ```
 </details>

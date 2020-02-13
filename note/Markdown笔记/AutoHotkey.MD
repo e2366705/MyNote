@@ -9,6 +9,7 @@
 
 ```  
 
+
 前言:  编辑脚本时使用英文输入法
 
 
@@ -105,11 +106,91 @@ Else
 Return
 
 
+```
+</details>
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> 键盘 / 按键 </b></summary>
+
+```  
+
+详细教程:   https://wyagd001.github.io/zh-cn/docs/commands/Send.htm
+
+
+
+按下 [上]方向键 , 松开它 , 实现点按的效果:
+sleep, 150
+SendEvent {Blind}{Up down}
+KeyWait RCtrl  ; 防止键盘自动重复导致的重复鼠标点击.
+SendEvent {Blind}{Up up}
+
+sleep, 150
+SendEvent {Blind}{Up down}
+KeyWait RCtrl  ; 防止键盘自动重复导致的重复鼠标点击.
+SendEvent {Blind}{Up up}
+
+
+
+重复或按住按键
+重复键击: 用大括号括起按键名称和重复次数. 例如:
+Send {DEL 4}  ; 按 4 次 Delete 键.
+Send {S 30}   ; 发送 30 次大写字母 S.
+Send +{TAB 4}  ; 按 4 次 Shift-Tab.
+
+
+按住或释放按键: 把按键名称和单词 Down 或 Up 写入到大括号中. 例如:
+Send {b down}{b up}
+Send {TAB down}{TAB up}
+Send {Up down}  ; 按下向上键.
+Sleep 1000  ; 按住 1 秒.
+Send {Up up}  ; 释放向上键.
+
+
+
+发送 20 次 tab 键击:
+Loop 20{
+    Send {Tab down}  ; 自动重复由连续的按下事件组成(没有弹起事件).
+    Sleep 30  ; 在两次键击之间的毫秒数(或使用 SetKeyDelay 设置).
+}
+Send {Tab up}  ; 松开按键.
+
+
+
+
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b>  鼠标 : </b></summary>
+
+```  
 
 
 鼠标:
@@ -163,12 +244,13 @@ return
 
 
 
-
-
-
-
 ```
 </details>
+
+
+
+
+
 
 
 
@@ -400,7 +482,7 @@ return
 
 ```  
 
-一键更新 Github 的笔记:
+
 ; win键 + 右Ctrl : 打开文件夹, 并且点击右键 , 选中 Get Bash Here , 输入 ./update.sh , 就差回车确认了
 *<#RCtrl:: 
 
@@ -411,7 +493,7 @@ sleep, 666
 WinMaximize, A  ; 最大化活动窗口
 
 sleep, 666
-Click 1776,931 right
+Click 1776,931 right      ; 在坐标1776, 931位置上, 点击右键
 
 sleep, 123
 MouseMove, 100, -180, 12, R
@@ -420,7 +502,12 @@ sleep, 123
 Click left
 
 sleep, 999
-Send, ./update.sh
+SendEvent {Blind}{Up down}
+KeyWait RCtrl  ; 防止键盘自动重复导致的重复鼠标点击.
+SendEvent {Blind}{Up up}
+
+sleep, 333
+Send, 00
 
 return
 

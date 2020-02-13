@@ -376,6 +376,64 @@ return
 
 
 
+
+
+
+
+
+
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b>  已经应用到实际生活的脚本  </b></summary>
+
+```  
+
+一键更新 Github 的笔记:
+; win键 + 右Ctrl : 打开文件夹, 并且点击右键 , 选中 Get Bash Here , 输入 ./update.sh , 就差回车确认了
+*<#RCtrl:: 
+
+sleep, 123
+Run C:\D\Nut_cloud___\我的坚果云\笔记\Github_Notes\MyNote
+
+sleep, 666
+WinMaximize, A  ; 最大化活动窗口
+
+sleep, 666
+Click 1776,931 right
+
+sleep, 123
+MouseMove, 100, -180, 12, R
+
+sleep, 123
+Click left
+
+sleep, 999
+Send, ./update.sh
+
+return
+
+
+```
+</details>
+
+
+
+
 ---
 
 

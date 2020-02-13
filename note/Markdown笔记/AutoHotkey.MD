@@ -2,12 +2,16 @@
 > AutoHotkey 是一款 windows 平台下的热键脚本语言程序
 
 
-# 基础
+> 注意: 脚本文件在 Windows 下, 必须是 ANSI 格式的, 不然中文路径会乱码
+>    打开文件 -> 另存为 -> 格式选择 ANSI -> 保存
 
+# 基础
 <details>
 <summary><b> 基本功能: </b></summary>
 
 ```  
+
+
 
 
 前言:  编辑脚本时使用英文输入法
@@ -481,6 +485,10 @@ return
 <summary><b>  已经应用到实际生活的脚本  </b></summary>
 
 ```  
+
+注意: 脚本文件在 Windows 下, 必须是 ANSI 格式的, 不然中文路径会乱码
+    打开文件 -> 另存为 -> 格式选择 ANSI -> 保存
+
 
 
 ; win键 + 右Ctrl : 打开文件夹, 并且点击右键 , 选中 Get Bash Here , 输入 ./update.sh , 就差回车确认了

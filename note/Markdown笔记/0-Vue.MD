@@ -365,6 +365,56 @@ Vue.js 监听属性
 
 
 
+Vue.js 自定义指令
+除了默认设置的核心指令( v-model 和 v-show ), Vue 也允许注册自定义指令
+下面我们注册一个全局指令 v-focus, 该指令的功能是在页面加载时，元素获得焦点：
+<div id="app">
+    <p>页面载入时，input 元素自动获取焦点：</p>
+    <input v-focus>
+</div>
+
+<script>
+// 注册一个全局自定义指令 v-focus
+Vue.directive('focus', {
+  // 当绑定元素插入到 DOM 中。
+  inserted: function (el) {
+    // 聚焦元素
+    el.focus()
+  }
+})
+// 创建根实例
+new Vue({
+  el: '#app'
+})
+</script>
+
+也可以在实例使用 directives 选项来注册局部指令，这样指令只能在这个实例中使用：
+<div id="app">
+  <p>页面载入时，input 元素自动获取焦点：</p>
+  <input v-focus>
+</div>
+ 
+<script>
+// 创建根实例
+new Vue({
+  el: '#app',
+  directives: {
+    // 注册一个局部的自定义指令 v-focus
+    focus: {
+      // 指令的定义
+      inserted: function (el) {
+        // 聚焦元素
+        el.focus()
+      }
+    }
+  }
+})
+</script>
+
+
+
+
+
 
 
 
@@ -442,10 +492,91 @@ Vue.js 监听属性
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <details>
-<summary><b>my_name_is_jack</b></summary>
+<summary><b> 组件 </b></summary>
 
 ```  
+
+详细教程 : https://www.runoob.com/vue2/vue-component.html
+
+组件（Component）是 Vue.js 最强大的功能之一
+组件可以扩展 HTML 元素，封装可重用的代码
+
+注册一个全局组件语法格式如下：
+Vue.component(tagName, options)
+
+tagName 为组件名，options 为配置选项。注册后，我们可以使用以下方式来调用组件：
+<tagName></tagName>
+
+注册一个简单的全局组件 runoob，并使用它：
+	<div id="app">
+		<runoob></runoob>
+	</div>
+	
+	<script>
+	// 注册
+	Vue.component('runoob', {
+	template: '<h1>自定义组件!</h1>'
+	})
+	// 创建根实例
+	new Vue({
+	el: '#app'
+	})
+	</script>
+
+
+
+
+
+
+
+
+
+
 
 ```
 </details>

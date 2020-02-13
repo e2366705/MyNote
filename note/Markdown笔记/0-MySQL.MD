@@ -633,6 +633,67 @@ alter table `user` modify column `name` varchar(256) not null default ''
 
 
 
+
+
+
+
+
+
+
+<details>
+<summary><b> 判空 IFNULL  </b></summary>
+
+```  
+
+
+IFNULL(v1,v2);
+解读:	如果 v1 不为 NULL，
+			则 IFNULL 函数返回 v1; 
+			否则返回 v2 的结果
+
+SELECT 
+	IFNULL(5,8),
+	IFNULL(NULL,'OK'),
+	IFNULL(SQRT(-8),'FALSE'),
+	SQRT(-8);
+
+由执行结果可以看出:
+IFNULL(v1,v2) 函数中的参数 v1=5、v2=8，都不为空，即 v1=5 不为空，返回 v1 的值为 5；
+当 v1=NULL 时，返回 v2 的值，即字符串 'OK'；
+当 v1=SQRT(-8) 时，SQRT(-8) 函数的返回值为NULL，即 v1=NULL，所以返回 v2 为字符串 'false'
+
+
+实战:
+	如果变量aaa为 null, 那么 state = 'Very_familiar'
+SET @aaa = null ;
+SELECT *
+FROM `tb_word` WHERE state = IFNULL(@aaa , 'Very_familiar')
+
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <details>
 <summary><b> MySQL 约束</b></summary>
 

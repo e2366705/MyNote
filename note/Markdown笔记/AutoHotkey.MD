@@ -87,6 +87,56 @@ Return
 
 
 
+鼠标:
+
+MouseMove, X, Y [, Speed, R]
+鼠标移动的目标位置的 x/y 坐标, 可以为 表达式. 坐标相对于活动窗口
+
+Speed : 移动鼠标的速度，介于 0（最快）和 100（最慢）之间，可以为表达式
+    注：速度为 0 表示瞬时移动鼠标到目标位置。如果省略，则使用默认速度
+
+R:  如果此参数为字母 R, 则会把 X 和 Y 坐标视为距离当前鼠标位置的偏移. 
+    换句话说, 会把光标从当前位置往右移动 X 像素 (负值则往左) 且往下移动 Y 像素 (负值则往上).
+
+
+
+
+键盘移动鼠标位置
+*#up::MouseMove, 0, -10, 0, R  ; Win + UpArrow(上方向键)键 => 上移光标
+*#Down::MouseMove, 0, 10, 0, R  ; Win + DownArrow => 下移光标
+*#Left::MouseMove, -10, 0, 0, R  ; Win + LeftArrow => 左移光标
+*#Right::MouseMove, 10, 0, 0, R  ; Win + RightArrow => 右移光标
+
+
+鼠标点击:
+说明:
+    LeftWin + RightControl => Right-click  (左 win 键 + 右 Ctrl 键 触发鼠标右键 )
+    左键:
+        LButton down
+        LButton up
+*<#RCtrl:: 
+SendEvent {Blind}{RButton down}
+KeyWait RCtrl  ; 防止键盘自动重复导致的重复鼠标点击.
+SendEvent {Blind}{RButton up}
+return
+
+
+鼠标点击 (方式二):
+Click  ; 在鼠标光标的当前位置点击鼠标左键.
+Click 100, 200  ; 在指定坐标处点击鼠标左键.
+Click 100, 200, 0  ; 移动而不点击鼠标.
+Click 100, 200 right  ; 点击鼠标右键.
+Click 2  ; 执行双击.
+Click down  ; 按下鼠标左键不放.
+Click up right  ; 释放鼠标右键.
+
+说明:
+    按住 win 键 + 右Ctrl键  ===>  移到坐标100, 200 这个位置, 然后点击鼠标右键
+*<#RCtrl:: 
+Click 100, 200 right  ; 点击鼠标右键.
+return
+
+
 
 
 

@@ -1,11 +1,55 @@
 ﻿
 
 # 以后不要折腾MySQL客户端了, 简直就是浪费时间, 直接下载一个 phpStudy 直接用里面内置的MySQL, 又省心又省力
-# 安装 phpStudy 之后 , 这时候是不能用 cmd 命令行直接操作 MySQL 数据库的, 需要这么配置
+> 安装 phpStudy 之后 , 这时候是不能用 cmd 命令行直接操作 MySQL 数据库的, 需要这么配置
+<details>
+<summary><b>配置 phpStudy 里面的 MySQL 到系统变量</b></summary>
 
----
+```  
+1 打开 phpStudy
+2 点击 其他选项菜单
+3 点击 打开文件位置
+4 点击 MySQL 
 
-# SQL 规范 (必读!!!)
+这时候打开了 phpStudy 里面内置的 MySQL 的安装位置,
+复制这个路径,
+
+这时候需要把环境变量配置到 Windows10 的系统变量中去,
+不然系统无法通过 cmd 直接找到 MySQL
+
+在 Windows10 中按下 win 键, 搜索 '高级系统设置'
+点击 '环境变量'
+找到系统变量
+找到 Path
+新建一个,
+把刚刚复制的 phpStudy- MySQL 的安装路径粘贴进去
+点击确定退出
+
+这样子就可以直接用 cmd 直接操作 phpStudy 里面的 MySQL 了
+
+```
+</details>
+
+
+
+
+
+
+# 一款 命令行 管理MySQL的工具, 叫做: MyCli , 支持自动补全关键字、表名、列和函数
+> 在 0-IDE.MD 里面有详细的介绍
+
+
+
+
+
+
+
+
+
+
+
+
+## SQL 规范 (必读!!!)
 * 参考资料:
 * https://choerodon.io/zh/docs/contributor-guide/development/conventions/sql
 * https://www.jianshu.com/p/359ed85c3243
@@ -171,39 +215,12 @@ select id,count(*) from table where age>=30 group by id order by null;
 
 
 
----
-
-<details>
-<summary><b>配置 phpStudy 里面的 MySQL 到系统变量</b></summary>
-
-```  
-1 打开 phpStudy
-2 点击 其他选项菜单
-3 点击 打开文件位置
-4 点击 MySQL 
-
-这时候打开了 phpStudy 里面内置的 MySQL 的安装位置,
-复制这个路径,
-
-这时候需要把环境变量配置到 Windows10 的系统变量中去,
-不然系统无法通过 cmd 直接找到 MySQL
-
-在 Windows10 中按下 win 键, 搜索 '高级系统设置'
-点击 '环境变量'
-找到系统变量
-找到 Path
-新建一个,
-把刚刚复制的 phpStudy- MySQL 的安装路径粘贴进去
-点击确定退出
-
-这样子就可以直接用 cmd 直接操作 phpStudy 里面的 MySQL 了
-
-```
-</details>
 
 
 
-# 批处理自动备份脚本(.bat for Windows10):
+
+
+## 批处理自动备份脚本(.bat for Windows10):
 ### 注意!! 一定要用 Windows 自带的文本编辑器打开, 用别的编辑器打开会乱码(比如 VS Code)
 <details>
 <summary><b>BackUP_MySQL.bat</b></summary>
@@ -228,6 +245,24 @@ pause
 
 ```
 </details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -293,6 +328,14 @@ CREATE TABLE IF NOT EXISTS `table1`(      -- (注释:)
 
 ```
 </details>
+
+
+
+
+
+
+
+
 
 
 
@@ -366,6 +409,13 @@ insert into `user`(username,password) values('OPPO','R11');
 
 
 
+
+
+
+
+
+
+
 <details>
 <summary><b>1 增:</b></summary>
 
@@ -375,6 +425,9 @@ insert into `user`(  `username` , `password`  ) VALUES('aaa','999');
 
 ```
 </details>
+
+
+
 
 
 
@@ -411,6 +464,9 @@ delete from `text001` order by `id` desc limit 66
 
 
 
+
+
+
 <details>
 <summary><b>3 改</b></summary>
 
@@ -429,6 +485,9 @@ UPDATE `table_name` SET `date` = '------------' ORDER BY RAND() LIMIT 123;
 
 ```
 </details>
+
+
+
 
 
 
@@ -483,6 +542,8 @@ MySQL查询最高分----> 语句太长,懒得写了,用时再百度吧...
 
 ```
 </details>
+
+
 
 
 
@@ -571,6 +632,7 @@ alter table `user` modify column `name` varchar(256) not null default ''
 
 
 
+
 <details>
 <summary><b> MySQL 约束</b></summary>
 
@@ -635,6 +697,10 @@ FOREIGN KEY(class_id) REFERENCES class(id)
 
 
 
+
+
+
+
 <details>
 <summary><b> MySQL 高级:</b></summary>
 
@@ -668,6 +734,12 @@ SELECT SUM(`username`) FROM same;
 
 ```
 </details>
+
+
+
+
+
+
 
 
 

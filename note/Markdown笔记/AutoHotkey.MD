@@ -19,6 +19,9 @@
 
 Run 代表运行一个程序，或打开文件、链接、文件夹等
 
+; 打开一个文件夹
+Run C:\D\YXB___Download___\HBuilderX
+
 
 打开应用程序:
 ;快捷键 alt + n 打开记事本
@@ -31,6 +34,20 @@ Run 代表运行一个程序，或打开文件、链接、文件夹等
 !b::Run www.baidu.com
 
 
+睡眠 / 暂停
+睡眠 3 秒
+sleep, 3000
+
+
+粘贴命令(Ctrl + V ):
+Send ^v{enter}
+
+; 最大化活动窗口
+WinMaximize, A  
+
+
+
+
 
 热键标记
 !       是热键标记，这里的感叹号代表键盘上的 alt 键
@@ -41,6 +58,9 @@ Run 代表运行一个程序，或打开文件、链接、文件夹等
 ! ：alt
 ^ ：ctrl
 + ：shift
+
+
+
 
 
 
@@ -82,6 +102,10 @@ Else
   WinMinimize
 }
 Return
+
+
+
+
 
 
 
@@ -160,6 +184,36 @@ return
 <summary><b>基本语法: </b></summary>
 
 ```  
+
+
+连接 / 拼接字符串:
+  拼接恐怕是最常用的操作了，在 AHK 中也非常简单，直接将两个字符串用空格隔开就可以了
+
+
+变量(两种方式):
+MyNumber = 123
+MyString = This is a literal string.
+CopyOfVar = %Var%  ; 和 = 运算符一起使用时, 需要使用百分号来获取变量的内容.
+
+MyNumber := 123
+MyString := "This is a literal string."
+CopyOfVar := Var  ; 和前面段落中与其作用相同的语句不同, 百分号不和 := 运算符一起使用.
+
+
+有两种方法来清除变量的内容 (即让变量为空):
+MyVar =
+MyVar := ""
+
+
+获取变量的内容:
+  如同赋值有两种方法, 获取变量的内容也有两种方法: 
+  传统方法和表达式方法. 
+  传统方法需要将变量名包围在百分号中来获取变量的内容. 例如：
+MsgBox The value in the variable named Var is %Var%.
+CopyOfVar = %Var%
+
+
+
 
 全局变量
 全局变量比较好理解，如果一个变量是全局变量，那么程序中的所有代码都可以访问到这个变量（除非存在同名的局部变量或者静态变量）
@@ -287,6 +341,27 @@ Else
   WinMinimize
 }
 Return
+
+
+
+
+
+;  按下    Ctrl + win + c   获取当前鼠标坐标, 并打印出来 :
+^#c::
+MouseGetPos, mouseX, mouseY
+PixelGetColor, color, %mouseX%, %mouseY%, RGB
+
+; 坐标 (Coordinates)
+Coordinates = %mouseX% + %mouseY%
+
+; 把 坐标 (Coordinates) 的值发送到剪贴板
+clipboard = %Coordinates%
+
+sleep, 120
+Send ^v{enter}
+return
+
+
 
 
 

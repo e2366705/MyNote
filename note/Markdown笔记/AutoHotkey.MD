@@ -38,6 +38,8 @@ Run C:\D\YXB___Download___\HBuilderX
 睡眠 3 秒
 sleep, 3000
 
+输入文字: i miss you
+Send, i miss you
 
 粘贴命令(Ctrl + V ):
 Send ^v{enter}

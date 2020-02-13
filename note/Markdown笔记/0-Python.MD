@@ -2,75 +2,21 @@
 > python 写起来挺舒服的, 属于脚本语言, 写完直接可以运行, 不像Java, 还需要编译, 所以写东西是很快的
 
 
-```  
-
-基本:
-
-第一类: 字符串类 / 日期类
-	注释
-	
-	大写
-	小写
-	
-	暂停/睡眠
-    time.sleep(1)
-
-	当前时间
-	当前日期
-
-	正则表达式
-	替换字符串
-
-	截取字符串
-	分割字符串
-
-	随机数
-	
-	
-第二类: IO类:
-	读
-	写
-	
-	
-第三类: 数据库类
-	增
-	删
-	改
-	查
-
-
-
-
-
-	
-第四类: 集合(重点):
-	循环 / 遍历
-	添加 / 删除
-	可重复 / 不可重复
-	key / value
-	...
-
-
-
-
-
-
-
-面向对象
-
-other:
-	json	
 	
 
 
-
-```
-
+	
 
 
+	
+
+	
 
 
-# Request Headers Format
+<details>
+<summary><b>  Request Headers Format  </b></summary>
+
+
 ```  
 Request Headers 自动格式化生成器,
     自动加上 '' 单引号
@@ -101,6 +47,7 @@ print(str.replace(" ", "").replace(":", "':'").replace("\n" , "',\n"))
 print("记得去掉  https://movie.douban.com/explore   中间的冒号 => :  ")
 
 ```
+</details>
 
 
 
@@ -111,12 +58,27 @@ print("记得去掉  https://movie.douban.com/explore   中间的冒号 => :  ")
 
 
 
----
+
+
+
+
+
+
+
+
+
+
 # 基础:
 <details>
 <summary><b>基础</b></summary>
 
 ```  
+
+
+睡眠 / 暂停 (毫秒数)
+sleep(1500)
+time.sleep(1500)
+
 
 
 输出格式化:
@@ -215,6 +177,85 @@ isinstance(a, int)        # 返回 true or false
 
 ```
 </details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> 时间 / 日期 : </b></summary>
+
+```  
+
+获取时间戳:
+import time  # 引入time模块
+ticks = time.time()
+print ("当前时间戳为:", ticks)
+>>> 1459996086.7115328
+
+时间戳单位最适于做日期运算。但是1970年之前的日期就无法以此表示了。太遥远的日期也不行，
+UNIX和Windows只支持到2038年
+
+
+
+
+import time
+
+
+print (time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
+>>> 2016-04-07 10:29:46
+
+print (time.strftime("%a %b %d %H:%M:%S %Y", time.localtime()))
+>>> Thu Apr 07 10:29:46 2016
+  
+将格式字符串转换为时间戳
+a = "Sat Mar 28 22:24:24 2016"
+print (time.mktime(time.strptime(a,"%a %b %d %H:%M:%S %Y")))
+>>> 1459175064.0
+
+
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -428,7 +469,7 @@ continue 语句被用来告诉 Python 跳过当前循环块中的剩余语句，
 <summary><b> 字符串 </b></summary>
 
 ```  
-    截取字符串
+截取字符串
 使用方括号来截取字符串
 #!/usr/bin/python3
 var1 = 'Hello World!'
@@ -460,7 +501,26 @@ print ("已更新字符串 : ", var1[:6] + 'Runoob!')
 
 
 
+split():
+    分割字符串
+string.split(str="", num=string.count(str))
+    str -- 分隔符，默认为所有的空字符，包括空格、换行(\n)、制表符(\t)等
+    num -- 分割次数。默认为 -1, 即分隔所有
 
+#!/usr/bin/python
+# -*- coding: UTF-8 -*- 
+str = "Line1-abcdef \nLine2-abc \nLine4-abcd";
+str.split( );       # 以空格为分隔符，包含 \n
+>>> ['Line1-abcdef', 'Line2-abc', 'Line4-abcd']
+
+str.split(' ', 1 ); # 以空格为分隔符，分隔成两个
+>>> ['Line1-abcdef', '\nLine2-abc \nLine4-abcd']
+
+
+
+txt = "Google#Runoob#Taobao#Facebook"
+x = txt.split("#", 1)           # 第二个参数为 1，返回两个参数列表 
+>>> ['Google', 'Runoob#Taobao#Facebook']
 
 
 字符串格式化
@@ -789,7 +849,6 @@ round(random.uniform(5, 10), 2)
 
 
 
----
 # List(列表) / Tuple(元组) / Set(集合) / Dictionary(字典)
 <details>
 <summary><b> 简介 </b></summary>
@@ -1236,8 +1295,6 @@ print(a ^ b)     # a 和 b 中不同时存在的元素
 
 
 
----
-
 
 
 
@@ -1405,7 +1462,7 @@ while True:
 ``` 
 
 
-------------------------------    读写:
+******************************    读写:
 r+	打开一个文件用于读写。文件指针将会放在文件的开头
 
 rb+	以二进制格式打开一个文件用于读写。文件指针将会放在文件的开头
@@ -1422,7 +1479,7 @@ a+	打开一个文件用于读写。如果该文件已存在，文件指针将�
 
 
 
-------------------------------    只读:
+******************************    只读:
 r	以只读方式打开文件。文件的指针将会放在文件的开头。这是默认模式
 
 rb	以二进制格式打开一个文件用于只读。文件指针将会放在文件的开头
@@ -1431,7 +1488,7 @@ rb	以二进制格式打开一个文件用于只读。文件指针将会放在�
 
 
 
-------------------------------    只写:
+******************************    只写:
 w	打开一个文件只用于写入。如果该文件已存在则打开文件，并从开头开始编辑，即原有内容会被删除。如果该文件不存在，创建新文件。
 
 wb	以二进制格式打开一个文件只用于写入。
@@ -1441,7 +1498,7 @@ wb	以二进制格式打开一个文件只用于写入。
 
 
 
-------------------------------    追加:
+******************************    追加:
 ab+	以二进制格式打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。如果该文件不存在，创建新文件用于读写。
 
 a	打开一个文件用于追加。
@@ -1472,6 +1529,34 @@ f.close()
 </details>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> 操作 json  </b></summary>
+
+```  
+
+https://www.runoob.com/python3/python3-json.html
+
+
+```
+</details>
 
 
 
@@ -1960,7 +2045,6 @@ t.prt()
 
 
 
----
 # 区别:
 > 容易混淆的概念
 <details>
@@ -1980,7 +2064,7 @@ is 与 == 区别：
 
 
 
----
+
 # Other
 <details>
 <summary><b>播放音频文件</b></summary>

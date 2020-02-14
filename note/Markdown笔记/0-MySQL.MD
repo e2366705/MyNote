@@ -699,7 +699,8 @@ select count(*) from tb_word
  	where
 IF(@aaa IS NULL  OR  @aaa = ''  OR  @aaa = ' ', 
 		''='',
-		`date` = @aaa); 
+		`date` = @aaa)
+and collection = 'collected' 
 
 		
 

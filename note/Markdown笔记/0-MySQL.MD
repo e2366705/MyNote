@@ -702,6 +702,12 @@ IF(@aaa IS NULL  OR  @aaa = ''  OR  @aaa = ' ',
 		`date` = @aaa)
 and collection = 'collected' 
 
+
+Spring Boot中:
+如果  #{is_Collected} 为空, 
+	那么 `collection` = 'collected'
+and IF( #{is_Collected} IS NULL , ''='' ,  `collection` = 'collected'   )     
+
 		
 
 ```

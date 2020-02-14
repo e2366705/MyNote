@@ -1547,6 +1547,84 @@ f.close()
 
 
 
+
+
+
+
+
+
+<details>
+<summary><b> 操作 Windows 系统剪贴板 Clipboard </b></summary>
+
+```  
+
+
+
+向剪贴板写入字符串:
+import os
+def addToClipBoard(text):
+    command = 'echo ' + text.strip() + '| clip'
+    os.system(command)
+
+#example
+addToClipBoard('Hello, I am a string.')
+
+
+
+
+
+向剪贴板写入系统时间:
+import os
+def addToClipBoard(text):
+    command = 'echo ' + text.strip() + '| clip'
+    os.system(command)
+
+import time
+timestr = time.strftime("%Y-%m-%d %H:%M:%S",time.localtime(time.time()))
+addToClipBoard(timestr)
+
+
+
+
+
+
+读取剪贴板的内容:
+from tkinter import Tk
+r = Tk()
+
+# read the clipboard
+c = r.clipboard_get()
+print(c)
+
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <details>
 <summary><b> 操作 json  </b></summary>
 

@@ -670,6 +670,39 @@ SELECT *
 FROM `tb_word` WHERE state = IFNULL(@aaa , 'Very_familiar')
 
 
+
+if 判断:
+
+用 @ 来声明一个变量:
+意思解读:
+	如果变量 aaa 为空, 		那么`date` = '2020-02-10'
+	如果变量 aaa 不为空, 	那么`date` = '2020-02-08'
+
+SET @aaa = null;
+select count(*) from tb_word 
+ 	where
+IF(@aaa IS NULL, 
+		`date` = '2020-02-10' , 
+		`date` = '2020-02-08'); 
+
+
+用法二:
+
+意思解读:
+	如果变量 aaa 为空:
+		那么取消条件筛选(''=''), 等同于: select count(*) from tb_word 
+	如果变量 aaa 不为空:
+		假设 @aaa = '2020-02-11', 		
+		那么采用条件筛选( `date` = @aaa ), 等同于: select count(*) from tb_word where `date` = '2020-02-11'
+SET @aaa = null;
+select count(*) from tb_word 
+ 	where
+IF(@aaa IS NULL, 
+		''='',
+		`date` = @aaa); 
+
+		
+
 ```
 </details>
 

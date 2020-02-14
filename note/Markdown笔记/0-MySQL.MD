@@ -689,7 +689,7 @@ IF(@aaa IS NULL,
 用法二:
 
 意思解读:
-	如果变量 aaa 为空:
+	如果变量 aaa 为空 或者 aaa = '' 或者 aaa = ' '
 		那么取消条件筛选(''=''), 等同于: select count(*) from tb_word 
 	如果变量 aaa 不为空:
 		假设 @aaa = '2020-02-11', 		
@@ -697,7 +697,7 @@ IF(@aaa IS NULL,
 SET @aaa = null;
 select count(*) from tb_word 
  	where
-IF(@aaa IS NULL, 
+IF(@aaa IS NULL  OR  @aaa = ''  OR  @aaa = ' ', 
 		''='',
 		`date` = @aaa); 
 

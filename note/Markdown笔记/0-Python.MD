@@ -86,6 +86,12 @@ print('{}网址： "{}!"'.format('菜鸟教程', 'www.runoob.com'))
 print('{name}网址： {site}'.format(name='菜鸟教程', site='www.runoob.com'))
 
 
+aaa = 123
+print("哈哈哈:  ", aaa)
+print("哈哈哈: %s " % aaa)
+
+
+
 #!/usr/bin/python3 
 # 第一个注释
 print ("Hello, Python!") # 第二个注释
@@ -168,8 +174,7 @@ Python3 的六个标准数据类型中：
     不可变数据（3 个）：Number（数字）、String（字符串）、Tuple（元组）；
     可变数据（3 个）：List（列表）、Dictionary（字典）、Set（集合）。
 
-内置的 type() 函数可以用来查询变量所指的对象类型
-print(type(a))
+
 
 此外还可以用 isinstance 来判断：
 isinstance(a, int)        # 返回 true or false
@@ -469,6 +474,20 @@ continue 语句被用来告诉 Python 跳过当前循环块中的剩余语句，
 <summary><b> 字符串 </b></summary>
 
 ```  
+
+
+aaa = 123
+print("哈哈哈:  ", aaa)
+print("哈哈哈: %s " % aaa)
+
+
+内置的 type() 函数可以用来查询变量所指的对象类型
+aaa = 123
+print(type(aaa))
+>>> <class 'int'>
+
+
+
 截取字符串
 使用方括号来截取字符串
 #!/usr/bin/python3
@@ -1707,7 +1726,8 @@ db.close()
 
 
 接下来测试 CRUD (增删改查): 
-增
+
+增( 返回增加的条数 -> int 类型):
 #!/usr/bin/python3
 import pymysql
 # 打开数据库连接  主机地址 , 用户名(root) 密码(root) , 数据库名(zzza9d2g5k4t1b0k)
@@ -1715,8 +1735,9 @@ db = pymysql.connect("localhost", "root", "root", "zzza9d2g5k4t1b0k")
 cursor = db.cursor()                        # 使用 cursor() 方法创建一个游标对象 cursor
 sql = """INSERT INTO user(username , password) VALUES ('MacOS', 'YXB')"""     # SQL 语句
 try:
-    cursor.execute(sql)     # 执行sql语句
+    aa = cursor.execute(sql)     # 执行sql语句
     db.commit()             # 提交到数据库执行
+    print("成功 insert 了:   " , aa , "  条数据.")
 except:
     db.rollback()           # 如果发生错误则回滚
 db.close()                  # 关闭数据库连接
@@ -1734,8 +1755,9 @@ db = pymysql.connect("localhost", "root", "root", "zzza9d2g5k4t1b0k")
 cursor = db.cursor()            # 使用cursor()方法获取操作游标
 sql = "DELETE FROM user WHERE username = '%s'  " % ('OPPO')      # SQL 删除语句
 try:
-   cursor.execute(sql)          # 执行SQL语句
+   aaa = cursor.execute(sql)          # 执行SQL语句
    db.commit()                  # 提交修改
+   print(aaa)                   # 成功的条数 (失败返回 0 )
 except:
    db.rollback()                # 发生错误时回滚
 db.close()                      # 关闭数据库连接
@@ -1756,8 +1778,9 @@ db = pymysql.connect("localhost", "root", "root", "zzza9d2g5k4t1b0k")
 cursor = db.cursor()            # 使用cursor()方法获取操作游标
 sql = "UPDATE user SET password = 'R12'  WHERE username = '%s'  " % ('OPPO')      # SQL 更新语句
 try:
-   cursor.execute(sql)          # 执行SQL语句
+   aaa = cursor.execute(sql)          # 执行SQL语句
    db.commit()                  # 提交到数据库执行
+   print(aaa)                   # 成功的条数 (失败返回 0 )
 except:
    db.rollback()                # 发生错误时回滚
 db.close()                      # 关闭数据库连接
@@ -1777,8 +1800,11 @@ db = pymysql.connect("localhost", "root", "root", "zzza9d2g5k4t1b0k")
 cursor = db.cursor()            # 使用cursor()方法获取操作游标
 sql = "SELECT * FROM `user`"    # SQL 查询语句
 try:
-    cursor.execute(sql)         # 执行SQL语句
+    aaa = cursor.execute(sql)         # 执行SQL语句
     results = cursor.fetchall() # 获取所有记录列表
+    print(aaa)                  # 查询到的总数:  8 条
+    print(type(aaa))            # 变量类型   : int类型
+    print(type(results))        # <class 'tuple'> 
     for row in results:         # 循环遍历
         username = row[2]
         password = row[3]
@@ -1786,6 +1812,7 @@ try:
 except:
     print("Error: unable to fetch data")
 db.close()                      # 关闭数据库连接
+
 
 
 

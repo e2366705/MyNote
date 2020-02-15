@@ -187,9 +187,18 @@ import javazoom.jl.player.*;
 
 
 <details>
-<summary><b> 获取网页源码 </b></summary>
+<summary><b> 爬虫 / 获取网页源码 </b></summary>
 
 ```  
+
+注意:
+    一定要加上 % 
+    第一种就获取不到源码
+    第二种才可以
+
+https://fanyi.so.com/index/search?eng=1&validate=&ignore_trans=0&query=i miss you       -> 格式错误
+https://fanyi.so.com/index/search?eng=1&validate=&ignore_trans=0&query=i%20miss%20you   -> 正确
+
 
 
 import java.io.BufferedReader;

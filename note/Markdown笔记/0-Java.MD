@@ -186,6 +186,249 @@ import javazoom.jl.player.*;
 
 
 
+<details>
+<summary><b> 获取网页源码 </b></summary>
+
+```  
+
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class GetSourceCode2 {
+    public static void main(String[] args){
+        try{
+            URL url = new URL("https://fanyi.so.com/index/search?eng=1&validate=&ignore_trans=0&query=JavaScript");//网址链接
+            URLConnection conn = url.openConnection(); //打开链接
+            //获取网页的源代码
+            BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            String line;
+            while ((line = br.readLine()) != null) {
+                System.out.println(line);//输出内容
+            }
+            br.close();
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(GetSourceCode2.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(GetSourceCode2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+}
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> 解析 Json / json 取值  </b></summary>
+
+```  
+
+
+import org.json.JSONObject;
+import org.junit.Test;
+import java.util.HashMap;
+
+public class JSON_Alibaba {
+        @Test
+        public void test2(){
+            String json_data = "{'name':'xiazdong','age':20}";
+            JSONObject jsonobj = new JSONObject(json_data);
+            String name = jsonobj.getString("name");
+            int age = jsonobj.getInt("age");
+            System.out.println("name = " + name + ",age = " + age);
+        }
+
+
+    @Test
+    public void test3(){
+        String json_data = "{\"data\":{\"explain\":{\"word\":\"JavaScript\",\"phonetic\":{\"\":\"['d\\u0292\\u0251v\\u0259,skr\\u026apt]\"},\"translation\":[\"n.[\\u8ba1\\u7b97\\u673a]Java\\u63cf\\u8ff0\\u8bed\\u8a00(\\u4e00\\u79cd\\u811a\\u672c\\u8bed\\u8a00)\"],\"word_level\":[],\"web_translations\":[{\"translation\":\"\\u811a\\u672c\",\"example\":\"\\u4f60\\u7684\\u811a\\u672c\\uff08Javascript\\uff09\\u4ee3\\u7801\\u9519\\u8bef\\u554a\\uff0c\\u4e0d\\u662f\\u6d4f\\u89c8\\u5668\\u7684\\u95ee\\u9898\\uff0c\\u6539\\u7684\\u8bdd\\u4f60\\u5f97\\u627e\\u5230\\u90a3\\u4e2a\\u6587\\u4ef6\\u624d\\u884c\\u8fd9\\u662f\\u4f60\\u7684IE\\u6d4f\\u89c8\\u5668\\u51fa\\u4e86\\u95ee\\u9898\\uff0c\\u5177\\u4f53\\u7684\\u6211\\u4e5f\\u4e0d\\u592a \\u2026\"},{\"translation\":\"\\u811a\\u672c\\u8bed\\u8a00\",\"example\":\"\\u811a\\u672c\\u8bed\\u8a00\\uff08\\u5982 JavaScript\\uff09\\u4e3a SVG \\u6587\\u4ef6\\u5e26\\u6765\\u4e86\\u65e0\\u9650\\u7684\\u529f\\u80fd\\u3002\\u6307\\u9488\\u79fb\\u52a8\\u548c\\u952e\\u76d8\\u79fb\\u52a8\\u53ef\\u4ee5\\u8c03\\u7528\\u811a\\u672c\\u529f\\u80fd\\uff08\\u5982\\u7ffb\\u8f6c\\u6548\\u679c\\uff09\\u3002\"},{\"translation\":\"\\u5ba2\\u6237\\u7aef\\u811a\\u672c\",\"example\":\"\\u4e0e\\u5ba2\\u6237\\u7aef\\u811a\\u672c\\uff08\\u5982 JavaScript\\uff09\\u4e0d\\u540c\\uff0c\\u670d\\u52a1\\u5668\\u7aef\\u811a\\u672c\\u5728\\u6d4f\\u89c8\\u5668\\u663e\\u793a\\u7f51\\u9875\\u4e4b\\u524d\\u5728\\u670d\\u52a1\\u5668\\u4e0a\\u8fd0\\u884c\\u3002\\u8d2d\\u7269\\u8f66\\u3001\\u52a8\\u6001\\u83dc\\u5355\\u548c\\u8c03\\u67e5\\u4fbf\\u662f\\u670d\\u52a1\\u5668\\u7aef \\u2026\"},{\"translation\":\"\\u7f51\\u9875\\u811a\\u672c\",\"example\":\"\\u7f51\\u9875\\u811a\\u672c( JavaScript )[ \\u6807\\u7b7e\\uff1a\\u7f51\\u9875\\u811a\\u672c, javascript ] \\u7275\\u250c.\\u5497\\u63b1 2008-03-26 16:41 \\u6ee1\\u610f\\u7b54\\u6848\\u4ee5\\u524d\\u73a9\\u6b66\\u6613\\u4f20\\u5947\\u7684\\u65f6\\u5019\\u6709\\u4e0b\\u8fc7\\u8839\\u972d\\u9ef9\\u85a8.\"}],\"english_explain\":[],\"related_words\":[],\"exsentence\":[]},\"fanyi\":\"Javascript\",\"speak_url\":{\"speak_url\":\"\\/audio?from=en&amp;to=zh&amp;voice=2&amp;cate=speakUrl&amp;key=de9b9ed78d7e2e1dceeffee780e2f919&amp;query=javascript\",\"tSpeak_url\":\"\\/audio?from=en&amp;to=zh&amp;voice=2&amp;cate=tSpeakUrl&amp;key=9e13b69d1d2da927102acaaaf7154a37&amp;query=Javascript\"},\"vendor\":\"caiyun\"},\"error\":0,\"msg\":\"succ\"}";
+        JSONObject jsonobj = new JSONObject(json_data);
+
+        JSONObject data = (JSONObject) jsonobj.get("data");
+        Object fanyi = data.get("fanyi");
+
+        String fanyi_result = String.valueOf(fanyi);
+        System.out.println(fanyi_result);
+    }
+}
+
+
+
+
+
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b>  unicode中文编码转换和反转  </b></summary>
+
+```  
+
+参考资料:      https://blog.csdn.net/u013066244/article/details/54708179
+
+
+什么是 Unicode 编码?
+\u6211\u8d70\u3002\u53bb\u90a3\u9065\u8fdc\u7684\u4ee5\u540e
+这种的, 就是 Unicode 编码
+
+更进一步讲,
+
+可以理解为是：通用字符集
+
+世界上存在着多种编码方式，同一个二进制数字可以被解释成不同的符号。
+因此，要想打开一个文本文件，就必须知道它的编码方式，否则用错误的编码方式解读，就会出现乱码。
+为什么电子邮件常常出现乱码？就是因为发信人和收信人使用的编码方式不一样。
+可以想象，如果有一种编码，将世界上所有的符号都纳入其中。每一个符号都给予一个独一无二的编码，那么乱码问题就会消失。这就是Unicode，
+就像它的名字都表示的，这是一种所有符号的编码。
+Unicode当然是一个很大的集合，现在的规模可以容纳100多万个符号。
+每个符号的编码都不一样，
+比如，U+0639表示阿拉伯字母Ain，U+0041表示英语的大写字母A，U+4E25表示汉字”严”。
+具体的符号对应表，可以查询  http://www.chi2ko.com/tool/CJK.htm
+
+
+但是呢！Unicode只是一个符号集，它和ASCII是同一级别的。它没有规定如何存储
+带来的问题是：如何才能区别Unicode和ASCII？
+
+带来结果：出现了Unicode的多种存储方式，也就是说有许多种不同的二进制格式，可以用来表示Unicode
+
+UTF-8
+互联网的普及，强烈要求出现一种统一的编码方式。UTF-8就是在互联网上使用最广的一种Unicode的实现方式。
+其他实现方式还包括UTF-16（字符用两个字节或四个字节表示）和UTF-32（字符用四个字节表示），不过在互联网上基本不用。
+
+重复一遍，
+这里的关系是，UTF-8是Unicode的实现方式之一
+
+UTF-8最大的一个特点，就是它是一种变长的编码方式。
+它可以使用1~4个字节表示一个符号，根据不同的符号而变化字节长度。
+
+UTF-8的编码规则很简单，只有二条：
+
+1）对于单字节的符号，字节的第一位设为0，后面7位为这个符号的unicode码。因此对于英语字母，UTF-8编码和ASCII码是相同的。
+
+2）对于n字节的符号（n>1），第一个字节的前n位都设为1，第n+1位设为0，后面字节的前两位一律设为10。剩下的没有提及的二进制位，全部为这个符号的unicode码。
+
+参考来源:  http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html
+
+
+
+说了那么多, 接下来赶紧说说怎么用 Java 语言, 实现 Unicode 转成 中文呢?
+直接上代码:
+import org.junit.Test;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class UnicodeToString{
+    @Test
+    public void UnicodeTo_chinese(){
+        String str = "\\u5e26\\u6211\\u8d70\\u3002\\u53bb\\u90a3\\u9065\\u8fdc\\u7684\\u4ee5\\u540e";
+
+        Pattern pattern = Pattern.compile("(\\\\u(\\p{XDigit}{4}))");
+        Matcher matcher = pattern.matcher(str);
+
+        char ch;
+
+        while (matcher.find()) {
+            ch = (char) Integer.parseInt(matcher.group(2), 16);
+            str = str.replace(matcher.group(1), ch+"" );
+            System.out.println(str);
+        }
+    }
+}
+
+
+
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

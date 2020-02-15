@@ -75,9 +75,15 @@ print("记得去掉  https://movie.douban.com/explore   中间的冒号 => :  ")
 ```  
 
 
-睡眠 / 暂停 (毫秒数)
-sleep(1500)
-time.sleep(1500)
+
+if __name__ == '__main__':
+    下面开始写代码...
+
+
+
+睡眠 / 暂停 (秒数)
+sleep(3)                3 秒
+time.sleep(5)           5 秒
 
 
 
@@ -390,6 +396,13 @@ for i in range(5):
 4
 
 
+
+# 该条件永远为true，循环将无限执行下去
+while True:
+    print(123)
+
+
+
 也可以使用range指定区间的值：
 for i in range(5,9) :
     print(i)
@@ -567,6 +580,18 @@ f'Hello {name}'  # 替换变量
 
 
 
+判断是否全是英文?
+    空格可以有
+pattern = re.compile(r'[^a-zA-Z\s]+')
+result1 = pattern.findall('runoob    asdasd    DASDASDAS      ')
+print(len(result1))
+>>> 0
+# 返回 0 表示: 全英文
+
+
+
+
+
 
 center() 方法返回一个指定的宽度 width 居中的字符串，fillchar 为填充的字符，默认为空格。
 str = "[www.runoob.com]"
@@ -609,6 +634,8 @@ str.isdigit())  判断所有字符都是数字
 str.isalnum()   判断所有字符都是数字或者字母
 
 str.isalpha()   判断所有字符都是字母
+print("asdasd.".encode('UTF-8').isalpha())                  > 返回 False
+print("asda asdas asdasd".encode('UTF-8').isalpha())        > 返回 Fase ( 带空格了 )
 
 str.isupper()   判断所有字符都是大写
 

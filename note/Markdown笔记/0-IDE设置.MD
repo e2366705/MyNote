@@ -191,8 +191,18 @@ time选择 time()
 
 
 
+
+
+
+
+
+
+
+
+
+
 <details>
-<summary>必须设置 / 快捷键</summary>
+<summary><b> 必须设置 / 快捷键 </b></summary>
 
 ```  
 	快捷键 => settings -> keymap:

@@ -8,15 +8,18 @@
 
 
 # 注意: SpringBoot是不用自己去配置Tomcat的!!!
-> 妈的, 我在2020-01-23这一天折腾了好几个小时, 死活配置不好Tomacat, 突然想起来SpringBoot是不用配置Tomcat的....
+*  妈的, 我在2020-01-23这一天折腾了好几个小时, 死活配置不好Tomacat, 突然想起来SpringBoot是不用配置Tomcat的....
 
----
 
 # 哎呀妈呀~~~  IntelliJ IDEA 自带的数据库管理工具也太香了吧, 有一说一, 结合 SQLyog 简直完美!!!
 * 支持智能提醒, 语法报错, 真是太适合我这种小菜鸟了
 * IntelliJ IDEA 万岁!!!
 
+
 ## 另外, 还有一款 命令行 管理MySQL的工具, 叫做: MyCli , 支持自动补全关键字、表名、列和函数 
+<details>
+<summary><b> MyCli </b></summary>
+
 ```
 
 MyCli 是 MySQL 的专用命令行客户端，可以自动补全和语法高亮显示
@@ -38,11 +41,16 @@ mycli -uroot
 
 
 ```
+</details>
 
 
 
 
----
+
+
+
+
+
 
 
 
@@ -63,11 +71,108 @@ mycli -uroot
 
 
 
+
+
 # 一些基本的
 <details>
-<summary><b>基本...</b></summary>
+<summary><b>首先...</b></summary>
 
 ```  
+
+
+可以直接在 Settings 里面搜索: 比如搜索: font(字体设置)
+
+
+第一步肯定是字体的设置(大小 颜色):
+	字体分为软件界面设置 和 编辑区代码字体设置:
+		软件界面字体大小:
+			File | Settings | Appearance & Behavior | Appearance
+				字体大小 16 比较合适
+		
+		编辑区代码字体设置:
+			File | Settings | Editor | Font
+			字体大小 18 比较合适
+			字体推荐 Fira code
+			行间距为 1.3 比较合适,不要太挤
+
+
+第二就是快捷键的设置:
+	File | Settings | Keymap
+
+		关闭当前标签:
+		搜索: ctrl + F4 
+		再然后搜索 close 设置快捷键
+
+		在系统文件夹打开:
+		show in explorer : Alt + E
+
+		格式化代码:
+		搜索: format
+		设置为: shift + F
+
+
+第三:
+	忽略大小写自动提示:
+	打开 setting -> 输入 Completion
+	有一个 code Completion项目 点击去
+	有个match case,  把那个钩去掉
+
+
+其他:
+代码颜色的设置:
+	File | Settings | Editor | Color Scheme
+
+	CTRL + alt + S 进入 settings 界面 -> 输入 color 
+	常用的需要配置颜色的有:
+	java
+	JavaScript
+	html
+	css
+	xml
+
+	常用的有:
+	//
+	/* */
+	/** */
+	""
+
+
+
+	
+	
+	
+	系统自带快捷键:
+
+	Alt + Insert :
+		一键生成 getter / setter / toString / 构造方法
+
+		1-- itar  
+	生成for循环的快捷键:
+		for (var i = 0; i < ii.length; i++) {
+				const iiElement = ii[i];
+		}
+
+	2-- itin 
+		for (var iiKey in ii) {
+				
+		}
+
+	3-- fori
+		for (var i = 0; i < ; i++) {
+				
+		}
+	4-- cl -> console.log()  JavaScript
+		需要自己去设置!!!  
+		settings -> live Template
+
+	5-- 
+		Ctrl + F2 停止程序		
+
+	6--
+		Alt + Enter  一键补全代码( new User;  =>  User user = new User();  )
+
+
+
 
 各种版本的Java官方下载:
 https://www.oracle.com/technetwork/java/archive-139210.html
@@ -127,6 +232,10 @@ idea打包javaweb项目,有两种方式 : 一种是war，一种是 war explored
 
 
 
+
+
+
+
 <details>
 <summary><b> idea 开发 springBoot如何实时刷新?</b></summary>
 
@@ -147,6 +256,22 @@ Ctrl+Shift+F9 只针对前端内容(html / css / JavaScript)的改动生效
 </details>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <details>
 <summary><b>Maven</b></summary>
 
@@ -165,6 +290,22 @@ Ctrl+Shift+F9 只针对前端内容(html / css / JavaScript)的改动生效
 
 ```
 </details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -197,92 +338,6 @@ time选择 time()
 
 
 
-
-
-
-
-<details>
-<summary><b> 必须设置 / 快捷键 </b></summary>
-
-```  
-	快捷键 => settings -> keymap:
-	关闭当前标签:
- 	搜索: ctrl + F4 
-	再然后搜索 close 设置快捷键
-
-	在系统文件夹打开:
-	show in explorer : Alt + E
-
-	格式化代码:
-	搜索: format
-	设置为: shift + F
-
-
- 	字体设置(font):
-		包括字体大小
-			哪种字体  推荐 Fira code
-			行间距为 1.4 比较合适,不要太挤
-
-
-
-	忽略大小写自动提示:
-	打开 setting -> 输入 Completion
-	有一个 code Completion项目 点击去
-	有个match case,  把那个钩去掉
-
-
-
-	代码颜色:
-	CTRL + alt + S 进入 settings 界面 -> 输入 color 
-	常用的需要配置颜色的有:
-	java
-	JavaScript
-	html
-	css
-	xml
-
-	常用的有:
-	//
-	/* */
-	/** */
-	""
-
-
-	
-	
-	
-	系统自带快捷键:
-
-	Alt + Insert :
-		一键生成 getter / setter / toString / 构造方法
-
-		1-- itar  
-	生成for循环的快捷键:
-		for (var i = 0; i < ii.length; i++) {
-				const iiElement = ii[i];
-		}
-
-	2-- itin 
-		for (var iiKey in ii) {
-				
-		}
-
-	3-- fori
-		for (var i = 0; i < ; i++) {
-				
-		}
-	4-- cl -> console.log()  JavaScript
-		需要自己去设置!!!  
-		settings -> live Template
-
-	5-- 
-		Ctrl + F2 停止程序		
-
-	6--
-		Alt + Enter  一键补全代码( new User;  =>  User user = new User();  )
-
-```
-</details>
 
 
 

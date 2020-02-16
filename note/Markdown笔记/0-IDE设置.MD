@@ -210,7 +210,7 @@ time选择 time()
 
  	字体设置(font):
 		包括字体大小
-			哪种字体
+			哪种字体  推荐 Fira code
 			行间距为 1.4 比较合适,不要太挤
 
 
@@ -273,6 +273,60 @@ time选择 time()
 
 ```
 </details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> 导入 / 导出设置 </b></summary>
+
+```  
+
+IntelliJ IDEA导出设置
+
+导出：【File】->【Export Settings】
+
+导入：【File】->【Import Settings】
+
+
+```
+
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

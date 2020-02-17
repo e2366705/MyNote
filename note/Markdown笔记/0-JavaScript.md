@@ -1749,6 +1749,32 @@ window.open(url, '_blank').location;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <details>
 <summary><b>日历 / 日期</b></summary>
 
@@ -1907,6 +1933,43 @@ getTime() 方法返回自 1970 年 1 月 1 日以来的毫秒数：
     }
     getTime();
 大功告成~~
+
+
+
+
+
+
+
+
+=====================================   日期排序   =============================================
+
+
+
+    // 日期排序
+    // 教程来源:  https://www.softwhy.com/article-7210-1.html
+
+    var arr = ['2020-02-09', '2020-02-15', '2020-02-16', '2020-02-08'];
+    console.log(arr);
+
+    // 时间日期 从小到大排序   (代码是网上抄的, 从大到小暂时还不会)
+    Array.prototype.small_to_big = function () {
+        var arr2 = []           // 声明一个数组用来声明时间戳
+        var json = {};
+        for (var index = 0, len = this.length; index < len; index++) {
+            json[new Date(this[index]).getTime()] = this[index];
+            arr2.push(new Date(this[index]).getTime());     // 把时间戳压入数组。
+        }
+        arr2.sort();
+
+        for (var j = 0; j < arr2.length; j++) {
+            this[j] = json[arr2[j]];
+        }
+        return this;
+    }
+    console.log(arr.small_to_big())
+
+
+
 
 
 

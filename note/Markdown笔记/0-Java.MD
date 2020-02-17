@@ -439,6 +439,140 @@ public class UnicodeToString{
 
 
 
+<details>
+<summary><b> 日历 / 日期 / 时间 </b></summary>
+
+```  
+
+
+    返回当前时间 (小心里面有个 Date 可能会和 sql 里面的 Date 发生冲突):
+    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+    System.out.println( "现在是:  " +  df.format(new java.util.Date()));// new Date()为获取当前系统时间
+
+    System.out.printf("现在是:  %66s  \n" , df.format(new java.util.Date()));
+    System.out.printf("现在是:  %-66s   " , df.format(new java.util.Date()));
+
+
+
+
+字符串格式的时间 / 时间格式的时间 的转化:
+    String date = "2020-02-11";
+    SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
+
+    Date date1 = new Date(String.valueOf(format.parse(date)));
+    System.out.println(date1);          // 输出:  Sat Jan 11 14:02:00 CST 2020
+
+    String string_date = format.format(date1);
+    System.out.println(string_date);       // 输出 :   2020-02-11
+
+
+
+
+
+时间 / 日期排序:
+        import java.text.ParseException;
+        import java.text.SimpleDateFormat;
+        import java.util.ArrayList;
+        import java.util.Date;
+
+
+        ArrayList<String> timeList = new ArrayList<String>();
+        timeList.add("2020-02-09 20:20");
+        timeList.add("2020-02-15 10:20");
+        timeList.add("2020-02-16 20:20");
+        timeList.add("2020-02-08 20:20");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-M-dd HH:mm");
+        ArrayList<Date> dateList = new ArrayList<Date>();
+
+         // 字符串转时间
+        for (String str : timeList) {
+            try {
+                dateList.add(format.parse(str));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+        // 打印排序前的时间
+        System.out.println("排序前：");
+        for(Date d:dateList){
+            System.out.println(format.format(d));
+        }
+
+
+        // 开始排序:
+        Sort sort = new Sort();
+        sort.Date_Small_to_big(dateList);
+//        sort.Date_big_to_small(dateList);
+
+
+        System.out.println("排序后：");
+        for(Date d:dateList){
+            System.out.println(format.format(d));
+        }
+
+
+
+// 冒泡排序
+class Sort{
+
+    Date tempDate = null;
+
+    //  排序 : 从小到大
+    public ArrayList<Date> Date_Small_to_big(ArrayList<Date> dateList){
+        for (int i = dateList.size()- 1; i > 0; --i) {
+            for (int j = 0; j < i; ++j) {
+                if(dateList.get(j+1).before(dateList.get(j))){
+                    tempDate = dateList.get(j);
+                    dateList.set(j, dateList.get(j+1));
+                    dateList.set(j+1, tempDate);
+                }
+            }
+        }
+        return dateList;
+    }
+
+    // 排序 : 从大到小
+    public ArrayList<Date> Date_big_to_small(ArrayList<Date> dateList){
+
+        for (int i = dateList.size()- 1; i > 0; --i) {
+            for (int j = 0; j < i; ++j) {
+                if(dateList.get(j+1).after(dateList.get(j))){
+                    tempDate = dateList.get(j);
+                    dateList.set(j, dateList.get(j+1));
+                    dateList.set(j+1, tempDate);
+                }
+            }
+        }
+        return dateList;
+    }
+
+}
+
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -447,7 +581,7 @@ public class UnicodeToString{
 
 
 <details>
-<summary><b>字符串是否含有英文 / 中文 / 数字 / 替换/ 时间 / 随机数 / 随机字符串 / 截取字符串</b></summary>
+<summary><b>字符串是否含有英文 / 中文 / 数字 / 替换 / 随机数 / 随机字符串 / 截取字符串</b></summary>
 
 ```  
         大写:
@@ -552,12 +686,7 @@ public class UnicodeToString{
         
         
         
-        返回当前时间 (小心里面有个 Date 可能会和 sql 里面的 Date 发生冲突):
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
-        System.out.println( "现在是:  " +  df.format(new java.util.Date()));// new Date()为获取当前系统时间
 
-        System.out.printf("现在是:  %66s  \n" , df.format(new java.util.Date()));
-        System.out.printf("现在是:  %-66s   " , df.format(new java.util.Date()));
 
 
         
@@ -1329,7 +1458,7 @@ insert into user(username,password) values('OPPO','R11');
 
 
 
----
+
 # 集合
 <details>
 <summary><b>集合简介:</b></summary>
@@ -1930,6 +2059,17 @@ map的四种遍历方式:
 
 ```
 </details>
+
+
+
+
+
+
+
+
+
+
+
 
 
 

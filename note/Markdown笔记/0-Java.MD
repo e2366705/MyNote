@@ -2075,6 +2075,98 @@ map的四种遍历方式:
 
 
 
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> List / Set 的 交集 / 差集</b></summary>
+
+```  
+
+
+Java List的并集 交集 差集 去重复并集
+public static void main(String[] args) {
+    List<String> list1 = new ArrayList<String>();
+    list1.add("A");
+    list1.add("B");
+    list1.add("C");
+
+    List<String> list2 = new ArrayList<String>();
+    list2.add("C");
+    list2.add("B");
+    list2.add("D");
+    // 并集
+    list1.addAll(list2);
+    // 去重复并集
+    list2.removeAll(list1);
+    list1.addAll(list2);
+    // 交集
+    list1.retainAll(list2);
+    // 差集
+    list1.removeAll(list2);
+}
+
+
+
+
+
+
+
+java集合的交集，并集，差集:
+        Set<String> set1 = new HashSet<>();
+        Set<String> set2 = new HashSet<>();
+
+        set1.add("a");
+        set1.add("b");
+        set1.add("c");
+
+        set2.add("c");
+        set2.add("d");
+        set2.add("e");
+
+        //  交集
+        set1.retainAll(set2);
+        System.out.println("交集是 "+set1);
+
+        //  并集
+        set1.addAll(set2);
+
+        //  差集
+        set1.removeAll(set2);
+
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <details>
 <summary><b>集合 与 json 之间的转换</b></summary>
 

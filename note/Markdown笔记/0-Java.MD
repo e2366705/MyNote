@@ -501,6 +501,16 @@ class Sort{
 
 
 
+判断一个字符串是否包含某个字符:
+        String str = "我叫王力宏";
+        boolean status = str.contains("力");
+        if(status){
+            System.out.println("包含");
+        }else{
+            System.out.println("不包含");
+        }
+
+
 
 
         大写:

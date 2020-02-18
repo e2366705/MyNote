@@ -335,92 +335,6 @@ public class JSON_Alibaba {
 
 
 
-<details>
-<summary><b>  unicode中文编码转换和反转  </b></summary>
-
-```  
-
-参考资料:      https://blog.csdn.net/u013066244/article/details/54708179
-
-
-什么是 Unicode 编码?
-\u6211\u8d70\u3002\u53bb\u90a3\u9065\u8fdc\u7684\u4ee5\u540e
-这种的, 就是 Unicode 编码
-
-更进一步讲,
-
-可以理解为是：通用字符集
-
-世界上存在着多种编码方式，同一个二进制数字可以被解释成不同的符号。
-因此，要想打开一个文本文件，就必须知道它的编码方式，否则用错误的编码方式解读，就会出现乱码。
-为什么电子邮件常常出现乱码？就是因为发信人和收信人使用的编码方式不一样。
-可以想象，如果有一种编码，将世界上所有的符号都纳入其中。每一个符号都给予一个独一无二的编码，那么乱码问题就会消失。这就是Unicode，
-就像它的名字都表示的，这是一种所有符号的编码。
-Unicode当然是一个很大的集合，现在的规模可以容纳100多万个符号。
-每个符号的编码都不一样，
-比如，U+0639表示阿拉伯字母Ain，U+0041表示英语的大写字母A，U+4E25表示汉字”严”。
-具体的符号对应表，可以查询  http://www.chi2ko.com/tool/CJK.htm
-
-
-但是呢！Unicode只是一个符号集，它和ASCII是同一级别的。它没有规定如何存储
-带来的问题是：如何才能区别Unicode和ASCII？
-
-带来结果：出现了Unicode的多种存储方式，也就是说有许多种不同的二进制格式，可以用来表示Unicode
-
-UTF-8
-互联网的普及，强烈要求出现一种统一的编码方式。UTF-8就是在互联网上使用最广的一种Unicode的实现方式。
-其他实现方式还包括UTF-16（字符用两个字节或四个字节表示）和UTF-32（字符用四个字节表示），不过在互联网上基本不用。
-
-重复一遍，
-这里的关系是，UTF-8是Unicode的实现方式之一
-
-UTF-8最大的一个特点，就是它是一种变长的编码方式。
-它可以使用1~4个字节表示一个符号，根据不同的符号而变化字节长度。
-
-UTF-8的编码规则很简单，只有二条：
-
-1）对于单字节的符号，字节的第一位设为0，后面7位为这个符号的unicode码。因此对于英语字母，UTF-8编码和ASCII码是相同的。
-
-2）对于n字节的符号（n>1），第一个字节的前n位都设为1，第n+1位设为0，后面字节的前两位一律设为10。剩下的没有提及的二进制位，全部为这个符号的unicode码。
-
-参考来源:  http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html
-
-
-
-说了那么多, 接下来赶紧说说怎么用 Java 语言, 实现 Unicode 转成 中文呢?
-直接上代码:
-import org.junit.Test;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-public class UnicodeToString{
-    @Test
-    public void UnicodeTo_chinese(){
-        String str = "\\u5e26\\u6211\\u8d70\\u3002\\u53bb\\u90a3\\u9065\\u8fdc\\u7684\\u4ee5\\u540e";
-
-        Pattern pattern = Pattern.compile("(\\\\u(\\p{XDigit}{4}))");
-        Matcher matcher = pattern.matcher(str);
-
-        char ch;
-
-        while (matcher.find()) {
-            ch = (char) Integer.parseInt(matcher.group(2), 16);
-            str = str.replace(matcher.group(1), ch+"" );
-            System.out.println(str);
-        }
-    }
-}
-
-
-
-
-```
-</details>
-
-
-
-
-
 
 
 
@@ -584,6 +498,11 @@ class Sort{
 <summary><b>字符串是否含有英文 / 中文 / 数字 / 替换 / 随机数 / 随机字符串 / 截取字符串</b></summary>
 
 ```  
+
+
+
+
+
         大写:
         str.toUpperCase();
 
@@ -1448,6 +1367,609 @@ insert into user(username,password) values('OPPO','R11');
 
 
 
+# 各种形式的转换
+<details>
+<summary><b> Java Array、List、Set互相转化 </b></summary>
+
+```  
+
+
+Array / Set
+-----------------------------------------------------------------------------
+Array -> Set
+    String[] arr = {"AA","BB","DD","CC","BB"};
+    Set<String> set = new HashSet<String>(Arrays.asList(arr));  
+
+Set -> Array
+	String[] arr = new String[set.size()]; 
+    set.toArray(arr); 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+List / Set:
+-----------------------------------------------------------------------------
+
+List -> Set
+    Set<String> set = new HashSet<>(list);
+
+Set -> List
+    List<String> list_1 = new ArrayList<>(set);
+
+被转换的List(Set)的修改不会对被转化后的Set（List）造成影响
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+数组( [] )    最高效；但是其容量固定且无法动态改变
+ArrayList     容量可动态增长；但牺牲效率
+当能确定长度并且数据类型一致的时候就可以用数组，其他时候使用ArrayList
+
+
+List / Array
+-----------------------------------------------------------------------------
+List -> Array
+    List<String> list = new ArrayList<String>();  
+    list.add("AA");  
+    list.add("BB");  
+    list.add("CC");  
+    Object[] objects = list.toArray();//返回Object数组  
+    
+    String[] arr = new String[list.size()];  
+    list.toArray(arr);  //将转化后的数组放入已经创建好的对象中  
+
+
+Array -> List
+    String[] ss = {"JJ","KK"};  
+    List<String> list1 = Arrays.asList(ss);  
+    List<String> list2 = Arrays.asList("AAA","BBB");  
+
+
+Array -> List
+    String[] s = new String[]{"A", "B", "C", "D","E"};
+    List<String> list = Arrays.asList(s);
+    注意: 这里对s的修改，直接影响list 的数据
+    s[0] ="AA";
+    System.out.println("list: " + list);
+    >>> list: [AA, B, C, D, E]
+
+List -> Array
+    String[] dest = list.toArray(new String[0]);//new String[0]是指定返回数组的类型
+    System.out.println("dest: " + Arrays.toString(dest));
+    >>>  [AA, B, C, D, E]
+    注意这里的dest里面的元素不是list里面的元素，换句话就是说：对list中关于元素的修改，不会影响dest
+
+
+
+
+
+
+
+
+
+
+
+Map / List / Set
+-----------------------------------------------------------------------------
+将 Map Key 转化为List
+    List<String> mapKeyList = new ArrayList<String>(map.keySet());  
+
+将 Map Key 转化为List
+    List<String> mapValuesList = new ArrayList<String>(map.values());  
+
+    将Map 的键转化为Set
+        Set<String> mapKeySet = map.keySet();  
+        
+    将Map 的值转化为Set
+        Set<String> mapValuesSet = new HashSet<String>(map.values());  
+
+
+
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b>字符串 / Array(数组) / Arraylist(列表) </b></summary>
+
+```  
+
+
+字符串转化成数组:
+        String[] strarray="QQQQQQQQQQQQ".split("");//得到一个List数组
+        System.out.println(strarray.length);
+
+
+
+
+string 和 ArrayList 之间的转换:
+-----------------------------------------------------------------------------
+        //string 转 ArrayList
+        List<String> strings_list = Arrays.asList("QWERTYUIOP".split(""));
+        System.out.println(strings_list);
+        >>> [Q, W, E, R, T, Y, U, I, O, P]
+
+
+        //ArrayList 转 string
+        ArrayList<String> list = new ArrayList<String>();
+        list.add("a");
+        list.add("b");
+        list.add("c");
+        System.out.println(list);//[a, b, c]
+
+        String list_str = StringUtils.join(list,",");
+        System.out.println(list_str);//a,b,c        
+
+     
+
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b>  unicode中文编码转换和反转  </b></summary>
+
+```  
+
+参考资料:      https://blog.csdn.net/u013066244/article/details/54708179
+
+
+什么是 Unicode 编码?
+\u6211\u8d70\u3002\u53bb\u90a3\u9065\u8fdc\u7684\u4ee5\u540e
+这种的, 就是 Unicode 编码
+
+更进一步讲,
+
+可以理解为是：通用字符集
+
+世界上存在着多种编码方式，同一个二进制数字可以被解释成不同的符号。
+因此，要想打开一个文本文件，就必须知道它的编码方式，否则用错误的编码方式解读，就会出现乱码。
+为什么电子邮件常常出现乱码？就是因为发信人和收信人使用的编码方式不一样。
+可以想象，如果有一种编码，将世界上所有的符号都纳入其中。每一个符号都给予一个独一无二的编码，那么乱码问题就会消失。这就是Unicode，
+就像它的名字都表示的，这是一种所有符号的编码。
+Unicode当然是一个很大的集合，现在的规模可以容纳100多万个符号。
+每个符号的编码都不一样，
+比如，U+0639表示阿拉伯字母Ain，U+0041表示英语的大写字母A，U+4E25表示汉字”严”。
+具体的符号对应表，可以查询  http://www.chi2ko.com/tool/CJK.htm
+
+
+但是呢！Unicode只是一个符号集，它和ASCII是同一级别的。它没有规定如何存储
+带来的问题是：如何才能区别Unicode和ASCII？
+
+带来结果：出现了Unicode的多种存储方式，也就是说有许多种不同的二进制格式，可以用来表示Unicode
+
+UTF-8
+互联网的普及，强烈要求出现一种统一的编码方式。UTF-8就是在互联网上使用最广的一种Unicode的实现方式。
+其他实现方式还包括UTF-16（字符用两个字节或四个字节表示）和UTF-32（字符用四个字节表示），不过在互联网上基本不用。
+
+重复一遍，
+这里的关系是，UTF-8是Unicode的实现方式之一
+
+UTF-8最大的一个特点，就是它是一种变长的编码方式。
+它可以使用1~4个字节表示一个符号，根据不同的符号而变化字节长度。
+
+UTF-8的编码规则很简单，只有二条：
+
+1）对于单字节的符号，字节的第一位设为0，后面7位为这个符号的unicode码。因此对于英语字母，UTF-8编码和ASCII码是相同的。
+
+2）对于n字节的符号（n>1），第一个字节的前n位都设为1，第n+1位设为0，后面字节的前两位一律设为10。剩下的没有提及的二进制位，全部为这个符号的unicode码。
+
+参考来源:  http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html
+
+
+
+说了那么多, 接下来赶紧说说怎么用 Java 语言, 实现 Unicode 转成 中文呢?
+直接上代码:
+import org.junit.Test;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class UnicodeToString{
+    @Test
+    public void UnicodeTo_chinese(){
+        String str = "\\u5e26\\u6211\\u8d70\\u3002\\u53bb\\u90a3\\u9065\\u8fdc\\u7684\\u4ee5\\u540e";
+
+        Pattern pattern = Pattern.compile("(\\\\u(\\p{XDigit}{4}))");
+        Matcher matcher = pattern.matcher(str);
+
+        char ch;
+
+        while (matcher.find()) {
+            ch = (char) Integer.parseInt(matcher.group(2), 16);
+            str = str.replace(matcher.group(1), ch+"" );
+            System.out.println(str);
+        }
+    }
+}
+
+
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b>集合 与 json 之间的转换</b></summary>
+
+```  
+
+教程来源:  http://www.51gjie.com/java/790.html
+          http://www.gogoomo.com/2017/11/16/4%E7%A7%8D%E6%96%B9%E6%B3%95%E5%B0%86String%E8%BD%AC%E4%B8%BAJSON/
+          https://juejin.im/post/5dbd59a3f265da4d56090fc9
+
+首先: 先要
+
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.9.5</version>
+    </dependency>
+
+    <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>fastjson</artifactId>
+        <version>1.2.51</version>
+    </dependency>
+
+
+    
+
+然后, 建一个实体类 User:
+class User {
+    private String name;
+    private Integer age;
+    private String address;
+    public User(){
+
+    }
+    public User(String name, Integer age, String address) {
+        super();
+        this.name = name;
+        this.age = age;
+        this.address = address;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public Integer getAge() {
+        return age;
+    }
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+    public String getAddress() {
+        return address;
+    }
+    public void setAddress(String address) {
+        this.address = address;
+    }
+}
+
+
+
+然后就可以转换了...
+
+    @Test
+    public void Map_to_JSON(){
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            JsonGenerator jsonGenerator = objectMapper.getJsonFactory().createJsonGenerator(System.out, JsonEncoding.UTF8);
+            //map转JSON
+            Map < String,Object > map = new HashMap < String,Object > ();
+            map.put("one", new User("张", 12, "深圳"));
+            map.put("two", new User("李", 22, "武汉"));
+            map.put("three", new User("王", 32, "北京"));
+
+            System.out.println("ObjectMapper方式");
+            objectMapper.writeValue(System.out, map); 
+
+            // 将转换好的数据, 写入到本地的 txt 文件当中
+            objectMapper.writeValue(new File("D:TEST.txt"), map);
+
+             System.out.println("JsonGenerator方式");
+            jsonGenerator.writeObject(map);
+
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+    @Test
+    public void JSON_to_map(){
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            //JSON转map
+            String mapJson = "{\"one\":{\"name\":\"张三\",\"age\":21,\"address\":\"深圳\"}," + "\"two\":{\"name\":\"李四\",\"age\":11,\"address\":\"武汉\"}," + "\"three\":{\"name\":\"王五\",\"age\":31,\"address\":\"北京\"}}";
+            JavaType javaType2 = objectMapper.getTypeFactory().constructParametricType(HashMap.class, String.class, User.class);
+            Map < String,User > userMap = (Map < String, User > ) objectMapper.readValue(mapJson, javaType2);
+            User one = userMap.get("one");
+            User two = userMap.get("two");
+            User three = userMap.get("three");
+            System.out.println(one.getName() + "\t" + one.getAge() + "\t" + one.getAddress());
+            System.out.println(two.getName() + "\t" + two.getAge() + "\t" + two.getAddress());
+            System.out.println(three.getName() + "\t" + three.getAge() + "\t" + three.getAddress());
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+    @Test
+    public void JSON_to_list(){
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            //JSON转list
+            String listJson = "[{\"name\":\"张三\",\"age\":21,\"address\":\"深圳\"}," + "{\"name\":\"李四\",\"age\":11,\"address\":\"武汉\"}," + "{\"name\":\"王五\",\"age\":31,\"address\":\"北京\"}]";
+            JavaType javaType1 = objectMapper.getTypeFactory().constructParametricType(ArrayList.class, User.class);
+            List< User > userList = (List < User > ) objectMapper.readValue(listJson, javaType1);
+            for (User user1: userList) {
+                System.out.println(user1.getName() + "\t" + user1.getAge() + "\t" + user1.getAddress());
+            }
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    @Test
+    public void List_to_JSON(){
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            JsonGenerator jsonGenerator = objectMapper.getJsonFactory().createJsonGenerator(System.out, JsonEncoding.UTF8);
+            //list转JSON
+            List < User > list = new ArrayList < User > ();
+            list.add(new User("张", 12, "深圳"));
+            list.add(new User("李", 22, "武汉"));
+            list.add(new User("王", 32, "北京"));
+            System.out.println("ObjectMapper方式");
+            objectMapper.writeValue(System.out, list);
+            System.out.println("JsonGenerator方式");
+            jsonGenerator.writeObject(list);
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+        //2.1 将List<Person> 转成 json  ( 使用 fastjson )
+        List<Person> personList = new ArrayList<>();
+        personList.add(new Person(10, "张三"));
+        personList.add(new Person(10, "李四"));
+        personList.add(new Person(10, "王五"));
+        Object obj2 = JSONArray.toJSON(personList);
+        String json2 = obj2.toString();
+        System.out.println("将List<Person>转成json:" + json2);
+
+
+    // json 转成 Java对象 (方法一)
+    @Test
+    public void JSON_to_JavaObject(){
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+
+            String json = "{\"name\":\"张三\",\"age\":23,\"address\":\"深圳市\"}";
+            User zhang = objectMapper.readValue(json, User.class);
+            System.out.println(zhang.getName() + "\n" + zhang.getAge() + "\n" + zhang.getAddress());
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    // json 转成 Java对象 (方法二: Gson 实现 )
+    @Test
+    public void JSONstring_to_JavaObject(){
+        String jsonString = " {\"name\":\"YXB\",\"age\":23,\"address\":\"北京\"} ";
+        Gson g = new Gson();
+        User  user = g.fromJson(jsonString, User.class);
+        System.out.println(user.toString());
+    }
+
+
+
+    // Java 对象 转成 JSON ( 使用 Alibaba 的 fastjson )
+    Person p = new Person(10, "张三");
+    Object obj = JSONArray.toJSON(p);
+    String json = obj.toString();
+    System.out.println("将Person对象转成json:" + json);
+
+    <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>fastjson</artifactId>
+        <version>1.2.51</version>
+    </dependency>
+
+
+
+
+    // 将Map 转成 json字符串  方式一
+    @Test
+    public void Map_to_json_String() throws Exception {
+        //创建Map集合对象
+        Map<String,Object> map = new HashMap<String,Object>();
+        map.put("name","张三");
+        map.put("age",20);
+        map.put("gender","男");
+        //2、创建sackson核心对象  ObjectMapper
+        ObjectMapper mapper = new ObjectMapper();
+        //3、将对象转换为json字符串
+        String json = mapper.writeValueAsString(map);
+        System.out.println(json);  //{"name":"李四","age":21,"gender":"女","birthday":1572521699055}
+    }
+
+
+    // 将Map 转成 json字符串  方式二 ( 使用 Alibaba 的 fastjson )
+        Map<String, Person> map = new HashMap<>();
+        map.put("1", new Person(10, "张三"));
+        map.put("2", new Person(10, "李四"));
+        map.put("3", new Person(10, "王五"));
+        Object obj3 = JSONArray.toJSON(map);
+        String json3 = obj3.toString();
+        System.out.println("将Map<String,Person>转成json:" + json3);
+
+
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1461,9 +1983,11 @@ insert into user(username,password) values('OPPO','R11');
 
 # 集合
 <details>
-<summary><b>集合简介:</b></summary>
+<summary><b> 集合[ArrayList(列表), Set, Map]  /  Array(数组)  简介  :</b></summary>
 
 ```  
+
+
 
 Map:
     是集合的一部分，但与Collection是相互独立的，没有任何关系
@@ -1502,8 +2026,6 @@ Collection 主要有三个子接口,分别为:
  ArrayList：底层的数据结构使用的是数组结构（数组长度是可变的百分之五十延长）（特点是查询很快，但增删较慢）线程不同步
  LinkedList：底层的数据结构是链表结构（特点是查询较慢，增删较快）
 
-```
-</details>
 
 
 
@@ -1511,131 +2033,60 @@ Collection 主要有三个子接口,分别为:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-<details>
-<summary><b> Java Array、List、Set互相转化 </b></summary>
-
-```  
-
-
-Array / Set
------------------------------------------------------------------------------
-Array -> Set
-    String[] arr = {"AA","BB","DD","CC","BB"};
-    Set<String> set = new HashSet<String>(Arrays.asList(arr));  
-
-Set -> Array
-	String[] arr = new String[set.size()]; 
-    set.toArray(arr); 
-
-
-
-
-
-
-
-
-
-
-
-List / Set:
------------------------------------------------------------------------------
-
-List -> Set
-    Set<String> set = new HashSet<>(list);
-
-Set -> List
-    List<String> list_1 = new ArrayList<>(set);
-
-被转换的List(Set)的修改不会对被转化后的Set（List）造成影响
-
-
-
-
-
-
-
-
-
-List / Array
------------------------------------------------------------------------------
-List -> Array
-    List<String> list = new ArrayList<String>();  
-    list.add("AA");  
-    list.add("BB");  
-    list.add("CC");  
-    Object[] objects = list.toArray();//返回Object数组  
+ 数组(Array)和列表(ArrayList)有什么区别?
     
-    String[] arr = new String[list.size()];  
-    list.toArray(arr);  //将转化后的数组放入已经创建好的对象中  
+    数组(Array):
+        Array：它是数组，元素类型和数组的大小都是确定的, 
+        申明数组的时候就要初始化并确定长度，长度不可变，而且它只能存储同一类型的数据，
+        比如申明为String类型的数组，那么它只能存储String类型数据
+    
+    ArrayList(集合):
+        它是一个集合，需要先申明，然后再添加数据，长度是根据内容的多少而改变的，
+        ArrayList可以存放不同类型的数据
+        ArrayList的元素类型不能是基本类型 , 比如你 不能 这样初始化一个ArrayList:
+            List<int> list=new ArrayList<int>();//会报错的！
 
+    获取长度
+        数组：length属性
+        ArrayList：size()方法
 
-Array -> List
-    String[] ss = {"JJ","KK"};  
-    List<String> list1 = Arrays.asList(ss);  
-    List<String> list2 = Arrays.asList("AAA","BBB");  
+    增加元素
+        数组：直接通过序号赋值。 eg：array[0]=233;
+        ArrayList：通过add方法。eg：list.add(0,233);
+    
+    
+    创建 ArrayList对象不用指定长度，而创建数组对象必须指定长度
+    数组可以是多维的，而ArrayList不是
+    ArrayList可以扩容，而数组不能
 
-
-
-
-
-
-
-
-
-
-Map / List / Set
------------------------------------------------------------------------------
-将 Map Key 转化为List
-    List<String> mapKeyList = new ArrayList<String>(map.keySet());  
-
-将 Map Key 转化为List
-    List<String> mapValuesList = new ArrayList<String>(map.values());  
-
-    将Map 的键转化为Set
-        Set<String> mapKeySet = map.keySet();  
-        
-    将Map 的值转化为Set
-        Set<String> mapValuesSet = new HashSet<String>(map.values());  
-
-
-
-
-
-
-
-Array -> List
-    String[] s = new String[]{"A", "B", "C", "D","E"};
-    List<String> list = Arrays.asList(s);
-    注意: 这里对s的修改，直接影响list 的数据
-    s[0] ="AA";
-    System.out.println("list: " + list);
-    >>> list: [AA, B, C, D, E]
-
-List -> Array
-    String[] dest = list.toArray(new String[0]);//new String[0]是指定返回数组的类型
-    System.out.println("dest: " + Arrays.toString(dest));
-    >>>  [AA, B, C, D, E]
-    注意这里的dest里面的元素不是list里面的元素，换句话就是说：对list中关于元素的修改，不会影响dest
-
+    总结 : 
+        数组( [] )    最高效；但是其容量固定且无法动态改变
+        ArrayList     容量可动态增长；但牺牲效率
+        当能确定长度并且数据类型一致的时候就可以用数组，其他时候使用ArrayList
 
 
 
 
 ```
 </details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2102,15 +2553,24 @@ public static void main(String[] args) {
     list2.add("C");
     list2.add("B");
     list2.add("D");
+    
     // 并集
     list1.addAll(list2);
+    System.out.println(list1);          // [A, B, C, C, B, D]
+    
     // 去重复并集
     list2.removeAll(list1);
     list1.addAll(list2);
+    System.out.println(list1);          // [A, B, C, D]
+
     // 交集
+    // 求交集时候, list1 必须是小集合(容量小的集合) , list2是容量大的集合
     list1.retainAll(list2);
+    System.out.println(list1);          // [B, C]
+
     // 差集
     list1.removeAll(list2);
+    System.out.println(list1);          // [A]
 }
 
 
@@ -2167,245 +2627,44 @@ java集合的交集，并集，差集:
 
 
 
-<details>
-<summary><b>集合 与 json 之间的转换</b></summary>
-
-```  
-
-教程来源:  http://www.51gjie.com/java/790.html
-          http://www.gogoomo.com/2017/11/16/4%E7%A7%8D%E6%96%B9%E6%B3%95%E5%B0%86String%E8%BD%AC%E4%B8%BAJSON/
-          https://juejin.im/post/5dbd59a3f265da4d56090fc9
-
-首先: 先要
-
-    <dependency>
-      <groupId>com.fasterxml.jackson.core</groupId>
-      <artifactId>jackson-databind</artifactId>
-      <version>2.9.5</version>
-    </dependency>
-
-    <dependency>
-        <groupId>com.alibaba</groupId>
-        <artifactId>fastjson</artifactId>
-        <version>1.2.51</version>
-    </dependency>
-
-
-    
-
-然后, 建一个实体类 User:
-class User {
-    private String name;
-    private Integer age;
-    private String address;
-    public User(){
-
-    }
-    public User(String name, Integer age, String address) {
-        super();
-        this.name = name;
-        this.age = age;
-        this.address = address;
-    }
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public Integer getAge() {
-        return age;
-    }
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-    public String getAddress() {
-        return address;
-    }
-    public void setAddress(String address) {
-        this.address = address;
-    }
-}
-
-
-
-然后就可以转换了...
-
-    @Test
-    public void Map_to_JSON(){
-        try {
-            ObjectMapper objectMapper = new ObjectMapper();
-            JsonGenerator jsonGenerator = objectMapper.getJsonFactory().createJsonGenerator(System.out, JsonEncoding.UTF8);
-            //map转JSON
-            Map < String,Object > map = new HashMap < String,Object > ();
-            map.put("one", new User("张", 12, "深圳"));
-            map.put("two", new User("李", 22, "武汉"));
-            map.put("three", new User("王", 32, "北京"));
-
-            System.out.println("ObjectMapper方式");
-            objectMapper.writeValue(System.out, map); 
-
-            // 将转换好的数据, 写入到本地的 txt 文件当中
-            objectMapper.writeValue(new File("D:TEST.txt"), map);
-
-             System.out.println("JsonGenerator方式");
-            jsonGenerator.writeObject(map);
-
-        } catch(IOException e) {
-            e.printStackTrace();
-        }
-
-    }
-
-
-    @Test
-    public void JSON_to_map(){
-        try {
-            ObjectMapper objectMapper = new ObjectMapper();
-            //JSON转map
-            String mapJson = "{\"one\":{\"name\":\"张三\",\"age\":21,\"address\":\"深圳\"}," + "\"two\":{\"name\":\"李四\",\"age\":11,\"address\":\"武汉\"}," + "\"three\":{\"name\":\"王五\",\"age\":31,\"address\":\"北京\"}}";
-            JavaType javaType2 = objectMapper.getTypeFactory().constructParametricType(HashMap.class, String.class, User.class);
-            Map < String,User > userMap = (Map < String, User > ) objectMapper.readValue(mapJson, javaType2);
-            User one = userMap.get("one");
-            User two = userMap.get("two");
-            User three = userMap.get("three");
-            System.out.println(one.getName() + "\t" + one.getAge() + "\t" + one.getAddress());
-            System.out.println(two.getName() + "\t" + two.getAge() + "\t" + two.getAddress());
-            System.out.println(three.getName() + "\t" + three.getAge() + "\t" + three.getAddress());
-        } catch(IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-
-    @Test
-    public void JSON_to_list(){
-        try {
-            ObjectMapper objectMapper = new ObjectMapper();
-            //JSON转list
-            String listJson = "[{\"name\":\"张三\",\"age\":21,\"address\":\"深圳\"}," + "{\"name\":\"李四\",\"age\":11,\"address\":\"武汉\"}," + "{\"name\":\"王五\",\"age\":31,\"address\":\"北京\"}]";
-            JavaType javaType1 = objectMapper.getTypeFactory().constructParametricType(ArrayList.class, User.class);
-            List< User > userList = (List < User > ) objectMapper.readValue(listJson, javaType1);
-            for (User user1: userList) {
-                System.out.println(user1.getName() + "\t" + user1.getAge() + "\t" + user1.getAddress());
-            }
-        } catch(IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    @Test
-    public void List_to_JSON(){
-        try {
-            ObjectMapper objectMapper = new ObjectMapper();
-            JsonGenerator jsonGenerator = objectMapper.getJsonFactory().createJsonGenerator(System.out, JsonEncoding.UTF8);
-            //list转JSON
-            List < User > list = new ArrayList < User > ();
-            list.add(new User("张", 12, "深圳"));
-            list.add(new User("李", 22, "武汉"));
-            list.add(new User("王", 32, "北京"));
-            System.out.println("ObjectMapper方式");
-            objectMapper.writeValue(System.out, list);
-            System.out.println("JsonGenerator方式");
-            jsonGenerator.writeObject(list);
-        } catch(IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-
-        //2.1 将List<Person> 转成 json  ( 使用 fastjson )
-        List<Person> personList = new ArrayList<>();
-        personList.add(new Person(10, "张三"));
-        personList.add(new Person(10, "李四"));
-        personList.add(new Person(10, "王五"));
-        Object obj2 = JSONArray.toJSON(personList);
-        String json2 = obj2.toString();
-        System.out.println("将List<Person>转成json:" + json2);
-
-
-    // json 转成 Java对象 (方法一)
-    @Test
-    public void JSON_to_JavaObject(){
-        try {
-            ObjectMapper objectMapper = new ObjectMapper();
-
-            String json = "{\"name\":\"张三\",\"age\":23,\"address\":\"深圳市\"}";
-            User zhang = objectMapper.readValue(json, User.class);
-            System.out.println(zhang.getName() + "\n" + zhang.getAge() + "\n" + zhang.getAddress());
-        } catch(IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    // json 转成 Java对象 (方法二: Gson 实现 )
-    @Test
-    public void JSONstring_to_JavaObject(){
-        String jsonString = " {\"name\":\"YXB\",\"age\":23,\"address\":\"北京\"} ";
-        Gson g = new Gson();
-        User  user = g.fromJson(jsonString, User.class);
-        System.out.println(user.toString());
-    }
-
-
-
-    // Java 对象 转成 JSON ( 使用 Alibaba 的 fastjson )
-    Person p = new Person(10, "张三");
-    Object obj = JSONArray.toJSON(p);
-    String json = obj.toString();
-    System.out.println("将Person对象转成json:" + json);
-
-    <dependency>
-        <groupId>com.alibaba</groupId>
-        <artifactId>fastjson</artifactId>
-        <version>1.2.51</version>
-    </dependency>
 
 
 
 
-    // 将Map 转成 json字符串  方式一
-    @Test
-    public void Map_to_json_String() throws Exception {
-        //创建Map集合对象
-        Map<String,Object> map = new HashMap<String,Object>();
-        map.put("name","张三");
-        map.put("age",20);
-        map.put("gender","男");
-        //2、创建sackson核心对象  ObjectMapper
-        ObjectMapper mapper = new ObjectMapper();
-        //3、将对象转换为json字符串
-        String json = mapper.writeValueAsString(map);
-        System.out.println(json);  //{"name":"李四","age":21,"gender":"女","birthday":1572521699055}
-    }
-
-
-    // 将Map 转成 json字符串  方式二 ( 使用 Alibaba 的 fastjson )
-        Map<String, Person> map = new HashMap<>();
-        map.put("1", new Person(10, "张三"));
-        map.put("2", new Person(10, "李四"));
-        map.put("3", new Person(10, "王五"));
-        Object obj3 = JSONArray.toJSON(map);
-        String json3 = obj3.toString();
-        System.out.println("将Map<String,Person>转成json:" + json3);
 
 
 
-```
-</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 
 ---
-
-
-
 <details>
 <summary><b>my_name_is_jack</b></summary>
 

@@ -138,6 +138,13 @@ mycli -uroot
 
 
 
+
+	idea 自动补全代码 
+		Alt + 回车键(enter)
+	比如:
+		new User();  直接一键生成  User user = new User();
+	(一键导包也是这个快捷键)
+
 	
 	
 	

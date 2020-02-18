@@ -1404,11 +1404,6 @@ print(a ^ b)     # a 和 b 中不同时存在的元素
 
 
 
-
-
-
-# Other:
-
 <details>
 <summary><b> 迭代器与生成器 </b></summary>
 
@@ -2197,7 +2192,16 @@ is 与 == 区别：
 
 
 
-# Other
+
+
+
+
+
+
+
+
+
+
 <details>
 <summary><b>播放音频文件</b></summary>
 
@@ -2230,6 +2234,194 @@ def Play_Aduio_File(Aduio_file_name):
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 框架 / Web
+* 推荐 Django, 它是python的一个web服务框架, 内置了web服务器(SpringBoot也是内置了一个服务器), 适用于快速开发, 非常方便
+<details>
+<summary><b> 关于 pip </b></summary>
+
+```  
+
+查看安装了哪些应用/插件
+pip list
+
+访问太慢?
+解决办法(使用国内的镜像):
+pip install Django==3.0.3 -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+
+
+
+参考资料:https://zhuanlan.zhihu.com/p/46975553
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> Django </b></summary>
+
+```  
+
+这个教程可以, 简短, 不废话
+    https://www.bilibili.com/video/av79764564?p=2
+
+第一步: 安装
+打开 Windows 的cmd , 输入指令:
+pip install Django==3.0.3 -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+还可以从Github进行源码安装, 这里不再赘述, 网上有教程
+
+查看 Django 是否安装成功?
+cmd输入:
+python -m django --version
+
+输出 版本号, 表示安装成功
+
+
+
+
+创建一个项目 (DemoTestYXB 为创建的项目名称):
+django-admin startproject DemoTestYXB
+
+创建一个应用 (vvv1 为应用的名称):
+python manage.py startapp vvv1
+
+
+
+settings.py 注册这个 app
+在这里面:
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'vvv1',
+]
+
+在 vvv1/views.py 里面的 写:
+from django.http import HttpResponse
+from django.shortcuts import render
+def index_view(request):
+    return HttpResponse('Hello YXB')
+待会会访问这个函数
+
+
+
+
+在 urls.py里面配置 path('hello/', views.index_view) 
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('hello/', views.index_view),
+]
+
+
+启动 Django 里面内置的服务器:
+python manage.py runserver localhost:8866
+
+浏览器访问:  http://localhost:8866
+访问到 Django 默认的页面
+
+浏览器访问:  http://localhost:8866/hello/ 
+可以通过上面定义的 hello , 访问到 views.py 下面的 index_view 函数 , 
+从而在页面上输出: Hello YXB
+
+
+
+
+但是这种并不能直接访问页面, 而是以字符串的方式返回,
+怎么才能访问html页面呢?
+
+首先 ,
+在应用 vvv1 下面, 新建一个 Templates 文件夹(注意, 必须是这个名称, 是固定写法),
+然后新建一个html文档 , index.html
+
+然后在 views.py 新建一个 函数 V_web:
+表示跳转至 index.html
+def V_web(request):
+    context={
+        'title':'hello i am html file...'
+    }
+    return render(request , 'index.html' , context)
+
+在 index.html 中可以用 {{title}}  来取上面 V_web 里面 context 里面定义的 'title' 的值
+
+
+然后在 urls.py 的 urlpatterns 里面写:
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('hello/', views.index_view),
+    path('page/', views.V_web),
+]
+表示 浏览器访问 :   http://localhost:8866/page/  
+可以跳转到 V_web 函数 , 从而跳转到 index.html
+
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <details>
 <summary><b>my_name_is_jack</b></summary>
 
@@ -2244,27 +2436,10 @@ def Play_Aduio_File(Aduio_file_name):
 
 
 
-<details>
-<summary><b>my_name_is_jack</b></summary>
-
-```  
-
-```
-</details>
 
 
 
 
-
-
-
-<details>
-<summary><b>my_name_is_jack</b></summary>
-
-```  
-
-```
-</details>
 
 
 
@@ -2286,27 +2461,10 @@ def Play_Aduio_File(Aduio_file_name):
 
 
 
-<details>
-<summary><b>my_name_is_jack</b></summary>
-
-```  
-
-```
-</details>
 
 
 
 
-
-
-
-<details>
-<summary><b>my_name_is_jack</b></summary>
-
-```  
-
-```
-</details>
 
 
 
@@ -2328,6 +2486,17 @@ def Play_Aduio_File(Aduio_file_name):
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 <details>
 <summary><b>my_name_is_jack</b></summary>
 
@@ -2342,6 +2511,17 @@ def Play_Aduio_File(Aduio_file_name):
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 <details>
 <summary><b>my_name_is_jack</b></summary>
 
@@ -2349,6 +2529,67 @@ def Play_Aduio_File(Aduio_file_name):
 
 ```
 </details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+```  
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
 
 
 

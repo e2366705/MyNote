@@ -243,6 +243,50 @@ idea打包javaweb项目,有两种方式 : 一种是war，一种是 war explored
 
 
 
+
+
+
+
+
+
+<details>
+<summary><b> PyCharm 取消没必要的波浪线</b></summary>
+
+```  
+
+python是门语言代码非常严格的编程语言, 有时候你写的代码并没有错, 只是代码不符合规范, PyCharm也会提出警告(黄色波浪线)
+
+但是这些代码仅仅是不规范, 并没有语法上的错误
+
+如何修改 PyCharm 不让他碍手碍脚呢?
+
+教程如下:
+
+https://blog.csdn.net/xiemanR/article/details/72583718
+
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <details>
 <summary><b> idea 开发 springBoot如何实时刷新?</b></summary>
 

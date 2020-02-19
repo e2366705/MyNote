@@ -357,7 +357,7 @@ CREATE DATABASE IF NOT EXISTS `zzza9d2g5k4t1b0k` DEFAULT CHARSET utf8 COLLATE ut
 use `zzza9d2g5k4t1b0k`;
 
 -- 创建表
-CREATE TABLE IF NOT EXISTS `user`(
+CREATE TABLE IF NOT EXISTS `tb_user`(
 
 `id`         int(20)         unsigned not null DEFAULT 0,
 `money`      DECIMAL(20,2)   NOT NULL DEFAULT '0.00',

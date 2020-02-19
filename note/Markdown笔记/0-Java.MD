@@ -58,6 +58,21 @@ import java.net.MalformedURLException;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <details>
 <summary><b>System.out.printf 格式化</b></summary>
 
@@ -615,17 +630,17 @@ class Sort{
 
 
 
+
+        睡眠 / 暂停(单位: 毫秒):
+        Thread.sleep(3000);   
+
+
+
         随机数:
         int min_number = 5000;
         int max_number = 9999;
-        int Random_number = min_number + (int) (Math.random() * (max_number - min_number + 1000));
-
+        int Random_number = min_number + (int) (Math.random() * (max_number - min_number + 1000));     
         
-        
-        
-
-
-
         
         
         随机字符串:

@@ -347,7 +347,7 @@ CREATE TABLE IF NOT EXISTS `table1`(      -- (注释:)
 ```  
 
 
--- 删除数据库
+
 drop database IF EXISTS `zzza9d2g5k4t1b0k`;
 
 -- 创建 数据库:
@@ -358,10 +358,12 @@ use `zzza9d2g5k4t1b0k`;
 
 -- 创建表
 CREATE TABLE IF NOT EXISTS `user`(
-`id` int(20) unsigned not null DEFAULT 0,
-`money` DECIMAL(20,2) NOT NULL DEFAULT '0.00',
-`username` VARCHAR(100) not null DEFAULT '', 
-`password` VARCHAR(40)
+
+`id`         int(20)         unsigned not null DEFAULT 0,
+`money`      DECIMAL(20,2)   NOT NULL DEFAULT '0.00',
+`username`   VARCHAR(100)    not null DEFAULT '', 
+`password`   VARCHAR(40)
+
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -369,6 +371,9 @@ CREATE TABLE IF NOT EXISTS `user`(
 insert into `user`(username,password) values('HUAWEI','mate20');
 insert into `user`(username,password) values('APPLE','IPHONE_5S');
 insert into `user`(username,password) values('OPPO','R11');		
+
+
+
 
 
 

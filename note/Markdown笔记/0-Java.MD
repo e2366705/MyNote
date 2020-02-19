@@ -27,9 +27,17 @@ maven: pom.xml 添加:
     </dependency>
 
 
+
+
 导包:
 import javazoom.jl.decoder.JavaLayerException;
-import javazoom.jl.player.*;
+import javazoom.jl.player.Player;
+
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.net.MalformedURLException;
 
 
  @Test

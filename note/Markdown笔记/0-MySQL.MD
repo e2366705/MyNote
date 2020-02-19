@@ -347,7 +347,7 @@ CREATE TABLE IF NOT EXISTS `table1`(      -- (注释:)
 ```  
 
 
-
+-- 是否存在这个数据库, 如果是, 删除它
 drop database IF EXISTS `zzza9d2g5k4t1b0k`;
 
 -- 创建 数据库:
@@ -365,6 +365,14 @@ CREATE TABLE IF NOT EXISTS `user`(
 `password`   VARCHAR(40)
 
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+-- other 选项:
+-- 无符号		                  unsigned (只能是正数)
+-- 有符号		                  signed
+-- 主键		                      Primary key
+-- 不可重复		                  UNIQUE 
+-- 非空, 并设置默认字符            NOT NULL DEFAULT '', 
 
 
 -- 插入insert数据:
@@ -401,11 +409,7 @@ insert into `user`(username,password) values('OPPO','R11');
 	alter table t_user modify column id int comment '主键ID';
 
 
--- other 选项:
--- 无符号		unsigned
--- 有符号		signed
--- 主键		    Primary key
--- 不可重复		UNIQUE 
+
 
 ```
 </details>

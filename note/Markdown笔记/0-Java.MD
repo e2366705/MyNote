@@ -1,7 +1,10 @@
 ﻿
 
 # 注意: SpringBoot是不用自己去配置Tomcat的!!!
-## 妈的, 我在2020-01-23这一天折腾了好几个小时, 死活配置不好Tomacat, 突然想起来SpringBoot是不用配置Tomcat的....
+### 注意: SpringBoot是不用自己去配置Tomcat的!!!
+### 妈的, 我在2020-01-23这一天折腾了好几个小时, 死活配置不好Tomacat, 突然想起来SpringBoot是不用配置Tomcat的....
+### SpringBoot 自己内置了一个小型的服务器
+### 方便快捷, 适用于快速开发
 
 
 

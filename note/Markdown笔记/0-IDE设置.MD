@@ -1,5 +1,5 @@
 ﻿# 各种开发IDE 或 编辑器的设置选项 :
-* idea中注释:  /** */ 支持自动格式化  ,  /* */不支持自动格式化...
+idea中注释:  /** */ 支持自动格式化  ,  /* */不支持自动格式化...
 
 
 ### idea maven太慢, 一招解决!!
@@ -7,16 +7,18 @@
 	
 
 
-# 注意: SpringBoot是不用自己去配置Tomcat的!!!
-*  妈的, 我在2020-01-23这一天折腾了好几个小时, 死活配置不好Tomacat, 突然想起来SpringBoot是不用配置Tomcat的....
+### 注意: SpringBoot是不用自己去配置Tomcat的!!!
+### 妈的, 我在2020-01-23这一天折腾了好几个小时, 死活配置不好Tomacat, 突然想起来SpringBoot是不用配置Tomcat的....
+### SpringBoot 自己内置了一个小型的服务器
+### 方便快捷, 适用于快速开发
 
 
-# 哎呀妈呀~~~  IntelliJ IDEA 自带的数据库管理工具也太香了吧, 有一说一, 结合 SQLyog 简直完美!!!
+### IntelliJ IDEA 自带的数据库管理工具是真的香
 * 支持智能提醒, 语法报错, 真是太适合我这种小菜鸟了
-* IntelliJ IDEA 万岁!!!
+* IntelliJ IDEA 大法好!!!
 
 
-## 另外, 还有一款 命令行 管理MySQL的工具, 叫做: MyCli , 支持自动补全关键字、表名、列和函数 
+### 另外, 还有一款 命令行 管理MySQL的工具, 叫做: MyCli , 支持自动补全关键字、表名、列和函数 
 <details>
 <summary><b> MyCli </b></summary>
 

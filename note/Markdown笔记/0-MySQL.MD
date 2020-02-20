@@ -1,7 +1,7 @@
 ﻿
 
-## 以后不要折腾MySQL客户端了, 简直就是浪费时间, 直接下载一个 phpStudy 直接用里面内置的MySQL, 又省心又省力
-* 安装 phpStudy 之后 , 这时候是不能用 cmd 命令行直接操作 MySQL 数据库的, 需要这么配置
+### 以后不要折腾MySQL客户端了, 简直就是浪费时间, 直接下载一个 phpStudy 直接用里面内置的MySQL, 又省心又省力
+安装 phpStudy 之后 , 这时候是不能用 cmd 命令行直接操作 MySQL 数据库的, 需要这么配置
 <details>
 <summary><b>配置 phpStudy 里面的 MySQL 到系统变量</b></summary>
 
@@ -35,8 +35,8 @@
 
 
 
-## 一款 命令行 管理MySQL的工具, 叫做: MyCli , 支持自动补全关键字、表名、列和函数
-* 在 0-IDE.MD 里面有详细的介绍
+### 一款 命令行 管理MySQL的工具, 叫做: MyCli , 支持自动补全关键字、表名、列和函数
+在 0-IDE.MD 里面有详细的介绍
 
 
 
@@ -49,10 +49,10 @@
 
 
 
-## SQL 规范 (必读!!!)
-* 参考资料:
-* https://choerodon.io/zh/docs/contributor-guide/development/conventions/sql
-* https://www.jianshu.com/p/359ed85c3243
+### SQL 规范 (必读!!!)
+参考资料:
+https://choerodon.io/zh/docs/contributor-guide/development/conventions/sql
+https://www.jianshu.com/p/359ed85c3243
 <details>
 <summary><b> SQL 规范</b></summary>
 
@@ -220,8 +220,8 @@ select id,count(*) from table where age>=30 group by id order by null;
 
 
 
-## 批处理自动备份脚本(.bat for Windows10):
-* 注意!! 一定要用 Windows 自带的文本编辑器打开, 用别的编辑器打开会乱码(比如 VS Code)
+### 批处理自动备份脚本(.bat for Windows10):
+注意!! 一定要用 Windows 自带的文本编辑器打开, 用别的编辑器打开会乱码(比如 VS Code)
 <details>
 <summary><b>BackUP_MySQL.bat</b></summary>
 
@@ -266,7 +266,7 @@ pause
 
 
 
-# 基础:
+## 基础:
 <details>
 <summary><b>基础-001</b></summary>
 
@@ -916,7 +916,7 @@ mysql排序:
 
 
 
-# 以后不要折腾MySQL客户端了, 简直就是浪费时间, 直接下载一个 phpStudy 直接用里面内置的MySQL, 又省心又省力
+### 以后不要折腾MySQL客户端了, 简直就是浪费时间, 直接下载一个 phpStudy 直接用里面内置的MySQL, 又省心又省力
 <details>
 <summary><b>MySQL 遇到的问题: </b></summary>
 

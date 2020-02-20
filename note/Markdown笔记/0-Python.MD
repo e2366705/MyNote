@@ -68,7 +68,7 @@ print("记得去掉  https://movie.douban.com/explore   中间的冒号 => :  ")
 
 
 
-# 基础:
+### 基础:
 <details>
 <summary><b>基础</b></summary>
 
@@ -895,7 +895,7 @@ round(random.uniform(5, 10), 2)
 
 
 
-# List(列表) / Tuple(元组) / Set(集合) / Dictionary(字典)
+### List(列表) / Tuple(元组) / Set(集合) / Dictionary(字典)
 <details>
 <summary><b> 简介 </b></summary>
 
@@ -2172,8 +2172,8 @@ t.prt()
 
 
 
-# 区别:
-> 容易混淆的概念
+### 区别:
+容易混淆的概念
 <details>
 <summary><b>is == 区别</b></summary>
 
@@ -2261,8 +2261,8 @@ def Play_Aduio_File(Aduio_file_name):
 
 
 
-# 框架 / Web
-* 推荐 Django, 它是python的一个web服务框架, 内置了web服务器(SpringBoot也是内置了一个服务器), 适用于快速开发, 非常方便
+### 框架 / Web
+推荐 Django, 它是python的一个web服务框架, 内置了web服务器(SpringBoot也是内置了一个服务器), 适用于快速开发, 非常方便
 <details>
 <summary><b> 关于 pip </b></summary>
 

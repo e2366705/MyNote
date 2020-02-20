@@ -7,10 +7,49 @@
 
 #### 4个 # 比较合适...
 
+
+
+
+# Java 规范
+* 写出更加合理, 方便维护的代码
+<details>
+<summary><b>  规范  </b></summary>
+
 ```  
+
+文件路径不要用 \ , 要用 /
+读取文件的路径不要用:  src\main\Java\Tools_10\Audio\no_Chinese_meaning.MP3  这种格式
+因为这种格式在 Windows 平台可以用, 移植到 mac 平台就没法用了, 会报错: 找不到路径
+
+推荐使用: src/main/Java/Tools_10/Audio/no_Chinese_meaning.MP3  这个方式
+这种格式在 Windows和mac 平台都可以用, 
+移植性较强, 不需要改原来的代码
 
 
 ```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <details>
@@ -215,12 +254,15 @@ import java.net.MalformedURLException;
 ```  
 
 注意:
-    一定要加上 % 
+    一定要加上 %20  表示空格的意思
     第一种就获取不到源码
     第二种才可以
 
 https://fanyi.so.com/index/search?eng=1&validate=&ignore_trans=0&query=i miss you       -> 格式错误
 https://fanyi.so.com/index/search?eng=1&validate=&ignore_trans=0&query=i%20miss%20you   -> 正确
+
+
+
 
 
 
@@ -236,13 +278,13 @@ import java.util.logging.Logger;
 public class GetSourceCode2 {
     public static void main(String[] args){
         try{
-            URL url = new URL("https://fanyi.so.com/index/search?eng=1&validate=&ignore_trans=0&query=JavaScript");//网址链接
+            URL url = new URL("http://fanyi.youdao.com/openapi.do?keyfrom=xinlei&key=759115437&type=data&doctype=json&version=1.1&q=i%20miss%20you");//网址链接
             URLConnection conn = url.openConnection(); //打开链接
             //获取网页的源代码
             BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
             String line;
             while ((line = br.readLine()) != null) {
-                System.out.println(line);//输出内容
+                System.out.println(line);
             }
             br.close();
         } catch (MalformedURLException ex) {
@@ -252,6 +294,31 @@ public class GetSourceCode2 {
         }
     }
 }
+
+
+
+返回 :
+{"translation":["我想念你"],"basic":{"explains":["我想你；思念（歌名）"]},"query":"I Miss You","errorCode":0,"web":[{"value":["我想你","思念","想念你朋友"],"key":"I miss you"},{"value":["我非常想念你","我非常的想念你"],"key":"I very miss you"},{"value":["我想飞"],"key":"i am miss you"}]}
+
+
+
+
+
+JSONObject jsonobj = new JSONObject("{\"translation\":[\"我想念你\"],\"basic\":{\"explains\":[\"我想你；思念（歌名）\"]},\"query\":\"I Miss You\",\"errorCode\":0,\"web\":[{\"value\":[\"我想你\",\"思念\",\"想念你朋友\"],\"key\":\"I miss you\"},{\"value\":[\"我非常想念你\",\"我非常的想念你\"],\"key\":\"I very miss you\"},{\"value\":[\"我想飞\"],\"key\":\"i am miss you\"}]}");
+
+JSONArray jsonArray = (JSONArray) jsonobj.get("translation");
+String result = jsonArray.getString(0);
+
+
+
+//  i miss you  转换成  i%20miss%20you
+public String Check(String word){
+    word = word.replaceAll(" ", "%20");
+    System.out.println("转换后的字符串:            "+word);
+    return word;
+}
+
+
 
 ```
 </details>

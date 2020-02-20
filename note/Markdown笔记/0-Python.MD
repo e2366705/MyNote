@@ -2273,6 +2273,7 @@ pip list
 
 访问太慢?
 解决办法(使用国内的镜像):
+用法 : 加上  -i , 然后后面接上国内的镜像地址, 案例如下:
 pip install Django==3.0.3 -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 

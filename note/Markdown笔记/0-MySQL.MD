@@ -39,6 +39,11 @@
 在 0-IDE.MD 里面有详细的介绍
 
 
+### MacOS 下 好用免费的 MySQL 客户端管理工具 : sequel pro , 亲测好用!!!
+网址如下:
+https://sequelpro.com/download
+
+
 
 
 

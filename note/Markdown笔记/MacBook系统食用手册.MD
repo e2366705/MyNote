@@ -22,10 +22,16 @@ option + command + esc     强制退出
 
 
 ### 删除键 Delete 的用法大全
+```  
 Fn + Delete        删除光标之后的一个字符(编辑文本中)
 Option + Delete    删除光标之前的一整个单词(只对单词有效)
 Command + Delete   删除光标之前一整行文字
 单击文件选中, 然后 Command + Delete 删除该文件(删除软件也是这个操作, 只不过需要到Finder里面删除才行)
+
+```
+
+
+
 
 
 ### 删除程序

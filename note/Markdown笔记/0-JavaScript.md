@@ -1491,10 +1491,6 @@ interval = setInterval(runThis, 5000);
 
 
 
-
-
-
-
 注意:
     大小写的字母的按键码是不同的
     按键码: 82 字符: R
@@ -1525,11 +1521,6 @@ document.onkeypress = function (event) {
 
 
 
-
-
-
-
-
     按住 -> 显示
     松开 -> 隐藏
 
@@ -1555,11 +1546,6 @@ document.onkeyup = function (event) {
         document.getElementById("chinese_meaning").style.display = "none";
     }
 };
-
-
-
-
-
 
 
 
@@ -1601,8 +1587,72 @@ document.onkeyup = function (event) {
 
 
 
+
+鼠标事件 (左键 / 右键 / 中键 ):
+<div class="right">
+    在此区域点击右键
+</div>
+
+<script>
+window.onload = function(){
+   var right = document.querySelector('.right');
+   //去掉默认的contextmenu事件，否则会和右键事件同时出现。
+   right.oncontextmenu = function(e){
+       e.preventDefault();
+   };
+
+   right.onmousedown = function(e){
+       if(e.button ==2){
+           alert("你点了右键");
+       }else if(e.button ==0){
+           alert("你点了左键");
+       }else if(e.button ==1){
+           alert("你点了滚轮");
+       }
+   }
+}
+</script>
+
+
+
 ```
 </details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> JavaScript 使用 Ajax  </b></summary>
+
+```  
+
+具体详见 另外一个 笔记:   0-前后端交互.MD
+
+
+```
+</details>
+
+
+
 
 
 

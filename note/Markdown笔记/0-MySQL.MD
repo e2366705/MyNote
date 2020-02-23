@@ -298,15 +298,6 @@ select version();
 切换到某个数据库(aaa)
 use `aaa`;
 
-选择出是 null 的项目 3 条:
-SELECT * FROM `user` where `name` is null LIMIT 0,3;
-
-展示表中所有数据
-select * from `user`;
-
-insert 插入数据(两种方式)
-insert into `user`(username,password) values('HUAWEI','mate20');
-INSERT into `users` VALUES ('AAA','BBB','CCC');
 
 
 基本解释:
@@ -437,6 +428,12 @@ insert into `user`(username,password) values('OPPO','R11');
 多种排序测试用
 insert into `user`(  `username` , `password`  ) VALUES('aaa','999'); 
 
+
+insert 插入数据(两种方式)
+	insert into `user`(username,password) values('HUAWEI','mate20');
+	insert into `users` values ('AAA','BBB','CCC');
+	
+
 ```
 </details>
 
@@ -511,6 +508,18 @@ UPDATE `table_name` SET `date` = '------------' ORDER BY RAND() LIMIT 123;
 <summary><b>4 查</b></summary>
 
 ```  
+
+
+选择出是 null 的项目 3 条:
+	SELECT * FROM `user` where `name` is null LIMIT 0,3;
+
+查询 table_ten_thousand_word 表中，word 字段值重复的数据及重复次数
+	select `word`,count(*) as COUNT FROM `table_ten_thousand_word` group by `word` having count>1;
+
+展示表中所有数据
+	select * from `user`;
+
+
 模糊查询:
 	select * from 
 		`goods`

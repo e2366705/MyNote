@@ -105,11 +105,19 @@ mycli -uroot
 * 最后重启一下电脑
 * 重启完, 开始重装 idea
 * 重装也有可能会失败... emmm  这里有 idea 的历史版本:   https://www.jetbrains.com/idea/download/other.html
-* 各种版本交叉安装使用, 比如这次安装的是2018款, 那么一个月后就安装2017款, 下次又继续安装2018款
+* 各种版本交叉安装使用, 比如这次安装的是2018款, 那么一个月后就安装2019款, 下次又继续安装2018款 
+* (2017款的不要用, 特难用, 设计的不人性化)
 <details>
 <summary><b>首先...</b></summary>
 
 ```  
+
+
+第0步: 
+	配置maven, 不然idea自带的maven 下载太慢了...
+	在这里面设置:   
+		File | Settings | Build, Execution, Deployment | Build Tools | Maven
+
 
 
 可以直接在 Settings 里面搜索: 比如搜索: font(字体设置)
@@ -149,6 +157,24 @@ mycli -uroot
 	有一个 code Completion项目 点击去
 	有个match case,  把那个钩去掉
 
+第四:
+	打开多个文件显示在多行tab上
+	File | Settings | Editor | General | Editor Tabs
+	把 show tabls in one row 这个选项取消勾选	
+
+	
+第五: 
+	在 idea 2019版中 , 无缘无故报错:  Could not autowire. No beans of 'xxxx' type found的错误提示	
+	程序的编译和运行都是没有问题的，这个错误提示并不会产生影响
+	但是不好看, 不美观,
+	解决办法是：降低Autowired检测的级别，将Severity的级别由之前的error改成warning或其它可以忽略的级别
+	File | Settings | Editor | Inspections ->  Spring | Spring Core | Code | Autowiring for Bean Class
+	然后把那个沟取消掉
+	保存
+	解决
+
+	
+
 
 其他:
 代码颜色的设置:
@@ -178,6 +204,12 @@ mycli -uroot
 	(一键导包也是这个快捷键)
 
 	
+	Ctrl + F5 
+		重新运行程序
+
+	Ctrl + shift + F9 
+		刷新web静态资源, 写web端程序的时候非常好用
+		
 	
 	
 	系统自带快捷键:
@@ -229,8 +261,7 @@ Settings —> Editor —> Inspections —> General —> Duplicated Code
 
 
 idea 找不到Tomcat服务器?
-打开 settings -> 搜索:plugins
-把 tomcat 打上勾
+	springboot 自带微型服务器, 简单好用
 
 
 IntelliJ IDEA报Found duplicated code in this file

@@ -88,7 +88,7 @@ sleep, 666
 Click 1776,931 right      ; 在坐标1776, 931位置上, 点击右键
 
 sleep, 123
-MouseMove, 100, -180, 12, R
+MouseMove, 100, -200, 12, R
 
 sleep, 123
 Click left

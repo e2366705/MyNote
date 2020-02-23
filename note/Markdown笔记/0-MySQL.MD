@@ -1,7 +1,7 @@
 ﻿
 
 ### 以后不要折腾MySQL客户端了, 简直就是浪费时间, 直接下载一个 phpStudy 直接用里面内置的MySQL, 又省心又省力
-安装 phpStudy 之后 , 这时候是不能用 cmd 命令行直接操作 MySQL 数据库的, 需要这么配置
+* 安装 phpStudy 之后 , 这时候是不能用 cmd 命令行直接操作 MySQL 数据库的, 需要这么配置
 <details>
 <summary><b>配置 phpStudy 里面的 MySQL 到系统变量</b></summary>
 
@@ -36,7 +36,7 @@
 
 
 ### 一款 命令行 管理MySQL的工具, 叫做: MyCli , 支持自动补全关键字、表名、列和函数
-在 0-IDE.MD 里面有详细的介绍
+* 在 0-IDE.MD 里面有详细的介绍
 
 
 ### MacOS 下 好用免费的 MySQL 客户端管理工具 : sequel pro , 亲测好用!!!
@@ -55,9 +55,9 @@ https://sequelpro.com/download
 
 
 ### SQL 规范 (必读!!!)
-参考资料:
-https://choerodon.io/zh/docs/contributor-guide/development/conventions/sql
-https://www.jianshu.com/p/359ed85c3243
+* 参考资料:
+* https://choerodon.io/zh/docs/contributor-guide/development/conventions/sql
+* https://www.jianshu.com/p/359ed85c3243
 <details>
 <summary><b> SQL 规范</b></summary>
 
@@ -226,7 +226,7 @@ select id,count(*) from table where age>=30 group by id order by null;
 
 
 ### 批处理自动备份脚本(.bat for Windows10):
-注意!! 一定要用 Windows 自带的文本编辑器打开, 用别的编辑器打开会乱码(比如 VS Code)
+* 注意!! 一定要用 Windows 自带的文本编辑器打开, 用别的编辑器打开会乱码(比如 VS Code)
 <details>
 <summary><b>BackUP_MySQL.bat</b></summary>
 
@@ -354,12 +354,10 @@ use `zzza9d2g5k4t1b0k`;
 
 -- 创建表
 CREATE TABLE IF NOT EXISTS `tb_user`(
-
 `id`         int(20)         unsigned not null DEFAULT 0,
 `money`      DECIMAL(20,2)   NOT NULL DEFAULT '0.00',
 `username`   VARCHAR(100)    not null DEFAULT '', 
 `password`   VARCHAR(40)
-
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -539,29 +537,56 @@ UPDATE `table_name` SET `date` = '------------' ORDER BY RAND() LIMIT 123;
 	and
 		course.cno = score.cno;
 
+
+
 group by : 排除重复的,筛选出不同的
 	SELECT PASSWORD FROM user3 GROUP BY `PASSWORD`;
 
 排除重复的:
-	select distinct username from user;
+	select distinct username from user;	
+
+查找重复的数据:
+	select * from `people`
+		where 
+	`Id` in (select `Id` from `people` group by `Id` having count(`Id`) > 1)
+
+
+GROUP BY  		去掉重复
+ORDER BY RAND	随机
+
+
+升序 / 降序 查询:
+	降序
+	select * from `student` order by `class` desc;
+	
+	cno升序 , password降序
+		select * from `score` order by `cno` asc , `password` desc;
+
 
 查询字段`word`长度等于 5 的:
 	select * from `words_warehouse`  where length(`word`) = 5;	
 
-GROUP BY  		去掉重复
-ORDER BY RAND	随机
+
 LIMIT 36		数量为 36 条
 select *  from phrase GROUP BY `phrase` ORDER BY RAND() LIMIT 36
+
 
 当 xxx 不为空 , 且 yyy 为空时:
 select `word` from `phrase` where `state` IS NULL and `word` is not null
 
-select * from score where username in ('aaa','bbb','ccc');  查询符合条件(aaa或者bbb或者ccc)的项目
-select * from student where class='12306' or sex='女';    MySQL或者查询
-select * from student order by class desc;   MySQL降序查询
-select * from score order by cno asc , password desc   cno升序 , password降序
+
+查询符合条件(aaa或者bbb或者ccc)的项目
+	select * from score where username in ('aaa','bbb','ccc');  
+
+
+MySQL或者查询
+	select * from student where class='12306' or sex='女';  
+
+
 select count(*) from student where class='2333';       统计符合条件的数量
+
 MySQL查询最高分----> 语句太长,懒得写了,用时再百度吧...		
+
 
 ```
 </details>

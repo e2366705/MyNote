@@ -1172,20 +1172,26 @@ public class JDBC_test {
     public void Insert() throws SQLException {
 
         Connection conn = getConn();
-        String sql = "insert into `user` values(?, ?)";
+        String sql = " insert into `user`(name , password) values(?, ?)";
 
         PreparedStatement ps = conn.prepareStatement(sql);
         System.out.println(ps.toString());      // 输出 SQL 语句
 
         ps.setString(1, "aaa");
         ps.setInt(2, 6);
-
-        int i = ps.executeUpdate();
-
-        System.out.printf("添加了  %-12s  条数据" , i);
-
-        ps.close();
-        conn.close();
+        
+        int i = 0;
+        try {
+            i = ps.executeUpdate();
+            if (i == 1){
+                System.out.printf("添加了  %-12s  条数据   " , i);
+            }
+            ps.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.err.println("数据重复, 字段设置成了主键...");
+        }
     }
 
 
@@ -1413,7 +1419,29 @@ insert into user(username,password) values('OPPO','R11');
 
 
 
-            @Test
+
+
+小案例:  找出一段句子中所有的英文单词, 并循环遍历出来
+    思考: 如果表达式是: [a-zA-Z] 会怎么样? 自己动手试试吧~
+
+        String regex = "[a-zA-Z]+"; 
+
+        Pattern p = Pattern.compile(regex);
+        String source = "123123 , 1. simple adj. 简单的 simply adv. 简单地 simplify vt. 简化   simplification n. 简单化";
+        Matcher m = p.matcher(source);
+
+        while (m.find()) {
+            String aaa = m.group(0);
+            System.out.println(aaa);
+        }
+
+
+
+
+
+
+
+    @Test
     public void Test() {
         String phonrNul = "我的电话号码是123456789 , 地方north of school , 我的另外一个号码是54321";
         Pattern compile = Pattern.compile("\\d+");

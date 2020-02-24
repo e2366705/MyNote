@@ -2918,11 +2918,28 @@ public class Rename_file {
 
 
 
----
 <details>
-<summary><b>my_name_is_jack</b></summary>
+<summary><b> 读取配置文件 ( config.properties )</b></summary>
 
 ```  
+
+新建一个配置文件: config.properties
+内容如下:
+database:user
+password:123456
+
+
+    Properties properties = new Properties();
+    // 使用InPutStream流读取properties文件
+    BufferedReader bufferedReader = new BufferedReader(new FileReader("src/main/Java/Tools_11/config.properties"));
+    properties.load(bufferedReader);
+    // 获取key对应的value值
+    String database = properties.getProperty("database");
+    String password = properties.getProperty("password");
+    System.out.println(database);
+    System.out.println(password);
+
+
 
 ```
 </details>
@@ -2931,6 +2948,27 @@ public class Rename_file {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
 <details>
 <summary><b>my_name_is_jack</b></summary>
 

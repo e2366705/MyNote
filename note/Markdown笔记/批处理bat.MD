@@ -215,6 +215,11 @@ PAUSE
 
 
 
+
+
+
+
+
 <details>
 <summary><b>批处理移动(复制)文件</b></summary>
 
@@ -230,6 +235,11 @@ move /Y D:\BaiDuProductDownloadYXB\*.mp3 D:\MP3\
 
 ```
 </details>
+
+
+
+
+
 
 
 
@@ -255,6 +265,11 @@ goto start
 
 ```
 </details>
+
+
+
+
+
 
 
 
@@ -306,10 +321,81 @@ cmd /k
 
 
 
+
+
+
+
+
+
+
+
+
+
 <details>
-<summary><b>my_name_is_jack</b></summary>
+<summary><b> 批量重命名文件名 </b></summary>
 
 ```  
+
+方式一(简化版):
+@echo off
+
+rem 前言:  批处理文件一定要用 ANSI 格式, 不然中文会乱码...
+rem 启用"延缓环境变量扩充"
+rem 现有一堆 txt 文本文件, 我想要按照指定格式批量重命名:
+
+setlocal EnableDelayedExpansion
+set a=1
+
+rem 循环当前目录下所有图片的文件名，支持带空格的名称
+for /f "delims=" %%i in ('dir /b *.txt') do (
+
+rem 如果没有相同的文件名，则继续
+if not "%%~ni"=="%~n0" (
+
+ren "%%i" "A_!a!.txt"
+
+rem 设置数值型变量a=a+1
+set /a a+=1
+)
+)
+
+echo 批量重命名完成！
+pause
+
+
+
+
+
+方式二(带循环控制版):
+@echo off
+
+rem 前言:  批处理文件一定要用 ANSI 格式, 不然中文会乱码...
+rem 启用"延缓环境变量扩充"
+rem 现有一堆 txt 文本文件, 我想要按照指定格式批量重命名:
+
+setlocal EnableDelayedExpansion
+set a=1
+
+rem 循环当前目录下所有图片的文件名，支持带空格的名称
+for /f "delims=" %%i in ('dir /b *.txt') do (
+
+rem 如果没有相同的文件名，则继续
+if not "%%~ni"=="%~n0" (
+
+rem   LSS -> 表示循环次数 :  LSS 15 就是循环15次
+if !a! LSS 999 (ren "%%i" "A_00!a!.txt") else ren "%%i" "A_!a!.txt"
+
+rem 设置数值型变量a=a+1
+set /a a+=1
+)
+)
+
+echo 批量重命名完成！
+pause
+
+
+
+
 
 ```
 </details>

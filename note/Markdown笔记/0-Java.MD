@@ -133,6 +133,12 @@ import java.net.MalformedURLException;
     System.out.printf("单词:%-66s 出现次数:%d\n", "eqweqweqweqweqw", 3123123);
     System.out.printf("单词:%-66s 出现次数:%d\n", "q", 7);
 
+格式化输出结果:
+    单词:aaa                                                                出现次数:123
+    单词:eqweqweqweqweqw                                                    出现次数:3123123
+    单词:q                                                                  出现次数:7    
+
+
     有两种方式:
     System.out.printf("现在是:  %66s  \n" , df.format(new Date()));
     System.out.printf("现在是:  %-66s   " , df.format(new Date()));
@@ -144,6 +150,66 @@ import java.net.MalformedURLException;
     在 idea 中使用 souf 可以打出来
 ```
 </details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> 控制台获取输入 Scanner  </b></summary>
+
+```  
+
+        String aaa = "";
+        Scanner scan_prefix = new Scanner(System.in);
+        System.err.println("----------------------------    请输入你要命名的名字的前缀 :  ");
+        // 判断是否还有输入
+        if (scan_prefix.hasNextLine()) {
+            aaa = scan_prefix.nextLine();
+            System.out.println(aaa);
+        }
+
+
+```
+</details>
+
+
+
+
 
 
 
@@ -862,7 +928,7 @@ class Sort{
 
 
 <details>
-<summary><b> 文件夹 / 文件 / 文件目录 </b></summary>
+<summary><b>  IO :  文件夹 / 文件 / 文件目录 </b></summary>
 
 ```  
 
@@ -917,7 +983,7 @@ class Sort{
 
 
 <details>
-<summary><b>Java IO (读 / 写)</b></summary>
+<summary><b> IO : 读 / 写 </b></summary>
 
 ```  
 package com.swjtu;
@@ -1190,6 +1256,8 @@ public class JDBC_test {
             conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
+            ps.close();                 // 记得关闭, 不然链接数量太大了就会报错
+            conn.close();
             System.err.println("数据重复, 字段设置成了主键...");
         }
     }

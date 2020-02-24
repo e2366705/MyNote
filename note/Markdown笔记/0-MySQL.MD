@@ -606,6 +606,8 @@ MySQL查询最高分----> 语句太长,懒得写了,用时再百度吧...
 
 ```  
 
+
+删:
 删除主键
 alter table `student` drop primary key;
 
@@ -615,10 +617,19 @@ alter table `表名` drop column `字段名`
 删除主键
 ALTER TABLE `user` DROP PRIMARY KEY
 
-想删除表中某个字段的unique key:
+删除表中某个字段的unique key:
 ALTER TABLE `good_booked` DROP INDEX `good_id`;
 
 
+
+
+
+
+
+
+
+
+改:
 设置为主键:
 alter table `student` add primary key(`id`)
 (注意:执行这句代码时候,会报错,原因是原来的字段都是null值,所以设置不成功,
@@ -630,12 +641,30 @@ alter TABLE `test2` add UNIQUE (`userid`)
 给字段添加默认值 : 
 ALTER TABLE `数据表` ALTER COLUMN `字段` SET DEFAULT '默认值';
 
+重命名 表名:
+ALTER TABLE `word` RENAME TO `tb_word`
+
+
+修改字段名称和属性 ( 将AAA字段改为BBBB ) :
+ALTER TABLE 表名    CHANGE 原字段名    新字段名    字段类型     约束条件 ; 
+ALTER TABLE user10  CHANGE `AAA`      `BBBB`     CHAR(32)   NOT NULL DEFAULT '123';
+
+
+修改字段类型
+alter table 表名 modify column 字段名 类型;    (注意: 一定要带上你要修改的数据类型)
+alter table `user` modify column `name` varchar(256) not null default ''
+注意: 如果修改字段数据失败,可能是MySQL为了数据安全,加了保险
+(比如text类型的字段转化为int类型->大数据类型转小数据类型,这样子就可能会丢失数据)
 
 
 
 
 
 
+
+
+
+增:
 增加一个唯一字段
 alter table `phrase` add `word` VARCHAR(66) UNIQUE not null
 
@@ -653,23 +682,16 @@ alter table `table1` add transactor varchar(10) not Null;
 alter table `table1` add id int unsigned not Null auto_increment primary key
 
 
-重命名 表名:
-ALTER TABLE `word` RENAME TO `tb_word`
 
 
-修改字段名称和属性 ( 将AAA字段改为BBBB ) :
-ALTER TABLE 表名    CHANGE 原字段名    新字段名    字段类型     约束条件 ; 
-ALTER TABLE user10  CHANGE `AAA`      `BBBB`     CHAR(32)   NOT NULL DEFAULT '123';
-
-
-修改字段类型
-alter table 表名 modify column 字段名 类型;    (注意: 一定要带上你要修改的数据类型)
-alter table `user` modify column `name` varchar(256) not null default ''
-注意: 如果修改字段数据失败,可能是MySQL为了数据安全,加了保险
-(比如text类型的字段转化为int类型->大数据类型转小数据类型,这样子就可能会丢失数据)
 
 ```
 </details>
+
+
+
+
+
 
 
 

@@ -336,6 +336,14 @@ cmd /k
 
 ```  
 
+
+教程来源:   
+https://blog.csdn.net/weixin_39691535/article/details/89606799?depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task
+
+
+
+
+
 方式一(简化版):
 @echo off
 
@@ -361,6 +369,22 @@ set /a a+=1
 
 echo 批量重命名完成！
 pause
+
+
+
+
+
+
+精简版:
+@echo off
+set a=0
+setlocal EnableDelayedExpansion
+for %%n in (*.png) do (
+set /A a+=1
+ren "%%n" "bilibili_!a!.png"
+)
+首先新建一个txt文件，然后修改名字为rename.bat(随便起名字，只是后缀必须是.bat)
+这里的命令表示将当前目录下的所有png后缀的图片都改名为bilibili_{a}.png，这里的{a}是从1开始到n的数字
 
 
 

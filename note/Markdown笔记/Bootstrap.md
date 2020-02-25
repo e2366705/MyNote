@@ -1,5 +1,6 @@
 # Bootstrap
 * 一个好用方便的 UI 框架
+* 参考资料:    http://blog.bbadtimes.com/2017/08/21/159
 
 
 
@@ -185,15 +186,27 @@ btn-group-justified: 三个按钮平分整个屏幕:
 
 
 
-<h1>      搜索框                </h1>
+
+
+  <h1>      搜索框 (居中显示)               </h1>
+
+  <div>
+    <form  class="input-group col-lg-8 "  style="margin:0 auto;">
+      <input type="text" name="id" class="form-control input-lg" placeholder="按回车搜索"   autofocus="autofocus" />
+      <span class="input-group-addon">搜索</span>
+    </form>
+  </div>
+
+按下回车访问路径为 :  http://localhost:8088/index?id=236670
+
+autofocus="autofocus"  是页面加载 input 自动获取焦点
 
 
 
-<div class="input-group">
-  <input type="text" class="form-control"/>
-  <span class="input-group-addon">搜索</span>
-</div>
 
+
+
+  
 
   
 
@@ -275,6 +288,25 @@ btn-group-justified: 三个按钮平分整个屏幕:
 </div>
 
   
+
+
+
+
+<!--    三个按钮横向排列     -->
+<div class="btn-group btn-group-lg">
+    <button type="button" class="btn btn-default">左</button>
+    <button type="button" class="btn btn-default">中</button>
+    <button type="button" class="btn btn-default">右</button>
+</div>
+
+<!--     三个按钮竖向排列      -->
+<div class="btn-group-vertical btn-group-lg">
+    <button type="button" class="btn btn-default">上</button>
+    <button type="button" class="btn btn-default">中</button>
+    <button type="button" class="btn btn-default">下</button>
+</div>
+
+
 
 
 

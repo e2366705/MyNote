@@ -244,6 +244,42 @@ import java.net.MalformedURLException;
 
 
 
+<details>
+<summary><b>  测试程序代码运行时间  </b></summary>
+
+```  
+
+以 毫秒 为单位:
+    long start_Time =System.currentTimeMillis();   //获取开始时间
+    Thread.sleep(1231);
+    long end_Time =System.currentTimeMillis(); //获取结束时间
+    System.out.println("程序运行时间： "+(end_Time-start_Time)+"  ms");
+
+以 纳秒 为单位:
+    long startTime=System.nanoTime();   //获取开始时间
+    Thread.sleep(1231);
+    long endTime=System.nanoTime(); //获取结束时间
+    System.out.println("程序运行时间： "+(endTime-startTime)+"  ns");
+
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

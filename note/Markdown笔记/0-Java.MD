@@ -442,6 +442,40 @@ public String Check(String word){
 ```  
 
 
+
+详细教程 :  https://juejin.im/post/5a31e4396fb9a044fd11c6a8
+
+
+
+第一种方式:
+import org.json.JSONArray;
+import org.json.JSONObject;
+public class Json_2 {
+    public static void main(String[] args) {
+        String jsonData = "[{'name':'Aaa','age':11} , {'name':'Bbb','age':22} , {'name':'CCC','age':33}]";
+        try{
+            JSONArray jsonArray = new JSONArray(jsonData);
+            for (int i=0; i < jsonArray.length(); i++)    {
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                String name = jsonObject.getString("name");
+                int age = jsonObject.getInt("age");
+                System.err.println(name);
+                System.err.println(age);
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+}
+
+
+
+
+
+
+
+第二种方式:
 import org.json.JSONObject;
 import org.junit.Test;
 import java.util.HashMap;
@@ -457,6 +491,12 @@ public class JSON_Alibaba {
         }
 
 
+
+
+
+
+
+第三种方式:
     @Test
     public void test3(){
         String json_data = "{\"data\":{\"explain\":{\"word\":\"JavaScript\",\"phonetic\":{\"\":\"['d\\u0292\\u0251v\\u0259,skr\\u026apt]\"},\"translation\":[\"n.[\\u8ba1\\u7b97\\u673a]Java\\u63cf\\u8ff0\\u8bed\\u8a00(\\u4e00\\u79cd\\u811a\\u672c\\u8bed\\u8a00)\"],\"word_level\":[],\"web_translations\":[{\"translation\":\"\\u811a\\u672c\",\"example\":\"\\u4f60\\u7684\\u811a\\u672c\\uff08Javascript\\uff09\\u4ee3\\u7801\\u9519\\u8bef\\u554a\\uff0c\\u4e0d\\u662f\\u6d4f\\u89c8\\u5668\\u7684\\u95ee\\u9898\\uff0c\\u6539\\u7684\\u8bdd\\u4f60\\u5f97\\u627e\\u5230\\u90a3\\u4e2a\\u6587\\u4ef6\\u624d\\u884c\\u8fd9\\u662f\\u4f60\\u7684IE\\u6d4f\\u89c8\\u5668\\u51fa\\u4e86\\u95ee\\u9898\\uff0c\\u5177\\u4f53\\u7684\\u6211\\u4e5f\\u4e0d\\u592a \\u2026\"},{\"translation\":\"\\u811a\\u672c\\u8bed\\u8a00\",\"example\":\"\\u811a\\u672c\\u8bed\\u8a00\\uff08\\u5982 JavaScript\\uff09\\u4e3a SVG \\u6587\\u4ef6\\u5e26\\u6765\\u4e86\\u65e0\\u9650\\u7684\\u529f\\u80fd\\u3002\\u6307\\u9488\\u79fb\\u52a8\\u548c\\u952e\\u76d8\\u79fb\\u52a8\\u53ef\\u4ee5\\u8c03\\u7528\\u811a\\u672c\\u529f\\u80fd\\uff08\\u5982\\u7ffb\\u8f6c\\u6548\\u679c\\uff09\\u3002\"},{\"translation\":\"\\u5ba2\\u6237\\u7aef\\u811a\\u672c\",\"example\":\"\\u4e0e\\u5ba2\\u6237\\u7aef\\u811a\\u672c\\uff08\\u5982 JavaScript\\uff09\\u4e0d\\u540c\\uff0c\\u670d\\u52a1\\u5668\\u7aef\\u811a\\u672c\\u5728\\u6d4f\\u89c8\\u5668\\u663e\\u793a\\u7f51\\u9875\\u4e4b\\u524d\\u5728\\u670d\\u52a1\\u5668\\u4e0a\\u8fd0\\u884c\\u3002\\u8d2d\\u7269\\u8f66\\u3001\\u52a8\\u6001\\u83dc\\u5355\\u548c\\u8c03\\u67e5\\u4fbf\\u662f\\u670d\\u52a1\\u5668\\u7aef \\u2026\"},{\"translation\":\"\\u7f51\\u9875\\u811a\\u672c\",\"example\":\"\\u7f51\\u9875\\u811a\\u672c( JavaScript )[ \\u6807\\u7b7e\\uff1a\\u7f51\\u9875\\u811a\\u672c, javascript ] \\u7275\\u250c.\\u5497\\u63b1 2008-03-26 16:41 \\u6ee1\\u610f\\u7b54\\u6848\\u4ee5\\u524d\\u73a9\\u6b66\\u6613\\u4f20\\u5947\\u7684\\u65f6\\u5019\\u6709\\u4e0b\\u8fc7\\u8839\\u972d\\u9ef9\\u85a8.\"}],\"english_explain\":[],\"related_words\":[],\"exsentence\":[]},\"fanyi\":\"Javascript\",\"speak_url\":{\"speak_url\":\"\\/audio?from=en&amp;to=zh&amp;voice=2&amp;cate=speakUrl&amp;key=de9b9ed78d7e2e1dceeffee780e2f919&amp;query=javascript\",\"tSpeak_url\":\"\\/audio?from=en&amp;to=zh&amp;voice=2&amp;cate=tSpeakUrl&amp;key=9e13b69d1d2da927102acaaaf7154a37&amp;query=Javascript\"},\"vendor\":\"caiyun\"},\"error\":0,\"msg\":\"succ\"}";
@@ -469,9 +509,6 @@ public class JSON_Alibaba {
         System.out.println(fanyi_result);
     }
 }
-
-
-
 
 
 
@@ -986,7 +1023,9 @@ class Sort{
 <summary><b> IO : 读 / 写 </b></summary>
 
 ```  
-package com.swjtu;
+
+
+
 import org.junit.Test;
 import java.io.*;
 public class IO {

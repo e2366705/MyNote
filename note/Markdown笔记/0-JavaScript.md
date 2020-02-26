@@ -716,8 +716,14 @@ var n = str.search(/Runoob/i);
 
 ------------------>   replace()   <------------------
 使用正则表达式且不区分大小写将字符串中的 Microsoft 替换为 Runoob :
-var str = document.getElementById("demo").innerHTML; 
-var txt = str.replace(/microsoft/i,"Runoob");
+"microsoftAAAAAAAA".replace(/microsoft/i,"Runoob");
+>>> "RunoobAAAAAAAA"
+
+这种写法也是可以的:
+"microsoftAAAAAAAA".replace("microsoft","Runoob");
+>>> "RunoobAAAAAAAA"
+
+
 
 
 

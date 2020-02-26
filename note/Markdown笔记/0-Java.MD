@@ -1875,7 +1875,7 @@ string 和 ArrayList 之间的转换:
 
 
 <details>
-<summary><b>  unicode中文编码转换和反转  </b></summary>
+<summary><b>  unicode / 编码 / 转换 / ...  </b></summary>
 
 ```  
 
@@ -1952,8 +1952,81 @@ public class UnicodeToString{
 
 
 
+
+
+
+
+-----------------------------------------------------------------------------------------------
+字符串 和 unicode 之间的转换:
+public class GetCharAscii {
+
+    /*
+     * 字符串 -> unicode
+     */
+    public static String string_to_Unicode(String string) {
+        StringBuffer unicode = new StringBuffer();
+        for (int i = 0; i < string.length(); i++) {
+            // 取出每一个字符
+            char c = string.charAt(i);
+            // 转换为unicode
+            unicode.append("\\u" + Integer.toHexString(c));
+        }
+        return unicode.toString();
+    }
+
+
+    /*
+     * unicode -> 字符串
+     */
+    public static String unicode_to_String(String unicode) {
+        StringBuffer string = new StringBuffer();
+        String[] hex = unicode.split("\\\\u");
+        for (int i = 1; i < hex.length; i++) {
+            // 转换出每一个代码点
+            int data = Integer.parseInt(hex[i], 16);
+            // 追加成string
+            string.append((char) data);
+        }
+        return string.toString();
+    }
+
+
+    public static void main(String[] args) {
+        String test = "我叫A12";
+        String unicode = string_to_Unicode(test);
+        String string = unicode_to_String(unicode) ;
+        System.out.println(unicode);
+        System.out.println(string);
+    }
+}
+
+
+
+
+
+关于 Unicode 中的回车/换行:
+
+初步推测:   \ud\ua    这两个就是回车和换行
+
+在线 Unicode 转换 :   https://tool.73ic.com/tool/tool_unicodeascii.html
+
+\u7136\ud\ua\u45\u76\u65\u72\u79\u74\u68\u69\u6e\u67\u20\u74\u68\u61\u74\u20\u63\u6f\u6d\u65\u73\u20\u66\u72\u6f\u6d\u20\u74\u68\u65\u20\u65\u61\u72\u74\u68\u20\u65\u76\u65\u6e\u74\u75\u61\u6c\u6c\u79\u20\u72\u65\u74\u75\u72\u6e\u73\u2e\ud\ua\ud\ua\ud\ua\ud\ua\u5373\u4f7f\u34\u30\u5428\u7684\u5b89\u901a\u7eb3\u31\u32\u578b\u8d27\u673a\u4e5f\u4e00\u6837\ud\ua\u45
+
+
+
+
+
+
+
+
+
+
 ```
 </details>
+
+
+
+
 
 
 

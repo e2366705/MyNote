@@ -6,13 +6,19 @@
 #### JavaScript 实战小项目   https://github.com/visugar/FrontEnd-examples
 
 
----
+
 # 规范:
-> 指的是代码过程中需要注意的小细节...提升代码质量, 便于后期维护
+* 指的是代码过程中需要注意的小细节...提升代码质量, 便于后期维护
 <details>
 <summary><b>注意!!!!</b></summary>
 
 ```  
+
+
+
+JavaScript 中 :
+\n 和 \\n 是不一样的
+
 
 
 如果一个变量是需要全局有效的，那么使用全局变量。
@@ -612,11 +618,10 @@ window.screen.availWidth;           //屏幕可用工作区的宽						返回 32
 
 
 
----
 # 字符串操作: 
-> https://www.runoob.com/jsref/jsref-obj-string.html
+* https://www.runoob.com/jsref/jsref-obj-string.html
 <details>
-<summary><b>字符串 操作:</b></summary>
+<summary><b>字符串之 : 基本操作:</b></summary>
 
 ```  
 
@@ -647,8 +652,12 @@ window.screen.availWidth;           //屏幕可用工作区的宽						返回 32
     
     等等........
     
-    var str="How are you doing today?";
+
+
+    var str="How are you doing                    today?";
     var n=str.split(" ");
+    >>> ["How", "are", "you", "doing", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "today?"]
+
 
     // 分割完可能会出现这种情况...
     var arr = ['','','',1,2,3,4,5,'','',''];
@@ -659,6 +668,166 @@ window.screen.availWidth;           //屏幕可用工作区的宽						返回 32
         }
     }
     console.log(arr);
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> 字符串之 : 正则表达式</b></summary>
+
+```  
+
+
+详细教程:        https://www.runoob.com/js/js-regexp.html
+
+
+
+
+------------------>   search()   <------------------
+使用正则表达式搜索 "Runoob" 字符串，且不区分大小写:
+var str = "Visit Runoob!"; 
+var n = str.search(/Runoob/i);
+>>> n = 6
+
+
+
+------------------>   replace()   <------------------
+使用正则表达式且不区分大小写将字符串中的 Microsoft 替换为 Runoob :
+var str = document.getElementById("demo").innerHTML; 
+var txt = str.replace(/microsoft/i,"Runoob");
+
+
+
+------------------>   test()   <------------------
+用于检测一个字符串是否匹配某个模式，如果字符串中含有匹配的文本，
+返回 true 或 false
+
+实例用于搜索字符串中的字符 "e"：
+var patt = /e/;
+patt.test("The best things in life are free!");
+>>> true
+
+检测是否是中文:
+var bool = (new RegExp("^[\u4e00-\u9fa5]$")).test("所");
+console.log(bool);
+>>> true
+
+
+
+
+------------------>   exec()   <------------------
+方法用于检索字符串中的正则表达式的匹配
+该函数返回一个数组，其中存放匹配的结果。
+如果未找到匹配，则返回值为 null
+
+实例用于搜索字符串中的字母 "e":
+/e/.exec("The best things in life are free!");
+字符串中含有 "e"，所以该实例输出为:
+e
+
+
+
+
+------------------>   match()   <------------------
+var str="Is this all there is?";
+var patt1=/is/g;            // g 区分大小写
+str.match(patt1);
+>>>   ["is", "is"]
+
+var str="Is this all there is?";
+var patt1=/is/gi;           // gi 不区分大小写
+str.match(patt1);
+>>>  ["Is", "is", "is"]
+
+
+
+
+
+
+
+i	    执行对大小写不敏感的匹配
+g	    执行全局匹配（查找所有匹配而非在找到第一个匹配后停止）
+m	    执行多行匹配
+[abc]	查找方括号之间的任何字符
+[0-9]	查找任何从 0 至 9 的数字
+(x|y)	查找任何以 | 分隔的选项
+\d	    查找数字
+\s	    查找空白字符
+\b	    匹配单词边界
+\uxxxx	查找以十六进制数 xxxx 规定的 Unicode 字符
+n+	    匹配任何包含至少一个 n 的字符串
+n*	    匹配任何包含零个或多个 n 的字符串
+n?	    匹配任何包含零个或一个 n 的字符串
+
+
+
+
+
+判断输入是否为数字、字母、下划线组成:
+    /^\w+$/.test("1234abd__");
+    >>> true
+
+    /^\w+$/.test("$32343");
+    >>> false
+
+判断字符串是否全部为字母
+    /^[a-zA-Z]+$/.test("123123123");
+
+判断字符串是否全部为数字
+     /^\d+$/.test("123123");
+
+判断字符串是否包含中文汉字:
+    /[\u4E00-\u9FA5\uF900-\uFA2D]/.test("12312a啊sda.^&(&*(^&*^%^&sd");
+    >>> true
+
+
+
+更多:
+/*是否带有小数*/
+function    isDecimal(strValue )  {  
+   var  objRegExp= /^\d+\.\d+$/;
+   return  objRegExp.test(strValue);  
+}  
+
+/*校验是否中文名称组成 */
+function ischina(str) {
+    var reg=/^[\u4E00-\u9FA5]{2,4}$/;   /*定义验证表达式*/
+    return reg.test(str);     /*进行验证*/
+}
+
+/*校验是否全由8位数字组成 */
+function isStudentNo(str) {
+    var reg=/^[0-9]{8}$/;   /*定义验证表达式*/
+    return reg.test(str);     /*进行验证*/
+}
+
+
+
+
+
 ```
 </details>
 
@@ -706,7 +875,22 @@ window.screen.availWidth;           //屏幕可用工作区的宽						返回 32
 
 
 
----
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # 集合对象(Array、Map、Set):
 <details>
 <summary><b> Array </b></summary>
@@ -2089,131 +2273,6 @@ JavaScript 遍历所有cookie:
 
 
 
-
-<details>
-<summary><b>正则表达式</b></summary>
-
-```  
-
-
-详细教程:        https://www.runoob.com/js/js-regexp.html
-
-
-
-
------------------->   search():
-使用正则表达式搜索 "Runoob" 字符串，且不区分大小写:
-var str = "Visit Runoob!"; 
-var n = str.search(/Runoob/i);
->>> n = 6
-
-
-
------------------->   replace()   <------------------
-使用正则表达式且不区分大小写将字符串中的 Microsoft 替换为 Runoob :
-var str = document.getElementById("demo").innerHTML; 
-var txt = str.replace(/microsoft/i,"Runoob");
-
-
-
------------------->   test()   <------------------
-    用于检测一个字符串是否匹配某个模式，如果字符串中含有匹配的文本，
-    返回 true 或 false
-
-实例用于搜索字符串中的字符 "e"：
-var patt = /e/;
-patt.test("The best things in life are free!");
->>> true
-
-
-
-
------------------->   exec()   <------------------
-    方法用于检索字符串中的正则表达式的匹配
-    该函数返回一个数组，其中存放匹配的结果。
-    如果未找到匹配，则返回值为 null
-
-实例用于搜索字符串中的字母 "e":
-/e/.exec("The best things in life are free!");
-字符串中含有 "e"，所以该实例输出为:
-e
-
-
-
-
------------------->   match()   <------------------
-var str="Is this all there is?";
-var patt1=/is/g;            // g 区分大小写
-str.match(patt1);
->>>   ["is", "is"]
-
-var str="Is this all there is?";
-var patt1=/is/gi;           // gi 不区分大小写
-str.match(patt1);
->>>  ["Is", "is", "is"]
-
-
-
-
-
-
-i	    执行对大小写不敏感的匹配
-g	    执行全局匹配（查找所有匹配而非在找到第一个匹配后停止）
-m	    执行多行匹配
-[abc]	查找方括号之间的任何字符
-[0-9]	查找任何从 0 至 9 的数字
-(x|y)	查找任何以 | 分隔的选项
-\d	    查找数字
-\s	    查找空白字符
-\b	    匹配单词边界
-\uxxxx	查找以十六进制数 xxxx 规定的 Unicode 字符
-n+	    匹配任何包含至少一个 n 的字符串
-n*	    匹配任何包含零个或多个 n 的字符串
-n?	    匹配任何包含零个或一个 n 的字符串
-
-
-
-
-
-示例:判断输入是否为数字、字母、下划线组成:
-    /^\w+$/.test("1234abd__");
-    >>> true
-
-    /^\w+$/.test("$32343");
-    >>> false
-
-示例:判断字符串是否全部为字母
-    /^[a-zA-Z]+$/.test("123123123");
-
-示例:判断字符串是否全部为数字
-     /^\d+$/.test("123123");
-
-
-更多:
-/*是否带有小数*/
-function    isDecimal(strValue )  {  
-   var  objRegExp= /^\d+\.\d+$/;
-   return  objRegExp.test(strValue);  
-}  
-
-/*校验是否中文名称组成 */
-function ischina(str) {
-    var reg=/^[\u4E00-\u9FA5]{2,4}$/;   /*定义验证表达式*/
-    return reg.test(str);     /*进行验证*/
-}
-
-/*校验是否全由8位数字组成 */
-function isStudentNo(str) {
-    var reg=/^[0-9]{8}$/;   /*定义验证表达式*/
-    return reg.test(str);     /*进行验证*/
-}
-
-
-
-
-
-```
-</details>
 
 
 

@@ -39,6 +39,18 @@ SpringBoot 自己内置了一个小型的服务器
 移植性较强, 不需要改原来的代码
 
 
+系统 Windows 中回车换行 : \n\r
+
+
+字符串比较用  equals
+    Java 中 String类中被复写的equals()方法其实是比较两个字符串的内容
+
+
+一个方法, 只写一种功能, 然后返回这个方法处理后的数据,交给主方法去处理, 目的是为了更好的解耦性, 
+主方法写逻辑
+
+
+
 ```
 </details>
 
@@ -736,10 +748,27 @@ class Sort{
 
 
 
+
+
+
+
+
 <details>
-<summary><b>字符串是否含有英文 / 中文 / 数字 / 替换 / 随机数 / 随机字符串 / 截取字符串</b></summary>
+<summary><b>字符串之 : 是否含有英文 / 中文 / 数字 / 替换 / 随机数 / 随机字符串 / 截取字符串</b></summary>
 
 ```  
+
+
+
+系统 Windows 中回车换行 : \n\r
+
+
+
+字符串比较用  equals
+    Java 中 String类中被复写的equals()方法其实是比较两个字符串的内容
+
+
+
 
 
 
@@ -996,6 +1025,189 @@ class Sort{
 
 
 
+<details>
+<summary><b>字符串之 : 正则表达式</b></summary>
+
+```  
+
+        String regex = "[0-9]+";
+        Pattern pattern = Pattern.compile(regex);
+        String string = "asdf        www.52bbbb.com          Java2s com";
+        Matcher matcher = pattern.matcher(string);
+        if (matcher.find() == true) {
+            System.out.println("GROUP 0:" + matcher.group(0));
+        }else {
+            System.out.println("noooooot Find !!!!! -_-!!!");
+        }
+
+
+
+        Pattern p = Pattern.compile("java", Pattern.CASE_INSENSITIVE);  // 不区分大小写
+        String candidateString = "Java. java JAVA javA";
+        Matcher matcher = p.matcher(candidateString);
+
+        matcher.find(11);  // 起始位置,意思是从哪里开始找...
+        System.out.println(matcher.group());
+        System.out.println("------------- 1 -------------------");
+        matcher.find();      // 接着上一个位置开始找
+        System.out.println(matcher.group());
+        System.out.println("--------------- 2 -----------------");
+
+
+
+
+
+        // A group of 3 digits followed by 7 digits.
+        String regex = "\\b(\\d{3})\\d{7}\\b";  // \\d匹配数字,{3}{7}加起来应该有10位数字
+
+        // Compile the regular expression
+        Pattern p = Pattern.compile(regex);
+        String source = "1231234567 12345, and 9876543210";
+        Matcher m = p.matcher(source);
+
+        while (m.find()) {
+            String phone = m.group(0);
+            String areaCode = m.group(1);
+            System.out.println("PhoneNumber is : " + phone + " Area  Code is :  " + areaCode);
+        }
+        输出结果:
+        PhoneNumber is : 1231234567 Area  Code is :  123
+        PhoneNumber is : 9876543210 Area  Code is :  987
+
+
+
+
+
+        String regex = "(\\d{3})(\\d{3})(\\d{4})";
+        Pattern p = Pattern.compile(regex);
+        String source = "1234567890, 12345,  and  9876543210";
+        Matcher m = p.matcher(source);
+
+        while(m.find()){
+            System.out.println("Phone: " + m.group() + ", Formatted Phone:  ("
+                    + m.group(1) + ") " + m.group(2) + "-" + m.group(3));
+        }
+
+
+
+
+
+
+
+小案例:  找出一段句子中所有的英文单词, 并循环遍历出来
+    思考: 如果表达式是: [a-zA-Z] 会怎么样? 自己动手试试吧~
+
+        String regex = "[a-zA-Z]+"; 
+
+        Pattern p = Pattern.compile(regex);
+        String source = "123123 , 1. simple adj. 简单的 simply adv. 简单地 simplify vt. 简化   simplification n. 简单化";
+        Matcher m = p.matcher(source);
+
+        while (m.find()) {
+            String aaa = m.group(0);
+            System.out.println(aaa);
+        }
+
+
+
+
+
+
+
+    @Test
+    public void Test() {
+        String phonrNul = "我的电话号码是123456789 , 地方north of school , 我的另外一个号码是54321";
+        Pattern compile = Pattern.compile("\\d+");
+        Matcher matcher = compile.matcher(phonrNul);
+        System.out.println(matcher);
+        while(matcher.find()){
+            System.out.println("lllllllllll:==>  " + matcher.group(0));
+//            System.out.println("wwwwwwwwwww:{}" + matcher.group(1));
+        }
+    }        
+
+
+
+
+
+        String inputLine = "Adams,John Quincy";
+        Pattern r = Pattern.compile("(.*),(.*)");
+        Matcher m = r.matcher(inputLine);
+        if (!m.matches()) {
+            throw new IllegalArgumentException("Bad Input");
+        }
+        // 分组0得到的是整个原字符串
+        for (int i = 0; i < m.groupCount() + 1; i++) {
+            System.out.println("分组" + i + ":" + m.group(i));
+        }
+
+        输出：
+        分组0:Adams,John Quincy
+        分组1:Adams
+        分组2:John Quincy
+        PS:
+            匹配条件 换成 Pattern r = Pattern.compile(".*,.*"); 有新发现
+            输出: 分组0:Adams,John Quincy        
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1073,8 +1285,8 @@ public class IO {
     
 
     /**
+     *   推荐这种方式 ^_^
      *   读 文本文件
-     *   推荐 ^_^
      */
     @Test
     public void test7(){
@@ -1110,18 +1322,23 @@ public class IO {
 
 
 
+
+
+
+
+
     /**
      * 读   -   字符流
      * 字符流FileReader主要用来读取字符的IO流，使用字符流读取文本文件可以解决乱码问题
      * 使用字符流拷贝文本文件可以避免文件中的内容乱码，需要注意的是字符流不能拷贝非文本文件，比如照片
+        
+       这种方式也不错:
+         原因: 换行符正常导入 , 文本文件有换行符, 文本文件保持原样
+         而且不会中文乱码...
      */
     @Test
     public void test8() {
-        /**
-         推荐这种方式:
-         原因: 换行符正常导入 , 文本文件有换行符, 文本文件保持原样
-         而且不会中文乱码...
-         */
+
         try (FileReader fr = new FileReader(file_path)) {
             int c;
             StringBuffer stringBuffer = new StringBuffer();
@@ -1138,16 +1355,41 @@ public class IO {
     }
 
 
+
+
+
+
+
+    /**
+     *  读   -   按行读取文件
+     */
+    @Test
+    public void READ_file() throws IOException {
+
+        //BufferedReader是可以按行读取文件
+        FileInputStream inputStream = new FileInputStream("src/main/Java/TEST.txt");
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+
+        String str = null;
+        while((str = bufferedReader.readLine()) != null)        {
+            System.out.println(str);
+        }
+        inputStream.close();
+        bufferedReader.close();
+    }
+
+
+
+
+
+
     /**
      *   读 read
+             不推荐这种方式:
+             原因: 换行符无法正常导入 , 导致文本数据为一整行, 没有换行符, 文本文件失去美观     
      */
     @Test
     public void test3() {
-
-        /**
-             不推荐这种方式:
-             原因: 换行符无法正常导入 , 导致文本数据为一整行, 没有换行符, 文本文件失去美观
-         */
 
         String string = null;
         try {
@@ -1170,15 +1412,16 @@ public class IO {
 
 
 
+
+
+
     /**
      *   读 read
+             不推荐这种方式:
+             原因: 换行符无法正常导入 , 导致文本数据为一整行, 没有换行符, 文本文件失去美观     
      */
     @Test
     public void test4() throws IOException {
-        /**
-             不推荐这种方式:
-             原因: 换行符无法正常导入 , 导致文本数据为一整行, 没有换行符, 文本文件失去美观
-         */
 
         FileInputStream fin = new FileInputStream(file_path);
         InputStreamReader reader = new InputStreamReader(fin);
@@ -1192,6 +1435,8 @@ public class IO {
         System.out.println(stringBuffer);
         buffReader.close();
     }
+
+
 
 
 
@@ -1229,6 +1474,9 @@ public class IO {
         out.close();
     }
 }
+
+
+
 ```
 </details>
 
@@ -1471,156 +1719,6 @@ insert into user(username,password) values('OPPO','R11');
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<details>
-<summary><b>正则表达式</b></summary>
-
-```  
-
-        String regex = "[0-9]+";
-        Pattern pattern = Pattern.compile(regex);
-        String string = "asdf        www.52bbbb.com          Java2s com";
-        Matcher matcher = pattern.matcher(string);
-        if (matcher.find() == true) {
-            System.out.println("GROUP 0:" + matcher.group(0));
-        }else {
-            System.out.println("noooooot Find !!!!! -_-!!!");
-        }
-
-
-
-        Pattern p = Pattern.compile("java", Pattern.CASE_INSENSITIVE);  // 不区分大小写
-        String candidateString = "Java. java JAVA javA";
-        Matcher matcher = p.matcher(candidateString);
-
-        matcher.find(11);  // 起始位置,意思是从哪里开始找...
-        System.out.println(matcher.group());
-        System.out.println("------------- 1 -------------------");
-        matcher.find();      // 接着上一个位置开始找
-        System.out.println(matcher.group());
-        System.out.println("--------------- 2 -----------------");
-
-
-
-
-
-        // A group of 3 digits followed by 7 digits.
-        String regex = "\\b(\\d{3})\\d{7}\\b";  // \\d匹配数字,{3}{7}加起来应该有10位数字
-
-        // Compile the regular expression
-        Pattern p = Pattern.compile(regex);
-        String source = "1231234567 12345, and 9876543210";
-        Matcher m = p.matcher(source);
-
-        while (m.find()) {
-            String phone = m.group(0);
-            String areaCode = m.group(1);
-            System.out.println("PhoneNumber is : " + phone + " Area  Code is :  " + areaCode);
-        }
-        输出结果:
-        PhoneNumber is : 1231234567 Area  Code is :  123
-        PhoneNumber is : 9876543210 Area  Code is :  987
-
-
-
-
-
-        String regex = "(\\d{3})(\\d{3})(\\d{4})";
-        Pattern p = Pattern.compile(regex);
-        String source = "1234567890, 12345,  and  9876543210";
-        Matcher m = p.matcher(source);
-
-        while(m.find()){
-            System.out.println("Phone: " + m.group() + ", Formatted Phone:  ("
-                    + m.group(1) + ") " + m.group(2) + "-" + m.group(3));
-        }
-
-
-
-
-
-
-
-小案例:  找出一段句子中所有的英文单词, 并循环遍历出来
-    思考: 如果表达式是: [a-zA-Z] 会怎么样? 自己动手试试吧~
-
-        String regex = "[a-zA-Z]+"; 
-
-        Pattern p = Pattern.compile(regex);
-        String source = "123123 , 1. simple adj. 简单的 simply adv. 简单地 simplify vt. 简化   simplification n. 简单化";
-        Matcher m = p.matcher(source);
-
-        while (m.find()) {
-            String aaa = m.group(0);
-            System.out.println(aaa);
-        }
-
-
-
-
-
-
-
-    @Test
-    public void Test() {
-        String phonrNul = "我的电话号码是123456789 , 地方north of school , 我的另外一个号码是54321";
-        Pattern compile = Pattern.compile("\\d+");
-        Matcher matcher = compile.matcher(phonrNul);
-        System.out.println(matcher);
-        while(matcher.find()){
-            System.out.println("lllllllllll:==>  " + matcher.group(0));
-//            System.out.println("wwwwwwwwwww:{}" + matcher.group(1));
-        }
-    }        
-
-
-
-
-
-        String inputLine = "Adams,John Quincy";
-        Pattern r = Pattern.compile("(.*),(.*)");
-        Matcher m = r.matcher(inputLine);
-        if (!m.matches()) {
-            throw new IllegalArgumentException("Bad Input");
-        }
-        // 分组0得到的是整个原字符串
-        for (int i = 0; i < m.groupCount() + 1; i++) {
-            System.out.println("分组" + i + ":" + m.group(i));
-        }
-
-        输出：
-        分组0:Adams,John Quincy
-        分组1:Adams
-        分组2:John Quincy
-        PS:
-            匹配条件 换成 Pattern r = Pattern.compile(".*,.*"); 有新发现
-            输出: 分组0:Adams,John Quincy        
-
-```
-</details>
 
 
 
@@ -2547,6 +2645,14 @@ Collection 主要有三个子接口,分别为:
     增加元素
         数组：直接通过序号赋值。 eg：array[0]=233;
         ArrayList：通过add方法。eg：list.add(0,233);
+
+    删除元素:
+        arraylist: 
+            list.remove(str);
+        数组:
+            java的api中，并没有提供删除数组中元素的方法
+            虽然数组是一个对象，不过并没有提供add()、remove()或查找元素的方法
+            这就是为什么类似ArrayList和HashSet受欢迎的原因
     
     
     创建 ArrayList对象不用指定长度，而创建数组对象必须指定长度
@@ -2587,6 +2693,92 @@ Collection 主要有三个子接口,分别为:
 
 
 
+<details>
+<summary><b> 数组 Array [] </b></summary>
+
+```  
+
+
+基本语法:
+下面是这两种语法的代码示例：
+double[] myList;         // 首选的方法
+或
+double myList[];         //  效果相同，但不是首选方法
+
+数组的元素是通过索引访问的。数组索引从 0 开始
+
+
+
+获取长度
+    数组：length属性
+    ArrayList：size()方法
+
+增加元素
+    数组：直接通过序号赋值。 eg：array[0]=233;
+    ArrayList：通过add方法。eg：list.add(0,233);
+
+删除元素:
+    arraylist: 
+        list.remove(str);
+    数组:
+        java的api中，并没有提供删除数组中元素的方法
+        虽然数组是一个对象，不过并没有提供add()、remove()或查找元素的方法
+        这就是为什么类似ArrayList和HashSet受欢迎的原因
+
+
+
+
+// 数组大小
+      int size = 10;
+// 定义数组
+      double[] myList = new double[size];
+      myList[0] = 5.6;
+      myList[1] = 4.5;
+      myList[2] = 3.3;
+      ...
+
+
+
+    double[] myList = {1.9, 2.9, 3.4, 3.5};
+ 
+      // 打印所有数组元素
+      for (int i = 0; i < myList.length; i++) {
+         System.out.println(myList[i] + " ");
+      }
+      
+      // 计算所有元素的总和
+      double total = 0;
+      for (int i = 0; i < myList.length; i++) {
+         total += myList[i];
+      }
+      System.out.println("Total is " + total);
+      
+      // 查找最大元素
+      double max = myList[0];
+      for (int i = 1; i < myList.length; i++) {
+         if (myList[i] > max) max = myList[i];
+      }
+      System.out.println("Max is " + max);
+
+
+
+      double[] myList = {1.9, 2.9, 3.4, 3.5}; 
+      // 打印所有数组元素
+      for (double element: myList) {
+         System.out.println(element);
+      }
+
+
+```
+</details>
+
+
+
+
+
+
+
+
 
 
 
@@ -2598,15 +2790,54 @@ Collection 主要有三个子接口,分别为:
 
 
 <details>
-<summary><b>Collection ( List Set )</b></summary>
+<summary><b>Collection : List </b></summary>
 
 ```  
+
+
+更加详细的教程: http://www.51gjie.com/java/299.html
+
 
 void add(String item)  //依次往后添加添加元素
 void add(String item, int index) //在指定位置处添加元素
 void remove(int position) //删除第几个元素（索引从0开始）
 void remove(String item) //删除相同的元素
 void removeAll() //删除所有元素
+
+
+
+
+Arraylist 并没有直接提供删除某个元素的 API:
+需要自己实现:
+ArrayList删除特定不同元素的2种方法:
+    1. 使用下标的方式删除
+    ArrayList al = new ArrayList();
+    al.add("a");
+    al.add("b");
+    al.add("b"); 
+    al.add("c"); 
+    for (int i = 0; i < al.size(); i++) {
+        if (al.get(i) == "b") {
+            al.remove(i);
+            i--;//一定要移动下标，不然会报错
+        }
+    }	
+    解析:
+        在代码中，删除元素后，需要把下标减一。
+        这是因为在每次删除元素后，ArrayList会将后面部分的元素依次往上挪一个位置(就是copy)，
+        所以，下一个需要访问的下标还是当前下标，所以必须得减一才能把所有元素都遍历完
+
+
+    2. 使用Iterator元素遍历的方式删除
+    Iterator<String> sListIterator = list.iterator();  
+    while(sListIterator.hasNext()){  
+        String e = sListIterator.next();  
+        if(e.equals("3")){  
+        sListIterator.remove();  
+        }  
+    }
+
+
 
 
 
@@ -2691,32 +2922,99 @@ ArrayList类
 
 
 LinkedList类
-1. add(E e): 将指定元素添加到此列表的结尾。
-2. add(int index, E element)：在此列表中指定的位置插入指定的元素。
-3. addAll(Collection<? extends E> c)：添加指定 collection 中的所有元素到此列表的结尾，顺序是指定 collection 的迭代器返回这些元素的顺序。
-4. addAll(int index, Collection<? extends E> c)：将指定 collection 中的所有元素从指定位置开始插入此列表。
-5. AddFirst(E e): 将指定元素插入此列表的开头。
-6. addLast(E e): 将指定元素添加到此列表的结尾。
-7. clear()： 从此列表中移除所有元素。
-8. remove()：获取并移除此列表的头（第一个元素）。
-9. remove(int index)：移除此列表中指定位置处的元素。
-10. remove(Objec o)：从此列表中移除首次出现的指定元素（如果存在）。
-11. removeFirst()：移除并返回此列表的第一个元素。
-12. removeFirstOccurrence(Object o)：从此列表中移除第一次出现的指定元素（从头部到尾部遍历列表时）。
-13. removeLast()：移除并返回此列表的最后一个元素。
-14. removeLastOccurrence(Object o)：从此列表中移除最后一次出现的指定元素（从头部到尾部遍历列表时）。
-15. get(int index)：返回此列表中指定位置处的元素。
-16. getFirst()：返回此列表的第一个元素。
-17. getLast()：返回此列表的最后一个元素。
-18. indexOf(Object o)：返回此列表中首次出现的指定元素的索引，如果此列表中不包含该元素，则返回 -1。
-19. lastIndexOf(Object o)：返回此列表中最后出现的指定元素的索引，如果此列表中不包含该元素，则返回 -1。
+add(E e): 将指定元素添加到此列表的结尾。
+add(int index, E element)：在此列表中指定的位置插入指定的元素
+addAll(int index, Collection<? extends E> c)：将指定 collection 中的所有元素从指定位置开始插入此列表。
+AddFirst(E e): 将指定元素插入此列表的开头
+addAll(Collection<? extends E> c)：添加指定 collection 中的所有元素到此列表的结尾 顺序是指定 collection 的迭代器返回这些元素的顺序。
+addLast(E e): 将指定元素添加到此列表的结尾。
+clear()： 从此列表中移除所有元素。
+remove()：获取并移除此列表的头（第一个元素）。
+remove(int index)：移除此列表中指定位置处的元素。
+remove(Objec o)：从此列表中移除首次出现的指定元素（如果存在）。
+removeFirst()：移除并返回此列表的第一个元素。
+removeFirstOccurrence(Object o)：从此列表中移除第一次出现的指定元素（从头部到尾部遍历列表时）。
+removeLast()：移除并返回此列表的最后一个元素。
+removeLastOccurrence(Object o)：从此列表中移除最后一次出现的指定元素（从头部到尾部遍历列表时）。
+get(int index)：返回此列表中指定位置处的元素。
+getFirst()：返回此列表的第一个元素。
+getLast()：返回此列表的最后一个元素。
+indexOf(Object o)：返回此列表中首次出现的指定元素的索引，如果此列表中不包含该元素，则返回 -1。
+lastIndexOf(Object o)：返回此列表中最后出现的指定元素的索引，如果此列表中不包含该元素，则返回 -1。
+
+
+
+------------------------------  迭代遍历  ------------------------------
+
+List的四种遍历方式:
+        //方法1 集合类的通用遍历方式, 从很早的版本就有, 用迭代器迭代
+        Iterator it1 = list.iterator();
+        while(it1.hasNext()){
+            System.out.println(it1.next());
+        }
+
+        //方法2 集合类的通用遍历方式, 从很早的版本就有, 用迭代器迭代
+        for(Iterator it2 = list.iterator();it2.hasNext();){
+            System.out.println(it2.next());
+        }
+
+        //方法3 增强型for循环遍历
+        for(String value:list){
+            System.out.println(value);
+        }
+
+        //方法4 一般型for循环遍历
+        for(int i = 0;i < list.size(); i ++){
+            System.out.println(list.get(i));
+        }
+
+
+
+
+
+```
+</details>
 
 
 
 
 
 
-===============================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> Collection : Set </b></summary>
+
+```  
+
 
 
 注意:
@@ -2808,40 +3106,9 @@ toString()方法在打印对象时会调用。如果不覆盖（override）toStr
 
 
 
-
-
-
-
-
-循环 / 遍历 / 迭代:
----------------------------------------------------------------------------------------
-List的四种遍历方式:
-        //方法1 集合类的通用遍历方式, 从很早的版本就有, 用迭代器迭代
-        Iterator it1 = list.iterator();
-        while(it1.hasNext()){
-            System.out.println(it1.next());
-        }
-
-        //方法2 集合类的通用遍历方式, 从很早的版本就有, 用迭代器迭代
-        for(Iterator it2 = list.iterator();it2.hasNext();){
-            System.out.println(it2.next());
-        }
-
-        //方法3 增强型for循环遍历
-        for(String value:list){
-            System.out.println(value);
-        }
-
-        //方法4 一般型for循环遍历
-        for(int i = 0;i < list.size(); i ++){
-            System.out.println(list.get(i));
-        }
-
-
-
+------------------------------  迭代遍历  ------------------------------
 
 set的三种遍历方式:        
----------------------------------------------------------------------------------------
         //方法1 集合类的通用遍历方式, 从很早的版本就有, 用迭代器迭代
         Iterator it1 = set.iterator();
         while(it1.hasNext()){
@@ -2860,8 +3127,22 @@ set的三种遍历方式:
 
 
 
+
+
 ```
 </details>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2874,6 +3155,7 @@ set的三种遍历方式:
 <summary><b>Map (TreeMap Hashtable HashMap)</b></summary>
 
 ```  
+
 
 
 HashMap类
@@ -2890,6 +3172,9 @@ void	             putAll(Map<? extends K,? extends V> m)
 V	                 remove(Object key) 根据键移除
 int	                 size()
 Collection<V>	     values() 返回一个HashMap的值的Collection
+
+
+
 
 
 
@@ -2915,45 +3200,6 @@ synchronized int                 size()
 synchronized String              toString()
 synchronized Collection<V>       values()
 
-
-
-
-
-TreeMap类
-Entry<K, V>                ceilingEntry(K key)
-K                          ceilingKey(K key)
-void                       clear()
-Object                     clone()
-Comparator<? super K>      comparator()
-boolean                    containsKey(Object key)
-NavigableSet<K>            descendingKeySet()
-NavigableMap<K, V>         descendingMap()
-Set<Entry<K, V>>           entrySet()
-Entry<K, V>                firstEntry()
-K                          firstKey()
-Entry<K, V>                floorEntry(K key)
-K                          floorKey(K key)
-V                          get(Object key)
-NavigableMap<K, V>         headMap(K to, boolean inclusive)
-SortedMap<K, V>            headMap(K toExclusive)
-Entry<K, V>                higherEntry(K key)
-K                          higherKey(K key)
-boolean                    isEmpty()
-Set<K>                     keySet()
-Entry<K, V>                lastEntry()
-K                          lastKey()
-Entry<K, V>                lowerEntry(K key)
-K                          lowerKey(K key)
-NavigableSet<K>            navigableKeySet()
-Entry<K, V>                pollFirstEntry()
-Entry<K, V>                pollLastEntry()
-V                          put(K key, V value)
-V                          remove(Object key)
-int                        size()
-SortedMap<K, V>            subMap(K fromInclusive, K toExclusive)
-NavigableMap<K, V>         subMap(K from, boolean fromInclusive, K to, boolean toInclusive)
-NavigableMap<K, V>         tailMap(K from, boolean inclusive)
-SortedMap<K, V>            tailMap(K fromInclusive)
 
 
 

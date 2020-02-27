@@ -874,6 +874,114 @@ function isStudentNo(str) {
 
 
 
+<details>
+<summary><b> 字符串之 :  Unicode 转换 </b></summary>
+
+```  
+
+
+
+  //  字符串 -> Unicode
+  function String_to_Unicode(str) {
+    var unicodeString = '';
+    for (var i = 0; i < str.length; i++) {
+      var theUnicode = str.charCodeAt(i).toString(16).toUpperCase();
+      while (theUnicode.length < 4) {
+        theUnicode = '0' + theUnicode;
+      }
+      theUnicode = '\\u' + theUnicode;
+      unicodeString += theUnicode;
+    }
+    return unicodeString;
+  }
+  console.log(String_to_Unicode("我我我我我我"));    //  \u6211\u6211\u6211\u6211\u6211\u6211
+
+
+
+
+
+  // Unicode -> 字符串
+  function Unicode_to_string(unicode) {
+    return eval("'" + unicode + "'");
+  }
+  console.log(Unicode_to_string("\u6211\u6211\u6211\u6211\u6211\u6211"));     // 我我我我我我
+
+
+
+
+
+Unicode:
+中文 Unicode 对照表:  http://www.chi2ko.com/tool/CJK.htm
+我		6211
+哈		54C8
+不		4E0D
+
+英文 Unicode 预览:
+参考资料: https://zh.wikipedia.org/wiki/Unicode%E5%AD%97%E7%AC%A6%E5%88%97%E8%A1%A8
+A(拉丁字母A)    U+0041	 	\u41
+a(拉丁字母a)    U+0061		\u61
+=(等于号)	   U+003D		\u3d
++(加号)         U+002B 		\u2b
+ 空格           U+0020      \u20
+\(反斜杠)       U+005C      \u5c
+n(拉丁字母n)    U+006E      \u6e
+
+
+关于 Unicode 中的回车/换行:
+结论:
+    在 Windows 系统下, 
+    \ud\ua  就是文本文件的换行
+
+不过:
+在 JavaScript 中  
+A
+A
+转化成 Unicode 是:
+\u0041\u000D\u000A\u0041
+
+也就是说:
+在 JavaScript 中:  
+    \u000D\u000A  是回车换行
+
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

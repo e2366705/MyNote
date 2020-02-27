@@ -1875,7 +1875,7 @@ string 和 ArrayList 之间的转换:
 
 
 <details>
-<summary><b>  unicode / 编码 / 转换 / ...  </b></summary>
+<summary><b>  unicode / ASCII码 / 编码转换 / ...  </b></summary>
 
 ```  
 
@@ -1956,9 +1956,13 @@ public class UnicodeToString{
 
 
 
------------------------------------------------------------------------------------------------
+-------------------   unicode   ----------------------------------------------------------------------------
+
+在线 Unicode 转换 :   https://tool.73ic.com/tool/tool_unicodeascii.html
+
+
 字符串 和 unicode 之间的转换:
-public class GetCharAscii {
+public class unicode_string {
 
     /*
      * 字符串 -> unicode
@@ -2004,18 +2008,151 @@ public class GetCharAscii {
 
 
 
-关于 Unicode 中的回车/换行:
+Unicode:
+中文 Unicode 对照表:  http://www.chi2ko.com/tool/CJK.htm
+我		6211
+哈		54C8
+不		4E0D
 
-初步推测:   \ud\ua    这两个就是回车和换行
+英文 Unicode 预览:
+参考资料: https://zh.wikipedia.org/wiki/Unicode%E5%AD%97%E7%AC%A6%E5%88%97%E8%A1%A8
+A(拉丁字母A)    U+0041	 	\u41
+a(拉丁字母a)    U+0061		\u61
+=(等于号)	   U+003D		\u3d
++(加号)         U+002B 		\u2b
+ 空格           U+0020      \u20
+\(反斜杠)       U+005C      \u5c
+n(拉丁字母n)    U+006E      \u6e
+
+
+现在我们用Java转换输出: 
+													  \    n        
+System.out.println(string_to_Unicode("\\n"));    ->  \u5c\u6e
+
+                                                     回车
+System.out.println(string_to_Unicode("\n"));	 ->  \ua
+
+                                                      \
+System.out.println(string_to_Unicode("\\"));	 ->  \u5c
+
+                                                       n
+System.out.println(string_to_Unicode("n"));		 ->  \u6e
+
+
+测试:
+现有文本文件 : TEST.txt , 内容是:
+A
+A
+
+打印出来的 Unicode 是这样的:
+\u41\ud\ua\u41
+
+其中 A 的Unicode码是 \u41
+那么: \ud\ua  就是Windows系统中文本文件的换行了
+
+
+
+关于 Unicode 中的回车/换行:
+结论:
+    在 Windows 系统下, 
+    \ud\ua  就是文本文件的换行
+
 
 在线 Unicode 转换 :   https://tool.73ic.com/tool/tool_unicodeascii.html
-
 \u7136\ud\ua\u45\u76\u65\u72\u79\u74\u68\u69\u6e\u67\u20\u74\u68\u61\u74\u20\u63\u6f\u6d\u65\u73\u20\u66\u72\u6f\u6d\u20\u74\u68\u65\u20\u65\u61\u72\u74\u68\u20\u65\u76\u65\u6e\u74\u75\u61\u6c\u6c\u79\u20\u72\u65\u74\u75\u72\u6e\u73\u2e\ud\ua\ud\ua\ud\ua\ud\ua\u5373\u4f7f\u34\u30\u5428\u7684\u5b89\u901a\u7eb3\u31\u32\u578b\u8d27\u673a\u4e5f\u4e00\u6837\ud\ua\u45
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------   ASCII 码  ----------------------------------------------------------------------------
+常用 ASCII 码:
+A 				65
+B   			66
+C  				67
+CR(回车) 		13
+LF(换行) 		10
+DLE(空格)		16
+?				63
+=				61
++				43
+
+来源:  https://tool.oschina.net/commons?type=4
+
+
+public class dasdasdasd {
+    public static void main(String[] args) {
+        System.out.println(stringToAscii("A"));             //  65
+        System.out.println(asciiToString("65"));            //  A
+    }
+
+
+    /*
+     * 字符串 -> Ascii
+     */
+    public static String stringToAscii(String value){
+        StringBuffer sbu = new StringBuffer();
+        char[] chars = value.toCharArray();
+        for (int i = 0; i < chars.length; i++) {
+            if(i != chars.length - 1)
+            {
+                sbu.append((int)chars[i]).append(",");
+            }
+            else {
+                sbu.append((int)chars[i]);
+            }
+        }
+        return sbu.toString();
+    }
+
+
+    /*
+     * Ascii -> 字符串
+     */
+    public static String asciiToString(String value)    {
+        StringBuffer sbu = new StringBuffer();
+        String[] chars = value.split(",");
+        for (int i = 0; i < chars.length; i++) {
+            sbu.append((char) Integer.parseInt(chars[i]));
+        }
+        return sbu.toString();
+    }
+
+}
+
+
+
+
+测试:
+现有文本文件 : TEST.txt , 内容是:
+A
+A
+
+打印出来的 ASCII 码 是这样的:
+65,13,10,65
+其中 A 的ASCII码是  65
+那么: 13 10  就是Windows系统中文本文件的换行了
+
+
+关于 ASCII 码 中的回车/换行:
+结论:
+    在 Windows 系统下, 
+    13 10  就是文本文件的换行
 
 
 

@@ -655,7 +655,7 @@ window.screen.availWidth;           //屏幕可用工作区的宽						返回 32
 
 
     var str="How are you doing                    today?";
-    var n=str.split(" ");
+    var array = str.split(" ");
     >>> ["How", "are", "you", "doing", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "today?"]
 
 
@@ -668,6 +668,14 @@ window.screen.availWidth;           //屏幕可用工作区的宽						返回 32
         }
     }
     console.log(arr);
+
+
+    JavaScript 替换字符串:
+        详情见 下面的 字符串之 : 正则表达式
+        replace() 方法
+
+
+
 ```
 </details>
 
@@ -720,8 +728,15 @@ var n = str.search(/Runoob/i);
 >>> "RunoobAAAAAAAA"
 
 这种写法也是可以的:
-"microsoftAAAAAAAA".replace("microsoft","Runoob");
->>> "RunoobAAAAAAAA"
+"microsoftAAAAAAAA  microsoft  microsoft asdasd microsoft".replace("microsoft","Runoob");
+>>> "RunoobAAAAAAAA  microsoft  microsoft asdasd microsoft"
+
+但是, 这种只是替换一次, 怎么实现全局替换呢?
+答案是: 加 g
+如下:
+"microsoftAAAAAAAA  microsoft  microsoft asdasd microsoft".replace(/microsoft/g,"Runoob");
+>>> "RunoobAAAAAAAA  Runoob  Runoob asdasd Runoob"
+
 
 
 

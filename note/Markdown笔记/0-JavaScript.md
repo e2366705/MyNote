@@ -991,6 +991,41 @@ A
 
 
 
+<details>
+<summary><b>字符串之 : 将后台返回的string数据,解析成JSON数据</b></summary>
+
+```  
+
+
+
+  var index_page_json_data = JSON.parse("{\"We do not have anything\":\"我们没有病\",\"How do you know?\":\"你怎么知道?\",\"Do we look like it?\":\"我们看起来像有病吗?\"}");
+  console.log(index_page_json_data);                   // 将字符串格式 -> json格式
+
+  var Get_value = index_page_json_data['We do not have anything'];    //  根据键 取出 值
+  console.log("根据键 取出 值:   " + Get_value);
+
+  for (var key in index_page_json_data) {
+    console.log(key + ' : ' + index_page_json_data[key]);
+  }
+  
+
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1977,27 +2012,6 @@ window.onload = function(){
 
 
 
-
-
-
-<details>
-<summary><b>用JavaScript 将后台返回的string数据,解析成JSON数据:</b></summary>
-
-```  
-var index_page_json_data = JSON.parse(xhr.responseText),
-xhr.responseText ==> 是string类型
-然后呢??
-转换成json数据之后,怎么根据键(或者是值) 取出相对应的值(键)呢?
-用:
-index_page_json_data['2019_01_11_15_30_21']); ==> 根据键 取出 值
-然后呢??
-console.log(index_page_json_data);  ==> 输出: {2019_01_11_19_53_07: "自定义模版2333"}
-然后...怎么遍历呢? [遍历json]
-for (var key in index_page_json_data) {
-	console.log(key + "==>" + index_page_json_data[key]);
-}
-```
-</details>
 
 
 

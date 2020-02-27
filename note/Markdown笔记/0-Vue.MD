@@ -38,6 +38,29 @@ new Vue({
 
 
 
+
+遍历键值对:
+前提是 result_json 也必须是键值对 hashmap
+<div id="Article_content">
+    <div  v-for="key , value in result_json">
+        <h1>{{key}}</h1>
+        <h1>{{value}}</h1>
+    </div>
+</div>
+
+new Vue({
+    el: '#Article_content',
+    data: {
+        result_json: result_json
+    }
+});
+
+
+
+
+
+
+
 data 用于定义属性
 methods 用于定义的函数，可以通过 return 来返回函数值
 {{ }} 用于输出对象属性和函数返回值

@@ -759,15 +759,12 @@ class Sort{
 ```  
 
 
-
 系统 Windows 中回车换行 : \n\r
 
 
 
 字符串比较用  equals
     Java 中 String类中被复写的equals()方法其实是比较两个字符串的内容
-
-
 
 
 
@@ -780,8 +777,6 @@ class Sort{
         }else{
             System.out.println("不包含");
         }
-
-
 
 
         大写:
@@ -799,14 +794,6 @@ class Sort{
         //单词是否全为英文
         // true  false
         boolean Whether_all_english = str.matches("[a-zA-Z]+");
-
-        // 是否有中文? 允许有符号
-        String str = "my friends gardens and we've become closer '' * & ^ % # @ ! ` ~     ";
-        if (str.getBytes().length == str.length()) {
-            System.err.println("english....");
-        }else {
-            System.err.println("those string has chinese....");
-        }
 
         // 是否全为数字
         // true false
@@ -826,20 +813,6 @@ class Sort{
         String regex2 = ".*[0-9].*";
         boolean has_number = str.matches(regex2);
 
-
-        // 含有中文
-        //  true false
-        String world_2 = "哈哈哈aaaaaaa";
-        for (char c : world_2.toCharArray()) {
-            if (isChinese(c)) {
-                System.out.println("含有中文");
-            }
-        }
-
-        //判断是否为纯中文
-        //  true false
-        String regex3 = "[\\u4e00-\\u9fa5]+";
-        boolean all_chinese = str.matches(regex3);
 
         // 是否包含一个空格
         String str = "acd dd";
@@ -879,6 +852,79 @@ class Sort{
 
 
 
+
+
+
+
+=====================================   检测中文   ==============================================
+
+        // 是否有中文? 允许有符号
+        String str = "my friends gardens and we've become closer '' * & ^ % # @ ! ` ~     ";
+        if (str.getBytes().length == str.length()) {
+            System.err.println("english....");
+        }else {
+            System.err.println("those string has chinese....");
+        }
+
+
+        //判断是否为纯中文
+        //  true false
+        String regex3 = "[\\u4e00-\\u9fa5]+";
+        boolean all_chinese = str.matches(regex3);
+
+
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class How_many_chinese {
+
+    public static void main(String args[]) {
+        String str = "ABCDE/12345/一二三四五";
+        System.out.println("Numbers:" + countNumber(str));      // Numbers:5
+        System.out.println("Letters:" + countLetter(str));      // Letters:5
+        System.out.println("Chinese:" + countChinese(str));     // Chinese:5
+    }
+
+    public static int countNumber(String str) {
+        int count = 0;
+        Pattern p = Pattern.compile("\\d");
+        Matcher m = p.matcher(str);
+        while(m.find()){
+            count++;
+        }
+        return count;
+    }
+
+    public static int countLetter(String str) {
+        int count = 0;
+        Pattern p = Pattern.compile("[a-zA-Z]");
+        Matcher m = p.matcher(str);
+        while(m.find()){
+            count++;
+        }
+        return count;
+    }
+
+    public static int countChinese(String str) {
+        int count = 0;
+        Pattern p = Pattern.compile("[\\u4e00-\\u9fa5]");
+        Matcher m = p.matcher(str);
+        while(m.find()){
+            count++;
+        }
+        return count;
+    }
+}
+
+
+
+
+
+
+
+
+
         睡眠 / 暂停(单位: 毫秒):
         Thread.sleep(3000);   
 
@@ -903,8 +949,7 @@ class Sort{
         System.out.println(sb.toString());
 
 
-
-截取字符串:
+=====================================   截取字符串   ==============================================
     原字符: 123456789
     
         String strhours = String.valueOf(123456789);
@@ -974,6 +1019,7 @@ class Sort{
         Matcher m = p.matcher(str);
         str1 = m.replaceAll("");
         System.out.println(" 去除字符串中的空格、回车、换行符、制表符  " + str1);  
+
 
 
 ```
@@ -2771,6 +2817,10 @@ double myList[];         //  效果相同，但不是首选方法
 
 ```
 </details>
+
+
+
+
 
 
 

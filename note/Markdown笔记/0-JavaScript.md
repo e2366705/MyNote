@@ -113,8 +113,17 @@ Ajax 适用于加载一些临时性的数据 (优点是不刷新整个网页)
 <summary><b> 操作 CSS </b></summary>
 
 ```  
+
 document.getElementById("kkk").style.cssText = " background-color:pink; width: 100px; height: 100px; ";
 document.getElementsByClassName('div2')[0].style.background = 'pink';
+
+
+推荐使用 jQuery , 可以直接操作全部的 class
+原生 JavaScript 只能操作单个 class 元素:
+    document.getElementsByClassName("test")[0].style.color = "red";
+    $(".test").css("color","red");
+    
+
 ```
 </details>
 
@@ -1515,6 +1524,10 @@ window.open("http://www.JD.com");                           // 新窗口打开
 
 
 
+
+
+
+
 <details>
 <summary><b>弹窗 (确认框)</b></summary>
 
@@ -1806,6 +1819,12 @@ interval = setInterval(runThis, 5000);
 
 
 
+
+
+
+
+
+
 <details>
 <summary><b>键盘事件 / 鼠标事件</b></summary>
 
@@ -1849,6 +1868,7 @@ interval = setInterval(runThis, 5000);
         onkeypress 就捕捉不到
 
 // 键盘事件
+// 推荐使用 onkeydown
 document.onkeydown = function(e) {
     var keycode = e.which;   //取得对应的键值（数字）
     var realkey = String.fromCharCode(e.which); //取得代表改键的真正字符
@@ -1858,7 +1878,9 @@ document.onkeydown = function(e) {
     }
 }
 
+
 // 键盘事件 方式二
+// 不推荐使用 onkeypress
 document.onkeypress = function (event) {
     var keycode = event.which;   //取得对应的键值（数字）
     var realkey = String.fromCharCode(event.which); //取得代表改键的真正字符
@@ -1965,6 +1987,9 @@ window.onload = function(){
 
 ```
 </details>
+
+
+
 
 
 

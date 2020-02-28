@@ -1429,62 +1429,6 @@ public class IO {
 
 
 
-    /**
-     *   读 read
-             不推荐这种方式:
-             原因: 换行符无法正常导入 , 导致文本数据为一整行, 没有换行符, 文本文件失去美观     
-     */
-    @Test
-    public void test3() {
-
-        String string = null;
-        try {
-            // 在给定从中读取数据的文件名的情况下创建一个新 FileReader
-            FileReader fr = new FileReader(file_path);
-
-            // 创建一个使用默认大小输入缓冲区的缓冲字符输入流
-            BufferedReader br = new BufferedReader(fr);
-
-            StringBuffer stringBuffer = new StringBuffer();
-
-            while (null != (string = br.readLine())) {
-                stringBuffer.append(string);
-            }
-            System.out.println(stringBuffer);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-
-
-
-
-
-    /**
-     *   读 read
-             不推荐这种方式:
-             原因: 换行符无法正常导入 , 导致文本数据为一整行, 没有换行符, 文本文件失去美观     
-     */
-    @Test
-    public void test4() throws IOException {
-
-        FileInputStream fin = new FileInputStream(file_path);
-        InputStreamReader reader = new InputStreamReader(fin);
-        BufferedReader buffReader = new BufferedReader(reader);
-
-        StringBuffer stringBuffer = new StringBuffer();
-        String strTmp = "";
-        while ((strTmp = buffReader.readLine()) != null) {
-            stringBuffer.append(strTmp);
-        }
-        System.out.println(stringBuffer);
-        buffReader.close();
-    }
-
-
-
-
 
     /**
      *  写
@@ -1500,6 +1444,10 @@ public class IO {
         out.write(b);
         out.close();
     }
+
+
+
+
 
     /**
      * 写
@@ -1520,6 +1468,73 @@ public class IO {
         out.close();
     }
 }
+
+
+
+
+
+
+
+
+
+==========================================   读取 txt文件 指定行   ==========================================
+import java.io.*;
+public class Read_Selected_Line{
+
+    static String readLineVarFile(String fileName, int lineNumber) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(fileName)));
+        String line = reader.readLine();
+        if (lineNumber < 0 || lineNumber > getTotalLines(fileName)) {
+            System.out.println("不在文件的行数范围之内。");
+        }
+
+        int num = 0;
+        while (line != null) {
+            if (lineNumber == ++num) {
+//                System.out.println("line     " + lineNumber + ":     " + line);
+                return line;
+            }
+            line = reader.readLine();
+        }
+        reader.close();
+        return line;
+    }
+
+    // 文件内容的总行数。
+    static int getTotalLines(String fileName) throws IOException {
+        BufferedReader in = new BufferedReader(new InputStreamReader(
+                new FileInputStream(fileName)));
+        LineNumberReader reader = new LineNumberReader(in);
+        String s = reader.readLine();
+        int lines = 0;
+        while (s != null) {
+            lines++;
+            s = reader.readLine();
+        }
+        reader.close();
+        in.close();
+        return lines;
+    }
+
+    public static void main(String[] args) throws IOException {
+
+        // 读取文件
+        String fileName = "src/main/Java/西西里的美丽传说.txt";
+
+        // 获取文件的内容的总行数
+        int totalNo = getTotalLines(fileName);
+        System.out.println("There are "+totalNo+ " lines in the text!");
+
+        // 指定读取的行号
+        int lineNumber = 7;
+
+        //读取指定行的内容
+        String line_string = readLineVarFile(fileName, lineNumber);
+        System.out.println("line  :  " + lineNumber + " , 指定行数据 :  " + line_string);
+    }
+}
+
+
 
 
 

@@ -2652,7 +2652,18 @@ Map:
         是一个有序的key-value集合，它是通过红黑树实现的
     
     Hashtable:
-         Key、Value均不能为null
+        Key、Value均不能为null
+        HashTable已经被淘汰了，不要在代码中再使用它
+        以下描述来自于HashTable的类注释:
+            If a thread-safe implementation is not needed, 
+            it is recommended to use HashMap in place of Hashtable.
+            If a thread-safe highly-concurrent implementation is desired, 
+            then it is recommended to use java.util.concurrent.ConcurrentHashMap in place of Hashtable.
+        翻译:
+            如果不需要线程安全实现，建议使用HashMap代替Hashtable。
+            如果需要线程安全的高并发实现，那么建议使用 java.util.concurrent.ConcurrentHashMap 代替 Hashtable
+
+
 
     HashMap:
         Key、Value 可以为 null (可以允许存在一个为null的key , 任意个为 null 的 value)
@@ -3223,20 +3234,21 @@ set的三种遍历方式:
 
 
 
-HashMap类
-void	             clear()
-Object	             clone()
-boolean	             containsKey(Object key)
-boolean         	 containsValue(Object value)
-Set<Map.Entry<K,V>>  entrySet()  返回一个包含HashMap的键值对的set
-V	                 get(Object key) 根据键获取值
-boolean	             isEmpty() 
-Set<K>	             keySet()    返回一个HashMap键的Set
-V	                 put(K key, V value)
-void	             putAll(Map<? extends K,? extends V> m)
-V	                 remove(Object key) 根据键移除
-int	                 size()
-Collection<V>	     values() 返回一个HashMap的值的Collection
+===================================    HashMap   ===================================
+
+void                 clear()                              清空, 没有返回值
+Object               clone()                              克隆(复制?)
+boolean              containsKey(Object key)              包含某个键
+boolean              containsValue(Object value)          包含某个值
+Set<Map.Entry<K,V>>  entrySet()                           返回一个包含HashMap的键值对的set
+V                    get(Object key)                      根据键获取值, 没有返回值
+boolean              isEmpty()                            是否为空, 返回值 bool 类型
+Set<K>               keySet()                             返回一个HashMap键的Set
+V                    put(K key, V value)                  添加 , 没有返回值
+void                 putAll(Map<? extends K,? extends V> m)
+V                    remove(Object key)                   根据键移除, 没有返回值
+int                  size()                               大小, 返回值是 int 类型
+Collection<V>        values()                             返回一个HashMap的值的Collection
 
 
 
@@ -3244,26 +3256,170 @@ Collection<V>	     values() 返回一个HashMap的值的Collection
 
 
 
-HashTable类
-synchronized void                clear()
-synchronized Object              clone()
-             boolean             contains(Object value)
-synchronized boolean             containsKey(Object key)
-synchronized boolean             containsValue(Object value)
-synchronized Enumeration<V>      elements()
-synchronized Set<Entry<K, V>>    entrySet()
-synchronized boolean             equals(Object object)
-synchronized V                   get(Object key)
-synchronized int                 hashCode()
-synchronized boolean             isEmpty()
-synchronized Set<K>              keySet()
-synchronized Enumeration<K>      keys()
-synchronized V                   put(K key, V value)
-synchronized void                putAll(Map<? extends K, ? extends V> map)
-synchronized V                   remove(Object key)
-synchronized int                 size()
-synchronized String              toString()
-synchronized Collection<V>       values()
+
+
+
+
+
+
+===================================    HashTable   ===================================
+ps:
+    HashTable已经被淘汰了，不要在代码中再使用它
+
+
+
+
+
+
+
+
+
+
+
+
+
+===================================    TreeMap   ===================================
+
+资料:   https://www.jianshu.com/p/2dcff3634326
+
+在Map集合框架中，除了HashMap以外, TreeMap 也是我们工作中常用到的集合对象之一,
+优点:
+    支持排序
+        与HashMap相比，TreeMap是一个能比较元素大小的Map集合，会对传入的key进行了大小排序
+
+
+TreeMap基本操作( 增 遍历 key value 获取元素 删除元素 判断元素 ):
+import java.util.*;
+public class TreeMap_Test {
+    public static void main(String[] agrs){
+        //创建TreeMap对象：
+        TreeMap<String,Integer> treeMap = new TreeMap<String,Integer>();
+        System.out.println("初始化后,TreeMap元素个数为：" + treeMap.size());
+
+        //新增元素:
+        treeMap.put("hello",1);
+        treeMap.put("world",2);
+        treeMap.put("my",3);
+        treeMap.put("name",4);
+        treeMap.put("is",5);
+        treeMap.put("jiaboyan",6);
+        treeMap.put("i",6);
+        treeMap.put("am",6);
+        treeMap.put("a",6);
+        treeMap.put("developer",6);
+        System.out.println("添加元素后,TreeMap元素个数为：" + treeMap.size());
+
+        //遍历元素：
+        Set<Map.Entry<String,Integer>> entrySet = treeMap.entrySet();
+        for(Map.Entry<String,Integer> entry : entrySet){
+            String key = entry.getKey();
+            Integer value = entry.getValue();
+            System.out.println("TreeMap元素的key:"+key+",value:"+value);
+        }
+
+        //获取所有的key：
+        Set<String> keySet = treeMap.keySet();
+        for(String strKey:keySet){
+            System.out.println("TreeMap集合中的key:"+strKey);
+        }
+
+        //获取所有的value:
+        Collection<Integer> valueList = treeMap.values();
+        for(Integer intValue:valueList){
+            System.out.println("TreeMap集合中的value:" + intValue);
+        }
+
+        //获取元素：
+        Integer getValue = treeMap.get("jiaboyan");//获取集合内元素key为"jiaboyan"的值
+        String firstKey = treeMap.firstKey();//获取集合内第一个元素
+        String lastKey =treeMap.lastKey();//获取集合内最后一个元素
+        String lowerKey =treeMap.lowerKey("jiaboyan");//获取集合内的key小于"jiaboyan"的key
+        String ceilingKey =treeMap.ceilingKey("jiaboyan");//获取集合内的key大于等于"jiaboyan"的key
+        SortedMap<String,Integer> sortedMap =treeMap.subMap("a","my");//获取集合的key从"a"到"jiaboyan"的元素
+
+        //删除元素：
+        Integer removeValue = treeMap.remove("jiaboyan");//删除集合中key为"jiaboyan"的元素
+        treeMap.clear(); //清空集合元素：
+
+        //判断方法：
+        boolean isEmpty = treeMap.isEmpty();//判断集合是否为空
+        boolean isContain = treeMap.containsKey("jiaboyan");//判断集合的key中是否包含"jiaboyan"
+    }
+}
+
+
+
+
+TreeMap 排序:
+import java.util.*;
+class SortedTest implements Comparable<SortedTest> {
+    private int age;
+    public SortedTest(int age){
+        this.age = age;
+    }
+    public int getAge() {
+        return age;
+    }
+    public void setAge(int age) {
+        this.age = age;
+    }
+    //自定义对象，实现compareTo(T o)方法：
+    public int compareTo(SortedTest sortedTest) {
+        int num = this.age - sortedTest.getAge();
+        //为0时候，两者相同：
+        if(num==0){
+            return 0;
+            //大于0时，传入的参数小：
+        }else if(num>0){
+            return 1;
+            //小于0时，传入的参数大：
+        }else{
+            return -1;
+        }
+    }
+}
+
+ class TreeMapTest {
+
+    public static void main(String[] agrs){
+        //自然顺序比较
+        naturalSort();
+    }
+
+
+    //自然排序顺序：
+    public static void naturalSort(){
+        //第一种情况：Integer对象
+        TreeMap<Integer,String> treeMapFirst = new TreeMap<Integer, String>();
+        treeMapFirst.put(1,"jiaboyan");
+        treeMapFirst.put(6,"jiaboyan");
+        treeMapFirst.put(3,"jiaboyan");
+        treeMapFirst.put(10,"jiaboyan");
+        treeMapFirst.put(7,"jiaboyan");
+        treeMapFirst.put(13,"jiaboyan");
+        System.out.println(treeMapFirst.toString());
+
+        //第二种情况:SortedTest对象
+        TreeMap<SortedTest,String> treeMapSecond = new TreeMap<SortedTest, String>();
+        treeMapSecond.put(new SortedTest(10),"jiaboyan");
+        treeMapSecond.put(new SortedTest(1),"jiaboyan");
+        treeMapSecond.put(new SortedTest(13),"jiaboyan");
+        treeMapSecond.put(new SortedTest(4),"jiaboyan");
+        treeMapSecond.put(new SortedTest(0),"jiaboyan");
+        treeMapSecond.put(new SortedTest(9),"jiaboyan");
+        System.out.println(treeMapSecond.toString());
+    }
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3276,7 +3432,6 @@ map的四种遍历方式:
         //方法一: 用entrySet()  
         //返回的 set 中的每个元素都是一个 Map.Entry 类型。
         // 推荐，尤其是容量大时
-        System.out.println("\n=====用entrySet()=======");
         Iterator it1 = map.entrySet().iterator();
         while(it1.hasNext()){
             Map.Entry m=(Map.Entry)it1.next();
@@ -3286,14 +3441,12 @@ map的四种遍历方式:
 
 
         // 方法二：jdk1.5支持，用entrySet()和For-Each循环()
-        System.out.println("\n=用entrySet()和For-Each===");
         for (Map.Entry<String, Integer> m : map.entrySet()) {
             System.out.println("[name = " + m.getKey() + "] age = " + m.getValue());
         }
 
 
         // 方法三：用keySet() 普遍使用，二次取值
-        System.out.println("\n=====用keySet()=======");
         Iterator it2 = map.keySet().iterator();
         while (it2.hasNext()){
             String key = (String) it2.next();
@@ -3303,7 +3456,6 @@ map的四种遍历方式:
 
 
         // 方法四：jdk1.5支持，用keySEt()和For-Each循环
-        System.out.println("\n=====用keySet()和For-Each=====");
         for(Object key: map.keySet()){
             System.out.println("[name = " + key 
                 + "] age = " + map.get(key) );

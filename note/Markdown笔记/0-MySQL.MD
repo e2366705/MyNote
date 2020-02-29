@@ -539,20 +539,23 @@ UPDATE `table_name` SET `date` = '------------' ORDER BY RAND() LIMIT 123;
 
 
 
-group by : 排除重复的,筛选出不同的
-	SELECT PASSWORD FROM user3 GROUP BY `PASSWORD`;
-
-排除重复的:
-	select distinct username from user;	
-
-查找重复的数据:
-	select * from `people`
-		where 
-	`Id` in (select `Id` from `people` group by `Id` having count(`Id`) > 1)
+GROUP BY:
+	GROUP BY             去掉重复
+	ORDER BY RAND        随机
+	排除重复的,筛选出不同的
+		SELECT `username` FROM `user_yxb`  GROUP BY `username`;
 
 
-GROUP BY  		去掉重复
-ORDER BY RAND	随机
+	排除重复的:
+		select distinct username from user;	
+
+	查找重复的数据:
+		select * from `people`
+			where 
+		`Id` in (select `Id` from `people` group by `Id` having count(`Id`) > 1)
+
+
+
 
 
 升序 / 降序 查询:

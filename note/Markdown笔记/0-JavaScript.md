@@ -1736,8 +1736,41 @@ localStorage.key(5).includes("apple") === true
         var audio = new Audio(url);
         audio.load();
         audio.play(); 
+
+        示例:
+            播放英语音频 (有道单词发音接口):
+                var url = "http://dict.youdao.com/dictvoice?audio=hello";
+                var audio = new Audio(url);
+                audio.load();
+                audio.play(); 
+
+
 ```
 </details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1829,6 +1862,32 @@ interval = setInterval(runThis, 5000);
 <summary><b>键盘事件 / 鼠标事件</b></summary>
 
 ```  
+
+
+
+console出键盘的对应的键盘代号:
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+  document.onkeydown = function (e) {
+    var keycode = e.which;   //取得对应的键值（数字）
+    var realkey = String.fromCharCode(e.which); //取得代表改键的真正字符
+    console.log("按键码: " + keycode + " 字符: " + realkey);
+  }
+</script>
+</html>
+
+
+
+
+
+
 资料来源:     https://www.cnblogs.com/youyoui/p/10381457.html
 按下 => 显示
 松开 => 隐藏

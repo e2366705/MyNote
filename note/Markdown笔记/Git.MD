@@ -1,5 +1,6 @@
 ﻿# Git 的具体操作:
 ```
+
 查看路径：pwd
 
 查看有哪些文件：ls  ( ll 同理 )
@@ -13,12 +14,14 @@
 修改用户名和邮箱地址：
 $ git config --global user.name "username"
 $ git config --global user.email "email"
+
 ```
 
 
 ## idea 把项目上传到GitHub:
 ### 教程转载自:  https://blog.csdn.net/u011853294/article/details/53228720
 ```  
+
 找到菜单栏的 : VCS -> import into version control -> creat Git repository
 
 这时项目目录中的文件名会变成红色，表示文件为提交到本地git
@@ -27,12 +30,42 @@ $ git config --global user.email "email"
 
 右击工程文件 ->git->commit,提交到本地git。至此，本地git已commit完毕
 
+
 ```
+
+
+
+
+
+
+
+
+
+
+# 下载 GitHub 单个文件夹 / 单个文件
+```  
+
+有时候下载 github 上面的项目, 不需要下载全部, 我需要下载单独的某个文件夹, 但是 GitHub 并没有直接提供这个功能 
+所以,
+需要插件帮我实现这个功能:
+Google chrome 浏览器插件 :  GitZip for github
+双击你要下载的文件夹, 左边会出现一个小勾勾,
+右下角会出现一个下载按钮
+点击就可以直接下载单个文件夹了   
+
+
+```
+
+
+
+
+
 
 
 
 # 教程1 (共计2):
 ```
+
 新建Github,推送流程 ( 更新仓库教程在下面 ):
 
 文件夹右键, 点击 git bash here
@@ -61,6 +94,7 @@ PS:
 # 教程2 (共计2):
 ## 更新仓库文件 怎么操作???
 ```
+
 git rm -r --cached .
 git add -f *
 git commit -m "git commit -m..Emmmm...YOU know that..."
@@ -69,12 +103,14 @@ git push -u origin master
 PS:
    查看 哪些文件改变了:
    git status
+
 ```
 
 
 
 # 删除操作：
 ```
+
 在github上只能删除仓库,却无法删除文件夹或文件, 所以只能通过命令来解决:
 首先进入你的master文件夹下, Git Bash Here ,打开命令窗口
 git remote add origin https://github.com/e2366705/xxxxx.git
@@ -87,6 +123,7 @@ git push -u origin master 	  # 修改完了,记得提交!!!不然不生效
 	rm xxxxx.txt
 	git add xxxxx.txt
 	./update.sh
+
 ```
 
 
@@ -107,12 +144,15 @@ git clone -b nnnname__ https://github.com/e2366705/ShiYanLou.git
 
 ![Image text](https://raw.githubusercontent.com/e2366705/aaa/master/image/readme.png)
 ![Image text]()
+
+
 ```
 
 
 
 # 其他：
 ```
+
 1.查看本地分支 git branch
 2.查看远程分支 git branch -r
 
@@ -155,5 +195,6 @@ https://blog.csdn.net/maguanghui_2012/article/details/79457281
 
 强制push:
 git push -u origin master -f
+
 
 ```

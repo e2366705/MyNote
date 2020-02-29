@@ -823,8 +823,11 @@ n?	    匹配任何包含零个或一个 n 的字符串
     /^\w+$/.test("$32343");
     >>> false
 
-判断字符串是否全部为字母
-    /^[a-zA-Z]+$/.test("123123123");
+判断字符串是否全部为字母 (不允许有空格):
+    /^[a-zA-Z]+$/.test("QAQ");                 返回 true
+判断字符串是否全部为字母 (允许有空格): 
+    /^[a-zA-Z\s]+$/.test("asd           ");    返回 true
+    
 
 判断字符串是否全部为数字
      /^\d+$/.test("123123");
@@ -1528,11 +1531,28 @@ window.open("http://www.JD.com");                           // 新窗口打开
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 <details>
-<summary><b>弹窗 (确认框)</b></summary>
+<summary><b>弹窗 (确认框) / 输入框(自带的) </b></summary>
 
 ```  
 
+获取输入:
+    var input = prompt("请输入：");
+    var result1 = !isNaN(input);
+
+确认框:
     function myFunction() {
         var txt;
         if (confirm("你确定这样子做吗? 这样子对你的计算机有很大的风险, 你是否继续???")) {
@@ -1547,6 +1567,17 @@ window.open("http://www.JD.com");                           // 新窗口打开
 
 ```
 </details>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2102,6 +2133,60 @@ window.onload = function(){
 </script>
 </html>
 
+
+
+
+
+
+
+
+
+
+                                            单机选中文本, 自动弹出 ( 强烈推荐!! , 非常智能 ) 
+<body>
+  <p>随便复制一段文字, 然后点击鼠标右键 , 打开控制台查看console.log();</p>
+  <h1>miss miss </h1>
+</body>
+
+<script>
+  select(document, tanchu);
+  /*=select[[ 
+  * 跨浏览器选中文字事件 
+  * object o 响应选中事件的DOM对象，required 
+  * function fn(sText,target,mouseP)选中文字非空时的回调函数，required 
+  * |-@param 
+  * |-sText 选中的文字内容 
+  * |-target 触发mouseup事件的元素 
+  * |-mouseP 触发mouseup事件时鼠标坐标 
+  */
+  function select(o, fn) {
+    o.onmouseup = function (e) {
+      var event = window.event || e;
+      var target = event.srcElement ? event.srcElement : event.target;
+      if (/input|textarea/i.test(target.tagName) && /firefox/i.test(navigator.userAgent)) {
+        //Firefox在文本框内选择文字 
+        var staIndex = target.selectionStart;
+        var endIndex = target.selectionEnd;
+        if (staIndex != endIndex) {
+          var sText = target.value.substring(staIndex, endIndex);
+          fn(sText, target);
+        }
+      }
+      else {
+        //获取选中文字 
+        var sText = document.selection == undefined ? document.getSelection().toString() : document.selection.createRange().text;
+        if (sText != "") {
+          //将参数传入回调函数fn 
+          fn(sText, target);
+        }
+      }
+    }
+  }
+  /*]]select=*/
+  function tanchu(txt, tar) {
+    alert("文字属于" + tar.tagName + "元素，选中内容为：" + txt);
+  }
+</script>
 
 
 

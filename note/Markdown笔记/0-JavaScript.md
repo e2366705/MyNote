@@ -1979,47 +1979,6 @@ document.onkeyup = function (event) {
 
 
 
-
-
-获取网页上选择的文字, 并点击按钮输出:
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <p>随便复制一段文字, 然后点击按钮 , 打开控制台查看console.log();</p>
-    <button id="btn">click me</button>
-</body>
-<script>
-    function selceText() {
-        var txt;
-        if (document.selection) {
-            txt = document.selection.createRange().text
-        } else {
-            txt = window.getSelection() + '';
-        }
-        if (txt) {
-            console.log(txt);  
-        } else {
-            console.log("nothing.....");  
-        }
-    }
-
-    document.getElementById("btn").onclick = function () {
-        selceText();
-    }
-</script>
-</html>
-
-
-
-
-
-
-
-
 ```
 </details>
 
@@ -2057,7 +2016,7 @@ document.onkeyup = function (event) {
 ```  
 
 
-
+屏蔽系统自带的右键菜单:
   window.onload = function () {
     //右键菜单
     document.oncontextmenu = function (event) {
@@ -2067,6 +2026,7 @@ document.onkeyup = function (event) {
       return false;             // 屏蔽系统自带的右键菜单
     }
   }
+
 
 
 
@@ -2098,8 +2058,49 @@ window.onload = function(){
 
 
 
-```
-</details>
+
+===========================================   鼠标 Demo   ===========================================
+                           获取网页上选择的文字, 然后点击鼠标右键输出选择的文字:
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+
+<body>
+  <p>随便复制一段文字, 然后点击鼠标右键 , 打开控制台查看console.log();</p>
+</body>
+<script>
+  function Select_Text() {
+    var Select_txt;
+    if (document.selection) {
+      Select_txt = document.selection.createRange().text
+    } else {
+      Select_txt = window.getSelection() + '';
+    }
+    if (Select_txt) {
+      return Select_txt;
+    } else {
+      return "没有选择任何文字... =_= ";
+    }
+  }
+
+
+  window.onload = function () {
+    //右键菜单
+    document.oncontextmenu = function (event) {
+      var event = event || window.event;
+      // console.log("鼠标系统自带右键菜单已经屏蔽...");
+      // alert("鼠标系统自带右键菜单已经屏蔽...");
+      var Select_txt = Select_Text();
+      alert(Select_txt);
+      return false;             // 屏蔽系统自带的右键菜单
+    }
+  }
+</script>
+</html>
 
 
 
@@ -2109,28 +2110,7 @@ window.onload = function(){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<details>
-<summary><b> JavaScript键盘鼠标之: 右键自定义菜单 Demo </b></summary>
-
-```  
-
+                                            右键自定义菜单 Demo : 
 
 <!DOCTYPE html>
 <html>
@@ -2246,8 +2226,35 @@ window.onload = function(){
 
 
 
+
+
 ```
 </details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

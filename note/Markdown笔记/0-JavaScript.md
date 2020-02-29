@@ -1859,7 +1859,7 @@ interval = setInterval(runThis, 5000);
 
 
 <details>
-<summary><b>键盘事件 / 鼠标事件</b></summary>
+<summary><b> JavaScript键盘鼠标之: 键盘 </b></summary>
 
 ```  
 
@@ -1989,7 +1989,7 @@ document.onkeyup = function (event) {
     <title>Title</title>
 </head>
 <body>
-    <p>哈哈哈呵呵呵呵嘿嘿</p>
+    <p>随便复制一段文字, 然后点击按钮 , 打开控制台查看console.log();</p>
     <button id="btn">click me</button>
 </body>
 <script>
@@ -2017,9 +2017,62 @@ document.onkeyup = function (event) {
 
 
 
+
+
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b>JavaScript键盘鼠标之: 鼠标 </b></summary>
+
+```  
+
+
+
+  window.onload = function () {
+    //右键菜单
+    document.oncontextmenu = function (event) {
+      var event = event || window.event;
+      console.log("鼠标系统自带右键菜单已经屏蔽...");
+      alert("鼠标系统自带右键菜单已经屏蔽...");
+      return false;             // 屏蔽系统自带的右键菜单
+    }
+  }
+
+
+
 鼠标事件 (左键 / 右键 / 中键 ):
 <div class="right">
-    在此区域点击右键
+    在这段文字区域鼠标右键/左键点击
 </div>
 
 <script>
@@ -2041,6 +2094,155 @@ window.onload = function(){
    }
 }
 </script>
+
+
+
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> JavaScript键盘鼠标之: 右键自定义菜单 Demo </b></summary>
+
+```  
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="https://s1.pstatp.com/cdn/expire-1-M/jquery/2.1.4/jquery.min.js" type="application/javascript"></script>
+  <script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+  <script src="https://s0.pstatp.com/cdn/expire-1-M/vue/2.6.10/vue.min.js" type="application/javascript"></script>
+  <link href="https://s2.pstatp.com/cdn/expire-1-M/twitter-bootstrap/3.4.0/css/bootstrap.min.css" type="text/css"
+    rel="stylesheet" />
+  <script src="https://s1.pstatp.com/cdn/expire-1-M/twitter-bootstrap/3.4.0/js/bootstrap.min.js"
+    type="application/javascript"></script>
+</head>
+<style type="text/css">
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  .menu {
+    width: 100px;
+    border: 1px solid #ccc;
+    position: absolute;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .2);
+    padding: 10px 0;
+    transition: all .1s ease;
+  }
+
+  .menu li {
+    list-style: none;
+    width: 100%;
+  }
+
+  .menu li a {
+    display: inline-block;
+    text-decoration: none;
+    color: #555;
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+  }
+
+  .menu li:first-of-type {
+    border-radius: 5px 5px 0 0;
+  }
+
+  .menu li a:hover,
+  .menu li a:active {
+    background: #eee;
+    color: #0AAF88;
+  }
+</style>
+
+<body>
+  <ul class="menu" id="menu">
+    <li><a href="###">复制</a></li>
+    <li><a href="###">粘贴</a></li>
+    <li><a href="###">剪切</a></li>
+    <li><a href="###">刷新</a></li>
+  </ul>
+</body>
+<script>
+  window.onload = function () {
+
+    //获取可视区宽度
+    var winWidth = function () {
+      return document.documentElement.clientWidth || document.body.clientWidth;
+    }
+    //获取可视区高度
+    var winHeight = function () {
+      return document.documentElement.clientHeight || document.body.clientHeight;
+    }
+
+    var menu = document.getElementById('menu');
+    menu.style.display = 'none';
+
+    document.addEventListener('click', function () {
+      menu.style.display = 'none';
+    })
+
+    menu.addEventListener('click', function (event) {
+      var event = event || window.event;
+      event.cancelBubble = true;
+    })
+    
+    //右键菜单
+    document.oncontextmenu = function (event) {
+      var event = event || window.event;
+      menu.style.display = 'block';
+      var l, t;
+      l = event.clientX;
+      t = event.clientY;
+      if (l >= (winWidth() - menu.offsetWidth)) {
+        l = winWidth() - menu.offsetWidth;
+      } else {
+        l = l
+      }
+      if (t > winHeight() - menu.offsetHeight) {
+        t = winHeight() - menu.offsetHeight;
+      } else {
+        t = t;
+      }
+      menu.style.left = l + 'px';
+      menu.style.top = t + 'px';
+
+      console.log("鼠标系统自带右键菜单已经屏蔽...");
+      return false;              // 屏蔽系统自带的右键菜单
+    }
+  }
+</script>
+</html>
 
 
 

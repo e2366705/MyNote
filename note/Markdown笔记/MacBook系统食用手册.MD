@@ -2,11 +2,37 @@
 
 
 
+
+
+
+
+
+
+
 ### MacBook 怎么进行剪切操作?
 ```  
 	第一步：command+C 复制
 	第二部：option+command+ V 即可实现剪贴
 ```
+
+
+
+
+
+
+
+
+
+
+###  刷新网页 快捷键
+```  
+command + R 
+
+```
+
+
+
+
 
 
 
@@ -18,6 +44,10 @@
 option + command + esc     强制退出
 
 ```
+
+
+
+
 
 
 
@@ -38,6 +68,10 @@ Command + Delete   删除光标之前一整行文字
 
 
 
+
+
+
+
 ### 删除程序
 ```  
 
@@ -45,6 +79,10 @@ Command + Delete   删除光标之前一整行文字
 
 
 ```
+
+
+
+
 
 
 
@@ -75,6 +113,7 @@ Command + Delete   删除光标之前一整行文字
 
 
 
+
 ### mac程序坞有延时?
 ```  
 一行代码可以干掉！！！
@@ -84,6 +123,8 @@ Command + Delete   删除光标之前一整行文字
 网页链接： https://www.jianshu.com/p/565adbe0aff1
 
 ```
+
+
 
 
 

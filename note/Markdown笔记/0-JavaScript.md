@@ -1689,6 +1689,25 @@ Springboot 中 thymeleaf 使用:
 	name=YXB&password=12345
 
 
+
+
+
+
+
+thymeleaf 中 跳转链接
+    <a th:href="@{'/menu/getMenu?pageNum='+ ${pageInfo.firstPage}}" >首页</a>
+
+
+
+方式二:
+    这种方式也行:
+    <a th:href="'?page=1'">首页</a>   =>   http://localhost:8081/Article/Read_Article?page=1
+  
+    <td th:if="${pageInfo.hasPreviousPage}">
+        <a th:href="'?page='+${pageInfo.prePage}">上一页</a>
+    </td>    
+
+
 ```
 </details>
 

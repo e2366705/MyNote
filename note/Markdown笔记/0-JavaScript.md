@@ -1588,13 +1588,21 @@ window.open("http://www.JD.com");                           // 新窗口打开
 
 
 
-<details>
-<summary><b>刷新这个页面</b></summary>
 
-```  
-location.reload(); 
-```
-</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1640,8 +1648,69 @@ console.log(test2);
 
 
 
+
+
+
+
+
+
+
+Springboot 中 thymeleaf 使用:
+
+假设 url：http://localhost:8080/CarsiLogCenter_new/idpstat.jsp?action=idp.sptopn
+	request.getRequestURL()              http://localhost:8080/CarsiLogCenter_new/idpstat.jsp
+	request.getRequestURI()              /CarsiLogCenter_new/idpstat.jsp
+	request.getContextPath()             /CarsiLogCenter_new
+	request.getServletPath()             /idpstat.jsp
+	request.getQueryString()             action=idp.sptopn
+
+
+
+
+假设 url：
+	http://localhost:8081/Article/Read_Article?name=YXB&password=12345
+
+	<h1 th:text="${#httpServletRequest.getScheme()}"></h1>
+	http
+
+	<h1 th:text="${#httpServletRequest.getServerName()}"></h1>
+	localhost
+
+	<h1 th:text="${#httpServletRequest.getServerPort()}"></h1>
+	8081
+
+	<h1 th:text="${#request.getSession().getServletContext().getRealPath('/')}"></h1>
+	C:\Users\SpringBoot\AppData\Local\Temp\tomcat-docbase.4234408327941048660.8081\
+
+	<h1 th:text="${#request.getRequestURI()}"></h1>
+	/Article/Read_Article
+
+	<h1 th:text="${#request.getQueryString()}"></h1>
+	name=YXB&password=12345
+
+
 ```
 </details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1681,8 +1750,20 @@ var test = setInterval(function(){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 <details>
-<summary><b>返回上一页:</b></summary>
+<summary><b>返回上一页 / 刷新当前页面 </b></summary>
 
 ```  
 document.getElementById("span1").onclick = function (ev) {
@@ -1691,8 +1772,22 @@ document.getElementById("span1").onclick = function (ev) {
 
 或者:
     history.go(-1);
+
+
+刷新当前页面
+location.reload(); 
+
+
 ```
 </details>
+
+
+
+
+
+
+
+
 
 
 
@@ -1726,6 +1821,16 @@ localStorage.key(5).includes("apple") === true
     
 ```
 </details>
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2132,6 +2237,8 @@ window.onload = function(){
   }
 </script>
 </html>
+
+
 
 
 

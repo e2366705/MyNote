@@ -40,6 +40,28 @@ command + R
 
 
 
+### Mac 好用软件
+```  
+
+hidden bar :
+    可以管理 Mac 状态栏, 
+    mac 的状态栏有时候软件太多太乱
+    需要整理一下
+    Google 搜 : hidden bar就可以了
+    这款软件是开源的:   https://github.com/dwarvesf/hidden
+
+MySQL 客户端管理工具:
+    Sequel Pro，仅支持 Mac，功能强大，开源免费，强烈推荐    
+
+
+```
+
+
+
+
+
+
+
 ### 怎么强制退出某些软件?
 ```  
 

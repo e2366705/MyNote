@@ -38,6 +38,8 @@ command + R
 
 
 
+
+
 ### 怎么强制退出某些软件?
 ```  
 
@@ -174,7 +176,44 @@ https://blog.csdn.net/usydapeng/article/details/16943553
 
 
 
-### iMovie 
+# iMovie 
+### iMovie 中编辑 mkv 格式的视频
+```  
+
+在电影编辑中，
+有些电影有多条音轨：
+中文的，英文的
+
+这样编辑电影的效果很差
+
+所以就需要用软件去掉其他音轨
+mkvtoolnix 就可以去掉其他的音轨
+
+但是
+mkvtoolnix 只能转出 mkv 格式的视频
+要知道，苹果的 iMovie 只支持 MP4 格式的视频编辑
+
+所以 ， 又要 把 mkv 格式转换成 MP4 格式的视频
+用 HandBrake 把 mkv 进行格式转换 
+https://www.bilibili.com/video/av53739050?from=search&seid=8672297403252644910
+
+唉~ 真是麻烦~~~
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+### 基础
 ```  
 
 iMovie 的快捷键:

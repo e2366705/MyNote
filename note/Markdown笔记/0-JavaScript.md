@@ -278,23 +278,53 @@ document.getElementsByTagName("INPUT")[0].setAttribute("type","button");
 
 
 <details>
-<summary><b>设置自定义属性:</b></summary>
+<summary><b> 属性 </b></summary>
 
 ```  
-   // 创建 a 标签 class='add_screenshots'
-   var add_screenshots_a = document.createElement('a');  => 创建一个a标签
-   add_screenshots_a.className = 'add_screenshots';  => 设置classname名字
-   add_screenshots_a.innerHTML = '添加截图';
-   add_screenshots_a.setAttribute("onclick", "dddd(this)");  => 动态绑定点击事件dddd(this)
-	 
-	function dddd(thisss){
-        console.log(thisss.innerHTML);  => 这个元素的 innerHTML
-		console.log(thisss.previousSibling); => 这个节点元素的 上一个同类节点(object类型)
-		console.log(thisss.previousSibling.innerHTML); =>上一个同类节点的 innerHTML
-		console.log(thisss.getAttribute('class')); => 获取名为'class' 的属性值 (string类型)
+
+第一种方式:
+    <h1 onclick="changetext(this)">点击文本!------111</h1>
+    function changetext(ev) {
+        ev.innerHTML = "Ooops!";
+    }
+
+第二种方式:
+    <h1 id="test001">点击文本!------222</h1>
+    document.getElementById("test001").onclick = function(e){
+        e.target.innerHTML = "222222222";
+    }
+
+
+
+
+
+
+
+
+
+// 创建 a 标签 class='add_screenshots'
+var add_screenshots_a = document.createElement('a');            创建一个a标签
+
+    add_screenshots_a.className = 'add_screenshots';            设置 class 属性
+    add_screenshots_a.innerHTML = '添加截图';               
+    add_screenshots_a.setAttribute("onclick", "dddd(this)");    动态绑定点击事件dddd(this)
+ 
+function dddd(thisss){
+    console.log(thisss.innerHTML);  => 这个元素的 innerHTML
+    console.log(thisss.previousSibling); => 这个节点元素的 上一个同类节点(object类型)
+    console.log(thisss.previousSibling.innerHTML); =>上一个同类节点的 innerHTML
+    console.log(thisss.getAttribute('class')); => 获取名为'class' 的属性值 (string类型)
 }
+
+
 ```
 </details>
+
+
+
+
+
+
 
 
 
@@ -488,51 +518,6 @@ addEventListener 支持多次绑定,全部触发点击事件
 ```
 </details>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<details>
-<summary><b>获取 点击的节点 的属性 ( this target e)</b></summary>
-
-```  
-
-第一种方式:
-    <h1 onclick="changetext(this)">点击文本!------111</h1>
-    function changetext(ev) {
-        ev.innerHTML = "Ooops!";
-    }
-
-第二种方式:
-    <h1 id="test001">点击文本!------222</h1>
-    document.getElementById("test001").onclick = function(e){
-        e.target.innerHTML = "222222222";
-    }
-
-
-    
-```
-</details>
 
 
 

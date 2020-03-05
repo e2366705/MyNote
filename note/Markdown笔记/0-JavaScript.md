@@ -165,32 +165,6 @@ document.getElementsByClassName('div2')[0].style.background = 'pink';
 
 
 
-<details>
-<summary><b>动态改变DOM节点属性 (使用模板会更加好):</b></summary>
-
-```  
-<a href="#" target="_self" id="test">测试</a>
-document.getElementById("test").attributes["target"].nodeValue="_blank";
-
-JavaScript DOM setAttribute() 方法:
-document.getElementsByTagName("INPUT")[0].setAttribute("type","button");
-
-```
-</details>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -294,6 +268,19 @@ document.getElementsByTagName("INPUT")[0].setAttribute("type","button");
         e.target.innerHTML = "222222222";
     }
 
+
+
+
+
+
+
+动态改变DOM节点属性 (使用模板会更加好)
+
+<a href="#" target="_self" id="test">测试</a>
+document.getElementById("test").attributes["target"].nodeValue="_blank";
+
+JavaScript DOM setAttribute() 方法:
+document.getElementsByTagName("INPUT")[0].setAttribute("type","button");
 
 
 

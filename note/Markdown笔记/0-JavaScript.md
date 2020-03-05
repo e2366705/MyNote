@@ -85,7 +85,7 @@ Ajax 适用于加载一些临时性的数据 (优点是不刷新整个网页)
 
 
 
----
+
 # DOM 操作 
 <details>
 <summary><b>下拉框 select 发生改变时 的值 </b></summary>
@@ -109,6 +109,21 @@ Ajax 适用于加载一些临时性的数据 (优点是不刷新整个网页)
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <details>
 <summary><b> 操作 CSS </b></summary>
 
@@ -119,13 +134,33 @@ document.getElementsByClassName('div2')[0].style.background = 'pink';
 
 
 推荐使用 jQuery , 可以直接操作全部的 class
-原生 JavaScript 只能操作单个 class 元素:
     document.getElementsByClassName("test")[0].style.color = "red";
+
+原生 JavaScript 只能操作单个 class 元素:
     $(".test").css("color","red");
     
 
 ```
 </details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -147,13 +182,48 @@ document.getElementsByTagName("INPUT")[0].setAttribute("type","button");
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <details>
 <summary><b>获取body节点</b></summary>
 
 ```  
-document.body.style.background
+    document.body.style.background
+
 ```
 </details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -184,16 +254,23 @@ document.body.style.background
 
 
 
-<details>
-<summary><b>遍历节点元素,并且绑定点击事件</b></summary>
 
-```  
-var list=document.getElementsByClassName('li_new');
-for(var i in list){
-	list[i].onmouseover=grayBack;
-	list[i].onmouseout=noGrayBack;
-```
-</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -210,14 +287,29 @@ for(var i in list){
    add_screenshots_a.innerHTML = '添加截图';
    add_screenshots_a.setAttribute("onclick", "dddd(this)");  => 动态绑定点击事件dddd(this)
 	 
-	 function dddd(thisss){
-    console.log(thisss.innerHTML);  => 这个元素的 innerHTML
+	function dddd(thisss){
+        console.log(thisss.innerHTML);  => 这个元素的 innerHTML
 		console.log(thisss.previousSibling); => 这个节点元素的 上一个同类节点(object类型)
 		console.log(thisss.previousSibling.innerHTML); =>上一个同类节点的 innerHTML
 		console.log(thisss.getAttribute('class')); => 获取名为'class' 的属性值 (string类型)
 }
 ```
 </details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -244,6 +336,22 @@ var top = self.getBoundingClientRect().top + document.documentElement.scrollTop 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <details>
 <summary><b>定位到某个位置:</b></summary>
 
@@ -260,25 +368,102 @@ document.getElementById("hhh").onclick = function () {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <details>
-<summary><b>click / onclick</b></summary>
+<summary><b> 点击事件 </b></summary>
 
 ```  
-document.getElementsByClassName('btn-default')[0].click();
-document.getElementsByClassName('btn-default')[0].onclick() = function(){ ...... };
-click()---->单纯的点击,比如某个按钮
-onclick---->绑定点击事件
-```
-</details>
+
+
+------------------------------   click onclick 的区别   ------------------------------
+
+    document.getElementsByClassName('btn-default')[0].click();
+    document.getElementsByClassName('btn-default')[0].onclick() = function(){ ...... };
+    click()---->单纯的点击,比如某个按钮
+    onclick---->绑定点击事件
+
+
+
+给单个class添加(绑定) 事件
+     document.getElementsByClassName('btnn')[0].onclick = function() {
+        alert('btnnnnn');
+     }
+
+
+给每个class添加(绑定) 事件:
+    原生JavaScript比较复杂, 需要遍历节点元素,并且绑定点击事件
+    var list = document.getElementsByClassName('li_new');
+      for (var i in list) {
+        list[i].onmouseover = aaa;
+        list[i].onmouseout = bbb;
+      }
+      
+    function bbb(){
+      console.log("---------------");
+    }
+
+    jQuery 方便很多:
+    $(".li_new").click(function(){
+    console.log("==================");
+    })
+
+
+
+中绑定click事件的几种种方式介绍
+* HTML中添加onclick (推荐 , 一目了然 )
+    <button id="vv" onclick="myfunction()" >哈哈</button>
+    function myfunction(){
+        console.log("hahahahahaha.....");
+    }
+
+
+* 直接定义函数与内容 
+    document.getElementById('vv').onclick = function () {
+      alert('hasssshhaa ')
+      }
+
+
+* 利用addEventListener    
+    document.getElementById('vv').addEventListener('click',funcc);
+    //或者：
+    document.getElementById('vv').addEventListener('click',function () {
+      alert('hahah')
+    })
 
 
 
 
 
-<details>
-<summary><b>onclick 和 addEventListener 的区别:</b></summary>
+------------------------------   onclick 和 addEventListener 的区别   ------------------------------
 
-```  
 onclick不支持多次赋值,绑定的是最后一次点击事件
 addEventListener 支持多次绑定,全部触发点击事件
     var  obj = document.getElementById('h1');
@@ -298,6 +483,8 @@ addEventListener 支持多次绑定,全部触发点击事件
     obj.addEventListener("click",function(){
         console.log("22222222222222");
     });
+
+
 ```
 </details>
 
@@ -307,24 +494,6 @@ addEventListener 支持多次绑定,全部触发点击事件
 
 
 
-<details>
-<summary><b>给每个class添加(绑定) 事件</b></summary>
-
-```  
-var  obj_list = document.getElementsByClassName('button');
-
-for (var i in obj_list){
-    //注册第一个点击事件
-    obj_list[i].addEventListener('click',function () {
-        console.log('1111111111111')
-    });
-    //注册第二个点击事件
-    obj_list[i].addEventListener("click",function(){
-        console.log("-----------------------");
-    });
-}
-```
-</details>
 
 
 
@@ -332,15 +501,12 @@ for (var i in obj_list){
 
 
 
-<details>
-<summary><b>给class绑定事件一定要加上[0]</b></summary>
 
-```  
- document.getElementsByClassName('btnn')[0].onclick = function() {
- 	alert('btnnnnn');
- }
-```
-</details>
+
+
+
+
+
 
 
 
@@ -373,33 +539,19 @@ for (var i in obj_list){
 
 
 
-<details>
-<summary><b>中绑定click事件的四种方式介绍:</b></summary>
 
-```  
-一：HTML中添加onclick	
-    <button id="vv" onclick="myfunction()" >哈哈</button>
 
-二：JS中定义函数绑定事件	
-    var funcc = function () {
-      alert('我爱编程')
-      }
-    var aa = document.getElementById('vv')
-    aa.onclick = funcc
 
-三：直接定义函数与内容	
-    document.getElementById('vv').onclick = function () {
-      alert('hasssshhaa ')
-      }
 
-四：利用addEventListener	
-    document.getElementById('vv').addEventListener('click',funcc);
-    //或者：
-    document.getElementById('vv').addEventListener('click',function () {
-      alert('hahah')
-      })
-```
-</details>
+
+
+
+
+
+
+
+
+
 
 
 
@@ -444,6 +596,21 @@ for (var i in obj_list){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <details>
 <summary><b>innerHTML / outerHTML / innerText / outerText </b></summary>
 
@@ -465,6 +632,21 @@ ps:
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <details>
 <summary><b>event对象中 target和currentTarget 属性的区别</b></summary>
 
@@ -478,6 +660,21 @@ ps:
 
 ```
 </details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -505,6 +702,21 @@ ps:
     })
 ```
 </details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

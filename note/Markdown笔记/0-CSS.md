@@ -648,6 +648,32 @@ css
 换行:
 	word-wrap:break-word;
 
+
+  https://www.html.cn/archives/2422
+  http://www.alloyteam.com/2016/05/css-word-for-word-breaker-do-you-really-understand/
+  使pre的内容自动换行, 被包围在 pre 元素中的文本通常会保留空格和换行符。而文本也会呈现为等宽字体。
+  <pre> 标签的一个常见应用就是用来表示计算机的源代码
+    pre {
+      white-space: pre-wrap;
+      word-break:keep-all;
+    }
+  就能使<pre>的内容自动换行了
+  而且, 单词也可以保持完整, 
+  不会把一个单词从中间强行打断 , 而达到暴力换行
+    pre {
+      background-color: black;
+      color: #ffa31a;
+      font-family: "Lucida Console", Monaco, monospace;
+      width: 100%;
+      margin: auto;
+      font-size: 45px;
+      line-height: 88px;
+      padding: 15px;
+      white-space: pre-wrap;
+      word-break:keep-all;
+    }
+
+
 ```
 </details>
 

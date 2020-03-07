@@ -718,6 +718,19 @@ MySQL REPLACE语句是标准SQL的MySQL扩展。 MySQL REPLACE语句的工作原
 
 	REPLACE INTO `tb_word`(`word` , `state`) VALUES ('come' , 'Very_familiar');
 
+如果数据库里面没有这条记录, 
+	那么执行这句 SQL 就是新增一条语句, 
+	那么受影响记录行数: 1 
+
+如果数据库里面有这条记录, 但是数据不对
+	那么执行这句 SQL 就是先删除这条记录, 
+	然后新增一条记录, 
+	那么受影响记录行数: 2
+
+如果数据库里面有这条记录, 而且数据都完全相同
+	那么受影响记录行数: 1
+	
+
 ```
 </details>
 

@@ -707,6 +707,36 @@ alter table `table1` add id int unsigned not Null auto_increment primary key
 
 
 
+<details>
+<summary><b> 6:增 或 更 </b></summary>
+
+```  
+
+MySQL REPLACE语句是标准SQL的MySQL扩展。 MySQL REPLACE语句的工作原理如下：
+	如果给定行数据不存在，那么MySQL REPLACE语句会插入一个新行
+	如果给定行数据存在，则REPLACE语句首先删除旧行，然后插入一个新行。 在某些情况下，REPLACE语句仅更新现有行
+
+	REPLACE INTO `tb_word`(`word` , `state`) VALUES ('come' , 'Very_familiar');
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

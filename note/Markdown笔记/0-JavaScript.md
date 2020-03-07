@@ -844,6 +844,7 @@ window.screen.availWidth;           //屏幕可用工作区的宽						返回 32
     等等........
     
 
+===================================   分割字符串   =====================================
 
     var str="How are you doing                    today?";
     var array = str.split(" ");
@@ -928,6 +929,9 @@ var n = str.search(/Runoob/i);
 "microsoftAAAAAAAA  microsoft  microsoft asdasd microsoft".replace(/microsoft/g,"Runoob");
 >>> "RunoobAAAAAAAA  Runoob  Runoob asdasd Runoob"
 
+
+"asd aaa !@# %^& ***".replace(/[^a-zA-Z ]+/g,'-');
+>>> "asd aaa - - -"
 
 
 

@@ -2425,28 +2425,6 @@ class User {
 
     @Test
     public void Map_to_JSON(){
-        try {
-            ObjectMapper objectMapper = new ObjectMapper();
-            JsonGenerator jsonGenerator = objectMapper.getJsonFactory().createJsonGenerator(System.out, JsonEncoding.UTF8);
-            //map转JSON
-            Map < String,Object > map = new HashMap < String,Object > ();
-            map.put("one", new User("张", 12, "深圳"));
-            map.put("two", new User("李", 22, "武汉"));
-            map.put("three", new User("王", 32, "北京"));
-
-            System.out.println("ObjectMapper方式");
-            objectMapper.writeValue(System.out, map); 
-
-            // 将转换好的数据, 写入到本地的 txt 文件当中
-            objectMapper.writeValue(new File("D:TEST.txt"), map);
-
-             System.out.println("JsonGenerator方式");
-            jsonGenerator.writeObject(map);
-
-        } catch(IOException e) {
-            e.printStackTrace();
-        }
-
     }
 
 
@@ -2488,24 +2466,37 @@ class User {
     }
 
 
-    @Test
-    public void List_to_JSON(){
-        try {
-            ObjectMapper objectMapper = new ObjectMapper();
-            JsonGenerator jsonGenerator = objectMapper.getJsonFactory().createJsonGenerator(System.out, JsonEncoding.UTF8);
-            //list转JSON
-            List < User > list = new ArrayList < User > ();
-            list.add(new User("张", 12, "深圳"));
-            list.add(new User("李", 22, "武汉"));
-            list.add(new User("王", 32, "北京"));
-            System.out.println("ObjectMapper方式");
-            objectMapper.writeValue(System.out, list);
-            System.out.println("JsonGenerator方式");
-            jsonGenerator.writeObject(list);
-        } catch(IOException e) {
-            e.printStackTrace();
-        }
-    }
+
+
+
+
+
+
+===============================   使用 阿里巴巴的 FastJson   ==============================
+
+    List< String > list = new ArrayList< String >();
+    list.add("AAA");
+    list.add("123");
+    list.add("@#&&&&&&&&");
+
+    
+    // List -> json
+    String json_str= JSON.toJSON(list).toString();
+    System.err.println(json_str);
+
+    //json -> list(严格来讲并不是真正意义的list)
+    JSONArray list2 = parseArray(json_str);
+    for (int i = 0; i < list2.size(); i++) {
+        System.err.println(list2.get(i));
+    }    
+
+
+
+
+
+
+
+
 
 
 

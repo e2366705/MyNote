@@ -868,6 +868,39 @@ window.screen.availWidth;           //屏幕可用工作区的宽						返回 32
 
 
 
+
+
+
+
+
+--------------------------------------------- 转小写 , 去掉特殊字符  -------------------------------------------
+    /*
+        传入一段字符串,
+        比如:     couldn't , but still Aaaa QQQQQQQ !@#%^&^%&*%^& 1236+781qweASD+_ASD276  QQ-qq_qq_123123
+        返回 小写的 , 去掉特殊字符串 的 array
+        [不包含数字]
+        返回的是 Set 数据类型
+    */
+    function toLowerCase_clean_str(str) {
+
+        // 第一步 , 去除 特殊字符串 比如 : !@#^&*%^&%_+
+        str = str.replace(/[^a-zA-Z ]+/g, ' ');   // 返回  couldn t   but still Aaaa QQQQQQQ    qweASD ASD   QQ qq qq
+
+        // 第二步 : 按照空格分割字符串  (array 类型)
+        str = str.split(" ");   // ["", "couldn", "t", "", "", "but", "still", "Aaaa", "QQQQQQQ", "", "", "", "qweASD", "ASD", "", "", "QQ", "qq", "qq", ""]
+
+        // 然后: 全部转化为小写     ["", "couldn", "t", "", "", "but", "still", "aaaa", "qqqqqqq", "", "", "", "qweasd", "asd", "", "", "qq", "qq", "qq", ""]
+        for (var i = 0; i < str.length; i++) {
+            str[i] = str[i].toLowerCase();
+        }
+
+        // 然后, 去掉重复的字符串 ( 转化为 Set )
+        str = new Set(str);    // Set(11) {"", "couldn", "t", "QQQQQQQ", "still", …}
+
+        return str;
+    }
+
+
 ```
 </details>
 

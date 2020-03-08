@@ -248,71 +248,6 @@ import java.net.MalformedURLException;
 
 
 
-
-
-
-
-
-
-
-
-<details>
-<summary><b>  测试程序代码运行时间  </b></summary>
-
-```  
-
-以 毫秒 为单位:
-    long start_Time =System.currentTimeMillis();   //获取开始时间
-    Thread.sleep(1231);
-    long end_Time =System.currentTimeMillis(); //获取结束时间
-    System.out.println("程序运行时间： "+(end_Time-start_Time)+"  ms");
-
-以 纳秒 为单位:
-    long startTime=System.nanoTime();   //获取开始时间
-    Thread.sleep(1231);
-    long endTime=System.nanoTime(); //获取结束时间
-    System.out.println("程序运行时间： "+(endTime-startTime)+"  ns");
-
-
-```
-</details>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <details>
 <summary><b> 网络 / URI / URL / 链接地址 </b></summary>
 
@@ -619,6 +554,44 @@ public class JSON_Alibaba {
 
     System.out.printf("现在是:  %66s  \n" , df.format(new java.util.Date()));
     System.out.printf("现在是:  %-66s   " , df.format(new java.util.Date()));
+
+
+
+
+
+
+
+
+----------------------------------   获取当前时间戳   ----------------------------------
+ System.currentTimeMillis()
+ System.out.println(System.currentTimeMillis());
+
+
+
+
+
+
+
+
+
+----------------------------------   测试程序代码运行时间  ----------------------------------
+以 毫秒 为单位:
+    long start_Time =System.currentTimeMillis();   //获取开始时间
+    Thread.sleep(1231);
+    long end_Time =System.currentTimeMillis(); //获取结束时间
+    System.out.println("程序运行时间： "+(end_Time-start_Time)+"  ms");
+
+以 纳秒 为单位:
+    long startTime=System.nanoTime();   //获取开始时间
+    Thread.sleep(1231);
+    long endTime=System.nanoTime(); //获取结束时间
+    System.out.println("程序运行时间： "+(endTime-startTime)+"  ns");
+
+
+
+
+
+
 
 
 
@@ -966,7 +939,10 @@ public class How_many_chinese {
 
 
 
-        // 分割字符串
+
+
+
+=====================================  分割字符串  =====================================
         String str = "www-runoob-com";
         String[] temp;
         String delimeter = "-";  // 指定分割字符
@@ -1059,18 +1035,6 @@ public class How_many_chinese {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 <details>
 <summary><b>字符串之 : 正则表达式</b></summary>
 
@@ -1124,16 +1088,19 @@ public class How_many_chinese {
 
 
 
+
         String regex = "(\\d{3})(\\d{3})(\\d{4})";
         Pattern p = Pattern.compile(regex);
-        String source = "1234567890, 12345,  and  9876543210";
+        String source = "1234567890, 123456789,  and  9876543210";
         Matcher m = p.matcher(source);
 
         while(m.find()){
-            System.out.println("Phone: " + m.group() + ", Formatted Phone:  ("
-                    + m.group(1) + ") " + m.group(2) + "-" + m.group(3));
+            System.out.println(m.group() + " - " + m.group(1) + " - " + m.group(2) + " - " + m.group(3));
         }
 
+        输出:
+            1234567890 - 123 - 456 - 7890
+            9876543210 - 987 - 654 - 3210
 
 
 
@@ -1141,8 +1108,6 @@ public class How_many_chinese {
 
 
 小案例:  找出一段句子中所有的英文单词, 并循环遍历出来
-    思考: 如果表达式是: [a-zA-Z] 会怎么样? 自己动手试试吧~
-
         String regex = "[a-zA-Z]+"; 
 
         Pattern p = Pattern.compile(regex);
@@ -1153,6 +1118,11 @@ public class How_many_chinese {
             String aaa = m.group(0);
             System.out.println(aaa);
         }
+    思考: 如果表达式是: [a-zA-Z] 会怎么样?        
+    答案是:
+        连续输出单个字母
+
+        
 
 
 
@@ -2920,6 +2890,17 @@ list 之间不能直接相加, 必须这样借助第三方
         list3.addAll(list2);
 
         输出:  [aaa, aaa]
+
+
+
+
+        ArrayList<String> list = new ArrayList<String>();
+        list.add("000");
+        list.add("111");
+        list.add("222");
+        System.out.println(list.indexOf("222"));     // 2 (如果不存在 , 返回 -1)
+
+
 
 
 ArrayList类

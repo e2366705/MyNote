@@ -1874,7 +1874,9 @@ console.log(test2);
 
 
 
-Springboot 中 thymeleaf 使用:
+Springboot 中 thymeleaf 使用: 
+    <h1 th:text="${#request.getQueryString()}"></h1>
+    <a th:href="${#request.getRequestURI()} + '?page='  +  ${nav}"  th:if="${nav != pageInfo.pageNum}" ></a>
 
 假设 url：http://localhost:8080/CarsiLogCenter_new/idpstat.jsp?action=idp.sptopn
 	request.getRequestURL()              http://localhost:8080/CarsiLogCenter_new/idpstat.jsp

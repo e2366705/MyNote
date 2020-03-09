@@ -2,31 +2,23 @@
 
 
 
-
-
-
-
-
-
-
 ### MacBook 怎么进行剪切操作?
 ```  
-	第一步：command+C 复制
-	第二部：option+command+ V 即可实现剪贴
+	第一步：   command+C 复制
+	第二步：   option+command+ V 即可实现剪贴
 ```
 
 
 
-
-
-
-
-
-
-
-###  刷新网页 快捷键
+## 快捷键
 ```  
-command + R 
+
+option + command + L         打开浏览器的下载历史
+Command + R                  浏览器刷新网页
+Command + W                  关闭当前标签页
+option + command + esc       强制退出
+
+
 
 ```
 
@@ -62,12 +54,58 @@ MySQL 客户端管理工具:
 
 
 
-### 怎么强制退出某些软件?
+
+
+
+# Mac 移植 Chrome 浏览器的插件(扩展)到其他的浏览器:
 ```  
 
-option + command + esc     强制退出
+所有的chrome插件都是安装在资源管理库(library)里面的,如果你的记性够好，请记住MAC下插件的安装位置：
+~/Library/Application Support/Google/Chrome/Default/Extensions
+可以直接复制到浏览器中打开
+
+
+Chrome插件都装到哪了?
+-----------------------------------------------------------------------
+Windows XP
+Google Chrome: C:\Documents and Settings\%USERNAME%\Local Settings\Application Data\Google\Chrome\User Data\DefaultChromium: C:\Documents and Settings\%USERNAME%\Local Settings\Application Data\Chromium\User Data\Default
+
+Windows 10 / 8 / 7 / Vista
+Google Chrome: C:\Users\%USERNAME%\AppData\Local\Google\Chrome\User Data\DefaultChromium: C:\Users\%USERNAME%\AppData\Local\Chromium\User Data\Default
+
+Mac OS X
+
+Google Chrome: ~/Library/Application Support/Google/Chrome/Default
+Chromium: ~/Library/Application Support/Chromium/Default
+
+Linux
+Google Chrome: ~/.config/google-chrome/Default
+Chromium: ~/.config/chromium/Default
+
+Chrome OS
+/home/chronos/
+
+
+
+
+
+Mac 移植 Chrome 浏览器的插件(扩展)到其他的浏览器:
+---------------------------------------------------------
+首先要知道在 Mac 中, Google/Chrome/Default/Extensions 这个文件夹是无法通过 Finder 访问到的
+那怎么复制相关的插件, 然后移植到其他的浏览器呢?
+1 打开 Finder
+2 按快捷键 command + shift + g
+3 弹出的输入框中输入： ~/Library/Application Support/Google/Chrome/Default/Extensions  按回车
+
+在 Chrome 浏览器中扩展程序中, 开启开发者模式, 复制 ID
+在 Finder 文件夹中找到 与这个 ID 同名的文件夹
+(或者 直接   ~/Library/Application Support/Google/Chrome/Default/Extensions/mjidkpedjlfnanainpdfnedkdlacidla
+复制它
+在其他的浏览器中打开它... 
 
 ```
+
+
 
 
 

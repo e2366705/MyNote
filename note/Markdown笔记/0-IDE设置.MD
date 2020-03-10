@@ -312,6 +312,66 @@ idea打包javaweb项目,有两种方式 : 一种是war，一种是 war explored
 
 
 
+
+
+
+
+
+
+
+
+<details>
+<summary><b> IntelliJ IDEA Debug 的小技巧 </b></summary>
+
+```  
+
+1 for (int i = 0; i < 1000; i++) {
+2 	System.out.println(i);
+3 }
+
+debug 情况:
+	怎么在 i 等于 60 的时候让他暂停? 
+
+方法: 
+	在第2行打一个断点, 会出现一个红色的圆圈
+	然后右击圆圈,
+	会出现自定义设置框
+	输入 i == 60 
+	那么程序就会在 i 等于 60 的时候暂停
+	等待调试
+
+
+Debug 常用调试快捷键:
+Step over        进入下一步, 如果当前断点是一个方法, 则不进入当前方法体内
+Step into        进入下一步, 如果当前断点是一个方法, 则进入当前方法体内
+force Step into  进入下一步, 如果当前断点是一个方法, 则进入当前方法体内(强行, 有些方法不允许调试)
+Step out         跳出
+resume program   恢复程序运行, 但如果该断点下面代码还有断点, 则停在下一个断点上
+mute breakpoints 使所有断点失效
+view breakpoints 查看所有断点
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <details>
 <summary><b> PyCharm 取消没必要的波浪线</b></summary>
 

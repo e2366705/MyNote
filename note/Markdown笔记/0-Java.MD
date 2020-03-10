@@ -736,27 +736,65 @@ class Sort{
 
 
 
-字符串比较用  equals
-    Java 中 String类中被复写的equals()方法其实是比较两个字符串的内容
+---------------------------------   == 和 equals 的区别   ---------------------------------
+        Integer iii1 = new Integer(1);
+        Integer iii2 = new Integer(1);
+        System.out.println(iii1 == iii2);		//  返回 false , 因为比较的是内存地址
+        System.out.println(iii1.equals(iii2));	//  返回 true  , 因为比较的是数值的大小
+
+        总结:
+            ==      除了比较基本数据之外都是比较的内存地址 , 比较的是引用,不是内容
+            equals  除了没有没有重写equals方法的类之外都是比较的内容
+            
+            字符串比较用  equals , Java 中 String类中被复写的equals()方法其实是比较两个字符串的内容
 
 
 
-
-判断一个字符串是否包含某个字符:
-        String str = "我叫王力宏";
-        boolean status = str.contains("力");
-        if(status){
-            System.out.println("包含");
-        }else{
-            System.out.println("不包含");
-        }
-
-
+---------------------------------   大小写   ---------------------------------
         大写:
         str.toUpperCase();
 
         小写:
-        str.toLowerCase()
+        str.toLowerCase()    
+
+
+
+
+---------------------------------   字符串是否包含某个字符   ---------------------------------
+
+# 1:
+    String str = "我叫王力宏";
+    boolean status = str.contains("力");
+    if(status){
+        System.out.println("包含");
+    }else{
+        System.out.println("不包含");
+    }
+
+# 2:
+    String str = "aaa This is test for string";
+    System.out.println(str.indexOf("test"));                     // 找到了,就返回索引位置
+    System.out.println(str.indexOf("for string       "));        // 没找到,就返回 -1
+    System.out.println(str.indexOf("aaa",3));                    // 从指定位置(第四个)开始查询        
+
+# 3: 
+    String parent = "this bbb bbbc  11bbb23 Bbb ";
+    String child = "bbb";
+
+    int count = 0;
+    int index = 0;
+    while( ( index = parent.indexOf(child, index) ) != -1 ){
+        index = index+child.length();
+        count++;
+    }
+    System.out.println( "匹配个数为        "+count );		//结果输出 : 匹配个数为        3
+
+
+
+
+
+
+
 
 
     @Test
@@ -806,22 +844,21 @@ class Sort{
 
 
         
-    // 判断首字母是否大写?
-    // 大写 => true
-    public boolean First_letter_is_capitalized(String str) {
-        char[] chars = str.toCharArray();
-        return Character.isUpperCase(chars[0]);
-    }
-
-    // 字符串是否包含大写字母?
-      String word = "asda1231^&%^&*er,..<><>[]]()*/-+sdfsdfAAA";
-        for(int i = 0; i < word.length(); i++){
-            char c = word.charAt(i);
-            if (Character.isUpperCase(c)){
-                System.out.println("包含");
-            }
+        // 判断首字母是否大写?
+        // 大写 => true
+        public boolean First_letter_is_capitalized(String str) {
+            char[] chars = str.toCharArray();
+            return Character.isUpperCase(chars[0]);
         }
 
+        // 字符串是否包含大写字母?
+        String word = "asda1231^&%^&*er,..<><>[]]()*/-+sdfsdfAAA";
+            for(int i = 0; i < word.length(); i++){
+                char c = word.charAt(i);
+                if (Character.isUpperCase(c)){
+                    System.out.println("包含");
+                }
+            }
 
 
 
@@ -829,7 +866,8 @@ class Sort{
 
 
 
-=====================================   检测中文   ==============================================
+
+---------------------------------   检测中文   ---------------------------------
 
         // 是否有中文? 允许有符号
         String str = "my friends gardens and we've become closer '' * & ^ % # @ ! ` ~     ";
@@ -922,7 +960,7 @@ public class How_many_chinese {
         System.out.println(sb.toString());
 
 
-=====================================   截取字符串   ==============================================
+---------------------------------   截取字符串   ---------------------------------
     原字符: 123456789
     
         String strhours = String.valueOf(123456789);
@@ -942,7 +980,7 @@ public class How_many_chinese {
 
 
 
-=====================================  分割字符串  =====================================
+---------------------------------  分割字符串  ---------------------------------
         String str = "www-runoob-com";
         String[] temp;
         String delimeter = "-";  // 指定分割字符
@@ -958,9 +996,18 @@ public class How_many_chinese {
 
 
 
-=====================================   替换字符串   ==============================================
+---------------------------------   替换字符串   ---------------------------------
 
-第一种:
+##########
+//  "."是正则表达式的元字符，匹配除换行符以外的任意字符，所以replaceAll、replaceFirst才出现了这样的结果
+    String s = "my.test.txt";
+    System.out.println(s.replace(".", "#"));				// my#test#txt
+    System.out.println(s.replaceAll(".", "#"));				// ###########
+    System.out.println(s.replaceFirst(".", "#"));			// #y.test.txt
+    System.out.println(s.replaceFirst("\\.", "#"));			// my#test.txt
+
+
+###########
         String str = "“i’m, nana’s, ’ ‘at, ’ ‘as, foo  - ,  twice a, \"sadas\" ce of, ties, 123890 \\ ’";
         
         //可以在中括号内加上任何想要替换的字符 (数字也会被去掉)，实际上是一个正则表达式
@@ -971,7 +1018,7 @@ public class How_many_chinese {
 
 
 
-第二种: 
+##########
     相对比较简单 (推荐)
     直接用 replaceAll 删除非英文字母的字母:
         String temp = "";
@@ -979,7 +1026,7 @@ public class How_many_chinese {
         System.out.println(temp);        
 
 
-其他:
+##########
         String str="123assume345contribute你好&*(){}&^%$#\n@@";
 
         //去除字符串中的数字
@@ -996,8 +1043,6 @@ public class How_many_chinese {
         str1 = m.replaceAll("");
         System.out.println(" 去除字符串中的空格、回车、换行符、制表符  " + str1);  
 
-
-
 ```
 </details>
 
@@ -1005,6 +1050,95 @@ public class How_many_chinese {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> 加减乘除 (不会损失精度 ) </b></summary>
+
+```  
+
+import java.math.BigDecimal;
+public class AAA {
+    public static void main(String args[]) throws Exception {
+
+
+        // 如下所示: 浮点数运算会损失精度
+        System.err.println("什么是 浮点数运算会损失精度 ? ");
+        float f0 = 1.00f;
+        float f1 = 0.99f;
+        System.out.println("1 减去 0.99 等于 0.1, 然而实际运算结果却是:  "+ (f0 - f1) + "\n");
+
+        String doubleValA = "1";
+        String doubleValB = "0.99";
+
+        System.out.println("add= " + add(doubleValA, doubleValB) + "\n" );                   // 加法
+        System.out.println("sub= " + Subtracting(doubleValA, doubleValB )  + "\n" );         // 减法
+        System.out.println("mul= " + Multiplied(doubleValA, doubleValB)  + "\n"  );          // 乘法
+        System.out.println("div= " + Divided(doubleValA, doubleValB, 8)  + "\n"  );   // 除法
+
+    }
+
+    // add 加法
+    public static double add(String doubleValA, String doubleValB) {
+        System.out.println(" add 加法运算 , doubleValA : " + doubleValA + " , doubleValB : " + doubleValB);
+        BigDecimal a2 = new BigDecimal(doubleValA);
+        BigDecimal b2 = new BigDecimal(doubleValB);
+        return a2.add(b2).doubleValue();
+    }
+
+    // Subtracting 减法
+    public static double Subtracting(String doubleValA, String doubleValB) {
+        System.out.println("Subtracting 减法运算, doubleValA : " + doubleValA + " , doubleValB : " + doubleValB);
+        BigDecimal a2 = new BigDecimal(doubleValA);
+        BigDecimal b2 = new BigDecimal(doubleValB);
+        return a2.subtract(b2).doubleValue();
+    }
+
+    // Multiplied 乘以
+    public static double Multiplied(String doubleValA, String doubleValB) {
+        System.out.println("Multiplied 乘法运算, doubleValA : " + doubleValA + " , doubleValB : " + doubleValB);
+        BigDecimal a2 = new BigDecimal(doubleValA);
+        BigDecimal b2 = new BigDecimal(doubleValB);
+        return a2.multiply(b2).doubleValue();
+    }
+
+    // Divided 除以
+    public static double Divided(String doubleValA, String doubleValB, int scale) {
+        System.out.println("Divided 除法运算, doubleValA : " + doubleValA + " , doubleValB : " + doubleValB);
+        BigDecimal a2 = new BigDecimal(doubleValA);
+        BigDecimal b2 = new BigDecimal(doubleValB);
+        return a2.divide(b2, scale, BigDecimal.ROUND_HALF_UP).doubleValue();
+    }
+
+}
+
+
+```
+</details>
 
 
 

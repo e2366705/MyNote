@@ -8,6 +8,13 @@
 
 ```  
 
+无线连接:
+保证手机与电脑在一个局域网中
+确认手机ip，可以在WiFi信息中查看
+本机ping 手机IP地址，如果成功，说明可连接
+执行 adb connect 192.168.1.97
+
+
 查看 Android 手机的IP地址:
 	设置 -> 系统 -> 关于本机 -> 状态信息 -> IP地址
 
@@ -56,6 +63,7 @@ adb connect 192.168.1.101:5555
 	adb connect IP地址:5555
 	
 	此时就能连接Android设备了，如果还不行，对不起，我也没办法了！
+	参考资料:   https://blog.csdn.net/MRYZJ/article/details/98446965
 
 
 

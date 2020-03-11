@@ -15,9 +15,11 @@
  编辑系统变量  Path    
     添加变量值： %MAVEN_HOME%\bin
 
-打开 cmd , 输入 mvn -v 
 
-成功~~~
+查看 maven 安装路径 :
+  打开 cmd , 输入 mvn -v
+  Maven home: C:\Program Files\Maven\apache-maven-3.5.0\bin\..
+  这就是 maven 的安装路径
 
 
 国内的maven仓库太慢,  配置镜像:

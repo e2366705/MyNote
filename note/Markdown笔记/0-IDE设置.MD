@@ -118,6 +118,10 @@ mycli -uroot
 	在这里面设置:   
 		File | Settings | Build, Execution, Deployment | Build Tools | Maven
 
+	也可以修改 idea 自带的 maven 地址:  
+	一般的安装路径在: 
+		C:\Program Files\JetBrains\IntelliJ IDEA 2019.3.3\plugins\maven\lib\maven3\conf\settings.xml
+
 
 
 可以直接在 Settings 里面搜索: 比如搜索: font(字体设置)

@@ -28,6 +28,16 @@
 找到配置文件: setting.xml，
 里面有个<mirrors>配置项目，所有的镜像都配置在这里面，如下面配置了两个镜像库:
 
+
+
+修改 idea 自带的 maven 地址:  
+一般的安装路径在: 
+C:\Program Files\JetBrains\IntelliJ IDEA 2019.3.3\plugins\maven\lib\maven3\conf\settings.xml
+
+
+
+
+镜像地址:
 <mirrors>
     <mirror>
       <id>aliyun</id>

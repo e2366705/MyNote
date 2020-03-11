@@ -38,20 +38,15 @@ C:\Program Files\JetBrains\IntelliJ IDEA 2019.3.3\plugins\maven\lib\maven3\conf\
 
 
 镜像地址:
+[注意: 这个镜像地址会变的, 可能去年可以用的镜像, 今年就用不了了, 网上很多镜像地址根本无法下载]
 <mirrors>
-    <mirror>
-      <id>aliyun</id>
-      <mirrorOf>central</mirrorOf>
-      <name>aliyun</name>
-      <url>http://maven.aliyun.com/nexus/content/groups/public</url>
-    </mirror>
-    <mirror>
-      <id>UK</id>
-      <name>UK Central</name>
-      <url>http://uk.maven.org/maven2</url>
-      <mirrorOf>central</mirrorOf>
-    </mirror>
-  </mirrors>
+  <mirror>
+      <id>aliyunmaven</id>
+      <mirrorOf>*</mirrorOf>
+      <name>阿里云公共仓库</name>
+      <url>https://maven.aliyun.com/repository/public</url>
+  </mirror>
+</mirrors>
 
 
 

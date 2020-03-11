@@ -12,14 +12,14 @@
 保证手机与电脑在一个局域网中
 确认手机ip，可以在WiFi信息中查看
 本机ping 手机IP地址，如果成功，说明可连接
-执行 adb connect 192.168.1.97
+执行 adb connect 192.168.1.101:5555
 
 
 查看 Android 手机的IP地址:
 	设置 -> 系统 -> 关于本机 -> 状态信息 -> IP地址
 
 查看网络是否正常
-ping 192.168.1.60
+ping 192.168.1.101
 
 
 
@@ -28,6 +28,9 @@ adb tcpip 5555
 
 手机链接服务( 手机的IP地址 )
 adb connect 192.168.1.101:5555
+
+然后, 查看当前连接的安卓设备
+adb devices
 
 使用adb命令无线链接手机有可能会出现 "由于目标计算机积极拒绝，无法连接。 (10061)" 这种报错
 可能是端口被占用了：
@@ -78,7 +81,6 @@ adb disconnect (输出: disconnected everything)
 adb disconnect 192.168.1.65:8888 (取消指定端口号链接)
 
 
-
 停止服务(貌似不太管用)
 adb stop-server
 
@@ -91,6 +93,9 @@ adb install /path/to/apk.apk
 
 查看已安装的软件包
 adb shell pm list packages
+
+查看当前运行软件的详细信息, (包括包名):
+adb shell dumpsys activity recents | find "intent={"
 
 卸载已安装软件包
 adb uninstall [package_name]

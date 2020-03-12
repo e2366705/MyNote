@@ -1,4 +1,8 @@
-# Android_ADB
+# 安装?
+详情 : 各种软件的安装与配置.md
+
+
+
 
 
 
@@ -120,43 +124,5 @@ adb pull /phone/path/to/file/filename /local/file/path/to/save
 
 ```
 </details>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<details>
-<summary><b> ================ </b></summary>
-
-```  
-
-
-```
-</details>
-
-
-
-
 
 

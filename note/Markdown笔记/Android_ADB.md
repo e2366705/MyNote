@@ -76,6 +76,10 @@ adb devices
 
 
 
+查看 adb 的版本号,以及安装路径:
+adb version
+
+
 查看当前连接的安卓设备
 adb devices
 

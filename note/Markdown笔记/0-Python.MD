@@ -1,11 +1,6 @@
 ﻿# Python
-> python 写起来挺舒服的, 属于脚本语言, 写完直接可以运行, 不像Java, 还需要编译, 所以写东西是很快的
+python 写起来挺舒服的, 属于脚本语言, 写完直接可以运行, 不像Java, 还需要编译, 所以写东西是很快的
 
-
-	
-
-
-	
 
 
 	
@@ -2259,30 +2254,6 @@ def Play_Aduio_File(Aduio_file_name):
 
 
 
-
-
-# 框架 / Web
-推荐 Django, 它是python的一个web服务框架, 内置了web服务器(SpringBoot也是内置了一个服务器), 适用于快速开发, 非常方便
-<details>
-<summary><b> 关于 pip </b></summary>
-
-```  
-
-查看安装了哪些应用/插件
-pip list
-
-访问太慢?
-解决办法(使用国内的镜像):
-用法 : 加上  -i , 然后后面接上国内的镜像地址, 案例如下:
-pip install Django==3.0.3 -i https://pypi.tuna.tsinghua.edu.cn/simple
-
-
-
-
-参考资料:https://zhuanlan.zhihu.com/p/46975553
-
-```
-</details>
 
 
 

@@ -927,47 +927,6 @@ round(random.uniform(5, 10), 2)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # List(列表) / Tuple(元组) / Set(集合) / Dictionary(字典)
 <details>
 <summary><b> 简介 </b></summary>
@@ -1995,32 +1954,6 @@ sql = "DELETE FROM user WHERE username = '%s'  " % ('OPPO')       要带上单�
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <details>
 <summary><b> 正则表达式 </b></summary>
 
@@ -2483,13 +2416,12 @@ urlpatterns = [
 
 
 # Python 爬虫
-str = '\xe5\xae\x9d\xe9\xb8\xa1\xe5\xb8\x82'
-
 <details>
-<summary><b>my_name_is_jack</b></summary>
+<summary><b> 爬虫 </b></summary>
 
 ```  
 
+写爬虫的时候会遇到 文件编码乱码的问题, 查看字符串那一章节有详细解决方法
 
 
 ```

@@ -288,19 +288,15 @@ Return
 
 详细教程:   https://wyagd001.github.io/zh-cn/docs/commands/Send.htm
 
-
-
-按下 [上]方向键 , 松开它 , 实现点按的效果:
+; 方向键 [上]
 sleep, 150
 SendEvent {Blind}{Up down}
-KeyWait RCtrl  ; 防止键盘自动重复导致的重复鼠标点击.
+KeyWait RCtrl           ; 防止键盘自动重复导致的重复鼠标点击.
 SendEvent {Blind}{Up up}
 
-sleep, 150
-SendEvent {Blind}{Up down}
-KeyWait RCtrl  ; 防止键盘自动重复导致的重复鼠标点击.
-SendEvent {Blind}{Up up}
 
+; 按下 回车键
+Send {Enter}
 
 
 重复或按住按键

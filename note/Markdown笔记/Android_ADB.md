@@ -82,6 +82,7 @@ adb version
 
 查看当前连接的安卓设备
 adb devices
+adb devices -l
 
 
 取消链接

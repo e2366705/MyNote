@@ -91,6 +91,27 @@ ccc = aaa+bbb
 print(ccc)
 
 
+
+
+注意: 
+这样会报错:
+def if_have_Chinese(str):
+    if "序号" in str & "值" in str:
+        return True
+    else:
+        return False
+
+这样不会报错:
+def if_have_Chinese(str):
+    if ("序号" in str) & ("值" in str):
+        return True
+    else:
+        return False
+
+
+
+
+
 睡眠 / 暂停 (秒数)
 sleep(3)                3 秒
 time.sleep(5)           5 秒

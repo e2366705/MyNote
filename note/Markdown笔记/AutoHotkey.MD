@@ -1,18 +1,15 @@
 ﻿# Autohotkey
-> AutoHotkey 是一款 windows 平台下的热键脚本语言程序
+AutoHotkey 是一款 windows 平台下的热键脚本语言程序
 
 
-> 注意: 脚本文件在 Windows 下, 必须是 ANSI 格式的, 不然中文路径会乱码
->    打开文件 -> 另存为 -> 格式选择 ANSI -> 保存
+注意: 脚本文件在 Windows 下, 必须是 ANSI 格式的, 不然中文路径会乱码
+    打开文件 -> 另存为 -> 格式选择 ANSI -> 保存
 
 # 基础
 <details>
-<summary><b> 基本功能: </b></summary>
+<summary><b> 基本 语法: </b></summary>
 
 ```  
-
-
-
 
 前言:  编辑脚本时使用英文输入法
 
@@ -51,9 +48,8 @@ Send ^v{enter}
 ; 最大化活动窗口
 WinMaximize, A  
 
-
-
-
+`n 表示换行
+::111::```````  `n`n`n```````
 
 热键标记
 !       是热键标记，这里的感叹号代表键盘上的 alt 键
@@ -64,8 +60,6 @@ WinMaximize, A
 ! ：alt
 ^ ：ctrl
 + ：shift
-
-
 
 
 
@@ -110,8 +104,169 @@ Else
 Return
 
 
+
+
+
+
+
+
+连接 / 拼接字符串:
+  拼接恐怕是最常用的操作了，在 AHK 中也非常简单，直接将两个字符串用空格隔开就可以了
+
+
+变量(两种方式):
+MyNumber = 123
+MyString = This is a literal string.
+CopyOfVar = %Var%  ; 和 = 运算符一起使用时, 需要使用百分号来获取变量的内容.
+
+MyNumber := 123
+MyString := "This is a literal string."
+CopyOfVar := Var  ; 和前面段落中与其作用相同的语句不同, 百分号不和 := 运算符一起使用.
+
+
+有两种方法来清除变量的内容 (即让变量为空):
+MyVar =
+MyVar := ""
+
+
+获取变量的内容:
+  如同赋值有两种方法, 获取变量的内容也有两种方法: 
+  传统方法和表达式方法. 
+  传统方法需要将变量名包围在百分号中来获取变量的内容. 例如：
+MsgBox The value in the variable named Var is %Var%.
+CopyOfVar = %Var%
+
+
+
+
+全局变量
+全局变量比较好理解，如果一个变量是全局变量，那么程序中的所有代码都可以访问到这个变量（除非存在同名的局部变量或者静态变量）
+全局变量用 global 定义:
+a := 1
+global b := 2
+c := 3
+
+fun()           调用这个方法
+fun(){
+    ; a 不是全局变量，访问不了，弹出空字符串
+    MsgBox, % a
+
+    ; b 是全局变量，弹出 2
+    MsgBox, % b
+
+    ; 在函数里也可以将 c 变成全局变量
+    global c
+    ; 弹出 3
+    MsgBox, % c
+}
+
+
+
+
+
+
+循环:
+最简单的情况，我们知道要循环多少次，比如想连续按下 10 次回车键：
+Loop, 10{
+    Send, {Enter}
+}
+
+
+参考资料:   https://zhuanlan.zhihu.com/p/20830259
+这样就可以了。在 Loop 后加上要循环的次数，然后大括号里边就是要循环执行的语句。
+当然我们可以先把循环的次数放进一个变量，这样更灵活些：
+count := 10
+Loop, %count%{
+    Send, {Enter}
+}
+
+
+
+
+在函数里使用的变量通常是局部变量:
+fun()
+; a 并不是全局变量，弹出空字符串
+MsgBox, % a
+; b 是全局变量，弹出 2
+MsgBox, % b
+fun(){
+    a := 1
+    global b := 2
+}
+
+
+
+如果一个变量是需要全局有效的，那么使用全局变量。
+但全局变量会导致代码的耦合度比较高，不方便维护，所以尽量少用,
+有些看似需要使用全局变量的场景，其实使用函数的参数传递更合理
+
+
+
+
 ```
 </details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> 系统 剪切板 </b></summary>
+
+```  
+
+
+::6666::
+clipboard=
+(
+<details>
+<summary><b>my_name_is_jack</b></summary>
+
+
+</details>
+)
+Send ^v{enter}
+Sleep, 1000
+Return
+
+
+以上代码表示:
+  输入 6666 
+  然后按下 回车/空格/Tap键 
+  就会把系统的 剪切板 设置为:
+    <details>
+    <summary><b>my_name_is_jack</b></summary>
+
+
+    </details>  
+  然后打印出来
+
+
+```
+</details>
+
+
+
+
+
+
+
+
 
 
 
@@ -258,116 +413,6 @@ return
 
 
 
-
-
-
-
-
-
-
-
-
-<details>
-<summary><b>基本语法: </b></summary>
-
-```  
-
-
-连接 / 拼接字符串:
-  拼接恐怕是最常用的操作了，在 AHK 中也非常简单，直接将两个字符串用空格隔开就可以了
-
-
-变量(两种方式):
-MyNumber = 123
-MyString = This is a literal string.
-CopyOfVar = %Var%  ; 和 = 运算符一起使用时, 需要使用百分号来获取变量的内容.
-
-MyNumber := 123
-MyString := "This is a literal string."
-CopyOfVar := Var  ; 和前面段落中与其作用相同的语句不同, 百分号不和 := 运算符一起使用.
-
-
-有两种方法来清除变量的内容 (即让变量为空):
-MyVar =
-MyVar := ""
-
-
-获取变量的内容:
-  如同赋值有两种方法, 获取变量的内容也有两种方法: 
-  传统方法和表达式方法. 
-  传统方法需要将变量名包围在百分号中来获取变量的内容. 例如：
-MsgBox The value in the variable named Var is %Var%.
-CopyOfVar = %Var%
-
-
-
-
-全局变量
-全局变量比较好理解，如果一个变量是全局变量，那么程序中的所有代码都可以访问到这个变量（除非存在同名的局部变量或者静态变量）
-全局变量用 global 定义:
-a := 1
-global b := 2
-c := 3
-
-fun()           调用这个方法
-fun(){
-    ; a 不是全局变量，访问不了，弹出空字符串
-    MsgBox, % a
-
-    ; b 是全局变量，弹出 2
-    MsgBox, % b
-
-    ; 在函数里也可以将 c 变成全局变量
-    global c
-    ; 弹出 3
-    MsgBox, % c
-}
-
-
-
-
-
-
-循环:
-最简单的情况，我们知道要循环多少次，比如想连续按下 10 次回车键：
-Loop, 10{
-    Send, {Enter}
-}
-
-
-参考资料:   https://zhuanlan.zhihu.com/p/20830259
-这样就可以了。在 Loop 后加上要循环的次数，然后大括号里边就是要循环执行的语句。
-当然我们可以先把循环的次数放进一个变量，这样更灵活些：
-count := 10
-Loop, %count%{
-    Send, {Enter}
-}
-
-
-
-
-在函数里使用的变量通常是局部变量:
-fun()
-; a 并不是全局变量，弹出空字符串
-MsgBox, % a
-; b 是全局变量，弹出 2
-MsgBox, % b
-fun(){
-    a := 1
-    global b := 2
-}
-
-
-
-如果一个变量是需要全局有效的，那么使用全局变量。
-但全局变量会导致代码的耦合度比较高，不方便维护，所以尽量少用,
-有些看似需要使用全局变量的场景，其实使用函数的参数传递更合理
-
-
-
-```
-
-</details>
 
 
 

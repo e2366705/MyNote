@@ -2564,26 +2564,25 @@ print(r.decode('utf-8'))
 
 ```  
 
+案例:
+<a target="_blank" href="http://gaokao.koolearn.com" class="entry_tit">高考阅读理解真题—社会生活类第九篇</a>
+
 # 找出 class='entry_tit' 的 a标签的 text (是一个列表)
 xpath_code = html.fromstring(code)                        # 将源代码转换为 xpath 格式
 h3 = xpath_code.xpath("//a[@class='entry_tit']/text()")
 print(h3)
 输出:
-    ['高考阅读理解真题—社会生活类第十篇', '高考阅读理解真题—社会生活类第九篇', '高考阅读理解真题—社会生活类第八篇', '高考阅读理解真题—社会生活类第七篇', '高考阅读理解真题—社会生活类第六篇', '高考阅读理解真题—社会生活类第五篇', '高考阅读理解真题—社会生活类第四篇', '高考阅读理解真题—社会生活类第三篇', '高考阅读理解真题—社会生活类第二篇', '高考阅读理解真题—社会生活类第一篇', '高考阅读理解真题理解精练(附详解)', '高考阅读理解真题—生活类', '高考阅读理解真题—笑话类', '高考阅读理解真题—广告阅读类', '高考阅读理解真题—广告类第十三篇']
+    ['高考阅读理解真题—社会生活类第十篇', '高考阅读理解真题—社会生活类第九篇']
 
 
 # 找出 class='entry_tit' 的 a标签的 链接 (是一个列表)
 h3 = xpath_code.xpath("//a[@class='entry_tit']/@href")
 输出:
-    ['http://gaokao.koolearn.com/20181227/1201859.html', 'http://gaokao.koolearn.com/20181227/1201858.html', 'http://gaokao.koolearn.com/20181227/1201857.html', 'http://gaokao.koolearn.com/20181227/1201856.html', 'http://gaokao.koolearn.com/20181227/1201855.html', 'http://gaokao.koolearn.com/20181227/1201854.html', 'http://gaokao.koolearn.com/20181227/1201853.html', 'http://gaokao.koolearn.com/20181227/1201852.html', 'http://gaokao.koolearn.com/20181227/1201851.html', 'http://gaokao.koolearn.com/20181227/1201850.html', 'http://gaokao.koolearn.com/20181227/1201849.html', 'http://gaokao.koolearn.com/20181227/1201848.html', 'http://gaokao.koolearn.com/20181227/1201847.html', 'http://gaokao.koolearn.com/20181227/1201846.html', 'http://gaokao.koolearn.com/20181227/1201845.html']
-
-
+    ['http://gaokao.koolearn.com/20181227/1201859.html', 'http://gaokao.koolearn.com/20181227/1201845.html']
 
 
 # 找出 class='xqy_core_text' 的 div 下面的 p 标签的 text
 Article_content = xpath_code.xpath("//div[@class='xqy_core_text']/p/text()")
-
-
 
 
 ```

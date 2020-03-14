@@ -65,11 +65,11 @@ print("记得去掉  https://movie.douban.com/explore   中间的冒号 => :  ")
 
 # 基础:
 <details>
-<summary><b>基础</b></summary>
+<summary><b> 字符串 : 基础 </b></summary>
 
 ```  
 
-
+py 文件的开头:
 #!/usr/bin/python3
 # -*- coding: UTF-8 -*-
 
@@ -85,11 +85,36 @@ r'C:\Users\SpringBoot\PycharmProjects\untitled1\English_Article_Spider\TEST.txt'
 
 
 拼接字符串
-aaa = "aaa"
-bbb = "bbb"
-ccc = aaa+bbb
-print(ccc)
+    aaa = "aaa"
+    bbb = "bbb"
+    ccc = aaa+bbb
+    print(ccc)
 
+
+
+关于注释: 
+    # 第一个注释
+    
+    '''
+    第三注释
+    第四注释
+    '''
+    
+    """
+    第五注释
+    第六注释
+    """
+
+
+
+输出格式化:
+    print('{}网址： "{}!"'.format('菜鸟教程', 'www.runoob.com'))
+    print('{name}网址： {site}'.format(name='菜鸟教程', site='www.runoob.com'))
+
+
+    aaa = 123
+    print("哈哈哈:  ", aaa)
+    print("哈哈哈: %s " % aaa)
 
 
 
@@ -110,6 +135,9 @@ def if_have_Chinese(str):
 
 
 
+print(r'hello\nrunoob')     # 在字符串前面添加一个 r，表示原始字符串，不会发生转义
+
+
 
 
 睡眠 / 暂停 (秒数)
@@ -117,37 +145,6 @@ sleep(3)                3 秒
 time.sleep(5)           5 秒
 
 
-
-输出格式化:
-print('{}网址： "{}!"'.format('菜鸟教程', 'www.runoob.com'))
-print('{name}网址： {site}'.format(name='菜鸟教程', site='www.runoob.com'))
-
-
-aaa = 123
-print("哈哈哈:  ", aaa)
-print("哈哈哈: %s " % aaa)
-
-
-
-#!/usr/bin/python3 
-# 第一个注释
-print ("Hello, Python!") # 第二个注释
-
-
-
-关于注释: 
-# 第一个注释
- 
-'''
-第三注释
-第四注释
-'''
- 
-"""
-第五注释
-第六注释
-"""
-print ("Hello, Python!")
 
 
 python最具特色的就是使用缩进来表示代码块，不需要使用大括号 {}
@@ -163,41 +160,32 @@ total = ['item_one', 'item_two', 'item_three',
         'item_four', 'item_five']
 
 
-str = '0123456789'
-print("字符串是:    0123456789")
-print("截取第一位到第三位的字符:   " + str[0:3])
-print("截取字符串的全部字符   "+str[:])
-print("截取第七个字符到结尾   "+str[6:])
-print("截取从头开始到倒数第三个字符之前   "+str[:-3])
-print("截取第三个字符   "+str[2])
-print("截取倒数第一个字符   "+str[-1])
-print("创造一个与原字符串顺序相反的字符串    "+str[::-1])
-print("截取倒数第三位与倒数第一位之前的字符    "+str[-3:-1])
-print("截取倒数第三位到结尾    "+str[-3:])
-print("逆序截取    "+str[:-5:-3])
-
-print(r'hello\nrunoob')     # 在字符串前面添加一个 r，表示原始字符串，不会发生转义
-
 
 word = '字符串'
 sentence = "这是一个句子。"
 paragraph = """这是一个段落，
-可以由多行组成"""
+               可以由多行组成"""        
+
+
 
 
 执行下面的程序在按回车键后就会等待用户输入：
-#!/usr/bin/python3
-input("\n\n按下 enter 键后退出。")
+    input("\n\n按下 enter 键后退出。")
+
 
 
 print 默认输出是换行的，如果要实现不换行需要在变量末尾加上 end=""：
 print( y, end=" " )
 
+
+
 Python 中的变量不需要声明。每个变量在使用前都必须赋值，变量赋值以后该变量才会被创建
-在 Python 中，变量就是变量，它没有类型(弱类型语言/动态语言)，我们所说的"类型"是变量所指的内存中对象的类型
+在 Python 中，变量就是变量，它没有类型(弱类型语言/动态语言)，
+我们所说的"类型"是变量所指的内存中对象的类型
 counter = 100          # 整型变量
 miles   = 1000.0       # 浮点型变量
 name    = "runoob"     # 字符串
+
 
 
 Python允许你同时为多个变量赋值。例如：
@@ -206,10 +194,12 @@ a = b = c = 1
 也可以为多个对象指定多个变量。例如：
 a, b, c = 1, 2, "runoob"
 
+
+
 Python3 中有六个标准的数据类型：Number（数字） String（字符串） List（列表） Tuple（元组） Set（集合） Dictionary（字典）
 Python3 的六个标准数据类型中：
-    不可变数据（3 个）：Number（数字）、String（字符串）、Tuple（元组）；
-    可变数据（3 个）：List（列表）、Dictionary（字典）、Set（集合）。
+    不可变数据（3 个）:     Number（数字）          String（字符串）              Tuple（元组）
+    可变数据（3 个）:       List（列表）           Dictionary（字典）             Set（集合）
 
 
 
@@ -217,291 +207,6 @@ Python3 的六个标准数据类型中：
 isinstance(a, int)        # 返回 true or false
 
 
-```
-</details>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<details>
-<summary><b> 时间 / 日期 : </b></summary>
-
-```  
-
-获取时间戳:
-import time  # 引入time模块
-ticks = time.time()
-print("当前时间戳为:", ticks)               #  1584112467.7476895
-millis = int(round(time.time() * 1000))
-print(millis)                              # 1584112467748
-
-
-
-时间戳单位最适于做日期运算。但是1970年之前的日期就无法以此表示了。太遥远的日期也不行，
-UNIX和Windows只支持到2038年
-
-
-
-
-import time
-
-
-print (time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
->>> 2016-04-07 10:29:46
-
-print (time.strftime("%a %b %d %H:%M:%S %Y", time.localtime()))
->>> Thu Apr 07 10:29:46 2016
-  
-将格式字符串转换为时间戳
-a = "Sat Mar 28 22:24:24 2016"
-print (time.mktime(time.strptime(a,"%a %b %d %H:%M:%S %Y")))
->>> 1459175064.0
-
-
-
-```
-</details>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<details>
-<summary><b> try / cache </b></summary>
-
-```  
-
-捕获异常
-python 并不是 try/cache , 而是 try/except
-
-while True:
-    try:
-        x = int(input("请输入一个数字: "))
-        break
-    except ValueError:
-        print("您输入的不是数字，请再次尝试输入！")
-
-
-try-finally 语句无论是否发生异常都将执行最后的代码。        
-
-使用 raise 语句抛出一个指定的异常:
-x = 10
-if x > 5:
-    raise Exception('x 不能大于 5。x 的值为: {}'.format(x))
-
-
-```
-</details>
-
-
-
-
-
-
-
-
-
-
-<details>
-<summary><b> 函数: </b></summary>
-
-```  
-
-函数参数的使用不需要使用指定顺序：
-def printinfo( name, age ):
-   "打印任何传入的字符串"
-   print ("名字: ", name)
-   print ("年龄: ", age)
-   return
- 
-#调用printinfo函数
-printinfo( age=50, name="runoob" )
-
-默认参数
-调用函数时，如果没有传递参数，则会使用默认参数。以下实例中如果没有传入 age 参数，则使用默认值:
-def printinfo( name, age = 35 ):
-   print ("名字: ", name)
-   print ("年龄: ", age)
-   return
-
-
-不定长参数 ( 一个 * 号 ):
-def printinfo( arg1, *vartuple ):
-   "打印任何传入的参数"
-   print ("输出: ")
-   print (arg1)
-   print (vartuple)
-
-printinfo( 70, 60, 50 )
-输出: 
-70
-(60, 50)
-
-
-
-加了两个星号 ** 的参数会以字典的形式导入
-def printinfo( arg1, **vardict ):
-   "打印任何传入的参数"
-   print ("输出: ")
-   print (arg1)
-   print (vardict)
- 
-# 调用printinfo 函数
-printinfo(1, a=2,b=3)
-输出: 
-1
-{'a': 2, 'b': 3}
-
-
-```
-</details>
-
-
-
-
-
-
-
-
-
-
-<details>
-<summary><b> 循环: </b></summary>
-
-```  
-
-
-languages = ["C", "C++", "Perl", "Python"] 
-for x in languages:
-     print (x)
-
-
-for i in range(5):
-     print(i)
-
-输出:
-0
-1
-2
-3
-4
-
-
-
-# 该条件永远为true，循环将无限执行下去
-while True:
-    print(123)
-
-
-
-也可以使用range指定区间的值：
-for i in range(5,9) :
-    print(i)
-
-
-也可以使range以指定数字开始并指定不同的增量(甚至可以是负数，有时这也叫做'步长'):
-for i in range(0, 10, 3) 
-
-break 语句可以跳出 for 和 while 的循环体。
-如果你从 for 或 while 循环中终止，任何对应的循环 else 块将不执行。
-
-continue 语句被用来告诉 Python 跳过当前循环块中的剩余语句，然后继续进行下一轮循环
-
-
-```
-</details>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<details>
-<summary><b> 字符串 </b></summary>
-
-```  
-
-
-aaa = 123
-print("哈哈哈:  ", aaa)
-print("哈哈哈: %s " % aaa)
 
 
 内置的 type() 函数可以用来查询变量所指的对象类型
@@ -509,15 +214,6 @@ aaa = 123
 print(type(aaa))
 >>> <class 'int'>
 
-
-
-截取字符串
-使用方括号来截取字符串
-#!/usr/bin/python3
-var1 = 'Hello World!'
-var2 = "Runoob"
-print ("var1[0]: ", var1[0])
-print ("var2[1:5]: ", var2[1:5])
 
 
 字段拼接
@@ -541,10 +237,33 @@ print ("已更新字符串 : ", var1[:6] + 'Runoob!')
 
 
 
+-----------------------------------   截取字符串   -----------------------------------
+
+str = '0123456789'
+print("字符串是:    0123456789")
+print("截取第一位到第三位的字符:   " + str[0:3])
+print("截取字符串的全部字符   "+str[:])
+print("截取第七个字符到结尾   "+str[6:])
+print("截取从头开始到倒数第三个字符之前   "+str[:-3])
+print("截取第三个字符   "+str[2])
+print("截取倒数第一个字符   "+str[-1])
+print("创造一个与原字符串顺序相反的字符串    "+str[::-1])
+print("截取倒数第三位与倒数第一位之前的字符    "+str[-3:-1])
+print("截取倒数第三位到结尾    "+str[-3:])
+print("逆序截取    "+str[:-5:-3])
+
+print(r'hello\nrunoob')     # 在字符串前面添加一个 r，表示原始字符串，不会发生转义
 
 
+
+
+
+
+
+
+
+-----------------------------------   分割字符串   ----------------------------------- 
 split():
-    分割字符串
 string.split(str="", num=string.count(str))
     str -- 分隔符，默认为所有的空字符，包括空格、换行(\n)、制表符(\t)等
     num -- 分割次数。默认为 -1, 即分隔所有
@@ -972,6 +691,249 @@ print(millis)                              # 1584112467748
 
 ```
 </details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> 时间 / 日期 : </b></summary>
+
+```  
+
+获取时间戳:
+import time  # 引入time模块
+ticks = time.time()
+print("当前时间戳为:", ticks)               #  1584112467.7476895
+millis = int(round(time.time() * 1000))
+print(millis)                              # 1584112467748
+
+
+
+时间戳单位最适于做日期运算。但是1970年之前的日期就无法以此表示了。太遥远的日期也不行，
+UNIX和Windows只支持到2038年
+
+
+
+
+import time
+
+
+print (time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
+>>> 2016-04-07 10:29:46
+
+print (time.strftime("%a %b %d %H:%M:%S %Y", time.localtime()))
+>>> Thu Apr 07 10:29:46 2016
+  
+将格式字符串转换为时间戳
+a = "Sat Mar 28 22:24:24 2016"
+print (time.mktime(time.strptime(a,"%a %b %d %H:%M:%S %Y")))
+>>> 1459175064.0
+
+
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> try / cache </b></summary>
+
+```  
+
+捕获异常
+python 并不是 try/cache , 而是 try/except
+
+while True:
+    try:
+        x = int(input("请输入一个数字: "))
+        break
+    except ValueError:
+        print("您输入的不是数字，请再次尝试输入！")
+
+
+try-finally 语句无论是否发生异常都将执行最后的代码。        
+
+使用 raise 语句抛出一个指定的异常:
+x = 10
+if x > 5:
+    raise Exception('x 不能大于 5。x 的值为: {}'.format(x))
+
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> 函数: </b></summary>
+
+```  
+
+函数参数的使用不需要使用指定顺序：
+def printinfo( name, age ):
+   "打印任何传入的字符串"
+   print ("名字: ", name)
+   print ("年龄: ", age)
+   return
+ 
+#调用printinfo函数
+printinfo( age=50, name="runoob" )
+
+默认参数
+调用函数时，如果没有传递参数，则会使用默认参数。以下实例中如果没有传入 age 参数，则使用默认值:
+def printinfo( name, age = 35 ):
+   print ("名字: ", name)
+   print ("年龄: ", age)
+   return
+
+
+不定长参数 ( 一个 * 号 ):
+def printinfo( arg1, *vartuple ):
+   "打印任何传入的参数"
+   print ("输出: ")
+   print (arg1)
+   print (vartuple)
+
+printinfo( 70, 60, 50 )
+输出: 
+70
+(60, 50)
+
+
+
+加了两个星号 ** 的参数会以字典的形式导入
+def printinfo( arg1, **vardict ):
+   "打印任何传入的参数"
+   print ("输出: ")
+   print (arg1)
+   print (vardict)
+ 
+# 调用printinfo 函数
+printinfo(1, a=2,b=3)
+输出: 
+1
+{'a': 2, 'b': 3}
+
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> 循环: </b></summary>
+
+```  
+
+
+languages = ["C", "C++", "Perl", "Python"] 
+for x in languages:
+     print (x)
+
+
+
+for i in range(1, 5):
+    print(i)
+输出:
+1
+2
+3
+4
+
+
+
+# 该条件永远为true，循环将无限执行下去
+while True:
+    print(123)
+
+
+
+也可以使用range指定区间的值：
+for i in range(5,9) :
+    print(i)
+
+
+也可以使range以指定数字开始并指定不同的增量(甚至可以是负数，有时这也叫做'步长'):
+for i in range(0, 10, 3) 
+
+break 语句可以跳出 for 和 while 的循环体。
+如果你从 for 或 while 循环中终止，任何对应的循环 else 块将不执行。
+
+continue 语句被用来告诉 Python 跳过当前循环块中的剩余语句，然后继续进行下一轮循环
+
+
+```
+</details>
+
+
+
 
 
 

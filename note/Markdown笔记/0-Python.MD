@@ -309,18 +309,6 @@ f'Hello {name}'  # 替换变量
 
 
 
-判断是否全是英文?
-    空格可以有
-pattern = re.compile(r'[^a-zA-Z\s]+')
-result1 = pattern.findall('runoob    asdasd    DASDASDAS      ')
-print(len(result1))
->>> 0
-# 返回 0 表示: 全英文
-
-
-
-
-
 
 center() 方法返回一个指定的宽度 width 居中的字符串，fillchar 为填充的字符，默认为空格。
 str = "[www.runoob.com]"
@@ -336,59 +324,6 @@ str.count(sub, start= 0,end=len(string))
 sub='run'
 str.count(sub,0,10)
 
-
-
-'H' in a 输出结果 True          是否包含
-'M' not in a 输出结果 True      是否不包含
-
-find(str, beg=0, end=len(string))   检测 str 是否包含在字符串中，如果指定范围 beg 和 end
-
-index(str, beg=0, end=len(string))  跟find()方法一样，只不过如果str不在字符串中会报一个异常
-
-isalnum()       如果字符串至少有一个字符并且所有字符都是字母或数字则返 回 True,否则返回 False
-
-isalpha()        如果字符串至少有一个字符并且所有字符都是字母则返回 True, 否则返回 False
-
-isdigit()       如果字符串只包含数字则返回 True 否则返回 False..
-
-str.isdigit())  判断所有字符都是数字
-
-str.isalnum()   判断所有字符都是数字或者字母
-
-str.isalpha()   判断所有字符都是字母
-print("asdasd.".encode('UTF-8').isalpha())                  > 返回 False
-print("asda asdas asdasd".encode('UTF-8').isalpha())        > 返回 Fase ( 带空格了 )
-
-str.isupper()   判断所有字符都是大写
-
-str.islower()   判断所有字符都是小写
-
-str.istitle()   判断所有单词都是首字母大写，像标题
-
-str.isspace()   判断所有字符都是空白字符、\t、\n、\r
-
-isnumeric()     如果字符串中只包含数字字符，则返回 True，否则返回 False
-
-len(string)     返回字符串长度
-
-lower()         转换字符串中所有大写字符为小写
-upper()         转换字符串中的小写字母为大写
-capitalize()    将字符串的第一个字母变成大写,其他字母变小写 str.capitalize()
-
-lstrip()        截掉字符串左边的空格或指定字符。
-
-max(str)        返回字符串 str 中最大的字母。  min(str) 反之
-
-rstrip()        删除字符串字符串末尾的空格.
-
-startswith(substr, beg=0,end=len(string))   检查字符串是否是以指定子字符串 substr 开头，是则返回 True，否则返回 False。
-                                            如果beg 和 end 指定值，则在指定范围内检查
-
-
-
-......
-
-还有好多好多, python内置了许多方法函数供人们调用,   https://www.runoob.com/python3/python3-string.html
 
 
 ```
@@ -419,7 +354,7 @@ startswith(substr, beg=0,end=len(string))   检查字符串是否是以指定子
 
 
 <details>
-<summary><b> 字符串: 包含中文 / 数字 / 英文 / 特殊字符</b></summary>
+<summary><b> 字符串: 判断/包含 中文 / 数字 / 英文 / 特殊字符</b></summary>
 
 ```  
 
@@ -454,8 +389,71 @@ print(hi)
 print('你' in test)         # 返回 True
 
 
+
+
+
+
+
+
+
+
+
+
+判断是否全是英文?
+    空格可以有
+pattern = re.compile(r'[^a-zA-Z\s]+')
+result1 = pattern.findall('runoob    asdasd    DASDASDAS      ')
+print(len(result1))
+>>> 0
+# 返回 0 表示: 全英文
+
+
+
+
+'H' in a 输出结果 True          是否包含
+'M' not in a 输出结果 True      是否不包含
+
+find(str, beg=0, end=len(string))   检测 str 是否包含在字符串中，如果指定范围 beg 和 end
+index(str, beg=0, end=len(string))  跟find()方法一样，只不过如果str不在字符串中会报一个异常
+isalnum()       如果字符串至少有一个字符并且所有字符都是字母或数字则返 回 True,否则返回 False
+isalpha()        如果字符串至少有一个字符并且所有字符都是字母则返回 True, 否则返回 False
+isdigit()       如果字符串只包含数字则返回 True 否则返回 False..
+str.isdigit())  判断所有字符都是数字
+str.isalnum()   判断所有字符都是数字或者字母
+str.isalpha()   判断所有字符都是字母
+
+print("asdasd.".encode('UTF-8').isalpha())                  > 返回 False
+print("asda asdas asdasd".encode('UTF-8').isalpha())        > 返回 Fase ( 带空格了 )
+
+str.isupper()   判断所有字符都是大写
+str.islower()   判断所有字符都是小写
+str.istitle()   判断所有单词都是首字母大写，像标题
+str.isspace()   判断所有字符都是空白字符、\t、\n、\r
+isnumeric()     如果字符串中只包含数字字符，则返回 True，否则返回 False
+len(string)     返回字符串长度
+lower()         转换字符串中所有大写字符为小写
+upper()         转换字符串中的小写字母为大写
+capitalize()    将字符串的第一个字母变成大写,其他字母变小写 str.capitalize()
+lstrip()        截掉字符串左边的空格或指定字符。
+max(str)        返回字符串 str 中最大的字母。  min(str) 反之
+rstrip()        删除字符串字符串末尾的空格.
+startswith(substr, beg=0,end=len(string))   检查字符串是否是以指定子字符串 substr 开头，是则返回 True，否则返回 False。
+                                            如果beg 和 end 指定值，则在指定范围内检查
+
+...                                            
+
+还有好多好多, python内置了许多方法函数供人们调用,   https://www.runoob.com/python3/python3-string.html
+
+
+
 ```
 </details>
+
+
+
+
+
+
 
 
 

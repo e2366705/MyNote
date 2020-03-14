@@ -139,11 +139,15 @@ print(r'hello\nrunoob')     # 在字符串前面添加一个 r，表示原始字
 
 
 
+ python 没有自增运算符
+ 所以 count++ 是错误的写法
+ 正确应该是 count = count + 1
+ 
+
 
 睡眠 / 暂停 (秒数)
 sleep(3)                3 秒
 time.sleep(5)           5 秒
-
 
 
 
@@ -255,6 +259,23 @@ print("逆序截取    "+str[:-5:-3])
 print(r'hello\nrunoob')     # 在字符串前面添加一个 r，表示原始字符串，不会发生转义
 
 
+
+
+
+
+
+
+
+-----------------------------------   替换字符串   ----------------------------------- 
+
+replace()方法语法：
+str.replace(old, new[, max])
+old -- 将被替换的子字符串
+new -- 新字符串，用于替换old子字符串
+max -- 可选字符串, 替换不超过 max 次
+
+str = "this is AAisAA 123is123  string example....wow!!!"
+print (str.replace("is", "was"))                # thwas was AAwasAA 123was123  string example....wow!!!
 
 
 
@@ -574,6 +595,7 @@ random.choice( seq  )           # seq -- 可以是一个列表，元组或字符
 import random
 
 print ("从 range(100) 返回一个随机数 : ",random.choice(range(100)))                       # 96
+print ("从 1 到 6 返回一个随机数 : ",random.choice(range(1, 6)))                          # 5
 print ("从列表中 [1, 2, 3, 5, 9]) 返回一个随机元素 : ", random.choice([1, 2, 3, 5, 9]))    # 3
 print ("从字符串中 'Runoob' 返回一个随机字符 : ", random.choice('Runoob'))                 # b
 
@@ -826,6 +848,18 @@ if x > 5:
 <summary><b> 函数: </b></summary>
 
 ```  
+
+ 
+ 如何返回多个值:
+    函数的return 语句只能返回一个值，可以是任何类型
+    因此，我们可以“返回一个 tuple类型，来间接达到返回多个值 
+
+    def F1 ():
+        略...
+        return ( a,b )     # 也可以写作 return a, b
+
+    (c, d )= F1()          # 也可以写作 c , d = F1 ( 9, 4 )
+
 
 函数参数的使用不需要使用指定顺序：
 def printinfo( name, age ):

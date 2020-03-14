@@ -1121,9 +1121,19 @@ function isStudentNo(str) {
 
 
 <details>
-<summary><b> 字符串之 :  Unicode 转换 </b></summary>
+<summary><b> 字符串之 :  编码 / 解码 / 转码 </b></summary>
 
 ```  
+
+
+如果URL中有汉字，就必须编码后使用:
+    URL 在线解码工具 :  https://tool.chinaz.com/tools/urlencode.aspx
+
+    网址路径中包含汉字 :
+        比如 : ttp://www.xxxxx.com/您好
+        自动对“你好”进行了编码:
+        http://www.haorooms.com/%E6%82%A8%E5%A5%BD 
+
 
 
 
@@ -1144,13 +1154,80 @@ function isStudentNo(str) {
 
 
 
-
-
   // Unicode -> 字符串
   function Unicode_to_string(unicode) {
     return eval("'" + unicode + "'");
   }
   console.log(Unicode_to_string("\u6211\u6211\u6211\u6211\u6211\u6211"));     // 我我我我我我
+
+
+    更加直接的 字符串 -> Unicode
+    escape("春节");
+    输出: %u6625%u8282
+    
+    unescape("%u6625%u8282");
+    输出: 春节
+
+    escape("hello word");
+    输出: hello%20word
+
+
+
+
+
+
+-----------------------------------    关于 URL   ----------------------------------- 
+浏览器 URL 中文 编码转换
+    decodeURI("%E9%AB%98%E8%80%83")
+    输出: 高考
+
+    encodeURI("高考")
+    输出: %E9%AB%98%E8%80%83
+
+
+
+
+获取页面URL信息 (当前页面链接地址)
+    参考资料:  https://www.jianshu.com/p/073f79c5e438
+
+    完整链接:  http://localhost:8081/Word/Remember?Date=2020-02-10
+
+    var test = window.location.href;
+    console.log(test);
+    >>> http://localhost:8081/Word/Remember?Date=2020-02-10
+
+    var test1 = window.location.pathname;
+    console.log(test1);
+    >>> /Word/Remember
+
+    var test2 = window.location.search;
+    console.log(test2);
+    >>> ?Date=2020-02-10
+
+
+
+
+获取url参数:
+    function getQueryVariable(variable){
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        for (var i=0;i<vars.length;i++) {
+                var pair = vars[i].split("=");
+                if(pair[0] == variable){return pair[1];}
+        }
+        return(false);
+    }
+
+    测试:
+    假设现在有一个 url:   http://www.runoob.com/index.php?id=1&image=awesome.jpg
+
+        调用 getQueryVariable("id")          返回 1
+        调用 getQueryVariable("image")       返回 awesome.jpg
+
+
+
+
+
 
 
 
@@ -1797,140 +1874,6 @@ window.open("http://www.JD.com");                           // 新窗口打开
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<details>
-<summary><b>获取页面URL信息 (当前页面链接地址) </b></summary>
-
-```  
-
-
-参考资料:  https://www.jianshu.com/p/073f79c5e438
-
-完整链接:  http://localhost:8081/Word/Remember?Date=2020-02-10
-
-var test = window.location.href;
-console.log(test);
->>> http://localhost:8081/Word/Remember?Date=2020-02-10
-
-var test1 = window.location.pathname;
-console.log(test1);
->>> /Word/Remember
-
-var test2 = window.location.search;
-console.log(test2);
->>> ?Date=2020-02-10
-
-
-获取url中的参数值*
-    console.log(GetQueryString("Date"));
-    >>> 2020-02-10
-
-    function GetQueryString(name) {
-        var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
-        var r = window.location.search.substr(1).match(reg);
-        if (r != null) {
-            return unescape(r[2]);
-        }
-        return null;
-    }
-
-
-
-
-
-
-
-
-
-
-Springboot 中 thymeleaf 使用: 
-    <h1 th:text="${#request.getQueryString()}"></h1>
-    <a th:href="${#request.getRequestURI()} + '?page='  +  ${nav}"  th:if="${nav != pageInfo.pageNum}" ></a>
-
-假设 url：http://localhost:8080/CarsiLogCenter_new/idpstat.jsp?action=idp.sptopn
-	request.getRequestURL()              http://localhost:8080/CarsiLogCenter_new/idpstat.jsp
-	request.getRequestURI()              /CarsiLogCenter_new/idpstat.jsp
-	request.getContextPath()             /CarsiLogCenter_new
-	request.getServletPath()             /idpstat.jsp
-	request.getQueryString()             action=idp.sptopn
-
-
-
-
-假设 url：
-	http://localhost:8081/Article/Read_Article?name=YXB&password=12345
-
-	<h1 th:text="${#httpServletRequest.getScheme()}"></h1>
-	http
-
-	<h1 th:text="${#httpServletRequest.getServerName()}"></h1>
-	localhost
-
-	<h1 th:text="${#httpServletRequest.getServerPort()}"></h1>
-	8081
-
-	<h1 th:text="${#request.getSession().getServletContext().getRealPath('/')}"></h1>
-	C:\Users\SpringBoot\AppData\Local\Temp\tomcat-docbase.4234408327941048660.8081\
-
-	<h1 th:text="${#request.getRequestURI()}"></h1>
-	/Article/Read_Article
-
-	<h1 th:text="${#request.getQueryString()}"></h1>
-	name=YXB&password=12345
-
-
-
-
-
-
-
-thymeleaf 中 跳转链接
-    <a th:href="@{'/menu/getMenu?pageNum='+ ${pageInfo.firstPage}}" >首页</a>
-
-
-
-方式二:
-    这种方式也行:
-    <a th:href="'?page=1'">首页</a>   =>   http://localhost:8081/Article/Read_Article?page=1
-  
-    <td th:if="${pageInfo.hasPreviousPage}">
-        <a th:href="'?page='+${pageInfo.prePage}">上一页</a>
-    </td>    
-
-
-```
-</details>
 
 
 

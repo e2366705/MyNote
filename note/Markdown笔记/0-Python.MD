@@ -1686,8 +1686,62 @@ print(str)
 f.close()
 
 
+逐行读取:
+import os
+for line in open(r"C:\Users\TEST.txt" , encoding="UTF-8"):
+    if line != "\n":
+        line = line.replace("\n", "")         # 把 换行符替换掉
+        print(line)
+
+
 ```
 </details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> IO : 文件夹 / 文件 </b></summary>
+
+```
+
+import os
+path = r"C:\Users\SpringBoot\PycharmProjects\untitled1\English_Article_Spider\English_Article"  
+files = os.listdir(path)                    # 得到所有文件名称
+for file in files:                          # 遍历
+    if not os.path.isdir(file):             # 判断是否是文件夹，不是文件夹才打开
+        print("文件名称为:   " + file )     # 输出 当前这个文件的文件名
+
+
+```
+</details>
+
+
+
+
+
 
 
 

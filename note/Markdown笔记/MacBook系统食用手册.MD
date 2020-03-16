@@ -17,7 +17,11 @@ option + command + L         打开浏览器的下载历史
 Command + R                  浏览器刷新网页
 Command + W                  关闭当前标签页
 option + command + esc       强制退出
+Ctrl + 右上角倒三角图标       实现关机
+Ctrl + command + Q           锁定电脑
 
+command + F                  视频全屏
+Ctrl + command + F           软件全屏
 
 
 ```
@@ -47,18 +51,6 @@ MySQL 客户端管理工具:
 
 
 ```
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

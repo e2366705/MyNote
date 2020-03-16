@@ -279,6 +279,16 @@ print (str.replace("is", "was"))                # thwas was AAwasAA 123was123  s
 
 
 
+使用 正则表达式 替换字符串:
+import re
+str = 'AAA 123123123 !@#%#^ttt$^&& 123QQQ'
+print(re.sub(r'[A-Za-z]', '=', str))
+输出: 
+    === 123123123 !@#%#^===$^&& 123===
+
+把所有的中文, 替换成空字符串:
+print(re.sub(r'[\u4e00-\u9fa5]+' , '', str))
+
 
 
 
@@ -1464,28 +1474,6 @@ print(a ^ b)     # a 和 b 中不同时存在的元素
 
 ```
 </details>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

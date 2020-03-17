@@ -1,5 +1,5 @@
 # CSS
-* 看起来简单, 实际复杂的没边...
+看起来简单, 实际复杂的没边...
 
 
 
@@ -54,15 +54,6 @@ CSS左上圆角:border-top-left-radius: 15px;
 
 padding : 内边距
 margin : 外边距
-
-上下居中 : line-height: 40px;
-左右居中 : text-align: center;
-	div里面如果是行级元素,用text-align: center使子元素左右居中
-	div里面如果是块级元素, 在块级元素上面加入 margin: 0 auto 使自己相对父元素左右居中
-	居中 : margin: 0 auto;  (margin: 0 auto 只能用于块级元素)
-
-li 标签是行内元素,可以用text-align: center;来居中;
-而margin:0 auto;没有效果  (margin: 0 auto 只能用于块级元素)
 
 margin : 上 右 下 左
 margin : 上下 左右
@@ -127,6 +118,36 @@ cursor: pointer;  /* 鼠标放上去有个小手 */
 
 ```
 </details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -753,13 +774,23 @@ text-align: center; 用来居中详解:
 		text-align:center 加在父元素上, 或者子元素上, 都是可以的
 
 		
-margin: 0 auto; 用来居中详解:
+margin: 0 auto 只能用于块级元素, 也就是说要设置成: display: block; 
+
 默认父元素是块级元素(div之类的):
 	1-1.子元素是内联元素(span之类):
 		加 margin: 0 auto 是不起作用的
 		
 	1-2.子元素是块级元素(div之类的):
 		 margin: 0 auto; 也是不起作用的(除非设置宽和高)
+
+上下居中 : line-height: 40px;
+左右居中 : text-align: center;
+	div里面如果是行级元素,用text-align: center使子元素左右居中
+	div里面如果是块级元素, 在块级元素上面加入 margin: 0 auto 使自己相对父元素左右居中
+
+li 标签是行内元素,可以用text-align: center;来居中;
+而margin:0 auto;没有效果  (margin: 0 auto 只能用于块级元素)
+ 
 
 ```
 </details>

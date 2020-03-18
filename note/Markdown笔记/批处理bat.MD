@@ -38,6 +38,12 @@
 
 ```  
 
+
+
+参考资料 :      http://xstarcd.github.io/wiki/windows/windows_cmd_summary_commands.html
+
+
+
 pause    表示 命令行的那个黑框框不会消失
 
 

@@ -145,6 +145,129 @@ btn-group-justified: 三个按钮平分整个屏幕:
 
 
 
+<details>
+<summary><b> 字体图标 垂直居中 </b></summary>
+
+```
+
+/*  bootstrap 字体图标 垂直居中  */
+.nav a::before {
+  vertical-align: middle;
+  padding-right: 5px;
+}
+
+
+<div class="nav">
+  <ul>
+    <li><a href="#" class="glyphicon glyphicon-signal">电商整机</a></li>
+  </ul>
+</div>
+
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 响应式开发, 技术点
+<details>
+<summary><b> 响应式 动态 </b></summary>
+
+```
+    /*     当进入小屏幕 或者 超小屏幕的时候, 让 nav 里面的 li 浮动起来, 并且宽度为 20%    */
+    @media screen and (max-width: 991px) {
+      .nav li {
+        float: left;
+        width: 20%;
+      }
+
+      article {
+        margin-top: 10px;
+      }
+    }
+
+    /*     当进入超小屏幕的时候, 让 nav 文字会变成 14px    */
+    @media screen and (max-width: 767px) {
+      .nav li a {
+        font-size: 12px;
+        padding-left: 0;
+      }
+
+      /* 当我们处于超小屏幕, news 第一个 li 宽度为 100% , 剩下的 小 li 各 50% */
+      .news li:nth-child(1) {
+        width: 100% !important;
+      }
+
+      .news li {
+        width: 50% !important;
+      }
+
+    }
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> 超小屏幕的时候 隐藏起来 </b></summary>
+
+```
+<!--    hidden-xs 表示处于超小屏幕的时候 隐藏起来    (具体细节参考 Bootstrap 手册)    -->
+<img src="https://www.w3school.com.cn/i/eg_tulip.jpg" class="hidden-xs">
+
+```
+</details>
+
+
+
+
+
+
+
+
 
 
 
@@ -375,6 +498,363 @@ autofocus="autofocus"  是页面加载 input 自动获取焦点
 </script>
 </html>
 
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 完整 Demo
+<details>
+<summary><b> 响应式web : 阿里百秀 </b></summary>
+
+```
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+  <script src="https://s1.pstatp.com/cdn/expire-1-M/jquery/2.1.4/jquery.min.js" type="application/javascript"></script>
+  <link href="https://s2.pstatp.com/cdn/expire-1-M/twitter-bootstrap/3.4.0/css/bootstrap.min.css" type="text/css"
+    rel="stylesheet" />
+  <script src="https://s1.pstatp.com/cdn/expire-1-M/twitter-bootstrap/3.4.0/js/bootstrap.min.js"
+    type="application/javascript"></script>
+  <script src="https://s0.pstatp.com/cdn/expire-1-M/vue/2.6.10/vue.min.js" type="application/javascript"></script>
+  <script src="https://s1.pstatp.com/cdn/expire-1-M/layer/2.3/layer.js" type="application/javascript"></script>
+
+  <style>
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    a {
+      color: #666;
+      text-decoration: none;
+    }
+
+    @media screen and (min-width: 1280px) {
+      .container {
+        width: 1280px;
+      }
+    }
+
+
+    /*      header    */
+    header {
+      padding-left: 0 !important;
+    }
+
+    .logo img {
+      display: block;
+      margin: 0 auto;
+      max-width: 100%;
+    }
+
+    /*  1. 如果进入了超小屏幕下, logo 里面的图片就隐藏起来  */
+    /* 2. 事先准备好一个盒子, 在 logo 里面 , 它平时是隐藏起来的, 只有在超小屏幕下显示 */
+    .logo span {
+      display: block;
+      height: 50px;
+      line-height: 50px;
+      font-size: 18px;
+      background-color: black;
+      color: greenyellow;
+      text-align: center;
+    }
+
+    .nav {
+      background-color: #eee;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .nav a {
+      display: block;
+      height: 50px;
+      line-height: 50px;
+      padding-left: 30px;
+      font-size: 16px;
+    }
+
+    .nav a:hover {
+      background-color: #fff;
+    }
+
+    /*  bootstrap 字体图标 垂直居中  */
+    .nav a::before {
+      vertical-align: middle;
+      padding-right: 5px;
+    }
+
+
+
+
+
+    /*       article          */
+    .news li {
+      float: left;
+      width: 25%;
+      height: 128px;
+      padding-right: 10px;
+      margin-bottom: 10px;
+    }
+
+    /*     当进入小屏幕 或者 超小屏幕的时候, 让 nav 里面的 li 浮动起来, 并且宽度为 20%    */
+    @media screen and (max-width: 991px) {
+      .nav li {
+        float: left;
+        width: 20%;
+      }
+
+      article {
+        margin-top: 10px;
+      }
+    }
+
+    /*     当进入超小屏幕的时候, 让 nav 文字会变成 14px    */
+    @media screen and (max-width: 767px) {
+      .nav li a {
+        font-size: 12px;
+        padding-left: 0;
+      }
+
+      /* 当我们处于超小屏幕, news 第一个 li 宽度为 100% , 剩下的 小 li 各 50% */
+      .news li:nth-child(1) {
+        width: 100% !important;
+      }
+
+      .news li {
+        width: 50% !important;
+      }
+
+    }
+
+    .news li a {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 100%;
+      background-color: purple;
+    }
+
+    .news li a img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .news li a p {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 41px;
+      background-color: rgba(0, 0, 0, 0.5);
+      font-size: 12px;
+      color: #fff;
+      margin-bottom: 0;
+      padding: 0 10px;
+    }
+
+    .news li:nth-child(1) {
+      width: 50%;
+      height: 266px;
+    }
+
+
+    .news li:nth-child(1) p {
+      font-size: 21px;
+      line-height: 41px;
+    }
+
+
+
+
+
+
+    /*          publish          */
+    .publish {
+      border-top: 1px solid #ccc;
+    }
+
+    .publish .row {
+      border-bottom: 1px solid #ccc;
+    }
+
+    .pic {
+      margin-top: 10px;
+    }
+
+    .pic img {
+      width: 100%;
+    }
+
+
+
+
+
+    /*           aside             */
+    .banner img {
+      width: 100%;
+    }
+
+    .hot {
+      display: block;
+      margin-top: 20px;
+      padding: 0 20px 20px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+
+<body>
+
+
+
+  <div class="container">
+    <div class="row">
+
+      <h2>响应式开发: 尝试把浏览器缩放至不同的大小, 手机端也是</h2>
+      <h2> 教程来源 : https://www.bilibili.com/video/av86016423?p=29 </h2>
+      <!--            header           -->
+      <header class="col-md-2">
+        <div class="logo">
+          <a href="#">
+            <!--    hidden-xs 表示处于超小屏幕的时候 隐藏起来    (具体细节参考 Bootstrap 手册)    -->
+            <img src="https://www.w3school.com.cn/i/eg_tulip.jpg" class="hidden-xs">
+
+            <!--  2. 事先准备好一个盒子, 在 logo 里面 , 它平时是隐藏起来的, 只有在超小屏幕下显示  -->
+            <!--  visible-xs 表示只有屏幕尺寸在 xs 下才可以表现出来 (具体细节参考 Bootstrap 手册) -->
+            <span class="visible-xs">哈哈百科</span>
+
+          </a>
+        </div>
+        <div class="nav">
+          <ul>
+            <li><a href="#" class="glyphicon glyphicon-signal">电商整机</a></li>
+            <li><a href="#" class="glyphicon glyphicon-repeat">婴儿用品</a></li>
+            <li><a href="#" class="glyphicon glyphicon-lock">零食食品</a></li>
+            <li><a href="#" class="glyphicon glyphicon-camera">电子产品</a></li>
+            <li><a href="#" class="glyphicon glyphicon-share">电器数码</a></li>
+          </ul>
+        </div>
+      </header>
+
+
+      <!--           article             -->
+      <article class="col-md-7">
+
+        <!-- 新闻 -->
+        <div class="news clearfix">
+          <ul>
+            <li>
+              <a href="#">
+                <img src="https://www.w3school.com.cn/i/eg_tulip.jpg" alt="">
+                <p>哈哈哈哈哈</p>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="https://www.w3school.com.cn/i/eg_tulip.jpg" alt="">
+                <p>2 为什么会 出现这种 问提 啊实打实的 啊实打打 </p>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="https://www.w3school.com.cn/i/eg_tulip.jpg" alt="">
+                <p>3 为什么会 出现这种 问提 啊实打实的 啊实打打 </p>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="https://www.w3school.com.cn/i/eg_tulip.jpg" alt="">
+                <p>4 为什么会 出现这种 问提 啊实打实的 啊实打打 </p>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="https://www.w3school.com.cn/i/eg_tulip.jpg" alt="">
+                <p>5 为什么会 出现这种 问提 啊实打实的 啊实打打 </p>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+
+
+
+        <!-- 发表 -->
+        <div class="publish">
+          <div class="row">
+            <div class="col-sm-9">
+              <h3>电子: 关于电源的参数, 你知道几个?</h3>
+              <p class="text-muted">YXB 发布于 2020-03-10</p>
+              <p> 阿斯顿阿斯顿阿萨大 阿斯顿啊 啊实打实 阿斯顿阿萨 阿斯顿啊 阿萨大是的 阿斯顿</p>
+              <p class="text-muted">阅读(20228) 评论(56) 赞(189) 标签: 健康/电子/电器/装机/数码</p>
+            </div>
+            <div class="col-sm-3 pic hidden-xs">
+              <img src="https://www.w3school.com.cn/i/eg_tulip.jpg" alt="">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-9">
+              <h3>电子: 关于电源的参数, 你知道几个?</h3>
+              <p class="text-muted">YXB 发布于 2020-03-10</p>
+              <p> 阿斯顿阿斯顿阿萨大 阿斯顿啊 啊实打实 阿斯顿阿萨 阿斯顿啊 阿萨大是的 阿斯顿</p>
+              <p class="text-muted">阅读(20228) 评论(56) 赞(189) 标签: 健康/电子/电器/装机/数码</p>
+            </div>
+            <div class="col-sm-3 pic hidden-xs">
+              <img src="https://www.w3school.com.cn/i/eg_tulip.jpg" alt="">
+            </div>
+          </div>
+        </div>
+      </article>
+
+
+
+
+
+      <!--          aside                 -->
+      <aside class="col-md-3">
+        <a href="#" class="banner">
+          <img src="https://www.w3school.com.cn/i/eg_tulip.jpg" alt="">
+        </a>
+        <a href="#" class="hot">
+          <span class="btn btn-primary">热搜</span>
+          <h4 class="text-primary">怎么才能最好???</h4>
+          <p>这里是全球最大!@#$#$^% ^&%$ ^& 大苏打$ 阿斯顿发生 </p>
+        </a>
+      </aside>
+    </div>
+  </div>
+
+
+
+</body>
+<script>
+</script>
+</html>
 
 ```
 </details>

@@ -64,6 +64,11 @@ Ajax 适用于加载一些临时性的数据 (优点是不刷新整个网页)
 
 
 
+连接字符串:
+var aaa = 123123;
+console.log(`为什么我会有 ${aaa} 个苹果手机`);
+
+
 
 ```
 </details>
@@ -815,6 +820,13 @@ window.screen.availWidth;           //屏幕可用工作区的宽						返回 32
 <summary><b>字符串之 : 基本操作:</b></summary>
 
 ```  
+
+
+拼接字符串:
+var aaa = 123123;
+console.log(`为什么我会有 ${aaa} 个苹果手机`);
+
+
 
 大小写转换:
     phrase_array[i] = phrase_array[i].toUpperCase();     // 正确的

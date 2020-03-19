@@ -627,7 +627,10 @@ random.randrange ([start,] stop [,step])
 #!/usr/bin/python3
 import random
  
-# 从 1-100 中选取一个奇数
+# 从 1-100 中随机选取一个数, 变化幅度至少为 10
+print ("randrange(1,100, 2) : ", random.randrange(1, 100, 10))
+
+# 从 1-100 中随机选取一个数, 变化幅度至少为 2
 print ("randrange(1,100, 2) : ", random.randrange(1, 100, 2))
  
 # 从 0-99 选取一个随机数
@@ -950,20 +953,22 @@ for i in range(1, 5):
 4
 
 
+也可以使range以指定数字开始并指定不同的增量(甚至可以是负数，有时这也叫做'步长', 这个循环中, 25就是步长):
+for i in range(0, 125, 25):
+    print(i)
+输出:
+    0
+    25
+    50
+    75
+    100
+
+
 
 # 该条件永远为true，循环将无限执行下去
 while True:
     print(123)
 
-
-
-也可以使用range指定区间的值：
-for i in range(5,9) :
-    print(i)
-
-
-也可以使range以指定数字开始并指定不同的增量(甚至可以是负数，有时这也叫做'步长'):
-for i in range(0, 10, 3) 
 
 break 语句可以跳出 for 和 while 的循环体。
 如果你从 for 或 while 循环中终止，任何对应的循环 else 块将不执行。
@@ -973,11 +978,6 @@ continue 语句被用来告诉 Python 跳过当前循环块中的剩余语句，
 
 ```
 </details>
-
-
-
-
-
 
 
 
@@ -1039,6 +1039,17 @@ continue 语句被用来告诉 Python 跳过当前循环块中的剩余语句，
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 <details>
 <summary><b> 各种转换 (字符串, 集合, 字典, 列表......) </b></summary>
 
@@ -1069,6 +1080,15 @@ list(dict.values())
 
 ```
 </details>
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1200,6 +1220,19 @@ L[1:]	['Runoob', 'Taobao']	输出从第二个元素开始后的所有元素
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
  
 
 <details>
@@ -1253,10 +1286,28 @@ L[1:]	('Taobao', 'Runoob')	截取元素，从第二个开始后的所有元素
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <details>
 <summary><b> Dictionary(字典) </b></summary>
 
 ```  
+
+
+
+
 
 Dictionary(字典):
     特点:无序, 
@@ -1393,8 +1444,34 @@ for i, v in enumerate(['tic', 'tac', 'toe']):
 
 
 
+zip 函数:
+for star, title, brief_introduction in zip(star, list, brief_introduction):
+   result = {
+       "title": title,
+       "star": star,
+       "brief_introduction": brief_introduction,
+   }
+   print(result)
+   print(type(result))
+
+输出:
+	{'title': '范特西', 'star': '9.2', 'brief_introduction': '周杰伦 / 2001-09-14 / 专辑 / CD / 流行'}
+	<class 'dict'>
+
+
+
+
 ```
 </details>
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1714,6 +1791,14 @@ for line in open(r"C:\Users\TEST.txt" , encoding="UTF-8"):
 <summary><b> IO : 文件夹 / 文件 </b></summary>
 
 ```
+
+获取项目根目录:
+FilePath = os.getcwd() + '\pictureJay\\'
+print(FilePath)
+输出:
+    C:\Users\SpringBoot\PycharmProjects\untitled1\pictureJay\
+
+
 
 import os
 path = r"C:\Users\SpringBoot\PycharmProjects\untitled1\English_Article_Spider\English_Article"  
@@ -2536,8 +2621,14 @@ urlpatterns = [
 
 ```  
 
-写爬虫的时候会遇到 文件编码乱码的问题, 查看 字符串 那一章节有详细解决方法
+方式 1:
+    写爬虫的时候会遇到 文件编码乱码的问题, 查看 字符串 那一章节有详细解决方法
 
+方式 2:
+    con = requests.get(url, headers=header)
+    r = con.content
+    print(r.decode('utf-8'))          # 爬取出来的网页 转码, 转成 UTF-8 格式
+    
 ```
 </details>
 
@@ -2602,7 +2693,7 @@ print(r.decode('utf-8'))
 
 
 <details>
-<summary><b> Xpath </b></summary>
+<summary><b> Xpath : 语法 </b></summary>
 
 ```  
 
@@ -2627,6 +2718,21 @@ h3 = xpath_code.xpath("//a[@class='entry_tit']/@href")
 Article_content = xpath_code.xpath("//div[@class='xqy_core_text']/p/text()")
 
 
+# 找出 class 为 item 的 tr (返回一个集合)
+count = html.xpath("//tr[@class='item']")
+
+
+normalize-space:
+    这个方法就可以去除文本中的前后空格和回车:
+    title = info.xpath("normalize-space(td[2]/div/a/text())")             # 获取标题
+
+    如果不加 normalize-space , 那么爬出来的数据就是这样子的:
+    ['\n            We Sing. We Dance. We Steal Things.\n       ']
+
+    如果加了 normalize-space , 那么爬取出来的数据是这样子的:
+    {'title': 'We Sing. We Dance. We Steal Things.',
+
+
 ```
 </details>
 
@@ -2637,4 +2743,105 @@ Article_content = xpath_code.xpath("//div[@class='xqy_core_text']/p/text()")
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> Xpath : 小案例 Demo </b></summary>
+
+```
+
+-----------------------------------   案例 1 : 爬取 豆瓣音乐 Top 250   -----------------------------------
+
+import  requests
+from  lxml import  etree
+headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'}
+list=[1]
+def getResult():
+   urls=["https://music.douban.com/top250?start={}".format(str(i)) for i in  range(0,250,25)]
+   for url in  urls:
+       data = requests.get(url, headers=headers)                      
+       html = etree.HTML(data.text)                                    # 格式化 html 格式
+       #循环标签
+       count = html.xpath("//tr[@class='item']")
+       for info in count:
+           title = info.xpath("normalize-space(td[2]/div/a/text())")    #标题
+           list[0]=title                                                #因为title用normalize-space去掉空格了，再生产result时标题显示不全，所以我用了list替换它
+           star = info.xpath("td[2]/div/div/span[2]/text()")            # 星评
+           brief_introduction = info.xpath("td[2]/div/p//text()")       #简介
+           #生成result串
+           for star, title, brief_introduction in zip(star, list, brief_introduction):
+               result = {
+                   "title": title,
+                   "star": star,
+                   "brief_introduction": brief_introduction,
+               }
+               print(result)
+               print(type(result))
+
+if __name__ == '__main__':
+   getResult()
+
+
+输出: 
+    {'title': 'We Sing. We Dance. We Steal Things.', 'star': '9.1', 'brief_introduction': 'Jason Mraz / 2008-05-13 / Import / Audio CD / 民谣'}
+    <class 'dict'>
+    {'title': 'Viva La Vida', 'star': '8.7', 'brief_introduction': 'Coldplay / 2008-06-17 / 专辑 / CD / 摇滚'}
+    <class 'dict'>
+    {'title': '华丽的冒险', 'star': '8.9', 'brief_introduction': '陈绮贞 / 2005-09-23 / 专辑 / CD / 流行'}
+    <class 'dict'>
+    {'title': '范特西', 'star': '9.2', 'brief_introduction': '周杰伦 / 2001-09-14 / 专辑 / CD / 流行'}
+    <class 'dict'>   
+
+
+
+
+
+
+
+-----------------------------------   案例 2 : 爬取 豆瓣电影 Top 250   -----------------------------------
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
+import requests
+from lxml import html
+
+for i in range(10):
+    url = 'https://movie.douban.com/top250?start={}&filter='.format(i*25)
+    header = {"User-Agent":"Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/534.16 (KHTML, like Gecko) Chrome/10.0.648.133 Safari/534.16"}
+
+    con = requests.get(url,headers=header)
+    r = con.content
+    sel = html.fromstring(r)
+
+    for i in sel.xpath('//div[@class="info"]'):
+        title = i.xpath('div[@class="hd"]/a/span[@class="title"]/text()')[0]
+        info = i.xpath('div[@class="bd"]/p[1]/text()')
+        info_1 = info[0].replace(" ", "").replace("\n", "")
+        date = info[1].replace(" ", "").replace("\n", "").split("/")[0]
+        country = info[1].replace(" ", "").replace("\n", "").split("/")[1]
+        geners = info[1].replace(" ", "").replace("\n", "").split("/")[2]
+        rate = i.xpath('//span[@class="rating_num"]/text()')[0]
+        comCount = i.xpath('//div[@class="star"]/span[4]/text()')[0]
+        print(title,info_1,rate,date,country,geners,comCount)
+
+输出:
+    肖申克的救赎 导演:弗兰克·德拉邦特FrankDarabont   主演:蒂姆·罗宾斯TimRobbins/... 9.7 1994   美国   犯罪剧情 1931647人评价
+    霸王别姬 导演:陈凯歌KaigeChen   主演:张国荣LeslieCheung/张丰毅FengyiZha... 9.7 1993   中国大陆中国香港   剧情爱情同性 1931647人评价
+    阿甘正传 导演:罗伯特·泽米吉斯RobertZemeckis   主演:汤姆·汉克斯TomHanks/... 9.7 1994   美国   剧情爱情 1931647人评价
+    这个杀手不太冷 导演:吕克·贝松LucBesson   主演:让·雷诺JeanReno/娜塔莉·波特曼... 9.7 1994   法国   剧情动作犯罪 1931647人评价
+    美丽人生 导演:罗伯托·贝尼尼RobertoBenigni   主演:罗伯托·贝尼尼RobertoBeni... 9.7 1997   意大利   剧情喜剧爱情战争 1931647人评价
+    泰坦尼克号 导演:詹姆斯·卡梅隆JamesCameron   主演:莱昂纳多·迪卡普里奥Leonardo... 9.7 1997   美国   剧情爱情灾难 1931647人评价
+
+
+```
+</details>
 

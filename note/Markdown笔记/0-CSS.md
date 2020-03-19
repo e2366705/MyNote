@@ -805,15 +805,6 @@ li 标签是行内元素,可以用text-align: center;来居中;
 
 
 
-<div id="Father"  style="  background-color: pink; width: 800px; height: 400px;">
-  <div class="son_div" style=" width: 200px;height: 100px;background-color: white; margin: 0 auto;">son_div</div>
-</div>
-
-
-
-
-
-
 
 
 

@@ -84,11 +84,24 @@ if __name__ == '__main__':
 r'C:\Users\SpringBoot\PycharmProjects\untitled1\English_Article_Spider\TEST.txt'
 
 
-拼接字符串
+
+
+
+
+
+-----------------------------------   拼接字符串   ----------------------------------- 
     aaa = "aaa"
     bbb = "bbb"
     ccc = aaa+bbb
     print(ccc)
+
+
+sql = "INSERT INTO user(url , time_Stamp) VALUES (%s, %d)" % ("aaa" , 123123)     # SQL 语句
+print(sql) 
+输出:
+    INSERT INTO user(url , time_Stamp) VALUES (aaa, 123123)
+
+
 
 
 
@@ -775,9 +788,10 @@ UNIX和Windows只支持到2038年
 
 
 
+
+
+-----------------------------------   时间戳 字符串 转换   ----------------------------------- 
 import time
-
-
 print (time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
 >>> 2016-04-07 10:29:46
 
@@ -788,6 +802,25 @@ print (time.strftime("%a %b %d %H:%M:%S %Y", time.localtime()))
 a = "Sat Mar 28 22:24:24 2016"
 print (time.mktime(time.strptime(a,"%a %b %d %H:%M:%S %Y")))
 >>> 1459175064.0
+
+
+字符串时间 -> 时间戳
+import time
+tss1 = '2019-06-03 21:19:03'                                  # 字符类型的时间
+timeArray = time.strptime(tss1, "%Y-%m-%d %H:%M:%S")          # 转为时间数组
+print(timeArray)                                              # time.struct_time(tm_year=2019, tm_mon=6, tm_mday=3, tm_hour=21, tm_min=19, tm_sec=3, tm_wday=0, tm_yday=154, tm_isdst=-1)
+print(timeArray.tm_year)                                      # 2019
+timeStamp = int(time.mktime(timeArray))                       # 转为时间戳
+print(timeStamp)                                              # 1559567943
+
+
+
+时间戳 -> 字符串
+import time
+timeStamp = 1559567943
+timeArray = time.localtime(timeStamp)
+otherStyleTime = time.strftime("%Y-%m-%d %H:%M:%S", timeArray)
+print(otherStyleTime)                                          #  2019-06-03 21:19:03
 
 
 
@@ -1055,28 +1088,44 @@ continue 语句被用来告诉 Python 跳过当前循环块中的剩余语句，
 
 ```  
 
-转换成字符串:
-value = ('www.runoob.com', 14)
-s = str(value)
+-----------------------------------   tuple 转换成 str:    ----------------------------------- 
+value = ('www.runoob.com', 14)                # <class 'tuple'>
+s = str(value)                                # <class 'str'>
 
 
-int -> string:
+
+
+
+
+
+-----------------------------------   int 转成 str   -----------------------------------
 python并不能像java一样，
 在做拼接的时候自动把类型转换为string类型
 故而需要进行一个类型转换，
 譬如将print(1+"a")改为print(str(1)+"a")就可以了
 
 
-转换:
-list(seq)           将元组转换为列表
+print("Aaaaaaa  "+format(100))         # 输出 : Aaaaaaa  100
+print("Aaaaaaa  "+ str(100))           # 输出 : Aaaaaaa  100
+print("Aaaaaaa  "+ (100))              # 会报错
 
-各种转换:
+
+
+
+
+
+-----------------------------------    元组 -> 列表   ----------------------------------- 
+list(seq)          
+
+
+
+
+
+-----------------------------------   字典 -> 列表   ----------------------------------- 
 使用 list() 来转换为列表，列表为字典中的所有值:
 dict = {'Sex': 'female', 'Age': 7, 'Name': 'Zara'}
 list(dict.values())
 >>> ['female', 7, 'Zara']
-
-
 
 ```
 </details>
@@ -1918,7 +1967,60 @@ print(c)
 
 ```  
 
-https://www.runoob.com/python3/python3-json.html
+详细资料 : https://www.runoob.com/python3/python3-json.html
+
+
+Python3 中可以使用 json 模块来对 JSON 数据进行编解码，它包含了两个函数:
+json.dumps(): 对数据进行编码
+json.loads(): 对数据进行解码
+
+
+# !/usr/bin/python3
+import json
+data = {
+    "statusCode": 200,
+    "data": {
+        "totoal": "5",
+        "height": "5.97",
+        "weight": "10.30",
+        "age": "11"
+    },
+    "msg": "成功"
+}
+
+# dumps:把字典转换为 json字符串
+json_str = json.dumps(data)
+print(json_str)               # {"statusCode": 200, "data": {"totoal": "5", "height": "5.97", "weight": "10.30", "age": "11"}, "msg": "\u6210\u529f"}
+print(type(json_str))         # <class 'str'>
+
+# loads:把json转换为 dict
+json_dict = json.loads(json_str)
+print(json_dict)             # {'statusCode': 200, 'data': {'totoal': '5', 'height': '5.97', 'weight': '10.30', 'age': '11'}, 'msg': '成功'}
+print(type(json_dict))       # <class 'dict'>
+
+# 打印statusCode对应的值 
+print(json_dict["data"]["age"])   # 11
+
+# 表示 subjects 下面的第一个项目, 下面的 title 的值
+print(json_dict["subjects"][0]['title'])
+
+
+
+
+
+
+
+
+
+
+如果你要处理的是文件而不是字符串，你可以使用 json.dump() 和 json.load() 来编码和解码JSON数据。例如:
+# 写入 JSON 数据
+with open('data.json', 'w') as f:
+    json.dump(data, f)
+ 
+# 读取数据
+with open('data.json', 'r') as f:
+    data = json.load(f)
 
 
 ```
@@ -2002,12 +2104,14 @@ import pymysql
 # 打开数据库连接  主机地址 , 用户名(root) 密码(root) , 数据库名(zzza9d2g5k4t1b0k)
 db = pymysql.connect("localhost", "root", "root", "zzza9d2g5k4t1b0k")
 cursor = db.cursor()                        # 使用 cursor() 方法创建一个游标对象 cursor
-sql = """INSERT INTO user(username , password) VALUES ('MacOS', 'YXB')"""     # SQL 语句
+sql = "INSERT INTO tb_movie(url , time_Stamp) VALUES ('%s', %d)" % (url , time_Stamp)     # SQL 语句
+print(sql)
 try:
     aa = cursor.execute(sql)     # 执行sql语句
     db.commit()             # 提交到数据库执行
     print("成功 insert 了:   " , aa , "  条数据.")
 except:
+    print("insert Error   应该是数据重复??? ")
     db.rollback()           # 如果发生错误则回滚
 db.close()                  # 关闭数据库连接
 
@@ -2475,29 +2579,6 @@ def Play_Aduio_File(Aduio_file_name):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <details>
 <summary><b> Django </b></summary>
 
@@ -2697,10 +2778,15 @@ print(r.decode('utf-8'))
 
 ```  
 
+在 Chrome 浏览器中, 选择你要选择的内容的节点, 然后鼠标右键, 选择 Copy -> Copy Xpath , 即可复制 Xpath 路径:
+//*[@id="info"]/span[1]/span[2]/a
+
+
+
 案例:
 <a target="_blank" href="http://gaokao.koolearn.com" class="entry_tit">高考阅读理解真题—社会生活类第九篇</a>
 
-# 找出 class='entry_tit' 的 a标签的 text (是一个列表)
+# 找出 class='entry_tit' 的 a标签的 text (返回类型: 列表)
 xpath_code = html.fromstring(code)                        # 将源代码转换为 xpath 格式
 h3 = xpath_code.xpath("//a[@class='entry_tit']/text()")
 print(h3)
@@ -2708,7 +2794,7 @@ print(h3)
     ['高考阅读理解真题—社会生活类第十篇', '高考阅读理解真题—社会生活类第九篇']
 
 
-# 找出 class='entry_tit' 的 a标签的 链接 (是一个列表)
+# 找出 class='entry_tit' 的 a标签的 链接 (返回类型: 列表)
 h3 = xpath_code.xpath("//a[@class='entry_tit']/@href")
 输出:
     ['http://gaokao.koolearn.com/20181227/1201859.html', 'http://gaokao.koolearn.com/20181227/1201845.html']
@@ -2718,7 +2804,7 @@ h3 = xpath_code.xpath("//a[@class='entry_tit']/@href")
 Article_content = xpath_code.xpath("//div[@class='xqy_core_text']/p/text()")
 
 
-# 找出 class 为 item 的 tr (返回一个集合)
+# 找出 class 为 item 的 tr (返回类型: 列表)
 count = html.xpath("//tr[@class='item']")
 
 

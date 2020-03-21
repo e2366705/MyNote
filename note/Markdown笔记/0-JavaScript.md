@@ -179,51 +179,49 @@ document.getElementsByClassName('div2')[0].style.background = 'pink';
 
 
 <details>
-<summary><b>获取body节点</b></summary>
+<summary><b> 节点 </b></summary>
 
 ```  
+获取body节点:
     document.body.style.background
 
-```
-</details>
 
+添加一个节点:
+window.onload = function() {
+    var childNode = document.createElement('p');
+    childNode.innerHTML = '<h1>这里是提示信息??</h1>';                    // 设置属性 innerHTML
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<details>
-<summary><b> 新增一个节点</b></summary>
-
-```  
-    window.onload = function() {
-        var childNode = document.createElement('p');
-        childNode.innerHTML = '<h1>这里是提示信息??</h1>';
-
-        //childNode.setAttribute('class', 'alerts');
-        //childNode.setAttribute('onclick', 'this.style.display = "none"');
-        childNode.className = 'alerts';
-        childNode.onclick = function () {
-            this.style.display = 'none';
-        };
-        document.getElementsByTagName('body')[0].appendChild(childNode);
+    childNode.setAttribute('class', 'alerts');                           // 设置属性 class
+    childNode.setAttribute('onclick', 'this.style.display = "none"');    // 设置属性
+    childNode.className = 'alerts';
+    childNode.onclick = function () {
+        this.style.display = 'none';
     };
+    document.getElementsByTagName('body')[0].appendChild(childNode);  
+};
+
+
+
+兄弟节点 / 父节点 / 子节点:
+  <h1>
+    <span>spannnnnnnnnnnnnnnnnn</span>
+    <a href="####"  >AAAAAAAAaaaaaaaaaaaaaaaaa</a>
+    <button onclick="Delete_this_file(this)"> 删除 Del </button>
+  </h1>
+
+  // Del  -  删除按钮
+  function Delete_this_file(ev) {
+    var b =ev.parentNode.childNodes;
+    console.log(b);                                  // NodeList(7) [text, span, text, a, text, button, text]
+
+    var a_content = ev.parentNode.childNodes[3].innerText;
+    console.log(a_content);                          // AAAAAAAAaaaaaaaaaaaaaaaaa
+  }
+
+
 ```
 </details>
+
 
 
 
@@ -802,18 +800,6 @@ window.screen.availWidth;           //屏幕可用工作区的宽						返回 32
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 # 字符串操作: 
 * https://www.runoob.com/jsref/jsref-obj-string.html
 <details>
@@ -822,7 +808,7 @@ window.screen.availWidth;           //屏幕可用工作区的宽						返回 32
 ```  
 
 
-拼接字符串:
+-----------------------------------   格式化字符串   ----------------------------------- 
 var aaa = 123123;
 console.log(`为什么我会有 ${aaa} 个苹果手机`);
 
@@ -854,9 +840,25 @@ console.log(`为什么我会有 ${aaa} 个苹果手机`);
     var n = str.includes("world", 12);
     
     等等........
+
+
+
+
+
+
+
+
+
+-----------------------------------   去掉两头的空格   ----------------------------------- 
+'           asdasd  阿斯顿 123123 %#$%^#$ sdfsdf'.replace(/^\s+|\s+$/g,""); 
+输出:
+    "asdasd  阿斯顿 123123 %#$%^#$ sdfsdf"
+
+
+
     
 
-===================================   分割字符串   =====================================
+-----------------------------------   分割字符串   ----------------------------------- 
 
     var str="How are you doing                    today?";
     var array = str.split(" ");

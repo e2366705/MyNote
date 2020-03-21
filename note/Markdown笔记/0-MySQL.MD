@@ -20,6 +20,12 @@
 
 
 
+
+
+
+
+
+
 ### SQL 规范 (必读!!!)
 * 参考资料:
 * https://choerodon.io/zh/docs/contributor-guide/development/conventions/sql
@@ -71,11 +77,21 @@
 * Java / python 应用程序必须捕获SQL异常，并有相应处理
 
 
-* 同财务相关的金额类数据必须使用decimal类型
+* 同财务相关的金额类数据必须使用decimal类型 ( decimal类型是MySQL官方唯一指定能精确存储的类型)
 	非精准浮点：float,double
 	精准浮点：decimal
+		数据的精确度取决于分配给每种数据类型的存储长度，
+		其中float分配了4字节，而double分配了8字节,
+		并且数据的这种不准确是正常现象 ,
+		采用 float 和 double 本来就是不准的!!
 
+		数据库小数不要使用double了，除非强制要求！小数一律使用decimal(numeric )。这两个类型是一样的
+ 		不要用 double : https://my.oschina.net/lsl1991/blog/1616283
 
+	疑问:
+		INSERT INTO `tb_test` VALUES(100.123456789);  精度没有丢失啊, 为什么都说不要用 double ?
+
+	资料来源 :   http://blog.leanote.com/post/weibo-007/mysql_float_double_decimal
 
 
 
@@ -320,19 +336,33 @@ use `zzza9d2g5k4t1b0k`;
 
 -- 创建表
 CREATE TABLE IF NOT EXISTS `tb_user`(
-`id`         int(20)         unsigned not null DEFAULT 0,
-`money`      DECIMAL(20,2)   NOT NULL DEFAULT '0.00',
-`username`   VARCHAR(100)    not null DEFAULT '', 
-`password`   VARCHAR(40)
+`id`          int(20)         unsigned NOT NULL DEFAULT 0    COMMENT '注释',
+`money`       DECIMAL(20,2)   NOT NULL DEFAULT '0.00'        COMMENT '注释',
+`username`    VARCHAR(100)    NOT NULL DEFAULT ''            COMMENT '注释',
+`num`         float
+`user`        double         NOT NULL DEFAULT 0              COMMENT '注释',
+`user2`       double(16,2)   16位长度，小数点后2位
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
+
+注意:  同财务相关的金额类数据必须使用 decimal 类型 ( decimal 类型是MySQL官方唯一指定能精确存储的类型)
+	float 会有误差 INSERT INTO `tb_test` VALUES(888.8888); 
+	表数据显示: 888.889
+
+	double 好一点:
+	疑问:
+		INSERT INTO `tb_test` VALUES(100.123456789);   
+		精度没有丢失啊, 为什么都说不要用 double ?
+
+
+
 -- other 选项:
--- 无符号		                  unsigned (只能是正数)
--- 有符号		                  signed
--- 主键		                      Primary key
--- 不可重复		                  UNIQUE 
--- 非空, 并设置默认字符            NOT NULL DEFAULT '', 
+-- 无符号                  unsigned (只能是正数)
+-- 有符号                  signed
+-- 主键                    Primary key
+-- 不可重复                UNIQUE 
+-- 非空, 并设置默认字符     NOT NULL DEFAULT '', 
 
 
 -- 插入insert数据:

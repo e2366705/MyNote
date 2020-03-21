@@ -89,17 +89,48 @@ r'C:\Users\SpringBoot\PycharmProjects\untitled1\English_Article_Spider\TEST.txt'
 
 
 
------------------------------------   拼接字符串   ----------------------------------- 
-    aaa = "aaa"
-    bbb = "bbb"
-    ccc = aaa+bbb
-    print(ccc)
+-----------------------------------   格式化字符串   ----------------------------------- 
+Python提倡用一种，而且最好是只有一种方法来完成一件事。
+可是在字符串格式化方面Python好像没有做到这一点。
+除了基本的%-formatting格式，还有str.format()格式、以及string.Template
+
+aaa = "aaa"
+bbb = "bbb"
+ccc = aaa+bbb
+print(ccc)
 
 
-sql = "INSERT INTO user(url , time_Stamp) VALUES (%s, %d)" % ("aaa" , 123123)     # SQL 语句
-print(sql) 
+name = "Tom"
+age = 3
+aaa = f"His name is {name}, he's {age} years old"
+print(aaa)               # His name is Tom, he's 3 years old
+
+
+aaa = r'hello \n world'
+print(aaa)               # hello \n world
+
+
+
+%s   字符串( 推荐!  同时可以是数字, 小数 , 比较万能 )
+%d   整数  (小数会自动转换成整数)
+%f   小数  (不推荐, 有精度损失)
+
+
+aaa = " %d " % (100.666)
+print(aaa)                # 100
+
+aaa = " %s " % (100.666)
+print(aaa)                # 100.666
+
+aaa = " %f " % (100.666)
+print(aaa)                #  100.666000 
+
+
+spurs = {"AAA": "aaa", "BBB": "bbb"}
+aaa = f"  {len(spurs)}     ---     {spurs['AAA']}        ---      {spurs['BBB']}        ---     "
+print(aaa)
 输出:
-    INSERT INTO user(url , time_Stamp) VALUES (aaa, 123123)
+      2     ---     aaa        ---      bbb        ---     
 
 
 

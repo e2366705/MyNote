@@ -1467,6 +1467,22 @@ public class AAA {
         System.err.println("fileName = " + fileName);
 
 
+
+
+删除文件:
+    import java.io.File;
+
+    try{
+        File file = new File("C:\\Users\\SpringBoot\\IdeaProjects\\Study_English\\AAAAAAAAAAAAAAAA.txt");
+        if(file.delete()){
+            System.out.println(file.getName() + " 文件已被删除！");
+        }else{
+            System.out.println("文件删除失败！");
+        }
+    }catch(Exception e){
+        e.printStackTrace();
+    }
+
 ```
 </details>
 

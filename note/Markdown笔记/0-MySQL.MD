@@ -61,8 +61,8 @@
 * 禁止存储大文件或者大照片
 	何要让数据库做它不擅长的事情？大文件和照片存储在文件系统，数据库里存 URL 多好
 
-* 禁止使用TEXT、BLOB类型
-	会浪费更多的磁盘和内存空间，非必要的大量的大字段查询会淘汰掉热数据，导致内存命中率急剧降低，影响数据库性能	
+* 禁止使用 TEXT、BLOB 类型
+	会浪费更多的磁盘和内存空间，非必要的大量的大字段查询会淘汰掉热数据，导致内存命中率急剧降低，影响数据库性能
 
 * 禁止使用INSERT INTO t_xxx VALUES(xxx)，必须显示指定插入的列属性
 	容易在增加或者删除字段后出现程序BUG		
@@ -304,8 +304,32 @@ CREATE TABLE IF NOT EXISTS `table1`(      -- (注释:)
 		select * from `phrase` where `id` != 2 or `id` is null
 
 
+-----------------------------------   MySQL 存储长文本   ----------------------------------- 
+注意:
+	会浪费更多的磁盘和内存空间，非必要的大量的大字段查询会淘汰掉热数据，导致内存命中率急剧降低，影响数据库性能
+
+1. TEXT: TEXT有4有类型:
+	TINYTEXT          256bytes
+	TEXT              64kb
+	MEDIUMTEXT        16Mb
+	LONGTEXT          4GB
+
+2.BLOB:
+	blob 保存的是二进制数据，利用这个特性，可以把图片存储到数据库里面. text 只能存储文本
+	TINYBLOB
+	BLOB
+	MEDIUMBLOB
+	LONGBLOB
+
 ```
 </details>
+
+
+
+
+
+
+
 
 
 

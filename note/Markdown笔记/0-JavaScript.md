@@ -127,6 +127,35 @@ console.log(`为什么我会有 ${aaa} 个苹果手机`);
 
 
 
+
+<details>
+<summary><b> textarea </b></summary>
+
+```
+获取值:
+document.getElementById("textarea_content").value;
+
+保持 textarea 里面的格式不变:
+document.getElementById("textarea_content").innerHTML = notes_.note;
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <details>
 <summary><b> 操作 CSS </b></summary>
 
@@ -1020,10 +1049,31 @@ var patt1=/is/g;            // g 区分大小写
 str.match(patt1);
 >>>   ["is", "is"]
 
-var str="Is this all there is?";
-var patt1=/is/gi;           // gi 不区分大小写
-str.match(patt1);
->>>  ["Is", "is", "is"]
+var str="Is this all there IS?";
+var patt1=/is/gi;                 // g: 表示全局  i: 表示不区分大小写
+console.log(str.match(patt1));    // (3) ["Is", "is", "IS"]
+
+// 找出字符串中的中文
+var str="Is not不hing th 哈 e去re IS?";
+var patt1= /[\u4E00-\u9FA5\uF900-\uFA2D]/g;    // g:  表示全局
+console.log(str.match(patt1));                 // (3) ["不", "哈", "去"]
+
+
+
+
+
+-----------------------------------   指定字符(中文)变色   -----------------------------------
+把字符串中的 `CSDN` 变为红色:
+    var reg = new RegExp("(" + "CSDN" + ")", "g");
+    var str = "CSDN暖枫无敌，暖枫无敌CSDN";
+    var newstr = str.replace(reg, "<font style=font-size:23px; color=red>$1</font>");
+    document.write(newstr);
+
+把字符串中的 中文 变为红色:
+    var reg = new RegExp("(" + "[\u4E00-\u9FA5\uF900-\uFA2D]" + ")", "g");
+    var str = "CSDN暖枫无敌，暖枫无敌CSDN";
+    var newstr = str.replace(reg, "<font style=font-size:23px; color=red>$1</font>");
+    document.write(newstr);
 
 
 

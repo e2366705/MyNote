@@ -24,6 +24,12 @@ command + F                  视频全屏
 Ctrl + command + F           软件全屏
 
 
+在 访达 里面按下快捷键 command + shift + G  
+输入文件夹路径
+直接进入这个文件夹
+
+finder 里面: option + command + C 复制文件的路径
+
 ```
 
 
@@ -136,36 +142,6 @@ Command + Delete   删除光标之前一整行文字
 网页链接： https://www.jianshu.com/p/565adbe0aff1
 
 ```
-
-
-
-
-
-
-
-
-
-
-### 其他 MacOS 设置:
-```  
-
-https://www.jianshu.com/p/0f620fc47ebb
-https://jingyan.baidu.com/article/0964eca259e0618284f53663.html
-https://jingyan.baidu.com/article/a65957f4ed1bd324e77f9b6a.html
-https://blog.csdn.net/aerchi/article/details/74757910
-https://blog.csdn.net/usydapeng/article/details/16943553
-
-```
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -417,6 +393,48 @@ rm：删除一个普通文件夹，会有提示，要删除的东西是个文件
 rm xxx -r：递归删除文件夹，不提示
 
 https://blog.csdn.net/hellocsz/article/details/81255417
+
+
+
+
+
+
+Macos查看 Java 版本
+    java -version  查看版本
+    /usr/libexec/java_home -V    查看 Java 安装详情
+    /usr/libexec/java_home       查看 Java 安装路径
+
+
+
+
+MacOS 下载最新版的 Python, 并且设置为默认:
+---------------------------------------------------------------------- 
+官方下载最新版的 Python : https://www.python.org/downloads/
+
+终端输入:  python --version  查看python版本
+
+终端输入 :  open ~/.bash_profile  编辑环境变量, 回车后会自动打开一个文本文件，我们可以直接修改里面的内容
+
+我们只需要添加对应的alias即可(3.8是你下载的python版本):
+alias python="/Library/Frameworks/Python.framework/Versions/3.8/bin/python3.8"
+
+修改完成后command+s保存这个文件内容，然后重新打开终端:
+source ~/.bash_profile
+
+然后再重新打开终端:
+python --version  查看python版本
+可以看到mac自带python版本已经是我们安装的最新的python版本了
+
+
+
+
+终端输入  clear   清屏
+
+cd /Users/YXB/Library/Android   切换回xxx文件夹
+
+
+
+
 
 ```
 

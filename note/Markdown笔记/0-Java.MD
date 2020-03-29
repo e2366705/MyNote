@@ -11,64 +11,19 @@ SpringBoot 自己内置了一个小型的服务器
 
 
 
-## 安装 Java
+
+
+
+
+
+
+### 安装 Java
 <details>
 <summary><b> 安装 </b></summary>
 
 ```  
 
-安装教程:    https://www.runoob.com/w3cnote/windows10-java-setup.html
-
-
-#1: 在系统变量
-    变量名：JAVA_HOME
-    变量值：电脑上JDK安装的绝对路径 ( C:\Program Files\Java\jdk1.8.0_231 )
-
-#2: 新建/修改 CLASSPATH 变量
-    如果存在 CLASSPATH 变量，选中点击 Edit(编辑) [如果没有，点击 New（新建）... 新建]
-    输入/在已有的变量值后面添加:
-    变量名：CLASSPATH
-    变量值：.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;
-    [注意有个小数点在前面]
-
-#3: 修改Path 变量
-    由于 win10 的不同，当选中 Path 变量的时候，系统会很方便的把所有不同路径都分开了，
-    不会像 win7 或者 win8 那样连在一起
-    新建两条路径:
-        %JAVA_HOME%\bin
-        %JAVA_HOME%\jre\bin
-
-
-这时候重新打开 CMD 命令行窗口, 输入 javac , 回车, 没报错就说明配置成功~
-
-其他命令:
-    在window命令行界面(cmd)输入: 
-    java -version   查看版本
-    java -verbose   查看安装路径（在输入结果的最后看路径）
-
-
-第一个 Java程序:  HelloWorld.Java
-    新建一个 HelloWord.txt 文件 (格式是 Windows 自带的 ANSI 格式, 用 UTF-8亲测会报错)
-    里面内容是:
-        public class HelloWorld {
-            public static void main(String[] args) {
-                System.out.println("Hello World YXB ~~~");
-            }
-        }
-    ~ 注意, 文件名和方法名必须一致! [HelloWorld] ~
-
-    把文件后缀名改为 HelloWorld.Java , 保存
-
-    然后打开命令行 cmd:
-    编译这个Java程序 :
-    输入: javac HelloWorld.java 回车
-    没有报错, 说明编译成功~
-
-    运行这个Java程序 :
-    输入命令: java HelloWorld 回车
-    命令行输出 : Hello World YXB ~~~ 
-
-    第一个 Java 程序编译成功~
+详情见 :    Markdown笔记\各种软件安装与配置.md
 
 ```
 </details>

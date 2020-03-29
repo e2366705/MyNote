@@ -321,6 +321,16 @@ max -- 可选字符串, 替换不超过 max 次
 str = "this is AAisAA 123is123  string example....wow!!!"
 print (str.replace("is", "was"))                # thwas was AAwasAA 123was123  string example....wow!!!
 
+# . 替换成 换行
+str = "123123ASDASD.1231!@#!@#"
+file_content = str.replace(".", "...\n")
+print(file_content)
+输出:
+    123123ASDASD...
+    1231!@#!@#
+
+
+
 
 
 使用 正则表达式 替换字符串:
@@ -331,7 +341,10 @@ print(re.sub(r'[A-Za-z]', '=', str))
     === 123123123 !@#%#^===$^&& 123===
 
 把所有的中文, 替换成空字符串:
-print(re.sub(r'[\u4e00-\u9fa5]+' , '', str))
+import re
+print(re.sub(r'[\u4e00-\u9fa5]+' , '', "ASDaaa_为什么1231_qweqwQWEQWE"))
+输出:
+    ASDaaa_1231_qweqwQWEQWE
 
 
 
@@ -351,6 +364,10 @@ str.split( );       # 以空格为分隔符，包含 \n
 
 str.split(' ', 1 ); # 以空格为分隔符，分隔成两个
 >>> ['Line1-abcdef', '\nLine2-abc \nLine4-abcd']
+
+print("英语四级阅读理解100篇精讲之论说“要求政府禁烟”".split("之") )
+输出:
+    ['英语四级阅读理解100篇精讲', '论说“要求政府禁烟”']
 
 
 
@@ -996,6 +1013,23 @@ printinfo(1, a=2,b=3)
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <details>
 <summary><b> 循环: </b></summary>
 
@@ -1005,6 +1039,16 @@ printinfo(1, a=2,b=3)
 languages = ["C", "C++", "Perl", "Python"] 
 for x in languages:
      print (x)
+
+
+languages = ["C", "C++", "Perl", "Python"]
+for index, val in enumerate(languages):
+    print(index , val)
+输出:
+    0 C
+    1 C++
+    2 Perl
+    3 Python
 
 
 

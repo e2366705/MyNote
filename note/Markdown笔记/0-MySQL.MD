@@ -350,6 +350,45 @@ CREATE TABLE IF NOT EXISTS `table1`(      -- (注释:)
 
 
 
+
+
+
+
+
+<details>
+<summary><b> MySQL 连接报错: 时区错误 </b></summary>
+
+```
+
+?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+jdbc:mysql://localhost:3306/springboot_start?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <details>
 <summary><b>新建一个数据库并且包含数据 (完整的流程:)</b></summary>
 

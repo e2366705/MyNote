@@ -310,7 +310,11 @@ import java.net.MalformedURLException;
 
 
 
-
+    获取 本地 文件夹目录:
+    public String upload(HttpServletRequest req, @RequestParam("file"))
+    req.getServletContext().getRealPath("");
+    输出:
+        C:\Users\SpringBoot\IdeaProjects\springboot\src\main\webapp\
 
 ```
 </details>
@@ -1441,6 +1445,11 @@ public class AAA {
     }catch(Exception e){
         e.printStackTrace();
     }
+
+
+创建文件夹:
+    File destFile = new File("C:\\Users\\SpringBoot\\IdeaProjects\\springboot\\src\\main\\java\\com\\how2java\\Uplwo123ller\\");
+    destFile.mkdirs();
 
 ```
 </details>
@@ -3938,14 +3947,58 @@ password:123456
 
 
 
----
-<details>
-<summary><b>my_name_is_jack</b></summary>
 
-```  
+<details>
+<summary><b> 上传图片(文件) </b></summary>
+
+```
+
+springBoot 中配置文件(application.properties):
+spring.http.multipart.maxFileSize=100Mb
+spring.http.multipart.maxRequestSize=100Mb
+
+
+前端页面:
+    1. method="post" 是必须的
+    2. enctype="multipart/form-data" 是必须的，表示提交二进制文件
+    3. name="file" 是必须的，和后续服务端对应
+    4. accept="image/*" 表示只选择图片 
+<form action="upload" method="post" enctype="multipart/form-data">
+  选择图片:<input type="file" name="file" accept="image/*" /> <input type="submit" value="上传">
+</form>
+
+
+
+Java 后端程序:
+    @RequestMapping(value = "/upload", method = RequestMethod.POST)
+    public String upload(HttpServletRequest req, @RequestParam("file") MultipartFile file,Model m) {
+            try {
+            	String fileName = System.currentTimeMillis()+file.getOriginalFilename();
+				String destFileName=req.getServletContext().getRealPath("")+"uploaded"+File.separator+fileName;
+                System.out.println(req.getServletContext().getRealPath(""));   // C:\Users\SpringBoot\IdeaProjects\springboot\src\main\webapp\
+				
+				File destFile = new File(destFileName);
+				destFile.getParentFile().mkdirs();
+            	file.transferTo(destFile);
+            	
+            	m.addAttribute("fileName",fileName);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+                return "上传失败," + e.getMessage();
+            } catch (IOException e) {
+                e.printStackTrace();
+                return "上传失败," + e.getMessage();
+            }
+            return "showImg";
+    }    
 
 ```
 </details>
+
+
+
+
+
 
 
 

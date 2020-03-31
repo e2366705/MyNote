@@ -1408,11 +1408,11 @@ A
 
 
 <details>
-<summary><b>字符串之 : 将后台返回的string数据,解析成JSON数据</b></summary>
+<summary><b> 字符串之 : Json </b></summary>
 
 ```  
 
-
+将后台返回的string数据,解析成JSON数据
 
   var index_page_json_data = JSON.parse("{\"We do not have anything\":\"我们没有病\",\"How do you know?\":\"你怎么知道?\",\"Do we look like it?\":\"我们看起来像有病吗?\"}");
   console.log(index_page_json_data);                   // 将字符串格式 -> json格式
@@ -1423,8 +1423,6 @@ A
   for (var key in index_page_json_data) {
     console.log(key + ' : ' + index_page_json_data[key]);
   }
-  
-
 
 ```
 </details>
@@ -3271,10 +3269,249 @@ Array.prototype.remove = function (val) {
 
 
 
-<details>
-<summary><b>my_name_is_jack</b></summary>
 
-```  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Demo
+<details>
+<summary><b> springboot + websocket 测试demo: 网络聊天室 </b></summary>
+
+```
+
+pom.xml
+-----------------------------------
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-websocket</artifactId>
+</dependency>
+
+
+
+
+
+RootApplication.java
+-----------------------------------
+package com.battcn;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.socket.config.annotation.EnableWebSocket;
+import org.springframework.web.socket.server.standard.ServerEndpointExporter;
+
+@EnableWebSocket
+@SpringBootApplication
+public class RootApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(Chapter24Application.class, args);
+    }
+
+    @Bean
+    public ServerEndpointExporter serverEndpointExporter() {
+        return new ServerEndpointExporter();
+    }
+}
+
+
+
+
+
+
+index.html
+-----------------------------------
+<html>
+<head>
+  <meta charset="UTF-8"></meta>
+  <title>springboot项目WebSocket测试demo</title>
+  <script src="https://s1.pstatp.com/cdn/expire-1-M/jquery/2.1.4/jquery.min.js" type="application/javascript"></script>
+  <link href="https://s2.pstatp.com/cdn/expire-1-M/twitter-bootstrap/3.4.0/css/bootstrap.min.css" type="text/css"  rel="stylesheet" />
+  <script src="https://s1.pstatp.com/cdn/expire-1-M/twitter-bootstrap/3.4.0/js/bootstrap.min.js" type="application/javascript"></script>
+  <script src="https://s0.pstatp.com/cdn/expire-1-M/vue/2.6.10/vue.min.js" type="application/javascript" ></script>
+  <script src="https://s1.pstatp.com/cdn/expire-1-M/layer/2.3/layer.js" type="application/javascript"></script>
+</head>
+<body>
+<h3>springboot项目websocket测试demo</h3>
+<h5>文本框中数据数据，点击‘发送测试’，文本框中的数据会发送到后台websocket，
+  后台接受到之后，会再推送数据到前端，展示在下方；点击关闭连接，可以关闭该websocket；可以跟踪代码</h5>
+<br />
+<h1>当前在线人数:  </h1><h2 id="total">x</h2>
+
+<div class="row">
+  <div class="col-lg-3">
+    <div class="input-group">
+      <input type="text" id="text" class="form-control" placeholder=" 搜索点什么??? " value="今天天气怎么样?">
+      <span class="input-group-btn">
+        <button class="btn btn-default" onclick="send()" type="button">发送!</button>
+      </span>
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+</div><!-- /.row -->
+
+<hr />
+
+<button onclick="clos()">关闭连接</button>
+<hr />
+<div id="message" style="font-size: 25px; "></div>
+<script>
+  var websocket = null;
+  if('WebSocket' in window){
+    websocket = new WebSocket("ws://127.0.0.1:8092/webSocket/1");
+  }else{
+    alert("您的浏览器不支持websocket");
+  }
+  websocket.onerror = function(){
+    setMessageInHtml("send error！");
+  };
+  websocket.onopen = function(){
+    setMessageInHtml("连接成功！");
+    setTimeout(function(){setMessageInHtml("欢迎来到这里！")
+    },2000)
+  };
+  websocket.onmessage = e => setMessageInHtml(e.data);
+  websocket.onclose = function(){
+    setMessageInHtml("连接断开！")
+  };
+  window.onbeforeunload = function(){
+    clos();
+  };
+  function setMessageInHtml(data){
+    var json_data = JSON.parse(data);
+
+    if (json_data.message.length !== 0){
+      document.getElementById('message').innerHTML += json_data.message + "</br>";
+    }
+    if (json_data.total.length !== 0){
+      document.getElementById('total').innerHTML = json_data.total;
+    }
+  }
+  function clos(){
+    websocket.close(3000,"强制关闭");
+  }
+  function send(){
+    var msg = document.getElementById('text').value;
+    websocket.send(msg);
+  }
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+WebSocket.Java
+-----------------------------------
+package com.battcn.websocket;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
+import javax.websocket.*;
+import javax.websocket.server.PathParam;
+import javax.websocket.server.ServerEndpoint;
+import java.io.IOException;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArraySet;
+import java.util.concurrent.atomic.AtomicInteger;
+@Component
+@ServerEndpoint("/webSocket/{page}")
+public class WebSocket {
+    private Logger log = LoggerFactory.getLogger(this.getClass());
+
+    /**
+     * 用来记录房间的人数
+     */
+    private static AtomicInteger onlinePersons = new AtomicInteger(0);
+
+    /**
+     * 用来记录房间及人数
+     */
+    private static Map<String,Set> roomMap = new ConcurrentHashMap(8);
+
+    @OnOpen
+    public void open(@PathParam("page") String page, Session session) throws IOException {
+        Set<Session> sessions_set = roomMap.get(page);
+        // 如果是新的房间，则创建一个映射，如果房间已存在，则把用户放进去
+        if(sessions_set == null){
+            sessions_set = new CopyOnWriteArraySet();
+            sessions_set.add(session);
+            roomMap.put(page,sessions_set);
+        }else{
+            sessions_set.add(session);
+        }
+        // 房间人数+1
+        onlinePersons.incrementAndGet();
+        log.info("新用户{}进入聊天,房间人数:{}",session.getId(),onlinePersons);
+        String messageFormat = String.format("{\"message\":\"%s\",\"total\":%s}" , "" ,  onlinePersons);
+        for(Session s : sessions_set){
+            s.getBasicRemote().sendText(messageFormat);
+        }
+    }
+
+    @OnClose
+    public void close(@PathParam("page") String page, Session session) throws IOException {
+        // 如果某个用户离开了，就移除相应的信息
+        if(roomMap.containsKey(page)){
+            roomMap.get(page).remove(session);
+        }
+        // 房间人数-1
+        onlinePersons.decrementAndGet();
+        log.info("用户{}退出聊天,房间人数:{}",session.getId(),onlinePersons);
+        String messageFormat = String.format("{\"message\":\"%s\",\"total\":%s}" , "" ,  onlinePersons);
+        Set<Session> sessions_set = roomMap.get(page);
+        for(Session s : sessions_set){
+            s.getBasicRemote().sendText(messageFormat);
+        }
+    }
+
+    @OnMessage
+    public void reveiveMessage(@PathParam("page") String page, Session session,String message) throws IOException {
+        log.info("接受到用户{}的数据:{}",session.getId(),message);
+        // 拼接一下用户信息
+        String msg = session.getId()+" : "+ message;
+        Set<Session> sessions = roomMap.get(page);
+
+        String messageFormat = String.format("{\"message\":\"%s\",\"total\":%s}" , msg ,  onlinePersons);
+
+        // 轮流 给房间内所有用户推送信息 (根据 session)
+        for(Session s : sessions){
+            s.getBasicRemote().sendText(messageFormat);
+        }
+    }
+
+    @OnError
+    public void error(Throwable throwable){
+        try {
+            throw throwable;
+        } catch (Throwable e) {
+            log.error("未知错误");
+        }
+    }
+}
+
 
 ```
 </details>
@@ -3283,133 +3520,11 @@ Array.prototype.remove = function (val) {
 
 
 
-<details>
-<summary><b>my_name_is_jack</b></summary>
 
-```  
 
-```
-</details>
 
 
 
-
-
-<details>
-<summary><b>my_name_is_jack</b></summary>
-
-```  
-
-```
-</details>
-
-
-
-
-
-<details>
-<summary><b>my_name_is_jack</b></summary>
-
-```  
-
-```
-</details>
-
-
-
-
-
-<details>
-<summary><b>my_name_is_jack</b></summary>
-
-```  
-
-```
-</details>
-
-
-
-
-
-<details>
-<summary><b>my_name_is_jack</b></summary>
-
-```  
-
-```
-</details>
-
-
-
-
-
-<details>
-<summary><b>my_name_is_jack</b></summary>
-
-```  
-
-```
-</details>
-
-
-
-
-
-<details>
-<summary><b>my_name_is_jack</b></summary>
-
-```  
-
-```
-</details>
-
-
-
-
-
-<details>
-<summary><b>my_name_is_jack</b></summary>
-
-```  
-
-```
-</details>
-
-
-
-
-
-<details>
-<summary><b>my_name_is_jack</b></summary>
-
-```  
-
-```
-</details>
-
-
-
-
-
-<details>
-<summary><b>my_name_is_jack</b></summary>
-
-```  
-
-```
-</details>
-
-
-
-
-
-<details>
-<summary><b>my_name_is_jack</b></summary>
-
-```  
-
-```
-</details>
 
 
 

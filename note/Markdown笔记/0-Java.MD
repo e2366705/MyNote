@@ -214,50 +214,6 @@ import java.net.MalformedURLException;
 
 
 
-<details>
-<summary><b>System.out.printf 格式化</b></summary>
-
-```  
-    System.out.printf("单词:%-66s 出现次数:%d\n", "aaa", 123);
-    System.out.printf("单词:%-66s 出现次数:%d\n", "eqweqweqweqweqw", 3123123);
-    System.out.printf("单词:%-66s 出现次数:%d\n", "q", 7);
-
-格式化输出结果:
-    单词:aaa                                                                出现次数:123
-    单词:eqweqweqweqweqw                                                    出现次数:3123123
-    单词:q                                                                  出现次数:7    
-
-
-    有两种方式:
-    System.out.printf("现在是:  %66s  \n" , df.format(new Date()));
-    System.out.printf("现在是:  %-66s   " , df.format(new Date()));
-
-    注意:
-    不是 System.err.println 
-    而是 System.err.printf
-
-    在 idea 中使用 souf 可以打出来
-```
-</details>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -510,8 +466,8 @@ public String Check(String word){
 详细教程 :  https://juejin.im/post/5a31e4396fb9a044fd11c6a8
 
 
-
-第一种方式:
+-----------------------------------   解析 json   ----------------------------------- 
+解析: 第一种方式:
 import org.json.JSONArray;
 import org.json.JSONObject;
 public class Json_2 {
@@ -539,7 +495,7 @@ public class Json_2 {
 
 
 
-第二种方式:
+解析: 第二种方式:
 import org.json.JSONObject;
 import org.junit.Test;
 import java.util.HashMap;
@@ -560,7 +516,7 @@ public class JSON_Alibaba {
 
 
 
-第三种方式:    
+解析: 第三种方式:
     import org.json.JSONException;
     import org.json.JSONObject;
 
@@ -579,6 +535,76 @@ public class JSON_Alibaba {
         String fanyi_result = String.valueOf(fanyi.get("age"));       // 18
         System.out.println(fanyi_result);
     }
+
+
+
+
+
+
+
+
+-----------------------------------   格式化 json   ------------------------------------
+        String json = "{'name':'Tom',     'age':18,    'adress':'china',    'weight':'66kg'}";
+        JSONObject jsonObj = new JSONObject(json);
+        String name = jsonObj.getString("name");
+        System.out.println(jsonObj);       //  {"name":"Tom","weight":"66kg","adress":"china","age":18}
+        System.out.println(name);          //  Tom
+
+        JsonParser jsonParser = new JsonParser();
+        JsonObject jsonObject = jsonParser.parse(json).getAsJsonObject();
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        System.out.println(gson.toJson(jsonObject));    
+        输出:
+            {
+            "name": "Tom",
+            "age": 18,
+            "adress": "china",
+            "weight": "66kg"
+            }        
+
+
+
+    美化 json 格式:
+    public static String toPrettyFormat(String json) {
+        JsonParser jsonParser = new JsonParser();
+        JsonObject jsonObject = jsonParser.parse(json).getAsJsonObject();
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        return gson.toJson(jsonObject);
+    }
+
+
+
+
+
+
+
+-----------------------------------   json   ------------------------------------
+
+    String json = "{'name':'Tom',     'age':18,    'adress':'china',    'weight':'66kg'}";
+    JSONObject jsonObj = new JSONObject(json);
+    String name = jsonObj.getString("name");
+    jsonObj.put("initial", name.substring(0, 2).toUpperCase());
+    String[] likes = new String[] { "JavaScript", "Skiing", "Apple Pie" };
+    jsonObj.put("QAQ", likes);
+    System.out.println(jsonObj);
+    输出:
+        {"QAQ":["JavaScript","Skiing","Apple Pie"],"initial":"TO","name":"Tom","weight":"66kg","adress":"china","age":18}
+
+
+
+
+    String json = "{'name':'Tom',     'age':18,    'adress':'china',    'weight':'66kg'}";
+    JSONObject jsonObj = new JSONObject(json);
+    Map <String, String> ingredients = new HashMap <String, String>();
+    ingredients.put("apples", "3kg");
+    ingredients.put("sugar", "1kg");
+    ingredients.put("pastry", "2.4kg");
+    ingredients.put("bestEaten", "outdoors");
+    jsonObj.put("AAA", ingredients);
+    System.out.println(jsonObj);
+    输出:
+        {"AAA":{"pastry":"2.4kg","apples":"3kg","sugar":"1kg","bestEaten":"outdoors"},"name":"Tom","weight":"66kg","adress":"china","age":18}
+    
 
 ```
 </details>
@@ -811,8 +837,109 @@ class Sort{
 
 
 
+
+
+
 <details>
-<summary><b>字符串之 : 是否含有英文 / 中文 / 数字 / 替换 / 随机数 / 随机字符串 / 截取字符串</b></summary>
+<summary><b> 字符串之: System.out.printf 格式化 </b></summary>
+
+```  
+
+基本长度:
+    String aaaaa = "";      // 0
+    String bbbbb = " ";     // 1
+    String ccccc = "Q";     // 1
+    String ddddd = "3";     // 1
+    String eeeee = ".";     // 1
+    String fffff = "三";    // 1
+    String nnnnn = null;    // 1
+
+    System.out.println(aaaaa.length());
+    System.out.println(bbbbb.length());
+    System.out.println(ccccc.length());
+    System.out.println(ddddd.length());
+    System.out.println(eeeee.length());
+    System.out.println(fffff.length());
+    System.out.println(nnnnn.length());
+
+
+
+%s 很万能, 可以连接字符串, 布尔值, null值, 数值
+    String str=null;
+
+    str=String.format("Hi,%s , %s , %s", "AAA","BBB","CCC");
+    System.out.println(str);
+
+    str=String.format("Hi!   %s  ",  100.12345);
+    System.out.println(str);
+
+    str=String.format("Hi!   %s  ",  true);
+    System.out.println(str);
+
+    str=String.format("Hi!   %s  ",  "Tom_jack");
+    System.out.println(str);
+
+    str=String.format("Hi!   %s  ",  null);
+    System.out.println(str);
+    输出:
+        Hi,AAA , BBB , CCC
+        Hi!   100.12345  
+        Hi!   true  
+        Hi!   Tom_jack  
+        Hi!   null      
+
+
+
+    System.out.printf("单词:%-66s 出现次数:%d\n", "aaa", 123);
+    System.out.printf("单词:%-66s 出现次数:%d\n", "eqweqweqweqweqw", 3123123);
+    System.out.printf("单词:%-66s 出现次数:%d\n", "q", 7);
+
+格式化输出结果:
+    单词:aaa                                                                出现次数:123
+    单词:eqweqweqweqweqw                                                    出现次数:3123123
+    单词:q                                                                  出现次数:7    
+
+
+    有两种方式:
+    System.out.printf("现在是:  %66s  \n" , df.format(new Date()));
+    System.out.printf("现在是:  %-66s   " , df.format(new Date()));
+
+    注意:
+    不是 System.err.println 
+    而是 System.err.printf
+
+    在 idea 中使用 souf 可以打出来
+                
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b>字符串之: 是否含有英文 / 中文 / 数字 / 替换 / 随机数 / 随机字符串 / 截取字符串</b></summary>
 
 ```  
 

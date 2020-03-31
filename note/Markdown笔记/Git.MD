@@ -132,10 +132,10 @@ git push -u origin master 	  # 修改完了,记得提交!!!不然不生效
 ```
 
 1:git clone 不指定分支:
-git clone https://github.com/e2366705/ShiYanLou.git
+git clone https://github.com/somebody/XXXXXX.git
 
 2.git clone 指定分支 [nnnname__ 是仓库的指定分区(比如master之类的) ]:
-git clone -b nnnname__ https://github.com/e2366705/ShiYanLou.git
+git clone -b nnnname__ https://github.com/somebody/XXXXXX.git
 ```
 
 

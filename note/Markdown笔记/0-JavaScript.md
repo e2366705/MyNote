@@ -7,6 +7,50 @@
 
 
 
+
+
+
+
+
+
+
+
+<details>
+<summary><b> 这是我遇到过的最奇怪的Bug </b></summary>
+
+```
+
+在这段代码中 οnclick 和 onclick 是不一样的:
+    <button οnclick="send()">Send</button>
+    <button onclick="send()">Send</button>
+    <button οnclick="closeWebSocket()">Close</button>
+不信可以 Ctrl + F 搜索: onclick 试一试?
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # 规范:
 指的是代码过程中需要注意的小细节...提升代码质量, 便于后期维护
 <details>

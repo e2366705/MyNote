@@ -17,6 +17,55 @@ SpringBoot 自己内置了一个小型的服务器
 
 
 
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> 这是我遇到过的最奇怪的Bug </b></summary>
+
+```
+
+在这段代码中 οnclick 和 onclick 是不一样的:
+    <button οnclick="send()">Send</button>
+    <button onclick="send()">Send</button>
+    <button οnclick="closeWebSocket()">Close</button>
+不信可以 Ctrl + F 搜索: onclick 试一试?
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ### 安装 Java
 <details>
 <summary><b> 安装 </b></summary>

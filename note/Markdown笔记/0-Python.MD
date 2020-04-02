@@ -63,6 +63,27 @@ print("记得去掉  https://movie.douban.com/explore   中间的冒号 => :  ")
 
 
 
+
+
+<details>
+<summary><b> 安装 python </b></summary>
+
+```
+
+详情见 :   各种软件安装与配置.md
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
 # 基础:
 <details>
 <summary><b> 字符串 : 基础 </b></summary>
@@ -3006,3 +3027,100 @@ for i in range(10):
 ```
 </details>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> selenium </b></summary>
+
+```
+
+安装 selenium:
+    1.首先需要下载Chromedriver,
+        下载后得到的是一个chromedriver.exe文件(Google 搜索: chromedriver Download )
+        
+    2.将chromedriver.exe拷贝至
+        谷歌浏览器目录(我的是 C:\Program Files (x86)\Google\Chrome\Application) 
+        以及
+        python根目录 (我的是:  C:\Users\SpringBoot\AppData\Local\Programs\Python\Python37 )
+
+    3.将谷歌浏览器环境变量添加到 系统环境变量的 path (按下 win 键, 搜索'系统高级' , 点击环境变量...)
+
+
+来个小案例:
+-----------------------------------      ------------------------------------
+from selenium import webdriver
+import os
+
+chromedriver = "C:/Program Files (x86)/Google/Chrome/Application/chromedriver.exe"
+os.environ["webdriver.chrome.driver"] = chromedriver
+browser = webdriver.Chrome(chromedriver)
+
+#设置浏览器需要打开的url
+url = "http://www.baidu.com"
+browser.get(url)
+
+#在百度搜索框中输入关键字"python"a
+browser.find_element_by_id("kw").send_keys("Python3的安装")
+#单击搜索按钮
+browser.find_element_by_id("su").click()
+
+#关闭浏览器
+#browser.quit()
+
+
+
+
+
+
+
+-----------------------------------   获取网页源码    ------------------------------------
+#!/usr/bin/python3
+# -*- coding: UTF-8 -*-
+from lxml import etree
+from selenium import webdriver
+import time
+import re
+
+search_webs_data = []
+def  search_webs(URL):
+    browser = webdriver.Chrome()
+    browser.get(URL)
+    time.sleep(5)
+
+    time_start = time.time()  # time.time()为1970.1.1到当前时间的毫秒数
+    html_code = browser.page_source                #获得网页源码数据
+    print(html_code)
+    html_etree = etree.HTML(html_code)            #结构化网页源码
+
+if __name__ == '__main__' :
+    search_webs('https://www.baidu.com')
+
+
+```
+</details>

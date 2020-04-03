@@ -84,7 +84,56 @@ print("记得去掉  https://movie.douban.com/explore   中间的冒号 => :  ")
 
 
 
+
+
+
+
+
+
+
+
+
+
 # 基础:
+<details>
+<summary><b> 获取用户输入 </b></summary>
+
+```
+from click._compat import raw_input
+str = raw_input("请输入：")
+print("你输入的内容是: ", str)
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <details>
 <summary><b> 字符串 : 基础 </b></summary>
 
@@ -235,11 +284,6 @@ sentence = "这是一个句子。"
 paragraph = """这是一个段落，
                可以由多行组成"""        
 
-
-
-
-执行下面的程序在按回车键后就会等待用户输入：
-    input("\n\n按下 enter 键后退出。")
 
 
 
@@ -2874,7 +2918,7 @@ print(r.decode('utf-8'))
 
 ```  
 
-在 Chrome 浏览器中, 选择你要选择的内容的节点, 然后鼠标右键, 选择 Copy -> Copy Xpath , 即可复制 Xpath 路径:
+在 Chrome 浏览器中(Firefox也可以), 选择你要选择的内容的节点, 然后鼠标右键, 选择 Copy -> Copy Xpath , 即可复制 Xpath 路径:
 //*[@id="info"]/span[1]/span[2]/a
 
 

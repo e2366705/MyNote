@@ -2236,24 +2236,36 @@ db.close()
 连接成功!
 
 
-接下来测试 CRUD (增删改查): 
 
+
+
+
+
+接下来测试 CRUD (增删改查): 
 增( 返回增加的条数 -> int 类型):
 #!/usr/bin/python3
 import pymysql
 # 打开数据库连接  主机地址 , 用户名(root) 密码(root) , 数据库名(zzza9d2g5k4t1b0k)
-db = pymysql.connect("localhost", "root", "root", "zzza9d2g5k4t1b0k")
-cursor = db.cursor()                        # 使用 cursor() 方法创建一个游标对象 cursor
-sql = "INSERT INTO tb_movie(url , time_Stamp) VALUES ('%s', %d)" % (url , time_Stamp)     # SQL 语句
-print(sql)
-try:
-    aa = cursor.execute(sql)     # 执行sql语句
-    db.commit()             # 提交到数据库执行
-    print("成功 insert 了:   " , aa , "  条数据.")
-except:
-    print("insert Error   应该是数据重复??? ")
-    db.rollback()           # 如果发生错误则回滚
-db.close()                  # 关闭数据库连接
+db = pymysql.connect("localhost", "root", "root", "study_english_database")
+
+def insert(title, content):
+    cursor = db.cursor()                                     # 使用 cursor() 方法创建一个游标对象 cursor
+    sql = "INSERT INTO `tb_short_news`(title, content) VALUES('%s', '%s')" % (title, content)
+    print(sql)
+    try:
+        aa = cursor.execute(sql)                             # 执行sql语句
+        db.commit()                                          # 提交到数据库执行
+        print("成功 insert 了:   ", aa, "  条数据.")
+    except:
+        print("insert Error   应该是数据重复??? ")
+        db.rollback()                                        # 如果发生错误则回滚
+    cursor.close()                                           # 关闭数据库连接
+
+insert("bbbbbbbbb", "11111111111111")
+insert("cccccccccc", "222222222222222")
+insert("aaaaa", "33333333333333")
+db.close()
+
 
 
 
@@ -2261,22 +2273,8 @@ db.close()                  # 关闭数据库连接
 
 
 删
-#!/usr/bin/python3
-import pymysql
-# 打开数据库连接                    账户    密码         数据库名称
-db = pymysql.connect("localhost", "root", "root", "zzza9d2g5k4t1b0k")
-cursor = db.cursor()            # 使用cursor()方法获取操作游标
-sql = "DELETE FROM user WHERE username = '%s'  " % ('OPPO')      # SQL 删除语句
-try:
-   aaa = cursor.execute(sql)          # 执行SQL语句
-   db.commit()                  # 提交修改
-   print(aaa)                   # 成功的条数 (失败返回 0 )
-except:
-   db.rollback()                # 发生错误时回滚
-db.close()                      # 关闭数据库连接
-
-
-
+    sql = "DELETE FROM user WHERE username = '%s'  " % ('OPPO')      # SQL 删除语句
+    其余略...
 
 
 
@@ -2284,19 +2282,8 @@ db.close()                      # 关闭数据库连接
 
 
 改
-#!/usr/bin/python3
-import pymysql
-# 打开数据库连接                    账户    密码         数据库名称
-db = pymysql.connect("localhost", "root", "root", "zzza9d2g5k4t1b0k")
-cursor = db.cursor()            # 使用cursor()方法获取操作游标
-sql = "UPDATE user SET password = 'R12'  WHERE username = '%s'  " % ('OPPO')      # SQL 更新语句
-try:
-   aaa = cursor.execute(sql)          # 执行SQL语句
-   db.commit()                  # 提交到数据库执行
-   print(aaa)                   # 成功的条数 (失败返回 0 )
-except:
-   db.rollback()                # 发生错误时回滚
-db.close()                      # 关闭数据库连接
+    sql = "UPDATE user SET password = 'R12'  WHERE username = '%s'  " % ('OPPO')      # SQL 更新语句
+    其余略...
 
 
 
@@ -2355,9 +2342,6 @@ if __name__ == '__main__':
         print(db)
         for i in db:
             print(i)
-
-
-
 
 
 
@@ -3178,6 +3162,28 @@ def  search_webs(URL):
 if __name__ == '__main__' :
     search_webs('https://www.baidu.com')
 
+
+```
+</details>
+
+
+
+
+
+
+
+
+<details>
+<summary><b> selenium: 将web页面下拉到最底端 </b></summary>
+
+```
+def execute_times(times):
+    browser = webdriver.Chrome()
+    for i in range(times):
+        browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        time.sleep(2)
+
+execute_times(10000)
 
 ```
 </details>

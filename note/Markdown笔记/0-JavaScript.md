@@ -1912,7 +1912,7 @@ myMap.get("key1"); // 返回值为 "value1"
 window.location.href = "https://www.taobao.com";            // 本窗口打开
 window.location.href = "/Phrase_Controller/index";          // 跳转到本网页
 window.open("http://www.JD.com");                           // 新窗口打开
-
+window.open("http://www.Taobao.com", '_blank').location;    // 新标签页打开
 
 ```
 </details>
@@ -2445,8 +2445,120 @@ document.onkeyup = function (event) {
 
 
 
+
+
+
+
+
+
 <details>
-<summary><b>JavaScript键盘鼠标之: 鼠标 </b></summary>
+<summary><b> 键盘鼠标之: 鼠标 - 单击选中文本 自动输出 </b></summary>
+
+```
+
+                                            单击选中文本, 自动弹出 ( 强烈推荐!! , 非常智能 ) 
+<body>
+  <p>随便复制一段文字, 然后点击鼠标右键 , 打开控制台查看console.log();</p>
+  <h2>...选择英文获取发音  </h2>
+  <h2> 同时禁用了鼠标的右键 </h2>
+  <h1>miss miss </h1>
+</body>
+
+
+<script>
+select(document, tanchu);
+    /*=select[[
+    * 跨浏览器选中文字事件
+    * object o 响应选中事件的DOM对象，required
+    * function fn(sText,target,mouseP)选中文字非空时的回调函数，required
+    * |-@param
+    * |-sText 选中的文字内容
+    * |-target 触发mouseup事件的元素
+    * |-mouseP 触发mouseup事件时鼠标坐标
+    */
+    function select(o, fn) {
+        o.onmouseup = function (e) {
+            var event = window.event || e;
+            var target = event.srcElement ? event.srcElement : event.target;
+            if (/input|textarea/i.test(target.tagName) && /firefox/i.test(navigator.userAgent)) {
+                //Firefox在文本框内选择文字
+                var staIndex = target.selectionStart;
+                var endIndex = target.selectionEnd;
+                if (staIndex != endIndex) {
+                    var sText = target.value.substring(staIndex, endIndex);
+                    fn(sText, target);
+                }
+            }
+            else {
+                //获取选中文字
+                var sText = document.selection == undefined ? document.getSelection().toString() : document.selection.createRange().text;
+                if (sText != "") {
+                    //将参数传入回调函数fn
+                    fn(sText, target);
+                }
+            }
+        }
+    }
+    function tanchu(txt, tar) {
+        if (txt.length > 3){
+            // let bool = is_All_english(txt);
+            let bool = true;
+            console.log("你刚才选择的文本数据是:    "+txt);
+            if (bool){
+                var url = "http://dict.youdao.com/dictvoice?audio=" + txt;
+                var audio = new Audio(url);
+                audio.load();
+                audio.play();
+            }
+        }
+    }
+    // 禁用系统右键
+    window.onload = function () {
+        //右键菜单
+        document.oncontextmenu = function (event) {
+            var event = event || window.event;
+            // console.log("鼠标系统自带右键菜单已经屏蔽...");
+            // alert("鼠标系统自带右键菜单已经屏蔽...");
+            return false;             // 屏蔽系统自带的右键菜单
+        }
+    }
+</script>
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> 键盘鼠标之: 鼠标 </b></summary>
 
 ```  
 
@@ -2546,53 +2658,6 @@ window.onload = function(){
 
 
 
-
-
-                                            单击选中文本, 自动弹出 ( 强烈推荐!! , 非常智能 ) 
-<body>
-  <p>随便复制一段文字, 然后点击鼠标右键 , 打开控制台查看console.log();</p>
-  <h1>miss miss </h1>
-</body>
-
-<script>
-  select(document, tanchu);
-  /*=select[[ 
-  * 跨浏览器选中文字事件 
-  * object o 响应选中事件的DOM对象，required 
-  * function fn(sText,target,mouseP)选中文字非空时的回调函数，required 
-  * |-@param 
-  * |-sText 选中的文字内容 
-  * |-target 触发mouseup事件的元素 
-  * |-mouseP 触发mouseup事件时鼠标坐标 
-  */
-  function select(o, fn) {
-    o.onmouseup = function (e) {
-      var event = window.event || e;
-      var target = event.srcElement ? event.srcElement : event.target;
-      if (/input|textarea/i.test(target.tagName) && /firefox/i.test(navigator.userAgent)) {
-        //Firefox在文本框内选择文字 
-        var staIndex = target.selectionStart;
-        var endIndex = target.selectionEnd;
-        if (staIndex != endIndex) {
-          var sText = target.value.substring(staIndex, endIndex);
-          fn(sText, target);
-        }
-      }
-      else {
-        //获取选中文字 
-        var sText = document.selection == undefined ? document.getSelection().toString() : document.selection.createRange().text;
-        if (sText != "") {
-          //将参数传入回调函数fn 
-          fn(sText, target);
-        }
-      }
-    }
-  }
-  /*]]select=*/
-  function tanchu(txt, tar) {
-    alert("文字属于" + tar.tagName + "元素，选中内容为：" + txt);
-  }
-</script>
 
 
 
@@ -2753,25 +2818,6 @@ window.onload = function(){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <details>
 <summary><b> JavaScript 使用 Ajax  </b></summary>
 
@@ -2890,16 +2936,6 @@ document.write(formData.get('username'))
 </details>
 
 
-
-
-
-<details>
-<summary><b>JavaScript 在新标签页中打开链接URL</b></summary>
-
-```  
-window.open(url, '_blank').location; 
-```
-</details>
 
 
 

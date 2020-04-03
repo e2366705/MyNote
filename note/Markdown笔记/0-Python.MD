@@ -2879,6 +2879,19 @@ print(r.decode('utf-8'))
 
 
 
+from lxml import html, etree
+def Local_html(URL):
+    html = etree.parse(URL, etree.HTMLParser())
+    list = html.xpath('//html/body/article/div')
+    print(list)
+    for item in list:
+        print(item.xpath(".//h1/text()"))   # 分类完，遍历时在调用xpath方法时,在路径前面加" . "直接指向当前路径，就不会指向顶层xpath路径
+
+Local_html("./TEST.html")
+
+
+
+
 案例:
 <a target="_blank" href="http://gaokao.koolearn.com" class="entry_tit">高考阅读理解真题—社会生活类第九篇</a>
 

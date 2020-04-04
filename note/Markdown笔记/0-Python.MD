@@ -134,6 +134,411 @@ print("你输入的内容是: ", str)
 
 
 
+
+
+
+<details>
+<summary><b> 逻辑运算 (and / or) </b></summary>
+
+```
+
+if ( a and b ):
+   print ("1 - 变量 a 和 b 都为 true")
+else:
+   print ("1 - 变量 a 和 b 有一个不为 true")
+ 
+
+
+if ( a or b ):
+   print ("2 - 变量 a 和 b 都为 true，或其中一个变量为 true")
+else:
+   print ("2 - 变量 a 和 b 都不为 true")
+
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> 时间 / 日期 : </b></summary>
+
+```  
+
+获取时间戳:
+import time  # 引入time模块
+ticks = time.time()
+print("当前时间戳为:", ticks)               #  1584112467.7476895
+millis = int(round(time.time() * 1000))
+print(millis)                              # 1584112467748
+
+
+
+时间戳单位最适于做日期运算。但是1970年之前的日期就无法以此表示了。太遥远的日期也不行，
+UNIX和Windows只支持到2038年
+
+
+
+
+
+
+-----------------------------------   时间戳 字符串 转换   ----------------------------------- 
+import time
+print (time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
+>>> 2016-04-07 10:29:46
+
+print (time.strftime("%a %b %d %H:%M:%S %Y", time.localtime()))
+>>> Thu Apr 07 10:29:46 2016
+  
+将格式字符串转换为时间戳
+a = "Sat Mar 28 22:24:24 2016"
+print (time.mktime(time.strptime(a,"%a %b %d %H:%M:%S %Y")))
+>>> 1459175064.0
+
+
+字符串时间 -> 时间戳
+import time
+tss1 = '2019-06-03 21:19:03'                                  # 字符类型的时间
+timeArray = time.strptime(tss1, "%Y-%m-%d %H:%M:%S")          # 转为时间数组
+print(timeArray)                                              # time.struct_time(tm_year=2019, tm_mon=6, tm_mday=3, tm_hour=21, tm_min=19, tm_sec=3, tm_wday=0, tm_yday=154, tm_isdst=-1)
+print(timeArray.tm_year)                                      # 2019
+timeStamp = int(time.mktime(timeArray))                       # 转为时间戳
+print(timeStamp)                                              # 1559567943
+
+
+
+时间戳 -> 字符串
+import time
+timeStamp = 1559567943
+timeArray = time.localtime(timeStamp)
+otherStyleTime = time.strftime("%Y-%m-%d %H:%M:%S", timeArray)
+print(otherStyleTime)                                          #  2019-06-03 21:19:03
+
+
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> try / cache </b></summary>
+
+```  
+
+捕获异常
+python 并不是 try/cache , 而是 try/except
+
+while True:
+    try:
+        x = int(input("请输入一个数字: "))
+        break
+    except ValueError:
+        print("您输入的不是数字，请再次尝试输入！")
+
+
+try-finally 语句无论是否发生异常都将执行最后的代码。        
+
+使用 raise 语句抛出一个指定的异常:
+x = 10
+if x > 5:
+    raise Exception('x 不能大于 5。x 的值为: {}'.format(x))
+
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> 函数: </b></summary>
+
+```  
+
+ 
+ 如何返回多个值:
+    函数的return 语句只能返回一个值，可以是任何类型
+    因此，我们可以“返回一个 tuple类型，来间接达到返回多个值 
+
+    def F1 ():
+        略...
+        return ( a,b )     # 也可以写作 return a, b
+
+    (c, d )= F1()          # 也可以写作 c , d = F1 ( 9, 4 )
+
+
+函数参数的使用不需要使用指定顺序：
+def printinfo( name, age ):
+   "打印任何传入的字符串"
+   print ("名字: ", name)
+   print ("年龄: ", age)
+   return
+ 
+#调用printinfo函数
+printinfo( age=50, name="runoob" )
+
+默认参数
+调用函数时，如果没有传递参数，则会使用默认参数。以下实例中如果没有传入 age 参数，则使用默认值:
+def printinfo( name, age = 35 ):
+   print ("名字: ", name)
+   print ("年龄: ", age)
+   return
+
+
+不定长参数 ( 一个 * 号 ):
+def printinfo( arg1, *vartuple ):
+   "打印任何传入的参数"
+   print ("输出: ")
+   print (arg1)
+   print (vartuple)
+
+printinfo( 70, 60, 50 )
+输出: 
+70
+(60, 50)
+
+
+
+加了两个星号 ** 的参数会以字典的形式导入
+def printinfo( arg1, **vardict ):
+   "打印任何传入的参数"
+   print ("输出: ")
+   print (arg1)
+   print (vardict)
+ 
+# 调用printinfo 函数
+printinfo(1, a=2,b=3)
+输出: 
+1
+{'a': 2, 'b': 3}
+
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> 循环: </b></summary>
+
+```  
+
+
+languages = ["C", "C++", "Perl", "Python"] 
+for x in languages:
+     print (x)
+
+
+languages = ["C", "C++", "Perl", "Python"]
+for index, val in enumerate(languages):
+    print(index , val)
+输出:
+    0 C
+    1 C++
+    2 Perl
+    3 Python
+
+
+
+for i in range(1, 5):
+    print(i)
+输出:
+1
+2
+3
+4
+
+
+也可以使range以指定数字开始并指定不同的增量(甚至可以是负数，有时这也叫做'步长', 这个循环中, 25就是步长):
+for i in range(0, 125, 25):
+    print(i)
+输出:
+    0
+    25
+    50
+    75
+    100
+
+
+
+
+
+# 设置为全局变量
+count = 0
+def function_TEST():
+    global count                # declare 'count' used in this function is the global one
+    count = count + 1
+    print(count)
+
+for iii in range(12):
+    function_TEST()
+
+
+
+
+
+
+
+# 该条件永远为true，循环将无限执行下去
+while True:
+    print(123)
+
+
+break 语句可以跳出 for 和 while 的循环体。
+如果你从 for 或 while 循环中终止，任何对应的循环 else 块将不执行。
+
+continue 语句被用来告诉 Python 跳过当前循环块中的剩余语句，然后继续进行下一轮循环
+
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 字符串
 <details>
 <summary><b> 字符串 : 基础 </b></summary>
 
@@ -865,292 +1270,6 @@ print(millis)                              # 1584112467748
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<details>
-<summary><b> 时间 / 日期 : </b></summary>
-
-```  
-
-获取时间戳:
-import time  # 引入time模块
-ticks = time.time()
-print("当前时间戳为:", ticks)               #  1584112467.7476895
-millis = int(round(time.time() * 1000))
-print(millis)                              # 1584112467748
-
-
-
-时间戳单位最适于做日期运算。但是1970年之前的日期就无法以此表示了。太遥远的日期也不行，
-UNIX和Windows只支持到2038年
-
-
-
-
-
-
------------------------------------   时间戳 字符串 转换   ----------------------------------- 
-import time
-print (time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
->>> 2016-04-07 10:29:46
-
-print (time.strftime("%a %b %d %H:%M:%S %Y", time.localtime()))
->>> Thu Apr 07 10:29:46 2016
-  
-将格式字符串转换为时间戳
-a = "Sat Mar 28 22:24:24 2016"
-print (time.mktime(time.strptime(a,"%a %b %d %H:%M:%S %Y")))
->>> 1459175064.0
-
-
-字符串时间 -> 时间戳
-import time
-tss1 = '2019-06-03 21:19:03'                                  # 字符类型的时间
-timeArray = time.strptime(tss1, "%Y-%m-%d %H:%M:%S")          # 转为时间数组
-print(timeArray)                                              # time.struct_time(tm_year=2019, tm_mon=6, tm_mday=3, tm_hour=21, tm_min=19, tm_sec=3, tm_wday=0, tm_yday=154, tm_isdst=-1)
-print(timeArray.tm_year)                                      # 2019
-timeStamp = int(time.mktime(timeArray))                       # 转为时间戳
-print(timeStamp)                                              # 1559567943
-
-
-
-时间戳 -> 字符串
-import time
-timeStamp = 1559567943
-timeArray = time.localtime(timeStamp)
-otherStyleTime = time.strftime("%Y-%m-%d %H:%M:%S", timeArray)
-print(otherStyleTime)                                          #  2019-06-03 21:19:03
-
-
-
-```
-</details>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<details>
-<summary><b> try / cache </b></summary>
-
-```  
-
-捕获异常
-python 并不是 try/cache , 而是 try/except
-
-while True:
-    try:
-        x = int(input("请输入一个数字: "))
-        break
-    except ValueError:
-        print("您输入的不是数字，请再次尝试输入！")
-
-
-try-finally 语句无论是否发生异常都将执行最后的代码。        
-
-使用 raise 语句抛出一个指定的异常:
-x = 10
-if x > 5:
-    raise Exception('x 不能大于 5。x 的值为: {}'.format(x))
-
-
-```
-</details>
-
-
-
-
-
-
-
-
-
-
-<details>
-<summary><b> 函数: </b></summary>
-
-```  
-
- 
- 如何返回多个值:
-    函数的return 语句只能返回一个值，可以是任何类型
-    因此，我们可以“返回一个 tuple类型，来间接达到返回多个值 
-
-    def F1 ():
-        略...
-        return ( a,b )     # 也可以写作 return a, b
-
-    (c, d )= F1()          # 也可以写作 c , d = F1 ( 9, 4 )
-
-
-函数参数的使用不需要使用指定顺序：
-def printinfo( name, age ):
-   "打印任何传入的字符串"
-   print ("名字: ", name)
-   print ("年龄: ", age)
-   return
- 
-#调用printinfo函数
-printinfo( age=50, name="runoob" )
-
-默认参数
-调用函数时，如果没有传递参数，则会使用默认参数。以下实例中如果没有传入 age 参数，则使用默认值:
-def printinfo( name, age = 35 ):
-   print ("名字: ", name)
-   print ("年龄: ", age)
-   return
-
-
-不定长参数 ( 一个 * 号 ):
-def printinfo( arg1, *vartuple ):
-   "打印任何传入的参数"
-   print ("输出: ")
-   print (arg1)
-   print (vartuple)
-
-printinfo( 70, 60, 50 )
-输出: 
-70
-(60, 50)
-
-
-
-加了两个星号 ** 的参数会以字典的形式导入
-def printinfo( arg1, **vardict ):
-   "打印任何传入的参数"
-   print ("输出: ")
-   print (arg1)
-   print (vardict)
- 
-# 调用printinfo 函数
-printinfo(1, a=2,b=3)
-输出: 
-1
-{'a': 2, 'b': 3}
-
-
-```
-</details>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<details>
-<summary><b> 循环: </b></summary>
-
-```  
-
-
-languages = ["C", "C++", "Perl", "Python"] 
-for x in languages:
-     print (x)
-
-
-languages = ["C", "C++", "Perl", "Python"]
-for index, val in enumerate(languages):
-    print(index , val)
-输出:
-    0 C
-    1 C++
-    2 Perl
-    3 Python
-
-
-
-for i in range(1, 5):
-    print(i)
-输出:
-1
-2
-3
-4
-
-
-也可以使range以指定数字开始并指定不同的增量(甚至可以是负数，有时这也叫做'步长', 这个循环中, 25就是步长):
-for i in range(0, 125, 25):
-    print(i)
-输出:
-    0
-    25
-    50
-    75
-    100
-
-
-
-# 该条件永远为true，循环将无限执行下去
-while True:
-    print(123)
-
-
-break 语句可以跳出 for 和 while 的循环体。
-如果你从 for 或 while 循环中终止，任何对应的循环 else 块将不执行。
-
-continue 语句被用来告诉 Python 跳过当前循环块中的剩余语句，然后继续进行下一轮循环
-
-
-```
-</details>
 
 
 

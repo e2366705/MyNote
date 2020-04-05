@@ -103,7 +103,7 @@ SpringBoot 自己内置了一个小型的服务器
 # Java 规范
 * 写出更加合理, 方便维护的代码
 <details>
-<summary><b>  规范  </b></summary>
+<summary><b>  规范 1 </b></summary>
 
 ```  
 
@@ -116,7 +116,7 @@ SpringBoot 自己内置了一个小型的服务器
 移植性较强, 不需要改原来的代码
 
 
-系统 Windows 中回车换行 : \n\r
+系统 Windows 中回车换行 : \r\n
 
 
 字符串比较用  equals
@@ -130,6 +130,44 @@ SpringBoot 自己内置了一个小型的服务器
 
 ```
 </details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> 规范: POJO 类(实体类) </b></summary>
+
+```  
+一定要有 
+    * getter / setter 方法
+    * toString方法
+    * 带参构造方法
+    * 无参构造方法
+```
+</details>
+
+
+
+
 
 
 
@@ -944,7 +982,7 @@ class Sort{
 ```  
 
 
-系统 Windows 中回车换行 : \n\r
+系统 Windows 中回车换行 : \r\n
 
 
 
@@ -2014,7 +2052,7 @@ public class JDBC_test {
         Connection conn = getConn();
         Statement stmt = conn.createStatement();
         System.out.println(" 实例化Statement对象...");
-        String sql = "UPDATE `user` SET `username`=? WHERE `username`=?;";
+        String sql = "           UPDATE `user` SET `username`=? WHERE `username`=?;               ";
         PreparedStatement ps = conn.prepareStatement(sql);
         System.out.println(ps.toString());      // 输出 SQL 语句
         ps.setString(1, "aaa");
@@ -2036,7 +2074,7 @@ public class JDBC_test {
         Statement stmt = conn.createStatement();
         System.out.println(" 实例化Statement对象...");
 
-        String sql = "SELECT * FROM `user`";
+        String sql = "            SELECT * FROM `user`              ";
         PreparedStatement ps = conn.prepareStatement(sql);
         System.out.println(ps.toString());      // 输出 SQL 语句
         ResultSet rs = ps.executeQuery();
@@ -2056,7 +2094,7 @@ public class JDBC_test {
         /*
         模糊查询: 必须这样写
         String aaa = "rest";
-        String sql = "select `phrase`,`chinese_meaning` from `phrase` where `phrase` LIKE ? ";
+        String sql = "          select `phrase`,`chinese_meaning` from `phrase` where `phrase` LIKE ?              ";
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setString(1,  "%"+aaa+"%");
         System.out.println(ps.toString());      // 输出 SQL 语句
@@ -2374,6 +2412,11 @@ string 和 ArrayList 之间的转换:
 <summary><b>  unicode / ASCII码 / 编码转换 / ...  </b></summary>
 
 ```  
+
+
+首先: 
+    在 Windows 10 系统中回车换行 : \r\n
+
 
 参考资料:      https://blog.csdn.net/u013066244/article/details/54708179
 

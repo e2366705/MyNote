@@ -873,6 +873,61 @@ window.screen.availWidth;           //屏幕可用工作区的宽						返回 32
 
 
 
+
+# 编码问题
+<details>
+<summary><b> 编码问题 </b></summary>
+
+```
+
+详情见: Markdown笔记\0-Java.MD里面的:   
+            unicode / ASCII码 / 编码转换 / ...
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # 字符串操作: 
 * https://www.runoob.com/jsref/jsref-obj-string.html
 <details>

@@ -540,7 +540,7 @@ continue 语句被用来告诉 Python 跳过当前循环块中的剩余语句，
 
 # 字符串
 <details>
-<summary><b> 字符串 : 基础 </b></summary>
+<summary><b> 字符串: 格式化/截取/替换/分割/ </b></summary>
 
 ```  
 
@@ -1897,6 +1897,48 @@ print(a ^ b)     # a 和 b 中不同时存在的元素
 
 
 
+# 编码问题
+<details>
+<summary><b> 编码问题 </b></summary>
+
+```
+
+详情见: Markdown笔记\0-Java.MD里面的:   
+            unicode / ASCII码 / 编码转换 / ...
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2304,7 +2346,7 @@ with open('data.json', 'r') as f:
 
 
 <details>
-<summary><b> About SQL (数据库 MySQL)</b></summary>
+<summary><b> SQL </b></summary>
 
 ```  
 
@@ -2347,7 +2389,7 @@ import pymysql
 # 打开数据库连接  主机地址 , 用户名(root) 密码(root) , 数据库名(zzza9d2g5k4t1b0k)
 db = pymysql.connect("localhost", "root", "root", "zzza9d2g5k4t1b0k")  
 cursor = db.cursor()                        # 使用 cursor() 方法创建一个游标对象 cursor
-cursor.execute("SELECT VERSION()")          # 使用 execute()  方法执行 SQL 查询
+cursor.execute("     SELECT VERSION()     ")          # 使用 execute()  方法执行 SQL 查询
 data = cursor.fetchone()                    # 使用 fetchone() 方法获取单条数据
 print("Database version : %s " % data)      # 打印输出 数据库的版本
 db.close()      
@@ -2394,15 +2436,16 @@ db.close()
 删
     sql = "DELETE FROM user WHERE username = '%s'  " % ('OPPO')      # SQL 删除语句
     其余略...
-
+    ( 注意: try / except 不可少 )
 
 
 
 
 
 改
-    sql = "UPDATE user SET password = 'R12'  WHERE username = '%s'  " % ('OPPO')      # SQL 更新语句
+    sql = "     UPDATE user SET password = 'R12'  WHERE username = '%s'  " % ('OPPO')      # SQL 更新语句
     其余略...
+    ( 注意: try / except 不可少 )
 
 
 
@@ -2417,7 +2460,7 @@ import pymysql
 # 打开数据库连接                    账户    密码         数据库名称
 db = pymysql.connect("localhost", "root", "root", "zzza9d2g5k4t1b0k")
 cursor = db.cursor()            # 使用cursor()方法获取操作游标
-sql = "SELECT * FROM `user`"    # SQL 查询语句
+sql = "           SELECT * FROM `user`             "    # SQL 查询语句
 try:
     aaa = cursor.execute(sql)         # 执行SQL语句
     results = cursor.fetchall() # 获取所有记录列表
@@ -2457,7 +2500,7 @@ class DB():
 
 if __name__ == '__main__':
     with DB(host='localhost',user='root',passwd='root',db='zzza9d2g5k4t1b0k') as db:
-        db.execute('select * from user')
+        db.execute('            select * from user              ')
         print(db)
         for i in db:
             print(i)

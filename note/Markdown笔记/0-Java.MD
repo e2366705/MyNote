@@ -1191,6 +1191,8 @@ public class How_many_chinese {
 
 
 
+
+-----------------------------------   随机数/随机字符串   ------------------------------------
         随机数:
         int min_number = 5000;
         int max_number = 9999;
@@ -1208,6 +1210,11 @@ public class How_many_chinese {
             sb.append(str.charAt(number));
         }
         System.out.println(sb.toString());
+
+
+        时间戳也是另一种形式随机数:
+            System.currentTimeMillis();
+            System.out.println(System.currentTimeMillis());
 
 
 ---------------------------------   截取字符串   ---------------------------------

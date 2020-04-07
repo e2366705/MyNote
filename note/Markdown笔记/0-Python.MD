@@ -1,5 +1,13 @@
 ﻿# Python
 python 写起来挺舒服的, 属于脚本语言, 写完直接可以运行, 不像Java, 还需要编译, 所以写东西是很快的
+```  
+py 文件的开头:
+#!/usr/bin/python3
+# -*- coding: UTF-8 -*-
+
+```
+
+
 
 
 
@@ -544,11 +552,6 @@ continue 语句被用来告诉 Python 跳过当前循环块中的剩余语句，
 
 ```  
 
-py 文件的开头:
-#!/usr/bin/python3
-# -*- coding: UTF-8 -*-
-
-
 
 if __name__ == '__main__':
     下面开始写代码...
@@ -826,8 +829,7 @@ string.split(str="", num=string.count(str))
     str -- 分隔符，默认为所有的空字符，包括空格、换行(\n)、制表符(\t)等
     num -- 分割次数。默认为 -1, 即分隔所有
 
-#!/usr/bin/python
-# -*- coding: UTF-8 -*- 
+
 str = "Line1-abcdef \nLine2-abc \nLine4-abcd";
 str.split( );       # 以空格为分隔符，包含 \n
 >>> ['Line1-abcdef', 'Line2-abc', 'Line4-abcd']
@@ -922,8 +924,6 @@ str.count(sub,0,10)
 
 ---------------------------------   提取中文   ---------------------------------
 把正则表达式改为 [a-z]+ 就可以变成 提取 英文的了
-#!/usr/bin/python3
-# -*- coding: UTF-8 -*-
 import re
 
 # 测试文本
@@ -3137,6 +3137,53 @@ normalize-space:
 
 
 
+<details>
+<summary><b> 解析本地文件 by:xpath </b></summary>
+
+```
+
+#!/usr/bin/python3
+# -*- coding: UTF-8 -*-
+
+from lxml import html, etree
+
+def Local_html(URL):
+    html = etree.parse(URL, etree.HTMLParser())
+    list = html.xpath('//*[@class="content-city"]')
+    for index, item in enumerate(list):
+        city = item.xpath(".//text()")
+        link = item.xpath(".//@href")
+        print(city[0] + "     " + link[0])
+
+Local_html("./TEST.html")
+
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3194,7 +3241,7 @@ if __name__ == '__main__':
 
 
 -----------------------------------   案例 2 : 爬取 豆瓣电影 Top 250   -----------------------------------
-#!/usr/bin/python
+#!/usr/bin/python3
 # -*- coding: UTF-8 -*-
 import requests
 from lxml import html
@@ -3327,6 +3374,33 @@ if __name__ == '__main__' :
 
 ```
 </details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

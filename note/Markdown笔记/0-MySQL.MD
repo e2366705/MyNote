@@ -558,8 +558,21 @@ UPDATE `table_name` SET `chinese_meaning` = null WHERE `state` = 'Very_familiar'
 随机更改表中 date 字段的值为 '------------' (数量为123条)
 UPDATE `table_name` SET `date` = '------------' ORDER BY RAND() LIMIT 123;
 
+只更改一条数据:
+UPDATE `tb_note` SET `note` = #{note} WHERE 1 = 1  
+
+
 ```
 </details>
+
+
+
+
+
+
+
+
+
 
 
 
@@ -625,6 +638,8 @@ GROUP BY:
 
 
 升序 / 降序 查询:
+升序 ascending(asc):     从小到大的排列 (数字: 0 - 100 , 字母: A - Z)
+降序 descending(desc):   反之(从大到小)
 	降序
 	select * from `student` order by `class` desc;
 	

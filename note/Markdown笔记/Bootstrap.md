@@ -526,6 +526,86 @@ autofocus="autofocus"  是页面加载 input 自动获取焦点
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> 模态框 </b></summary>
+
+```
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">更新数据</button>
+
+<!--  模态框 -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document" style="width: 90%; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                <textarea id="textarea_content" class="form-control" rows="35" style="font-size: 26px; font-weight: bolder; ">     在w3school，你可以找到你所需要的所有的网站建设教程。</textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="Submit_button()" > Submit </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # 完整 Demo
 <details>
 <summary><b> 响应式web : 阿里百秀 </b></summary>

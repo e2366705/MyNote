@@ -3018,7 +3018,7 @@ urlpatterns = [
 
 
 <details>
-<summary><b> 获取网页源码 </b></summary>
+<summary><b> 获取网页源码 - requests 方式  </b></summary>
 
 ```  
 
@@ -3060,13 +3060,12 @@ print(r.decode('utf-8'))
 
 
 <details>
-<summary><b> Xpath : 语法 </b></summary>
+<summary><b> Xpath : 基础 </b></summary>
 
 ```  
 
 在 Chrome 浏览器中(Firefox也可以), 选择你要选择的内容的节点, 然后鼠标右键, 选择 Copy -> Copy Xpath , 即可复制 Xpath 路径:
 //*[@id="info"]/span[1]/span[2]/a
-
 
 
 from lxml import html, etree
@@ -3306,7 +3305,7 @@ for i in range(10):
 
 
 <details>
-<summary><b> selenium </b></summary>
+<summary><b> selenium: 基础 </b></summary>
 
 ```
 
@@ -3322,8 +3321,69 @@ for i in range(10):
     3.将谷歌浏览器环境变量添加到 系统环境变量的 path (按下 win 键, 搜索'系统高级' , 点击环境变量...)
 
 
-来个小案例:
------------------------------------      ------------------------------------
+
+
+基础:
+暂停/等待:
+from selenium import webdriver
+wd = webdriver.Chrome()
+wd.implicitly_wait(10)    # 设置最大等待时长为 10秒
+
+
+
+根据 id 取值(记得加上 try/except ):
+driver.find_element_by_id("kw").send_keys("Python3的安装")
+
+根据 class 取值:
+try:
+    list = browser.find_elements_by_class_name('AAAAAAAAAAAAAAAAA')
+    list[0].click()
+except:
+    print("没找到相应的节点...")
+
+
+点击:
+driver.find_element_by_id("su").click()
+
+
+清除输入框已有的字符串:
+element = wd.find_element_by_id("input1")
+element.clear() 
+element.send_keys('白月黑羽') # 输入新字符串
+
+
+获取输入框里面的文字
+element = wd.find_element_by_id("input1")
+print(element.get_attribute('value')) # 获取输入框中的文本
+
+
+获取元素的文本内容
+element = wd.find_element_by_id('animal')
+print(element.text)
+
+
+获取元素属性
+element = wd.find_element_by_id('input_name')
+print(element.get_attribute('class'))
+
+
+获取整个元素对应的HTML
+要获取整个元素对应的HTML文本内容，可以使用 
+    element.get_attribute('outerHTML')
+如果，只是想获取某个元素 内部 的HTML文本内容，可以使用
+    element.get_attribute('innerHTML')
+
+
+其他:
+    element.get_attribute('innerText')
+    element.get_attribute('textContent')
+
+
+
+
+
+
+-----------------------------------   测试是否成功?   ------------------------------------
 from selenium import webdriver
 import os
 
@@ -3344,10 +3404,45 @@ browser.find_element_by_id("su").click()
 #browser.quit()
 
 
+```
+</details>
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> selenium: 案例 </b></summary>
+
+```
 
 -----------------------------------   获取网页源码    ------------------------------------
 #!/usr/bin/python3
@@ -3372,16 +3467,49 @@ if __name__ == '__main__' :
     search_webs('https://www.baidu.com')
 
 
+
+
+
+
+
+
+
+
+
+
+
+-----------------------------------   爬取 58 招聘岗位   -------------------------------------
+
+#!/usr/bin/python3
+# -*- coding: UTF-8 -*-
+import time
+from  lxml import  etree
+from selenium import webdriver
+import os
+
+chromedriver = "C:/Program Files (x86)/Google/Chrome/Application/chromedriver.exe"
+os.environ["webdriver.chrome.driver"] = chromedriver
+browser = webdriver.Chrome(chromedriver)
+
+url = "https://sz.58.com/job/?key=Java&classpolicy=job_A&final=1&jump=1"
+browser.get(url)
+
+time.sleep(5)
+
+Elements_node = browser.find_elements_by_class_name('job_name')    # 找节点
+                browser.find_elements_by_class_name('job_name clearfix')  --> 这是错误的, 只写一个 class 即可
+
+for index, item in enumerate(Elements_node):
+    print(str(index)+"        ->       "+ item.text)
+
+time.sleep(5)
+
+# 关闭浏览器
+browser.quit()
+
+
 ```
 </details>
-
-
-
-
-
-
-
-
 
 
 

@@ -922,7 +922,7 @@ str.count(sub,0,10)
 
 ```  
 
----------------------------------   提取中文   ---------------------------------
+---------------------------------   about 中文   ---------------------------------
 把正则表达式改为 [a-z]+ 就可以变成 提取 英文的了
 import re
 
@@ -930,8 +930,13 @@ import re
 test = '<h1>hello 你好, 123 #%%% , 123,qwe 00   qwe$^&^$#@# world 世界, [[哈哈哈 ]]]]</h1>'
 
 # 中文匹配正则
+import re
+TXT = "啊啊 12312 ASDAS asdasas哈哈哈dasdas哦dasd"
 chinese_pattern = '[\u4e00-\u9fa5]+'
-says = re.findall(chinese_pattern, test)
+list_ch = re.findall(chinese_pattern, TXT)        # 返回一个列表
+print(list_ch)
+输出:
+    ['啊啊', '哈哈哈', '哦']
 
 # 输出提取的内容
 hi = ''
@@ -946,16 +951,8 @@ print(hi)
 
 
 
-
------------------------------------   是否存在某个字符(中文,英文,数字)   ----------------------------------- 
+是否包含某个字符:
 print('你' in test)         # 返回 True
-
-
-
-
-
-
-
 
 
 
@@ -2088,14 +2085,14 @@ ab	以二进制格式打开一个文件用于追加。
 指定写入格式 encoding="UTF-8" , 这样就不会乱码了
 
 基本示例 - 写:
-f = open("/tmp/foo.txt", "w", encoding="UTF-8")
+f = open("./AAA.txt", "w", encoding="UTF-8")
 f.write( "Python 是一个非常好的语言。\n是的，的确非常好!!\n" )
 f.close()
 
 
 
 基本示例 - 读:
-f = open("/tmp/foo.txt", "r", encoding="UTF-8")
+f = open("./AAA.txt", "r", encoding="UTF-8")
 str = f.read()
 print(str)
 f.close()
@@ -2108,6 +2105,27 @@ for line in open(r"C:\Users\TEST.txt" , encoding="UTF-8"):
         line = line.replace("\n", "")         # 把 换行符替换掉
         print(line)
 
+
+
+
+
+-----------------------------------   读取指定行    ------------------------------------
+import linecache
+file_path = './阿甘正传.txt'
+line_number = 12
+
+def get_line_context(file_path, line_number):
+    return linecache.getline(file_path, line_number).strip()
+
+print(get_line_context(file_path, line_number))
+
+
+
+
+
+-----------------------------------   文本文件有多少行?    ------------------------------------
+count = len(open(file_path,'r',  encoding="UTF-8").readlines())
+print(count)
 
 ```
 </details>
@@ -2402,6 +2420,10 @@ db.close()
 
 
 
+
+pymysql.escape_string: 有时候有双引号/单引号在里面, 需要格式化转义一下
+
+
 接下来测试 CRUD (增删改查): 
 增( 返回增加的条数 -> int 类型):
 #!/usr/bin/python3
@@ -2409,11 +2431,13 @@ import pymysql
 # 打开数据库连接  主机地址 , 用户名(root) 密码(root) , 数据库名(zzza9d2g5k4t1b0k)
 db = pymysql.connect("localhost", "root", "root", "study_english_database")
 
-def insert(title, content):
+def insert(line_num, english, chinese, movie_name):
     cursor = db.cursor()                                     # 使用 cursor() 方法创建一个游标对象 cursor
-    sql = "INSERT INTO `tb_short_news`(title, content) VALUES('%s', '%s')" % (title, content)
-    print(sql)
+    sql = '          INSERT INTO `tb_movie_script` VALUES(  "%s" , "%s" , "%s" , "%s" )        ' % (line_num, (pymysql.escape_string(english)), (pymysql.escape_string(chinese)), movie_name)
+    print(sql)    
+    --> pymysql.escape_string: 有时候有双引号/单引号在里面, 需要格式化转义一下
     try:
+        db.ping(reconnect=True)                              # 检查连接是否存在，断开的话会重连
         aa = cursor.execute(sql)                             # 执行sql语句
         db.commit()                                          # 提交到数据库执行
         print("成功 insert 了:   ", aa, "  条数据.")
@@ -2422,9 +2446,7 @@ def insert(title, content):
         db.rollback()                                        # 如果发生错误则回滚
     cursor.close()                                           # 关闭数据库连接
 
-insert("bbbbbbbbb", "11111111111111")
-insert("cccccccccc", "222222222222222")
-insert("aaaaa", "33333333333333")
+insert(0,  'Bubba " s'  ,  '哈哈哈哈哈哈'  ,  '阿甘正传')
 db.close()
 
 
@@ -2461,13 +2483,15 @@ import pymysql
 db = pymysql.connect("localhost", "root", "root", "zzza9d2g5k4t1b0k")
 cursor = db.cursor()            # 使用cursor()方法获取操作游标
 sql = "           SELECT * FROM `user`             "    # SQL 查询语句
+--> pymysql.escape_string: 有时候有双引号/单引号在里面, 需要格式化转义一下
 try:
+    db.ping(reconnect=True)           # 检查连接是否存在，断开的话会重连
     aaa = cursor.execute(sql)         # 执行SQL语句
-    results = cursor.fetchall() # 获取所有记录列表
-    print(aaa)                  # 查询到的总数:  8 条
-    print(type(aaa))            # 变量类型   : int类型
-    print(type(results))        # <class 'tuple'> 
-    for row in results:         # 循环遍历
+    results = cursor.fetchall()       # 获取所有记录列表
+    print(aaa)                        # 查询到的总数:  8 条
+    print(type(aaa))                  # 变量类型   : int类型
+    print(type(results))              # <class 'tuple'> 
+    for row in results:               # 循环遍历
         username = row[2]
         password = row[3]
         print("username   =   %s,  password   =   %s " % (username, password))

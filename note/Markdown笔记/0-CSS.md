@@ -5,6 +5,36 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> lorem 随机生成单词 </b></summary>
+
+```
+
+lorem6 按回车(Tap键)
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
 <details>
 <summary><b> 基础 </b></summary>
 
@@ -140,6 +170,14 @@ cursor: pointer;  /* 鼠标放上去有个小手 */
 
 
 
+<details>
+<summary><b> 小技巧 </b></summary>
+
+```
+width: calc(100% - 12px);
+
+```
+</details>
 
 
 
@@ -152,6 +190,58 @@ cursor: pointer;  /* 鼠标放上去有个小手 */
 
 
 
+
+
+
+
+
+
+
+  <details>
+<summary><b> flex 布局 </b></summary>
+
+```
+
+  <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+
+  <div id="box2" style="display: flex;">
+    <i class="fa fa-google-plus fa-5x" aria-hidden="true" style=""></i>
+    <input type="text" />
+    <button>submit</button>
+  </div>
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <details>
+<summary><b> 在线引入 font-awesome 图标 </b></summary>
+
+```
+
+  <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+
+  <div id="box2" style="display: flex;">
+    <i class="fa fa-google-plus fa-5x" aria-hidden="true" style=""></i>
+    <input type="text" />
+    <button>submit</button>
+  </div>
+
+```
+</details>
 
 
 

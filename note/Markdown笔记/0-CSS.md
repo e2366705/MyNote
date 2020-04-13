@@ -997,3 +997,162 @@ li 标签是行内元素,可以用text-align: center;来居中;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+# Demo
+<details>
+<summary><b> 折叠式菜单 </b></summary>
+
+```
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>折叠式菜单3</title>
+  <script src="https://s1.pstatp.com/cdn/expire-1-M/jquery/2.1.4/jquery.min.js" type="application/javascript"></script>
+<link href="https://s2.pstatp.com/cdn/expire-1-M/twitter-bootstrap/3.4.0/css/bootstrap.min.css" type="text/css"  rel="stylesheet" />
+<script src="https://s1.pstatp.com/cdn/expire-1-M/twitter-bootstrap/3.4.0/js/bootstrap.min.js" type="application/javascript"></script>
+<script src="https://s0.pstatp.com/cdn/expire-1-M/vue/2.6.10/vue.min.js" type="application/javascript" ></script>
+<script src="https://s1.pstatp.com/cdn/expire-1-M/layer/2.3/layer.js" type="application/javascript"></script>
+
+
+
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    ul {
+      list-style-type: none; 
+      margin: 100px;   
+    }
+
+    .menu_head {
+      width: 185px;
+      height: 47px;
+      line-height: 47px;
+      padding-left: 38px;
+      font-size: 17px;
+      color: #475052;
+      cursor: pointer;
+      border: 1px solid #e1e1e1;
+      position: relative;
+      margin: 0px;
+      font-weight: bold;
+      background: #f1f1f1 url(../img/pro_left.png) center right no-repeat;
+    }
+
+    .menu_list .current {
+      background: #f1f1f1 url(../img/pro_down.png) center right no-repeat;
+    }
+
+    .menu_body {
+      width: 223px;
+      height: auto;
+      overflow: hidden;
+      line-height: 38px;
+      border-left: 1px solid #e1e1e1;
+      background-color: #fff;
+      border-right: 1px solid #e1e1e1;
+    }
+
+    .menu_body a {
+      display: block;
+      width: 223px;
+      height: 38px;
+      line-height: 38px;
+      padding-left: 38px;
+      color: #777;
+      background: #fff;
+      text-decoration: none;
+      border-bottom: 1px solid #e1e1e1;
+    }
+  </style>
+</head>
+
+<body>
+  <ul class="menu_list">
+    <li>
+      <p class="menu_head">目标管理</p>
+      <div class="menu_body">
+        <a href="">主题空间</a>
+        <a href="">项目任务</a>
+        <a href="">工作计划</a>
+        <a href="">日程事件</a>
+        <a href="">时间视图</a>
+      </div>
+    </li>
+    <li>
+      <p class="menu_head">会议管理</p>
+      <div class="menu_body">
+        <a href="">主题空间</a>
+        <a href="">会议安排</a>
+        <a href="">待开会议</a>
+        <a href="">已开会议</a>
+        <a href="">会议资源</a>
+      </div>
+    </li>
+    <li>
+      <p class="menu_head">知识社区</p>
+      <div class="menu_body">
+        <a href="">我的收藏</a>
+        <a href="">知识广场</a>
+        <a href="">文档中心</a>
+        <a href="">我的博客</a>
+        <a href="">文档库管理</a>
+      </div>
+    </li>
+    <li>
+      <p class="menu_head">我的工具</p>
+      <div class="menu_body">
+        <a href="">综合查询</a>
+        <a href="">通讯录</a>
+        <a href="">便签</a>
+        <a href="">计算器</a>
+        <a href="">万年历</a>
+        <a href="">常用链接</a>
+      </div>
+    </li>
+  </ul>
+</body>
+
+
+
+<script>
+  //隐藏所有二级菜单
+  $('.menu_head +div').hide();
+  //显示当前，隐藏其它
+  $('.menu_head').click(function () {
+    var flag = $(this).next('div');
+    //设置当前菜单右侧图标样式
+    if (flag.is(':hidden')) {
+      $(this).css('backgroundImage', 'url(img/pro_down.png)');
+      $(this).next('div').slideDown();
+    } else {
+      $(this).css('backgroundImage', 'url(img/pro_left.png)');
+      $(this).next('div').slideUp();
+    }
+  });
+</script>
+
+</html>
+
+
+```
+</details>
+
+
+

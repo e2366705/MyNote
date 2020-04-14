@@ -2234,6 +2234,10 @@ localStorage.key(5).includes("apple") === true
                 audio.load();
                 audio.play(); 
 
+        有道单词发音接口:
+            英音:   http://dict.youdao.com/dictvoice?audio=suffering&type=1
+            美音:   http://dict.youdao.com/dictvoice?audio=suffering&type=2
+            
 
 ```
 </details>

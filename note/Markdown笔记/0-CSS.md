@@ -590,6 +590,74 @@ position: fixed
 
 
 
+
+
+
+
+<details>
+<summary><b> 浮动 / float </b></summary>
+
+```
+
+行内元素(比如span), 本身是不能设置宽高属性的, 
+但是加上 float , 就可以设置宽高属性了
+
+
+
+-----------------------------------   清除浮动方式1: overflow: hidden  ------------------------------------
+  <div id="father" style="   background-color: yellow; overflow: hidden;">
+    <div id="son" style="width: 100px; height: 100px; background-color: pink; float: right; ">son1</div>
+    <div id="son" style="width: 100px; height: 100px; background-color: green; float: right; ">son2</div>
+  </div>
+  以上案例可以发现, 当子元素设置为 浮动 的时候, 父元素的高度为 0
+  因为子元素脱离文档流了
+  怎么才能让父元素有高度呢(自适应)
+  方法之一就是: overflow: hidden, 让父类去感知子类的高度
+
+
+-----------------------------------   清除浮动方式2: clear: both;  ------------------------------------
+ <div id="father" style="   background-color: yellow; overflow: hidden;">
+    <div id="son" style="width: 100px; height: 100px; background-color: pink; float: left; ">pink</div>
+    <div id="son" style="width: 100px; height: 100px; background-color: green; float: left; ">green</div>
+    <div id="son" style="width: 300px; height: 300px; background-color: red; clear: both; ">red</div>
+  </div>
+比如这个例子:
+    两个小盒子设置为浮动, 最后一个大盒子没有设置为浮动, 那么大盒子就会隐藏在两个小盒子的后面, 
+    如果要消除这种浮动产生的影响, 就使用 clear: both 
+    (抵消其他元素浮动对当前元素产生的影响)
+
+总结:
+  常用清除浮动的方式:
+    1 元素加 clear: both
+    2 浮动元素的父级div定义: overflow: hidden
+    3 浮动元素的父元素定宽高
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <details>
 <summary><b> 区别 </b></summary>
 

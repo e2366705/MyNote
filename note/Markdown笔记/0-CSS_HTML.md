@@ -20,7 +20,8 @@
 
 ```
 
-lorem6 按回车(Tap键)
+lorem6    按回车(Tap键)  表示随机生成 6个 单词
+lorem*6   按回车(Tap键)  表示随机生成 6行 单词
 
 ```
 </details>

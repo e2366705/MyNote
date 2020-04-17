@@ -39,6 +39,51 @@ lorem6 按回车(Tap键)
 
 
 
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> 在线图片引入 </b></summary>
+
+```
+
+<img src="https://dummyimage.com/1266x666/FF7F00/1C86EE" alt="">
+
+<img src="https://dummyimage.com/1266x666/FF7F00/1C86EE&text=2333333" alt="">
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <details>
 <summary><b> 哪些是块级元素，哪些是行内元素 </b></summary>
 
@@ -640,6 +685,31 @@ position: fixed
 
 
 
+
+
+
+
+
+
+
+
+<details>
+<summary><b> flex 布局 </b></summary>
+
+```
+比较详细的教程:      https://www.ruanyifeng.com/blog/2015/07/flex-grammar.html
+
+父元素设置:
+    display: flex;
+    flex-direction: row;
+
+子元素设置:
+    flex: 1;
+
+    平均分成三行
+
+```
+</details>
 
 
 

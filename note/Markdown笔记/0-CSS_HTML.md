@@ -319,6 +319,52 @@ cursor: pointer;  /* 鼠标放上去有个小手 */
 ```
 width: calc(100% - 12px);
 
+
+CSS 文本显示省略号总是不生效？记下这个固定属性组合：
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100px;
+
+
+HTML 表单中的复选框太小很难点？试试把 input 放到 label 中:
+    <label>
+      <input type="checkbox">null
+    </label>
+
+
+
+使用 <datalist>标签实现 input 输入框自动提示:
+    <input type="text" list="AAA" name="" id="" placeholder="input something...">
+    <datalist id="AAA">
+      <option value="javaScript"></option>
+      <option value="python"></option>
+      <option value="php"></option>
+      <option value="java"></option>
+    </datalist>
+
+
+<ol>标签，
+  有序列表，有start属性可以指定起始序号，也可以用reverse反转顺序:
+    <ol>
+      <li>AAAAAAA</li>
+      <li>BBBBBBB</li>
+      <li>CCCCCCC</li>
+    </ol>
+
+    <ol start="6">
+      <li>AAAAAAA</li>
+      <li>BBBBBBB</li>
+      <li>CCCCCCC</li>
+    </ol>
+
+    <ol reversed>
+      <li>AAAAAAA</li>
+      <li>BBBBBBB</li>
+      <li>CCCCCCC</li>
+    </ol>
+
+
 ```
 </details>
 

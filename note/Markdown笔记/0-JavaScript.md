@@ -1470,6 +1470,9 @@ A
 
 ```  
 
+https://jsonplaceholder.typicode.com/posts
+
+
 将后台返回的string数据,解析成JSON数据
 
   var index_page_json_data = JSON.parse("{\"We do not have anything\":\"我们没有病\",\"How do you know?\":\"你怎么知道?\",\"Do we look like it?\":\"我们看起来像有病吗?\"}");
@@ -2888,8 +2891,34 @@ window.onload = function(){
 具体详见 另外一个 笔记:   0-前后端交互.MD
 
 
+JavaScript 原生 Fetch API ajax
+
+  // async 是异步的, 它不会阻塞我们的主线程, 所以这个页面不会卡住
+  async function getData(){
+    const respones = await fetch('https://jsonplaceholder.typicode.com/posts')
+    const posts = await respones.json();
+    console.log(posts);  
+  }
+  getData();
+
+
+
 ```
 </details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

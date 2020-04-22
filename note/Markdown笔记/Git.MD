@@ -3,6 +3,8 @@
 
 查看路径：pwd
 
+YXB
+
 查看有哪些文件：ls  ( ll 同理 )
 
 查看用户的信息：git config -l

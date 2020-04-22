@@ -3,8 +3,6 @@
 
 查看路径：pwd
 
-YXB
-
 查看有哪些文件：ls  ( ll 同理 )
 
 查看用户的信息：git config -l
@@ -16,8 +14,19 @@ YXB
 修改用户名和邮箱地址：
 $ git config --global user.name "username"
 $ git config --global user.email "email"
+   [不需要输入密码, 密码框会自己弹出来]
 
 ```
+
+
+
+
+
+
+
+
+
+
 
 
 ## idea 把项目上传到GitHub:
@@ -44,6 +53,15 @@ $ git config --global user.email "email"
 
 
 
+
+
+
+
+
+
+
+
+
 # 下载 GitHub 单个文件夹 / 单个文件
 ```  
 
@@ -57,6 +75,14 @@ Google chrome 浏览器插件 :  GitZip for github
 
 
 ```
+
+
+
+
+
+
+
+
 
 
 
@@ -93,6 +119,18 @@ PS:
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 # 教程2 (共计2):
 ## 更新仓库文件 怎么操作???
 ```
@@ -107,6 +145,18 @@ PS:
    git status
 
 ```
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -130,6 +180,19 @@ git push -u origin master 	  # 修改完了,记得提交!!!不然不生效
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 # clone 克隆/下载/拉取 操作:
 ```
 
@@ -141,6 +204,20 @@ git clone -b nnnname__ https://github.com/somebody/XXXXXX.git
 ```
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Github README 添加 图片
 ```
 
@@ -149,6 +226,21 @@ git clone -b nnnname__ https://github.com/somebody/XXXXXX.git
 
 
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -200,3 +292,7 @@ git push -u origin master -f
 
 
 ```
+
+
+
+

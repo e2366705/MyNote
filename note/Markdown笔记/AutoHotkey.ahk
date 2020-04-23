@@ -97,6 +97,18 @@ SendEvent {Blind}{Up down}
 KeyWait RCtrl                       ; 防止键盘自动重复导致的重复鼠标点击.
 SendEvent {Blind}{Up up}
 
+ ;  方向键 [上] (第 7  次)
+sleep, 150
+SendEvent {Blind}{Up down}
+KeyWait RCtrl                       ; 防止键盘自动重复导致的重复鼠标点击.
+SendEvent {Blind}{Up up}
+
+ ;  方向键 [上] (第 8  次)
+sleep, 150
+SendEvent {Blind}{Up down}
+KeyWait RCtrl                       ; 防止键盘自动重复导致的重复鼠标点击.
+SendEvent {Blind}{Up up}
+
 sleep, 150
 
 ; 按下 回车键

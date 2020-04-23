@@ -109,19 +109,18 @@ SendEvent {Blind}{Up down}
 KeyWait RCtrl                       ; 防止键盘自动重复导致的重复鼠标点击.
 SendEvent {Blind}{Up up}
 
-sleep, 150
+sleep, 200
 
 ; 按下 回车键
 Send {Enter}
 
 sleep, 999          ; 暂停 xxx 毫秒
 
-SendEvent {Blind}{Up down}
-KeyWait RCtrl                       ; 防止键盘自动重复导致的重复鼠标点击.
-SendEvent {Blind}{Up up}
+; 防止键盘自动重复导致的重复鼠标点击
+
 
 sleep, 333
-Send, 00
+Send, ./update.sh00
 
 return
 

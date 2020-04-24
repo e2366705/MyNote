@@ -52,7 +52,18 @@ pause    表示 命令行的那个黑框框不会消失
 命令行输出:
 @ 的作用就是关闭单行回显, 举个例子:
 @echo 22222     命令行输出: 22222
+@echo 大家好     命令行输出: 大家好
 echo 11111      命令行输出: C:\Users\SpringBoot\Desktop>echo 11111
+
+
+中文(Chinese)乱码?
+因为 Windows下默认的bat的编码格式是UTF-8，这时只需将其转换成ANSI 格式即可
+右击bat文件 -> 编辑 -> 另存为 -> ANSI格式 -> 保存即可
+注意!! 一定要用 Windows 自带的文本编辑器打开, 用别的编辑器打开会乱码(比如 VS Code)
+
+@echo Hello World...
+@echo 大家好!!!
+PAUSE
 
 
 

@@ -1527,3 +1527,121 @@ li 标签是行内元素,可以用text-align: center;来居中;
 
 ```
 </details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> 电商搜索框 position: fixed </b></summary>
+
+```
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>搜索框的制作</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            list-style-type: none;
+        }
+
+        .nav {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            background: #f40;
+            width: 80%;
+            color: #FFF;
+        }
+
+
+/*           左边部分             */
+        .nav .left {
+            width: 100px;
+            line-height: 50px;
+            text-align: center;
+        }
+
+
+
+/*           中间部分             */
+        .nav .mid {
+            height: 50px;
+            position: absolute;
+            left: 100px;
+            right: 100px;
+            top: 0;
+        }
+        .nav .mid input {
+            width: 100%;
+            height: 70%;
+            outline: none;
+            border: none;
+            margin-top: 7px;
+            border-radius: 200px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+
+/*           右边部分             */
+        .nav .right {
+            top: 0;
+            right: 0;
+            position: absolute;
+            width: 100px;
+            line-height: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="nav">
+        <div class="left">淘宝网</div>
+        <div class="mid"><input type="" name="" id="" value="" /></div>
+        <div class="right">登陆</div>
+    </div>
+
+    <p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p>
+</body>
+</html>
+
+
+```
+</details>

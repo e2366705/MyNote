@@ -1304,19 +1304,20 @@ print(millis)                              # 1584112467748
 ```  
 
 总结:
-    Dictionary(字典):       特点:无序, 键必须是唯一的，但值则不必, 键必须是不可变的，如字符串，数字或元组
+    Dictionary(字典):        特点:无序, 键必须是唯一的，但值则不必, 键必须是不可变的，如字符串，数字或元组
     
-    Set(集合):              无序的 , 不重复的
+    Set(集合):              无序的 , 不重复的, 可以使用大括号 { } 或者 set() 函数创建集合，
+                            basket = {'apple', 'orange', 'apple', 'pear', 'orange', 'banana'}
+                                注意：创建一个空集合必须用 set() 而不是 { }，因为 { } 是用来创建一个空字典
 
-    list(列表):             特点: 有序, 元素是可以改变的 (元组使用小括号，列表使用方括号)
+    list(列表):              特点: 有序, 元素是可以改变的 (元组使用小括号，列表使用方括号)
                                 举例: list1 = ['Google', 'Runoob', 1997, 2000];
 
-    Tuple(元组):            与列表类似，不同之处在于元组的元素不能修改 (同样的, 元组中的元素值是不允许删除的)
-                            (虽然元素不可改变,但它可以包含可变的对象，比如list列表)
-                            可以使用del语句来删除整个元组 (del tup)
-                                举例 : tup1 = ('Google', 'Runoob', 1997, 2000)
-                                          
-
+    Tuple(元组):             与列表类似，不同之处在于元组的元素不能修改 (同样的, 元组中的元素值是不允许删除的)
+                             (虽然元素不可改变,但它可以包含可变的对象，比如list列表)
+                             可以使用del语句来删除整个元组 (del tup)
+                             举例 : tup1 = ('Google', 'Runoob', 1997, 2000)
+        
 ```
 </details>
 
@@ -1344,22 +1345,43 @@ print(millis)                              # 1584112467748
 
 ```  
 
------------------------------------   tuple 转换成 str:    ----------------------------------- 
+-----------------------------------   list & string   ------------------------------------
+--- list => string:
+list_test = ['AAAAAAAA', 'bbbbbbbbbb', 'CCCCCCCCccccccc']
+to_str = "-".join(list_test)
+print(to_str)            # AAAAAAAA-bbbbbbbbbb-CCCCCCCCccccccc
+
+list1=[1,'two','three',4]
+print(" ".join('%s' %id for id in list1))     # 1 two three 4
+
+
+--- string => list:
+str1 = "12345"
+list1 = list(str1)
+print(list1)                       ['1', '2', '3', '4', '5'] 
+
+str2 = "123 sjhid dhi"
+list2 = str2.split()  # or list2 = str2.split(" ")
+print(list2)                       ['123', 'sjhid', 'dhi']
+
+str3 = "www.google.com"
+list3 = str3.split(".")
+print(list3)                       ['www', 'google', 'com']
+
+
+
+
+-----------------------------------   tuple => string:    ----------------------------------- 
 value = ('www.runoob.com', 14)                # <class 'tuple'>
 s = str(value)                                # <class 'str'>
 
 
 
-
-
-
-
------------------------------------   int 转成 str   -----------------------------------
+-----------------------------------   int => string   -----------------------------------
 python并不能像java一样，
 在做拼接的时候自动把类型转换为string类型
 故而需要进行一个类型转换，
 譬如将print(1+"a")改为print(str(1)+"a")就可以了
-
 
 print("Aaaaaaa  "+format(100))         # 输出 : Aaaaaaa  100
 print("Aaaaaaa  "+ str(100))           # 输出 : Aaaaaaa  100
@@ -1368,23 +1390,27 @@ print("Aaaaaaa  "+ (100))              # 会报错
 
 
 
-
-
------------------------------------    元组 -> 列表   ----------------------------------- 
-list(seq)          
-
+-----------------------------------    tuple => list   ----------------------------------- 
+list(seq)
 
 
 
-
------------------------------------   字典 -> 列表   ----------------------------------- 
+-----------------------------------   Dict => list   ----------------------------------- 
 使用 list() 来转换为列表，列表为字典中的所有值:
 dict = {'Sex': 'female', 'Age': 7, 'Name': 'Zara'}
 list(dict.values())
 >>> ['female', 7, 'Zara']
 
+
 ```
 </details>
+
+
+
+
+
+
+
 
 
 

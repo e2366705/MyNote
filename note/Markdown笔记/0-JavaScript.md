@@ -212,12 +212,12 @@ document.getElementById("kkk").style.cssText = " background-color:pink; width: 1
 document.getElementsByClassName('div2')[0].style.background = 'pink';
 
 
-推荐使用 jQuery , 可以直接操作全部的 class
-    document.getElementsByClassName("test")[0].style.color = "red";
+推荐使用 jQuery , 可以直接操作全部的 class:
+    $(".test").css("color","red");
+
 
 原生 JavaScript 只能操作单个 class 元素:
-    $(".test").css("color","red");
-    
+    document.getElementsByClassName("test")[0].style.color = "red";    
 
 ```
 </details>
@@ -2359,7 +2359,7 @@ interval = setInterval(runThis, 5000);
 
 
 <details>
-<summary><b> JavaScript键盘鼠标之: 键盘 </b></summary>
+<summary><b> 键盘鼠标之: 键盘 </b></summary>
 
 ```  
 
@@ -2570,7 +2570,7 @@ select(document, tanchu);
             let bool = true;
             console.log("你刚才选择的文本数据是:    "+txt);
             if (bool){
-                var url = "http://dict.youdao.com/dictvoice?audio=" + txt;
+                var url = "http://dict.youdao.com/dictvoice?audio=" + txt + "&type=2";
                 var audio = new Audio(url);
                 audio.load();
                 audio.play();

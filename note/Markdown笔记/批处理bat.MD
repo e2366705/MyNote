@@ -42,11 +42,13 @@
 
 参考资料 :      http://xstarcd.github.io/wiki/windows/windows_cmd_summary_commands.html
 
-
-
 pause    表示 命令行的那个黑框框不会消失
 
+@echo 删除AAAAA这个文件夹
+rd /s /Q c:\AAAAA
 
+@echo 新建一个BBBBBB文件夹
+md c:\BBBBBB
 
 
 命令行输出:

@@ -1876,7 +1876,6 @@ li 标签是行内元素,可以用text-align: center;来居中;
 
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8" />
     <title>IconFont</title>
@@ -1914,61 +1913,32 @@ li 标签是行内元素,可以用text-align: center;来居中;
     <div id="side-menu">
         <div id="side-menu-inner">
             <ul>
-                <li style="margin-top: 66px;"><a href="#">为什么滑动不了?</a></li>
-                <li style="margin-top: 66px;"><a href="#">Link</a></li>
-                <li style="margin-top: 66px;"><a href="#">Link</a></li>
-                <li style="margin-top: 66px;"><a href="#">Link</a></li>
-                <li style="margin-top: 66px;"><a href="#">Link</a></li>
-                <li style="margin-top: 66px;"><a href="#">Link 0</a></li>
-                <li style="margin-top: 66px;"><a href="#">Link</a></li>
-                <li style="margin-top: 66px;"><a href="#">Link</a></li>
-                <li style="margin-top: 66px;"><a href="#">Link</a></li>
-                <li style="margin-top: 66px;"><a href="#">Link 1</a></li>
-                <li style="margin-top: 66px;"><a href="#">Link</a></li>
-                <li style="margin-top: 66px;"><a href="#">Link</a></li>
-                <li style="margin-top: 66px;"><a href="#">Link</a></li>
-                <li style="margin-top: 66px;"><a href="#">Link</a></li>
-                <li style="margin-top: 66px;"><a href="#">Link</a></li>
-                <li style="margin-top: 66px;"><a href="#">Link</a></li>
-                <li style="margin-top: 66px;"><a href="#">Link</a></li>
-                <li style="margin-top: 66px;"><a href="#">Link</a></li>
-                <li style="margin-top: 66px;"><a href="#">Link</a></li>
-                <li style="margin-top: 66px;"><a href="#">Link</a></li>
-                <li style="margin-top: 66px;"><a href="#">滑动...滑动....滑动...</a></li>
+                <li style="margin-top: 66px;"><a href="#">为什么滑动不了?</a></li><li style="margin-top: 66px;"><a href="#">Link</a></li><li style="margin-top: 66px;"><a href="#">Link</a></li><li style="margin-top: 66px;"><a href="#">Link</a></li><li style="margin-top: 66px;"><a href="#">Link</a></li><li style="margin-top: 66px;"><a href="#">Link 0</a></li><li style="margin-top: 66px;"><a href="#">Link</a></li><li style="margin-top: 66px;"><a href="#">Link</a></li><li style="margin-top: 66px;"><a href="#">Link</a></li><li style="margin-top: 66px;"><a href="#">Link 1</a></li><li style="margin-top: 66px;"><a href="#">Link</a></li><li style="margin-top: 66px;"><a href="#">Link</a></li><li style="margin-top: 66px;"><a href="#">Link</a></li><li style="margin-top: 66px;"><a href="#">Link</a></li><li style="margin-top: 66px;"><a href="#">Link</a></li><li style="margin-top: 66px;"><a href="#">Link</a></li><li style="margin-top: 66px;"><a href="#">Link</a></li><li style="margin-top: 66px;"><a href="#">Link</a></li><li style="margin-top: 66px;"><a href="#">Link</a></li><li style="margin-top: 66px;"><a href="#">Link</a></li><li style="margin-top: 66px;"><a href="#">滑动...滑动....滑动...</a></li>
             </ul>
         </div>
     </div>
 
     <h1>怎么才可以让左边的内容也可以滑动?</h1>
-    <h1> ---> Answer is: 正确答案是: 加上 overflow: scroll 就可以滑动啦~~~ </h1>
-    <h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1>
-    <h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1>
-    <h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1>
-    <h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1>
-    <h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1>
-    <h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1>
-    <h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1>
-    <h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1>
-    <h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1>
-    <h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1>
-    <h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1>
-    <h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1>
-    <h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1>
-    <h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1>
-    <h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1>
-    <h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1>
-    <h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1>
-    <h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1>
-    <h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1>
-    <h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1>
-    <h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1>
-    <h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1>
-    <h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1>
+    <h1> ---> Answer is: 正确答案是: 加上 overflow: scroll 就可以滑动啦~~~ </h1><h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1><h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1><h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1><h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1><h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1><h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1><h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1><h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1><h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1><h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1><h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1><h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1><h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1><h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1><h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1><h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1><h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1><h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1><h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1><h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1><h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1><h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1><h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1>
 
 </body>
-
 </html>
-
 
 ```
 </details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

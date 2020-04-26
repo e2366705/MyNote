@@ -656,6 +656,12 @@ position: fixed
 	是根据浏览器的窗口进行定位, 固定定位, 元素的位置在屏幕滚动时不会改变
 
 
+有时候加上 position: fixed 会导致空间塌缩, 元素都会缩在一起, 这时候使用:
+    width: 100%;
+即可
+position: fixed;
+
+
 ```
 </details>
 
@@ -1640,6 +1646,327 @@ li 标签是行内元素,可以用text-align: center;来居中;
 
     <p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p><p>占位符</p>
 </body>
+</html>
+
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> 折叠式侧边栏 </b></summary>
+
+```
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> 折叠式侧边栏 </title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f4f4f4;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            /* float: left; */
+            background-color: #3b5998;
+            overflow: hidden;
+            height: 63px;
+            position: fixed;
+            width:100%;
+        }
+
+        .navbar a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            text-decoration: none;
+            font-size: 17px;
+            padding: 14px 16px;
+        }
+
+        .navbar ul {
+            margin: 8px 0 0 0;
+            list-style: none;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: #000;
+        }
+
+        .side-nav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            opacity: 0.9;
+            overflow-x: hidden;
+            padding-top: 60px;
+            transition: 0.5s;
+        }
+
+        .side-nav a {
+            padding: 10px 10px 10px 30px;
+            text-decoration: none;
+            font-size: 22px;
+            color: #ccc;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .side-nav a:hover {
+            color: orange;
+        }
+
+        .side-nav .btn-close {
+            position: absolute;
+            top: 0;
+            right: 22px;
+            font-size: 36px;
+        }
+
+        #main {
+            transition: margin-left 0.5s;
+            padding: 20px;
+        }
+
+        @media(max-width: 568px) {
+            .navbar-nav {
+                display: none;
+            }
+        }
+
+        /* @media(min-width: 568px) {
+    .open-side{
+        display: none;
+    }
+} */
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <span class="open-side">
+            <a href="#" onclick="openSideMenu()">
+                <svg width="30" height="30">
+                    <path d="M0,5 30,5" stroke="#fff" stroke-width="5" />
+                    <path d="M0,14 30,14" stroke="#fff" stroke-width="5" />
+                    <path d="M0,23 30,23" stroke="#fff" stroke-width="5" />
+                </svg>
+            </a>
+        </span>
+
+        <ul class="navbar-nav">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div id="side-menu" class="side-nav">
+        <a href="#" class="btn-close" onclick="closeSideMenu()">&times;</a>
+        <a href="#">AAA</a>
+        <a href="#">BBBBB</a>
+        <a href="#">CCCCs</a>
+        <a href="#">DDDDD</a>
+    </div>
+
+    <div id="main">
+        <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   
+ 
+    </div>
+
+    <script>
+        function openSideMenu() {
+            document.getElementById('side-menu').style.width = '250px';
+            // document.getElementById('main').style.marginLeft = '250px';
+        }
+
+        function closeSideMenu() {
+            document.getElementById('side-menu').style.width = '0';
+            document.getElementById('main').style.marginLeft = '0';
+        }
+    </script>
+</body>
+</html>
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> 折叠式侧边栏 : 左边可以滑动 </b></summary>
+
+```
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>IconFont</title>
+    <style>
+        html,
+        body {
+            width: 100vm;
+            height: 100vh;
+            margin: 0px;
+            background-color: 0 lightblue;
+        }
+
+        #side-menu {
+            background-color: pink;
+            display: block;
+            position: fixed;
+            overflow: scroll;
+            top: 0px;
+            left: 0px;
+            bottom: 0px;
+            width: 350px;
+            transition: transform 200ms ease-in;
+            transform: translateX(calc(-100% + 12px));
+        }
+
+        #side-menu:hover {
+            transform: translateX(0px);
+        }
+
+        #side-menu-inner {}
+    </style>
+</head>
+
+<body>
+    <div id="side-menu">
+        <div id="side-menu-inner">
+            <ul>
+                <li style="margin-top: 66px;"><a href="#">为什么滑动不了?</a></li>
+                <li style="margin-top: 66px;"><a href="#">Link</a></li>
+                <li style="margin-top: 66px;"><a href="#">Link</a></li>
+                <li style="margin-top: 66px;"><a href="#">Link</a></li>
+                <li style="margin-top: 66px;"><a href="#">Link</a></li>
+                <li style="margin-top: 66px;"><a href="#">Link 0</a></li>
+                <li style="margin-top: 66px;"><a href="#">Link</a></li>
+                <li style="margin-top: 66px;"><a href="#">Link</a></li>
+                <li style="margin-top: 66px;"><a href="#">Link</a></li>
+                <li style="margin-top: 66px;"><a href="#">Link 1</a></li>
+                <li style="margin-top: 66px;"><a href="#">Link</a></li>
+                <li style="margin-top: 66px;"><a href="#">Link</a></li>
+                <li style="margin-top: 66px;"><a href="#">Link</a></li>
+                <li style="margin-top: 66px;"><a href="#">Link</a></li>
+                <li style="margin-top: 66px;"><a href="#">Link</a></li>
+                <li style="margin-top: 66px;"><a href="#">Link</a></li>
+                <li style="margin-top: 66px;"><a href="#">Link</a></li>
+                <li style="margin-top: 66px;"><a href="#">Link</a></li>
+                <li style="margin-top: 66px;"><a href="#">Link</a></li>
+                <li style="margin-top: 66px;"><a href="#">Link</a></li>
+                <li style="margin-top: 66px;"><a href="#">滑动...滑动....滑动...</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <h1>怎么才可以让左边的内容也可以滑动?</h1>
+    <h1> ---> Answer is: 正确答案是: 加上 overflow: scroll 就可以滑动啦~~~ </h1>
+    <h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1>
+    <h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1>
+    <h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1>
+    <h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1>
+    <h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1>
+    <h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1>
+    <h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1>
+    <h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1>
+    <h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1>
+    <h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1>
+    <h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1>
+    <h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1>
+    <h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1>
+    <h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1>
+    <h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1>
+    <h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1>
+    <h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1>
+    <h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1>
+    <h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1>
+    <h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1>
+    <h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1>
+    <h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1>
+    <h1>啊实asd asd sum do实 asdasd asd 阿松大dfghdfg大 </h1>
+
+</body>
+
 </html>
 
 

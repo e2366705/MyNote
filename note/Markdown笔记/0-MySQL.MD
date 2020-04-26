@@ -651,13 +651,15 @@ GROUP BY:
 
 
 升序 / 降序 查询:
-升序 ascending(asc):     从小到大的排列 (数字: 0 - 100 , 字母: A - Z)
-降序 descending(desc):   反之(从大到小)
+升序 asc(英文全称ascending):     从小到大的排列 (数字: 0 - 100 , 字母: A - Z)
+降序 desc(英文全称descending):   反之(从大到小)
 	降序
-	select * from `student` order by `class` desc;
+	select * from `student` order by `name` desc;
 	
-	cno升序 , password降序
-		select * from `score` order by `cno` asc , `password` desc;
+	name 升序 , password 降序: 
+	select * from `score` order by `name` asc , `password` desc;
+		用" , "号隔开多个排序条件,这样,先按 name 排序, 再按 password 排序,
+		就是说,先按 name 从x到x排序，如果有相同的, 再按他们的 password 从x到x排序
 
 
 查询字段`word`长度等于 5 的:
@@ -763,7 +765,7 @@ alter table `user` modify column `name` varchar(256) not null default ''
 
 增:
 增加一个唯一字段
-alter table `phrase` add `word` VARCHAR(66) UNIQUE not null
+alter table `phrase` add `word` VARCHAR(66) UNIQUE not null default '';
 
 增加一个 date 类型的字段
 alter table tb_yxb ADD `date_3` date not null default 0

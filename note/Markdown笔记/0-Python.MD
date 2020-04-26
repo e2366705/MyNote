@@ -2476,6 +2476,13 @@ insert(0,  'Bubba " s'  ,  '哈哈哈哈哈哈'  ,  '阿甘正传')
 db.close()
 
 
+注意:   UPDATE  tb_sentence  SET time_stamp = %s  where time_stamp = \'\' LIMIT 1;  
+        这里面的 where time_stamp = ''  一定要转义, 不然拼接到语句里面就变成 :
+        UPDATE  tb_sentence  SET time_stamp = "1587889918244"  where time_stamp =  LIMIT 1;
+        转义成为 : where time_stamp = \'\' LIMIT 1;  
+        即可~
+                
+
 
 
 

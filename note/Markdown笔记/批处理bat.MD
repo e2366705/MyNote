@@ -317,6 +317,34 @@ CreateObject("WScript.Shell").Run "mouse.exe d"
 
 
 
+<details>
+<summary><b> Windows 10 重启 </b></summary>
+
+```
+shutdown -r -t 0
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

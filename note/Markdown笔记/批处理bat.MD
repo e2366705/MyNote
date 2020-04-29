@@ -210,6 +210,142 @@ PAUSE
 
 
 
+
+<details>
+<summary><b> 日期 / 时间 </b></summary>
+
+```
+
+-----------------------------------   Date(日期)   ------------------------------------
+在 Windows 10 的 命令行(CMD)中, 输入:
+C:\Users\YXB>@echo d=%date:~0,9%
+d=29/04/202
+
+C:\Users\YXB>@echo d=%date:~0,10%
+d=29/04/2020
+
+C:\Users\YXB>@echo d=%date:~0,11%
+d=29/04/2020
+
+C:\Users\YXB>@echo d=%date:~0,12%
+d=29/04/2020 周
+
+C:\Users\YXB>@echo d=%date:~0,13%
+d=29/04/2020 周三
+
+C:\Users\YXB>@echo d=%date:~0,666%
+d=29/04/2020 周三
+
+
+C:\Users\YXB>@echo %date:~6,4%
+2020
+
+C:\Users\YXB>@echo %date:~3,2%
+04
+
+C:\Users\YXB>@echo %date:~0,2%
+29
+
+
+
+
+-----------------------------------   time(时间)   ------------------------------------
+在 Windows 10 的 命令行(CMD)中, 输入:
+C:\Users\YXB>@echo t=%time:~0,2%
+t=11
+
+C:\Users\YXB>@echo t=%time:~0,5%
+t=11:45
+
+C:\Users\YXB>@echo t=%time:~0,8%
+t=11:46:00
+
+C:\Users\YXB>@echo %time:~0,8%
+12:31:39
+
+C:\Users\YXB>@echo t=%time:~0,111111111%
+t=11:45:06.65
+
+
+C:\Users\YXB>@echo %time:~0,2%
+12
+
+C:\Users\YXB>@echo %time:~3,2%
+36
+
+C:\Users\YXB>@echo %time:~6,2%
+06
+
+
+
+
+
+
+
+-----------------------------------   实例   ------------------------------------
+在 Windows 系统上新建一个 xxx.bat 批处理文件(必须为 ANSI 格式, 不然中文会乱码)
+
+@set year=%date:~6,4%
+@set month=%date:~3,2%
+@set day=%date:~0,2%
+@set date=%year%_%month%_%day%
+@echo %date%
+
+@set hour=%time:~0,2%
+@set minute=%time:~3,2%
+@set second=%time:~6,2%
+@set time=%hour%_%minute%_%second%
+@echo %time%
+
+@set date__time=%date%__%time%
+@echo 当前的日期/时间是:     %date__time%
+
+@pause
+
+
+命令行(cmd)输出:
+2020_04_29
+12_44_31
+当前的日期/时间是:     2020_04_29__12_44_31
+
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## 关于 VBS 脚本控制鼠标的操作(需要安装 Excel )
 ####  教程来源:  https://www.jvruo.com/archives/108/
 <details>

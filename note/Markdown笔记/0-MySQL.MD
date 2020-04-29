@@ -675,7 +675,7 @@ select `word` from `phrase` where `state` IS NULL and `word` is not null
 
 
 查询符合条件(aaa或者bbb或者ccc)的项目
-	select * from score where username in ('aaa','bbb','ccc');  
+	select * from `tb_score` where `username` in ('aaa','bbb','ccc');  
 
 
 MySQL或者查询

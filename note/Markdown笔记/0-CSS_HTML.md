@@ -88,6 +88,18 @@ lorem*6   按回车(Tap键)  表示随机生成 6行 单词
 
 <img src="https://dummyimage.com/1266x666/FF7F00/1C86EE&text=2333333" alt="">
 
+<div>
+    <img src="https://picsum.photos/360/460?random=1" alt="">
+</div>
+
+<div>
+    <img src="https://picsum.photos/360/460?random=2" alt="">
+</div>
+
+<div>
+    <img src="https://picsum.photos/360/460?random=3" alt="">
+</div>
+
 ```
 </details>
 
@@ -239,6 +251,7 @@ pink    粉红色
 橙色 #EB7347  警告
 黑色 #2C3E50  默认
 橙红色 #FC9D99 温馨
+深蓝色 #19497d 
 
 
 在CSS中,如果css属性设置冲突的话,就在css样式后面加入 !important 即可,
@@ -309,15 +322,15 @@ css缩写 : w100  == width: 100px;
 		  h100  == height: 100px;	
 
 一般 按钮的 基本样式设置 (div型 点击按钮)  常用 样式 三连
-background-color: #D24D57;
-color: #FFF;
-width: 200px;
-height: 50px;
-font-size: 30px;
-line-height: 50px;
-text-align: center;
-cursor: pointer;  /* 鼠标放上去有个小手 */
-
+  background-color: #19497d;
+  color: #FFF;
+  width: 200px;
+  height: 50px;
+  border: none;
+  font-size: 30px;
+  line-height: 50px;
+  text-align: center;
+  cursor: pointer;  /* 鼠标放上去有个小手 */
 
 ```
 </details>
@@ -691,6 +704,14 @@ position: fixed
 即可
 position: fixed;
 
+
+position:sticky;
+    但是 position:fixed 也是有问题的, 因为这个属性是默认是相对浏览器窗口定位的,
+    怎么实现相对父级元素定位呢?
+    父级设置position:relative不管用, 
+    这时候, 就有了一个新属性: sticky 
+    position:sticky;    相对定位 + 固定定位
+    bottom: 0;
 
 ```
 </details>
@@ -1688,6 +1709,33 @@ li 标签是行内元素,可以用text-align: center;来居中;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> position:sticky : </b></summary>
+
+```
+
+
+```
+</details>
 
 
 

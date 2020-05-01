@@ -595,7 +595,7 @@ head里面记得加上这个:
 
 
 <details>
-<summary><b> 隐藏一个元素? </b></summary>
+<summary><b> 隐藏一个元素: display / opacity / visibility </b></summary>
 
 ```  
 
@@ -1232,6 +1232,10 @@ margin: 0 auto 只能用于块级元素, 也就是说要设置成: display: bloc
 
 li 标签是行内元素,可以用text-align: center;来居中;
 而margin:0 auto;没有效果  (margin: 0 auto 只能用于块级元素)
+
+
+这篇文章讲得非常详细:
+https://zhuanlan.zhihu.com/p/93644624?utm_source=ZHShareTargetIDMore&utm_medium=social&utm_oi=578296302983450624
  
 
 ```
@@ -1733,6 +1737,128 @@ li 标签是行内元素,可以用text-align: center;来居中;
 
 ```
 
+<html lang="zh">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>YXB</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            list-style-type: none;
+        }
+
+        body {
+            border: red solid 1px;
+            max-width: 640px;
+            min-width: 320px;
+            margin: 0 auto;
+        }
+
+        button{
+            background-color: #19497d;
+            color: #FFF;
+            width: 200px;
+            height: 50px;
+            border: none;
+            font-size: 30px;
+            line-height: 50px;
+            text-align: center;
+            cursor: pointer;  /* 鼠标放上去有个小手 */
+        }
+
+        #filter_side_nav {
+            height: 100%;
+            width: 0%;
+            height: 100%;
+            z-index: 1;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: pink;
+            overflow-x: hidden;
+            transition: 0.2s;
+        }        
+        #filter_side_nav footer {
+            position:sticky;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+        }
+        #filter_side_nav footer .button{
+            flex:1;
+        }
+        #filter_side_nav footer .button button{
+            width: 100%;
+        }
+
+        #filter_side_nav_mask {
+            height: 100%;
+            width: 20%;
+            height: 100%;
+            z-index: 1;
+            position: fixed;
+            visibility: hidden;
+            top: 0;
+            right: 0;
+            background-color: #111;
+            opacity: 0;
+            overflow-x: hidden;
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <div id="root">
+
+        <button onclick="Filter()" >多条件筛选</button>
+
+        <span onclick="TEST()">点击it</span>         <span onclick="TEST()">点击it</span>      <span onclick="TEST()">点击it</span>      <span onclick="TEST()">点击it</span>      <span onclick="TEST()">点击it</span>      <span onclick="TEST()">点击it</span>      <span onclick="TEST()">点击it</span>      <span onclick="TEST()">点击it</span>      <span onclick="TEST()">点击it</span>      <span onclick="TEST()">点击it</span>      <span onclick="TEST()">点击it</span>      <span onclick="TEST()">点击it</span>      <span onclick="TEST()">点击it</span>       <span onclick="TEST()">点击it</span>      <span onclick="TEST()">点击it</span>      <span onclick="TEST()">点击it</span>      <span onclick="TEST()">点击it</span>      <span onclick="TEST()">点击it</span>      <span onclick="TEST()">点击it</span>      <span onclick="TEST()">点击it</span>      <span onclick="TEST()">点击it</span>      <span onclick="TEST()">点击it</span>      <span onclick="TEST()">点击it</span>      <span onclick="TEST()">点击it</span>      <span onclick="TEST()">点击it</span>      <span onclick="TEST()">点击it</span>     <span onclick="TEST()">点击it</span>      <span onclick="TEST()">点击it</span>         <span onclick="TEST()">点击it</span>         <span onclick="TEST()">点击it</span>         <span onclick="TEST()">点击it</span>         <span onclick="TEST()">点击it</span>         <span onclick="TEST()">点击it</span>         <span onclick="TEST()">点击it</span>         <span onclick="TEST()">点击it</span>         <span onclick="TEST()">点击it</span>         <span onclick="TEST()">点击it</span>         <span onclick="TEST()">点击it</span>         <span onclick="TEST()">点击it</span>         <span onclick="TEST()">点击it</span>         <span onclick="TEST()">点击it</span>         <span onclick="TEST()">点击it</span>         <span onclick="TEST()">点击it</span>         <span onclick="TEST()">点击it</span>         <span onclick="TEST()">点击it</span>         <span onclick="TEST()">点击it</span>         <span onclick="TEST()">点击it</span>         <span onclick="TEST()">点击it</span>         <span onclick="TEST()">点击it</span>         <span onclick="TEST()">点击it</span>         <span onclick="TEST()">点击it</span>         <span onclick="TEST()">点击it</span>         <span onclick="TEST()">点击it</span>         <span onclick="TEST()">点击it</span>        
+        <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>      
+
+        <div id="filter_side_nav">
+            
+            <h1> 点击取消按钮 </h1>    <h1> 点击取消按钮 </h1>    <h1> 点击取消按钮 </h1>    <h1> 点击取消按钮 </h1>    <h1> 点击取消按钮 </h1>    <h1> 点击取消按钮 </h1>    <h1> 点击取消按钮 </h1>    <h1> 筛选框 </h1>    <h1> 筛选框 </h1>    <h1> 筛选框 </h1>    <h1> 筛选框 </h1>    <h1> 筛选框 </h1>    <h1> 筛选框 </h1>    <h1> 筛选框 </h1>    <h1> 筛选框 </h1>    <h1> 筛选框 </h1>    <h1> 筛选框 </h1>    <h1> 筛选框 </h1>    <h1> 筛选框 </h1>    <h1> 筛选框 </h1>    <h1> 筛选框 </h1>    <h1> 筛选框 </h1>    <h1> 筛选框 </h1>    <h1> 筛选框 </h1>    <h1> 筛选框 </h1>    <h1> 筛选框 </h1>    <h1> 筛选框 </h1>    <h1> 筛选框 </h1>   
+        
+            <footer>
+                <div class="button">
+                    <button onclick="Cancel()">取消</button>
+                </div>
+                <div class="button">
+                    <button>确定</button>
+                </div>
+            </footer>
+        </div>
+        <div id="filter_side_nav_mask"></div>
+
+    </div>
+</body>
+
+
+<script>
+    function Filter() {
+        document.getElementById('filter_side_nav').style.width = '80%';
+        document.getElementById('filter_side_nav').style.height = '100%';
+        document.getElementById("filter_side_nav_mask").style.cssText = "  visibility: visible;  opacity:0.5;  transition: 2s linear; ";
+    }
+    function Cancel(){
+        document.getElementById('filter_side_nav').style.width = '0%';
+        document.getElementById('filter_side_nav').style.height = '100%';
+        document.getElementById("filter_side_nav_mask").style.cssText = "  visibility: hidden;   opacity:0; ";
+    }
+    function TEST(){
+        console.log("2333333333333~");        
+    }
+
+</script>
+</html>
+
 
 ```
 </details>
@@ -2018,5 +2144,69 @@ li 标签是行内元素,可以用text-align: center;来居中;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> CSS: 制作笔记本横线效果 </b></summary>
+
+```
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Notebook</title>
+    <style>
+        .note-book {
+            width: 240px;
+            margin: 0 auto;
+            background: #FEF9E7;
+            padding: 16px 24px;
+            border-radius: 4px;
+            box-shadow: 0 0 4px #B2BABB;
+        }
+
+        .note-book .cntr {
+            /* 实现横线效果 */
+            background: linear-gradient(transparent 95%, #424949 0);
+            line-height: 1.5em;
+            background-size: 100% 1.5em;
+            background-attachment: local;
+            /*  这里需要根据 textarea 的内容进行滚动 */
+            /* textarea样式修改 */
+            width: 100%;
+            resize: none;
+            font-size: 0.9em;
+            font-family: inherit;
+            outline: none;
+            border: none;
+            color: #2874A6;
+            word-break: break-all;
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="note-book">
+        <textarea name="note" cols="30" rows="15"  class="cntr">我们遇到什么困难也不要怕，微笑着面对它！消除恐惧的最好办法就是面对恐惧！坚持，才是胜利。加油！奥利给！</textarea>
+    </div>
+</body>
+</html>
+
+```
+</details>
 
 

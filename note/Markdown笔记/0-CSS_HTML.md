@@ -18,8 +18,33 @@
 
 ```
 
-background-color: #3b5998;
 background-color: rgba(0, 0, 0, .5);
+
+深蓝色: #19497d
+深蓝色: #3b5998
+
+京东红: #f30213
+淘宝橙: #FF4200
+美团黄: #FFC300
+微软蓝: #0067b8
+脸书蓝: #3b5998
+滨客蓝: #003580  (booking.com 滨客网站主题色)
+intel蓝:#0071c5
+
+#F5F5F5 浅灰色
+skyblue 天蓝色
+pink    粉红色
+#FFF	  白色
+#000	  黑色
+#e0e0e0 边框的颜色
+
+绿色: #00bf6f
+绿色: #26A65B
+
+红色 #D24D57  危险
+橙色 #EB7347  警告
+黑色 #2C3E50  默认
+橙红色 #FC9D99 温馨
 
 ```
 </details>
@@ -237,21 +262,6 @@ web网页中必备的的一句代码 : <meta charset="UTF-8">
 	text-decoration: none;
 	list-style-type: none;
 }
-
-
-web中常用颜色 : 
-#F5F5F5 浅灰色
-skyblue 天蓝色
-pink    粉红色
-#FFF	白色
-#e0e0e0 边框的颜色
-
-红色 #D24D57  危险
-绿色 #26A65B  安全
-橙色 #EB7347  警告
-黑色 #2C3E50  默认
-橙红色 #FC9D99 温馨
-深蓝色 #19497d 
 
 
 在CSS中,如果css属性设置冲突的话,就在css样式后面加入 !important 即可,
@@ -641,6 +651,10 @@ head里面记得加上这个:
 当然还有很多方式隐藏元素, 详细可以参考:
 参考资料:   https://juejin.im/post/584b645a128fe10058a0d625
 
+
+消失/显示太快的话:
+visibility: hidden;
+transition: 0.3s;
 
 ```
 </details>

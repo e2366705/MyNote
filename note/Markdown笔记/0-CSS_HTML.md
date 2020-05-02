@@ -245,6 +245,24 @@ lorem*6   按回车(Tap键)  表示随机生成 6行 单词
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <details>
 <summary><b> 基础 </b></summary>
 
@@ -262,6 +280,10 @@ web网页中必备的的一句代码 : <meta charset="UTF-8">
 	text-decoration: none;
 	list-style-type: none;
 }
+
+
+Transform : 属性应用于元素的2D或3D转换。这个属性允许你将元素旋转，缩放，移动，倾斜等
+transition:width 2s;  动画
 
 
 在CSS中,如果css属性设置冲突的话,就在css样式后面加入 !important 即可,

@@ -109,7 +109,7 @@ lorem*6   按回车(Tap键)  表示随机生成 6行 单词
 
 ```
 
-<img src="https://dummyimage.com/1266x666/FF7F00/1C86EE" alt="">
+<img src="https://dummyimage.com/300x500/ffffff/000000" alt="">
 
 <img src="https://dummyimage.com/1266x666/FF7F00/1C86EE&text=2333333" alt="">
 
@@ -491,10 +491,15 @@ HTML 表单中的复选框太小很难点？试试把 input 放到 label 中:
 
 
 
-  <details>
-<summary><b> 在线引入图标  </b></summary>
+<details>
+<summary><b> 图标 </b></summary>
 
 ```
+
+三道杠:
+    <span style="font-size:66px;" >&#9776; 打开</span>
+乘号(x):
+    <span style="font-size:66px;" >&times;</span>
 
 
 -----------------------------------   阿里矢量图   ------------------------------------
@@ -1924,7 +1929,7 @@ https://zhuanlan.zhihu.com/p/93644624?utm_source=ZHShareTargetIDMore&utm_medium=
 
 
 <details>
-<summary><b> 折叠式侧边栏 </b></summary>
+<summary><b> 折叠式侧边栏: style.width = 300px </b></summary>
 
 ```
 
@@ -2109,6 +2114,148 @@ https://zhuanlan.zhihu.com/p/93644624?utm_source=ZHShareTargetIDMore&utm_medium=
 
 
 
+
+
+
+<details>
+<summary><b> 折叠式侧边栏: .style['margin-left'] = 300px </b></summary>
+
+```
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> 折叠式侧边栏 </title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        body {
+            max-width: 1920px;
+        }
+
+        #button___ {
+            position: absolute;
+            top: 22%;
+            left: 298px;
+            height: 75px;
+            width: 50px;
+            border: 0;
+            border-left: 1px solid rgb(23, 32, 43, 0.2);
+            background: #AA3344;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .box {
+            float: left;
+            position: relative;
+            left: -300px;
+            height: 1000px;
+            width: 300px;
+            margin-left: 0;
+            display: block;
+            background-color: #a34;
+            -moz-transition: margin-left 0.5s;
+            transition: margin-left 0.5s;
+        }
+
+        aside ul li {
+            height: 40px;
+            line-height: 40px;
+            border-top: 1px solid #fff;
+            border-bottom: 1px solid #fff;
+            list-style-type: none;
+            text-align: center;
+        }
+
+        aside ul li a {
+            width: 100%;
+            height: 100%;
+            text-decoration-line: none;
+            color: #fff;
+            display: block;
+        }
+
+        aside ul li a:hover {
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+
+    <aside class="box" id="test">
+        <button id="button___">三</button>
+        <ul>
+            <li>
+                <h3>ZZES</h3>
+            </li>
+            <li><a href="#">MENU TITLE 1</a></li>
+            <li><a href="#">MENU TITLE 2</a></li>
+            <li><a href="#">MENU TITLE 3</a></li>
+            <li><a href="#">MENU TITLE 4</a></li>
+            <li><a href="#">MENU TITLE 5</a></li>
+            <li><a href="#">MENU TITLE 6</a></li>
+            <li><a href="#">MENU TITLE 7</a></li>
+        </ul>
+    </aside>
+
+</body>
+<script>
+
+    var box = document.getElementById("test")
+    var btn = document.getElementById("button___")
+
+    btn.onclick = function () {
+        if (box.offsetLeft == 0) {
+            box.style['margin-left'] = 0 + "px";
+        }
+        if (box.offsetLeft == -300) {
+            box.style['margin-left'] = 300 + "px";
+        }
+    }
+    
+</script>
+</html>
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <details>
 <summary><b> 折叠式侧边栏 : 左边可以滑动 </b></summary>
 
@@ -2166,6 +2313,18 @@ https://zhuanlan.zhihu.com/p/93644624?utm_source=ZHShareTargetIDMore&utm_medium=
 
 ```
 </details>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

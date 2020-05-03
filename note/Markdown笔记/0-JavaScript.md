@@ -203,6 +203,10 @@ document.getElementById("textarea_content").innerHTML = notes_.note;
 
 
 
+
+
+
+
 <details>
 <summary><b> 操作 CSS </b></summary>
 
@@ -218,6 +222,41 @@ document.getElementsByClassName('div2')[0].style.background = 'pink';
 
 原生 JavaScript 只能操作单个 class 元素:
     document.getElementsByClassName("test")[0].style.color = "red";    
+
+
+
+-----------------------------------   获取 节点CSS 的属性   ------------------------------------
+
+    function getCss(curEle, attr) {
+        var val = null, reg = null;
+        if ("getComputedStyle" in window) {
+            val = window.getComputedStyle(curEle, null)[attr];
+        } else {   //ie6~8不支持上面属性  
+            //不兼容  
+            if (attr === "opacity") {
+                val = curEle.currentStyle["filter"];   //'alpha(opacity=12,345)'  
+                reg = /^alphaopacity=(\d+(?:\.\d+)?)opacity=(\d+(?:\.\d+)?)$/i;
+                val = reg.test(val) ? reg.exec(val)[1] / 100 : 1;
+            } else {
+                val = curEle.currentStyle[attr];
+            }
+        }
+        reg = /^(-?\d+(\.\d)?)(px|pt|em|rem)?$/i;
+        return reg.test(val) ? parseFloat(val) : val;
+    }
+    
+    const box = document.querySelector('#shadow');
+    console.log(getCss(box, 'opacity'));
+
+    function change_shadow() {
+        var opacity_ = getCss(box, 'opacity')
+        if (opacity_ === 1) {
+            document.getElementById("shadow").style.cssText = "  opacity: 0.5;  ";
+        } else {
+            document.getElementById("shadow").style.cssText = " opacity: 1; ";
+        }
+    }
+
 
 ```
 </details>

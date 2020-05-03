@@ -2405,3 +2405,389 @@ https://zhuanlan.zhihu.com/p/93644624?utm_source=ZHShareTargetIDMore&utm_medium=
 </details>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> 半透明背景幕布 </b></summary>
+
+```
+
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YXB</title>
+    <script src="https://s1.pstatp.com/cdn/expire-1-M/jquery/2.1.4/jquery.min.js"
+        type="application/javascript"></script>
+    <script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+    <script src="https://s0.pstatp.com/cdn/expire-1-M/vue/2.6.10/vue.min.js" type="application/javascript"></script>
+    <link href="https://s2.pstatp.com/cdn/expire-1-M/twitter-bootstrap/3.4.0/css/bootstrap.min.css" type="text/css"
+        rel="stylesheet" />
+    <script src="https://s1.pstatp.com/cdn/expire-1-M/twitter-bootstrap/3.4.0/js/bootstrap.min.js"
+        type="application/javascript"></script>
+    <script src="https://s1.pstatp.com/cdn/expire-1-M/layer/2.3/layer.js" type="application/javascript"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            list-style-type: none;
+        }
+
+        #shadow {
+            font-family: -apple-system, Helvetica, sans-serif;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            transition: 0.5s;
+            z-index: 111;
+            opacity: 1;
+            background-color: rgba(0, 0, 0, .7);
+        }
+
+        #change_shadow {
+            position: absolute;
+            z-index: 222;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Hello World~</h1>
+    <div id="shadow">============</div>
+    <button id="change_shadow" onclick="change_shadow()">change_shadow</button>
+
+
+</body>
+<script>
+
+
+    function getCss(curEle, attr) {
+        var val = null, reg = null;
+        if ("getComputedStyle" in window) {
+            val = window.getComputedStyle(curEle, null)[attr];
+        } else {   //ie6~8不支持上面属性  
+            //不兼容  
+            if (attr === "opacity") {
+                val = curEle.currentStyle["filter"];   //'alpha(opacity=12,345)'  
+                reg = /^alphaopacity=(\d+(?:\.\d+)?)opacity=(\d+(?:\.\d+)?)$/i;
+                val = reg.test(val) ? reg.exec(val)[1] / 100 : 1;
+            } else {
+                val = curEle.currentStyle[attr];
+            }
+        }
+        reg = /^(-?\d+(\.\d)?)(px|pt|em|rem)?$/i;
+        return reg.test(val) ? parseFloat(val) : val;
+    }
+
+    const box = document.querySelector('#shadow');
+    console.log(getCss(box, 'opacity'));
+
+    function change_shadow() {
+        var opacity_ = getCss(box, 'opacity')
+        if (opacity_ === 1) {
+            document.getElementById("shadow").style.cssText = "  opacity: 0.5;  ";
+        } else {
+            document.getElementById("shadow").style.cssText = " opacity: 1; ";
+        }
+
+    }
+    
+</script>
+</html>
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> 伸缩侧边栏:right: -300px </b></summary>
+
+```
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            position: relative;
+            left: 0;
+            padding: 0;
+            margin: 0;
+            /*overflow-x:hidden;*/
+        }
+
+        aside {
+            width: 300px;
+            height: 100%;
+            position: fixed;
+            right: 0;
+            top: 0;
+            background: #d4d4d4;
+            transition: right 0.5s ease;
+            z-index: 333;
+        }
+
+        #button___ {
+            position: absolute;
+            top: 50%;
+            right: 300px;
+            background-color: #19497d;
+            color: #FFF;
+            width: 50px;
+            height: 120px;
+            border: none;
+            font-size: 30px;
+            line-height: 50px;
+            text-align: center;
+            cursor: pointer;
+            /* 鼠标放上去有个小手 */
+        }
+
+        .open {
+            right: 0;
+        }
+
+        .close {
+            right: -300px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>问题1: 怎么适应各种屏幕? </h1>
+
+    <aside id="aside">
+        <button id="button___" onclick="toggle()">三</button>
+        <ul>
+            <li>list</li>
+            <li><img src="https://dummyimage.com/120x120/FF7F00/1C86EE" alt=""></li>
+            <li>list</li>
+            <li>list</li>
+            <li>list</li>
+            <li>list</li>
+        </ul>
+    </aside>
+
+</body>
+<script>
+
+    var aside = document.getElementById("aside");
+    var button___ = document.getElementById("button___");
+    var state = "close";
+
+    aside.setAttribute("class", state);
+
+    function toggle() {
+        console.log(state);
+        if (state === "close") {
+            aside.setAttribute("class", "open");
+            state = "open";
+            return null;
+        }
+        if (state === "open") {
+            aside.setAttribute("class", "close");
+            state = "close";
+            return null;
+        }
+    }
+
+</script>
+</html>
+
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> 伸缩侧边栏: 纯CSS, 无 JavaScript </b></summary>
+
+```
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        /*隐藏checked复选框*/
+        #sidemenu {
+            display: none;
+        }
+
+        #sidemenu:checked+aside {
+            /*为被选中的sidemenu后的aside设置属性（紧邻）*/
+            left: 0;
+            /*点击按钮即选中checked后,侧边栏位置变为贴着左边,配合ease-out使用,有渐变滑出的效果*/
+        }
+
+        #sidemenu:checked~#close_open {
+            /*为被选中的sidemenu后的close_open设置属性（非紧邻）*/
+            padding-left: 220px;
+        }
+
+        aside {
+            /*侧边栏,初始位置为-200px，即隐藏效果*/
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: -200px;
+            width: 200px;
+            background: black;
+            transition: 0.3s ease-out;
+            /*动画效果的执行方式是ease-out，即侧边栏滑动效果为渐变式，而不是生硬的突然变化*/
+        }
+
+        h2 {
+            color: white;
+            text-align: center;
+            font-size: 2em;
+        }
+
+        /*控制侧边栏进出的按钮（外部包裹）*/
+        #close_open {
+            margin-left: 20px;
+            padding: 10px;
+            transition: 0.3s ease-out;
+        }
+
+        /*控制侧边栏进出的按钮（内部文字样式）*/
+        label {
+            /*控制侧边栏进出的按钮*/
+            background: white;
+            border-radius: 70px;
+            color: orange;
+            cursor: pointer;
+            display: block;
+            font-family: Courier New;
+            font-size: 2em;
+            width: 1.5em;
+            height: 1.5em;
+            line-height: 1.5em;
+            text-align: center;
+            display: inline-block;
+        }
+
+        label:hover {
+            background: #000;
+        }
+
+        #sideul li {
+            list-style: none;
+            color: white;
+            width: 100%;
+            height: 1.8em;
+            font-size: 1.5em;
+            text-align: center;
+        }
+
+        #sideul li:hover {
+            color: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <input type='checkbox' id='sidemenu'>
+    <aside>
+        <h2>主菜单</h2>
+        <br />
+        <ul id="sideul">
+            <a href="##"><li>首页</li></a>
+            <a href="##"><li style="color: orange;">导航1</li></a>
+            <a href="##"><li>导航2</li></a>
+            <a href="##"><li>导航3</li></a>
+        </ul>
+    </aside>
+
+
+    <div id='close_open'>
+        <label id='sideMenuControl' for='sidemenu'>x</label>
+        <!--for 属性规定 label 与哪个表单元素绑定，即将这个控制侧边栏进出的按钮与checkbox绑定-->
+    </div>
+
+</body>
+</html>
+
+```
+</details>
+

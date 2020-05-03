@@ -20,6 +20,19 @@
 
 ::=========   脚本分割线  =========::  
 
+
+::htmltemplate::
+clipboard=
+(
+<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>YXB</title><script src="https://s1.pstatp.com/cdn/expire-1-M/jquery/2.1.4/jquery.min.js"        type="application/javascript"></script><script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script><script src="https://s0.pstatp.com/cdn/expire-1-M/vue/2.6.10/vue.min.js" type="application/javascript"></script><link href="https://s2.pstatp.com/cdn/expire-1-M/twitter-bootstrap/3.4.0/css/bootstrap.min.css" type="text/css"        rel="stylesheet" /><script src="https://s1.pstatp.com/cdn/expire-1-M/twitter-bootstrap/3.4.0/js/bootstrap.min.js"        type="application/javascript"></script><script src="https://s1.pstatp.com/cdn/expire-1-M/layer/2.3/layer.js" type="application/javascript"></script><style>        * {            margin: 0;            padding: 0;            text-decoration: none;            list-style-type: none;        }</style></head><body><h1>Hello World~</h1></body><script></script></html>
+)
+Send ^v{enter}
+Sleep, 1000
+Return
+
+
+::=========   脚本分割线  =========::  
+
 ::6666::
 clipboard=
 (

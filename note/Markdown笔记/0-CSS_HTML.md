@@ -592,6 +592,95 @@ SEO搜索引擎优化三要素: title description  Keywords
 
 
 
+
+
+
+
+<details>
+<summary><b> BFC </b></summary>
+
+```
+
+详细讲解: https://zhuanlan.zhihu.com/p/137926413?utm_source=ZHShareTargetIDMore&utm_medium=social&utm_oi=578296302983450624
+
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YXB</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            list-style-type: none;
+        }
+
+        .wrap {
+            width: 200px;
+            border: 1px solid #333;
+        }
+
+        .wrap:after {
+            content: '2333333';
+            display: block;
+            clear: both;
+        }
+
+        .left {
+            float: left;
+            background: blue;
+            height: 100px;
+            width: 100px;
+        }
+
+        .right {
+            float: left;
+            background: red;
+            height: 50px;
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Hello World~</h1>
+
+    <div class='wrap'>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+
+</body>
+<script></script>
+
+</html>
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <details>
 <summary><b> 移动端web开发必须 </b></summary>
 

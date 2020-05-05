@@ -136,6 +136,51 @@ console.log(`为什么我会有 ${aaa} 个苹果手机`);
 
 
 
+
+
+
+
+
+<details>
+<summary><b> console.dir() </b></summary>
+
+```
+打印出该对象的所有属性和属性值
+console.dir();
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # DOM 操作 
 <details>
 <summary><b>下拉框 select 发生改变时 的值 </b></summary>

@@ -38,11 +38,36 @@
 
 ```  
 
+@ 表示不显示那啥...
+
+中文(Chinese)乱码?
+因为 Windows下默认的bat的编码格式是UTF-8，这时只需将其转换成ANSI 格式即可
+右击bat文件 -> 编辑 -> 另存为 -> ANSI格式 -> 保存即可
+注意!! 一定要用 Windows 自带的文本编辑器打开, 用别的编辑器打开会乱码(比如 VS Code)
+
+
+输出:
+@echo 哈哈哈哈哈哈
+@choice /t 1 /d y /n >nul
+@echo 哈哈哈哈哈哈
+@choice /t 1 /d y /n >nul
+@echo 哈哈哈哈哈哈
+@choice /t 1 /d y /n >nul
+@echo 哈哈哈哈哈哈
+@choice /t 1 /d y /n >nul
+@echo 哈哈哈哈哈哈
+@choice /t 1 /d y /n >nul
+@echo 哈哈哈哈哈哈
+@echo pause 表示黑框框不消失
+pause
+
 
 
 参考资料 :      http://xstarcd.github.io/wiki/windows/windows_cmd_summary_commands.html
 
+
 pause    表示 命令行的那个黑框框不会消失
+
 
 @echo 删除AAAAA这个文件夹
 rd /s /Q c:\AAAAA
@@ -171,17 +196,15 @@ PAUSE
     taskkill /f /im .bat            结束所有扩展名为bat的进程，也就是结束当前正在运行的所有批处理程序
     taskkill /f /im a.cmd           结束以a开头的所有扩展名为cmd的进程，也就是结束当前所有以a开头的批处理程序
 
+等待 xxx 秒之后执行(单位: 秒):
+    choice /t 9 /d y /n >nul     (意思是 9 秒之后再执行something...)
 
-等待 x 秒:
-    sleep 45
-    taskkill /F /IM Chrome.exe
-
-等待 xxx 秒之后执行:
-    choice /t 120 /d y /n >nul
-
-    9秒之后 kill 腾讯QQ
-    choice /t 9998 /d y /n >nul
-    taskkill /f /im qq.exe
+9秒之后 kill 腾讯QQ
+@echo 5秒以后结束掉 QQ 程序(进程)
+@choice /t 5 /d y /n >nul
+@taskkill /f /im qq.exe
+@echo 结束完毕~
+pause
 
 ```
 </details>
@@ -497,8 +520,8 @@ shutdown -r -t 0
 for /L %%a in (
  5,-1,0
 ) do (
- echo 5秒后将运行python.exe
- echo 还剩余 %%a 秒
+ @echo 5秒后将运行python.exe
+ @echo 还剩余 %%a 秒
  ping -n 2 localhost 1>nul 2>nul
  cls
 )
@@ -558,7 +581,7 @@ move /Y D:\BaiDuProductDownloadYXB\*.mp3 D:\MP3\
 
 @echo off
 :start
-echo Clear......
+@echo Clear......
 choice /t 120 /d y /n >nul
 start "" "C:\Program Files (x86)\LuDaShi\LuDaShi\sweeper\MemoryOptimizer.exe" /optimize"
 goto start
@@ -584,31 +607,31 @@ goto start
 
 ```  
 
-echo "火狐浏览器"
+@echo "火狐浏览器"
 start "" "C:\Program Files\Mozilla Firefox\firefox.exe"
 
 echo "火狐开发专业版"
 start "" "C:\Program Files\Firefox Developer Edition\firefox.exe"
 
-echo "Chrome浏览器"
+@echo "Chrome浏览器"
 start "" "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
 
 echo "世界之窗浏览器"
 start "" "C:\Users\QAQ\AppData\Local\TheWorld6\Application\TheWorld.exe"
 
-echo "Windows任务管理器"
+@echo "Windows任务管理器"
 start "" "C:\Windows\System32\taskmgr.exe"
 
 echo "*********************___UC_Browser___*********************"
 start "" "C:\Program Files (x86)\UCBrowser\Application\UCBrowser.exe"
 
-echo "*********************___QQ_Music_Player___*********************"
-echo 批处理暂停8秒
+@echo "*********************___QQ_Music_Player___*********************"
+@echo 批处理暂停8秒
 choice /t 8 /d y /n >nul
 
 start "" "C:\HanHong.mp3"
 
-echo "批处理程序运行完不关闭窗口"
+@echo "批处理程序运行完不关闭窗口"
 cmd /k
 
 
@@ -668,7 +691,7 @@ set /a a+=1
 )
 )
 
-echo 批量重命名完成！
+@echo 批量重命名完成！
 pause
 
 
@@ -715,7 +738,7 @@ set /a a+=1
 )
 )
 
-echo 批量重命名完成！
+@echo 批量重命名完成！
 pause
 
 

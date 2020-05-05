@@ -75,55 +75,55 @@ sleep, 666
 Click 1776,931 right      ; 在坐标1776, 931位置上, 点击右键
 
  ;  方向键 [上] (第 1  次)
-sleep, 88
+sleep, 66
 SendEvent {Blind}{Up down}
 KeyWait RCtrl                       ; 防止键盘自动重复导致的重复鼠标点击.
 SendEvent {Blind}{Up up}
 
  ;  方向键 [上] (第 2  次)
-sleep, 88
+sleep, 66
 SendEvent {Blind}{Up down}
 KeyWait RCtrl                       ; 防止键盘自动重复导致的重复鼠标点击.
 SendEvent {Blind}{Up up}
 
  ;  方向键 [上] (第 3  次)
-sleep, 88
+sleep, 66
 SendEvent {Blind}{Up down}
 KeyWait RCtrl                       ; 防止键盘自动重复导致的重复鼠标点击.
 SendEvent {Blind}{Up up}
 
  ;  方向键 [上] (第 4  次)
-sleep, 88
+sleep, 66
 SendEvent {Blind}{Up down}
 KeyWait RCtrl                       ; 防止键盘自动重复导致的重复鼠标点击.
 SendEvent {Blind}{Up up}
 
  ;  方向键 [上] (第 5  次)
-sleep, 88
+sleep, 66
 SendEvent {Blind}{Up down}
 KeyWait RCtrl                       ; 防止键盘自动重复导致的重复鼠标点击.
 SendEvent {Blind}{Up up}
 
  ;  方向键 [上] (第 6  次)
-sleep, 88
+sleep, 66
 SendEvent {Blind}{Up down}
 KeyWait RCtrl                       ; 防止键盘自动重复导致的重复鼠标点击.
 SendEvent {Blind}{Up up}
 
  ;  方向键 [上] (第 7  次)
-sleep, 88
+sleep, 66
 SendEvent {Blind}{Up down}
 KeyWait RCtrl                       ; 防止键盘自动重复导致的重复鼠标点击.
 SendEvent {Blind}{Up up}
 
  ;  方向键 [上] (第 8  次)
-sleep, 88
+sleep, 66
 SendEvent {Blind}{Up down}
 KeyWait RCtrl                       ; 防止键盘自动重复导致的重复鼠标点击.
 SendEvent {Blind}{Up up}
 
  ;  方向键 [上] (第  9  次)
-sleep, 88
+sleep, 66
 SendEvent {Blind}{Up down}
 KeyWait RCtrl                       ; 防止键盘自动重复导致的重复鼠标点击.
 SendEvent {Blind}{Up up}

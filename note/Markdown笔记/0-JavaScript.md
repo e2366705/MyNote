@@ -175,6 +175,61 @@ console.dir();
 
 
 
+<details>
+<summary><b> var let const </b></summary>
+
+```
+
+使用const声明的是常量，在后面出现的代码中不能再修改该常量的值。
+
+ES6 新增了let命令，用来声明局部变量
+它的用法类似于var，但是所声明的变量，只在let命令所在的代码块内有效，而且有暂时性死区的约束。
+
+
+let不允许在相同作用域内，重复声明同一个变量。
+否则报错：Uncaught SyntaxError: Identifier 'XXX' has already been declared
+例如：
+let a = 0;
+let a = 'sss';
+// Uncaught SyntaxError: Identifier 'a' has already been declared
+
+    {
+        var va = 9;
+    }
+    console.log(va);  // 9
+
+    {
+        let le = 9;     // i变量只在 花括号内有效！！！
+    }
+    console.log(le);  // Uncaught ReferenceError: le is not defined
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

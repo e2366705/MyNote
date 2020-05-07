@@ -18,7 +18,13 @@
 
 ```
 
+半透明 - 方式 1 :
 background-color: rgba(0, 0, 0, .5);
+
+半透明 - 方式 2 :
+background-color: #111;
+opacity: 0.5;
+
 
 深蓝色: #19497d
 深蓝色: #3b5998
@@ -306,7 +312,7 @@ margin : 外边距
 margin : 上 右 下 左
 margin : 上下 左右
 
-注意!!! : 
+注意!!! :
 font-size:50px;  这个设置方法,在*{}中不适用
 
 P标签和span标签的区别:
@@ -325,7 +331,7 @@ text-shadow: 1px 1px 8px
 
 
 问:
----给li设置样式display:inline-block 后，ul 下的 li 元素之间有间距，怎么清除间距？ 
+---给li设置样式display:inline-block 后，ul 下的 li 元素之间有间距，怎么清除间距？
 答案是:
 在ul标签中设置font-size=0,在li中设置标签文字的大小；
 因为空格也属于字符，把字符大小设为0，就没有空格了
@@ -351,7 +357,7 @@ border: solid #000;  ==> border可以不加1px
 .show_pages a{}    ==> 代表.show_pages盒子下面所有的a标签,包括其他盒子的
 
 css缩写 : w100  == width: 100px;
-		  h100  == height: 100px;	
+		  h100  == height: 100px;
 
 一般 按钮的 基本样式设置 (div型 点击按钮)  常用 样式 三连
   background-color: #19497d;
@@ -725,7 +731,7 @@ head里面记得加上这个:
 
 ```  
 
-怎么隐藏一个元素?? 
+怎么隐藏一个元素??
 
 
 
@@ -803,7 +809,7 @@ transition: 0.3s;
 position: relative;   相对于自身进行定位,设置偏移量
 
 
-居中: 
+居中:
 一个元素加上 position: relative 可以用  margin: 0 auto;
 但是: position: absolute 就不可以用 margin: 0 auto;
 
@@ -815,7 +821,7 @@ margin-left/right/top/bottom失效
 
 position: absolute :
 	是根据网页的最顶端进行定位
-	但是!!! 
+	但是!!!
 	如果父元素加上了position: absolute(或者是relative),
 	那么就根据父元素进行定位
 	不为元素预留空间, 直接脱离文档流
@@ -838,8 +844,8 @@ position: fixed;
 position:sticky;
     但是 position:fixed 也是有问题的, 因为这个属性是默认是相对浏览器窗口定位的,
     怎么实现相对父级元素定位呢?
-    父级设置position:relative不管用, 
-    这时候, 就有了一个新属性: sticky 
+    父级设置position:relative不管用,
+    这时候, 就有了一个新属性: sticky
     position:sticky;    相对定位 + 固定定位
     bottom: 0;
 
@@ -878,7 +884,7 @@ position:sticky;
 
 ```
 
-行内元素(比如span), 本身是不能设置宽高属性的, 
+行内元素(比如span), 本身是不能设置宽高属性的,
 但是加上 float , 就可以设置宽高属性了
 
 
@@ -901,8 +907,8 @@ position:sticky;
     <div id="son" style="width: 300px; height: 300px; background-color: red; clear: both; ">red</div>
   </div>
 比如这个例子:
-    两个小盒子设置为浮动, 最后一个大盒子没有设置为浮动, 那么大盒子就会隐藏在两个小盒子的后面, 
-    如果要消除这种浮动产生的影响, 就使用 clear: both 
+    两个小盒子设置为浮动, 最后一个大盒子没有设置为浮动, 那么大盒子就会隐藏在两个小盒子的后面,
+    如果要消除这种浮动产生的影响, 就使用 clear: both
     (抵消其他元素浮动对当前元素产生的影响)
 
 总结:
@@ -1216,18 +1222,18 @@ css 文字超出部分, 用省略号来代替...
 
 ```  
 
-css 
+css
 	强制不换行:
 		 white-space: nowrap;  /*强制不换行*/
-		 
-		 
+
+
           display: -webkit-box;
           -webkit-box-orient: vertical;
           -webkit-line-clamp: 2; /* 你想要文字有多少行号, 2行就填写2   */
           overflow: hidden;
-		  
-		  
-注意:  firefox没有 -webkit-line-clamp: 2; 这个东西. 
+
+
+注意:  firefox没有 -webkit-line-clamp: 2; 这个东西.
 	只能用下面这个方案了, 将就一下把, 毕竟天猫都是这么做的....
 		  功能: 超出一行, 用省略号来代替(...)
 			  font-size: 16px;
@@ -1251,7 +1257,7 @@ css
       word-break:keep-all;
     }
   就能使<pre>的内容自动换行了
-  而且, 单词也可以保持完整, 
+  而且, 单词也可以保持完整,
   不会把一个单词从中间强行打断 , 而达到暴力换行
     pre {
       background-color: black;
@@ -1298,7 +1304,7 @@ css
 
 ```  
 
-一个行内元素, 如果想设置宽高, 需要转换成块级元素, 
+一个行内元素, 如果想设置宽高, 需要转换成块级元素,
 三种办法:
 	display: block;
 	float: **;
@@ -1337,21 +1343,21 @@ css
 
 text-align: center; 用来居中详解:
 
-当父元素是块级元素(比如div之类), 
+当父元素是块级元素(比如div之类),
 	1-1.子元素是内联元素(span之类)的时候:
-		text-align: center 加在内联元素上面, 是不起作用的, 
+		text-align: center 加在内联元素上面, 是不起作用的,
 		必须加在父元素上
 
 	1-2.但是子元素是块级元素的时候:
 		text-align:center 加在父元素上, 或者子元素上, 都是可以的
 
-		
-margin: 0 auto 只能用于块级元素, 也就是说要设置成: display: block; 
+
+margin: 0 auto 只能用于块级元素, 也就是说要设置成: display: block;
 
 默认父元素是块级元素(div之类的):
 	1-1.子元素是内联元素(span之类):
 		加 margin: 0 auto 是不起作用的
-		
+
 	1-2.子元素是块级元素(div之类的):
 		 margin: 0 auto; 也是不起作用的(除非设置宽和高)
 
@@ -1366,7 +1372,7 @@ li 标签是行内元素,可以用text-align: center;来居中;
 
 这篇文章讲得非常详细:
 https://zhuanlan.zhihu.com/p/93644624?utm_source=ZHShareTargetIDMore&utm_medium=social&utm_oi=578296302983450624
- 
+
 
 ```
 </details>
@@ -1425,7 +1431,7 @@ https://zhuanlan.zhihu.com/p/93644624?utm_source=ZHShareTargetIDMore&utm_medium=
     }
 
     ul {
-      list-style-type: none; 
+      list-style-type: none;
       margin: 100px;   
     }
 
@@ -1625,7 +1631,7 @@ https://zhuanlan.zhihu.com/p/93644624?utm_source=ZHShareTargetIDMore&utm_medium=
 			/* position: relative; */
 			bottom: 0;
 		}
-		
+
 		.nav_left {
 				display: flex;
 				width: 40%;
@@ -1704,7 +1710,7 @@ https://zhuanlan.zhihu.com/p/93644624?utm_source=ZHShareTargetIDMore&utm_medium=
 
 
 <p>123123123</p>
-		
+
 <p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p>
 
 
@@ -1953,9 +1959,9 @@ https://zhuanlan.zhihu.com/p/93644624?utm_source=ZHShareTargetIDMore&utm_medium=
         <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>       <h1>  主页面 </h1>      
 
         <div id="filter_side_nav">
-            
+
             <h1> 点击取消按钮 </h1>    <h1> 点击取消按钮 </h1>    <h1> 点击取消按钮 </h1>    <h1> 点击取消按钮 </h1>    <h1> 点击取消按钮 </h1>    <h1> 点击取消按钮 </h1>    <h1> 点击取消按钮 </h1>    <h1> 筛选框 </h1>    <h1> 筛选框 </h1>    <h1> 筛选框 </h1>    <h1> 筛选框 </h1>    <h1> 筛选框 </h1>    <h1> 筛选框 </h1>    <h1> 筛选框 </h1>    <h1> 筛选框 </h1>    <h1> 筛选框 </h1>    <h1> 筛选框 </h1>    <h1> 筛选框 </h1>    <h1> 筛选框 </h1>    <h1> 筛选框 </h1>    <h1> 筛选框 </h1>    <h1> 筛选框 </h1>    <h1> 筛选框 </h1>    <h1> 筛选框 </h1>    <h1> 筛选框 </h1>    <h1> 筛选框 </h1>    <h1> 筛选框 </h1>    <h1> 筛选框 </h1>   
-        
+
             <footer>
                 <div class="button">
                     <button onclick="Cancel()">取消</button>
@@ -2153,7 +2159,7 @@ https://zhuanlan.zhihu.com/p/93644624?utm_source=ZHShareTargetIDMore&utm_medium=
 
     <div id="main">
         <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   <h1>Lorem t quas excepturi.</h1>   
- 
+
     </div>
 
     <script>
@@ -2307,7 +2313,7 @@ https://zhuanlan.zhihu.com/p/93644624?utm_source=ZHShareTargetIDMore&utm_medium=
             box.style['margin-left'] = 300 + "px";
         }
     }
-    
+
 </script>
 </html>
 
@@ -2604,7 +2610,7 @@ https://zhuanlan.zhihu.com/p/93644624?utm_source=ZHShareTargetIDMore&utm_medium=
         }
 
     }
-    
+
 </script>
 </html>
 
@@ -2879,4 +2885,3 @@ https://zhuanlan.zhihu.com/p/93644624?utm_source=ZHShareTargetIDMore&utm_medium=
 
 ```
 </details>
-

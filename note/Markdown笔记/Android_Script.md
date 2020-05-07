@@ -5,7 +5,7 @@ Github地址:         https://github.com/hyb1996/Auto.js
 Auto.js Pro[收费]   https://pro.autojs.org/
 文档:               https://hyb1996.github.io/AutoJs-Docs/#/
 
-Auto.js 需要开启: 
+Auto.js 需要开启:
 	1: 无障碍服务
 	2: 悬浮窗
 
@@ -41,8 +41,12 @@ Auto.js-Pro-Ext
 在电脑上的 VS code 里面快捷键: Ctrl+Shift+P 输入: Start Server 来启动服务,
 然后在安卓手机的 Auto.js 里面开启`连接电脑`的按钮
 
-运行程序
+运行程序:
+启动微信:
 app.launchApp("微信")
+launch("com.tencent.mm");
+
+启动QQ:
 app.launchApp("QQ")
 
 alert("您好");
@@ -53,3 +57,92 @@ alert("您好");
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> 节点精灵 </b></summary>
+
+```
+循环滑动:
+for i=10,1,-1 do
+    slid(700,700,100,100,888);
+end
+
+
+
+打印出: 10 9 8 7 6 5 4 3 2 1:
+for i=10,1,-1 do
+    sleep(1234)
+    print(i)
+end
+
+
+
+语音播报, 将一段文本朗读出来:
+talk("我是系统朗读的声音")
+
+
+在屏幕打印出来:
+print(123123)
+
+
+
+while( true )
+do
+    slid(700,700,100,100,888);
+end
+
+
+返回键:
+back();
+
+
+
+
+-----------------------------------   实战: 京东极速版   -------------------------------------
+target(1) 表示第一个按钮
+
+function find_it()
+    local rule = R():id("com.jd.jdlite.lib.mission:id/lib_mission_item_button"):target(1);
+    local view = find(rule);
+    if view then
+        talk("找到了..")
+        sleep(666);
+
+        click(rule);
+        sleep(3232);
+
+        slid_function();
+
+        back();
+    end
+end
+
+
+function slid_function()
+    for i=10,1,-1 do
+        slid(700,700,100,100,888);
+    end
+end
+
+
+for i=43,1,-1 do
+    find_it()
+end
+
+```
+</details>

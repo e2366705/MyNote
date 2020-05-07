@@ -12,6 +12,45 @@
 
 
 
+### 本地服务器
+<details>
+<summary><b> Anywhere 随启随用的静态文件服务器 </b></summary>
+
+```
+Anywhere - 随时随地将你的当前目录变成一个静态文件服务器的根目录(手机调试非常方便)
+https://github.com/JacksonTian/anywhere
+
+安装它:
+npm install anywhere -g
+
+然后,
+
+新建一个文件夹, 里面新建一个 index.html (默认页面)
+
+
+Windows 10 系统打开cmd命令行, 输入 ipconfig  回车:
+无线局域网适配器 WLAN:
+   连接特定的 DNS 后缀 . . . . . . . :
+   本地链接 IPv6 地址. . . . . . . . : fe80::5ca8:78fe:1c7d:a8cb%5
+   IPv4 地址 . . . . . . . . . . . . : 192.168.1.100
+   子网掩码  . . . . . . . . . . . . : 255.255.255.0
+   默认网关. . . . . . . . . . . . . : 192.168.1.1
+
+IPv4 地址 . . . . . . . . . . . . : 192.168.1.100  -> 就是自己的 ip 地址了,
+
+然后命令行输入:  anywhere -h  192.168.1.100 -p 8888  启动服务器, 会自动打开里面的 index.html
+
+手机 电脑访问 http://192.168.1.100:8888/
+
+```
+</details>
+
+
+
+
+
+
+
 
 <details>
 <summary><b> 常用颜色 </b></summary>
@@ -2774,6 +2813,15 @@ https://zhuanlan.zhihu.com/p/93644624?utm_source=ZHShareTargetIDMore&utm_medium=
 
 
 
+
+
+
+
+
+
+
+
+
 <details>
 <summary><b> 伸缩侧边栏: 纯CSS, 无 JavaScript </b></summary>
 
@@ -2881,6 +2929,128 @@ https://zhuanlan.zhihu.com/p/93644624?utm_source=ZHShareTargetIDMore&utm_medium=
     </div>
 
 </body>
+</html>
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> 京东筛选框 </b></summary>
+
+```
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            position: relative;
+            left: 0;
+            padding: 0;
+            margin: 0;
+            /*overflow-x:hidden;*/
+        }
+
+        aside {
+            width: 85%;
+            height: 100%;
+
+            position: fixed;
+            width: 85%;
+            top: 0;
+            left: 100%;
+
+            background: #d4d4d4;
+            transition: 0.5s ease;
+            z-index: 222;
+            transform: translate3d(100%,0,0);
+        }
+
+        #Background_Shadow {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+
+            transition: 0.5s ease;
+            /* transition: opacity .5s ease, visibility .5s ease; */
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            background-color: rgba(0, 0, 0, .7);
+            z-index: 111;
+            opacity: 1;
+            visibility: hidden;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h3>关键技术点: </h3>
+    <h4>left: 100% </h4>
+    <h4>transition: 0.5s ease </h4>
+    <h4>transform: translate3d(100%,0,0)  - 分别是 x轴, y轴   </h4>
+    <h4>opacity: 1</h4>
+
+    <button id="open_box">展开</button>
+    <div class="" id="Background_Shadow"></div>
+    <aside id="aside">
+        <ul>
+            <li>list</li>
+            <li><img src="https://dummyimage.com/120x120/FF7F00/1C86EE" alt=""></li>
+            <li>list</li><li>list</li><li>list</li> <li>list</li>                    
+        </ul>
+    </aside>
+
+</body>
+<script>
+
+    var aside = document.getElementById("aside");
+    var Background_Shadow = document.getElementById("Background_Shadow");
+    var state = "close";
+
+    aside.setAttribute("class", state);
+
+    document.getElementById("Background_Shadow").onclick = function () {
+        document.getElementById("Background_Shadow").style.cssText = "      opacity: 0; visibility: hidden;    ";
+        document.getElementById("aside").style.cssText = "   transform: translate3d(100%,0,0);    ";
+    }
+
+    document.getElementById("open_box").onclick = function(){
+        document.getElementById("Background_Shadow").style.cssText = "      opacity: 1; visibility: visible;    ";
+        document.getElementById("aside").style.cssText = "   transform: translate3d(-100%,0,0);    ";
+    }
+</script>
 </html>
 
 ```

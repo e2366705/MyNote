@@ -77,6 +77,11 @@ alert("您好");
 <summary><b> 节点精灵 </b></summary>
 
 ```
+
+教程(文档):     
+节点精灵官方文档:   http://www.nodescript.cn/#/api/method
+Lua 教程: https://www.runoob.com/lua/lua-loops.html
+
 循环滑动:
 for i=10,1,-1 do
     slid(700,700,100,100,888);

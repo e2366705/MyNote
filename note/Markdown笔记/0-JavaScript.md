@@ -1,4 +1,4 @@
-# JavaScript 
+# JavaScript
 
 ### chrome F12 可以直接调试小代码片段 很方便
 
@@ -69,12 +69,12 @@ JavaScript 中 :
 
 
 
-当连续判断一个变量是不是等于某个值时，可以使用数组形式来避免变量名重复 
+当连续判断一个变量是不是等于某个值时，可以使用数组形式来避免变量名重复
 
 
 
 需要经常刷新整个页面的, 不要使用 Ajax 从后台获取主要数据,
-因为一刷新, 数据都没了, 
+因为一刷新, 数据都没了,
 推荐使用 访问地址 + 参数来访问, 这样即使整个页面刷新了, 数据还是照样存在
 比如:
     http://www.xxxxx.com/user/page?id=1
@@ -82,7 +82,7 @@ Ajax 适用于加载一些临时性的数据 (优点是不刷新整个网页)
 
 
 
-个人推荐使用这种方法绑定 点击事件, 
+个人推荐使用这种方法绑定 点击事件,
 这样从按钮上就直接一眼看出绑定了哪些函数/方法, 不用一个一个去大量的 js 文件去找
 甚至在 idea 等 IDE 中, 按住 Ctrl + 鼠标就可以直接定位到函数/方法, 非常方便
     <button id="vv" onclick="myfunction()" >哈哈</button>
@@ -236,7 +236,7 @@ let a = 'sss';
 
 
 
-# DOM 操作 
+# DOM 操作
 <details>
 <summary><b>下拉框 select 发生改变时 的值 </b></summary>
 
@@ -344,7 +344,7 @@ document.getElementsByClassName('div2')[0].style.background = 'pink';
         reg = /^(-?\d+(\.\d)?)(px|pt|em|rem)?$/i;
         return reg.test(val) ? parseFloat(val) : val;
     }
-    
+
     const box = document.querySelector('#shadow');
     console.log(getCss(box, 'opacity'));
 
@@ -468,7 +468,7 @@ window.onload = function() {
 
 
 <details>
-<summary><b> 属性 </b></summary>
+<summary><b> 属性 / this / target </b></summary>
 
 ```  
 
@@ -511,7 +511,7 @@ var add_screenshots_a = document.createElement('a');            创建一个a标
     add_screenshots_a.className = 'add_screenshots';            设置 class 属性
     add_screenshots_a.innerHTML = '添加截图';               
     add_screenshots_a.setAttribute("onclick", "dddd(this)");    动态绑定点击事件dddd(this)
- 
+
 function dddd(thisss){
     console.log(thisss.innerHTML);  => 这个元素的 innerHTML
     console.log(thisss.previousSibling); => 这个节点元素的 上一个同类节点(object类型)
@@ -658,7 +658,7 @@ document.getElementById("hhh").onclick = function () {
         list[i].onmouseover = aaa;
         list[i].onmouseout = bbb;
       }
-      
+
     function bbb(){
       console.log("---------------");
     }
@@ -678,7 +678,7 @@ document.getElementById("hhh").onclick = function () {
     }
 
 
-* 直接定义函数与内容 
+* 直接定义函数与内容
     document.getElementById('vv').onclick = function () {
       alert('hasssshhaa ')
       }
@@ -760,7 +760,7 @@ addEventListener 支持多次绑定,全部触发点击事件
       for (var i = 0; i < father.length ; i++) {
             console.log(father[i].tagName)
       }
-      返回: 
+      返回:
           undefined
           DIV
           undefined
@@ -937,12 +937,12 @@ console.log("向上滚动了   "+document.documentElement.scrollTop);
 
 ```  
 网页尺寸为: 2472*6708
-chrome浏览器模拟移动端: 
+chrome浏览器模拟移动端:
 	宽:320		高: 568
 
 测试代码:
 <html lang="zh"><head><style>        * {            margin: 0;            padding: 0;            text-decoration: none;            list-style-type: none;        }        #box1{            width: 115px;            height: 115px;            margin-left: 36px;            background-color: pink;        }</style><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="X-UA-Compatible" content="ie=edge"><title>YXB</title></head><body><h1>YXB</h1><div id="box1"></div><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><span>qwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqwqwerqweqweqw</span><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p><p>123123123</p></body><script>    console.log(document.getElementById("box1").offsetWidth);    console.log(document.getElementById("box1").offsetHeight);    console.log(document.getElementById("box1").offsetLeft);    console.log(document.getElementById("box1").offsetTop);</script></html>
-	
+
 document.body.clientWidth;        //网页可见区域宽(body)   						返回 320
 document.body.clientHeight;       //网页可见区域高(body)						返回 569
 
@@ -955,8 +955,8 @@ document.body.offsetWidth;       //网页可见区域宽(body)，包括border、
 document.body.scrollTop;           //网页被卷去的Top(滚动条)					返回 88.5
 document.body.scrollLeft;           //网页被卷去的Left(滚动条)					返回 3762
 
-window.screenTop;                     //浏览器距离Top							返回 
-window.screenLeft;                     //浏览器距离Left							返回 
+window.screenTop;                     //浏览器距离Top							返回
+window.screenLeft;                     //浏览器距离Left							返回
 
 window.screen.height;                //屏幕分辨率的高							返回 568
 window.screen.width;                 //屏幕分辨率的宽							返回 320
@@ -969,7 +969,7 @@ window.screen.availWidth;           //屏幕可用工作区的宽						返回 32
     console.log(document.getElementById("box1").offsetHeight);
     console.log(document.getElementById("box1").offsetLeft);
     console.log(document.getElementById("box1").offsetTop);
-	
+
 	注意:
 		document.documentElement.scrollTop 在chrome浏览器中, 不起作用
 		document.body.scrollTop			   在chrome浏览器中可以用
@@ -1070,7 +1070,7 @@ window.screen.availWidth;           //屏幕可用工作区的宽						返回 32
 
 
 
-# 字符串操作: 
+# 字符串操作:
 * https://www.runoob.com/jsref/jsref-obj-string.html
 <details>
 <summary><b>字符串之 : 基本操作:</b></summary>
@@ -1078,7 +1078,7 @@ window.screen.availWidth;           //屏幕可用工作区的宽						返回 32
 ```  
 
 
------------------------------------   格式化字符串   ----------------------------------- 
+-----------------------------------   格式化字符串   -----------------------------------
 var aaa = 123123;
 console.log(`为什么我会有 ${aaa} 个苹果手机`);
 
@@ -1091,24 +1091,24 @@ console.log(`为什么我会有 ${aaa} 个苹果手机`);
     长度:
     var txt = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     var sln = txt.length;
-    
-    
+
+
     某个指定的字符串值在字符串中首次出现的位置
     var str="Hello world, welcome to the universe.";
     var n=str.indexOf("welcome");
-    
+
     在字符串第五个位置开始查找字符 "e" 第一次出现的位置:
     var str="Hello world, welcome to the universe.";
     var n=str.indexOf("e",5);
-    
+
     查找字符串是否包含 "Runoob" (true / false):
     var str = "Hello world, welcome to the Runoob。";
     var n = str.includes("world");
-    
+
     从第 12 个索引位置开始查找字符串:
     var str = "Hello world, welcome to the Runoob.";
     var n = str.includes("world", 12);
-    
+
     等等........
 
 
@@ -1119,16 +1119,16 @@ console.log(`为什么我会有 ${aaa} 个苹果手机`);
 
 
 
------------------------------------   去掉两头的空格   ----------------------------------- 
-'           asdasd  阿斯顿 123123 %#$%^#$ sdfsdf'.replace(/^\s+|\s+$/g,""); 
+-----------------------------------   去掉两头的空格   -----------------------------------
+'           asdasd  阿斯顿 123123 %#$%^#$ sdfsdf'.replace(/^\s+|\s+$/g,"");
 输出:
     "asdasd  阿斯顿 123123 %#$%^#$ sdfsdf"
 
 
 
-    
 
------------------------------------   分割字符串   ----------------------------------- 
+
+-----------------------------------   分割字符串   -----------------------------------
 
     var str="How are you doing                    today?";
     var array = str.split(" ");
@@ -1225,7 +1225,7 @@ console.log(`为什么我会有 ${aaa} 个苹果手机`);
 
 ------------------>   search()   <------------------
 使用正则表达式搜索 "Runoob" 字符串，且不区分大小写:
-var str = "Visit Runoob!"; 
+var str = "Visit Runoob!";
 var n = str.search(/Runoob/i);
 >>> n = 6
 
@@ -1349,9 +1349,9 @@ n?	    匹配任何包含零个或一个 n 的字符串
 
 判断字符串是否全部为字母 (不允许有空格):
     /^[a-zA-Z]+$/.test("QAQ");                 返回 true
-判断字符串是否全部为字母 (允许有空格): 
+判断字符串是否全部为字母 (允许有空格):
     /^[a-zA-Z\s]+$/.test("asd           ");    返回 true
-    
+
 
 判断字符串是否全部为数字
      /^\d+$/.test("123123");
@@ -1437,7 +1437,7 @@ function isStudentNo(str) {
     网址路径中包含汉字 :
         比如 : ttp://www.xxxxx.com/您好
         自动对“你好”进行了编码:
-        http://www.haorooms.com/%E6%82%A8%E5%A5%BD 
+        http://www.haorooms.com/%E6%82%A8%E5%A5%BD
 
 
 
@@ -1469,7 +1469,7 @@ function isStudentNo(str) {
     更加直接的 字符串 -> Unicode
     escape("春节");
     输出: %u6625%u8282
-    
+
     unescape("%u6625%u8282");
     输出: 春节
 
@@ -1481,7 +1481,7 @@ function isStudentNo(str) {
 
 
 
------------------------------------    关于 URL   ----------------------------------- 
+-----------------------------------    关于 URL   -----------------------------------
 浏览器 URL 中文 编码转换
     decodeURI("%E9%AB%98%E8%80%83")
     输出: 高考
@@ -1557,7 +1557,7 @@ n(拉丁字母n)    U+006E      \u6e
 
 关于 Unicode 中的回车/换行:
 结论:
-    在 Windows 系统下, 
+    在 Windows 系统下,
     \ud\ua  就是文本文件的换行
 
 不过:
@@ -1691,7 +1691,7 @@ https://jsonplaceholder.typicode.com/posts
             1: {Name: "Eyes Wide Shut", ReleaseYear: "1999"}
             2: {Name: "The Inheritance", ReleaseYear: "1976"}
             3: {Name: "AAAAAAA", password: "1234567890"}    
-    
+
     console.log(typeof movies);
             object
 
@@ -1727,8 +1727,8 @@ Array中全部转成大小写:
 
 
 删除:
-    JavaScript中并没有直接提供删除某个元素的API, 需要通过索引删除某个元素: 
-    var removedItem = fruits.splice(index, 1); 
+    JavaScript中并没有直接提供删除某个元素的API, 需要通过索引删除某个元素:
+    var removedItem = fruits.splice(index, 1);
 
 找出某个元素在数组中的索引:
     var pos = fruits.indexOf('iPhone');
@@ -1863,7 +1863,7 @@ console.log([...mySet]); // 与myArray完全一致
 数组去重:
 // 用于从数组中删除重复的元素
 const numbers = [2,3,4,4,2,3,3,4,4,5,5,6,6,7,5,32,3,4,5]
-console.log([...new Set(numbers)]) 
+console.log([...new Set(numbers)])
 // [2, 3, 4, 5, 6, 7, 32]
 
 
@@ -1952,7 +1952,7 @@ symmetricDifference(setA, setC); // => Set [1, 2, 5, 6]
 资料来源: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Map
 
 Map.length
-默认length 的值为 0 
+默认length 的值为 0
 
 
 var myMap = new Map();
@@ -2274,7 +2274,7 @@ document.getElementById("span1").onclick = function (ev) {
 
 
 刷新当前页面
-location.reload(); 
+location.reload();
 
 
 ```
@@ -2305,7 +2305,7 @@ location.reload();
 
 localStorage.length          获取localStorage一共有多少条数据
 
-localStorage.key(3)          索引(index)为3的 key 的值  (只能获取 key 的值, 得不到 value 的值) 
+localStorage.key(3)          索引(index)为3的 key 的值  (只能获取 key 的值, 得不到 value 的值)
                              初始值为localStorage.key(0)
 
 localStorage.value(3);       没有这种用法
@@ -2315,9 +2315,9 @@ localStorage.key(5).includes("apple") === true
 
 遍历:
     for (var i = 0; i < localStorage.length; i++) {
-        
+
     }
-    
+
 ```
 </details>
 
@@ -2347,7 +2347,7 @@ localStorage.key(5).includes("apple") === true
         childNode.setAttribute('id', 'TTS_audios');
         childNode.innerHTML = '<source src="https://fanyi.so.com/audio?from=en&to=zh&voice=5&cate=uk-speech&key=93f725a07423fe1c889f448b33d21f46&query=java">';
         document.getElementsByTagName('body')[0].appendChild(childNode);
-        
+
         // Ee.paused;   // 是否暂停
         audio.remove(); // 移除这个播放框
 
@@ -2364,25 +2364,25 @@ localStorage.key(5).includes("apple") === true
         }, console.log("还在播放...")  ,  false );
 
 
-        
+
 
         方式二:  更加简洁快速
         var url = "http://www.joereddington.com/testsound/hope.wav?cb=" + new Date().getTime();
         var audio = new Audio(url);
         audio.load();
-        audio.play(); 
+        audio.play();
 
         示例:
             播放英语音频 (有道单词发音接口):
                 var url = "http://dict.youdao.com/dictvoice?audio=hello";
                 var audio = new Audio(url);
                 audio.load();
-                audio.play(); 
+                audio.play();
 
         有道单词发音接口:
             英音:   http://dict.youdao.com/dictvoice?audio=suffering&type=1
             美音:   http://dict.youdao.com/dictvoice?audio=suffering&type=2
-            
+
 
 ```
 </details>
@@ -2660,7 +2660,7 @@ document.onkeyup = function (event) {
 
 ```
 
-                                            单击选中文本, 自动弹出 ( 强烈推荐!! , 非常智能 ) 
+                                            单击选中文本, 自动弹出 ( 强烈推荐!! , 非常智能 )
 <body>
   <p>随便复制一段文字, 然后点击鼠标右键 , 打开控制台查看console.log();</p>
   <h2>...选择英文获取发音  </h2>
@@ -2870,7 +2870,7 @@ window.onload = function(){
 
 
 
-                                            右键自定义菜单 Demo : 
+                                            右键自定义菜单 Demo :
 
 <!DOCTYPE html>
 <html>
@@ -2956,7 +2956,7 @@ window.onload = function(){
       var event = event || window.event;
       event.cancelBubble = true;
     })
-    
+
     //右键菜单
     document.oncontextmenu = function (event) {
       var event = event || window.event;
@@ -3208,7 +3208,7 @@ document.write(formData.get('username'))
 ```  
 
 你可以通过  min 和 max 属性去限制用户的可选日期范围。
-在随后的例子中，我们将设定日期最小值为 2017-04-01 最大值为 2017-04-30 
+在随后的例子中，我们将设定日期最小值为 2017-04-01 最大值为 2017-04-30
 <form>
   <div>
     <label for="party">Choose your preferred party date:</label>
@@ -3227,7 +3227,7 @@ function fn() {
 
 
 
-可以使用 required 属性强制填写日期, 如果你尝试提交一个未填写日期的域那么将会抛出错误。 
+可以使用 required 属性强制填写日期, 如果你尝试提交一个未填写日期的域那么将会抛出错误。
 至少在大多数浏览器是可以工作的
 让我们看一个例子 — 我们设置了日期的最大和最小值, 并且设定为必填:
 
@@ -3263,9 +3263,9 @@ d.getFullYear();        // 年份: 2020 (当前是 xxx 年)
     var d = new Date();
     d.getMonth();           // 月份: 2 () 在 JavaScript 中，第一个月（1 月）是月号 0，因此 12 月返回月号 11)
     var d = new Date();
-    var months = 
+    var months =
                 [
-                "January", "February", "March", "April", "May", "June", 
+                "January", "February", "March", "April", "May", "June",
                 "July", "August", "September", "October", "November", "December"
                 ];
     document.getElementById("demo").innerHTML = months[d.getMonth()];
@@ -3285,7 +3285,7 @@ var d = new Date();
 d.getSeconds();         // 秒数
 
 var d = new Date();
-d.getMilliseconds();    // 毫秒数 
+d.getMilliseconds();    // 毫秒数
 
 
 在 JavaScript 中，一周的第一天（0）表示“星期日”，即使世界上的一些国家认为周的第一天是“星期一”。
@@ -3435,8 +3435,8 @@ JavaScript 遍历所有cookie:
         }
         console.log(re);
     }
-	
-	
+
+
 拿到cookie
     function getCookie(cookie_name) {
         if (document.cookie.length > 0) {
@@ -3450,9 +3450,9 @@ JavaScript 遍历所有cookie:
         }
         return ""
     }
-	
-	
-	
+
+
+
 	function save_into_cookies(cookie_name, value, expiredays) {
         var exdate = new Date();
         exdate.setDate(exdate.getDate() + expiredays);
@@ -3481,7 +3481,7 @@ JavaScript 遍历所有cookie:
     删除数组AAA里面所有 bbb 有的元素:
 
     var AAA = ["irrigation", "project", "modernized", "production", "cancer", "treatment", "short", "break", "metals", "expand", "border", "with", "germany", "passengers", "and", "crew", "was", "a", "deliberate", "federal", "republic", "highly", "praised", "version", "of", "the", "accident", "consulted", "your", "lawyer", "individual", "tastes", "arrogant", "runner", "employment", "problems", "conceded", "defeat", "concern", "about", "changes", "wildlife", "conservation", "he", "consoled", "her", "flowers", "school", "cafeteria", "wide", "use", "reduce", "decay", "tutor", "at", "university", "verify", "theory", "attempt", "to", "embarrass", "research", "luxury", "cruise", "liner", "paperwork", "bureaucracy", "sheer", "number", "tourists", "justification", "for", "sacking", "estimate", "total", "math", "competition", "sport", "recreation", "gauge", "weight", "initial", "reaction", "wedding", "outfit"];
-    
+
     var bbb = ["if", "and", "or", "there", "were", "on", "in", "be", "will", "at", "one", "twe", "of", "for", "to", "too", "about", "from", "with", "under", "into", "without", "over", "was", "the", "that", "not", "say", "see", "my", "you", "he", "her", "do", "other", "food", "it", "they", "many", "agree", "people", "get", "post", "hot", "a", "low", "your", "project", "number", "school", "sport", "version", "use"];
 
 
@@ -3508,10 +3508,10 @@ Array.prototype.remove = function (val) {
     console.log(AAA);    
 
 这时候, 坑的地方来了, 多次测试发现, 总有一个元素删不干净, 其他的都可以删除干净, 刚好就一个删除不干净...
-折腾了好几个小时, 
-后来仔细一想, 
+折腾了好几个小时,
+后来仔细一想,
 这个删除数组元素的函数, 原理是通过 索引index 来删除,
-而我的嵌套循环删除了一个元素之后, 索引向后增加了一个, 
+而我的嵌套循环删除了一个元素之后, 索引向后增加了一个,
 所以应该把索引减去一个,
 所以嵌套循环应该这样写:
 
@@ -3781,19 +3781,3 @@ public class WebSocket {
 
 ```
 </details>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

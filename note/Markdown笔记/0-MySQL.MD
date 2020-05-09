@@ -68,7 +68,7 @@
 	容易在增加或者删除字段后出现程序BUG		
 
 
-* 经过测试, MySQL 必须给 varchar设置长度??? 
+* 经过测试, MySQL 必须给 varchar设置长度???
 
 
 * 使用InnoDB存储引擎
@@ -113,7 +113,7 @@
 
 
 
-表必备字段： 
+表必备字段：
 	id,
 	create_date,
 	last_update_date,
@@ -134,9 +134,9 @@
 	太阳		约 50 亿年	 unsigned bigint	8		无符号值： 0 到约 10 的 19 次方
 
 
-不要使用 count(列名)或 count(常量)来替代 count(\*)， 
+不要使用 count(列名)或 count(常量)来替代 count(\*)，
 	count(*)是 SQL92 定义的标准统计行数的语法，跟数据库无关，跟 NULL 和非 NULL 无关
-	count(*)会统计值为 NULL 的行，而 count(列名)不会统计此列为 NULL 值的行	
+	count(*)会统计值为 NULL 的行，而 count(列名)不会统计此列为 NULL 值的行
 	count(distinct col1, col2) 如果其中一列全为 NULL，那么即使另一列有不同的值，也返回为 0
 
 
@@ -175,7 +175,7 @@ select id,count(*) from table where age>=30 group by id order by null;
 禁止使用SELECT *，只获取必要的字段，需要显示说明列属性
 解读：
 	a）读取不需要的列会增加CPU、IO、NET消耗
-	b）不能有效的利用覆盖索引	
+	b）不能有效的利用覆盖索引
 	c）使用SELECT *容易在增加或者删除字段后出现程序BUG
 
 
@@ -282,7 +282,7 @@ select id,count(*) from table where age>=30 group by id order by null;
 命令行:
 	MySQLi -u用户名 -p密码
 
-查看所有的数据库 
+查看所有的数据库
 show databases;
 
 查看当前库所有表:
@@ -314,9 +314,9 @@ CREATE TABLE IF NOT EXISTS `table1`(      -- (注释:)
 	2 是utf8  不是utf-8
 
 
-注意: 
+注意:
 	SELECT * FROM `phrase` WHERE `id` != 2
-		这个时候是匹配不到 id 为 null 的数据的, 
+		这个时候是匹配不到 id 为 null 的数据的,
 		因为 NULL 不是一个「值」，而是「没有值」,
 		「没有值」不满足「值不等于1」这个条件
 		所以 mysql 尽量不要默认值是 NULL
@@ -324,7 +324,7 @@ CREATE TABLE IF NOT EXISTS `table1`(      -- (注释:)
 		select * from `phrase` where `id` != 2 or `id` is null
 
 
------------------------------------   MySQL 存储长文本   ----------------------------------- 
+-----------------------------------   MySQL 存储长文本   -----------------------------------
 注意:
 	会浪费更多的磁盘和内存空间，非必要的大量的大字段查询会淘汰掉热数据，导致内存命中率急剧降低，影响数据库性能
 
@@ -372,7 +372,6 @@ CREATE TABLE IF NOT EXISTS `table1`(      -- (注释:)
 <summary><b> MySQL 连接报错: 时区错误 </b></summary>
 
 ```
-
 ?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
 jdbc:mysql://localhost:3306/springboot_start?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
 
@@ -428,9 +427,12 @@ CREATE TABLE IF NOT EXISTS `tb_user`(
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
+int(30)         NOT NULL DEFAULT 0    COMMENT '未知',
+VARCHAR(250)    NOT NULL DEFAULT ''  COMMENT '未知',
+
 
 注意:  同财务相关的金额类数据必须使用 decimal 类型 ( decimal 类型是MySQL官方唯一指定能精确存储的类型)
-	float 会有误差 INSERT INTO `tb_test` VALUES(888.8888); 
+	float 会有误差 INSERT INTO `tb_test` VALUES(888.8888);
 	表数据显示: 888.889
 
 	double 好一点:
@@ -444,8 +446,8 @@ CREATE TABLE IF NOT EXISTS `tb_user`(
 -- 无符号                  unsigned (只能是正数)
 -- 有符号                  signed
 -- 主键                    Primary key
--- 不可重复                UNIQUE 
--- 非空, 并设置默认字符     NOT NULL DEFAULT '', 
+-- 不可重复                UNIQUE
+-- 非空, 并设置默认字符     NOT NULL DEFAULT '',
 
 
 -- 插入insert数据:
@@ -503,13 +505,13 @@ insert into `user`(username,password) values('OPPO','R11');
 
 ```  
 多种排序测试用
-insert into `user`(  `username` , `password`  ) VALUES('aaa','999'); 
+insert into `user`(  `username` , `password`  ) VALUES('aaa','999');
 
 
 insert 插入数据(两种方式)
 	insert into `user`(username,password) values('HUAWEI','mate20');
 	insert into `users` values ('AAA','BBB','CCC');
-	
+
 
 ```
 </details>
@@ -532,7 +534,7 @@ delete from `user` where `password` = '123123123';
 
 清空表中全部数据，不写日志，不可恢复，速度极快
 truncate table `表名`;
- 
+
 清空全部数据，写日志，数据可恢复，速度慢
 delete from `表名`
 
@@ -611,21 +613,21 @@ UPDATE `tb_note` SET `note` = #{note} WHERE 1 = 1
 
 
 模糊查询:
-	select * from 
+	select * from
 		`goods`
-	where 
+	where
 		`describe` LIKE '%王力宏%'
-	and 
-		`price` BETWEEN 0 and 2000 
-	ORDER BY sales DESC; 
-		
+	and
+		`price` BETWEEN 0 and 2000
+	ORDER BY sales DESC;
+
 多表查询:
 	select sname,cno,degree from student,score where student.sno = score.sno;
-		 
-	select 
-		sname,cname,degree from student,course,score 
+
+	select
+		sname,cname,degree from student,course,score
 	where
-		student.sno = score.sno 
+		student.sno = score.sno
 	and
 		course.cno = score.cno;
 
@@ -639,11 +641,11 @@ GROUP BY:
 
 
 	排除重复的:
-		select distinct username from user;	
+		select distinct username from user;
 
 	查找重复的数据:
 		select * from `people`
-			where 
+			where
 		`Id` in (select `Id` from `people` group by `Id` having count(`Id`) > 1)
 
 
@@ -655,15 +657,15 @@ GROUP BY:
 降序 desc(英文全称descending):   反之(从大到小)
 	降序
 	select * from `student` order by `name` desc;
-	
-	name 升序 , password 降序: 
+
+	name 升序 , password 降序:
 	select * from `score` order by `name` asc , `password` desc;
 		用" , "号隔开多个排序条件,这样,先按 name 排序, 再按 password 排序,
 		就是说,先按 name 从x到x排序，如果有相同的, 再按他们的 password 从x到x排序
 
 
 查询字段`word`长度等于 5 的:
-	select * from `words_warehouse`  where length(`word`) = 5;	
+	select * from `words_warehouse`  where length(`word`) = 5;
 
 
 LIMIT 36		数量为 36 条
@@ -737,7 +739,7 @@ alter table `student` add primary key(`id`)
 设置为唯一键
 alter TABLE `test2` add UNIQUE (`userid`)
 
-给字段添加默认值 : 
+给字段添加默认值 :
 ALTER TABLE `数据表` ALTER COLUMN `字段` SET DEFAULT '默认值';
 
 重命名 表名:
@@ -745,7 +747,7 @@ ALTER TABLE `word` RENAME TO `tb_word`
 
 
 修改字段名称和属性 ( 将AAA字段改为BBBB ) :
-ALTER TABLE 表名    CHANGE 原字段名    新字段名    字段类型     约束条件 ; 
+ALTER TABLE 表名    CHANGE 原字段名    新字段名    字段类型     约束条件 ;
 ALTER TABLE user10  CHANGE `AAA`      `BBBB`     CHAR(32)   NOT NULL DEFAULT '123';
 
 
@@ -814,18 +816,18 @@ MySQL REPLACE语句是标准SQL的MySQL扩展。 MySQL REPLACE语句的工作原
 
 	REPLACE INTO `tb_word`(`word` , `state`) VALUES ('come' , 'Very_familiar');
 
-如果数据库里面没有这条记录, 
-	那么执行这句 SQL 就是新增一条语句, 
-	那么受影响记录行数: 1 
+如果数据库里面没有这条记录,
+	那么执行这句 SQL 就是新增一条语句,
+	那么受影响记录行数: 1
 
 如果数据库里面有这条记录, 但是数据不对
-	那么执行这句 SQL 就是先删除这条记录, 
-	然后新增一条记录, 
+	那么执行这句 SQL 就是先删除这条记录,
+	然后新增一条记录,
 	那么受影响记录行数: 2
 
 如果数据库里面有这条记录, 而且数据都完全相同
 	那么受影响记录行数: 1
-	
+
 
 ```
 </details>
@@ -860,10 +862,10 @@ MySQL REPLACE语句是标准SQL的MySQL扩展。 MySQL REPLACE语句的工作原
 
 IFNULL(v1,v2);
 解读:	如果 v1 不为 NULL，
-			则 IFNULL 函数返回 v1; 
+			则 IFNULL 函数返回 v1;
 			否则返回 v2 的结果
 
-SELECT 
+SELECT
 	IFNULL(5,8),
 	IFNULL(NULL,'OK'),
 	IFNULL(SQRT(-8),'FALSE'),
@@ -891,36 +893,36 @@ if 判断:
 	如果变量 aaa 不为空, 	那么`date` = '2020-02-08'
 
 SET @aaa = null;
-select count(*) from tb_word 
+select count(*) from tb_word
  	where
-IF(@aaa IS NULL, 
-		`date` = '2020-02-10' , 
-		`date` = '2020-02-08'); 
+IF(@aaa IS NULL,
+		`date` = '2020-02-10' ,
+		`date` = '2020-02-08');
 
 
 用法二:
 
 意思解读:
 	如果变量 aaa 为空 或者 aaa = '' 或者 aaa = ' '
-		那么取消条件筛选(''=''), 等同于: select count(*) from tb_word 
+		那么取消条件筛选(''=''), 等同于: select count(*) from tb_word
 	如果变量 aaa 不为空:
 		假设 @aaa = '2020-02-11', 		
 		那么采用条件筛选( `date` = @aaa ), 等同于: select count(*) from tb_word where `date` = '2020-02-11'
 SET @aaa = null;
-select count(*) from tb_word 
+select count(*) from tb_word
  	where
-IF(@aaa IS NULL  OR  @aaa = ''  OR  @aaa = ' ', 
+IF(@aaa IS NULL  OR  @aaa = ''  OR  @aaa = ' ',
 		''='',
 		`date` = @aaa)
-and collection = 'collected' 
+and collection = 'collected'
 
 
 Spring Boot中:
-如果  #{is_Collected} 为空, 
+如果  #{is_Collected} 为空,
 	那么 `collection` = 'collected'
 and IF( #{is_Collected} IS NULL , ''='' ,  `collection` = 'collected'   )     
 
-		
+
 
 ```
 </details>
@@ -1000,7 +1002,7 @@ FOREIGN KEY(class_id) REFERENCES class(id)  ==> student表中class_id的值,必�
 						foreign key 外键
 						references 参考
 这句代码翻译过来就是:
-FOREIGN KEY(class_id) REFERENCES class(id) 
+FOREIGN KEY(class_id) REFERENCES class(id)
 外键 class_id(本表) 的值,参考class表中的id的值
 
 ```
@@ -1078,7 +1080,7 @@ create table public.admin(
 https://www.bilibili.com/video/av39807944/?p=16   ==> 这个教程非常不错 (建表详细化)
 https://www.bilibili.com/video/av39807944/?p=17   ==> 拆表 (第二范式)
 
-	
+
 mysql排序:
 	ASC		 数值从低到高
 	DESC	 数值从高到低
@@ -1128,19 +1130,19 @@ mysql排序:
 
 第一步: Windows下面, 开打任务管理器 , 找到服务, 把MySQL服务启动
 
-这时候可能会提示: 
+这时候可能会提示:
 		Windows 无法启动 mysql_YXB 服务(位于 本地计算机 上)
 		错误 2: 系统找不到指定的文件
 
 这时候就要动注册表了, windows+r  在运行对话框输入regedit，点击确定，进入注册表编辑器
 选择HKEY_LOCAL_MACHINE ->SYSTEM -> CurrentControlSet -> services ->MySQL，
-(或者直接搜: 
+(或者直接搜:
 计算机\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\mysql....
 )
 
 修改ImagePath的路径为Mysql安装路径，例如：D:\mysql-5.7.19-winx64\bin\mysqld MySQL
 
-怎么获取我的 MySQL 安装路径呢? 
+怎么获取我的 MySQL 安装路径呢?
 
 一般来讲 , 都是默认安装在:  C:\ProgramData\MySQL
 
@@ -1161,7 +1163,7 @@ D:\APPS_________APPS_________\ZIP___ISO___7Z___\MySQL_8\mysql-8.0.16-winx64\bin
 添加在Windows中环境变量 (win10 搜索 : 高级环境设置 )
 
 
-打开 Windows 的 cmd , 
+打开 Windows 的 cmd ,
 输入:
 mysql -uroot -p
 
@@ -1185,7 +1187,7 @@ emmmmmmmmm......
 
 反而发现了一个更加简单省心的方法
 
-那就是 phpStudy 
+那就是 phpStudy
 
 搞 php 的都知道
 
@@ -1201,26 +1203,3 @@ emmmmmmmmm......
 
 ```
 </details>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -43,23 +43,23 @@
 
 * 任何字段如果为非负数，必须是 unsigned
 
-* 必须把字段定义为NOT NULL并且提供默认值
+* 必须把字段定义为 NOT NULL 并且提供默认值
 解读：
 	a）null的列使索引/索引统计/值比较都更加复杂，对MySQL来说更难优化
 	b）null 这种类型MySQL内部需要进行特殊处理，增加数据库处理记录的复杂性；
-		同等条件下，表中有较多空字段的时候，数据库的处理性能会降低很多
-	c）null值需要更多的存储空，无论是表还是索引中每行中的null的列都需要额外的空间来标识
-	d）对null 的处理时候，只能采用is null或is not null，而不能采用=、in、<、<>、!=、not in这些操作符号。
+		  同等条件下，表中有较多空字段的时候，数据库的处理性能会降低很多
+	c）null 值需要更多的存储空，无论是表还是索引中每行中的null的列都需要额外的空间来标识
+	d）对 null 的处理时候，只能采用is null或is not null，而不能采用=、in、<、<>、!=、not in这些操作符号。
 		如：where name!=’shenjian’，如果存在name为null值的记录，查询结果就不会包含name为null值的记录
 	不使用is null或is not null，字段设计时建议not null，若麻烦可折中考虑给一默认值
 
 * 不要把字段的值默认设置为 null, 有 bug , 切记切记~~ (2020-02-03 衡阳一次写项目亲测 )
 
-* MySQL 在 Windows 下不区分大小写，但在 Linux 下默认是区分大小写。
+* MySQL 在 Windows 下不区分大小写，但在 Linux 下默认是区分大小写
 	因此，数据库名、表名、字段名，都不允许出现任何大写字母，避免节外生枝
 
 * 禁止存储大文件或者大照片
-	何要让数据库做它不擅长的事情？大文件和照片存储在文件系统，数据库里存 URL 多好
+	何要让数据库做它不擅长的事情? 大文件和照片存储在文件系统，数据库里存 URL 多好
 
 * 禁止使用 TEXT、BLOB 类型
 	会浪费更多的磁盘和内存空间，非必要的大量的大字段查询会淘汰掉热数据，导致内存命中率急剧降低，影响数据库性能
@@ -67,37 +67,16 @@
 * 禁止使用INSERT INTO t_xxx VALUES(xxx)，必须显示指定插入的列属性
 	容易在增加或者删除字段后出现程序BUG		
 
-
 * 经过测试, MySQL 必须给 varchar设置长度???
 
-
 * 使用InnoDB存储引擎
-	支持事务、行级锁、并发性能更好、CPU及内存缓存页优化使得资源利用率更高
+		支持事务、行级锁、并发性能更好、CPU及内存缓存页优化使得资源利用率更高
 
 * Java / python 应用程序必须捕获SQL异常，并有相应处理
 
 
-* 同财务相关的金额类数据必须使用decimal类型 ( decimal类型是MySQL官方唯一指定能精确存储的类型)
-	非精准浮点：float,double
-	精准浮点：decimal
-		数据的精确度取决于分配给每种数据类型的存储长度，
-		其中float分配了4字节，而double分配了8字节,
-		并且数据的这种不准确是正常现象 ,
-		采用 float 和 double 本来就是不准的!!
-
-		数据库小数不要使用double了，除非强制要求！小数一律使用decimal(numeric )。这两个类型是一样的
- 		不要用 double : https://my.oschina.net/lsl1991/blog/1616283
-
-	疑问:
-		INSERT INTO `tb_test` VALUES(100.123456789);  精度没有丢失啊, 为什么都说不要用 double ?
-
-	资料来源 :   http://blog.leanote.com/post/weibo-007/mysql_float_double_decimal
-
-
-
-
-
-
+* 同财务相关的金额类数据必须使用 decimal 类型 ( decimal 类型是MySQL官方唯一指定能精确存储的类型)
+			[ 详情见下方... ]
 
 
 
@@ -396,6 +375,79 @@ jdbc:mysql://localhost:3306/springboot_start?useUnicode=true&characterEncoding=U
 
 
 
+<details>
+<summary><b> 数据类型: decimal / DATE </b></summary>
+
+```
+
+-----------------------------------   decimal   ------------------------------------
+非精准浮点：float,double
+精准浮点:   decimal
+	数据的精确度取决于分配给每种数据类型的存储长度，
+	其中float分配了4字节，而double分配了8字节,
+	并且数据的这种不准确是正常现象 ,
+	采用 float 和 double 本来就是不准的!!
+
+	建表语句:
+	`money`   DECIMAL(20,2)   NOT NULL DEFAULT '0.00'    COMMENT '注释',
+
+	数据库小数不要使用double了，除非强制要求！小数一律使用 decimal(numeric )。这两个类型是一样的
+	不要用 double : https://my.oschina.net/lsl1991/blog/1616283
+
+疑问:
+	INSERT INTO `tb_test` VALUES(100.123456789);  精度没有丢失啊, 为什么都说不要用 double ?
+
+资料来源 :   http://blog.leanote.com/post/weibo-007/mysql_float_double_decimal
+
+
+与 INT 数据类型一样, DECIMAL 类型也具有UNSIGNED和ZEROFILL属性. 如果使用 UNSIGNED 属性,则 DECIMAL UNSIGNED 的列将不接受负值.
+
+以下示例使用DECIMAL数据类型定义的一个叫作 money 的列, SQL 如下:
+`money` DECIMAL(6,2);
+在此示例中, `money` 列最多可以存储6位数字, 其中小数位数为2位; 因此,amount列的范围是从 -9999.99 到 9999.99
+
+MySQL允许使用以下语法:
+`money` DECIMAL(P);
+这相当于:
+`money` DECIMAL(P,0);
+在这种情况下,列不包含小数部分或小数点
+此外,我们甚至可以使用以下语法
+`money` DECIMAL;
+在这种情况下,P的默认值为10
+
+
+
+
+
+-----------------------------------   DATE   ------------------------------------
+
+Mysql DATETIME 类型的字段设置默认值为 NOW() 的方法:
+
+两种方式，但是要求 MySQL 版本为 5.6+:
+`registerDate` datetime NOT NULL DEFAULT NOW() COMMENT '注册时间';
+`registerDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '注册时间';
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -419,7 +471,7 @@ use `zzza9d2g5k4t1b0k`;
 -- 创建表
 CREATE TABLE IF NOT EXISTS `tb_user`(
 `id`          int(20)         unsigned NOT NULL DEFAULT 0    COMMENT '注释',
-`money`       DECIMAL(20,2)   NOT NULL DEFAULT '0.00'        COMMENT '注释',
+`money`       DECIMAL(20,2)   NOT NULL DEFAULT '0.00'        COMMENT '金融',
 `username`    VARCHAR(100)    NOT NULL DEFAULT ''            COMMENT '注释',
 `num`         float
 `user`        double         NOT NULL DEFAULT 0              COMMENT '注释',
@@ -427,8 +479,13 @@ CREATE TABLE IF NOT EXISTS `tb_user`(
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-int(30)         NOT NULL DEFAULT 0    COMMENT '未知',
-VARCHAR(250)    NOT NULL DEFAULT ''  COMMENT '未知',
+
+
+int(30)         NOT NULL DEFAULT 0                 COMMENT 'xxxxxxxxxxx',
+VARCHAR(250)    NOT NULL DEFAULT ''                COMMENT 'xxxxxxxxxxx',
+DECIMAL(20,2)   NOT NULL DEFAULT '0.00'            COMMENT 'xxxxxxxxxxx',
+datetime        NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '时间',
+
 
 
 注意:  同财务相关的金额类数据必须使用 decimal 类型 ( decimal 类型是MySQL官方唯一指定能精确存储的类型)

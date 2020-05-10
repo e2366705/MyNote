@@ -3224,6 +3224,12 @@ function fn() {
     console.log(date);
 }    
 
+<select id="class1_select_id" onchange="load_class2_tm(this.value)">
+    <option>请选择</option>
+    <option>apple</option>
+    <option>哈哈哈</option>
+</select>
+
 
 
 
@@ -3778,6 +3784,155 @@ public class WebSocket {
     }
 }
 
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> 电商分类 列表 (动态加载) </b></summary>
+
+```
+
+index.html
+    一级：
+    <select id="class1_select_id" onchange="load_class2_tm(this.value)">
+        <option>请选择</option>
+    </select>
+
+    二级：
+    <select id="class2_select_id">
+        <option>请选择</option>
+    </select>
+
+<script>
+    $(function () {
+        //通过 getjson异步加载json数据
+        $.getJSON("json/class_1.js", function (json) {
+            //dom对象如何转换为jquery对象  $()
+            $(json).each(function (i, data) {
+                console.log(data)
+                $("#class1_select_id").append('<option value="' + data.id + '">' + data.flmch1 + '</option>');
+            })
+        });
+    })
+
+    //异步加载class2和品牌
+    function load_class2_tm(flbh1) {
+
+        console.log(flbh1);
+
+        if (flbh1 !== "请选择") {
+            //加载class2
+            $.getJSON("json/class_2_" + flbh1 + ".js", function (json) {
+                //清空 ：empty()
+                $("#class2_select_id").empty();
+
+                //dom对象如何转换为jquery对象  $()
+                $(json).each(function (i, data) {
+                    $("#class2_select_id").append('<option value="' + data.id + '">' + data.flmch2 + '</option>');
+                })
+            });
+        }
+    }
+</script>    
+
+
+
+-----------------------------------   class_1.js   -------------------------------------  
+[ {
+	"id" : 6,
+	"flmch1" : "服装-6"
+}, {
+	"id" : 7,
+	"flmch1" : "电器-7"
+}, {
+	"id" : 8,
+	"flmch1" : "电脑-8"
+}]
+
+
+
+-----------------------------------   class_2_6.js   -------------------------------------
+[
+    {
+        "id": 11,
+        "flmch2": "男装",
+        "flbh1": 6
+    },
+    {
+        "id": 12,
+        "flmch2": "女装",
+        "flbh1": 6
+    },
+    {
+        "id": 13,
+        "flmch2": "童装",
+        "flbh1": 6
+    }
+]
+
+
+
+-----------------------------------   class_2_7.js   ------------------------------------
+[
+    {
+        "id": 14,
+        "flmch2": "冰箱",
+        "flbh1": 7
+    },
+    {
+        "id": 15,
+        "flmch2": "洗衣机",
+        "flbh1": 7
+    },
+    {
+        "id": 24,
+        "flmch2": "空调",
+        "flbh1": 7
+    }
+]
+
+
+-----------------------------------   class_2_8.js   -------------------------------------
+[
+    {
+        "id": 16,
+        "flmch2": "华硕电脑",
+        "flbh1": 8
+    },
+    {
+        "id": 28,
+        "flmch2": "联想电脑",
+        "flbh1": 8
+    },
+    {
+        "id": 31,
+        "flmch2": "戴尔电脑",
+        "flbh1": 8
+    }
+]
 
 ```
 </details>

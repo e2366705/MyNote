@@ -109,14 +109,6 @@ Ajax 适用于加载一些临时性的数据 (优点是不刷新整个网页)
     方式二, 只有在点击的时候, 才会执行 myFunction 方法, 方法二比较常用
 </script>
 
-
-
-连接字符串:
-var aaa = 123123;
-console.log(`为什么我会有 ${aaa} 个苹果手机`);
-
-
-
 ```
 </details>
 
@@ -180,13 +172,33 @@ console.dir();
 
 ```
 
+用一个 for 循环来解释最清楚不过了:
+第一种:
+for (var i = 0; i < 120; i++) {
+  console.log("");
+}
+console.log("i = "+ i);    // i = 120
+
+第二种:
+for (let i = 0; i < 120; i++) {
+  console.log("");
+}
+console.log("i = "+ i);     //  i is not defined
+
+!! 推荐使用第二种~
+
+
+
+
+
+
 使用const声明的是常量，在后面出现的代码中不能再修改该常量的值。
 
 ES6 新增了let命令，用来声明局部变量
-它的用法类似于var，但是所声明的变量，只在let命令所在的代码块内有效，而且有暂时性死区的约束。
+它的用法类似于var，但是所声明的变量，只在 let 命令所在的代码块内有效，而且有暂时性死区的约束。
 
 
-let不允许在相同作用域内，重复声明同一个变量。
+let 不允许在相同作用域内，重复声明同一个变量。
 否则报错：Uncaught SyntaxError: Identifier 'XXX' has already been declared
 例如：
 let a = 0;
@@ -276,14 +288,20 @@ let a = 'sss';
 
 
 <details>
-<summary><b> textarea </b></summary>
+<summary><b> textarea / input </b></summary>
 
 ```
+
+-----------------------------------   textarea 操作   -------------------------------------
 获取值:
 document.getElementById("textarea_content").value;
 
 保持 textarea 里面的格式不变:
 document.getElementById("textarea_content").innerHTML = notes_.note;
+
+
+-----------------------------------   input 操作   -------------------------------------
+document.getElementById("imgtalk").value = "xxxxxxxx 值";
 
 ```
 </details>
@@ -417,20 +435,45 @@ window.onload = function() {
 
 
 
-兄弟节点 / 父节点 / 子节点:
-  <h1>
-    <span>spannnnnnnnnnnnnnnnnn</span>
-    <a href="####"  >AAAAAAAAaaaaaaaaaaaaaaaaa</a>
-    <button onclick="Delete_this_file(this)"> 删除 Del </button>
-  </h1>
+
+
+
+-----------------------------------   兄弟节点 / 父节点 / 子节点   ------------------------------------
+<h1>
+  <p>第 0 个节点</p>
+  <p>第 1 个节点</p>
+  <p>第 2 个节点</p>
+  <p>第 3 个节点</p>
+  <p>第 4 个节点</p>
+  <a href="####">AAAAaaa</a>
+  <button onclick="Delete_this_file(this)"> 点击 </button>
+</h1>
+
 
   // Del  -  删除按钮
-  function Delete_this_file(ev) {
-    var b =ev.parentNode.childNodes;
-    console.log(b);                                  // NodeList(7) [text, span, text, a, text, button, text]
+  function Delete_this_file(eee) {
 
-    var a_content = ev.parentNode.childNodes[3].innerText;
-    console.log(a_content);                          // AAAAAAAAaaaaaaaaaaaaaaaaa
+    var b = eee.parentNode.childNodes;
+    console.log("过滤前:");
+    console.log(b);
+
+    var index = 3;
+
+    // 过滤掉不必要的空格
+    for (let i = 0; i < b.length; i++) {
+      if (b[i].nodeName == "#text" && !/\s/.test(b.nodeValue)) {
+        eee.parentNode.removeChild(b[i]);
+      }
+    }
+    console.log("过滤后:");
+    console.log(b);
+
+    //打印 - 遍历
+    for (let i = 0; i < b.length; i++) {
+      console.log(b[i]);
+    }
+    var content = eee.parentNode.childNodes[3].innerText;
+    console.log(`获取第 ${index} 个节点的值:   ${content}  `);
   }
 
 
@@ -1077,13 +1120,6 @@ window.screen.availWidth;           //屏幕可用工作区的宽						返回 32
 
 ```  
 
-
------------------------------------   格式化字符串   -----------------------------------
-var aaa = 123123;
-console.log(`为什么我会有 ${aaa} 个苹果手机`);
-
-
-
 大小写转换:
     phrase_array[i] = phrase_array[i].toUpperCase();     // 正确的
     phrase_array[i].toUpperCase();                       // 错误的, 别忘了重新赋值, 不然会报错
@@ -1194,6 +1230,25 @@ console.log(`为什么我会有 ${aaa} 个苹果手机`);
 
 
 
+
+
+
+
+
+
+
+
+
+<details>
+<summary><b> 字符串之 : 格式化 </b></summary>
+
+```
+连接字符串:
+var aaa = 123123;
+console.log(`为什么我会有 ${aaa} 个苹果手机`);
+
+```
+</details>
 
 
 
@@ -3095,6 +3150,17 @@ JavaScript 原生 Fetch API ajax
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 <details>
 <summary><b> JavaScript Format :</b></summary>
 
@@ -3105,6 +3171,18 @@ formData.append('username', myfile);  // 添加自定义数据
 document.write(formData.get('username'))
 ```
 </details>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3124,6 +3202,20 @@ document.write(formData.get('username'))
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <details>
 <summary><b>JavaScript:网页加载完,再去运行js代码:</b></summary>
 
@@ -3135,6 +3227,20 @@ document.write(formData.get('username'))
 </script>
 ```
 </details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3409,6 +3515,17 @@ getTime() 方法返回自 1970 年 1 月 1 日以来的毫秒数：
 ```
 </details>
 * 参考资料:  https://segmentfault.com/a/1190000015381362
+
+
+
+
+
+
+
+
+
+
+
 
 
 

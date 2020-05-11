@@ -5,7 +5,9 @@
 
 
 
-.
+
+
+
 
 
 <details>
@@ -30,7 +32,7 @@
 
 
 固定到顶部、底部
-        .navbar-fixed-top 
+        .navbar-fixed-top
         .navbar-fixed-bottom  
   <button class="btn btn-danger navbar-fixed-bottom">navbar-fixed-bottom</button>
 
@@ -59,7 +61,7 @@ clearfix : 清除浮动:
     <div class="pull-left" style="background:#58D3F7;">向左快速浮动</div>
     <div class="pull-right" style="background: #DA81F5;">向右快速浮动</div>
   </div>
-  
+
 pull-* 快速浮动:
     <div class="pull-left">向左快速浮动</div>
     <div class="pull-right">向右快速浮动</div>
@@ -307,7 +309,7 @@ btn-group-justified: 三个按钮平分整个屏幕:
 <body>
 
 
-  
+
 
 
 
@@ -332,16 +334,16 @@ autofocus="autofocus"  是页面加载 input 自动获取焦点
 
 
 
-  
 
-  
+
+
 
 
 
 
 <h1>      居中                </h1>
 
-  
+
 <div class="input-group" style="width:800px;margin:0 auto;">
   <input type="text" class="form-control" placeholder="手机..." maxlength="11">
   <div class="input-group-btn">
@@ -352,7 +354,7 @@ autofocus="autofocus"  是页面加载 input 自动获取焦点
 </div>
 
 
-  
+
 
 
 
@@ -360,14 +362,14 @@ autofocus="autofocus"  是页面加载 input 自动获取焦点
 
 <h1>      添加 图标               </h1>
 
-  
+
 
 <div class="btn-group buttons">
   <a class="btn btn-primary" href="add.html"><span class="glyphicon glyphicon-plus"></span>添加</a>
   <a class="btn btn-default" href="list.html"><span class="glyphicon glyphicon-align-justify"></span>列表</a>
 </div>
 
-  
+
 
 
 
@@ -375,7 +377,7 @@ autofocus="autofocus"  是页面加载 input 自动获取焦点
 
 <h1>      各种按钮                </h1>
 
-  
+
 
 <a href="" class="btn btn-primary">primary</a>
 <a href="" class="btn btn-default">default</a>
@@ -394,7 +396,7 @@ autofocus="autofocus"  是页面加载 input 自动获取焦点
 <a href="" class="btn btn-xs btn-default">超小型按钮</a>
 
 
-  
+
 
 
 
@@ -402,7 +404,7 @@ autofocus="autofocus"  是页面加载 input 自动获取焦点
 
 <h1>      下拉按钮                </h1>
 
-  
+
 
 <div class="btn-group">
   <button class="btn btn-default btn-lg dropdown-toggle" data-toggle="dropdown">Default <span class="caret"></span></button>
@@ -413,7 +415,7 @@ autofocus="autofocus"  是页面加载 input 自动获取焦点
   </ul>
 </div>
 
-  
+
 
 
 
@@ -440,7 +442,7 @@ autofocus="autofocus"  是页面加载 input 自动获取焦点
 
 <h1>      向上 按钮                </h1>
 
-  
+
 <div class="btn-group dropup">
   <button class="btn btn-default btn-lg dropdown-toggle" data-toggle="dropdown">Default <span class="caret"></span></button>
   <ul class="dropdown-menu">
@@ -451,7 +453,7 @@ autofocus="autofocus"  是页面加载 input 自动获取焦点
 </div>
 
 
-  
+
 
 
 
@@ -459,7 +461,7 @@ autofocus="autofocus"  是页面加载 input 自动获取焦点
 
 <h1>      下拉搜索                </h1>
 
-  
+
 
 <form action="">
   <div class="row">
@@ -480,7 +482,7 @@ autofocus="autofocus"  是页面加载 input 自动获取焦点
 </form>
 
 
-  
+
 
 
 
@@ -488,7 +490,7 @@ autofocus="autofocus"  是页面加载 input 自动获取焦点
 
 <h1>      数字标签                </h1>
 
-  
+
 <a href="">Messages <span class="badge">20</span></a>
 <button class="btn btn-default">Messages <span class="badge">20</span></button>
 
@@ -556,26 +558,75 @@ autofocus="autofocus"  是页面加载 input 自动获取焦点
 <summary><b> 模态框 </b></summary>
 
 ```
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">更新数据</button>
 
-<!--  模态框 -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog modal-lg" role="document" style="width: 90%; ">
+-----------------------------------   HTML    -------------------------------------
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Open modal</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" onclick="show_modal()"  data-whatever="@getbootstrap">Open modal by script </button>
+
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog modal-lg " role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                <h4 class="modal-title" id="exampleModalLabel">New message</h4>
             </div>
             <div class="modal-body">
-                <textarea id="textarea_content" class="form-control" rows="35" style="font-size: 26px; font-weight: bolder; ">     在w3school，你可以找到你所需要的所有的网站建设教程。</textarea>
+                <form class="form-horizontal">
+                    <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                      <div class="col-sm-10">
+                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                      <div class="col-sm-10">
+                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-sm-offset-2 col-sm-10">
+                        <div class="checkbox">
+                          <label>
+                            <input type="checkbox"> Remember me
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-default">Sign in</button>
+                      </div>
+                    </div>
+                  </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onclick="Submit_button()" > Submit </button>
+                <button type="button" class="btn btn-primary">Send message</button>
             </div>
         </div>
     </div>
 </div>
+
+
+
+
+
+-----------------------------------   JavaScript 调用   -------------------------------------
+function show_modal(){
+    $('#exampleModal').modal('show');
+    // $('#exampleModal').modal('hide');
+}
+
+
+
+-----------------------------------   页面一启动就加载   ------------------------------------
+$('#exampleModal').modal('show');
+
 
 ```
 </details>

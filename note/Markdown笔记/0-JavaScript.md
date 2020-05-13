@@ -250,34 +250,49 @@ let a = 'sss';
 
 # DOM 操作
 <details>
-<summary><b>下拉框 select 发生改变时 的值 </b></summary>
+<summary><b>下拉框 select / textarea / input </b></summary>
 
 ```  
-<select id="testSelect">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-</select>
+-----------------------------------   获得select被选中option的 value, text, index   ------------------------------------
+第一种方法(较为简单, 推荐):
+    <select id="testSelect">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+    </select>
 
     $("#testSelect").change(function(ev){
         console.log(ev.target.value);
     });
 
+    <select id="select_TEST">
+      <option>请选择长度</option>
+      <option>10</option>
+      <option>20</option>
+      <option>160</option>
+      <option>200</option>
+      <option>250</option>
+    </select>
+    <button onclick="GET_select_value();"> 获取 select 值 </button>    
+    function GET_select_value(){
+      console.log(document.getElementById("select_TEST").value);  
+    }
 
 
------------------------------------   获得select被选中option的 value, text, index   ------------------------------------
+
+
+第二种方法:
     <select id="select">
         <option value="A" url="http://www.baidu.com">第 1 个option</option>
         <option value="B" url="http://www.qq.com">第 2 个option</option>
         <option value="c" url="http://www.JD.com">第 3 个option</option>
     </select>
 
-
     // JavaScript原生的方法
     var myselect = document.getElementById("select");  // 拿到select对象
-    var index = myselect.selectedIndex;  //  拿到选中项的索引  selectedIndex代表的是你所选中项的index  
-    console.log(myselect.options[index].value);       // 拿到选中项options的value
-    console.log(myselect.options[index].text);        // 拿到选中项options的text
+    var index = myselect.selectedIndex;                //  拿到选中项的索引  selectedIndex代表的是你所选中项的index  
+    console.log(myselect.options[index].value);        // 拿到选中项options的value
+    console.log(myselect.options[index].text);         // 拿到选中项options的text
     console.log(myselect.options[index].getAttribute('url'));  // 拿到选中项的其他值，比如这里的url
 
     // jQuery方法
@@ -286,49 +301,30 @@ let a = 'sss';
     console.log(options.text()); //拿到选中项的文本
     console.log(options.attr('url')); //拿到选中项的url值  
 
-```
-</details>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<details>
-<summary><b> textarea / input </b></summary>
-
-```
-
------------------------------------   textarea 操作   -------------------------------------
+-----------------------------------   textarea / input   -------------------------------------
+      textarea 操作
 获取值:
 document.getElementById("textarea_content").value;
 
 保持 textarea 里面的格式不变:
 document.getElementById("textarea_content").innerHTML = notes_.note;
 
-
------------------------------------   input 操作   -------------------------------------
+      input 操作:
 document.getElementById("imgtalk").value = "xxxxxxxx 值";
 
 ```
 </details>
+
+
+
+
+
+
+
+
 
 
 
@@ -1074,15 +1070,6 @@ window.screen.availWidth;           //屏幕可用工作区的宽						返回 32
 
 
 
-
-
-
-
-
-
-
-
-
 # 编码问题
 <details>
 <summary><b> 编码问题 </b></summary>
@@ -1094,24 +1081,6 @@ window.screen.availWidth;           //屏幕可用工作区的宽						返回 32
 
 ```
 </details>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1607,11 +1576,6 @@ function isStudentNo(str) {
 
         调用 getQueryVariable("id")          返回 1
         调用 getQueryVariable("image")       返回 awesome.jpg
-
-
-
-
-
 
 
 

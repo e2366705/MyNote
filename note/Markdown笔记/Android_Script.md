@@ -74,7 +74,7 @@ alert("您好");
 
 
 <details>
-<summary><b> 节点精灵 </b></summary>
+<summary><b> 节点精灵( 基于 Lua 语言 ) </b></summary>
 
 ```
 
@@ -87,6 +87,13 @@ for i=10,1,-1 do
     slid(700,700,100,100,888);
 end
 
+
+随机数(其实就是 lua 语法 ):
+local Random_num = math.random();
+
+输入文字:
+local rule2 = R():id("com.tencent.qqlite:id/shuoshuo_edittext");
+input(rule2,Random_num);
 
 
 打印出: 10 9 8 7 6 5 4 3 2 1:

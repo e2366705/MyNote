@@ -150,6 +150,43 @@ btn-group-justified: 三个按钮平分整个屏幕:
 
 
 
+
+
+
+<details>
+<summary><b> 常用的 </b></summary>
+
+```
+Bootstrap 实用单词:
+        form-horizontal
+        form-group
+        form-control
+        container
+        col-sm-10
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <details>
 <summary><b> 字体图标 垂直居中 </b></summary>
 

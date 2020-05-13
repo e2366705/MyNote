@@ -262,6 +262,30 @@ let a = 'sss';
     $("#testSelect").change(function(ev){
         console.log(ev.target.value);
     });
+
+
+
+-----------------------------------   获得select被选中option的 value, text, index   ------------------------------------
+    <select id="select">
+        <option value="A" url="http://www.baidu.com">第 1 个option</option>
+        <option value="B" url="http://www.qq.com">第 2 个option</option>
+        <option value="c" url="http://www.JD.com">第 3 个option</option>
+    </select>
+
+
+    // JavaScript原生的方法
+    var myselect = document.getElementById("select");  // 拿到select对象
+    var index = myselect.selectedIndex;  //  拿到选中项的索引  selectedIndex代表的是你所选中项的index  
+    console.log(myselect.options[index].value);       // 拿到选中项options的value
+    console.log(myselect.options[index].text);        // 拿到选中项options的text
+    console.log(myselect.options[index].getAttribute('url'));  // 拿到选中项的其他值，比如这里的url
+
+    // jQuery方法
+    var options = $("#select option:selected"); //获取选中的项
+    console.log(options.val()); //拿到选中项的值
+    console.log(options.text()); //拿到选中项的文本
+    console.log(options.attr('url')); //拿到选中项的url值  
+
 ```
 </details>
 
